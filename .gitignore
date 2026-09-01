@@ -1,0 +1,15 @@
+# transient render jobs (built by tools/make_entry_job.py, run, then deleted)
+jobs/delta_*.json
+
+# editors / OS
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+.idea/
+.vscode/
+
+# node
+node_modules/
+npm-debug.log*

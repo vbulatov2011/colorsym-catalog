@@ -1,0 +1,23 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "catalog",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "serve.mjs"
+      ],
+      "port": 8124,
+      "autoPort": true
+    },
+    {
+      "name": "symmhub",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "tools/serve_symmhub.mjs"
+      ],
+      "port": 8125,
+      "autoPort": true
+    }
+  ]
+}
