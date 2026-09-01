@@ -1,0 +1,766 @@
+{
+ "_comment": [
+  "Layer set for 632/632[3] (632.3.2), 3 colours, 3 placements.",
+  "Template: wp_632_632_3.1; permutations overridden to this subgroup's invcos.",
+  "f words: e B b",
+  "g words: e b B"
+ ],
+ "outDir": "632/3/632-632-3/gen",
+ "size": 800,
+ "preset": "/catalog/presets/wp_632_632_3.1.json",
+ "autoView": {
+  "subgroup": "acb bca cab",
+  "fillRatio": 0.24
+ },
+ "items": [
+  {
+   "file": "632-632-3.1.png",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "",
+     "permutations": "acb cab bca",
+     "colorTiles": {
+      "count": 3
+     },
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "632-632-3.2.png",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "",
+     "permutations": "acb cab bca",
+     "colorTiles": {
+      "count": 3
+     },
+     "permIndex": 1
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "632-632-3.3.png",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "",
+     "permutations": "acb cab bca",
+     "colorTiles": {
+      "count": 3
+     },
+     "permIndex": 2
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "632-632-3.o.png",
+   "layers": {
+    "arrows": {
+     "useOrbit": true,
+     "mask": "",
+     "permutations": "acb cab bca",
+     "colorTiles": {
+      "count": 3
+     },
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "632-632-3.o1.png",
+   "_note": "orbit coloring carried by g_1",
+   "layers": {
+    "arrows": {
+     "useOrbit": true,
+     "mask": "",
+     "permutations": "acb cab bca",
+     "colorTiles": {
+      "count": 3
+     },
+     "permIndex": 1
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "632-632-3.o2.png",
+   "_note": "orbit coloring carried by g_2",
+   "layers": {
+    "arrows": {
+     "useOrbit": true,
+     "mask": "",
+     "permutations": "acb cab bca",
+     "colorTiles": {
+      "count": 3
+     },
+     "permIndex": 2
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "00.png",
+   "_note": "f_0 H g_0",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "100",
+     "permutations": "acb cab bca",
+     "colorTiles": {
+      "count": 3
+     },
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "01.png",
+   "_note": "f_0 H g_1",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "010",
+     "permutations": "acb cab bca",
+     "colorTiles": {
+      "count": 3
+     },
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "02.png",
+   "_note": "f_0 H g_2",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "001",
+     "permutations": "acb cab bca",
+     "colorTiles": {
+      "count": 3
+     },
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "10.png",
+   "_note": "f_1 H g_0",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "100",
+     "permutations": "acb cab bca",
+     "colorTiles": {
+      "count": 3
+     },
+     "permIndex": 1
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "11.png",
+   "_note": "f_1 H g_1",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "010",
+     "permutations": "acb cab bca",
+     "colorTiles": {
+      "count": 3
+     },
+     "permIndex": 1
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "12.png",
+   "_note": "f_1 H g_2",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "001",
+     "permutations": "acb cab bca",
+     "colorTiles": {
+      "count": 3
+     },
+     "permIndex": 1
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "20.png",
+   "_note": "f_2 H g_0",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "100",
+     "permutations": "acb cab bca",
+     "colorTiles": {
+      "count": 3
+     },
+     "permIndex": 2
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "21.png",
+   "_note": "f_2 H g_1",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "010",
+     "permutations": "acb cab bca",
+     "colorTiles": {
+      "count": 3
+     },
+     "permIndex": 2
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "22.png",
+   "_note": "f_2 H g_2",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "001",
+     "permutations": "acb cab bca",
+     "colorTiles": {
+      "count": 3
+     },
+     "permIndex": 2
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "012_0.png",
+   "_note": "all orbits of H g_0 - the whole pattern in color 0",
+   "compose": [
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "100",
+       "permutations": "acb cab bca",
+       "colorTiles": {
+        "count": 3
+       },
+       "permIndex": 0
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "100",
+       "permutations": "acb cab bca",
+       "colorTiles": {
+        "count": 3
+       },
+       "permIndex": 1
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "100",
+       "permutations": "acb cab bca",
+       "colorTiles": {
+        "count": 3
+       },
+       "permIndex": 2
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    }
+   ]
+  },
+  {
+   "file": "012_1.png",
+   "_note": "all orbits of H g_1 - the whole pattern in color 1",
+   "compose": [
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "010",
+       "permutations": "acb cab bca",
+       "colorTiles": {
+        "count": 3
+       },
+       "permIndex": 0
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "010",
+       "permutations": "acb cab bca",
+       "colorTiles": {
+        "count": 3
+       },
+       "permIndex": 1
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "010",
+       "permutations": "acb cab bca",
+       "colorTiles": {
+        "count": 3
+       },
+       "permIndex": 2
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    }
+   ]
+  },
+  {
+   "file": "012_2.png",
+   "_note": "all orbits of H g_2 - the whole pattern in color 2",
+   "compose": [
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "001",
+       "permutations": "acb cab bca",
+       "colorTiles": {
+        "count": 3
+       },
+       "permIndex": 0
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "001",
+       "permutations": "acb cab bca",
+       "colorTiles": {
+        "count": 3
+       },
+       "permIndex": 1
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "001",
+       "permutations": "acb cab bca",
+       "colorTiles": {
+        "count": 3
+       },
+       "permIndex": 2
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    }
+   ]
+  },
+  {
+   "file": "group_pattern.png",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "",
+     "permutations": "acb cab bca",
+     "colorTiles": {
+      "count": 3
+     },
+     "permIndex": 0,
+     "coloringType": "none"
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "group_domain.png",
+   "subgroup": null,
+   "enable": {
+    "arrows": false,
+    "overlay": true
+   },
+   "layers": {
+    "overlay": {
+     "buffer": {
+      "outline": {
+       "enabled": false
+      },
+      "fill": {
+       "enabled": false
+      }
+     },
+     "generators": {
+      "enabled": false
+     },
+     "tiling": {
+      "outline": {
+       "enabled": false
+      }
+     },
+     "fundDomain": {
+      "fill": {
+       "enabled": true
+      },
+      "outline": {
+       "enabled": true
+      }
+     }
+    }
+   }
+  },
+  {
+   "file": "group_tiling.png",
+   "subgroup": null,
+   "enable": {
+    "arrows": false,
+    "overlay": true
+   },
+   "layers": {
+    "overlay": {
+     "buffer": {
+      "outline": {
+       "enabled": false
+      },
+      "fill": {
+       "enabled": false
+      }
+     },
+     "generators": {
+      "enabled": false
+     },
+     "tiling": {
+      "outline": {
+       "enabled": true
+      }
+     },
+     "fundDomain": {
+      "fill": {
+       "enabled": false
+      },
+      "outline": {
+       "enabled": false
+      }
+     }
+    }
+   }
+  },
+  {
+   "file": "group_gens.png",
+   "subgroup": null,
+   "enable": {
+    "arrows": false,
+    "overlay": true
+   },
+   "layers": {
+    "overlay": {
+     "buffer": {
+      "outline": {
+       "enabled": false
+      },
+      "fill": {
+       "enabled": false
+      }
+     },
+     "generators": {
+      "enabled": false
+     },
+     "tiling": {
+      "outline": {
+       "enabled": false
+      }
+     },
+     "fundDomain": {
+      "fill": {
+       "enabled": true
+      },
+      "outline": {
+       "enabled": true
+      }
+     }
+    }
+   },
+   "markers": {
+    "subgroup": null
+   }
+  },
+  {
+   "file": "sub_domain.png",
+   "_note": "H's domain as a union of 3 G cells",
+   "enable": {
+    "arrows": false,
+    "overlay": false
+   },
+   "draw": {
+    "subgroup": "acb bca cab",
+    "fill": true,
+    "cells": true,
+    "outline": true
+   }
+  },
+  {
+   "file": "sub_tiling.png",
+   "compose": [
+    {
+     "subgroup": null,
+     "enable": {
+      "arrows": false,
+      "overlay": true
+     },
+     "layers": {
+      "overlay": {
+       "buffer": {
+        "outline": {
+         "enabled": false
+        },
+        "fill": {
+         "enabled": false
+        }
+       },
+       "generators": {
+        "enabled": false
+       },
+       "tiling": {
+        "outline": {
+         "enabled": true
+        }
+       },
+       "fundDomain": {
+        "fill": {
+         "enabled": false
+        },
+        "outline": {
+         "enabled": false
+        }
+       }
+      }
+     },
+     "opacity": 0.3
+    }
+   ],
+   "draw": {
+    "subgroup": "acb bca cab",
+    "tiling": true
+   }
+  },
+  {
+   "file": "sub_gens.png",
+   "enable": {
+    "arrows": false,
+    "overlay": false
+   },
+   "draw": {
+    "subgroup": "acb bca cab",
+    "fill": true,
+    "outline": true
+   },
+   "markers": {
+    "subgroup": "acb bca cab"
+   }
+  },
+  {
+   "file": "sub_til.png",
+   "_note": "H tiling lines only",
+   "enable": {
+    "arrows": false,
+    "overlay": false
+   },
+   "draw": {
+    "subgroup": "acb bca cab",
+    "tiling": true
+   }
+  },
+  {
+   "file": "group_marks.png",
+   "_note": "G rotation centres only",
+   "enable": {
+    "arrows": false,
+    "overlay": false
+   },
+   "markers": {
+    "subgroup": null
+   }
+  },
+  {
+   "file": "sub_marks.png",
+   "_note": "H rotation centres only",
+   "enable": {
+    "arrows": false,
+    "overlay": false
+   },
+   "markers": {
+    "subgroup": "acb bca cab"
+   }
+  },
+  {
+   "file": "f1.png",
+   "_note": "f_1 = B",
+   "enable": {
+    "arrows": false,
+    "overlay": false
+   },
+   "glyphs": {
+    "subgroup": "acb bca cab",
+    "kind": "cell",
+    "list": [
+     {
+      "word": "B",
+      "style": {
+       "color": "#c02020",
+       "width": 3.5
+      }
+     }
+    ]
+   }
+  },
+  {
+   "file": "f2.png",
+   "_note": "f_2 = b",
+   "enable": {
+    "arrows": false,
+    "overlay": false
+   },
+   "glyphs": {
+    "subgroup": "acb bca cab",
+    "kind": "cell",
+    "list": [
+     {
+      "word": "b",
+      "style": {
+       "color": "#c02020",
+       "width": 3.5
+      }
+     }
+    ]
+   }
+  },
+  {
+   "file": "g1.png",
+   "_note": "g_1 = b",
+   "enable": {
+    "arrows": false,
+    "overlay": false
+   },
+   "glyphs": {
+    "subgroup": "acb bca cab",
+    "kind": "coset",
+    "list": [
+     {
+      "word": "b",
+      "style": {
+       "color": "#2040c0",
+       "width": 3.5
+      }
+     }
+    ]
+   }
+  },
+  {
+   "file": "g2.png",
+   "_note": "g_2 = B",
+   "enable": {
+    "arrows": false,
+    "overlay": false
+   },
+   "glyphs": {
+    "subgroup": "acb bca cab",
+    "kind": "coset",
+    "list": [
+     {
+      "word": "B",
+      "style": {
+       "color": "#2040c0",
+       "width": 3.5
+      }
+     }
+    ]
+   }
+  }
+ ]
+}

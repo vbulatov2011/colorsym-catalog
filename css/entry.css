@@ -1,0 +1,195 @@
+/* entry.css — presentation of a single color group G/H[n].
+ *
+ * Layout is fluid: the panels and the coset table reflow to the window instead
+ * of living inside a fixed column.  The artwork is unchanged — square PNGs
+ * stacked as absolutely-positioned layers.
+ *
+ * Every .stack is click-to-enlarge; the table cell size is driven by --cell so
+ * that a table with many colors can shrink without the page having to change. */
+
+:root {
+  --bg:      #f4f4f4;
+  --panel:   #ffffff;
+  --ink:     #1a1a1a;
+  --muted:   #6a6a6a;
+  --line:    #cfcfcf;
+  --rule:    #e2e2e2;
+  --accent:  #0b5fa5;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  /* the three color classes, sampled from the artwork */
+  --c0: #00ffff;
+  --c1: #ffff00;
+  --c2: #ff0000;
+  --cell: 235px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0 0 3rem;
+  background: var(--bg);
+  color: var(--ink);
+  font: 15px/1.55 system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+}
+
+.wrap { max-width: 1500px; margin: 0 auto; padding: 0 1.25rem; }
+
+/* ---- header ------------------------------------------------------------ */
+
+header.entry {
+  background: #e8e8e8;
+  border-bottom: 1px solid var(--line);
+  padding: 1rem 0 .9rem;
+  margin-bottom: 1.5rem;
+}
+header.entry h1 { margin: 0; font-size: 1.75rem; font-weight: 600; letter-spacing: .01em; }
+header.entry h1 .sub { color: var(--muted); font-weight: 400; }
+header.entry .lede { margin: .2rem 0 0; color: var(--muted); font-size: .9rem; }
+
+/* ---- section headings -------------------------------------------------- */
+
+h2.sec {
+  font-size: .8rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: .09em; color: var(--muted);
+  margin: 2.2rem 0 .8rem; padding-bottom: .35rem;
+  border-bottom: 1px solid var(--line);
+}
+
+/* ---- facts ------------------------------------------------------------- */
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1px; background: var(--rule); border: 1px solid var(--line);
+  margin: 0;
+}
+.fact { background: var(--panel); padding: .75rem .9rem; }
+.fact dt {
+  font-size: .72rem; text-transform: uppercase; letter-spacing: .07em;
+  color: var(--muted); margin-bottom: .3rem;
+}
+.fact dd { margin: 0; font-size: 1.02rem; }
+.fact dd .note { display: block; font-size: .82rem; color: var(--muted); margin-top: .2rem; }
+code, .mono { font-family: var(--mono); font-size: .92em; }
+.name { font-family: var(--mono); font-weight: 600; color: var(--ink); }
+
+/* ---- the colour action table ------------------------------------------- */
+
+table.action { border-collapse: collapse; background: var(--panel); }
+table.action th, table.action td {
+  border: 1px solid var(--rule); padding: .3rem .55rem; text-align: center;
+}
+table.action th { font-weight: 600; color: var(--muted); font-size: .8rem; }
+table.action th.gen { font-family: var(--mono); color: var(--ink); font-size: .95rem; }
+table.action td.cyc { text-align: left; font-family: var(--mono); color: var(--muted); }
+
+.sw {
+  display: inline-block; width: 1.15em; height: 1.15em;
+  border: 1px solid #999; vertical-align: -.22em; border-radius: 2px;
+}
+.sw0 { background: var(--c0); }
+.sw1 { background: var(--c1); }
+.sw2 { background: var(--c2); }
+
+/* ---- image stacks ------------------------------------------------------ */
+
+.stack {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  cursor: zoom-in;
+}
+.stack:hover, .stack:focus-visible { border-color: var(--accent); outline: none; }
+.stack:focus-visible { box-shadow: 0 0 0 2px var(--accent); }
+.stack img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.stack .cap {
+  position: absolute; top: 0; left: 0; z-index: 2;
+  background: rgba(255,255,255,.86); padding: .1rem .4rem; font-size: .8rem;
+  border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+}
+.op20 { opacity: .2; }
+.op30 { opacity: .3; }
+.op50 { opacity: .5; }
+
+/* Exact channel permutations for recoloring the pure-cyan motif layers
+ * (filter defs live in the entry page).  Greys pass through untouched. */
+.toY { filter: url(#toY); }   /* cyan -> yellow */
+.toR { filter: url(#toR); }   /* cyan -> red    */
+
+/* ---- panel rows -------------------------------------------------------- */
+
+/* auto-fill, not auto-fit: a short row keeps its track width instead of
+ * stretching, so the rows line up with each other. */
+.hero-one, .hero-row, .geometry {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.1rem;
+}
+.hero-one { margin-bottom: 1.3rem; }
+.geometry { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: .9rem; }
+.hero-one figure, .hero-row figure, .geometry figure { margin: 0; }
+.hero-one figcaption, .hero-row figcaption, .geometry figcaption {
+  font-size: .87rem; color: var(--muted); margin-top: .4rem;
+}
+.hero-one figcaption b, .hero-row figcaption b, .geometry figcaption b {
+  color: var(--ink); font-weight: 600;
+}
+
+/* ---- the coset table --------------------------------------------------- */
+
+.cosets { overflow-x: auto; }
+table.grid { border-collapse: collapse; }
+table.grid th, table.grid td { padding: 0; vertical-align: top; }
+table.grid td.cell { padding: 3px; }
+table.grid td.cell .stack { width: var(--cell); }
+table.grid th.col {
+  font-size: .85rem; font-weight: 600; padding: 0 0 .35rem;
+  text-align: center; color: var(--ink);
+}
+table.grid th.row {
+  font-size: .85rem; font-weight: 600; padding-right: .55rem;
+  text-align: right; white-space: nowrap; color: var(--ink);
+}
+table.grid th .hint { display: block; font-weight: 400; font-size: .76rem; color: var(--muted); }
+table.grid .marg { background: #ececec; }
+
+.legend { font-size: .87rem; color: var(--muted); margin: .8rem 0 0; max-width: 95ch; }
+.legend b { color: var(--ink); }
+
+/* ---- lightbox ---------------------------------------------------------- */
+
+#lb {
+  position: fixed; inset: 0; z-index: 50;
+  background: rgba(20,20,20,.62);
+  display: grid; place-items: center; padding: 1.5rem;
+  cursor: zoom-out;
+}
+#lb[hidden] { display: none; }
+#lb-stack {
+  width: min(86vw, 78vh);
+  border-color: var(--muted);
+  cursor: zoom-out;
+  box-shadow: 0 8px 40px rgba(0,0,0,.45);
+}
+#lb-stack .cap { font-size: 1rem; padding: .2rem .55rem; }
+#lb-hint {
+  margin-top: .6rem; text-align: center; color: #f0f0f0;
+  font-size: .82rem; text-shadow: 0 1px 3px rgba(0,0,0,.6);
+}
+
+/* ---- footer ------------------------------------------------------------ */
+
+footer.entry {
+  border-top: 1px solid var(--line);
+  margin-top: 2.5rem; padding-top: .9rem;
+  font-size: .87rem; color: var(--muted);
+}
+footer.entry a { color: var(--accent); }
+
+/* longer prose inside a .fact box (the f / g definitions) */
+.fact dd.small { font-size: .87rem; line-height: 1.5; color: var(--ink); }
+/* keep case-sensitive math symbols as written: lowercase f, g are not G */
+.fact dt.plain { text-transform: none; letter-spacing: .01em; font-size: .82rem; }

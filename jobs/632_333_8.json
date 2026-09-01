@@ -1,0 +1,3055 @@
+{
+ "_comment": [
+  "Layer set for 632/333[8] (632.8.1), 8 colours, 4 placements.",
+  "Template: wp_632_632_3.1; permutations overridden to this subgroup's invcos.",
+  "f words: e a Ba ba aBa aba BaBa aBaBa",
+  "g words: e a ab aB aba aBa aBaBaBa ababa"
+ ],
+ "outDir": "632/8/632-333-8/gen",
+ "size": 800,
+ "preset": "/catalog/presets/wp_632_632_3.1.json",
+ "autoView": {
+  "subgroup": "baefcdhg acdbgefh adbcfgeh",
+  "fillRatio": 0.24
+ },
+ "items": [
+  {
+   "file": "632-333-8.1.png",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "632-333-8.2.png",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 1
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "632-333-8.3.png",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 2
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "632-333-8.4.png",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 3
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "632-333-8.5.png",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 4
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "_note": "same placement as .4 - colors relabeled"
+  },
+  {
+   "file": "632-333-8.6.png",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 5
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "_note": "same placement as .3 - colors relabeled"
+  },
+  {
+   "file": "632-333-8.7.png",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 6
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "_note": "same placement as .2 - colors relabeled"
+  },
+  {
+   "file": "632-333-8.8.png",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 7
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "_note": "same placement as .1 - colors relabeled"
+  },
+  {
+   "file": "632-333-8.o.png",
+   "layers": {
+    "arrows": {
+     "useOrbit": true,
+     "mask": "",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "632-333-8.o1.png",
+   "_note": "orbit coloring carried by g_1",
+   "layers": {
+    "arrows": {
+     "useOrbit": true,
+     "mask": "",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 1
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "632-333-8.o2.png",
+   "_note": "orbit coloring carried by g_2",
+   "layers": {
+    "arrows": {
+     "useOrbit": true,
+     "mask": "",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 2
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "632-333-8.o3.png",
+   "_note": "orbit coloring carried by g_3",
+   "layers": {
+    "arrows": {
+     "useOrbit": true,
+     "mask": "",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 3
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "632-333-8.o4.png",
+   "_note": "orbit coloring carried by g_4",
+   "layers": {
+    "arrows": {
+     "useOrbit": true,
+     "mask": "",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 4
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "632-333-8.o5.png",
+   "_note": "orbit coloring carried by g_5",
+   "layers": {
+    "arrows": {
+     "useOrbit": true,
+     "mask": "",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 5
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "632-333-8.o6.png",
+   "_note": "orbit coloring carried by g_6",
+   "layers": {
+    "arrows": {
+     "useOrbit": true,
+     "mask": "",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 6
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "632-333-8.o7.png",
+   "_note": "orbit coloring carried by g_7",
+   "layers": {
+    "arrows": {
+     "useOrbit": true,
+     "mask": "",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 7
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "00.png",
+   "_note": "f_0 H g_0",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "10000000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "01.png",
+   "_note": "f_0 H g_1",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "01000000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "02.png",
+   "_note": "f_0 H g_2",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00100000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "03.png",
+   "_note": "f_0 H g_3",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00010000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "04.png",
+   "_note": "f_0 H g_4",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00001000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "05.png",
+   "_note": "f_0 H g_5",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00000100",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "06.png",
+   "_note": "f_0 H g_6",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00000010",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "07.png",
+   "_note": "f_0 H g_7",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00000001",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "10.png",
+   "_note": "f_1 H g_0",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "10000000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 1
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "11.png",
+   "_note": "f_1 H g_1",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "01000000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 1
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "12.png",
+   "_note": "f_1 H g_2",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00100000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 1
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "13.png",
+   "_note": "f_1 H g_3",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00010000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 1
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "14.png",
+   "_note": "f_1 H g_4",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00001000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 1
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "15.png",
+   "_note": "f_1 H g_5",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00000100",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 1
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "16.png",
+   "_note": "f_1 H g_6",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00000010",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 1
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "17.png",
+   "_note": "f_1 H g_7",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00000001",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 1
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "20.png",
+   "_note": "f_2 H g_0",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "10000000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 2
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "21.png",
+   "_note": "f_2 H g_1",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "01000000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 2
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "22.png",
+   "_note": "f_2 H g_2",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00100000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 2
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "23.png",
+   "_note": "f_2 H g_3",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00010000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 2
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "24.png",
+   "_note": "f_2 H g_4",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00001000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 2
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "25.png",
+   "_note": "f_2 H g_5",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00000100",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 2
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "26.png",
+   "_note": "f_2 H g_6",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00000010",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 2
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "27.png",
+   "_note": "f_2 H g_7",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00000001",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 2
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "30.png",
+   "_note": "f_3 H g_0",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "10000000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 3
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "31.png",
+   "_note": "f_3 H g_1",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "01000000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 3
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "32.png",
+   "_note": "f_3 H g_2",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00100000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 3
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "33.png",
+   "_note": "f_3 H g_3",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00010000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 3
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "34.png",
+   "_note": "f_3 H g_4",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00001000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 3
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "35.png",
+   "_note": "f_3 H g_5",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00000100",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 3
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "36.png",
+   "_note": "f_3 H g_6",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00000010",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 3
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "37.png",
+   "_note": "f_3 H g_7",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00000001",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 3
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "40.png",
+   "_note": "f_4 H g_0",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "10000000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 4
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "41.png",
+   "_note": "f_4 H g_1",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "01000000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 4
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "42.png",
+   "_note": "f_4 H g_2",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00100000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 4
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "43.png",
+   "_note": "f_4 H g_3",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00010000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 4
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "44.png",
+   "_note": "f_4 H g_4",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00001000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 4
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "45.png",
+   "_note": "f_4 H g_5",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00000100",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 4
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "46.png",
+   "_note": "f_4 H g_6",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00000010",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 4
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "47.png",
+   "_note": "f_4 H g_7",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00000001",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 4
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "50.png",
+   "_note": "f_5 H g_0",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "10000000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 5
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "51.png",
+   "_note": "f_5 H g_1",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "01000000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 5
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "52.png",
+   "_note": "f_5 H g_2",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00100000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 5
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "53.png",
+   "_note": "f_5 H g_3",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00010000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 5
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "54.png",
+   "_note": "f_5 H g_4",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00001000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 5
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "55.png",
+   "_note": "f_5 H g_5",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00000100",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 5
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "56.png",
+   "_note": "f_5 H g_6",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00000010",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 5
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "57.png",
+   "_note": "f_5 H g_7",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00000001",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 5
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "60.png",
+   "_note": "f_6 H g_0",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "10000000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 6
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "61.png",
+   "_note": "f_6 H g_1",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "01000000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 6
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "62.png",
+   "_note": "f_6 H g_2",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00100000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 6
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "63.png",
+   "_note": "f_6 H g_3",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00010000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 6
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "64.png",
+   "_note": "f_6 H g_4",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00001000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 6
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "65.png",
+   "_note": "f_6 H g_5",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00000100",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 6
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "66.png",
+   "_note": "f_6 H g_6",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00000010",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 6
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "67.png",
+   "_note": "f_6 H g_7",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00000001",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 6
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "70.png",
+   "_note": "f_7 H g_0",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "10000000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 7
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "71.png",
+   "_note": "f_7 H g_1",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "01000000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 7
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "72.png",
+   "_note": "f_7 H g_2",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00100000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 7
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "73.png",
+   "_note": "f_7 H g_3",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00010000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 7
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "74.png",
+   "_note": "f_7 H g_4",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00001000",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 7
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "75.png",
+   "_note": "f_7 H g_5",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00000100",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 7
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "76.png",
+   "_note": "f_7 H g_6",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00000010",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 7
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "77.png",
+   "_note": "f_7 H g_7",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "00000001",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 7
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "01234567_0.png",
+   "_note": "all orbits of H g_0 - the whole pattern in color 0",
+   "compose": [
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "10000000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 0
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "10000000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 1
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "10000000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 2
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "10000000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 3
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "10000000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 4
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "10000000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 5
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "10000000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 6
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "10000000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 7
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    }
+   ]
+  },
+  {
+   "file": "01234567_1.png",
+   "_note": "all orbits of H g_1 - the whole pattern in color 1",
+   "compose": [
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "01000000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 0
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "01000000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 1
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "01000000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 2
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "01000000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 3
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "01000000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 4
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "01000000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 5
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "01000000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 6
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "01000000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 7
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    }
+   ]
+  },
+  {
+   "file": "01234567_2.png",
+   "_note": "all orbits of H g_2 - the whole pattern in color 2",
+   "compose": [
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00100000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 0
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00100000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 1
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00100000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 2
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00100000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 3
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00100000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 4
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00100000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 5
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00100000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 6
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00100000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 7
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    }
+   ]
+  },
+  {
+   "file": "01234567_3.png",
+   "_note": "all orbits of H g_3 - the whole pattern in color 3",
+   "compose": [
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00010000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 0
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00010000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 1
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00010000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 2
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00010000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 3
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00010000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 4
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00010000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 5
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00010000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 6
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00010000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 7
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    }
+   ]
+  },
+  {
+   "file": "01234567_4.png",
+   "_note": "all orbits of H g_4 - the whole pattern in color 4",
+   "compose": [
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00001000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 0
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00001000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 1
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00001000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 2
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00001000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 3
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00001000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 4
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00001000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 5
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00001000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 6
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00001000",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 7
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    }
+   ]
+  },
+  {
+   "file": "01234567_5.png",
+   "_note": "all orbits of H g_5 - the whole pattern in color 5",
+   "compose": [
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00000100",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 0
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00000100",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 1
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00000100",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 2
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00000100",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 3
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00000100",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 4
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00000100",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 5
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00000100",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 6
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00000100",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 7
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    }
+   ]
+  },
+  {
+   "file": "01234567_6.png",
+   "_note": "all orbits of H g_6 - the whole pattern in color 6",
+   "compose": [
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00000010",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 0
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00000010",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 1
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00000010",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 2
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00000010",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 3
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00000010",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 4
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00000010",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 5
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00000010",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 6
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00000010",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 7
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    }
+   ]
+  },
+  {
+   "file": "01234567_7.png",
+   "_note": "all orbits of H g_7 - the whole pattern in color 7",
+   "compose": [
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00000001",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 0
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00000001",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 1
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00000001",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 2
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00000001",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 3
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00000001",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 4
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00000001",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 5
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00000001",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 6
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "arrows": {
+       "useOrbit": false,
+       "mask": "00000001",
+       "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "colorTiles": {
+        "count": 8
+       },
+       "permIndex": 7
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    }
+   ]
+  },
+  {
+   "file": "group_pattern.png",
+   "layers": {
+    "arrows": {
+     "useOrbit": false,
+     "mask": "",
+     "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "colorTiles": {
+      "count": 8
+     },
+     "permIndex": 0,
+     "coloringType": "none"
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "group_domain.png",
+   "subgroup": null,
+   "enable": {
+    "arrows": false,
+    "overlay": true
+   },
+   "layers": {
+    "overlay": {
+     "buffer": {
+      "outline": {
+       "enabled": false
+      },
+      "fill": {
+       "enabled": false
+      }
+     },
+     "generators": {
+      "enabled": false
+     },
+     "tiling": {
+      "outline": {
+       "enabled": false
+      }
+     },
+     "fundDomain": {
+      "fill": {
+       "enabled": true
+      },
+      "outline": {
+       "enabled": true
+      }
+     }
+    }
+   }
+  },
+  {
+   "file": "group_tiling.png",
+   "subgroup": null,
+   "enable": {
+    "arrows": false,
+    "overlay": true
+   },
+   "layers": {
+    "overlay": {
+     "buffer": {
+      "outline": {
+       "enabled": false
+      },
+      "fill": {
+       "enabled": false
+      }
+     },
+     "generators": {
+      "enabled": false
+     },
+     "tiling": {
+      "outline": {
+       "enabled": true
+      }
+     },
+     "fundDomain": {
+      "fill": {
+       "enabled": false
+      },
+      "outline": {
+       "enabled": false
+      }
+     }
+    }
+   }
+  },
+  {
+   "file": "group_gens.png",
+   "subgroup": null,
+   "enable": {
+    "arrows": false,
+    "overlay": true
+   },
+   "layers": {
+    "overlay": {
+     "buffer": {
+      "outline": {
+       "enabled": false
+      },
+      "fill": {
+       "enabled": false
+      }
+     },
+     "generators": {
+      "enabled": false
+     },
+     "tiling": {
+      "outline": {
+       "enabled": false
+      }
+     },
+     "fundDomain": {
+      "fill": {
+       "enabled": true
+      },
+      "outline": {
+       "enabled": true
+      }
+     }
+    }
+   },
+   "markers": {
+    "subgroup": null
+   }
+  },
+  {
+   "file": "sub_domain.png",
+   "_note": "H's domain as a union of 8 G cells",
+   "enable": {
+    "arrows": false,
+    "overlay": false
+   },
+   "draw": {
+    "subgroup": "baefcdhg acdbgefh adbcfgeh",
+    "fill": true,
+    "cells": true,
+    "outline": true
+   }
+  },
+  {
+   "file": "sub_tiling.png",
+   "compose": [
+    {
+     "subgroup": null,
+     "enable": {
+      "arrows": false,
+      "overlay": true
+     },
+     "layers": {
+      "overlay": {
+       "buffer": {
+        "outline": {
+         "enabled": false
+        },
+        "fill": {
+         "enabled": false
+        }
+       },
+       "generators": {
+        "enabled": false
+       },
+       "tiling": {
+        "outline": {
+         "enabled": true
+        }
+       },
+       "fundDomain": {
+        "fill": {
+         "enabled": false
+        },
+        "outline": {
+         "enabled": false
+        }
+       }
+      }
+     },
+     "opacity": 0.3
+    }
+   ],
+   "draw": {
+    "subgroup": "baefcdhg acdbgefh adbcfgeh",
+    "tiling": true
+   }
+  },
+  {
+   "file": "sub_gens.png",
+   "enable": {
+    "arrows": false,
+    "overlay": false
+   },
+   "draw": {
+    "subgroup": "baefcdhg acdbgefh adbcfgeh",
+    "fill": true,
+    "outline": true
+   },
+   "markers": {
+    "subgroup": "baefcdhg acdbgefh adbcfgeh"
+   }
+  },
+  {
+   "file": "sub_til.png",
+   "_note": "H tiling lines only",
+   "enable": {
+    "arrows": false,
+    "overlay": false
+   },
+   "draw": {
+    "subgroup": "baefcdhg acdbgefh adbcfgeh",
+    "tiling": true
+   }
+  },
+  {
+   "file": "group_marks.png",
+   "_note": "G rotation centres only",
+   "enable": {
+    "arrows": false,
+    "overlay": false
+   },
+   "markers": {
+    "subgroup": null
+   }
+  },
+  {
+   "file": "sub_marks.png",
+   "_note": "H rotation centres only",
+   "enable": {
+    "arrows": false,
+    "overlay": false
+   },
+   "markers": {
+    "subgroup": "baefcdhg acdbgefh adbcfgeh"
+   }
+  },
+  {
+   "file": "f1.png",
+   "_note": "f_1 = a",
+   "enable": {
+    "arrows": false,
+    "overlay": false
+   },
+   "glyphs": {
+    "subgroup": "baefcdhg acdbgefh adbcfgeh",
+    "kind": "cell",
+    "list": [
+     {
+      "word": "a",
+      "style": {
+       "color": "#c02020",
+       "width": 3.5
+      }
+     }
+    ]
+   }
+  },
+  {
+   "file": "f2.png",
+   "_note": "f_2 = Ba",
+   "enable": {
+    "arrows": false,
+    "overlay": false
+   },
+   "glyphs": {
+    "subgroup": "baefcdhg acdbgefh adbcfgeh",
+    "kind": "cell",
+    "list": [
+     {
+      "word": "Ba",
+      "style": {
+       "color": "#c02020",
+       "width": 3.5
+      }
+     }
+    ]
+   }
+  },
+  {
+   "file": "f3.png",
+   "_note": "f_3 = ba",
+   "enable": {
+    "arrows": false,
+    "overlay": false
+   },
+   "glyphs": {
+    "subgroup": "baefcdhg acdbgefh adbcfgeh",
+    "kind": "cell",
+    "list": [
+     {
+      "word": "ba",
+      "style": {
+       "color": "#c02020",
+       "width": 3.5
+      }
+     }
+    ]
+   }
+  },
+  {
+   "file": "f4.png",
+   "_note": "f_4 = aBa",
+   "enable": {
+    "arrows": false,
+    "overlay": false
+   },
+   "glyphs": {
+    "subgroup": "baefcdhg acdbgefh adbcfgeh",
+    "kind": "cell",
+    "list": [
+     {
+      "word": "aBa",
+      "style": {
+       "color": "#c02020",
+       "width": 3.5
+      }
+     }
+    ]
+   }
+  },
+  {
+   "file": "f5.png",
+   "_note": "f_5 = aba",
+   "enable": {
+    "arrows": false,
+    "overlay": false
+   },
+   "glyphs": {
+    "subgroup": "baefcdhg acdbgefh adbcfgeh",
+    "kind": "cell",
+    "list": [
+     {
+      "word": "aba",
+      "style": {
+       "color": "#c02020",
+       "width": 3.5
+      }
+     }
+    ]
+   }
+  },
+  {
+   "file": "f6.png",
+   "_note": "f_6 = BaBa",
+   "enable": {
+    "arrows": false,
+    "overlay": false
+   },
+   "glyphs": {
+    "subgroup": "baefcdhg acdbgefh adbcfgeh",
+    "kind": "cell",
+    "list": [
+     {
+      "word": "BaBa",
+      "style": {
+       "color": "#c02020",
+       "width": 3.5
+      }
+     }
+    ]
+   }
+  },
+  {
+   "file": "f7.png",
+   "_note": "f_7 = aBaBa",
+   "enable": {
+    "arrows": false,
+    "overlay": false
+   },
+   "glyphs": {
+    "subgroup": "baefcdhg acdbgefh adbcfgeh",
+    "kind": "cell",
+    "list": [
+     {
+      "word": "aBaBa",
+      "style": {
+       "color": "#c02020",
+       "width": 3.5
+      }
+     }
+    ]
+   }
+  },
+  {
+   "file": "g1.png",
+   "_note": "g_1 = a",
+   "enable": {
+    "arrows": false,
+    "overlay": false
+   },
+   "glyphs": {
+    "subgroup": "baefcdhg acdbgefh adbcfgeh",
+    "kind": "coset",
+    "list": [
+     {
+      "word": "a",
+      "style": {
+       "color": "#2040c0",
+       "width": 3.5
+      }
+     }
+    ]
+   }
+  },
+  {
+   "file": "g2.png",
+   "_note": "g_2 = ab",
+   "enable": {
+    "arrows": false,
+    "overlay": false
+   },
+   "glyphs": {
+    "subgroup": "baefcdhg acdbgefh adbcfgeh",
+    "kind": "coset",
+    "list": [
+     {
+      "word": "ab",
+      "style": {
+       "color": "#2040c0",
+       "width": 3.5
+      }
+     }
+    ]
+   }
+  },
+  {
+   "file": "g3.png",
+   "_note": "g_3 = aB",
+   "enable": {
+    "arrows": false,
+    "overlay": false
+   },
+   "glyphs": {
+    "subgroup": "baefcdhg acdbgefh adbcfgeh",
+    "kind": "coset",
+    "list": [
+     {
+      "word": "aB",
+      "style": {
+       "color": "#2040c0",
+       "width": 3.5
+      }
+     }
+    ]
+   }
+  },
+  {
+   "file": "g4.png",
+   "_note": "g_4 = aba",
+   "enable": {
+    "arrows": false,
+    "overlay": false
+   },
+   "glyphs": {
+    "subgroup": "baefcdhg acdbgefh adbcfgeh",
+    "kind": "coset",
+    "list": [
+     {
+      "word": "aba",
+      "style": {
+       "color": "#2040c0",
+       "width": 3.5
+      }
+     }
+    ]
+   }
+  },
+  {
+   "file": "g5.png",
+   "_note": "g_5 = aBa",
+   "enable": {
+    "arrows": false,
+    "overlay": false
+   },
+   "glyphs": {
+    "subgroup": "baefcdhg acdbgefh adbcfgeh",
+    "kind": "coset",
+    "list": [
+     {
+      "word": "aBa",
+      "style": {
+       "color": "#2040c0",
+       "width": 3.5
+      }
+     }
+    ]
+   }
+  },
+  {
+   "file": "g6.png",
+   "_note": "g_6 = aBaBaBa",
+   "enable": {
+    "arrows": false,
+    "overlay": false
+   },
+   "glyphs": {
+    "subgroup": "baefcdhg acdbgefh adbcfgeh",
+    "kind": "coset",
+    "list": [
+     {
+      "word": "aBaBaBa",
+      "style": {
+       "color": "#2040c0",
+       "width": 3.5
+      }
+     }
+    ]
+   }
+  },
+  {
+   "file": "g7.png",
+   "_note": "g_7 = ababa",
+   "enable": {
+    "arrows": false,
+    "overlay": false
+   },
+   "glyphs": {
+    "subgroup": "baefcdhg acdbgefh adbcfgeh",
+    "kind": "coset",
+    "list": [
+     {
+      "word": "ababa",
+      "style": {
+       "color": "#2040c0",
+       "width": 3.5
+      }
+     }
+    ]
+   }
+  }
+ ]
+}

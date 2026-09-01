@@ -1,0 +1,124 @@
+{
+ "format": "colorsym-catalog-index",
+ "groups": [
+  {
+   "name": "o",
+   "stem": "o",
+   "file": "o.json",
+   "maxIndex": 6,
+   "totalCount": 33
+  },
+  {
+   "name": "2222",
+   "stem": "2222",
+   "file": "2222.json",
+   "maxIndex": 6,
+   "totalCount": 65
+  },
+  {
+   "name": "**",
+   "stem": "ss",
+   "file": "ss.json",
+   "maxIndex": 6,
+   "totalCount": 42
+  },
+  {
+   "name": "xx",
+   "stem": "xx",
+   "file": "xx.json",
+   "maxIndex": 6,
+   "totalCount": 20
+  },
+  {
+   "name": "*x",
+   "stem": "sx",
+   "file": "sx.json",
+   "maxIndex": 6,
+   "totalCount": 22
+  },
+  {
+   "name": "*2222",
+   "stem": "s2222",
+   "file": "s2222.json",
+   "maxIndex": 6,
+   "totalCount": 102
+  },
+  {
+   "name": "22x",
+   "stem": "22x",
+   "file": "22x.json",
+   "maxIndex": 6,
+   "totalCount": 22
+  },
+  {
+   "name": "442",
+   "stem": "442",
+   "file": "442.json",
+   "maxIndex": 6,
+   "totalCount": 15
+  },
+  {
+   "name": "*442",
+   "stem": "s442",
+   "file": "s442.json",
+   "maxIndex": 6,
+   "totalCount": 29
+  },
+  {
+   "name": "4*2",
+   "stem": "4s2",
+   "file": "4s2.json",
+   "maxIndex": 6,
+   "totalCount": 13
+  },
+  {
+   "name": "333",
+   "stem": "333",
+   "file": "333.json",
+   "maxIndex": 6,
+   "totalCount": 7
+  },
+  {
+   "name": "*333",
+   "stem": "s333",
+   "file": "s333.json",
+   "maxIndex": 6,
+   "totalCount": 13
+  },
+  {
+   "name": "3*3",
+   "stem": "3s3",
+   "file": "3s3.json",
+   "maxIndex": 6,
+   "totalCount": 10
+  },
+  {
+   "name": "632",
+   "stem": "632",
+   "file": "632.json",
+   "maxIndex": 8,
+   "totalCount": 13
+  },
+  {
+   "name": "*632",
+   "stem": "s632",
+   "file": "s632.json",
+   "maxIndex": 6,
+   "totalCount": 19
+  },
+  {
+   "name": "22*",
+   "stem": "22s",
+   "file": "22s.json",
+   "maxIndex": 6,
+   "totalCount": 42
+  },
+  {
+   "name": "2*22",
+   "stem": "2s22",
+   "file": "2s22.json",
+   "maxIndex": 6,
+   "totalCount": 46
+  }
+ ]
+}

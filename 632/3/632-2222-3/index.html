@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>632/2222[3]</title>
+<link rel="stylesheet" href="../../../css/entry.css">
+<style>
+.sw0 { background: #ff4242; }
+.sw1 { background: #403dff; }
+.sw2 { background: #40ff3d; }
+table.action th, table.action td { padding: .25rem .35rem; }
+table.grid td.rep .stack { border-bottom: 4px solid #2040c0; }
+table.grid th.col.rep { border-bottom: 4px solid #2040c0; }
+.stack img.ghost { opacity: .3; }
+table.geo { border-collapse: collapse; }
+table.geo td { padding: .35rem; vertical-align: top; }
+table.geo th.row { padding: .35rem .7rem; font-size: 1.15rem; vertical-align: middle; }
+table.geo th.col { font-weight: 600; padding: .2rem .35rem; text-align: left; }
+table.geo .stack { width: min(250px, 28vw); }
+table.geo .cellcap { font-size: .85rem; color: #556; margin-top: .3rem; max-width: min(250px, 28vw); }
+.stack img.gtil { opacity: .15; }
+.stack img.htil { opacity: .3; }
+.stack img.gfd, .stack img.hfd { opacity: .35; }
+.stack img.gsym, .stack img.hsym { opacity: .75; }
+body.off-ghost img.ghost, body.off-gfd img.gfd, body.off-hfd img.hfd,
+body.off-gtil img.gtil, body.off-htil img.htil,
+body.off-gsym img.gsym, body.off-hsym img.hsym,
+body.off-f img.fglyph, body.off-g img.gglyph { display: none; }
+#deco { position: fixed; top: .8rem; right: .9rem; z-index: 60; font-size: .9rem; }
+#deco-btn { font-size: 1.15rem; line-height: 1; padding: .35rem .55rem; cursor: pointer;
+  background: #fff; border: 1px solid #bbb; border-radius: 6px; }
+#deco-panel { position: absolute; right: 0; margin-top: .3rem; background: #fff;
+  border: 1px solid #bbb; border-radius: 8px; padding: .5rem .8rem;
+  box-shadow: 0 4px 14px rgba(0,0,0,.14); white-space: nowrap; }
+#deco-panel label { display: block; padding: .18rem 0; cursor: pointer; }
+#deco-panel input { margin-right: .45rem; }
+#deco-panel hr { border: 0; border-top: 1px solid #ddd; margin: .3rem 0; }
+</style>
+</head>
+<body>
+
+<div id="deco">
+ <button id="deco-btn" aria-label="display options" title="display options">&#9776;</button>
+ <div id="deco-panel" hidden>
+  <label><input type="checkbox" data-k="ghost" checked> ghost H</label>
+  <hr>
+  <label><input type="checkbox" data-k="gfd" checked> G fd</label>
+  <label><input type="checkbox" data-k="hfd" checked> H fd</label>
+  <label><input type="checkbox" data-k="gtil" checked> G tiling</label>
+  <label><input type="checkbox" data-k="htil" checked> H tiling</label>
+  <hr>
+  <label><input type="checkbox" data-k="gsym"> G symmetries</label>
+  <label><input type="checkbox" data-k="hsym"> H symmetries</label>
+  <hr>
+  <label><input type="checkbox" data-k="g" checked> g-transforms</label>
+  <label><input type="checkbox" data-k="f" checked> f-transforms</label>
+ </div>
+</div>
+
+<header class="entry">
+<div class="wrap">
+<h1>632/2222<span class="sub">[3]</span></h1>
+<p class="lede">A 3-coloring of the wallpaper group 632 from its index-3 subgroup of
+type 2222. H is <b>normal</b> in G: it sits inside G in a single way, so there is one coloring by cosets and one by orbits &mdash; and they define the same partition.</p>
+</div>
+</header>
+
+<div class="wrap">
+
+<div class="hero-one">
+ <figure>
+    <div class='stack'>
+      <div class='cap'>G</div>
+      <img src='gen/group_pattern.png'>
+    </div>
+  <figcaption><b>G = 632</b> &mdash; the uncolored pattern: one orbit of the motif <code>p</code>.</figcaption>
+ </figure>
+ <figure>
+    <div class='stack'>
+      <div class='cap'>632/2222[3].o</div>
+      <img src='gen/632-2222-3.o.png'>
+    </div>
+  <figcaption><b class='name'>632/2222[3].o</b> &mdash; coloring by orbits: one color per H-orbit. There is only ever one such coloring.</figcaption>
+ </figure>
+</div>
+
+<div class="hero-row">
+ <figure>
+    <div class='stack'>
+      <div class='cap'>632/2222[3].1</div>
+      <img src='gen/632-2222-3.1.png'>
+    </div>
+  <figcaption><b class='name'>632/2222[3].1</b> &mdash; coloring by cosets, placement 1.</figcaption>
+ </figure>
+</div>
+
+<p class="legend"><b class="name">.o</b> &mdash; <b>coloring by orbits</b> gives each
+H-orbit its own color; it is unique. <b class='name'>.1</b> &mdash; <b>coloring by cosets</b>: H is normal, so there is a single placement and a single coset coloring, and it partitions the pattern exactly as the orbit coloring does. <b>Any picture enlarges on
+click.</b></p>
+
+<h2 class="sec">the color group</h2>
+<dl class="facts">
+  <div class="fact">
+    <dt>group G</dt>
+    <dd>632 <span class="note"><code>&lang; a, b, c | a^2, b^3, (a&lowast;b)^6, b&lowast;c &rang;</code></span></dd>
+  </div>
+  <div class="fact">
+    <dt>subgroup H</dt>
+    <dd>2222 <span class="note">index 3 &nbsp;&middot;&nbsp; generators <code>a</code> (rotation by 1*PI about (0,0)), <code>baB</code> (rotation by 1*PI about (0.375,-0.2165)), <code>Bab</code> (rotation by 1*PI about (0.375,0.2165))</span></dd>
+  </div>
+  <div class="fact">
+    <dt>colors</dt>
+    <dd>3 <span class="note">one per coset of H, equivalently one per orbit</span></dd>
+  </div>
+  <div class="fact">
+    <dt>placements</dt>
+    <dd>1 <span class="note">the conjugates of H, <code>[G : N<sub>G</sub>(H)]</code> &mdash; H is normal</span></dd>
+  </div>
+</dl>
+
+<h2 class="sec">how G permutes the colors</h2>
+<table class='action'>
+ <tr><th>generator</th><th><span class='sw sw0'></span></th><th><span class='sw sw1'></span></th><th><span class='sw sw2'></span></th><th>cycles</th></tr>
+ <tr><th class='gen'>a</th><td><span class='sw sw0'></span></td><td><span class='sw sw1'></span></td><td><span class='sw sw2'></span></td><td class='cyc'>e</td></tr>
+ <tr><th class='gen'>b</th><td><span class='sw sw1'></span></td><td><span class='sw sw2'></span></td><td><span class='sw sw0'></span></td><td class='cyc'>(0 1 2)</td></tr>
+ <tr><th class='gen'>c</th><td><span class='sw sw2'></span></td><td><span class='sw sw0'></span></td><td><span class='sw sw1'></span></td><td class='cyc'>(0 2 1)</td></tr>
+</table>
+<p class="legend"><b>Words act left to right</b>: <code>(a*b)(p) = b(a(p))</code>.</p>
+
+<h2 class="sec">the two families of motions</h2>
+<dl class="facts">
+  <div class="fact">
+    <dt class="plain">f<sub>1</sub> &hellip; f<sub>2</sub> &mdash; where the motif starts</dt>
+    <dd class="small">The motions carrying the motif to the other cells of H&rsquo;s
+        domain (one cell per H-orbit): <code>f<sub>1</sub>=B</code>, <code>f<sub>2</sub>=b</code>.</dd>
+  </div>
+  <div class="fact">
+    <dt class="plain">g<sub>1</sub> &hellip; g<sub>2</sub> &mdash; what makes the colors</dt>
+    <dd class="small">The coset transversal: <code>g<sub>j</sub></code> carries H onto
+        coset j, and the sets <code>H&thinsp;g<sub>j</sub></code> are the color classes:
+        <code>g<sub>1</sub>=b</code>, <code>g<sub>2</sub>=B</code>.</dd>
+  </div>
+</dl>
+
+<h2 class="sec">fundamental domains and pairing transforms</h2>
+<table class='geo'>
+  <tr>
+   <th></th>
+   <th class='col'>domain</th>
+   <th class='col'>tiling</th>
+   <th class='col'>symmetries</th>
+  </tr>
+  <tr>
+   <th class='row'>G</th>
+   <td>
+    <div class='stack'>
+      <div class='cap'>G domain</div>
+      <img src='gen/group_domain.png'>
+    </div>
+    <div class='cellcap'>the fundamental domain of 632</div>
+   </td>
+   <td>
+    <div class='stack'>
+      <div class='cap'>G tiling</div>
+      <img src='gen/group_tiling.png'>
+    </div>
+    <div class='cellcap'>the plane tiled by images of G&rsquo;s domain</div>
+   </td>
+   <td>
+    <div class='stack'>
+      <div class='cap'>G gens</div>
+      <img src='gen/group_gens.png'>
+    </div>
+    <div class='cellcap'>rotation centers of G, the hurricane&rsquo;s arm count = the order</div>
+   </td>
+  </tr>
+  <tr>
+   <th class='row'>H</th>
+   <td>
+    <div class='stack'>
+      <div class='cap'>H domain</div>
+      <img src='gen/sub_domain.png'>
+    </div>
+    <div class='cellcap'>the fundamental domain of H: a union of 3 cells of G, internal walls shown</div>
+   </td>
+   <td>
+    <div class='stack'>
+      <div class='cap'>H tiling</div>
+      <img src='gen/sub_tiling.png'>
+    </div>
+    <div class='cellcap'>the plane tiled by H&rsquo;s domain, over G&rsquo;s finer tiling</div>
+   </td>
+   <td>
+    <div class='stack'>
+      <div class='cap'>H gens</div>
+      <img src='gen/sub_gens.png'>
+    </div>
+    <div class='cellcap'>rotation centers of H = 2222; inequivalent axis classes in shades of the base color</div>
+   </td>
+  </tr>
+</table>
+
+<h2 class="sec">color partitioning</h2>
+<div class="cosets">
+<table class='grid' style='--cell:235px'>
+  <tr>
+   <th></th>
+   <th class='col rep'>f<sub>0</sub><span class='hint'>.1</span></th>
+   <th class='col'>f<sub>1</sub><span class='hint'>&equiv; .1</span></th>
+   <th class='col'>f<sub>2</sub><span class='hint'>&equiv; .1</span></th>
+   <th class='col marg'>&#8746;<span class='hint'>all orbits</span></th>
+  </tr>
+  <tr>
+   <th class='row'><span class='sw sw0'></span> orbits of H</th>
+   <td class='cell rep'>
+    <div class='stack'>
+      <div class='cap'>H</div>
+      <img src='gen/group_tiling.png' class='gtil'>
+      <img src='gen/sub_til.png' class='htil'>
+      <img src='gen/group_domain.png' class='gfd'>
+      <img src='gen/sub_domain.png' class='hfd'>
+      <img src='gen/00.png'>
+      <img src='gen/group_marks.png' class='gsym'>
+      <img src='gen/sub_marks.png' class='hsym'>
+    </div>
+   </td>
+   <td class='cell'>
+    <div class='stack'>
+      <div class='cap'>f<sub>1</sub> H</div>
+      <img src='gen/group_tiling.png' class='gtil'>
+      <img src='gen/sub_til.png' class='htil'>
+      <img src='gen/group_domain.png' class='gfd'>
+      <img src='gen/sub_domain.png' class='hfd'>
+      <img src='gen/00.png' class='ghost'>
+      <img src='gen/10.png'>
+      <img src='gen/group_marks.png' class='gsym'>
+      <img src='gen/sub_marks.png' class='hsym'>
+      <img src='gen/f1.png' class='fglyph'>
+    </div>
+   </td>
+   <td class='cell'>
+    <div class='stack'>
+      <div class='cap'>f<sub>2</sub> H</div>
+      <img src='gen/group_tiling.png' class='gtil'>
+      <img src='gen/sub_til.png' class='htil'>
+      <img src='gen/group_domain.png' class='gfd'>
+      <img src='gen/sub_domain.png' class='hfd'>
+      <img src='gen/00.png' class='ghost'>
+      <img src='gen/20.png'>
+      <img src='gen/group_marks.png' class='gsym'>
+      <img src='gen/sub_marks.png' class='hsym'>
+      <img src='gen/f2.png' class='fglyph'>
+    </div>
+   </td>
+   <td class='cell marg'>
+    <div class='stack'>
+      <div class='cap'>all orbits of H</div>
+      <img src='gen/group_tiling.png' class='gtil'>
+      <img src='gen/sub_til.png' class='htil'>
+      <img src='gen/group_domain.png' class='gfd'>
+      <img src='gen/sub_domain.png' class='hfd'>
+      <img src='gen/632-2222-3.o.png'>
+      <img src='gen/group_marks.png' class='gsym'>
+      <img src='gen/sub_marks.png' class='hsym'>
+    </div>
+   </td>
+  </tr>
+  <tr>
+   <th class='row'><span class='sw sw1'></span> orbits of H g<sub>1</sub></th>
+   <td class='cell rep'>
+    <div class='stack'>
+      <div class='cap'>H g<sub>1</sub></div>
+      <img src='gen/group_tiling.png' class='gtil'>
+      <img src='gen/sub_til.png' class='htil'>
+      <img src='gen/group_domain.png' class='gfd'>
+      <img src='gen/sub_domain.png' class='hfd'>
+      <img src='gen/00.png' class='ghost'>
+      <img src='gen/01.png'>
+      <img src='gen/group_marks.png' class='gsym'>
+      <img src='gen/sub_marks.png' class='hsym'>
+      <img src='gen/g1.png' class='gglyph'>
+    </div>
+   </td>
+   <td class='cell'>
+    <div class='stack'>
+      <div class='cap'>f<sub>1</sub> H g<sub>1</sub></div>
+      <img src='gen/group_tiling.png' class='gtil'>
+      <img src='gen/sub_til.png' class='htil'>
+      <img src='gen/group_domain.png' class='gfd'>
+      <img src='gen/sub_domain.png' class='hfd'>
+      <img src='gen/01.png' class='ghost'>
+      <img src='gen/11.png'>
+      <img src='gen/group_marks.png' class='gsym'>
+      <img src='gen/sub_marks.png' class='hsym'>
+      <img src='gen/g1.png' class='gglyph'>
+    </div>
+   </td>
+   <td class='cell'>
+    <div class='stack'>
+      <div class='cap'>f<sub>2</sub> H g<sub>1</sub></div>
+      <img src='gen/group_tiling.png' class='gtil'>
+      <img src='gen/sub_til.png' class='htil'>
+      <img src='gen/group_domain.png' class='gfd'>
+      <img src='gen/sub_domain.png' class='hfd'>
+      <img src='gen/01.png' class='ghost'>
+      <img src='gen/21.png'>
+      <img src='gen/group_marks.png' class='gsym'>
+      <img src='gen/sub_marks.png' class='hsym'>
+      <img src='gen/g1.png' class='gglyph'>
+    </div>
+   </td>
+   <td class='cell marg'>
+    <div class='stack'>
+      <div class='cap'>all orbits of H g<sub>1</sub></div>
+      <img src='gen/group_tiling.png' class='gtil'>
+      <img src='gen/sub_til.png' class='htil'>
+      <img src='gen/group_domain.png' class='gfd'>
+      <img src='gen/sub_domain.png' class='hfd'>
+      <img src='gen/632-2222-3.o2.png'>
+      <img src='gen/group_marks.png' class='gsym'>
+      <img src='gen/sub_marks.png' class='hsym'>
+      <img src='gen/g1.png' class='gglyph'>
+    </div>
+   </td>
+  </tr>
+  <tr>
+   <th class='row'><span class='sw sw2'></span> orbits of H g<sub>2</sub></th>
+   <td class='cell rep'>
+    <div class='stack'>
+      <div class='cap'>H g<sub>2</sub></div>
+      <img src='gen/group_tiling.png' class='gtil'>
+      <img src='gen/sub_til.png' class='htil'>
+      <img src='gen/group_domain.png' class='gfd'>
+      <img src='gen/sub_domain.png' class='hfd'>
+      <img src='gen/00.png' class='ghost'>
+      <img src='gen/02.png'>
+      <img src='gen/group_marks.png' class='gsym'>
+      <img src='gen/sub_marks.png' class='hsym'>
+      <img src='gen/g2.png' class='gglyph'>
+    </div>
+   </td>
+   <td class='cell'>
+    <div class='stack'>
+      <div class='cap'>f<sub>1</sub> H g<sub>2</sub></div>
+      <img src='gen/group_tiling.png' class='gtil'>
+      <img src='gen/sub_til.png' class='htil'>
+      <img src='gen/group_domain.png' class='gfd'>
+      <img src='gen/sub_domain.png' class='hfd'>
+      <img src='gen/02.png' class='ghost'>
+      <img src='gen/12.png'>
+      <img src='gen/group_marks.png' class='gsym'>
+      <img src='gen/sub_marks.png' class='hsym'>
+      <img src='gen/g2.png' class='gglyph'>
+    </div>
+   </td>
+   <td class='cell'>
+    <div class='stack'>
+      <div class='cap'>f<sub>2</sub> H g<sub>2</sub></div>
+      <img src='gen/group_tiling.png' class='gtil'>
+      <img src='gen/sub_til.png' class='htil'>
+      <img src='gen/group_domain.png' class='gfd'>
+      <img src='gen/sub_domain.png' class='hfd'>
+      <img src='gen/02.png' class='ghost'>
+      <img src='gen/22.png'>
+      <img src='gen/group_marks.png' class='gsym'>
+      <img src='gen/sub_marks.png' class='hsym'>
+      <img src='gen/g2.png' class='gglyph'>
+    </div>
+   </td>
+   <td class='cell marg'>
+    <div class='stack'>
+      <div class='cap'>all orbits of H g<sub>2</sub></div>
+      <img src='gen/group_tiling.png' class='gtil'>
+      <img src='gen/sub_til.png' class='htil'>
+      <img src='gen/group_domain.png' class='gfd'>
+      <img src='gen/sub_domain.png' class='hfd'>
+      <img src='gen/632-2222-3.o1.png'>
+      <img src='gen/group_marks.png' class='gsym'>
+      <img src='gen/sub_marks.png' class='hsym'>
+      <img src='gen/g2.png' class='gglyph'>
+    </div>
+   </td>
+  </tr>
+  <tr>
+   <th class='row'>all colors<span class='hint'>coloring by cosets</span></th>
+   <td class='cell marg rep'>
+    <div class='stack'>
+      <div class='cap'>632/2222[3].1</div>
+      <img src='gen/632-2222-3.1.png'>
+    </div>
+   </td>
+   <td class='cell marg'>
+    <div class='stack'>
+      <div class='cap'>&equiv; .1</div>
+      <img src='gen/632-2222-3.2.png'>
+    </div>
+   </td>
+   <td class='cell marg'>
+    <div class='stack'>
+      <div class='cap'>&equiv; .1</div>
+      <img src='gen/632-2222-3.3.png'>
+    </div>
+   </td>
+   <td class='cell marg'></td>
+  </tr>
+</table>
+</div>
+<p class="legend">Each panel is <code>f<sub>i</sub> H g<sub>j</sub></code>: <b>columns</b>
+are the 3 cells of H&rsquo;s domain, <b>rows</b> the 3 orbit classes &mdash; one
+color per row, and a full row together is the whole pattern: the <b>right margin</b>
+shows it as the composition of its 3 orbits, each in its own color &mdash; the
+coloring by orbits <b class='name'>.o</b> carried by that row&rsquo;s
+<code>g<sub>j</sub></code>.
+H is normal, so every column carries the <b>same</b> coloring &mdash; the one marked by the <b>blue frame</b>; the others repeat it with colors relabeled: f<sub>1</sub>&thinsp;&equiv;&thinsp;.1, f<sub>2</sub>&thinsp;&equiv;&thinsp;.1. Every panel except <code>H</code> also shows, <b>faded</b>, the set it
+comes from: <code>H&thinsp;g<sub>j</sub></code> panels show <code>H</code>, and
+<code>f<sub>i</sub>&hellip;</code> panels show their row&rsquo;s <code>H&thinsp;g<sub>j</sub></code>.
+The <b>bottom margin</b> is the coloring by cosets of every column &mdash; under a marked
+column the pictures from the top of the page, under a repeated column the same partition
+with its colors relabeled (titled <code>&equiv;</code> its marked twin). Under and over
+every panel sit faded context layers &mdash; the tilings, fundamental domains and
+symmetry centers of G and H; the <b>&#9776; menu</b> at the top right toggles each
+decoration.</p>
+
+<footer class="entry">
+<div><a href="../../../index.html">catalog</a> &middot; generated from the manifest
+(632.3.1) and the render job &middot; <a href="gen/sheet.html">contact sheet</a></div>
+</footer>
+
+</div>
+
+<div id="lb" hidden>
+ <div>
+  <div class="stack" id="lb-stack"></div>
+  <div id="lb-hint">click anywhere or press Esc to close &middot; arrow keys to move</div>
+ </div>
+</div>
+
+<script>
+(function () {
+  // arrows navigate the partition table as a 2d grid, clamped at its edges;
+  // a picture outside the table pages left/right through the others only.
+  var lb = document.getElementById('lb'),
+      box = document.getElementById('lb-stack'),
+      stacks = [].slice.call(document.querySelectorAll('.wrap .stack')),
+      idx = -1, pos = [], cellAt = {}, flow = [];
+  stacks.forEach(function (s, i) {
+    var td = s.closest('table.grid td');
+    if (td) {
+      var r = td.parentNode.rowIndex - 1, c = td.cellIndex - 1; // header row, label col
+      pos[i] = [r, c]; cellAt[r + ',' + c] = i;
+    } else {
+      pos[i] = null; flow.push(i);
+    }
+  });
+  function show(i) {
+    if (i === undefined || i < 0 || i >= stacks.length) return;
+    idx = i; box.innerHTML = stacks[i].innerHTML; lb.hidden = false;
+  }
+  function hide() { lb.hidden = true; box.innerHTML = ''; idx = -1; }
+  stacks.forEach(function (s, i) {
+    s.tabIndex = 0; s.setAttribute('role', 'button');
+    s.addEventListener('click', function () { show(i); });
+    s.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); show(i); }
+    });
+  });
+  lb.addEventListener('click', hide);
+  document.addEventListener('keydown', function (e) {
+    if (lb.hidden) return;
+    if (e.key === 'Escape') { hide(); return; }
+    var d = { ArrowRight: [0, 1], ArrowLeft: [0, -1],
+              ArrowDown: [1, 0], ArrowUp: [-1, 0] }[e.key];
+    if (!d) return;
+    e.preventDefault();
+    var p = pos[idx];
+    if (p) {
+      show(cellAt[(p[0] + d[0]) + ',' + (p[1] + d[1])]);   // off the table: no-op
+    } else if (!d[0]) {
+      var k = flow.indexOf(idx) + d[1];
+      if (k >= 0 && k < flow.length) show(flow[k]);
+    }
+  });
+})();
+(function () {
+  var btn = document.getElementById('deco-btn'),
+      panel = document.getElementById('deco-panel'),
+      boxes = [].slice.call(panel.querySelectorAll('input[data-k]'));
+  function apply(cb) {
+    document.body.classList.toggle('off-' + cb.getAttribute('data-k'), !cb.checked);
+  }
+  boxes.forEach(apply);
+  btn.addEventListener('click', function () { panel.hidden = !panel.hidden; });
+  panel.addEventListener('change', function (e) {
+    if (e.target.getAttribute('data-k')) apply(e.target);
+  });
+})();
+</script>
+
+</body>
+</html>
