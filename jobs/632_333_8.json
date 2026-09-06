@@ -2,7 +2,7 @@
  "_comment": [
   "Layer set for 632/333[8] (632.8.1), 8 colours, 4 placements.",
   "Template: wp_632_632_3.1; permutations overridden to this subgroup's invcos.",
-  "f words: e a Ba ba aBa aba BaBa aBaBa",
+  "f words: e a ca ba caba aba baba ababa",
   "g words: e a ab aB aba aBa aBaBaBa ababa"
  ],
  "outDir": "632/8/632-333-8/gen",
@@ -2780,7 +2780,7 @@
   },
   {
    "file": "f2.png",
-   "_note": "f_2 = Ba",
+   "_note": "f_2 = ca",
    "enable": {
     "arrows": false,
     "overlay": false
@@ -2790,7 +2790,7 @@
     "kind": "cell",
     "list": [
      {
-      "word": "Ba",
+      "word": "ca",
       "style": {
        "color": "#c02020",
        "width": 3.5
@@ -2822,7 +2822,7 @@
   },
   {
    "file": "f4.png",
-   "_note": "f_4 = aBa",
+   "_note": "f_4 = caba",
    "enable": {
     "arrows": false,
     "overlay": false
@@ -2832,7 +2832,7 @@
     "kind": "cell",
     "list": [
      {
-      "word": "aBa",
+      "word": "caba",
       "style": {
        "color": "#c02020",
        "width": 3.5
@@ -2864,7 +2864,7 @@
   },
   {
    "file": "f6.png",
-   "_note": "f_6 = BaBa",
+   "_note": "f_6 = baba",
    "enable": {
     "arrows": false,
     "overlay": false
@@ -2874,7 +2874,7 @@
     "kind": "cell",
     "list": [
      {
-      "word": "BaBa",
+      "word": "baba",
       "style": {
        "color": "#c02020",
        "width": 3.5
@@ -2885,7 +2885,7 @@
   },
   {
    "file": "f7.png",
-   "_note": "f_7 = aBaBa",
+   "_note": "f_7 = ababa",
    "enable": {
     "arrows": false,
     "overlay": false
@@ -2895,7 +2895,7 @@
     "kind": "cell",
     "list": [
      {
-      "word": "aBaBa",
+      "word": "ababa",
       "style": {
        "color": "#c02020",
        "width": 3.5

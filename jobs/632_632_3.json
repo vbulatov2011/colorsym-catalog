@@ -2,7 +2,7 @@
  "_comment": [
   "Layer set for 632/632[3] (632.3.2), 3 colours, 3 placements.",
   "Template: wp_632_632_3.1; permutations overridden to this subgroup's invcos.",
-  "f words: e B b",
+  "f words: e c b",
   "g words: e b B"
  ],
  "outDir": "632/3/632-632-3/gen",
@@ -680,7 +680,7 @@
   },
   {
    "file": "f1.png",
-   "_note": "f_1 = B",
+   "_note": "f_1 = c",
    "enable": {
     "arrows": false,
     "overlay": false
@@ -690,7 +690,7 @@
     "kind": "cell",
     "list": [
      {
-      "word": "B",
+      "word": "c",
       "style": {
        "color": "#c02020",
        "width": 3.5

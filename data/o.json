@@ -625,7 +625,7 @@
      "text": "identity"
     },
     {
-     "word": "C",
+     "word": "d",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -703,22 +703,22 @@
      "text": "translation by (-0.5,0)"
     },
     {
-     "word": "cbC",
+     "word": "Dbd",
      "isometry": {
       "type": "translation",
       "translation": [
-       -0.5,
-       -4.978996250514798e-17
+       -0.5000000000000001,
+       0
       ]
      },
-     "text": "translation by (-0.5,-0)"
+     "text": "translation by (-0.5,0)"
     },
     {
-     "word": "CdC",
+     "word": "Cdd",
      "isometry": {
       "type": "translation",
       "translation": [
-       -9.184850993605146e-17,
+       -9.184850993605148e-17,
        -1.5
       ]
      },
@@ -797,7 +797,7 @@
      "text": "identity"
     },
     {
-     "word": "A",
+     "word": "b",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -875,7 +875,7 @@
      "text": "translation by (-0,-0.5)"
     },
     {
-     "word": "AbA",
+     "word": "Abb",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -886,7 +886,7 @@
      "text": "translation by (-1.5,0)"
     },
     {
-     "word": "adA",
+     "word": "Bdb",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -969,7 +969,7 @@
      "text": "identity"
     },
     {
-     "word": "A",
+     "word": "b",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -1036,7 +1036,7 @@
      "text": "translation by (-0.5,0.5)"
     },
     {
-     "word": "ad",
+     "word": "Bd",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -1047,7 +1047,7 @@
      "text": "translation by (0.5,-0.5)"
     },
     {
-     "word": "AbA",
+     "word": "Abb",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -1058,7 +1058,7 @@
      "text": "translation by (-1.5,0)"
     },
     {
-     "word": "AdA",
+     "word": "Adb",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -1141,7 +1141,7 @@
      "text": "identity"
     },
     {
-     "word": "A",
+     "word": "b",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -1197,7 +1197,7 @@
    "simplyConnected": true,
    "hGenerators": [
     {
-     "word": "ac",
+     "word": "Bc",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -1219,7 +1219,7 @@
      "text": "translation by (-0.5,-0.5)"
     },
     {
-     "word": "AbA",
+     "word": "Abb",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -1230,7 +1230,7 @@
      "text": "translation by (-1.5,0)"
     },
     {
-     "word": "AcA",
+     "word": "Acb",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -1317,7 +1317,7 @@
      "text": "identity"
     },
     {
-     "word": "C",
+     "word": "d",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -1417,18 +1417,18 @@
      "text": "translation by (-0.5,0)"
     },
     {
-     "word": "cbC",
+     "word": "Dbd",
      "isometry": {
       "type": "translation",
       "translation": [
-       -0.5,
-       -4.978996250514798e-17
+       -0.5000000000000001,
+       0
       ]
      },
-     "text": "translation by (-0.5,-0)"
+     "text": "translation by (-0.5,0)"
     },
     {
-     "word": "CCdC",
+     "word": "CCdd",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -1548,12 +1548,12 @@
      "text": "translation by (0,0.5)"
     },
     {
-     "word": "ac",
+     "word": "ca",
      "isometry": {
       "type": "translation",
       "translation": [
-       0.5,
-       0.49999999999999994
+       0.49999999999999994,
+       0.5
       ]
      },
      "text": "translation by (0.5,0.5)"
@@ -1735,15 +1735,15 @@
      "text": "translation by (0.5,0)"
     },
     {
-     "word": "C",
+     "word": "ca",
      "isometry": {
       "type": "translation",
       "translation": [
-       -3.061616997868383e-17,
-       -0.5
+       0.49999999999999994,
+       0.5
       ]
      },
-     "text": "translation by (-0,-0.5)"
+     "text": "translation by (0.5,0.5)"
     },
     {
      "word": "c",
@@ -1813,15 +1813,26 @@
      "text": "translation by (-1,0)"
     },
     {
-     "word": "cca",
+     "word": "ACd",
      "isometry": {
       "type": "translation",
       "translation": [
-       0.5,
-       1
+       -0.5,
+       -1
       ]
      },
-     "text": "translation by (0.5,1)"
+     "text": "translation by (-0.5,-1)"
+    },
+    {
+     "word": "aa",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       1,
+       0
+      ]
+     },
+     "text": "translation by (1,0)"
     },
     {
      "word": "Cda",
@@ -1833,33 +1844,11 @@
       ]
      },
      "text": "translation by (0.5,-1)"
-    },
-    {
-     "word": "CbC",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       -0.49999999999999994,
-       -1
-      ]
-     },
-     "text": "translation by (-0.5,-1)"
-    },
-    {
-     "word": "cbc",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       -0.5,
-       1
-      ]
-     },
-     "text": "translation by (-0.5,1)"
     }
    ],
    "sideCounts": {
-    "boundary": 10,
-    "interior": 6
+    "boundary": 8,
+    "interior": 8
    },
    "name": "o/o[4]#3"
   },
@@ -1933,7 +1922,7 @@
      "text": "identity"
     },
     {
-     "word": "A",
+     "word": "b",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -2033,7 +2022,7 @@
      "text": "translation by (-0,-0.5)"
     },
     {
-     "word": "AAbA",
+     "word": "AAbb",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -2044,7 +2033,7 @@
      "text": "translation by (-2,0)"
     },
     {
-     "word": "adA",
+     "word": "Bdb",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -2142,7 +2131,7 @@
      "text": "identity"
     },
     {
-     "word": "A",
+     "word": "b",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -2164,15 +2153,15 @@
      "text": "translation by (0.5,0)"
     },
     {
-     "word": "ca",
+     "word": "aa",
      "isometry": {
       "type": "translation",
       "translation": [
-       0.49999999999999994,
-       0.5
+       1,
+       0
       ]
      },
-     "text": "translation by (0.5,0.5)"
+     "text": "translation by (1,0)"
     }
    ],
    "transversal": [
@@ -2231,7 +2220,7 @@
      "text": "translation by (-0.5,0.5)"
     },
     {
-     "word": "ad",
+     "word": "Bd",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -2242,34 +2231,34 @@
      "text": "translation by (0.5,-0.5)"
     },
     {
-     "word": "ACbA",
+     "word": "AAbb",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       -2,
+       0
+      ]
+     },
+     "text": "translation by (-2,0)"
+    },
+    {
+     "word": "AAdb",
      "isometry": {
       "type": "translation",
       "translation": [
        -1.5,
-       -0.4999999999999999
+       -0.5
       ]
      },
      "text": "translation by (-1.5,-0.5)"
     },
     {
-     "word": "ACdA",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       -1,
-       -1
-      ]
-     },
-     "text": "translation by (-1,-1)"
-    },
-    {
-     "word": "ACaa",
+     "word": "da",
      "isometry": {
       "type": "translation",
       "translation": [
        0.5,
-       -0.4999999999999999
+       -0.5
       ]
      },
      "text": "translation by (0.5,-0.5)"
@@ -2351,7 +2340,7 @@
      "text": "identity"
     },
     {
-     "word": "A",
+     "word": "b",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -2373,15 +2362,15 @@
      "text": "translation by (0.5,0)"
     },
     {
-     "word": "Ca",
+     "word": "aa",
      "isometry": {
       "type": "translation",
       "translation": [
-       0.5,
-       -0.5
+       1,
+       0
       ]
      },
-     "text": "translation by (0.5,-0.5)"
+     "text": "translation by (1,0)"
     }
    ],
    "transversal": [
@@ -2429,7 +2418,7 @@
    "simplyConnected": true,
    "hGenerators": [
     {
-     "word": "ac",
+     "word": "Bc",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -2451,7 +2440,18 @@
      "text": "translation by (-0.5,-0.5)"
     },
     {
-     "word": "AcbA",
+     "word": "AAbb",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       -2,
+       0
+      ]
+     },
+     "text": "translation by (-2,0)"
+    },
+    {
+     "word": "AAcb",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -2462,18 +2462,7 @@
      "text": "translation by (-1.5,0.5)"
     },
     {
-     "word": "AccA",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       -0.9999999999999999,
-       1
-      ]
-     },
-     "text": "translation by (-1,1)"
-    },
-    {
-     "word": "dA",
+     "word": "db",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -2560,15 +2549,15 @@
      "text": "identity"
     },
     {
-     "word": "A",
+     "word": "ca",
      "isometry": {
       "type": "translation",
       "translation": [
-       -0.5,
-       0
+       0.49999999999999994,
+       0.5
       ]
      },
-     "text": "translation by (-0.5,0)"
+     "text": "translation by (0.5,0.5)"
     },
     {
      "word": "a",
@@ -2638,6 +2627,17 @@
    "simplyConnected": true,
    "hGenerators": [
     {
+     "word": "ACb",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       -1,
+       -0.4999999999999999
+      ]
+     },
+     "text": "translation by (-1,-0.5)"
+    },
+    {
      "word": "Cd",
      "isometry": {
       "type": "translation",
@@ -2649,26 +2649,15 @@
      "text": "translation by (-0,-1)"
     },
     {
-     "word": "CbA",
+     "word": "Acca",
      "isometry": {
       "type": "translation",
       "translation": [
-       -1,
-       -0.5
+       1.1102230246251565e-16,
+       1
       ]
      },
-     "text": "translation by (-1,-0.5)"
-    },
-    {
-     "word": "AcA",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       -1,
-       0.5
-      ]
-     },
-     "text": "translation by (-1,0.5)"
+     "text": "translation by (0,1)"
     },
     {
      "word": "Caa",
@@ -2680,22 +2669,11 @@
       ]
      },
      "text": "translation by (1,-0.5)"
-    },
-    {
-     "word": "aca",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       1,
-       0.49999999999999994
-      ]
-     },
-     "text": "translation by (1,0.5)"
     }
    ],
    "sideCounts": {
-    "boundary": 10,
-    "interior": 6
+    "boundary": 8,
+    "interior": 8
    },
    "name": "o/o[4]#6"
   },
@@ -2773,7 +2751,7 @@
      "text": "identity"
     },
     {
-     "word": "C",
+     "word": "d",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -2795,11 +2773,11 @@
      "text": "translation by (0,0.5)"
     },
     {
-     "word": "CC",
+     "word": "dd",
      "isometry": {
       "type": "translation",
       "translation": [
-       -6.123233995736767e-17,
+       -6.123233995736765e-17,
        -1
       ]
      },
@@ -2895,15 +2873,15 @@
      "text": "translation by (-0.5,0)"
     },
     {
-     "word": "cbC",
+     "word": "Dbd",
      "isometry": {
       "type": "translation",
       "translation": [
-       -0.5,
-       -4.978996250514798e-17
+       -0.5000000000000001,
+       0
       ]
      },
-     "text": "translation by (-0.5,-0)"
+     "text": "translation by (-0.5,0)"
     },
     {
      "word": "Cbc",
@@ -2917,18 +2895,18 @@
      "text": "translation by (-0.5,0)"
     },
     {
-     "word": "ccbCC",
+     "word": "DDbdd",
      "isometry": {
       "type": "translation",
       "translation": [
-       -0.5,
-       -4.978996250514798e-17
+       -0.5000000000000001,
+       0
       ]
      },
-     "text": "translation by (-0.5,-0)"
+     "text": "translation by (-0.5,0)"
     },
     {
-     "word": "CCdCC",
+     "word": "CCddd",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -3019,7 +2997,7 @@
      "text": "identity"
     },
     {
-     "word": "A",
+     "word": "b",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -3041,7 +3019,7 @@
      "text": "translation by (0.5,0)"
     },
     {
-     "word": "AA",
+     "word": "bb",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -3141,7 +3119,7 @@
      "text": "translation by (-0,-0.5)"
     },
     {
-     "word": "adA",
+     "word": "Bdb",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -3163,7 +3141,7 @@
      "text": "translation by (0,-0.5)"
     },
     {
-     "word": "AAbAA",
+     "word": "AAbbb",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -3174,7 +3152,7 @@
      "text": "translation by (-2.5,0)"
     },
     {
-     "word": "aadAA",
+     "word": "BBdbb",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -3265,7 +3243,7 @@
      "text": "identity"
     },
     {
-     "word": "A",
+     "word": "b",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -3287,26 +3265,26 @@
      "text": "translation by (0.5,0)"
     },
     {
-     "word": "CA",
+     "word": "bb",
      "isometry": {
       "type": "translation",
       "translation": [
-       -0.49999999999999994,
-       -0.5
+       -1,
+       0
       ]
      },
-     "text": "translation by (-0.5,-0.5)"
+     "text": "translation by (-1,0)"
     },
     {
-     "word": "ca",
+     "word": "aa",
      "isometry": {
       "type": "translation",
       "translation": [
-       0.49999999999999994,
-       0.5
+       1,
+       0
       ]
      },
-     "text": "translation by (0.5,0.5)"
+     "text": "translation by (1,0)"
     }
    ],
    "transversal": [
@@ -3376,7 +3354,7 @@
      "text": "translation by (-0.5,0.5)"
     },
     {
-     "word": "ad",
+     "word": "Bd",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -3387,12 +3365,12 @@
      "text": "translation by (0.5,-0.5)"
     },
     {
-     "word": "ACaa",
+     "word": "BBdb",
      "isometry": {
       "type": "translation",
       "translation": [
        0.5,
-       -0.4999999999999999
+       -0.5
       ]
      },
      "text": "translation by (0.5,-0.5)"
@@ -3409,26 +3387,26 @@
      "text": "translation by (0.5,-0.5)"
     },
     {
-     "word": "ACbCA",
+     "word": "AAbbb",
      "isometry": {
       "type": "translation",
       "translation": [
-       -1.5,
-       -0.9999999999999998
+       -2.5,
+       0
       ]
      },
-     "text": "translation by (-1.5,-1)"
+     "text": "translation by (-2.5,0)"
     },
     {
-     "word": "ACdCA",
+     "word": "AAdbb",
      "isometry": {
       "type": "translation",
       "translation": [
-       -1,
-       -1.5
+       -2,
+       -0.5
       ]
      },
-     "text": "translation by (-1,-1.5)"
+     "text": "translation by (-2,-0.5)"
     }
    ],
    "sideCounts": {
@@ -3511,7 +3489,7 @@
      "text": "identity"
     },
     {
-     "word": "A",
+     "word": "b",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -3533,26 +3511,26 @@
      "text": "translation by (0.5,0)"
     },
     {
-     "word": "cA",
+     "word": "bb",
      "isometry": {
       "type": "translation",
       "translation": [
-       -0.5,
-       0.5
+       -1,
+       0
       ]
      },
-     "text": "translation by (-0.5,0.5)"
+     "text": "translation by (-1,0)"
     },
     {
-     "word": "Ca",
+     "word": "aa",
      "isometry": {
       "type": "translation",
       "translation": [
-       0.5,
-       -0.5
+       1,
+       0
       ]
      },
-     "text": "translation by (0.5,-0.5)"
+     "text": "translation by (1,0)"
     }
    ],
    "transversal": [
@@ -3611,7 +3589,7 @@
    "simplyConnected": true,
    "hGenerators": [
     {
-     "word": "ac",
+     "word": "Bc",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -3633,18 +3611,7 @@
      "text": "translation by (-0.5,-0.5)"
     },
     {
-     "word": "aCbA",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       -0.5,
-       -0.5
-      ]
-     },
-     "text": "translation by (-0.5,-0.5)"
-    },
-    {
-     "word": "dA",
+     "word": "db",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -3655,26 +3622,37 @@
      "text": "translation by (-0.5,-0.5)"
     },
     {
-     "word": "AcbcA",
+     "word": "AAda",
      "isometry": {
       "type": "translation",
       "translation": [
-       -1.5,
-       1
+       -0.5,
+       -0.5
       ]
      },
-     "text": "translation by (-1.5,1)"
+     "text": "translation by (-0.5,-0.5)"
     },
     {
-     "word": "AcccA",
+     "word": "AAbbb",
      "isometry": {
       "type": "translation",
       "translation": [
-       -0.9999999999999998,
-       1.5
+       -2.5,
+       0
       ]
      },
-     "text": "translation by (-1,1.5)"
+     "text": "translation by (-2.5,0)"
+    },
+    {
+     "word": "AAcbb",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       -2,
+       0.5
+      ]
+     },
+     "text": "translation by (-2,0.5)"
     }
    ],
    "sideCounts": {
@@ -3757,7 +3735,7 @@
      "text": "identity"
     },
     {
-     "word": "A",
+     "word": "b",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -3779,26 +3757,26 @@
      "text": "translation by (0.5,0)"
     },
     {
-     "word": "C",
+     "word": "bb",
      "isometry": {
       "type": "translation",
       "translation": [
-       -3.061616997868383e-17,
-       -0.5
+       -1,
+       0
       ]
      },
-     "text": "translation by (-0,-0.5)"
+     "text": "translation by (-1,0)"
     },
     {
-     "word": "c",
+     "word": "aa",
      "isometry": {
       "type": "translation",
       "translation": [
-       3.061616997868383e-17,
-       0.5
+       1,
+       0
       ]
      },
-     "text": "translation by (0,0.5)"
+     "text": "translation by (1,0)"
     }
    ],
    "transversal": [
@@ -3857,7 +3835,7 @@
    "simplyConnected": true,
    "hGenerators": [
     {
-     "word": "cbA",
+     "word": "AAc",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -3868,18 +3846,7 @@
      "text": "translation by (-1,0.5)"
     },
     {
-     "word": "CdA",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       -0.5,
-       -1
-      ]
-     },
-     "text": "translation by (-0.5,-1)"
-    },
-    {
-     "word": "Caa",
+     "word": "BBd",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -3890,18 +3857,29 @@
      "text": "translation by (1,-0.5)"
     },
     {
-     "word": "cca",
+     "word": "AAdb",
      "isometry": {
       "type": "translation",
       "translation": [
-       0.5,
-       1
+       -1.5,
+       -0.5
       ]
      },
-     "text": "translation by (0.5,1)"
+     "text": "translation by (-1.5,-0.5)"
     },
     {
-     "word": "ada",
+     "word": "BBca",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       1.5,
+       0.5
+      ]
+     },
+     "text": "translation by (1.5,0.5)"
+    },
+    {
+     "word": "Bda",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -3912,15 +3890,15 @@
      "text": "translation by (1,-0.5)"
     },
     {
-     "word": "cac",
+     "word": "AAbbb",
      "isometry": {
       "type": "translation",
       "translation": [
-       0.5,
-       1
+       -2.5,
+       0
       ]
      },
-     "text": "translation by (0.5,1)"
+     "text": "translation by (-2.5,0)"
     }
    ],
    "sideCounts": {
@@ -4003,7 +3981,7 @@
      "text": "identity"
     },
     {
-     "word": "A",
+     "word": "b",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -4025,26 +4003,26 @@
      "text": "translation by (0.5,0)"
     },
     {
-     "word": "C",
+     "word": "aa",
      "isometry": {
       "type": "translation",
       "translation": [
-       -3.061616997868383e-17,
-       -0.5
+       1,
+       0
       ]
      },
-     "text": "translation by (-0,-0.5)"
+     "text": "translation by (1,0)"
     },
     {
-     "word": "c",
+     "word": "bb",
      "isometry": {
       "type": "translation",
       "translation": [
-       3.061616997868383e-17,
-       0.5
+       -1,
+       0
       ]
      },
-     "text": "translation by (0,0.5)"
+     "text": "translation by (-1,0)"
     }
    ],
    "transversal": [
@@ -4103,29 +4081,7 @@
    "simplyConnected": true,
    "hGenerators": [
     {
-     "word": "CbA",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       -1,
-       -0.5
-      ]
-     },
-     "text": "translation by (-1,-0.5)"
-    },
-    {
-     "word": "ccA",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       -0.49999999999999994,
-       1
-      ]
-     },
-     "text": "translation by (-0.5,1)"
-    },
-    {
-     "word": "caa",
+     "word": "BBc",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -4136,37 +4092,59 @@
      "text": "translation by (1,0.5)"
     },
     {
-     "word": "aca",
+     "word": "AAd",
      "isometry": {
       "type": "translation",
       "translation": [
-       1,
-       0.49999999999999994
+       -1,
+       -0.5
       ]
      },
-     "text": "translation by (1,0.5)"
+     "text": "translation by (-1,-0.5)"
     },
     {
-     "word": "Cda",
+     "word": "AAcb",
      "isometry": {
       "type": "translation",
       "translation": [
-       0.49999999999999994,
-       -1
+       -1.5,
+       0.5
       ]
      },
-     "text": "translation by (0.5,-1)"
+     "text": "translation by (-1.5,0.5)"
     },
     {
-     "word": "CaC",
+     "word": "Adb",
      "isometry": {
       "type": "translation",
       "translation": [
-       0.5,
-       -1
+       -1,
+       -0.49999999999999994
       ]
      },
-     "text": "translation by (0.5,-1)"
+     "text": "translation by (-1,-0.5)"
+    },
+    {
+     "word": "BBda",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       1.5,
+       -0.5
+      ]
+     },
+     "text": "translation by (1.5,-0.5)"
+    },
+    {
+     "word": "BBaaa",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       2.5,
+       0
+      ]
+     },
+     "text": "translation by (2.5,0)"
     }
    ],
    "sideCounts": {
@@ -4253,7 +4231,7 @@
      "text": "identity"
     },
     {
-     "word": "C",
+     "word": "d",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -4275,11 +4253,11 @@
      "text": "translation by (0,0.5)"
     },
     {
-     "word": "CC",
+     "word": "dd",
      "isometry": {
       "type": "translation",
       "translation": [
-       -6.123233995736767e-17,
+       -6.123233995736765e-17,
        -1
       ]
      },
@@ -4397,15 +4375,15 @@
      "text": "translation by (-0.5,0)"
     },
     {
-     "word": "cbC",
+     "word": "Dbd",
      "isometry": {
       "type": "translation",
       "translation": [
-       -0.5,
-       -4.978996250514798e-17
+       -0.5000000000000001,
+       0
       ]
      },
-     "text": "translation by (-0.5,-0)"
+     "text": "translation by (-0.5,0)"
     },
     {
      "word": "Cbc",
@@ -4419,22 +4397,22 @@
      "text": "translation by (-0.5,0)"
     },
     {
-     "word": "ccbCC",
+     "word": "DDbdd",
      "isometry": {
       "type": "translation",
       "translation": [
-       -0.5,
-       -4.978996250514798e-17
+       -0.5000000000000001,
+       0
       ]
      },
-     "text": "translation by (-0.5,-0)"
+     "text": "translation by (-0.5,0)"
     },
     {
-     "word": "CCCdCC",
+     "word": "CCCddd",
      "isometry": {
       "type": "translation",
       "translation": [
-       -1.8369701987210294e-16,
+       -1.83697019872103e-16,
        -3
       ]
      },
@@ -4547,7 +4525,7 @@
      "text": "translation by (0.5,0)"
     },
     {
-     "word": "C",
+     "word": "d",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -4569,23 +4547,23 @@
      "text": "translation by (0,0.5)"
     },
     {
-     "word": "aC",
+     "word": "da",
      "isometry": {
       "type": "translation",
       "translation": [
-       0.49999999999999994,
+       0.5,
        -0.5
       ]
      },
      "text": "translation by (0.5,-0.5)"
     },
     {
-     "word": "ac",
+     "word": "ca",
      "isometry": {
       "type": "translation",
       "translation": [
-       0.5,
-       0.49999999999999994
+       0.49999999999999994,
+       0.5
       ]
      },
      "text": "translation by (0.5,0.5)"
@@ -4680,18 +4658,18 @@
      "text": "translation by (1,0)"
     },
     {
-     "word": "CdC",
+     "word": "Cdd",
      "isometry": {
       "type": "translation",
       "translation": [
-       -9.184850993605146e-17,
+       -9.184850993605148e-17,
        -1.5
       ]
      },
      "text": "translation by (-0,-1.5)"
     },
     {
-     "word": "ccc",
+     "word": "Dcc",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -4702,15 +4680,15 @@
      "text": "translation by (0,1.5)"
     },
     {
-     "word": "caaC",
+     "word": "Dada",
      "isometry": {
       "type": "translation",
       "translation": [
        1,
-       9.957992501029596e-17
+       -1.1102230246251565e-16
       ]
      },
-     "text": "translation by (1,0)"
+     "text": "translation by (1,-0)"
     }
    ],
    "sideCounts": {
@@ -4808,7 +4786,7 @@
      "text": "translation by (0.5,0)"
     },
     {
-     "word": "C",
+     "word": "d",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -4830,23 +4808,23 @@
      "text": "translation by (0,0.5)"
     },
     {
-     "word": "aC",
+     "word": "da",
      "isometry": {
       "type": "translation",
       "translation": [
-       0.49999999999999994,
+       0.5,
        -0.5
       ]
      },
      "text": "translation by (0.5,-0.5)"
     },
     {
-     "word": "ac",
+     "word": "ca",
      "isometry": {
       "type": "translation",
       "translation": [
-       0.5,
-       0.49999999999999994
+       0.49999999999999994,
+       0.5
       ]
      },
      "text": "translation by (0.5,0.5)"
@@ -4941,7 +4919,7 @@
      "text": "translation by (1,0)"
     },
     {
-     "word": "CAdC",
+     "word": "ACdd",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -4952,26 +4930,26 @@
      "text": "translation by (-0.5,-1.5)"
     },
     {
-     "word": "cAcc",
+     "word": "ADcc",
      "isometry": {
       "type": "translation",
       "translation": [
-       -0.49999999999999994,
+       -0.49999999999999983,
        1.5
       ]
      },
      "text": "translation by (-0.5,1.5)"
     },
     {
-     "word": "caaC",
+     "word": "Dada",
      "isometry": {
       "type": "translation",
       "translation": [
        1,
-       9.957992501029596e-17
+       -1.1102230246251565e-16
       ]
      },
-     "text": "translation by (1,0)"
+     "text": "translation by (1,-0)"
     }
    ],
    "sideCounts": {
@@ -5058,7 +5036,7 @@
      "text": "identity"
     },
     {
-     "word": "A",
+     "word": "b",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -5080,7 +5058,7 @@
      "text": "translation by (0.5,0)"
     },
     {
-     "word": "AA",
+     "word": "bb",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -5202,7 +5180,7 @@
      "text": "translation by (-0,-0.5)"
     },
     {
-     "word": "adA",
+     "word": "Bdb",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -5224,7 +5202,7 @@
      "text": "translation by (0,-0.5)"
     },
     {
-     "word": "AAAbAA",
+     "word": "AAAbbb",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -5235,7 +5213,7 @@
      "text": "translation by (-3,0)"
     },
     {
-     "word": "aadAA",
+     "word": "BBdbb",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -5341,7 +5319,7 @@
      "text": "identity"
     },
     {
-     "word": "A",
+     "word": "b",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -5363,37 +5341,37 @@
      "text": "translation by (0.5,0)"
     },
     {
-     "word": "CA",
+     "word": "bb",
      "isometry": {
       "type": "translation",
       "translation": [
-       -0.49999999999999994,
-       -0.5
+       -1,
+       0
       ]
      },
-     "text": "translation by (-0.5,-0.5)"
+     "text": "translation by (-1,0)"
     },
     {
-     "word": "ca",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0.49999999999999994,
-       0.5
-      ]
-     },
-     "text": "translation by (0.5,0.5)"
-    },
-    {
-     "word": "aca",
+     "word": "aa",
      "isometry": {
       "type": "translation",
       "translation": [
        1,
-       0.49999999999999994
+       0
       ]
      },
-     "text": "translation by (1,0.5)"
+     "text": "translation by (1,0)"
+    },
+    {
+     "word": "aaa",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       1.5,
+       0
+      ]
+     },
+     "text": "translation by (1.5,0)"
     }
    ],
    "transversal": [
@@ -5474,7 +5452,7 @@
      "text": "translation by (-0.5,0.5)"
     },
     {
-     "word": "ad",
+     "word": "Bd",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -5485,12 +5463,12 @@
      "text": "translation by (0.5,-0.5)"
     },
     {
-     "word": "ACaa",
+     "word": "BBdb",
      "isometry": {
       "type": "translation",
       "translation": [
        0.5,
-       -0.4999999999999999
+       -0.5
       ]
      },
      "text": "translation by (0.5,-0.5)"
@@ -5507,37 +5485,37 @@
      "text": "translation by (0.5,-0.5)"
     },
     {
-     "word": "aaCA",
+     "word": "AAAbbb",
      "isometry": {
       "type": "translation",
       "translation": [
-       0.49999999999999967,
+       -3,
+       0
+      ]
+     },
+     "text": "translation by (-3,0)"
+    },
+    {
+     "word": "AAAdbb",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       -2.5,
        -0.5
       ]
      },
+     "text": "translation by (-2.5,-0.5)"
+    },
+    {
+     "word": "Adaa",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0.5,
+       -0.49999999999999994
+      ]
+     },
      "text": "translation by (0.5,-0.5)"
-    },
-    {
-     "word": "ACAbCA",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       -2,
-       -0.9999999999999998
-      ]
-     },
-     "text": "translation by (-2,-1)"
-    },
-    {
-     "word": "ACAdCA",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       -1.5,
-       -1.5
-      ]
-     },
-     "text": "translation by (-1.5,-1.5)"
     }
    ],
    "sideCounts": {
@@ -5624,7 +5602,7 @@
      "text": "identity"
     },
     {
-     "word": "A",
+     "word": "b",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -5646,37 +5624,37 @@
      "text": "translation by (0.5,0)"
     },
     {
-     "word": "cA",
+     "word": "bb",
      "isometry": {
       "type": "translation",
       "translation": [
-       -0.5,
-       0.5
+       -1,
+       0
       ]
      },
-     "text": "translation by (-0.5,0.5)"
+     "text": "translation by (-1,0)"
     },
     {
-     "word": "Ca",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0.5,
-       -0.5
-      ]
-     },
-     "text": "translation by (0.5,-0.5)"
-    },
-    {
-     "word": "aCa",
+     "word": "aa",
      "isometry": {
       "type": "translation",
       "translation": [
        1,
-       -0.5
+       0
       ]
      },
-     "text": "translation by (1,-0.5)"
+     "text": "translation by (1,0)"
+    },
+    {
+     "word": "aaa",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       1.5,
+       0
+      ]
+     },
+     "text": "translation by (1.5,0)"
     }
    ],
    "transversal": [
@@ -5746,7 +5724,7 @@
    "simplyConnected": true,
    "hGenerators": [
     {
-     "word": "ac",
+     "word": "Bc",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -5768,18 +5746,7 @@
      "text": "translation by (-0.5,-0.5)"
     },
     {
-     "word": "aCbA",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       -0.5,
-       -0.5
-      ]
-     },
-     "text": "translation by (-0.5,-0.5)"
-    },
-    {
-     "word": "dA",
+     "word": "db",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -5790,34 +5757,45 @@
      "text": "translation by (-0.5,-0.5)"
     },
     {
-     "word": "AcAbcA",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       -2,
-       1
-      ]
-     },
-     "text": "translation by (-2,1)"
-    },
-    {
-     "word": "AcAccA",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       -1.5,
-       1.5000000000000002
-      ]
-     },
-     "text": "translation by (-1.5,1.5)"
-    },
-    {
-     "word": "AbCa",
+     "word": "AAda",
      "isometry": {
       "type": "translation",
       "translation": [
        -0.5,
-       -0.4999999999999999
+       -0.5
+      ]
+     },
+     "text": "translation by (-0.5,-0.5)"
+    },
+    {
+     "word": "AAAbbb",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       -3,
+       0
+      ]
+     },
+     "text": "translation by (-3,0)"
+    },
+    {
+     "word": "AAAcbb",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       -2.5,
+       0.5
+      ]
+     },
+     "text": "translation by (-2.5,0.5)"
+    },
+    {
+     "word": "Bdbb",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       -0.5,
+       -0.5
       ]
      },
      "text": "translation by (-0.5,-0.5)"
@@ -5907,7 +5885,7 @@
      "text": "identity"
     },
     {
-     "word": "A",
+     "word": "b",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -5940,23 +5918,23 @@
      "text": "translation by (0,0.5)"
     },
     {
-     "word": "Ac",
+     "word": "cb",
      "isometry": {
       "type": "translation",
       "translation": [
-       -0.49999999999999994,
+       -0.5,
        0.5
       ]
      },
      "text": "translation by (-0.5,0.5)"
     },
     {
-     "word": "ac",
+     "word": "ca",
      "isometry": {
       "type": "translation",
       "translation": [
-       0.5,
-       0.49999999999999994
+       0.49999999999999994,
+       0.5
       ]
      },
      "text": "translation by (0.5,0.5)"
@@ -6040,7 +6018,7 @@
      "text": "translation by (-0,-1)"
     },
     {
-     "word": "AbA",
+     "word": "Abb",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -6051,7 +6029,7 @@
      "text": "translation by (-1.5,0)"
     },
     {
-     "word": "aaa",
+     "word": "Baa",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -6073,11 +6051,11 @@
      "text": "translation by (0,1)"
     },
     {
-     "word": "acAc",
+     "word": "Bccb",
      "isometry": {
       "type": "translation",
       "translation": [
-       3.0616169978683836e-17,
+       0,
        1
       ]
      },
@@ -6168,7 +6146,7 @@
      "text": "identity"
     },
     {
-     "word": "A",
+     "word": "b",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -6201,22 +6179,22 @@
      "text": "translation by (0,0.5)"
     },
     {
-     "word": "ac",
+     "word": "ca",
      "isometry": {
       "type": "translation",
       "translation": [
-       0.5,
-       0.49999999999999994
+       0.49999999999999994,
+       0.5
       ]
      },
      "text": "translation by (0.5,0.5)"
     },
     {
-     "word": "Ac",
+     "word": "cb",
      "isometry": {
       "type": "translation",
       "translation": [
-       -0.49999999999999994,
+       -0.5,
        0.5
       ]
      },
@@ -6301,18 +6279,18 @@
      "text": "translation by (-0,-1)"
     },
     {
-     "word": "CAbA",
+     "word": "ACbb",
      "isometry": {
       "type": "translation",
       "translation": [
        -1.5,
-       -0.5
+       -0.4999999999999999
       ]
      },
      "text": "translation by (-1.5,-0.5)"
     },
     {
-     "word": "Caaa",
+     "word": "BCaa",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -6334,11 +6312,11 @@
      "text": "translation by (0,1)"
     },
     {
-     "word": "Acac",
+     "word": "Acca",
      "isometry": {
       "type": "translation",
       "translation": [
-       8.612732120994165e-17,
+       1.1102230246251565e-16,
        1
       ]
      },
@@ -6429,7 +6407,7 @@
      "text": "identity"
     },
     {
-     "word": "A",
+     "word": "b",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -6451,15 +6429,15 @@
      "text": "translation by (0.5,0)"
     },
     {
-     "word": "C",
+     "word": "ca",
      "isometry": {
       "type": "translation",
       "translation": [
-       -3.061616997868383e-17,
-       -0.5
+       0.49999999999999994,
+       0.5
       ]
      },
-     "text": "translation by (-0,-0.5)"
+     "text": "translation by (0.5,0.5)"
     },
     {
      "word": "c",
@@ -6473,11 +6451,11 @@
      "text": "translation by (0,0.5)"
     },
     {
-     "word": "Ac",
+     "word": "cb",
      "isometry": {
       "type": "translation",
       "translation": [
-       -0.49999999999999994,
+       -0.5,
        0.5
       ]
      },
@@ -6551,7 +6529,18 @@
    "simplyConnected": true,
    "hGenerators": [
     {
-     "word": "AbA",
+     "word": "ACd",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       -0.5,
+       -1
+      ]
+     },
+     "text": "translation by (-0.5,-1)"
+    },
+    {
+     "word": "Abb",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -6562,15 +6551,26 @@
      "text": "translation by (-1.5,0)"
     },
     {
-     "word": "CdA",
+     "word": "Baa",
      "isometry": {
       "type": "translation",
       "translation": [
-       -0.5,
+       1.5,
+       0
+      ]
+     },
+     "text": "translation by (1.5,0)"
+    },
+    {
+     "word": "BCda",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0.9999999999999999,
        -1
       ]
      },
-     "text": "translation by (-0.5,-1)"
+     "text": "translation by (1,-1)"
     },
     {
      "word": "cca",
@@ -6582,44 +6582,11 @@
       ]
      },
      "text": "translation by (0.5,1)"
-    },
-    {
-     "word": "Cada",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       1,
-       -1
-      ]
-     },
-     "text": "translation by (1,-1)"
-    },
-    {
-     "word": "cac",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0.5,
-       1
-      ]
-     },
-     "text": "translation by (0.5,1)"
-    },
-    {
-     "word": "cbAc",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       -0.9999999999999999,
-       1
-      ]
-     },
-     "text": "translation by (-1,1)"
     }
    ],
    "sideCounts": {
-    "boundary": 12,
-    "interior": 12
+    "boundary": 10,
+    "interior": 14
    },
    "name": "o/o[6]#3"
   },
@@ -6701,7 +6668,7 @@
      "text": "identity"
     },
     {
-     "word": "A",
+     "word": "b",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -6723,15 +6690,15 @@
      "text": "translation by (0.5,0)"
     },
     {
-     "word": "C",
+     "word": "cb",
      "isometry": {
       "type": "translation",
       "translation": [
-       -3.061616997868383e-17,
-       -0.5
+       -0.5,
+       0.5
       ]
      },
-     "text": "translation by (-0,-0.5)"
+     "text": "translation by (-0.5,0.5)"
     },
     {
      "word": "c",
@@ -6745,12 +6712,12 @@
      "text": "translation by (0,0.5)"
     },
     {
-     "word": "ac",
+     "word": "ca",
      "isometry": {
       "type": "translation",
       "translation": [
-       0.5,
-       0.49999999999999994
+       0.49999999999999994,
+       0.5
       ]
      },
      "text": "translation by (0.5,0.5)"
@@ -6823,7 +6790,18 @@
    "simplyConnected": true,
    "hGenerators": [
     {
-     "word": "AbA",
+     "word": "BCd",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0.4999999999999999,
+       -1
+      ]
+     },
+     "text": "translation by (0.5,-1)"
+    },
+    {
+     "word": "Abb",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -6834,18 +6812,7 @@
      "text": "translation by (-1.5,0)"
     },
     {
-     "word": "ccA",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       -0.49999999999999994,
-       1
-      ]
-     },
-     "text": "translation by (-0.5,1)"
-    },
-    {
-     "word": "CAdA",
+     "word": "ACdb",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -6856,42 +6823,31 @@
      "text": "translation by (-1,-1)"
     },
     {
-     "word": "Cda",
+     "word": "Baa",
      "isometry": {
       "type": "translation",
       "translation": [
-       0.49999999999999994,
-       -1
+       1.5,
+       0
       ]
      },
-     "text": "translation by (0.5,-1)"
+     "text": "translation by (1.5,0)"
     },
     {
-     "word": "CaC",
+     "word": "ccb",
      "isometry": {
       "type": "translation",
       "translation": [
-       0.5,
-       -1
-      ]
-     },
-     "text": "translation by (0.5,-1)"
-    },
-    {
-     "word": "caac",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       1,
+       -0.49999999999999994,
        1
       ]
      },
-     "text": "translation by (1,1)"
+     "text": "translation by (-0.5,1)"
     }
    ],
    "sideCounts": {
-    "boundary": 12,
-    "interior": 12
+    "boundary": 10,
+    "interior": 14
    },
    "name": "o/o[6]#5"
   },
@@ -6973,15 +6929,15 @@
      "text": "identity"
     },
     {
-     "word": "A",
+     "word": "da",
      "isometry": {
       "type": "translation",
       "translation": [
-       -0.5,
-       0
+       0.5,
+       -0.5
       ]
      },
-     "text": "translation by (-0.5,0)"
+     "text": "translation by (0.5,-0.5)"
     },
     {
      "word": "a",
@@ -6995,7 +6951,7 @@
      "text": "translation by (0.5,0)"
     },
     {
-     "word": "C",
+     "word": "d",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -7017,12 +6973,12 @@
      "text": "translation by (0,0.5)"
     },
     {
-     "word": "ac",
+     "word": "ca",
      "isometry": {
       "type": "translation",
       "translation": [
-       0.5,
-       0.49999999999999994
+       0.49999999999999994,
+       0.5
       ]
      },
      "text": "translation by (0.5,0.5)"
@@ -7095,7 +7051,7 @@
    "simplyConnected": true,
    "hGenerators": [
     {
-     "word": "cbA",
+     "word": "ADb",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -7104,28 +7060,6 @@
       ]
      },
      "text": "translation by (-1,0.5)"
-    },
-    {
-     "word": "CAdA",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       -1,
-       -1
-      ]
-     },
-     "text": "translation by (-1,-1)"
-    },
-    {
-     "word": "Caa",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       1,
-       -0.5
-      ]
-     },
-     "text": "translation by (1,-0.5)"
     },
     {
      "word": "ada",
@@ -7139,31 +7073,42 @@
      "text": "translation by (1,-0.5)"
     },
     {
-     "word": "CdC",
+     "word": "ACdda",
      "isometry": {
       "type": "translation",
       "translation": [
-       -9.184850993605146e-17,
+       0,
        -1.5
       ]
      },
-     "text": "translation by (-0,-1.5)"
+     "text": "translation by (0,-1.5)"
     },
     {
-     "word": "caac",
+     "word": "ACbd",
      "isometry": {
       "type": "translation",
       "translation": [
-       1,
-       1
+       -1,
+       -1
       ]
      },
-     "text": "translation by (1,1)"
+     "text": "translation by (-1,-1)"
+    },
+    {
+     "word": "Dcc",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       9.184850993605148e-17,
+       1.5
+      ]
+     },
+     "text": "translation by (0,1.5)"
     }
    ],
    "sideCounts": {
-    "boundary": 12,
-    "interior": 12
+    "boundary": 10,
+    "interior": 14
    },
    "name": "o/o[6]#9"
   },
@@ -7245,15 +7190,15 @@
      "text": "identity"
     },
     {
-     "word": "A",
+     "word": "ca",
      "isometry": {
       "type": "translation",
       "translation": [
-       -0.5,
-       0
+       0.49999999999999994,
+       0.5
       ]
      },
-     "text": "translation by (-0.5,0)"
+     "text": "translation by (0.5,0.5)"
     },
     {
      "word": "a",
@@ -7267,7 +7212,7 @@
      "text": "translation by (0.5,0)"
     },
     {
-     "word": "C",
+     "word": "d",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -7289,15 +7234,15 @@
      "text": "translation by (0,0.5)"
     },
     {
-     "word": "Ac",
+     "word": "da",
      "isometry": {
       "type": "translation",
       "translation": [
-       -0.49999999999999994,
-       0.5
+       0.5,
+       -0.5
       ]
      },
-     "text": "translation by (-0.5,0.5)"
+     "text": "translation by (0.5,-0.5)"
     }
    ],
    "transversal": [
@@ -7367,26 +7312,15 @@
    "simplyConnected": true,
    "hGenerators": [
     {
-     "word": "CbA",
+     "word": "ACb",
      "isometry": {
       "type": "translation",
       "translation": [
        -1,
-       -0.5
+       -0.4999999999999999
       ]
      },
      "text": "translation by (-1,-0.5)"
-    },
-    {
-     "word": "caa",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       1,
-       0.5
-      ]
-     },
-     "text": "translation by (1,0.5)"
     },
     {
      "word": "aca",
@@ -7400,29 +7334,29 @@
      "text": "translation by (1,0.5)"
     },
     {
-     "word": "Cada",
+     "word": "ADcca",
      "isometry": {
       "type": "translation",
       "translation": [
-       1,
-       -1
+       2.775557561562892e-16,
+       1.5000000000000002
       ]
      },
-     "text": "translation by (1,-1)"
+     "text": "translation by (0,1.5)"
     },
     {
-     "word": "CdC",
+     "word": "Cdd",
      "isometry": {
       "type": "translation",
       "translation": [
-       -9.184850993605146e-17,
+       -9.184850993605148e-17,
        -1.5
       ]
      },
      "text": "translation by (-0,-1.5)"
     },
     {
-     "word": "cbAc",
+     "word": "ADbc",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -7434,8 +7368,8 @@
     }
    ],
    "sideCounts": {
-    "boundary": 12,
-    "interior": 12
+    "boundary": 10,
+    "interior": 14
    },
    "name": "o/o[6]#8"
   }

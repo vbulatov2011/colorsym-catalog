@@ -1126,13 +1126,13 @@
      "text": "identity"
     },
     {
-     "word": "b",
+     "word": "a",
      "isometry": {
       "type": "reflection",
       "axis": {
        "point": [
-        0,
-        0
+        0.25,
+        -1.5308084989341915e-17
        ],
        "dir": [
         6.123233995736766e-17,
@@ -1140,7 +1140,7 @@
        ]
       }
      },
-     "text": "reflection in line thru (0,0) dir (0,1)"
+     "text": "reflection in line thru (0.25,-0) dir (0,1)"
     }
    ],
    "transversal": [
@@ -1172,15 +1172,15 @@
    "simplyConnected": true,
    "hGenerators": [
     {
-     "word": "Ba",
+     "word": "Ab",
      "isometry": {
       "type": "translation",
       "translation": [
-       0.5,
+       -0.5,
        0
       ]
      },
-     "text": "translation by (0.5,0)"
+     "text": "translation by (-0.5,0)"
     },
     {
      "word": "c",
@@ -1273,13 +1273,13 @@
      "text": "identity"
     },
     {
-     "word": "b",
+     "word": "a",
      "isometry": {
       "type": "reflection",
       "axis": {
        "point": [
-        0,
-        0
+        0.25,
+        -1.5308084989341915e-17
        ],
        "dir": [
         6.123233995736766e-17,
@@ -1287,7 +1287,7 @@
        ]
       }
      },
-     "text": "reflection in line thru (0,0) dir (0,1)"
+     "text": "reflection in line thru (0.25,-0) dir (0,1)"
     }
    ],
    "transversal": [
@@ -1319,23 +1319,23 @@
    "simplyConnected": true,
    "hGenerators": [
     {
-     "word": "Ba",
+     "word": "Ab",
      "isometry": {
       "type": "translation",
       "translation": [
-       0.5,
+       -0.5,
        0
       ]
      },
-     "text": "translation by (0.5,0)"
+     "text": "translation by (-0.5,0)"
     },
     {
-     "word": "Bc",
+     "word": "Ac",
      "isometry": {
       "type": "glide",
       "axis": {
        "point": [
-        -1.5308084989341915e-17,
+        0.24999999999999997,
         0
        ],
        "dir": [
@@ -1348,16 +1348,16 @@
        0.5
       ]
      },
-     "text": "glide along (0,1) thru (-0,0) by (0,0.5)"
+     "text": "glide along (0,1) thru (0.25,0) by (0,0.5)"
     },
     {
-     "word": "Bd",
+     "word": "Ad",
      "isometry": {
       "type": "glide",
       "axis": {
        "point": [
-        1.5308084989341915e-17,
-        0
+        0.25,
+        -2.7755575615628914e-17
        ],
        "dir": [
         6.123233995736766e-17,
@@ -1365,11 +1365,11 @@
        ]
       },
       "translation": [
-       -3.061616997868383e-17,
-       -0.5
+       -3.0616169978683824e-17,
+       -0.49999999999999994
       ]
      },
-     "text": "glide along (0,1) thru (0,0) by (-0,-0.5)"
+     "text": "glide along (0,1) thru (0.25,-0) by (-0,-0.5)"
     }
    ],
    "sideCounts": {
@@ -1451,7 +1451,7 @@
      "text": "identity"
     },
     {
-     "word": "C",
+     "word": "d",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -1541,7 +1541,7 @@
      "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
-     "word": "CdC",
+     "word": "Cdd",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -1853,7 +1853,7 @@
      "text": "identity"
     },
     {
-     "word": "C",
+     "word": "d",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -1965,7 +1965,7 @@
      "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
-     "word": "CCdC",
+     "word": "CCdd",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -2344,7 +2344,7 @@
      "text": "translation by (0,0.5)"
     },
     {
-     "word": "bc",
+     "word": "cb",
      "isometry": {
       "type": "glide",
       "axis": {
@@ -2589,15 +2589,25 @@
      "text": "translation by (0,0.5)"
     },
     {
-     "word": "ab",
+     "word": "cb",
      "isometry": {
-      "type": "translation",
+      "type": "glide",
+      "axis": {
+       "point": [
+        -1.5308084989341915e-17,
+        0
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      },
       "translation": [
-       -0.5,
-       0
+       3.061616997868383e-17,
+       0.5
       ]
      },
-     "text": "translation by (-0.5,0)"
+     "text": "glide along (0,1) thru (-0,0) by (0,0.5)"
     }
    ],
    "transversal": [
@@ -2689,28 +2699,7 @@
      "text": "translation by (0,-1)"
     },
     {
-     "word": "BAcb",
-     "isometry": {
-      "type": "glide",
-      "axis": {
-       "point": [
-        -0.25,
-        2.7755575615628914e-17
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      },
-      "translation": [
-       3.0616169978683824e-17,
-       0.49999999999999994
-      ]
-     },
-     "text": "glide along (0,1) thru (-0.25,0) by (0,0.5)"
-    },
-    {
-     "word": "BAdb",
+     "word": "BCab",
      "isometry": {
       "type": "glide",
       "axis": {
@@ -2731,30 +2720,20 @@
      "text": "glide along (0,1) thru (-0.25,0) by (-0,-0.5)"
     },
     {
-     "word": "Cbab",
+     "word": "cc",
      "isometry": {
-      "type": "glide",
-      "axis": {
-       "point": [
-        -0.24999999999999997,
-        0
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      },
+      "type": "translation",
       "translation": [
-       -3.061616997868383e-17,
-       -0.5
+       0,
+       1
       ]
      },
-     "text": "glide along (0,1) thru (-0.25,0) by (-0,-0.5)"
+     "text": "translation by (0,1)"
     }
    ],
    "sideCounts": {
-    "boundary": 10,
-    "interior": 6
+    "boundary": 8,
+    "interior": 8
    },
    "name": "**/*x[4]#4"
   },
@@ -2850,15 +2829,25 @@
      "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
-     "word": "C",
+     "word": "cb",
      "isometry": {
-      "type": "translation",
+      "type": "glide",
+      "axis": {
+       "point": [
+        -1.5308084989341915e-17,
+        0
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      },
       "translation": [
-       0,
-       -0.5
+       3.061616997868383e-17,
+       0.5
       ]
      },
-     "text": "translation by (0,-0.5)"
+     "text": "glide along (0,1) thru (-0,0) by (0,0.5)"
     },
     {
      "word": "c",
@@ -2940,6 +2929,27 @@
      "text": "reflection in line thru (0.25,-0) dir (0,1)"
     },
     {
+     "word": "BCd",
+     "isometry": {
+      "type": "glide",
+      "axis": {
+       "point": [
+        3.061616997868383e-17,
+        0
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      },
+      "translation": [
+       -6.123233995736766e-17,
+       -1
+      ]
+     },
+     "text": "glide along (0,1) thru (0,0) by (-0,-1)"
+    },
+    {
      "word": "Bab",
      "isometry": {
       "type": "reflection",
@@ -2976,53 +2986,11 @@
       ]
      },
      "text": "glide along (0,1) thru (-0,0) by (0,1)"
-    },
-    {
-     "word": "Cdb",
-     "isometry": {
-      "type": "glide",
-      "axis": {
-       "point": [
-        3.061616997868383e-17,
-        0
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      },
-      "translation": [
-       -6.123233995736766e-17,
-       -1
-      ]
-     },
-     "text": "glide along (0,1) thru (0,0) by (-0,-1)"
-    },
-    {
-     "word": "CbC",
-     "isometry": {
-      "type": "glide",
-      "axis": {
-       "point": [
-        3.061616997868383e-17,
-        0
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      },
-      "translation": [
-       -6.123233995736766e-17,
-       -1
-      ]
-     },
-     "text": "glide along (0,1) thru (0,0) by (-0,-1)"
     }
    ],
    "sideCounts": {
-    "boundary": 10,
-    "interior": 6
+    "boundary": 8,
+    "interior": 8
    },
    "name": "**/*x[4]#2"
   },
@@ -3388,7 +3356,7 @@
      "text": "translation by (0,0.5)"
     },
     {
-     "word": "ac",
+     "word": "ca",
      "isometry": {
       "type": "glide",
       "axis": {
@@ -3633,15 +3601,25 @@
      "text": "translation by (0,0.5)"
     },
     {
-     "word": "ba",
+     "word": "ca",
      "isometry": {
-      "type": "translation",
+      "type": "glide",
+      "axis": {
+       "point": [
+        0.24999999999999997,
+        0
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      },
       "translation": [
-       0.5,
-       0
+       3.061616997868383e-17,
+       0.5
       ]
      },
-     "text": "translation by (0.5,0)"
+     "text": "glide along (0,1) thru (0.25,0) by (0,0.5)"
     }
    ],
    "transversal": [
@@ -3733,28 +3711,7 @@
      "text": "translation by (0,-1)"
     },
     {
-     "word": "ABca",
-     "isometry": {
-      "type": "glide",
-      "axis": {
-       "point": [
-        0.5,
-        -5.551115123125783e-17
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      },
-      "translation": [
-       3.0616169978683836e-17,
-       0.5000000000000001
-      ]
-     },
-     "text": "glide along (0,1) thru (0.5,-0) by (0,0.5)"
-    },
-    {
-     "word": "ABda",
+     "word": "ACba",
      "isometry": {
       "type": "glide",
       "axis": {
@@ -3775,30 +3732,20 @@
      "text": "glide along (0,1) thru (0.5,-0) by (-0,-0.5)"
     },
     {
-     "word": "Caba",
+     "word": "cc",
      "isometry": {
-      "type": "glide",
-      "axis": {
-       "point": [
-        0.5,
-        -2.7755575615628914e-17
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      },
+      "type": "translation",
       "translation": [
-       -3.0616169978683824e-17,
-       -0.49999999999999994
+       0,
+       1
       ]
      },
-     "text": "glide along (0,1) thru (0.5,-0) by (-0,-0.5)"
+     "text": "translation by (0,1)"
     }
    ],
    "sideCounts": {
-    "boundary": 10,
-    "interior": 6
+    "boundary": 8,
+    "interior": 8
    },
    "name": "**/*x[4]#3"
   },
@@ -3894,15 +3841,25 @@
      "text": "reflection in line thru (0.25,-0) dir (0,1)"
     },
     {
-     "word": "C",
+     "word": "ca",
      "isometry": {
-      "type": "translation",
+      "type": "glide",
+      "axis": {
+       "point": [
+        0.24999999999999997,
+        0
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      },
       "translation": [
-       0,
-       -0.5
+       3.061616997868383e-17,
+       0.5
       ]
      },
-     "text": "translation by (0,-0.5)"
+     "text": "glide along (0,1) thru (0.25,0) by (0,0.5)"
     },
     {
      "word": "c",
@@ -3984,6 +3941,27 @@
      "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
+     "word": "ACd",
+     "isometry": {
+      "type": "glide",
+      "axis": {
+       "point": [
+        0.25000000000000006,
+        0
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      },
+      "translation": [
+       -6.123233995736766e-17,
+       -1
+      ]
+     },
+     "text": "glide along (0,1) thru (0.25,0) by (-0,-1)"
+    },
+    {
      "word": "Aba",
      "isometry": {
       "type": "reflection",
@@ -4020,53 +3998,11 @@
       ]
      },
      "text": "glide along (0,1) thru (0.25,0) by (0,1)"
-    },
-    {
-     "word": "Cda",
-     "isometry": {
-      "type": "glide",
-      "axis": {
-       "point": [
-        0.25000000000000006,
-        0
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      },
-      "translation": [
-       -6.123233995736766e-17,
-       -1
-      ]
-     },
-     "text": "glide along (0,1) thru (0.25,0) by (-0,-1)"
-    },
-    {
-     "word": "CaC",
-     "isometry": {
-      "type": "glide",
-      "axis": {
-       "point": [
-        0.25000000000000006,
-        0
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      },
-      "translation": [
-       -6.123233995736766e-17,
-       -1
-      ]
-     },
-     "text": "glide along (0,1) thru (0.25,0) by (-0,-1)"
     }
    ],
    "sideCounts": {
-    "boundary": 10,
-    "interior": 6
+    "boundary": 8,
+    "interior": 8
    },
    "name": "**/*x[4]#1"
   },
@@ -4140,13 +4076,13 @@
      "text": "identity"
     },
     {
-     "word": "b",
+     "word": "a",
      "isometry": {
       "type": "reflection",
       "axis": {
        "point": [
-        0,
-        0
+        0.25,
+        -1.5308084989341915e-17
        ],
        "dir": [
         6.123233995736766e-17,
@@ -4154,7 +4090,7 @@
        ]
       }
      },
-     "text": "reflection in line thru (0,0) dir (0,1)"
+     "text": "reflection in line thru (0.25,-0) dir (0,1)"
     },
     {
      "word": "c",
@@ -4168,12 +4104,12 @@
      "text": "translation by (0,0.5)"
     },
     {
-     "word": "bc",
+     "word": "ca",
      "isometry": {
       "type": "glide",
       "axis": {
        "point": [
-        -1.5308084989341915e-17,
+        0.24999999999999997,
         0
        ],
        "dir": [
@@ -4186,7 +4122,7 @@
        0.5
       ]
      },
-     "text": "glide along (0,1) thru (-0,0) by (0,0.5)"
+     "text": "glide along (0,1) thru (0.25,0) by (0,0.5)"
     }
    ],
    "transversal": [
@@ -4250,15 +4186,15 @@
    "simplyConnected": true,
    "hGenerators": [
     {
-     "word": "Ba",
+     "word": "Ab",
      "isometry": {
       "type": "translation",
       "translation": [
-       0.5,
+       -0.5,
        0
       ]
      },
-     "text": "translation by (0.5,0)"
+     "text": "translation by (-0.5,0)"
     },
     {
      "word": "Cd",
@@ -4272,15 +4208,15 @@
      "text": "translation by (0,-1)"
     },
     {
-     "word": "ab",
+     "word": "ba",
      "isometry": {
       "type": "translation",
       "translation": [
-       -0.5,
+       0.5,
        0
       ]
      },
-     "text": "translation by (-0.5,0)"
+     "text": "translation by (0.5,0)"
     },
     {
      "word": "cc",
@@ -4370,13 +4306,13 @@
      "text": "identity"
     },
     {
-     "word": "b",
+     "word": "a",
      "isometry": {
       "type": "reflection",
       "axis": {
        "point": [
-        0,
-        0
+        0.25,
+        -1.5308084989341915e-17
        ],
        "dir": [
         6.123233995736766e-17,
@@ -4384,18 +4320,28 @@
        ]
       }
      },
-     "text": "reflection in line thru (0,0) dir (0,1)"
+     "text": "reflection in line thru (0.25,-0) dir (0,1)"
     },
     {
-     "word": "C",
+     "word": "ca",
      "isometry": {
-      "type": "translation",
+      "type": "glide",
+      "axis": {
+       "point": [
+        0.24999999999999997,
+        0
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      },
       "translation": [
-       0,
-       -0.5
+       3.061616997868383e-17,
+       0.5
       ]
      },
-     "text": "translation by (0,-0.5)"
+     "text": "glide along (0,1) thru (0.25,0) by (0,0.5)"
     },
     {
      "word": "c",
@@ -4460,60 +4406,18 @@
    "simplyConnected": true,
    "hGenerators": [
     {
-     "word": "Ba",
+     "word": "Ab",
      "isometry": {
       "type": "translation",
       "translation": [
-       0.5,
+       -0.5,
        0
       ]
      },
-     "text": "translation by (0.5,0)"
+     "text": "translation by (-0.5,0)"
     },
     {
-     "word": "ccb",
-     "isometry": {
-      "type": "glide",
-      "axis": {
-       "point": [
-        -3.061616997868383e-17,
-        0
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      },
-      "translation": [
-       6.123233995736766e-17,
-       1
-      ]
-     },
-     "text": "glide along (0,1) thru (-0,0) by (0,1)"
-    },
-    {
-     "word": "Cdb",
-     "isometry": {
-      "type": "glide",
-      "axis": {
-       "point": [
-        3.061616997868383e-17,
-        0
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      },
-      "translation": [
-       -6.123233995736766e-17,
-       -1
-      ]
-     },
-     "text": "glide along (0,1) thru (0,0) by (-0,-1)"
-    },
-    {
-     "word": "CaC",
+     "word": "ACd",
      "isometry": {
       "type": "glide",
       "axis": {
@@ -4534,12 +4438,23 @@
      "text": "glide along (0,1) thru (0.25,0) by (-0,-1)"
     },
     {
-     "word": "CbC",
+     "word": "ba",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0.5,
+       0
+      ]
+     },
+     "text": "translation by (0.5,0)"
+    },
+    {
+     "word": "cca",
      "isometry": {
       "type": "glide",
       "axis": {
        "point": [
-        3.061616997868383e-17,
+        0.24999999999999997,
         0
        ],
        "dir": [
@@ -4548,16 +4463,16 @@
        ]
       },
       "translation": [
-       -6.123233995736766e-17,
-       -1
+       6.123233995736766e-17,
+       1
       ]
      },
-     "text": "glide along (0,1) thru (0,0) by (-0,-1)"
+     "text": "glide along (0,1) thru (0.25,0) by (0,1)"
     }
    ],
    "sideCounts": {
-    "boundary": 10,
-    "interior": 6
+    "boundary": 8,
+    "interior": 8
    },
    "name": "**/xx[4]#1"
   },
@@ -5444,15 +5359,15 @@
      "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
-     "word": "c",
+     "word": "ab",
      "isometry": {
       "type": "translation",
       "translation": [
-       0,
-       0.5
+       -0.5,
+       0
       ]
      },
-     "text": "translation by (0,0.5)"
+     "text": "translation by (-0.5,0)"
     }
    ],
    "transversal": [
@@ -5512,29 +5427,7 @@
    "simplyConnected": true,
    "hGenerators": [
     {
-     "word": "Cd",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0,
-       -1
-      ]
-     },
-     "text": "translation by (0,-1)"
-    },
-    {
-     "word": "Cba",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0.5,
-       -0.5
-      ]
-     },
-     "text": "translation by (0.5,-0.5)"
-    },
-    {
-     "word": "Bca",
+     "word": "BAc",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -5545,15 +5438,26 @@
      "text": "translation by (0.5,0.5)"
     },
     {
-     "word": "Cab",
+     "word": "BAd",
      "isometry": {
       "type": "translation",
       "translation": [
-       -0.5,
+       0.5,
        -0.5
       ]
      },
-     "text": "translation by (-0.5,-0.5)"
+     "text": "translation by (0.5,-0.5)"
+    },
+    {
+     "word": "BAba",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       1,
+       0
+      ]
+     },
+     "text": "translation by (1,0)"
     },
     {
      "word": "Acb",
@@ -5565,6 +5469,17 @@
       ]
      },
      "text": "translation by (-0.5,0.5)"
+    },
+    {
+     "word": "Adb",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       -0.5,
+       -0.5
+      ]
+     },
+     "text": "translation by (-0.5,-0.5)"
     }
    ],
    "sideCounts": {
@@ -5658,7 +5573,7 @@
      "text": "identity"
     },
     {
-     "word": "C",
+     "word": "d",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -5680,7 +5595,7 @@
      "text": "translation by (0,0.5)"
     },
     {
-     "word": "CC",
+     "word": "dd",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -5792,7 +5707,7 @@
      "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
-     "word": "CCdCC",
+     "word": "CCddd",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -6202,7 +6117,7 @@
      "text": "identity"
     },
     {
-     "word": "C",
+     "word": "d",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -6224,7 +6139,7 @@
      "text": "translation by (0,0.5)"
     },
     {
-     "word": "CC",
+     "word": "dd",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -6358,7 +6273,7 @@
      "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
-     "word": "CCCdCC",
+     "word": "CCCddd",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -6848,7 +6763,7 @@
      "text": "translation by (-0.5,0)"
     },
     {
-     "word": "bc",
+     "word": "cb",
      "isometry": {
       "type": "glide",
       "axis": {
@@ -6869,7 +6784,7 @@
      "text": "glide along (0,1) thru (-0,0) by (0,0.5)"
     },
     {
-     "word": "abc",
+     "word": "acb",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -7035,7 +6950,7 @@
      "text": "reflection in line thru (-0.5,0) dir (0,1)"
     },
     {
-     "word": "Bcbc",
+     "word": "Bccb",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -7172,7 +7087,7 @@
      "text": "translation by (-0.5,0)"
     },
     {
-     "word": "bc",
+     "word": "cb",
      "isometry": {
       "type": "glide",
       "axis": {
@@ -7193,21 +7108,15 @@
      "text": "glide along (0,1) thru (-0,0) by (0,0.5)"
     },
     {
-     "word": "bab",
+     "word": "acb",
      "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        -0.25,
-        1.5308084989341915e-17
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
+      "type": "translation",
+      "translation": [
+       -0.5,
+       0.5
+      ]
      },
-     "text": "reflection in line thru (-0.25,0) dir (0,1)"
+     "text": "translation by (-0.5,0.5)"
     }
    ],
    "transversal": [
@@ -7348,28 +7257,7 @@
      "text": "translation by (0,1)"
     },
     {
-     "word": "BABcab",
-     "isometry": {
-      "type": "glide",
-      "axis": {
-       "point": [
-        -0.5,
-        2.7755575615628914e-17
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      },
-      "translation": [
-       3.0616169978683824e-17,
-       0.49999999999999994
-      ]
-     },
-     "text": "glide along (0,1) thru (-0.5,0) by (0,0.5)"
-    },
-    {
-     "word": "BABdab",
+     "word": "BCAbab",
      "isometry": {
       "type": "glide",
       "axis": {
@@ -7390,30 +7278,20 @@
      "text": "glide along (0,1) thru (-0.5,0) by (-0,-0.5)"
     },
     {
-     "word": "CBabab",
+     "word": "Bccb",
      "isometry": {
-      "type": "glide",
-      "axis": {
-       "point": [
-        -0.5,
-        5.551115123125783e-17
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      },
+      "type": "translation",
       "translation": [
-       -3.0616169978683836e-17,
-       -0.5000000000000001
+       0,
+       1
       ]
      },
-     "text": "glide along (0,1) thru (-0.5,0) by (-0,-0.5)"
+     "text": "translation by (0,1)"
     }
    ],
    "sideCounts": {
-    "boundary": 12,
-    "interior": 12
+    "boundary": 10,
+    "interior": 14
    },
    "name": "**/*x[6]#4"
   },
@@ -7519,7 +7397,7 @@
      "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
-     "word": "C",
+     "word": "d",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -7541,7 +7419,7 @@
      "text": "translation by (0,0.5)"
     },
     {
-     "word": "bC",
+     "word": "db",
      "isometry": {
       "type": "glide",
       "axis": {
@@ -7562,7 +7440,7 @@
      "text": "glide along (0,1) thru (0,0) by (-0,-0.5)"
     },
     {
-     "word": "bc",
+     "word": "cb",
      "isometry": {
       "type": "glide",
       "axis": {
@@ -7710,7 +7588,7 @@
      "text": "reflection in line thru (-0.25,0) dir (0,1)"
     },
     {
-     "word": "CdC",
+     "word": "Cdd",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -7721,7 +7599,7 @@
      "text": "translation by (0,-1.5)"
     },
     {
-     "word": "ccc",
+     "word": "Dcc",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -7840,7 +7718,7 @@
      "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
-     "word": "C",
+     "word": "d",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -7862,7 +7740,7 @@
      "text": "translation by (0,0.5)"
     },
     {
-     "word": "bC",
+     "word": "db",
      "isometry": {
       "type": "glide",
       "axis": {
@@ -7883,7 +7761,7 @@
      "text": "glide along (0,1) thru (0,0) by (-0,-0.5)"
     },
     {
-     "word": "bc",
+     "word": "cb",
      "isometry": {
       "type": "glide",
       "axis": {
@@ -8031,7 +7909,7 @@
      "text": "reflection in line thru (-0.25,0) dir (0,1)"
     },
     {
-     "word": "CBdC",
+     "word": "BCdd",
      "isometry": {
       "type": "glide",
       "axis": {
@@ -8052,7 +7930,7 @@
      "text": "glide along (0,1) thru (0,0) by (-0,-1.5)"
     },
     {
-     "word": "cBcc",
+     "word": "BDcc",
      "isometry": {
       "type": "glide",
       "axis": {
@@ -8550,7 +8428,7 @@
      "text": "translation by (0.5,0)"
     },
     {
-     "word": "ac",
+     "word": "ca",
      "isometry": {
       "type": "glide",
       "axis": {
@@ -8571,7 +8449,7 @@
      "text": "glide along (0,1) thru (0.25,0) by (0,0.5)"
     },
     {
-     "word": "bac",
+     "word": "bca",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -8720,7 +8598,7 @@
      "text": "translation by (0,1)"
     },
     {
-     "word": "CABaba",
+     "word": "ACBaba",
      "isometry": {
       "type": "glide",
       "axis": {
@@ -8741,7 +8619,7 @@
      "text": "glide along (0,1) thru (0.75,-0) by (-0,-0.5)"
     },
     {
-     "word": "Acac",
+     "word": "Acca",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -8860,7 +8738,7 @@
      "text": "reflection in line thru (0.25,-0) dir (0,1)"
     },
     {
-     "word": "C",
+     "word": "d",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -8882,7 +8760,7 @@
      "text": "translation by (0,0.5)"
     },
     {
-     "word": "aC",
+     "word": "da",
      "isometry": {
       "type": "glide",
       "axis": {
@@ -8903,7 +8781,7 @@
      "text": "glide along (0,1) thru (0.25,-0) by (-0,-0.5)"
     },
     {
-     "word": "ac",
+     "word": "ca",
      "isometry": {
       "type": "glide",
       "axis": {
@@ -9051,7 +8929,7 @@
      "text": "reflection in line thru (0.5,-0) dir (0,1)"
     },
     {
-     "word": "CdC",
+     "word": "Cdd",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -9062,7 +8940,7 @@
      "text": "translation by (0,-1.5)"
     },
     {
-     "word": "ccc",
+     "word": "Dcc",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -9181,7 +9059,7 @@
      "text": "reflection in line thru (0.25,-0) dir (0,1)"
     },
     {
-     "word": "C",
+     "word": "d",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -9203,7 +9081,7 @@
      "text": "translation by (0,0.5)"
     },
     {
-     "word": "aC",
+     "word": "da",
      "isometry": {
       "type": "glide",
       "axis": {
@@ -9224,7 +9102,7 @@
      "text": "glide along (0,1) thru (0.25,-0) by (-0,-0.5)"
     },
     {
-     "word": "ac",
+     "word": "ca",
      "isometry": {
       "type": "glide",
       "axis": {
@@ -9372,7 +9250,7 @@
      "text": "reflection in line thru (0.5,-0) dir (0,1)"
     },
     {
-     "word": "CAdC",
+     "word": "ACdd",
      "isometry": {
       "type": "glide",
       "axis": {
@@ -9393,7 +9271,7 @@
      "text": "glide along (0,1) thru (0.25,0) by (-0,-1.5)"
     },
     {
-     "word": "cAcc",
+     "word": "ADcc",
      "isometry": {
       "type": "glide",
       "axis": {
@@ -9498,13 +9376,13 @@
      "text": "identity"
     },
     {
-     "word": "b",
+     "word": "a",
      "isometry": {
       "type": "reflection",
       "axis": {
        "point": [
-        0,
-        0
+        0.25,
+        -1.5308084989341915e-17
        ],
        "dir": [
         6.123233995736766e-17,
@@ -9512,10 +9390,10 @@
        ]
       }
      },
-     "text": "reflection in line thru (0,0) dir (0,1)"
+     "text": "reflection in line thru (0.25,-0) dir (0,1)"
     },
     {
-     "word": "C",
+     "word": "d",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -9537,13 +9415,13 @@
      "text": "translation by (0,0.5)"
     },
     {
-     "word": "bC",
+     "word": "da",
      "isometry": {
       "type": "glide",
       "axis": {
        "point": [
-        1.5308084989341915e-17,
-        0
+        0.25,
+        -2.7755575615628914e-17
        ],
        "dir": [
         6.123233995736766e-17,
@@ -9551,19 +9429,19 @@
        ]
       },
       "translation": [
-       -3.061616997868383e-17,
-       -0.5
+       -3.0616169978683824e-17,
+       -0.49999999999999994
       ]
      },
-     "text": "glide along (0,1) thru (0,0) by (-0,-0.5)"
+     "text": "glide along (0,1) thru (0.25,-0) by (-0,-0.5)"
     },
     {
-     "word": "bc",
+     "word": "ca",
      "isometry": {
       "type": "glide",
       "axis": {
        "point": [
-        -1.5308084989341915e-17,
+        0.24999999999999997,
         0
        ],
        "dir": [
@@ -9576,7 +9454,7 @@
        0.5
       ]
      },
-     "text": "glide along (0,1) thru (-0,0) by (0,0.5)"
+     "text": "glide along (0,1) thru (0.25,0) by (0,0.5)"
     }
    ],
    "transversal": [
@@ -9672,7 +9550,18 @@
    "simplyConnected": true,
    "hGenerators": [
     {
-     "word": "Ba",
+     "word": "Ab",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       -0.5,
+       0
+      ]
+     },
+     "text": "translation by (-0.5,0)"
+    },
+    {
+     "word": "ba",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -9683,18 +9572,7 @@
      "text": "translation by (0.5,0)"
     },
     {
-     "word": "ab",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       -0.5,
-       0
-      ]
-     },
-     "text": "translation by (-0.5,0)"
-    },
-    {
-     "word": "CdC",
+     "word": "Cdd",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -9705,7 +9583,7 @@
      "text": "translation by (0,-1.5)"
     },
     {
-     "word": "ccc",
+     "word": "Dcc",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -9716,15 +9594,15 @@
      "text": "translation by (0,1.5)"
     },
     {
-     "word": "cabC",
+     "word": "Dbda",
      "isometry": {
       "type": "translation",
       "translation": [
-       -0.5,
+       0.5,
        0
       ]
      },
-     "text": "translation by (-0.5,0)"
+     "text": "translation by (0.5,0)"
     }
    ],
    "sideCounts": {
@@ -9811,13 +9689,13 @@
      "text": "identity"
     },
     {
-     "word": "b",
+     "word": "a",
      "isometry": {
       "type": "reflection",
       "axis": {
        "point": [
-        0,
-        0
+        0.25,
+        -1.5308084989341915e-17
        ],
        "dir": [
         6.123233995736766e-17,
@@ -9825,10 +9703,10 @@
        ]
       }
      },
-     "text": "reflection in line thru (0,0) dir (0,1)"
+     "text": "reflection in line thru (0.25,-0) dir (0,1)"
     },
     {
-     "word": "C",
+     "word": "d",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -9850,13 +9728,13 @@
      "text": "translation by (0,0.5)"
     },
     {
-     "word": "bC",
+     "word": "da",
      "isometry": {
       "type": "glide",
       "axis": {
        "point": [
-        1.5308084989341915e-17,
-        0
+        0.25,
+        -2.7755575615628914e-17
        ],
        "dir": [
         6.123233995736766e-17,
@@ -9864,19 +9742,19 @@
        ]
       },
       "translation": [
-       -3.061616997868383e-17,
-       -0.5
+       -3.0616169978683824e-17,
+       -0.49999999999999994
       ]
      },
-     "text": "glide along (0,1) thru (0,0) by (-0,-0.5)"
+     "text": "glide along (0,1) thru (0.25,-0) by (-0,-0.5)"
     },
     {
-     "word": "bc",
+     "word": "ca",
      "isometry": {
       "type": "glide",
       "axis": {
        "point": [
-        -1.5308084989341915e-17,
+        0.24999999999999997,
         0
        ],
        "dir": [
@@ -9889,7 +9767,7 @@
        0.5
       ]
      },
-     "text": "glide along (0,1) thru (-0,0) by (0,0.5)"
+     "text": "glide along (0,1) thru (0.25,0) by (0,0.5)"
     }
    ],
    "transversal": [
@@ -9985,18 +9863,7 @@
    "simplyConnected": true,
    "hGenerators": [
     {
-     "word": "Ba",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0.5,
-       0
-      ]
-     },
-     "text": "translation by (0.5,0)"
-    },
-    {
-     "word": "ab",
+     "word": "Ab",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -10007,12 +9874,23 @@
      "text": "translation by (-0.5,0)"
     },
     {
-     "word": "CBdC",
+     "word": "ba",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0.5,
+       0
+      ]
+     },
+     "text": "translation by (0.5,0)"
+    },
+    {
+     "word": "ACdd",
      "isometry": {
       "type": "glide",
       "axis": {
        "point": [
-        4.592425496802574e-17,
+        0.25000000000000006,
         0
        ],
        "dir": [
@@ -10025,15 +9903,15 @@
        -1.5
       ]
      },
-     "text": "glide along (0,1) thru (0,0) by (-0,-1.5)"
+     "text": "glide along (0,1) thru (0.25,0) by (-0,-1.5)"
     },
     {
-     "word": "cBcc",
+     "word": "ADcc",
      "isometry": {
       "type": "glide",
       "axis": {
        "point": [
-        -4.592425496802574e-17,
+        0.24999999999999994,
         0
        ],
        "dir": [
@@ -10046,18 +9924,18 @@
        1.5
       ]
      },
-     "text": "glide along (0,1) thru (-0,0) by (0,1.5)"
+     "text": "glide along (0,1) thru (0.25,0) by (0,1.5)"
     },
     {
-     "word": "cabC",
+     "word": "Dbda",
      "isometry": {
       "type": "translation",
       "translation": [
-       -0.5,
+       0.5,
        0
       ]
      },
-     "text": "translation by (-0.5,0)"
+     "text": "translation by (0.5,0)"
     }
    ],
    "sideCounts": {
@@ -10200,13 +10078,13 @@
      "text": "translation by (-0.5,0)"
     },
     {
-     "word": "bab",
+     "word": "aba",
      "isometry": {
       "type": "reflection",
       "axis": {
        "point": [
-        -0.25,
-        1.5308084989341915e-17
+        0.5,
+        -3.061616997868383e-17
        ],
        "dir": [
         6.123233995736766e-17,
@@ -10214,7 +10092,7 @@
        ]
       }
      },
-     "text": "reflection in line thru (-0.25,0) dir (0,1)"
+     "text": "reflection in line thru (0.5,-0) dir (0,1)"
     }
    ],
    "transversal": [
@@ -10346,17 +10224,6 @@
      "text": "translation by (0,-0.5)"
     },
     {
-     "word": "BABaba",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       1.5,
-       0
-      ]
-     },
-     "text": "translation by (1.5,0)"
-    },
-    {
      "word": "ABdba",
      "isometry": {
       "type": "translation",
@@ -10366,6 +10233,17 @@
       ]
      },
      "text": "translation by (0,-0.5)"
+    },
+    {
+     "word": "ABAbab",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       -1.5,
+       0
+      ]
+     },
+     "text": "translation by (-1.5,0)"
     },
     {
      "word": "BAdab",
@@ -10519,13 +10397,13 @@
      "text": "translation by (-0.5,0)"
     },
     {
-     "word": "bab",
+     "word": "aba",
      "isometry": {
       "type": "reflection",
       "axis": {
        "point": [
-        -0.25,
-        1.5308084989341915e-17
+        0.5,
+        -3.061616997868383e-17
        ],
        "dir": [
         6.123233995736766e-17,
@@ -10533,7 +10411,7 @@
        ]
       }
      },
-     "text": "reflection in line thru (-0.25,0) dir (0,1)"
+     "text": "reflection in line thru (0.5,-0) dir (0,1)"
     }
    ],
    "transversal": [
@@ -10705,24 +10583,45 @@
      "text": "glide along (0,1) thru (0.25,-0) by (-0,-0.5)"
     },
     {
-     "word": "BABaba",
+     "word": "Bdba",
+     "isometry": {
+      "type": "glide",
+      "axis": {
+       "point": [
+        0.25,
+        -2.7755575615628914e-17
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      },
+      "translation": [
+       -3.0616169978683824e-17,
+       -0.49999999999999994
+      ]
+     },
+     "text": "glide along (0,1) thru (0.25,-0) by (-0,-0.5)"
+    },
+    {
+     "word": "ABAbab",
      "isometry": {
       "type": "translation",
       "translation": [
-       1.5,
+       -1.5,
        0
       ]
      },
-     "text": "translation by (1.5,0)"
+     "text": "translation by (-1.5,0)"
     },
     {
-     "word": "BABcab",
+     "word": "ABAdab",
      "isometry": {
       "type": "glide",
       "axis": {
        "point": [
-        -0.5,
-        2.7755575615628914e-17
+        0.25,
+        -2.7755575615628914e-17
        ],
        "dir": [
         6.123233995736766e-17,
@@ -10730,32 +10629,11 @@
        ]
       },
       "translation": [
-       3.0616169978683824e-17,
-       0.49999999999999994
+       -3.0616169978683824e-17,
+       -0.49999999999999994
       ]
      },
-     "text": "glide along (0,1) thru (-0.5,0) by (0,0.5)"
-    },
-    {
-     "word": "BABdab",
-     "isometry": {
-      "type": "glide",
-      "axis": {
-       "point": [
-        -0.5,
-        5.551115123125783e-17
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      },
-      "translation": [
-       -3.0616169978683836e-17,
-       -0.5000000000000001
-      ]
-     },
-     "text": "glide along (0,1) thru (-0.5,0) by (-0,-0.5)"
+     "text": "glide along (0,1) thru (0.25,-0) by (-0,-0.5)"
     }
    ],
    "sideCounts": {
@@ -10859,24 +10737,28 @@
      "text": "reflection in line thru (0.25,-0) dir (0,1)"
     },
     {
-     "word": "b",
+     "word": "ca",
      "isometry": {
-      "type": "reflection",
+      "type": "glide",
       "axis": {
        "point": [
-        0,
+        0.24999999999999997,
         0
        ],
        "dir": [
         6.123233995736766e-17,
         1
        ]
-      }
+      },
+      "translation": [
+       3.061616997868383e-17,
+       0.5
+      ]
      },
-     "text": "reflection in line thru (0,0) dir (0,1)"
+     "text": "glide along (0,1) thru (0.25,0) by (0,0.5)"
     },
     {
-     "word": "C",
+     "word": "d",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -10898,13 +10780,13 @@
      "text": "translation by (0,0.5)"
     },
     {
-     "word": "bc",
+     "word": "da",
      "isometry": {
       "type": "glide",
       "axis": {
        "point": [
-        -1.5308084989341915e-17,
-        0
+        0.25,
+        -2.7755575615628914e-17
        ],
        "dir": [
         6.123233995736766e-17,
@@ -10912,11 +10794,11 @@
        ]
       },
       "translation": [
-       3.061616997868383e-17,
-       0.5
+       -3.0616169978683824e-17,
+       -0.49999999999999994
       ]
      },
-     "text": "glide along (0,1) thru (-0,0) by (0,0.5)"
+     "text": "glide along (0,1) thru (0.25,-0) by (-0,-0.5)"
     }
    ],
    "transversal": [
@@ -11008,7 +10890,18 @@
    "simplyConnected": true,
    "hGenerators": [
     {
-     "word": "cba",
+     "word": "ACb",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       -0.5,
+       -0.5
+      ]
+     },
+     "text": "translation by (-0.5,-0.5)"
+    },
+    {
+     "word": "Dba",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -11019,40 +10912,18 @@
      "text": "translation by (0.5,0.5)"
     },
     {
-     "word": "CBda",
+     "word": "ADcca",
      "isometry": {
       "type": "translation",
       "translation": [
-       0.5,
-       -1
+       0,
+       1.5
       ]
      },
-     "text": "translation by (0.5,-1)"
+     "text": "translation by (0,1.5)"
     },
     {
-     "word": "Cab",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       -0.5,
-       -0.5
-      ]
-     },
-     "text": "translation by (-0.5,-0.5)"
-    },
-    {
-     "word": "Adb",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       -0.5,
-       -0.5
-      ]
-     },
-     "text": "translation by (-0.5,-0.5)"
-    },
-    {
-     "word": "CdC",
+     "word": "Cdd",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -11063,7 +10934,7 @@
      "text": "translation by (0,-1.5)"
     },
     {
-     "word": "cabc",
+     "word": "ADbc",
      "isometry": {
       "type": "translation",
       "translation": [
@@ -11075,8 +10946,8 @@
     }
    ],
    "sideCounts": {
-    "boundary": 12,
-    "interior": 12
+    "boundary": 10,
+    "interior": 14
    },
    "name": "**/o[6]#2"
   }
