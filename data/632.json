@@ -343,7 +343,7 @@
      "text": "identity"
     },
     {
-     "word": "B",
+     "word": "c",
      "isometry": {
       "type": "rotation",
       "angle": 2.0943951023931957,
@@ -415,7 +415,7 @@
      "text": "rotation by 1*PI about (0,0)"
     },
     {
-     "word": "baB",
+     "word": "Cac",
      "isometry": {
       "type": "rotation",
       "angle": 3.141592653589793,
@@ -506,7 +506,7 @@
      "text": "identity"
     },
     {
-     "word": "B",
+     "word": "c",
      "isometry": {
       "type": "rotation",
       "angle": 2.0943951023931957,
@@ -578,7 +578,7 @@
      "text": "rotation by 1*PI about (0,0)"
     },
     {
-     "word": "BaB",
+     "word": "Bac",
      "isometry": {
       "type": "rotation",
       "angle": 1.0471975511965976,
@@ -672,7 +672,7 @@
      "text": "rotation by 1*PI about (0,0)"
     },
     {
-     "word": "Ba",
+     "word": "ca",
      "isometry": {
       "type": "rotation",
       "angle": -1.0471975511965979,
@@ -756,7 +756,7 @@
      "text": "rotation by -0.6667*PI about (0.25,0)"
     },
     {
-     "word": "ABaBa",
+     "word": "ABaca",
      "isometry": {
       "type": "rotation",
       "angle": 1.0471975511965976,
@@ -845,7 +845,7 @@
      "text": "identity"
     },
     {
-     "word": "B",
+     "word": "c",
      "isometry": {
       "type": "rotation",
       "angle": 2.0943951023931957,
@@ -881,7 +881,7 @@
      "text": "rotation by 0.3333*PI about (-0,0.433)"
     },
     {
-     "word": "Bab",
+     "word": "cab",
      "isometry": {
       "type": "rotation",
       "angle": 3.141592653589793,
@@ -989,7 +989,7 @@
      "text": "rotation by 1*PI about (0,0)"
     },
     {
-     "word": "baB",
+     "word": "Cac",
      "isometry": {
       "type": "rotation",
       "angle": 3.141592653589793,
@@ -1001,7 +1001,7 @@
      "text": "rotation by 1*PI about (0.375,-0.2165)"
     },
     {
-     "word": "BAbaBab",
+     "word": "BACacab",
      "isometry": {
       "type": "rotation",
       "angle": 3.141592653589793,
@@ -1102,7 +1102,7 @@
      "text": "identity"
     },
     {
-     "word": "B",
+     "word": "c",
      "isometry": {
       "type": "rotation",
       "angle": 2.0943951023931957,
@@ -1126,16 +1126,16 @@
      "text": "rotation by -0.6667*PI about (0.25,0)"
     },
     {
-     "word": "aB",
+     "word": "bab",
      "isometry": {
       "type": "rotation",
       "angle": -1.0471975511965976,
       "center": [
-       -5.551115123125784e-17,
-       -0.4330127018922193
+       0.7500000000000001,
+       5.551115123125784e-17
       ]
      },
-     "text": "rotation by -0.3333*PI about (-0,-0.433)"
+     "text": "rotation by -0.3333*PI about (0.75,0)"
     },
     {
      "word": "ab",
@@ -1150,7 +1150,7 @@
      "text": "rotation by 0.3333*PI about (-0,0.433)"
     },
     {
-     "word": "Bab",
+     "word": "cab",
      "isometry": {
       "type": "rotation",
       "angle": 3.141592653589793,
@@ -1246,29 +1246,18 @@
      "text": "rotation by 1*PI about (0,0)"
     },
     {
-     "word": "BAbbaB",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       1.6653345369377348e-16,
-       -0.8660254037844387
-      ]
-     },
-     "text": "translation by (0,-0.866)"
-    },
-    {
-     "word": "bAbab",
+     "word": "BABac",
      "isometry": {
       "type": "translation",
       "translation": [
        -1.6653345369377348e-16,
-       0.8660254037844386
+       -0.8660254037844386
       ]
      },
-     "text": "translation by (-0,0.866)"
+     "text": "translation by (-0,-0.866)"
     },
     {
-     "word": "BAbaBab",
+     "word": "BACacab",
      "isometry": {
       "type": "rotation",
       "angle": 3.141592653589793,
@@ -1281,8 +1270,8 @@
     }
    ],
    "sideCounts": {
-    "boundary": 6,
-    "interior": 12
+    "boundary": 4,
+    "interior": 14
    },
    "name": "632/2222[6]#1"
   },
@@ -1368,7 +1357,7 @@
      "text": "rotation by 1*PI about (0,0)"
     },
     {
-     "word": "Ba",
+     "word": "ca",
      "isometry": {
       "type": "rotation",
       "angle": -1.0471975511965979,
@@ -1392,7 +1381,7 @@
      "text": "rotation by 0.3333*PI about (0,-0.433)"
     },
     {
-     "word": "aBa",
+     "word": "aca",
      "isometry": {
       "type": "rotation",
       "angle": 2.0943951023931957,
@@ -1500,7 +1489,7 @@
      "text": "rotation by -0.6667*PI about (0.25,0)"
     },
     {
-     "word": "AbAbaBa",
+     "word": "ACAbaca",
      "isometry": {
       "type": "rotation",
       "angle": -2.0943951023931953,
@@ -1608,7 +1597,7 @@
      "text": "rotation by 1*PI about (0,0)"
     },
     {
-     "word": "B",
+     "word": "c",
      "isometry": {
       "type": "rotation",
       "angle": 2.0943951023931957,
@@ -1632,16 +1621,16 @@
      "text": "rotation by -0.6667*PI about (0.25,0)"
     },
     {
-     "word": "Ba",
+     "word": "ac",
      "isometry": {
       "type": "rotation",
-      "angle": -1.0471975511965979,
+      "angle": -1.0471975511965976,
       "center": [
-       2.7755575615628907e-17,
-       0.4330127018922192
+       -5.551115123125784e-17,
+       -0.4330127018922193
       ]
      },
-     "text": "rotation by -0.3333*PI about (0,0.433)"
+     "text": "rotation by -0.3333*PI about (-0,-0.433)"
     },
     {
      "word": "ab",
@@ -1739,26 +1728,26 @@
      "text": "translation by (-0.75,-0.433)"
     },
     {
-     "word": "AbaB",
+     "word": "CAca",
      "isometry": {
       "type": "translation",
       "translation": [
-       0.7499999999999999,
-       -0.43301270189221924
+       -0.7499999999999999,
+       0.43301270189221924
       ]
      },
-     "text": "translation by (0.75,-0.433)"
+     "text": "translation by (-0.75,0.433)"
     },
     {
-     "word": "Abbab",
+     "word": "BAcac",
      "isometry": {
       "type": "translation",
       "translation": [
-       0.75,
-       0.4330127018922194
+       -1.6653345369377348e-16,
+       -0.8660254037844386
       ]
      },
-     "text": "translation by (0.75,0.433)"
+     "text": "translation by (-0,-0.866)"
     }
    ],
    "sideCounts": {
@@ -1849,7 +1838,7 @@
      "text": "rotation by 1*PI about (0,0)"
     },
     {
-     "word": "B",
+     "word": "c",
      "isometry": {
       "type": "rotation",
       "angle": 2.0943951023931957,
@@ -1885,7 +1874,7 @@
      "text": "rotation by 0.3333*PI about (-0,0.433)"
     },
     {
-     "word": "aB",
+     "word": "ac",
      "isometry": {
       "type": "rotation",
       "angle": -1.0471975511965976,
@@ -1969,7 +1958,7 @@
    "simplyConnected": true,
    "hGenerators": [
     {
-     "word": "bAba",
+     "word": "CAba",
      "isometry": {
       "type": "rotation",
       "angle": 2.0943951023931957,
@@ -1993,7 +1982,7 @@
      "text": "rotation by -0.6667*PI about (0,0.433)"
     },
     {
-     "word": "bAcab",
+     "word": "CAcab",
      "isometry": {
       "type": "rotation",
       "angle": -2.0943951023931953,
@@ -2084,7 +2073,7 @@
      "text": "identity"
     },
     {
-     "word": "B",
+     "word": "c",
      "isometry": {
       "type": "rotation",
       "angle": 2.0943951023931957,
@@ -2108,7 +2097,7 @@
      "text": "rotation by -0.6667*PI about (0.25,0)"
     },
     {
-     "word": "aB",
+     "word": "ac",
      "isometry": {
       "type": "rotation",
       "angle": -1.0471975511965976,
@@ -2132,16 +2121,16 @@
      "text": "rotation by 0.3333*PI about (-0,0.433)"
     },
     {
-     "word": "abab",
+     "word": "cab",
      "isometry": {
       "type": "rotation",
-      "angle": 2.0943951023931957,
+      "angle": 3.141592653589793,
       "center": [
-       -3.7007434154171876e-17,
-       0.4330127018922192
+       0.37499999999999994,
+       0.21650635094610965
       ]
      },
-     "text": "rotation by 0.6667*PI about (-0,0.433)"
+     "text": "rotation by 1*PI about (0.375,0.2165)"
     },
     {
      "word": "bab",
@@ -2252,7 +2241,7 @@
      "text": "rotation by 1*PI about (0,0)"
     },
     {
-     "word": "bAbaB",
+     "word": "CAbac",
      "isometry": {
       "type": "rotation",
       "angle": -2.0943951023931957,
@@ -2264,7 +2253,7 @@
      "text": "rotation by -0.6667*PI about (0.5,-0.433)"
     },
     {
-     "word": "BABAcab",
+     "word": "BABacab",
      "isometry": {
       "type": "rotation",
       "angle": 1.0471975511965983,
@@ -2274,23 +2263,11 @@
       ]
      },
      "text": "rotation by 0.3333*PI about (0.75,0.866)"
-    },
-    {
-     "word": "BAbabab",
-     "isometry": {
-      "type": "rotation",
-      "angle": -1.0471975511965972,
-      "center": [
-       0.7499999999999998,
-       0.8660254037844385
-      ]
-     },
-     "text": "rotation by -0.3333*PI about (0.75,0.866)"
     }
    ],
    "sideCounts": {
-    "boundary": 7,
-    "interior": 14
+    "boundary": 5,
+    "interior": 16
    },
    "name": "632/632[7]#2"
   },
@@ -2367,7 +2344,7 @@
      "text": "identity"
     },
     {
-     "word": "B",
+     "word": "c",
      "isometry": {
       "type": "rotation",
       "angle": 2.0943951023931957,
@@ -2391,7 +2368,7 @@
      "text": "rotation by -0.6667*PI about (0.25,0)"
     },
     {
-     "word": "aB",
+     "word": "ac",
      "isometry": {
       "type": "rotation",
       "angle": -1.0471975511965976,
@@ -2415,7 +2392,7 @@
      "text": "rotation by 0.3333*PI about (-0,0.433)"
     },
     {
-     "word": "BaB",
+     "word": "cac",
      "isometry": {
       "type": "rotation",
       "angle": 1.0471975511965976,
@@ -2427,16 +2404,16 @@
      "text": "rotation by 0.3333*PI about (0.75,-0)"
     },
     {
-     "word": "aBaB",
+     "word": "bac",
      "isometry": {
       "type": "rotation",
-      "angle": -2.0943951023931957,
+      "angle": 3.141592653589793,
       "center": [
-       -3.7007434154171876e-17,
-       -0.4330127018922192
+       0.37499999999999994,
+       -0.2165063509461096
       ]
      },
-     "text": "rotation by -0.6667*PI about (-0,-0.433)"
+     "text": "rotation by 1*PI about (0.375,-0.2165)"
     }
    ],
    "transversal": [
@@ -2535,18 +2512,6 @@
      "text": "rotation by 1*PI about (0,0)"
     },
     {
-     "word": "bAbAbaB",
-     "isometry": {
-      "type": "rotation",
-      "angle": -1.0471975511965983,
-      "center": [
-       0.7500000000000001,
-       -0.8660254037844383
-      ]
-     },
-     "text": "rotation by -0.3333*PI about (0.75,-0.866)"
-    },
-    {
      "word": "BAbab",
      "isometry": {
       "type": "rotation",
@@ -2559,21 +2524,21 @@
      "text": "rotation by -0.6667*PI about (0.5,0.433)"
     },
     {
-     "word": "bAbbaBaB",
+     "word": "CABacac",
      "isometry": {
       "type": "rotation",
-      "angle": 1.0471975511965976,
+      "angle": 1.0471975511965972,
       "center": [
-       0.7500000000000001,
-       -0.8660254037844388
+       0.7499999999999998,
+       -0.8660254037844385
       ]
      },
      "text": "rotation by 0.3333*PI about (0.75,-0.866)"
     }
    ],
    "sideCounts": {
-    "boundary": 7,
-    "interior": 14
+    "boundary": 5,
+    "interior": 16
    },
    "name": "632/632[7]#1"
   },
@@ -2665,7 +2630,7 @@
      "text": "rotation by 1*PI about (0,0)"
     },
     {
-     "word": "Ba",
+     "word": "ca",
      "isometry": {
       "type": "rotation",
       "angle": -1.0471975511965979,
@@ -2689,16 +2654,15 @@
      "text": "rotation by 0.3333*PI about (0,-0.433)"
     },
     {
-     "word": "aBa",
+     "word": "caba",
      "isometry": {
-      "type": "rotation",
-      "angle": 2.0943951023931957,
-      "center": [
-       -0.2499999999999999,
-       3.7007434154171876e-17
+      "type": "translation",
+      "translation": [
+       -0.7499999999999999,
+       -0.43301270189221924
       ]
      },
-     "text": "rotation by 0.6667*PI about (-0.25,0)"
+     "text": "translation by (-0.75,-0.433)"
     },
     {
      "word": "aba",
@@ -2713,28 +2677,28 @@
      "text": "rotation by -0.6667*PI about (-0.25,-0)"
     },
     {
-     "word": "BaBa",
+     "word": "baba",
      "isometry": {
       "type": "rotation",
-      "angle": -2.0943951023931957,
+      "angle": 2.0943951023931957,
       "center": [
        3.7007434154171876e-17,
-       0.4330127018922192
+       -0.4330127018922192
       ]
      },
-     "text": "rotation by -0.6667*PI about (0,0.433)"
+     "text": "rotation by 0.6667*PI about (0,-0.433)"
     },
     {
-     "word": "aBaBa",
+     "word": "ababa",
      "isometry": {
       "type": "rotation",
-      "angle": 1.0471975511965976,
+      "angle": -1.0471975511965976,
       "center": [
        -0.7500000000000001,
-       5.551115123125784e-17
+       -5.551115123125784e-17
       ]
      },
-     "text": "rotation by 0.3333*PI about (-0.75,0)"
+     "text": "rotation by -0.3333*PI about (-0.75,-0)"
     }
    ],
    "transversal": [
@@ -2844,7 +2808,7 @@
      "text": "rotation by -0.6667*PI about (0.25,0)"
     },
     {
-     "word": "ABAbaBa",
+     "word": "ABACaca",
      "isometry": {
       "type": "rotation",
       "angle": 2.0943951023931957,
@@ -2856,33 +2820,21 @@
      "text": "rotation by 0.6667*PI about (-0.75,0)"
     },
     {
-     "word": "AbAbbaba",
+     "word": "ABABAbababa",
      "isometry": {
       "type": "rotation",
-      "angle": -2.0943951023931944,
+      "angle": -2.0943951023931957,
       "center": [
-       -0.7500000000000003,
-       2.5905203907920336e-16
+       -0.24999999999999953,
+       -0.8660254037844384
       ]
      },
-     "text": "rotation by -0.6667*PI about (-0.75,0)"
-    },
-    {
-     "word": "AbAbAbaBaBa",
-     "isometry": {
-      "type": "rotation",
-      "angle": -2.094395102393195,
-      "center": [
-       -0.2499999999999998,
-       0.8660254037844389
-      ]
-     },
-     "text": "rotation by -0.6667*PI about (-0.25,0.866)"
+     "text": "rotation by -0.6667*PI about (-0.25,-0.866)"
     }
    ],
    "sideCounts": {
-    "boundary": 8,
-    "interior": 16
+    "boundary": 6,
+    "interior": 18
    },
    "name": "632/333[8]"
   }

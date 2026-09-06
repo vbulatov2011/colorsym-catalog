@@ -239,21 +239,21 @@
      "text": "identity"
     },
     {
-     "word": "b",
+     "word": "c",
      "isometry": {
       "type": "reflection",
       "axis": {
        "point": [
-        0,
-        0
+        0.18749999999999997,
+        0.10825317547305478
        ],
        "dir": [
-        1,
-        0
+        0.4999999999999999,
+        -0.8660254037844387
        ]
       }
      },
-     "text": "reflection in line thru (0,0) dir (1,0)"
+     "text": "reflection in line thru (0.1875,0.1083) dir (0.5,-0.866)"
     }
    ],
    "transversal": [
@@ -302,16 +302,33 @@
      "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
-     "word": "Bc",
+     "word": "Cb",
      "isometry": {
       "type": "rotation",
-      "angle": -2.0943951023931957,
+      "angle": 2.0943951023931957,
       "center": [
        0.2499999999999999,
-       3.7007434154171876e-17
+       -3.7007434154171876e-17
       ]
      },
-     "text": "rotation by -0.6667*PI about (0.25,0)"
+     "text": "rotation by 0.6667*PI about (0.25,-0)"
+    },
+    {
+     "word": "Cac",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0.18749999999999994,
+        0.3247595264191645
+       ],
+       "dir": [
+        0.8660254037844387,
+        -0.49999999999999994
+       ]
+      }
+     },
+     "text": "reflection in line thru (0.1875,0.3248) dir (0.866,-0.5)"
     }
    ],
    "sideCounts": {
@@ -546,21 +563,21 @@
      "text": "identity"
     },
     {
-     "word": "b",
+     "word": "c",
      "isometry": {
       "type": "reflection",
       "axis": {
        "point": [
-        0,
-        0
+        0.18749999999999997,
+        0.10825317547305478
        ],
        "dir": [
-        1,
-        0
+        0.4999999999999999,
+        -0.8660254037844387
        ]
       }
      },
-     "text": "reflection in line thru (0,0) dir (1,0)"
+     "text": "reflection in line thru (0.1875,0.1083) dir (0.5,-0.866)"
     }
    ],
    "transversal": [
@@ -592,28 +609,28 @@
    "simplyConnected": true,
    "hGenerators": [
     {
-     "word": "Ba",
+     "word": "Ca",
      "isometry": {
       "type": "rotation",
-      "angle": 3.141592653589793,
+      "angle": -1.0471975511965979,
       "center": [
-       0,
-       0
+       2.7755575615628907e-17,
+       0.4330127018922192
       ]
      },
-     "text": "rotation by 1*PI about (0,0)"
+     "text": "rotation by -0.3333*PI about (0,0.433)"
     },
     {
-     "word": "Bc",
+     "word": "Cb",
      "isometry": {
       "type": "rotation",
-      "angle": -2.0943951023931957,
+      "angle": 2.0943951023931957,
       "center": [
        0.2499999999999999,
-       3.7007434154171876e-17
+       -3.7007434154171876e-17
       ]
      },
-     "text": "rotation by -0.6667*PI about (0.25,0)"
+     "text": "rotation by 0.6667*PI about (0.25,-0)"
     }
    ],
    "sideCounts": {
@@ -902,16 +919,16 @@
      "text": "reflection in line thru (0.1875,0.1083) dir (0.5,-0.866)"
     },
     {
-     "word": "bc",
+     "word": "ac",
      "isometry": {
       "type": "rotation",
-      "angle": -2.0943951023931957,
+      "angle": 1.0471975511965976,
       "center": [
-       0.2499999999999999,
-       3.7007434154171876e-17
+       -5.551115123125784e-17,
+       0.4330127018922193
       ]
      },
-     "text": "rotation by -0.6667*PI about (0.25,0)"
+     "text": "rotation by 0.3333*PI about (-0,0.433)"
     }
    ],
    "transversal": [
@@ -994,7 +1011,7 @@
      "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
-     "word": "CBac",
+     "word": "CAbc",
      "isometry": {
       "type": "rotation",
       "angle": 3.141592653589793,
@@ -1004,6 +1021,23 @@
       ]
      },
      "text": "rotation by 1*PI about (0.375,0.2165)"
+    },
+    {
+     "word": "CAcac",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0,
+        0.4330127018922193
+       ],
+       "dir": [
+        1,
+        0
+       ]
+      }
+     },
+     "text": "reflection in line thru (0,0.433) dir (1,0)"
     }
    ],
    "sideCounts": {
@@ -1331,33 +1365,33 @@
      "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
-     "word": "b",
+     "word": "c",
      "isometry": {
       "type": "reflection",
       "axis": {
        "point": [
-        0,
-        0
+        0.18749999999999997,
+        0.10825317547305478
        ],
        "dir": [
-        1,
-        0
+        0.4999999999999999,
+        -0.8660254037844387
        ]
       }
      },
-     "text": "reflection in line thru (0,0) dir (1,0)"
+     "text": "reflection in line thru (0.1875,0.1083) dir (0.5,-0.866)"
     },
     {
-     "word": "ab",
+     "word": "ca",
      "isometry": {
       "type": "rotation",
-      "angle": 3.141592653589793,
+      "angle": -1.0471975511965979,
       "center": [
-       0,
-       0
+       2.7755575615628907e-17,
+       0.4330127018922192
       ]
      },
-     "text": "rotation by 1*PI about (0,0)"
+     "text": "rotation by -0.3333*PI about (0,0.433)"
     }
    ],
    "transversal": [
@@ -1418,33 +1452,45 @@
    "simplyConnected": true,
    "hGenerators": [
     {
-     "word": "Bc",
-     "isometry": {
-      "type": "rotation",
-      "angle": -2.0943951023931957,
-      "center": [
-       0.2499999999999999,
-       3.7007434154171876e-17
-      ]
-     },
-     "text": "rotation by -0.6667*PI about (0.25,0)"
-    },
-    {
-     "word": "BAca",
+     "word": "Cb",
      "isometry": {
       "type": "rotation",
       "angle": 2.0943951023931957,
       "center": [
-       -0.2499999999999999,
-       3.7007434154171876e-17
+       0.2499999999999999,
+       -3.7007434154171876e-17
       ]
      },
-     "text": "rotation by 0.6667*PI about (-0.25,0)"
+     "text": "rotation by 0.6667*PI about (0.25,-0)"
+    },
+    {
+     "word": "ACba",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931957,
+      "center": [
+       -0.2499999999999999,
+       -3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (-0.25,-0)"
+    },
+    {
+     "word": "ACac",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931957,
+      "center": [
+       -3.7007434154171876e-17,
+       0.4330127018922192
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-0,0.433)"
     }
    ],
    "sideCounts": {
-    "boundary": 4,
-    "interior": 8
+    "boundary": 6,
+    "interior": 6
    },
    "name": "*632/333[4]"
   },
@@ -1566,7 +1612,7 @@
      "text": "rotation by -0.6667*PI about (0.25,0)"
     },
     {
-     "word": "abc",
+     "word": "bac",
      "isometry": {
       "type": "glide",
       "axis": {
@@ -1587,7 +1633,7 @@
      "text": "glide along (0.866,0.5) thru (-0,0) by (0.375,0.2165)"
     },
     {
-     "word": "cabc",
+     "word": "cbac",
      "isometry": {
       "type": "rotation",
       "angle": 3.141592653589793,
@@ -1736,7 +1782,7 @@
      "text": "reflection in line thru (0,0.433) dir (1,0)"
     },
     {
-     "word": "CBACacabc",
+     "word": "CABCacbac",
      "isometry": {
       "type": "reflection",
       "axis": {
@@ -1893,13 +1939,13 @@
      "text": "rotation by -0.6667*PI about (0.25,0)"
     },
     {
-     "word": "bcb",
+     "word": "cbc",
      "isometry": {
       "type": "reflection",
       "axis": {
        "point": [
-        0.18749999999999997,
-        -0.10825317547305478
+        0.18750000000000003,
+        -0.10825317547305481
        ],
        "dir": [
         0.4999999999999999,
@@ -2451,13 +2497,13 @@
      "text": "rotation by 0.6667*PI about (0.25,-0)"
     },
     {
-     "word": "bcb",
+     "word": "cbc",
      "isometry": {
       "type": "reflection",
       "axis": {
        "point": [
-        0.18749999999999997,
-        -0.10825317547305478
+        0.18750000000000003,
+        -0.10825317547305481
        ],
        "dir": [
         0.4999999999999999,
@@ -2584,25 +2630,25 @@
      "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
-     "word": "BCBac",
+     "word": "CBCac",
      "isometry": {
       "type": "glide",
       "axis": {
        "point": [
-        0.37499999999999994,
-        -2.7755575615628914e-17
+        0.375,
+        2.7755575615628914e-17
        ],
        "dir": [
         6.123233995736766e-17,
-        1
+        -1
        ]
       },
       "translation": [
-       2.651438096812267e-17,
-       0.4330127018922193
+       -2.6514380968122673e-17,
+       0.43301270189221935
       ]
      },
-     "text": "glide along (0,1) thru (0.375,-0) by (0,0.433)"
+     "text": "glide along (0,-1) thru (0.375,0) by (-0,0.433)"
     },
     {
      "word": "CBacb",
@@ -2752,37 +2798,33 @@
      "text": "reflection in line thru (-0.1875,0.1083) dir (0.5,0.866)"
     },
     {
-     "word": "bca",
+     "word": "acaca",
      "isometry": {
-      "type": "glide",
+      "type": "reflection",
       "axis": {
        "point": [
-        -2.7755575615628914e-17,
-        2.7755575615628914e-17
+        -0.18749999999999994,
+        0.3247595264191645
        ],
        "dir": [
-        0.8660254037844386,
-        -0.5
+        0.8660254037844387,
+        0.49999999999999994
        ]
-      },
-      "translation": [
-       -0.37499999999999983,
-       0.2165063509461096
-      ]
+      }
      },
-     "text": "glide along (0.866,-0.5) thru (-0,0) by (-0.375,0.2165)"
+     "text": "reflection in line thru (-0.1875,0.3248) dir (0.866,0.5)"
     },
     {
-     "word": "abca",
+     "word": "caca",
      "isometry": {
       "type": "rotation",
-      "angle": 2.0943951023931957,
+      "angle": -2.0943951023931957,
       "center": [
-       -0.2499999999999999,
-       3.7007434154171876e-17
+       3.7007434154171876e-17,
+       0.4330127018922192
       ]
      },
-     "text": "rotation by 0.6667*PI about (-0.25,0)"
+     "text": "rotation by -0.6667*PI about (0,0.433)"
     }
    ],
    "transversal": [
@@ -2911,7 +2953,19 @@
      "text": "reflection in line thru (0.1875,0.1083) dir (0.5,-0.866)"
     },
     {
-     "word": "ACBAcaca",
+     "word": "ACACAbca",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931953,
+      "center": [
+       -0.5,
+       0.4330127018922194
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (-0.5,0.433)"
+    },
+    {
+     "word": "ACbacaca",
      "isometry": {
       "type": "rotation",
       "angle": 2.0943951023931953,
@@ -2924,8 +2978,8 @@
     }
    ],
    "sideCounts": {
-    "boundary": 6,
-    "interior": 12
+    "boundary": 8,
+    "interior": 10
    },
    "name": "*632/3*3[6]#2"
   },
@@ -3003,21 +3057,21 @@
      "text": "identity"
     },
     {
-     "word": "a",
+     "word": "cac",
      "isometry": {
       "type": "reflection",
       "axis": {
        "point": [
-        0,
-        0
+        0.18749999999999994,
+        0.3247595264191645
        ],
        "dir": [
-        6.123233995736766e-17,
-        1
+        0.8660254037844387,
+        -0.49999999999999994
        ]
       }
      },
-     "text": "reflection in line thru (0,0) dir (0,1)"
+     "text": "reflection in line thru (0.1875,0.3248) dir (0.866,-0.5)"
     },
     {
      "word": "c",
@@ -3061,7 +3115,7 @@
      "text": "rotation by -0.6667*PI about (0.25,0)"
     },
     {
-     "word": "abc",
+     "word": "bac",
      "isometry": {
       "type": "glide",
       "axis": {
@@ -3169,6 +3223,18 @@
    "simplyConnected": true,
    "hGenerators": [
     {
+     "word": "CACa",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931957,
+      "center": [
+       3.7007434154171876e-17,
+       0.4330127018922192
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (0,0.433)"
+    },
+    {
      "word": "b",
      "isometry": {
       "type": "reflection",
@@ -3186,29 +3252,17 @@
      "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
-     "word": "CAca",
-     "isometry": {
-      "type": "rotation",
-      "angle": -2.0943951023931957,
-      "center": [
-       3.7007434154171876e-17,
-       0.4330127018922192
-      ]
-     },
-     "text": "rotation by -0.6667*PI about (0,0.433)"
-    },
-    {
-     "word": "CBAcabc",
+     "word": "CACbcac",
      "isometry": {
       "type": "reflection",
       "axis": {
        "point": [
-        0.5624999999999998,
+        0.5625000000000001,
         0.32475952641916445
        ],
        "dir": [
-        0.5000000000000001,
-        -0.8660254037844386
+        0.4999999999999999,
+        -0.8660254037844387
        ]
       }
      },
@@ -3342,37 +3396,33 @@
      "text": "rotation by -0.3333*PI about (0,0.433)"
     },
     {
-     "word": "bc",
+     "word": "ac",
      "isometry": {
       "type": "rotation",
-      "angle": -2.0943951023931957,
+      "angle": 1.0471975511965976,
       "center": [
-       0.2499999999999999,
-       3.7007434154171876e-17
+       -5.551115123125784e-17,
+       0.4330127018922193
       ]
      },
-     "text": "rotation by -0.6667*PI about (0.25,0)"
+     "text": "rotation by 0.3333*PI about (-0,0.433)"
     },
     {
-     "word": "bca",
+     "word": "aca",
      "isometry": {
-      "type": "glide",
+      "type": "reflection",
       "axis": {
        "point": [
-        -2.7755575615628914e-17,
-        2.7755575615628914e-17
+        -0.18749999999999997,
+        0.10825317547305478
        ],
        "dir": [
-        0.8660254037844386,
-        -0.5
+        0.4999999999999999,
+        0.8660254037844387
        ]
-      },
-      "translation": [
-       -0.37499999999999983,
-       0.2165063509461096
-      ]
+      }
      },
-     "text": "glide along (0.866,-0.5) thru (-0,0) by (-0.375,0.2165)"
+     "text": "reflection in line thru (-0.1875,0.1083) dir (0.5,0.866)"
     }
    ],
    "transversal": [
@@ -3484,7 +3534,7 @@
      "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
-     "word": "CBac",
+     "word": "CAbc",
      "isometry": {
       "type": "rotation",
       "angle": 3.141592653589793,
@@ -3496,7 +3546,7 @@
      "text": "rotation by 1*PI about (0.375,0.2165)"
     },
     {
-     "word": "ACBaca",
+     "word": "ACAbca",
      "isometry": {
       "type": "rotation",
       "angle": 3.141592653589793,
@@ -3506,6 +3556,23 @@
       ]
      },
      "text": "rotation by 1*PI about (-0.375,0.2165)"
+    },
+    {
+     "word": "CAcac",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0,
+        0.4330127018922193
+       ],
+       "dir": [
+        1,
+        0
+       ]
+      }
+     },
+     "text": "reflection in line thru (0,0.433) dir (1,0)"
     }
    ],
    "sideCounts": {
@@ -3643,16 +3710,21 @@
      "text": "rotation by 0.3333*PI about (-0,0.433)"
     },
     {
-     "word": "bc",
+     "word": "aca",
      "isometry": {
-      "type": "rotation",
-      "angle": -2.0943951023931957,
-      "center": [
-       0.2499999999999999,
-       3.7007434154171876e-17
-      ]
+      "type": "reflection",
+      "axis": {
+       "point": [
+        -0.18749999999999997,
+        0.10825317547305478
+       ],
+       "dir": [
+        0.4999999999999999,
+        0.8660254037844387
+       ]
+      }
      },
-     "text": "rotation by -0.6667*PI about (0.25,0)"
+     "text": "reflection in line thru (-0.1875,0.1083) dir (0.5,0.866)"
     }
    ],
    "transversal": [
@@ -3759,28 +3831,7 @@
      "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
-     "word": "CBaca",
-     "isometry": {
-      "type": "glide",
-      "axis": {
-       "point": [
-        0,
-        0.21650635094610962
-       ],
-       "dir": [
-        1,
-        0
-       ]
-      },
-      "translation": [
-       -0.7499999999999999,
-       0
-      ]
-     },
-     "text": "glide along (1,0) thru (0,0.2165) by (-0.75,0)"
-    },
-    {
-     "word": "ACbac",
+     "word": "ACAbc",
      "isometry": {
       "type": "glide",
       "axis": {
@@ -3799,6 +3850,27 @@
       ]
      },
      "text": "glide along (1,0) thru (0,0.2165) by (0.75,0)"
+    },
+    {
+     "word": "CAbca",
+     "isometry": {
+      "type": "glide",
+      "axis": {
+       "point": [
+        0,
+        0.21650635094610962
+       ],
+       "dir": [
+        1,
+        0
+       ]
+      },
+      "translation": [
+       -0.7499999999999999,
+       0
+      ]
+     },
+     "text": "glide along (1,0) thru (0,0.2165) by (-0.75,0)"
     },
     {
      "word": "CAcac",
@@ -3897,21 +3969,21 @@
      "text": "identity"
     },
     {
-     "word": "b",
+     "word": "cac",
      "isometry": {
       "type": "reflection",
       "axis": {
        "point": [
-        0,
-        0
+        0.18749999999999994,
+        0.3247595264191645
        ],
        "dir": [
-        1,
-        0
+        0.8660254037844387,
+        -0.49999999999999994
        ]
       }
      },
-     "text": "reflection in line thru (0,0) dir (1,0)"
+     "text": "reflection in line thru (0.1875,0.3248) dir (0.866,-0.5)"
     },
     {
      "word": "c",
@@ -3931,16 +4003,16 @@
      "text": "reflection in line thru (0.1875,0.1083) dir (0.5,-0.866)"
     },
     {
-     "word": "cb",
+     "word": "ac",
      "isometry": {
       "type": "rotation",
-      "angle": 2.0943951023931957,
+      "angle": 1.0471975511965976,
       "center": [
-       0.2499999999999999,
-       -3.7007434154171876e-17
+       -5.551115123125784e-17,
+       0.4330127018922193
       ]
      },
-     "text": "rotation by 0.6667*PI about (0.25,-0)"
+     "text": "rotation by 0.3333*PI about (-0,0.433)"
     },
     {
      "word": "bc",
@@ -3955,21 +4027,25 @@
      "text": "rotation by -0.6667*PI about (0.25,0)"
     },
     {
-     "word": "bcb",
+     "word": "bac",
      "isometry": {
-      "type": "reflection",
+      "type": "glide",
       "axis": {
        "point": [
-        0.18749999999999997,
-        -0.10825317547305478
+        -2.7755575615628914e-17,
+        2.7755575615628914e-17
        ],
        "dir": [
-        0.4999999999999999,
-        0.8660254037844387
+        0.8660254037844387,
+        0.49999999999999994
        ]
-      }
+      },
+      "translation": [
+       0.37499999999999994,
+       0.2165063509461096
+      ]
      },
-     "text": "reflection in line thru (0.1875,-0.1083) dir (0.5,0.866)"
+     "text": "glide along (0.866,0.5) thru (-0,0) by (0.375,0.2165)"
     }
    ],
    "transversal": [
@@ -4059,31 +4135,19 @@
    "simplyConnected": true,
    "hGenerators": [
     {
-     "word": "Ba",
+     "word": "CACa",
      "isometry": {
       "type": "rotation",
-      "angle": 3.141592653589793,
+      "angle": -2.0943951023931957,
       "center": [
-       0,
-       0
+       3.7007434154171876e-17,
+       0.4330127018922192
       ]
      },
-     "text": "rotation by 1*PI about (0,0)"
+     "text": "rotation by -0.6667*PI about (0,0.433)"
     },
     {
-     "word": "BCac",
-     "isometry": {
-      "type": "rotation",
-      "angle": -1.0471975511965976,
-      "center": [
-       0.7500000000000001,
-       5.551115123125784e-17
-      ]
-     },
-     "text": "rotation by -0.3333*PI about (0.75,0)"
-    },
-    {
-     "word": "Cacb",
+     "word": "CACb",
      "isometry": {
       "type": "rotation",
       "angle": 1.0471975511965976,
@@ -4093,6 +4157,18 @@
       ]
      },
      "text": "rotation by 0.3333*PI about (0.75,-0)"
+    },
+    {
+     "word": "bcac",
+     "isometry": {
+      "type": "rotation",
+      "angle": -1.0471975511965976,
+      "center": [
+       0.7500000000000001,
+       5.551115123125784e-17
+      ]
+     },
+     "text": "rotation by -0.3333*PI about (0.75,0)"
     }
    ],
    "sideCounts": {
@@ -4176,7 +4252,7 @@
      "text": "identity"
     },
     {
-     "word": "b",
+     "word": "a",
      "isometry": {
       "type": "reflection",
       "axis": {
@@ -4185,12 +4261,12 @@
         0
        ],
        "dir": [
-        1,
-        0
+        6.123233995736766e-17,
+        1
        ]
       }
      },
-     "text": "reflection in line thru (0,0) dir (1,0)"
+     "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
      "word": "c",
@@ -4210,45 +4286,45 @@
      "text": "reflection in line thru (0.1875,0.1083) dir (0.5,-0.866)"
     },
     {
-     "word": "cb",
+     "word": "ca",
      "isometry": {
       "type": "rotation",
-      "angle": 2.0943951023931957,
+      "angle": -1.0471975511965979,
       "center": [
-       0.2499999999999999,
-       -3.7007434154171876e-17
+       2.7755575615628907e-17,
+       0.4330127018922192
       ]
      },
-     "text": "rotation by 0.6667*PI about (0.25,-0)"
+     "text": "rotation by -0.3333*PI about (0,0.433)"
     },
     {
-     "word": "bc",
+     "word": "ac",
      "isometry": {
       "type": "rotation",
-      "angle": -2.0943951023931957,
+      "angle": 1.0471975511965976,
       "center": [
-       0.2499999999999999,
-       3.7007434154171876e-17
+       -5.551115123125784e-17,
+       0.4330127018922193
       ]
      },
-     "text": "rotation by -0.6667*PI about (0.25,0)"
+     "text": "rotation by 0.3333*PI about (-0,0.433)"
     },
     {
-     "word": "bcb",
+     "word": "cac",
      "isometry": {
       "type": "reflection",
       "axis": {
        "point": [
-        0.18749999999999997,
-        -0.10825317547305478
+        0.18749999999999994,
+        0.3247595264191645
        ],
        "dir": [
-        0.4999999999999999,
-        0.8660254037844387
+        0.8660254037844387,
+        -0.49999999999999994
        ]
       }
      },
-     "text": "reflection in line thru (0.1875,-0.1083) dir (0.5,0.866)"
+     "text": "reflection in line thru (0.1875,0.3248) dir (0.866,-0.5)"
     }
    ],
    "transversal": [
@@ -4338,7 +4414,7 @@
    "simplyConnected": true,
    "hGenerators": [
     {
-     "word": "Ba",
+     "word": "Ab",
      "isometry": {
       "type": "rotation",
       "angle": 3.141592653589793,
@@ -4350,7 +4426,7 @@
      "text": "rotation by 1*PI about (0,0)"
     },
     {
-     "word": "CBac",
+     "word": "CAbc",
      "isometry": {
       "type": "rotation",
       "angle": 3.141592653589793,
@@ -4362,21 +4438,32 @@
      "text": "rotation by 1*PI about (0.375,0.2165)"
     },
     {
-     "word": "BCBacb",
+     "word": "CACaca",
      "isometry": {
       "type": "rotation",
       "angle": 3.141592653589793,
       "center": [
-       0.37499999999999994,
-       -0.2165063509461096
+       5.675234587876407e-17,
+       0.4330127018922193
       ]
      },
-     "text": "rotation by 1*PI about (0.375,-0.2165)"
+     "text": "rotation by 1*PI about (0,0.433)"
+    },
+    {
+     "word": "CACbca",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       -0.75,
+       -0.43301270189221924
+      ]
+     },
+     "text": "translation by (-0.75,-0.433)"
     }
    ],
    "sideCounts": {
-    "boundary": 6,
-    "interior": 12
+    "boundary": 8,
+    "interior": 10
    },
    "name": "*632/2222[6]"
   },
@@ -4451,7 +4538,7 @@
      "text": "identity"
     },
     {
-     "word": "b",
+     "word": "a",
      "isometry": {
       "type": "reflection",
       "axis": {
@@ -4460,12 +4547,12 @@
         0
        ],
        "dir": [
-        1,
-        0
+        6.123233995736766e-17,
+        1
        ]
       }
      },
-     "text": "reflection in line thru (0,0) dir (1,0)"
+     "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
      "word": "c",
@@ -4485,45 +4572,45 @@
      "text": "reflection in line thru (0.1875,0.1083) dir (0.5,-0.866)"
     },
     {
-     "word": "cb",
+     "word": "ca",
      "isometry": {
       "type": "rotation",
-      "angle": 2.0943951023931957,
+      "angle": -1.0471975511965979,
       "center": [
-       0.2499999999999999,
-       -3.7007434154171876e-17
+       2.7755575615628907e-17,
+       0.4330127018922192
       ]
      },
-     "text": "rotation by 0.6667*PI about (0.25,-0)"
+     "text": "rotation by -0.3333*PI about (0,0.433)"
     },
     {
-     "word": "bcb",
+     "word": "ac",
+     "isometry": {
+      "type": "rotation",
+      "angle": 1.0471975511965976,
+      "center": [
+       -5.551115123125784e-17,
+       0.4330127018922193
+      ]
+     },
+     "text": "rotation by 0.3333*PI about (-0,0.433)"
+    },
+    {
+     "word": "cac",
      "isometry": {
       "type": "reflection",
       "axis": {
        "point": [
-        0.18749999999999997,
-        -0.10825317547305478
+        0.18749999999999994,
+        0.3247595264191645
        ],
        "dir": [
-        0.4999999999999999,
-        0.8660254037844387
+        0.8660254037844387,
+        -0.49999999999999994
        ]
       }
      },
-     "text": "reflection in line thru (0.1875,-0.1083) dir (0.5,0.866)"
-    },
-    {
-     "word": "bc",
-     "isometry": {
-      "type": "rotation",
-      "angle": -2.0943951023931957,
-      "center": [
-       0.2499999999999999,
-       3.7007434154171876e-17
-      ]
-     },
-     "text": "rotation by -0.6667*PI about (0.25,0)"
+     "text": "reflection in line thru (0.1875,0.3248) dir (0.866,-0.5)"
     }
    ],
    "transversal": [
@@ -4613,7 +4700,7 @@
    "simplyConnected": true,
    "hGenerators": [
     {
-     "word": "Ba",
+     "word": "Ab",
      "isometry": {
       "type": "rotation",
       "angle": 3.141592653589793,
@@ -4625,51 +4712,63 @@
      "text": "rotation by 1*PI about (0,0)"
     },
     {
-     "word": "BCBac",
+     "word": "CACbc",
      "isometry": {
       "type": "glide",
       "axis": {
        "point": [
-        0.37499999999999994,
-        -2.7755575615628914e-17
+        0.375,
+        2.7755575615628914e-17
        ],
        "dir": [
         6.123233995736766e-17,
-        1
+        -1
        ]
       },
       "translation": [
        2.651438096812267e-17,
+       -0.4330127018922193
+      ]
+     },
+     "text": "glide along (0,-1) thru (0.375,0) by (0,-0.433)"
+    },
+    {
+     "word": "CACaca",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       5.675234587876407e-17,
        0.4330127018922193
       ]
      },
-     "text": "glide along (0,1) thru (0.375,-0) by (0,0.433)"
+     "text": "rotation by 1*PI about (0,0.433)"
     },
     {
-     "word": "CBacb",
+     "word": "CAbca",
      "isometry": {
       "type": "glide",
       "axis": {
        "point": [
-        0.37499999999999994,
-        -2.7755575615628914e-17
+        0,
+        0.21650635094610962
        ],
        "dir": [
-        6.123233995736766e-17,
-        1
+        1,
+        0
        ]
       },
       "translation": [
-       -2.6514380968122664e-17,
-       -0.4330127018922192
+       -0.7499999999999999,
+       0
       ]
      },
-     "text": "glide along (0,1) thru (0.375,-0) by (-0,-0.433)"
+     "text": "glide along (1,0) thru (0,0.2165) by (-0.75,0)"
     }
    ],
    "sideCounts": {
-    "boundary": 6,
-    "interior": 12
+    "boundary": 8,
+    "interior": 10
    },
    "name": "*632/22x[6]"
   }
