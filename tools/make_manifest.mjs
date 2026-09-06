@@ -15,6 +15,14 @@
   subgroupStructure); geometry comes from SymmHub's grouplib + SubgroupDomain.
   Words follow the project convention: composition left to right,
   uppercase = inverse.  Terminology: cosets and orbits, never left/right.
+
+  Names G/H[n]#k: the ordinal #k orders the (type, index) bucket by the
+  geometric key of the conjugacy class (SymmHub's subgroupClassKey: the least
+  key over the conjugates of H, the stabilizers of the cosets).  The key of
+  the representative alone (subgroupKey, used until 2026-09-05) changes with
+  the fundamental domain, because another presentation enumerates another
+  conjugate of the same class; the class key does not, so the names are the
+  same for every domain shape (SymmHub: tests/subgroups/catalog_names.mjs).
 */
 
 import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
@@ -31,7 +39,7 @@ const { Group, ITransform, iPoint } = await import(SYMMHUB + '/lib/invlib/invlib
 const { buildSubgroupDomain, classifyEuclidean, isometryToString, sameTransform } =
   await import(SYMMHUB + '/lib/grouplib/SubgroupDomain.js');
 const { reidemeisterSchreier } = await import('./reidemeister.mjs');
-const { computeFrame, subgroupKey } =
+const { computeFrame, subgroupClassKey } =
   await import(SYMMHUB + '/lib/grouplib/SubgroupKey.js');
 
 const OUT_DIR = join(dirname(fileURLToPath(import.meta.url)), '..', 'data');
@@ -280,8 +288,11 @@ for(const sub of data.subgroups){
 
   if(frame){
     try {
-      const gk = subgroupKey({ group, frame, cosets: sub.cosets });
+      // the key of the conjugacy class: the least key over the conjugates of H
+      const gk = subgroupClassKey({ group, frame, cosets: sub.cosets });
       entry.geoKey = gk.key;
+      entry.keyCoset = gk.coset;                       // the coset whose stabilizer has the least key, 0 for H itself
+      entry.representativeKey = gk.keys.get(0).key;    // the key of H itself, the geoKey of the manifests before 2026-09-05
       entry.latticeHNF = gk.hnf;
       entry.latticeIndex = gk.latticeIndex;
       entry.pointIndex = gk.pointIndex;
@@ -318,8 +329,8 @@ for(const sub of data.subgroups){
 }
 
 // display names: G/H[n]#k — the ordinal k comes from sorting each
-// (type, index) bucket by the geometric key, so it is reproducible and
-// survives a change of the group's fundamental domain
+// (type, index) bucket by the geometric key of the class, so it is
+// reproducible and survives a change of the group's fundamental domain
 {
   const buckets = new Map();
   for(const s of subgroups){
@@ -337,7 +348,7 @@ for(const sub of data.subgroups){
 
 const manifest = {
   format: 'colorsym-catalog-manifest',
-  version: 2,
+  version: 3,            // 3: geoKey is the key of the conjugacy class; keyCoset and representativeKey added
   group: {
     name: groupName,
     stem: fileStem(groupName),

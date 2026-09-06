@@ -89,7 +89,11 @@ The palette is sampled from the rendered images, so it is passed per entry.
 Enumeration ids are not identity — the coset permutation string is. Subgroups are named
 `G/H[n]#k`, where `#k` (omitted when unique) orders the `(type, index)` bucket by a
 **geometric key**: a canonical frame computed from the isometries alone, plus the Hermite
-basis of `H`'s translation lattice and its surviving rotation centers as exact fractions.
-That key is invariant under a change of generating set, so the names survive the planned
-alternative fundamental-domain variants. `data/gap_id_map.json` maps the older GAP-derived
-ids onto it.
+basis of `H`'s translation lattice and its surviving rotation centers as exact fractions,
+taken as the least such key over the conjugates of `H` (the stabilizers of the cosets).
+That key is a property of the conjugacy class, so the names survive the alternative
+fundamental-domain variants, which enumerate other conjugates of the same classes
+(checked for four domain shapes in SymmHub's `tests/subgroups/catalog_names.mjs`). The
+manifests also carry `representativeKey`, the key of the enumerated representative alone,
+which the ordinals used before 2026-09-05. `data/gap_id_map.json` maps the older
+GAP-derived ids onto the coset strings.
