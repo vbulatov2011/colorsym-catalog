@@ -1,6 +1,6 @@
 {
  "format": "colorsym-catalog-manifest",
- "version": 2,
+ "version": 3,
  "group": {
   "name": "o",
   "stem": "o",
@@ -96,6 +96,8 @@
     }
    ],
    "geoKey": "k1|n=1|L=1,0,1|P=",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=1|L=1,0,1|P=",
    "latticeHNF": {
     "a": 1,
     "b": 0,
@@ -196,6 +198,8 @@
     }
    ],
    "geoKey": "k1|n=2|L=1,0,2|P=",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=2|L=1,0,2|P=",
    "latticeHNF": {
     "a": 1,
     "b": 0,
@@ -329,6 +333,8 @@
     }
    ],
    "geoKey": "k1|n=2|L=2,0,1|P=",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=2|L=2,0,1|P=",
    "latticeHNF": {
     "a": 2,
     "b": 0,
@@ -462,6 +468,8 @@
     }
    ],
    "geoKey": "k1|n=2|L=1,1,2|P=",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=2|L=1,1,2|P=",
    "latticeHNF": {
     "a": 1,
     "b": 1,
@@ -599,6 +607,8 @@
     }
    ],
    "geoKey": "k1|n=3|L=1,0,3|P=",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=3|L=1,0,3|P=",
    "latticeHNF": {
     "a": 1,
     "b": 0,
@@ -769,6 +779,8 @@
     }
    ],
    "geoKey": "k1|n=3|L=3,0,1|P=",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=3|L=3,0,1|P=",
    "latticeHNF": {
     "a": 3,
     "b": 0,
@@ -939,6 +951,8 @@
     }
    ],
    "geoKey": "k1|n=3|L=1,2,3|P=",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=3|L=1,2,3|P=",
    "latticeHNF": {
     "a": 1,
     "b": 2,
@@ -1109,6 +1123,8 @@
     }
    ],
    "geoKey": "k1|n=3|L=1,1,3|P=",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=3|L=1,1,3|P=",
    "latticeHNF": {
     "a": 1,
     "b": 1,
@@ -1283,6 +1299,8 @@
     }
    ],
    "geoKey": "k1|n=4|L=1,0,4|P=",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=4|L=1,0,4|P=",
    "latticeHNF": {
     "a": 1,
     "b": 0,
@@ -1490,6 +1508,8 @@
     }
    ],
    "geoKey": "k1|n=4|L=2,0,2|P=",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=4|L=2,0,2|P=",
    "latticeHNF": {
     "a": 2,
     "b": 0,
@@ -1686,6 +1706,8 @@
     }
    ],
    "geoKey": "k1|n=4|L=1,2,4|P=",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=4|L=1,2,4|P=",
    "latticeHNF": {
     "a": 1,
     "b": 2,
@@ -1893,6 +1915,8 @@
     }
    ],
    "geoKey": "k1|n=4|L=4,0,1|P=",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=4|L=4,0,1|P=",
    "latticeHNF": {
     "a": 4,
     "b": 0,
@@ -2100,6 +2124,8 @@
     }
    ],
    "geoKey": "k1|n=4|L=1,3,4|P=",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=4|L=1,3,4|P=",
    "latticeHNF": {
     "a": 1,
     "b": 3,
@@ -2307,6 +2333,8 @@
     }
    ],
    "geoKey": "k1|n=4|L=1,1,4|P=",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=4|L=1,1,4|P=",
    "latticeHNF": {
     "a": 1,
     "b": 1,
@@ -2514,6 +2542,8 @@
     }
    ],
    "geoKey": "k1|n=4|L=2,1,2|P=",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=4|L=2,1,2|P=",
    "latticeHNF": {
     "a": 2,
     "b": 1,
@@ -2725,6 +2755,8 @@
     }
    ],
    "geoKey": "k1|n=5|L=1,0,5|P=",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=5|L=1,0,5|P=",
    "latticeHNF": {
     "a": 1,
     "b": 0,
@@ -2969,6 +3001,8 @@
     }
    ],
    "geoKey": "k1|n=5|L=5,0,1|P=",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=5|L=5,0,1|P=",
    "latticeHNF": {
     "a": 5,
     "b": 0,
@@ -3213,6 +3247,8 @@
     }
    ],
    "geoKey": "k1|n=5|L=1,4,5|P=",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=5|L=1,4,5|P=",
    "latticeHNF": {
     "a": 1,
     "b": 4,
@@ -3457,6 +3493,8 @@
     }
    ],
    "geoKey": "k1|n=5|L=1,1,5|P=",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=5|L=1,1,5|P=",
    "latticeHNF": {
     "a": 1,
     "b": 1,
@@ -3701,6 +3739,8 @@
     }
    ],
    "geoKey": "k1|n=5|L=1,2,5|P=",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=5|L=1,2,5|P=",
    "latticeHNF": {
     "a": 1,
     "b": 2,
@@ -3945,6 +3985,8 @@
     }
    ],
    "geoKey": "k1|n=5|L=1,3,5|P=",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=5|L=1,3,5|P=",
    "latticeHNF": {
     "a": 1,
     "b": 3,
@@ -4193,6 +4235,8 @@
     }
    ],
    "geoKey": "k1|n=6|L=1,0,6|P=",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=6|L=1,0,6|P=",
    "latticeHNF": {
     "a": 1,
     "b": 0,
@@ -4474,6 +4518,8 @@
     }
    ],
    "geoKey": "k1|n=6|L=2,0,3|P=",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=6|L=2,0,3|P=",
    "latticeHNF": {
     "a": 2,
     "b": 0,
@@ -4733,6 +4779,8 @@
     }
    ],
    "geoKey": "k1|n=6|L=1,3,6|P=",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=6|L=1,3,6|P=",
    "latticeHNF": {
     "a": 1,
     "b": 3,
@@ -4992,6 +5040,8 @@
     }
    ],
    "geoKey": "k1|n=6|L=6,0,1|P=",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=6|L=6,0,1|P=",
    "latticeHNF": {
     "a": 6,
     "b": 0,
@@ -5273,6 +5323,8 @@
     }
    ],
    "geoKey": "k1|n=6|L=1,5,6|P=",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=6|L=1,5,6|P=",
    "latticeHNF": {
     "a": 1,
     "b": 5,
@@ -5554,6 +5606,8 @@
     }
    ],
    "geoKey": "k1|n=6|L=1,1,6|P=",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=6|L=1,1,6|P=",
    "latticeHNF": {
     "a": 1,
     "b": 1,
@@ -5835,6 +5889,8 @@
     }
    ],
    "geoKey": "k1|n=6|L=3,0,2|P=",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=6|L=3,0,2|P=",
    "latticeHNF": {
     "a": 3,
     "b": 0,
@@ -6094,6 +6150,8 @@
     }
    ],
    "geoKey": "k1|n=6|L=3,1,2|P=",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=6|L=3,1,2|P=",
    "latticeHNF": {
     "a": 3,
     "b": 1,
@@ -6353,6 +6411,8 @@
     }
    ],
    "geoKey": "k1|n=6|L=1,2,6|P=",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=6|L=1,2,6|P=",
    "latticeHNF": {
     "a": 1,
     "b": 2,
@@ -6623,6 +6683,8 @@
     }
    ],
    "geoKey": "k1|n=6|L=1,4,6|P=",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=6|L=1,4,6|P=",
    "latticeHNF": {
     "a": 1,
     "b": 4,
@@ -6893,6 +6955,8 @@
     }
    ],
    "geoKey": "k1|n=6|L=2,2,3|P=",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=6|L=2,2,3|P=",
    "latticeHNF": {
     "a": 2,
     "b": 2,
@@ -7163,6 +7227,8 @@
     }
    ],
    "geoKey": "k1|n=6|L=2,1,3|P=",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=6|L=2,1,3|P=",
    "latticeHNF": {
     "a": 2,
     "b": 1,
