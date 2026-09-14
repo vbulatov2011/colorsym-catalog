@@ -13,3 +13,7 @@ desktop.ini
 # node
 node_modules/
 npm-debug.log*
+
+# rendered PNGs are intermediates: the job writes them, tools/to_webp.py
+# converts each entry to lossless WebP (identical pixels, 12% of the size)
+**/gen/*.png

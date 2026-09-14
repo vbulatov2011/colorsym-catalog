@@ -31,8 +31,11 @@ colorings = [f for f in files if f.startswith(slug + '.')]
 glyphs = [f for f in files if re.fullmatch(r'[fg]\d+\.png', f)]
 rest_files = [f for f in files if f not in pieces + unions + colorings + glyphs]
 
+# job items name PNGs; the entry ships the converted WebP (see tools/to_webp.py)
+IMG_EXT = '.webp'
+img_of = lambda f: f[:-4] + IMG_EXT if f.endswith('.png') else f
 fig = lambda f, cap=None: ("<figure><img src='%s'><figcaption>%s</figcaption></figure>"
-                           % (f, cap if cap is not None else f))
+                           % (img_of(f), cap if cap is not None else img_of(f)))
 grid = lambda cls, figs: "<div class='g %s'>\n%s\n</div>" % (cls, "\n".join(figs))
 
 parts = []

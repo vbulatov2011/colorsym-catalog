@@ -116,7 +116,12 @@ def stack(layers, cap):
             % (cap, "\n".join(out)))
 
 GEN = 'gen/'
-sub = lambda i: '%s%s' % (GEN, i)
+# The render job writes PNG; tools/to_webp.py converts each entry to lossless
+# WebP (same pixels, 12% of the size, and faster to decode - which matters on
+# a page holding a few hundred image layers).  Every image path goes through
+# sub(), so naming them is a single place.
+IMG_EXT = '.webp'
+sub = lambda i: '%s%s' % (GEN, i[:-4] + IMG_EXT if i.endswith('.png') else i)
 
 # ---- swatch css for n colours -------------------------------------------
 sw_css = "\n".join(".sw%d { background: %s; }" % (j, palette[j] if j < len(palette) else '#ccc')
