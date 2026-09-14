@@ -166,6 +166,6 @@ job = {
  "items": items,
 }
 path = CAT + '/jobs/%s.json' % job_file
-io.open(path, 'w', encoding='utf-8').write(json.dumps(job, indent=1))
+io.open(path, 'w', encoding='utf-8', newline='\n').write(json.dumps(job, indent=1))
 print('job written:', path, len(items), 'items ->', out_dir)
 print('simplyConnected:', entry.get('simplyConnected'), ' f:', ' '.join(f_words), ' g:', ' '.join(g_words))

@@ -63,5 +63,5 @@ h3{margin:.7rem 0 .3rem;font-size:.78rem;text-transform:uppercase;color:#666}</s
 """ % (entry_name, entry_name, N, K, len(files), "\n".join(parts))
 
 out = os.path.join(out_dir, 'sheet.html')
-io.open(out, 'w', encoding='utf-8').write(page)
+io.open(out, 'w', encoding='utf-8', newline='\n').write(page)
 print('wrote', out, '-', len(files), 'images')
