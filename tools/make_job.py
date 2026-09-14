@@ -118,5 +118,5 @@ job = {
  "autoView": {"subgroup": COS, "fillRatio": 0.24},
  "items": items,
 }
-io.open(CAT + '/jobs/632_632_3.json', 'w', encoding='utf-8').write(json.dumps(job, indent=1))
+io.open(CAT + '/jobs/632_632_3.json', 'w', encoding='utf-8', newline='\n').write(json.dumps(job, indent=1))
 print('job written:', len(items), 'items')

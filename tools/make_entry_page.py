@@ -514,5 +514,5 @@ decoration.</p>
 }
 
 out = os.path.join(out_dir, 'index.html')
-io.open(out, 'w', encoding='utf-8').write(page)
+io.open(out, 'w', encoding='utf-8', newline='\n').write(page)
 print('wrote', out)
