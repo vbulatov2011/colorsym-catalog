@@ -201,7 +201,7 @@
                                     "useCrown": true,
                                     "useTilt": true,
                                     "patternTiltDirection": 0,
-                                    "useMipmap": false,
+                                    "useMipmap": true,
                                     "interpolation": "linear"
                                 }
                             },
