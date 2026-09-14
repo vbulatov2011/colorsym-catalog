@@ -68,8 +68,12 @@ FD_ON = {"fill": {"enabled": True}, "outline": {"enabled": True}}
 TILE_ON = {"outline": {"enabled": True}}
 
 def motif(**arrows):
+    # useMipmap: the motif texture is minified at this framing, so without
+    # mipmaps its edges alias into hard stair steps.  The presets ship with it
+    # off, hence the override here - it applies to every motif image: the
+    # colorings, the pieces and the uncolored pattern.
     a = {"useOrbit": False, "mask": "", "permutations": INVCOS,
-         "colorTiles": {"count": N}}
+         "useMipmap": True, "colorTiles": {"count": N}}
     a.update(arrows)
     return {"layers": {"arrows": a}, "enable": {"overlay": False}}
 

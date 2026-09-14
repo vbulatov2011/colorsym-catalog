@@ -20,6 +20,7 @@
      "useOrbit": false,
      "mask": "",
      "permutations": "abc cab bca",
+     "useMipmap": true,
      "colorTiles": {
       "count": 3
      },
@@ -37,6 +38,7 @@
      "useOrbit": false,
      "mask": "",
      "permutations": "abc cab bca",
+     "useMipmap": true,
      "colorTiles": {
       "count": 3
      },
@@ -55,6 +57,7 @@
      "useOrbit": false,
      "mask": "",
      "permutations": "abc cab bca",
+     "useMipmap": true,
      "colorTiles": {
       "count": 3
      },
@@ -73,6 +76,7 @@
      "useOrbit": true,
      "mask": "",
      "permutations": "abc cab bca",
+     "useMipmap": true,
      "colorTiles": {
       "count": 3
      },
@@ -91,6 +95,7 @@
      "useOrbit": true,
      "mask": "",
      "permutations": "abc cab bca",
+     "useMipmap": true,
      "colorTiles": {
       "count": 3
      },
@@ -109,6 +114,7 @@
      "useOrbit": true,
      "mask": "",
      "permutations": "abc cab bca",
+     "useMipmap": true,
      "colorTiles": {
       "count": 3
      },
@@ -127,6 +133,7 @@
      "useOrbit": false,
      "mask": "100",
      "permutations": "abc cab bca",
+     "useMipmap": true,
      "colorTiles": {
       "count": 3
      },
@@ -145,6 +152,7 @@
      "useOrbit": false,
      "mask": "010",
      "permutations": "abc cab bca",
+     "useMipmap": true,
      "colorTiles": {
       "count": 3
      },
@@ -163,6 +171,7 @@
      "useOrbit": false,
      "mask": "001",
      "permutations": "abc cab bca",
+     "useMipmap": true,
      "colorTiles": {
       "count": 3
      },
@@ -181,6 +190,7 @@
      "useOrbit": false,
      "mask": "100",
      "permutations": "abc cab bca",
+     "useMipmap": true,
      "colorTiles": {
       "count": 3
      },
@@ -199,6 +209,7 @@
      "useOrbit": false,
      "mask": "010",
      "permutations": "abc cab bca",
+     "useMipmap": true,
      "colorTiles": {
       "count": 3
      },
@@ -217,6 +228,7 @@
      "useOrbit": false,
      "mask": "001",
      "permutations": "abc cab bca",
+     "useMipmap": true,
      "colorTiles": {
       "count": 3
      },
@@ -235,6 +247,7 @@
      "useOrbit": false,
      "mask": "100",
      "permutations": "abc cab bca",
+     "useMipmap": true,
      "colorTiles": {
       "count": 3
      },
@@ -253,6 +266,7 @@
      "useOrbit": false,
      "mask": "010",
      "permutations": "abc cab bca",
+     "useMipmap": true,
      "colorTiles": {
       "count": 3
      },
@@ -271,6 +285,7 @@
      "useOrbit": false,
      "mask": "001",
      "permutations": "abc cab bca",
+     "useMipmap": true,
      "colorTiles": {
       "count": 3
      },
@@ -291,6 +306,7 @@
        "useOrbit": false,
        "mask": "100",
        "permutations": "abc cab bca",
+       "useMipmap": true,
        "colorTiles": {
         "count": 3
        },
@@ -307,6 +323,7 @@
        "useOrbit": false,
        "mask": "100",
        "permutations": "abc cab bca",
+       "useMipmap": true,
        "colorTiles": {
         "count": 3
        },
@@ -323,6 +340,7 @@
        "useOrbit": false,
        "mask": "100",
        "permutations": "abc cab bca",
+       "useMipmap": true,
        "colorTiles": {
         "count": 3
        },
@@ -345,6 +363,7 @@
        "useOrbit": false,
        "mask": "010",
        "permutations": "abc cab bca",
+       "useMipmap": true,
        "colorTiles": {
         "count": 3
        },
@@ -361,6 +380,7 @@
        "useOrbit": false,
        "mask": "010",
        "permutations": "abc cab bca",
+       "useMipmap": true,
        "colorTiles": {
         "count": 3
        },
@@ -377,6 +397,7 @@
        "useOrbit": false,
        "mask": "010",
        "permutations": "abc cab bca",
+       "useMipmap": true,
        "colorTiles": {
         "count": 3
        },
@@ -399,6 +420,7 @@
        "useOrbit": false,
        "mask": "001",
        "permutations": "abc cab bca",
+       "useMipmap": true,
        "colorTiles": {
         "count": 3
        },
@@ -415,6 +437,7 @@
        "useOrbit": false,
        "mask": "001",
        "permutations": "abc cab bca",
+       "useMipmap": true,
        "colorTiles": {
         "count": 3
        },
@@ -431,6 +454,7 @@
        "useOrbit": false,
        "mask": "001",
        "permutations": "abc cab bca",
+       "useMipmap": true,
        "colorTiles": {
         "count": 3
        },
@@ -450,6 +474,7 @@
      "useOrbit": false,
      "mask": "",
      "permutations": "abc cab bca",
+     "useMipmap": true,
      "colorTiles": {
       "count": 3
      },
