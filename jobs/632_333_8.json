@@ -20,6 +20,7 @@
      "useOrbit": false,
      "mask": "",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -37,6 +38,7 @@
      "useOrbit": false,
      "mask": "",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -54,6 +56,7 @@
      "useOrbit": false,
      "mask": "",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -71,6 +74,7 @@
      "useOrbit": false,
      "mask": "",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -88,6 +92,7 @@
      "useOrbit": false,
      "mask": "",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -106,6 +111,7 @@
      "useOrbit": false,
      "mask": "",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -124,6 +130,7 @@
      "useOrbit": false,
      "mask": "",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -142,6 +149,7 @@
      "useOrbit": false,
      "mask": "",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -160,6 +168,7 @@
      "useOrbit": true,
      "mask": "",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -178,6 +187,7 @@
      "useOrbit": true,
      "mask": "",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -196,6 +206,7 @@
      "useOrbit": true,
      "mask": "",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -214,6 +225,7 @@
      "useOrbit": true,
      "mask": "",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -232,6 +244,7 @@
      "useOrbit": true,
      "mask": "",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -250,6 +263,7 @@
      "useOrbit": true,
      "mask": "",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -268,6 +282,7 @@
      "useOrbit": true,
      "mask": "",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -286,6 +301,7 @@
      "useOrbit": true,
      "mask": "",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -304,6 +320,7 @@
      "useOrbit": false,
      "mask": "10000000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -322,6 +339,7 @@
      "useOrbit": false,
      "mask": "01000000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -340,6 +358,7 @@
      "useOrbit": false,
      "mask": "00100000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -358,6 +377,7 @@
      "useOrbit": false,
      "mask": "00010000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -376,6 +396,7 @@
      "useOrbit": false,
      "mask": "00001000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -394,6 +415,7 @@
      "useOrbit": false,
      "mask": "00000100",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -412,6 +434,7 @@
      "useOrbit": false,
      "mask": "00000010",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -430,6 +453,7 @@
      "useOrbit": false,
      "mask": "00000001",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -448,6 +472,7 @@
      "useOrbit": false,
      "mask": "10000000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -466,6 +491,7 @@
      "useOrbit": false,
      "mask": "01000000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -484,6 +510,7 @@
      "useOrbit": false,
      "mask": "00100000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -502,6 +529,7 @@
      "useOrbit": false,
      "mask": "00010000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -520,6 +548,7 @@
      "useOrbit": false,
      "mask": "00001000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -538,6 +567,7 @@
      "useOrbit": false,
      "mask": "00000100",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -556,6 +586,7 @@
      "useOrbit": false,
      "mask": "00000010",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -574,6 +605,7 @@
      "useOrbit": false,
      "mask": "00000001",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -592,6 +624,7 @@
      "useOrbit": false,
      "mask": "10000000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -610,6 +643,7 @@
      "useOrbit": false,
      "mask": "01000000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -628,6 +662,7 @@
      "useOrbit": false,
      "mask": "00100000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -646,6 +681,7 @@
      "useOrbit": false,
      "mask": "00010000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -664,6 +700,7 @@
      "useOrbit": false,
      "mask": "00001000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -682,6 +719,7 @@
      "useOrbit": false,
      "mask": "00000100",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -700,6 +738,7 @@
      "useOrbit": false,
      "mask": "00000010",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -718,6 +757,7 @@
      "useOrbit": false,
      "mask": "00000001",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -736,6 +776,7 @@
      "useOrbit": false,
      "mask": "10000000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -754,6 +795,7 @@
      "useOrbit": false,
      "mask": "01000000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -772,6 +814,7 @@
      "useOrbit": false,
      "mask": "00100000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -790,6 +833,7 @@
      "useOrbit": false,
      "mask": "00010000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -808,6 +852,7 @@
      "useOrbit": false,
      "mask": "00001000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -826,6 +871,7 @@
      "useOrbit": false,
      "mask": "00000100",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -844,6 +890,7 @@
      "useOrbit": false,
      "mask": "00000010",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -862,6 +909,7 @@
      "useOrbit": false,
      "mask": "00000001",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -880,6 +928,7 @@
      "useOrbit": false,
      "mask": "10000000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -898,6 +947,7 @@
      "useOrbit": false,
      "mask": "01000000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -916,6 +966,7 @@
      "useOrbit": false,
      "mask": "00100000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -934,6 +985,7 @@
      "useOrbit": false,
      "mask": "00010000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -952,6 +1004,7 @@
      "useOrbit": false,
      "mask": "00001000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -970,6 +1023,7 @@
      "useOrbit": false,
      "mask": "00000100",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -988,6 +1042,7 @@
      "useOrbit": false,
      "mask": "00000010",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -1006,6 +1061,7 @@
      "useOrbit": false,
      "mask": "00000001",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -1024,6 +1080,7 @@
      "useOrbit": false,
      "mask": "10000000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -1042,6 +1099,7 @@
      "useOrbit": false,
      "mask": "01000000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -1060,6 +1118,7 @@
      "useOrbit": false,
      "mask": "00100000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -1078,6 +1137,7 @@
      "useOrbit": false,
      "mask": "00010000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -1096,6 +1156,7 @@
      "useOrbit": false,
      "mask": "00001000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -1114,6 +1175,7 @@
      "useOrbit": false,
      "mask": "00000100",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -1132,6 +1194,7 @@
      "useOrbit": false,
      "mask": "00000010",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -1150,6 +1213,7 @@
      "useOrbit": false,
      "mask": "00000001",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -1168,6 +1232,7 @@
      "useOrbit": false,
      "mask": "10000000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -1186,6 +1251,7 @@
      "useOrbit": false,
      "mask": "01000000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -1204,6 +1270,7 @@
      "useOrbit": false,
      "mask": "00100000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -1222,6 +1289,7 @@
      "useOrbit": false,
      "mask": "00010000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -1240,6 +1308,7 @@
      "useOrbit": false,
      "mask": "00001000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -1258,6 +1327,7 @@
      "useOrbit": false,
      "mask": "00000100",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -1276,6 +1346,7 @@
      "useOrbit": false,
      "mask": "00000010",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -1294,6 +1365,7 @@
      "useOrbit": false,
      "mask": "00000001",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -1312,6 +1384,7 @@
      "useOrbit": false,
      "mask": "10000000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -1330,6 +1403,7 @@
      "useOrbit": false,
      "mask": "01000000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -1348,6 +1422,7 @@
      "useOrbit": false,
      "mask": "00100000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -1366,6 +1441,7 @@
      "useOrbit": false,
      "mask": "00010000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -1384,6 +1460,7 @@
      "useOrbit": false,
      "mask": "00001000",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -1402,6 +1479,7 @@
      "useOrbit": false,
      "mask": "00000100",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -1420,6 +1498,7 @@
      "useOrbit": false,
      "mask": "00000010",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -1438,6 +1517,7 @@
      "useOrbit": false,
      "mask": "00000001",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
@@ -1458,6 +1538,7 @@
        "useOrbit": false,
        "mask": "10000000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -1474,6 +1555,7 @@
        "useOrbit": false,
        "mask": "10000000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -1490,6 +1572,7 @@
        "useOrbit": false,
        "mask": "10000000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -1506,6 +1589,7 @@
        "useOrbit": false,
        "mask": "10000000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -1522,6 +1606,7 @@
        "useOrbit": false,
        "mask": "10000000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -1538,6 +1623,7 @@
        "useOrbit": false,
        "mask": "10000000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -1554,6 +1640,7 @@
        "useOrbit": false,
        "mask": "10000000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -1570,6 +1657,7 @@
        "useOrbit": false,
        "mask": "10000000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -1592,6 +1680,7 @@
        "useOrbit": false,
        "mask": "01000000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -1608,6 +1697,7 @@
        "useOrbit": false,
        "mask": "01000000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -1624,6 +1714,7 @@
        "useOrbit": false,
        "mask": "01000000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -1640,6 +1731,7 @@
        "useOrbit": false,
        "mask": "01000000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -1656,6 +1748,7 @@
        "useOrbit": false,
        "mask": "01000000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -1672,6 +1765,7 @@
        "useOrbit": false,
        "mask": "01000000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -1688,6 +1782,7 @@
        "useOrbit": false,
        "mask": "01000000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -1704,6 +1799,7 @@
        "useOrbit": false,
        "mask": "01000000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -1726,6 +1822,7 @@
        "useOrbit": false,
        "mask": "00100000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -1742,6 +1839,7 @@
        "useOrbit": false,
        "mask": "00100000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -1758,6 +1856,7 @@
        "useOrbit": false,
        "mask": "00100000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -1774,6 +1873,7 @@
        "useOrbit": false,
        "mask": "00100000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -1790,6 +1890,7 @@
        "useOrbit": false,
        "mask": "00100000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -1806,6 +1907,7 @@
        "useOrbit": false,
        "mask": "00100000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -1822,6 +1924,7 @@
        "useOrbit": false,
        "mask": "00100000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -1838,6 +1941,7 @@
        "useOrbit": false,
        "mask": "00100000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -1860,6 +1964,7 @@
        "useOrbit": false,
        "mask": "00010000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -1876,6 +1981,7 @@
        "useOrbit": false,
        "mask": "00010000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -1892,6 +1998,7 @@
        "useOrbit": false,
        "mask": "00010000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -1908,6 +2015,7 @@
        "useOrbit": false,
        "mask": "00010000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -1924,6 +2032,7 @@
        "useOrbit": false,
        "mask": "00010000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -1940,6 +2049,7 @@
        "useOrbit": false,
        "mask": "00010000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -1956,6 +2066,7 @@
        "useOrbit": false,
        "mask": "00010000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -1972,6 +2083,7 @@
        "useOrbit": false,
        "mask": "00010000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -1994,6 +2106,7 @@
        "useOrbit": false,
        "mask": "00001000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -2010,6 +2123,7 @@
        "useOrbit": false,
        "mask": "00001000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -2026,6 +2140,7 @@
        "useOrbit": false,
        "mask": "00001000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -2042,6 +2157,7 @@
        "useOrbit": false,
        "mask": "00001000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -2058,6 +2174,7 @@
        "useOrbit": false,
        "mask": "00001000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -2074,6 +2191,7 @@
        "useOrbit": false,
        "mask": "00001000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -2090,6 +2208,7 @@
        "useOrbit": false,
        "mask": "00001000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -2106,6 +2225,7 @@
        "useOrbit": false,
        "mask": "00001000",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -2128,6 +2248,7 @@
        "useOrbit": false,
        "mask": "00000100",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -2144,6 +2265,7 @@
        "useOrbit": false,
        "mask": "00000100",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -2160,6 +2282,7 @@
        "useOrbit": false,
        "mask": "00000100",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -2176,6 +2299,7 @@
        "useOrbit": false,
        "mask": "00000100",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -2192,6 +2316,7 @@
        "useOrbit": false,
        "mask": "00000100",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -2208,6 +2333,7 @@
        "useOrbit": false,
        "mask": "00000100",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -2224,6 +2350,7 @@
        "useOrbit": false,
        "mask": "00000100",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -2240,6 +2367,7 @@
        "useOrbit": false,
        "mask": "00000100",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -2262,6 +2390,7 @@
        "useOrbit": false,
        "mask": "00000010",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -2278,6 +2407,7 @@
        "useOrbit": false,
        "mask": "00000010",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -2294,6 +2424,7 @@
        "useOrbit": false,
        "mask": "00000010",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -2310,6 +2441,7 @@
        "useOrbit": false,
        "mask": "00000010",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -2326,6 +2458,7 @@
        "useOrbit": false,
        "mask": "00000010",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -2342,6 +2475,7 @@
        "useOrbit": false,
        "mask": "00000010",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -2358,6 +2492,7 @@
        "useOrbit": false,
        "mask": "00000010",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -2374,6 +2509,7 @@
        "useOrbit": false,
        "mask": "00000010",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -2396,6 +2532,7 @@
        "useOrbit": false,
        "mask": "00000001",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -2412,6 +2549,7 @@
        "useOrbit": false,
        "mask": "00000001",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -2428,6 +2566,7 @@
        "useOrbit": false,
        "mask": "00000001",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -2444,6 +2583,7 @@
        "useOrbit": false,
        "mask": "00000001",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -2460,6 +2600,7 @@
        "useOrbit": false,
        "mask": "00000001",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -2476,6 +2617,7 @@
        "useOrbit": false,
        "mask": "00000001",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -2492,6 +2634,7 @@
        "useOrbit": false,
        "mask": "00000001",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -2508,6 +2651,7 @@
        "useOrbit": false,
        "mask": "00000001",
        "permutations": "baefcdhg adbcfgeh acdbgefh",
+       "useMipmap": true,
        "colorTiles": {
         "count": 8
        },
@@ -2527,6 +2671,7 @@
      "useOrbit": false,
      "mask": "",
      "permutations": "baefcdhg adbcfgeh acdbgefh",
+     "useMipmap": true,
      "colorTiles": {
       "count": 8
      },
