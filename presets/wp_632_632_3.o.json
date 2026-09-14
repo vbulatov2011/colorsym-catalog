@@ -152,7 +152,7 @@
                                     "imageId": "im1",
                                     "permutations": "acb cab bca",
                                     "permIndex": 2,
-                                    "useOrbit": false,
+                                    "useOrbit": true,
                                     "mask": "",
                                     "subgroups": {
                                         "className": "Subgroups",
