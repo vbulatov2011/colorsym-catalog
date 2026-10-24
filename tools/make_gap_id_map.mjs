@@ -18,7 +18,7 @@ const SYMMHUB = 'D:/home/projects/00.docs/250125_symhub/repo_v2/SymmHub';
 const { subgroupsData, findByPermutations } =
   await import('file:///' + SYMMHUB + '/lib/sublib/src/sublib.js');
 
-const DIR = SYMMHUB + '/apps/sympix/color_groups/';
+const DIR = SYMMHUB + '/lib/color_groups/';
 const OUT = join(dirname(fileURLToPath(import.meta.url)), '..', 'data');
 const norm = s => String(s).trim().split(/\s+/).join(' ');
 
