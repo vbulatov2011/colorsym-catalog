@@ -249,4 +249,5 @@ footer.bar nav.up .grp .now {
   min-width: 1.5rem; padding: 0 .3rem; text-align: center; line-height: 1.45; font-weight: 600;
   border: 1px solid var(--ink); border-radius: 3px; background: var(--ink); color: #fff;
 }
+footer.bar nav.up .grp a.now:hover { border-color: var(--accent); }
 @media (max-width: 640px) { footer.bar { padding: .35rem 0; } }

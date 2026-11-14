@@ -75,12 +75,16 @@ def trial(name):
     return TRIAL_GROUPS is None or name in TRIAL_GROUPS
 
 
-def count_run(label, has, up, cur=None):
+def count_run(label, has, up, cur=None, link_cur=False):
     """the bar's run of count links, '632 with 1 2 3 4 6 colors' or 'All
     symmetries with 1 2 3 4 5 6 colors': a count n with no color group
     (has(n) false) is dashed, the page's own count dark; up = the path from
-    the page to the folder of the count pages"""
+    the page to the folder of the count pages.  link_cur: the dark count is
+    still a link - the run leads to other pages with the same count (a
+    group's count page to the all-symmetries page)"""
     def one(n):
+        if n == cur and link_cur:
+            return '<a class="now" href="%s%d/index.html" title="%s">%d</a>' % (up, n, colors(n), n)
         if n == cur:
             return '<span class="now" title="%s">%d</span>' % (colors(n), n)
         if has(n):
@@ -411,7 +415,7 @@ for name, g in groups.items():
             bar([('../../index.html', 'Catalog'),
                  ('../index.html', 'All color groups of <b>%s</b>' % disp(name)),
                  count_run('<b>%s</b>' % disp(name), lambda k: g['per_n'][k], '../', cur=n),
-                 ('../../colors/%d/index.html' % n, 'All symmetries with <b>%s</b>' % colors(n))])
+                 count_run('All symmetries', all_n, '../../colors/', cur=n, link_cur=True)])
             if trial(name) else ''))
 
 
