@@ -1,0 +1,27 @@
+{
+ "_comment": [
+  "Uncolored pattern of 22x for the index pages.",
+  "Preset wp-22X.json (default); view framed on G's domain from 22x.json."
+ ],
+ "outDir": "22x/gen",
+ "size": 400,
+ "preset": "/catalog/presets/wp/wp-22X.json",
+ "autoView": {
+  "subgroup": "a a a a",
+  "fillRatio": 0.3
+ },
+ "items": [
+  {
+   "file": "group.png",
+   "layers": {
+    "drawing": {
+     "coloringType": "none",
+     "useMipmap": true
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  }
+ ]
+}

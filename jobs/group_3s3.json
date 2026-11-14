@@ -1,0 +1,27 @@
+{
+ "_comment": [
+  "Uncolored pattern of 3*3 for the index pages.",
+  "Preset wp-3s3.json (3-*3-*3 triangle); view framed on G's domain from 3s3.json."
+ ],
+ "outDir": "3s3/gen",
+ "size": 400,
+ "preset": "/catalog/presets/wp/wp-3s3.json",
+ "autoView": {
+  "subgroup": "a a a",
+  "fillRatio": 0.3
+ },
+ "items": [
+  {
+   "file": "group.png",
+   "layers": {
+    "drawing": {
+     "coloringType": "none",
+     "useMipmap": true
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  }
+ ]
+}

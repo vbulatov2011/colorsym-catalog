@@ -1,0 +1,27 @@
+{
+ "_comment": [
+  "Uncolored pattern of xx for the index pages.",
+  "Preset wp-XX.json (default); view framed on G's domain from xx.json."
+ ],
+ "outDir": "xx/gen",
+ "size": 400,
+ "preset": "/catalog/presets/wp/wp-XX.json",
+ "autoView": {
+  "subgroup": "a a a a",
+  "fillRatio": 0.3
+ },
+ "items": [
+  {
+   "file": "group.png",
+   "layers": {
+    "drawing": {
+     "coloringType": "none",
+     "useMipmap": true
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  }
+ ]
+}

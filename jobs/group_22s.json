@@ -1,0 +1,27 @@
+{
+ "_comment": [
+  "Uncolored pattern of 22* for the index pages.",
+  "Preset wp-22s.json (default); view framed on G's domain from 22s.json."
+ ],
+ "outDir": "22s/gen",
+ "size": 400,
+ "preset": "/catalog/presets/wp/wp-22s.json",
+ "autoView": {
+  "subgroup": "a a a a",
+  "fillRatio": 0.3
+ },
+ "items": [
+  {
+   "file": "group.png",
+   "layers": {
+    "drawing": {
+     "coloringType": "none",
+     "useMipmap": true
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  }
+ ]
+}
