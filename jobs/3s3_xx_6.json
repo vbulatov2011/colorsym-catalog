@@ -4,14 +4,16 @@
   "Template: wp-3s3; permutations overridden to this subgroup's invcos.",
   "f words: e c b ab cab bab",
   "g words: e a B Ba Bab BaBab",
-  "Every item sets symmetry.options.iterations = 60."
+  "Every item sets symmetry.options.iterations = 60.",
+  "View: the preset's own (centre and zoom), shared by every item."
  ],
  "outDir": "3s3/6/3s3-xx-6/gen",
  "size": 800,
  "preset": "/catalog/presets/wp/wp-3s3.json",
- "autoView": {
-  "subgroup": "badcfe bcaefd cabfde",
-  "fillRatio": 0.24
+ "view": {
+  "zoom": 0.667,
+  "centerX": 0,
+  "centerY": 0
  },
  "items": [
   {

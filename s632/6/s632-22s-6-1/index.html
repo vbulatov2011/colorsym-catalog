@@ -26,7 +26,7 @@ table.geo .cellcap { font-size: .85rem; color: #556; margin-top: .3rem; max-widt
 .stack img.htil { opacity: .3; }
 .stack img.gfd, .stack img.hfd { opacity: .35; }
 .stack img.gsym, .stack img.hsym { opacity: .75; }
-body.off-ghost img.ghost, body.off-gfd img.gfd, body.off-hfd img.hfd,
+body.off-pat img.pat, body.off-ghost img.ghost, body.off-gfd img.gfd, body.off-hfd img.hfd,
 body.off-gtil img.gtil, body.off-htil img.htil,
 body.off-gsym img.gsym, body.off-hsym img.hsym,
 body.off-f img.fglyph, body.off-g img.gglyph { display: none; }
@@ -41,11 +41,12 @@ body.off-f img.fglyph, body.off-g img.gglyph { display: none; }
 #deco-panel hr { border: 0; border-top: 1px solid #ddd; margin: .3rem 0; }
 </style>
 </head>
-<body>
+<body class="with-bar">
 
 <div id="deco">
  <button id="deco-btn" aria-label="display options" title="display options">&#9776;</button>
  <div id="deco-panel" hidden>
+  <label><input type="checkbox" data-k="pat" checked> pattern</label>
   <label><input type="checkbox" data-k="ghost" checked> ghost H</label>
   <hr>
   <label><input type="checkbox" data-k="gfd" checked> G fd</label>
@@ -60,6 +61,33 @@ body.off-f img.fglyph, body.off-g img.gglyph { display: none; }
   <label><input type="checkbox" data-k="f" checked> f-transforms</label>
  </div>
 </div>
+<script>
+// the menu's choices, kept in localStorage for every entry page; applied here,
+// before the panels, so a page opens as it was left
+(function () {
+  var KEY = 'colorsym-catalog.entry.layers', saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) {}
+  var btn = document.getElementById('deco-btn'),
+      panel = document.getElementById('deco-panel'),
+      boxes = [].slice.call(panel.querySelectorAll('input[data-k]'));
+  function apply(cb) {
+    document.body.classList.toggle('off-' + cb.getAttribute('data-k'), !cb.checked);
+  }
+  boxes.forEach(function (cb) {
+    var k = cb.getAttribute('data-k');
+    if (typeof saved[k] === 'boolean') cb.checked = saved[k];
+    apply(cb);
+  });
+  btn.addEventListener('click', function () { panel.hidden = !panel.hidden; });
+  panel.addEventListener('change', function (e) {
+    var k = e.target.getAttribute('data-k');
+    if (!k) return;
+    apply(e.target);
+    saved[k] = e.target.checked;
+    try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
+  });
+})();
+</script>
 
 <header class="entry">
 <div class="wrap">
@@ -236,11 +264,11 @@ click.</b></p>
    <td class='cell rep'>
     <div class='stack'>
       <div class='cap'>H</div>
+      <img src='gen/00.webp' class='pat'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/00.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
     </div>
@@ -248,12 +276,12 @@ click.</b></p>
    <td class='cell rep'>
     <div class='stack'>
       <div class='cap'>f<sub>1</sub> H</div>
+      <img src='gen/10.webp' class='pat'>
+      <img src='gen/00.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/00.webp' class='ghost'>
-      <img src='gen/10.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/f1.webp' class='fglyph'>
@@ -262,12 +290,12 @@ click.</b></p>
    <td class='cell rep'>
     <div class='stack'>
       <div class='cap'>f<sub>2</sub> H</div>
+      <img src='gen/20.webp' class='pat'>
+      <img src='gen/00.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/00.webp' class='ghost'>
-      <img src='gen/20.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/f2.webp' class='fglyph'>
@@ -276,12 +304,12 @@ click.</b></p>
    <td class='cell'>
     <div class='stack'>
       <div class='cap'>f<sub>3</sub> H</div>
+      <img src='gen/30.webp' class='pat'>
+      <img src='gen/00.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/00.webp' class='ghost'>
-      <img src='gen/30.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/f3.webp' class='fglyph'>
@@ -290,12 +318,12 @@ click.</b></p>
    <td class='cell'>
     <div class='stack'>
       <div class='cap'>f<sub>4</sub> H</div>
+      <img src='gen/40.webp' class='pat'>
+      <img src='gen/00.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/00.webp' class='ghost'>
-      <img src='gen/40.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/f4.webp' class='fglyph'>
@@ -304,12 +332,12 @@ click.</b></p>
    <td class='cell'>
     <div class='stack'>
       <div class='cap'>f<sub>5</sub> H</div>
+      <img src='gen/50.webp' class='pat'>
+      <img src='gen/00.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/00.webp' class='ghost'>
-      <img src='gen/50.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/f5.webp' class='fglyph'>
@@ -318,11 +346,11 @@ click.</b></p>
    <td class='cell marg'>
     <div class='stack'>
       <div class='cap'>all orbits of H</div>
+      <img src='gen/s632-22s-6-1.o.webp' class='pat'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/s632-22s-6-1.o.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
     </div>
@@ -333,12 +361,12 @@ click.</b></p>
    <td class='cell rep'>
     <div class='stack'>
       <div class='cap'>H g<sub>1</sub></div>
+      <img src='gen/01.webp' class='pat'>
+      <img src='gen/00.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/00.webp' class='ghost'>
-      <img src='gen/01.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g1.webp' class='gglyph'>
@@ -347,12 +375,12 @@ click.</b></p>
    <td class='cell rep'>
     <div class='stack'>
       <div class='cap'>f<sub>1</sub> H g<sub>1</sub></div>
+      <img src='gen/11.webp' class='pat'>
+      <img src='gen/01.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/01.webp' class='ghost'>
-      <img src='gen/11.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g1.webp' class='gglyph'>
@@ -361,12 +389,12 @@ click.</b></p>
    <td class='cell rep'>
     <div class='stack'>
       <div class='cap'>f<sub>2</sub> H g<sub>1</sub></div>
+      <img src='gen/21.webp' class='pat'>
+      <img src='gen/01.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/01.webp' class='ghost'>
-      <img src='gen/21.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g1.webp' class='gglyph'>
@@ -375,12 +403,12 @@ click.</b></p>
    <td class='cell'>
     <div class='stack'>
       <div class='cap'>f<sub>3</sub> H g<sub>1</sub></div>
+      <img src='gen/31.webp' class='pat'>
+      <img src='gen/01.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/01.webp' class='ghost'>
-      <img src='gen/31.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g1.webp' class='gglyph'>
@@ -389,12 +417,12 @@ click.</b></p>
    <td class='cell'>
     <div class='stack'>
       <div class='cap'>f<sub>4</sub> H g<sub>1</sub></div>
+      <img src='gen/41.webp' class='pat'>
+      <img src='gen/01.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/01.webp' class='ghost'>
-      <img src='gen/41.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g1.webp' class='gglyph'>
@@ -403,12 +431,12 @@ click.</b></p>
    <td class='cell'>
     <div class='stack'>
       <div class='cap'>f<sub>5</sub> H g<sub>1</sub></div>
+      <img src='gen/51.webp' class='pat'>
+      <img src='gen/01.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/01.webp' class='ghost'>
-      <img src='gen/51.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g1.webp' class='gglyph'>
@@ -417,11 +445,11 @@ click.</b></p>
    <td class='cell marg'>
     <div class='stack'>
       <div class='cap'>all orbits of H g<sub>1</sub></div>
+      <img src='gen/s632-22s-6-1.o1.webp' class='pat'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/s632-22s-6-1.o1.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g1.webp' class='gglyph'>
@@ -433,12 +461,12 @@ click.</b></p>
    <td class='cell rep'>
     <div class='stack'>
       <div class='cap'>H g<sub>2</sub></div>
+      <img src='gen/02.webp' class='pat'>
+      <img src='gen/00.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/00.webp' class='ghost'>
-      <img src='gen/02.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g2.webp' class='gglyph'>
@@ -447,12 +475,12 @@ click.</b></p>
    <td class='cell rep'>
     <div class='stack'>
       <div class='cap'>f<sub>1</sub> H g<sub>2</sub></div>
+      <img src='gen/12.webp' class='pat'>
+      <img src='gen/02.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/02.webp' class='ghost'>
-      <img src='gen/12.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g2.webp' class='gglyph'>
@@ -461,12 +489,12 @@ click.</b></p>
    <td class='cell rep'>
     <div class='stack'>
       <div class='cap'>f<sub>2</sub> H g<sub>2</sub></div>
+      <img src='gen/22.webp' class='pat'>
+      <img src='gen/02.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/02.webp' class='ghost'>
-      <img src='gen/22.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g2.webp' class='gglyph'>
@@ -475,12 +503,12 @@ click.</b></p>
    <td class='cell'>
     <div class='stack'>
       <div class='cap'>f<sub>3</sub> H g<sub>2</sub></div>
+      <img src='gen/32.webp' class='pat'>
+      <img src='gen/02.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/02.webp' class='ghost'>
-      <img src='gen/32.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g2.webp' class='gglyph'>
@@ -489,12 +517,12 @@ click.</b></p>
    <td class='cell'>
     <div class='stack'>
       <div class='cap'>f<sub>4</sub> H g<sub>2</sub></div>
+      <img src='gen/42.webp' class='pat'>
+      <img src='gen/02.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/02.webp' class='ghost'>
-      <img src='gen/42.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g2.webp' class='gglyph'>
@@ -503,12 +531,12 @@ click.</b></p>
    <td class='cell'>
     <div class='stack'>
       <div class='cap'>f<sub>5</sub> H g<sub>2</sub></div>
+      <img src='gen/52.webp' class='pat'>
+      <img src='gen/02.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/02.webp' class='ghost'>
-      <img src='gen/52.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g2.webp' class='gglyph'>
@@ -517,11 +545,11 @@ click.</b></p>
    <td class='cell marg'>
     <div class='stack'>
       <div class='cap'>all orbits of H g<sub>2</sub></div>
+      <img src='gen/s632-22s-6-1.o2.webp' class='pat'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/s632-22s-6-1.o2.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g2.webp' class='gglyph'>
@@ -533,12 +561,12 @@ click.</b></p>
    <td class='cell rep'>
     <div class='stack'>
       <div class='cap'>H g<sub>3</sub></div>
+      <img src='gen/03.webp' class='pat'>
+      <img src='gen/00.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/00.webp' class='ghost'>
-      <img src='gen/03.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g3.webp' class='gglyph'>
@@ -547,12 +575,12 @@ click.</b></p>
    <td class='cell rep'>
     <div class='stack'>
       <div class='cap'>f<sub>1</sub> H g<sub>3</sub></div>
+      <img src='gen/13.webp' class='pat'>
+      <img src='gen/03.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/03.webp' class='ghost'>
-      <img src='gen/13.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g3.webp' class='gglyph'>
@@ -561,12 +589,12 @@ click.</b></p>
    <td class='cell rep'>
     <div class='stack'>
       <div class='cap'>f<sub>2</sub> H g<sub>3</sub></div>
+      <img src='gen/23.webp' class='pat'>
+      <img src='gen/03.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/03.webp' class='ghost'>
-      <img src='gen/23.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g3.webp' class='gglyph'>
@@ -575,12 +603,12 @@ click.</b></p>
    <td class='cell'>
     <div class='stack'>
       <div class='cap'>f<sub>3</sub> H g<sub>3</sub></div>
+      <img src='gen/33.webp' class='pat'>
+      <img src='gen/03.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/03.webp' class='ghost'>
-      <img src='gen/33.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g3.webp' class='gglyph'>
@@ -589,12 +617,12 @@ click.</b></p>
    <td class='cell'>
     <div class='stack'>
       <div class='cap'>f<sub>4</sub> H g<sub>3</sub></div>
+      <img src='gen/43.webp' class='pat'>
+      <img src='gen/03.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/03.webp' class='ghost'>
-      <img src='gen/43.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g3.webp' class='gglyph'>
@@ -603,12 +631,12 @@ click.</b></p>
    <td class='cell'>
     <div class='stack'>
       <div class='cap'>f<sub>5</sub> H g<sub>3</sub></div>
+      <img src='gen/53.webp' class='pat'>
+      <img src='gen/03.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/03.webp' class='ghost'>
-      <img src='gen/53.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g3.webp' class='gglyph'>
@@ -617,11 +645,11 @@ click.</b></p>
    <td class='cell marg'>
     <div class='stack'>
       <div class='cap'>all orbits of H g<sub>3</sub></div>
+      <img src='gen/s632-22s-6-1.o3.webp' class='pat'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/s632-22s-6-1.o3.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g3.webp' class='gglyph'>
@@ -633,12 +661,12 @@ click.</b></p>
    <td class='cell rep'>
     <div class='stack'>
       <div class='cap'>H g<sub>4</sub></div>
+      <img src='gen/04.webp' class='pat'>
+      <img src='gen/00.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/00.webp' class='ghost'>
-      <img src='gen/04.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g4.webp' class='gglyph'>
@@ -647,12 +675,12 @@ click.</b></p>
    <td class='cell rep'>
     <div class='stack'>
       <div class='cap'>f<sub>1</sub> H g<sub>4</sub></div>
+      <img src='gen/14.webp' class='pat'>
+      <img src='gen/04.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/04.webp' class='ghost'>
-      <img src='gen/14.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g4.webp' class='gglyph'>
@@ -661,12 +689,12 @@ click.</b></p>
    <td class='cell rep'>
     <div class='stack'>
       <div class='cap'>f<sub>2</sub> H g<sub>4</sub></div>
+      <img src='gen/24.webp' class='pat'>
+      <img src='gen/04.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/04.webp' class='ghost'>
-      <img src='gen/24.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g4.webp' class='gglyph'>
@@ -675,12 +703,12 @@ click.</b></p>
    <td class='cell'>
     <div class='stack'>
       <div class='cap'>f<sub>3</sub> H g<sub>4</sub></div>
+      <img src='gen/34.webp' class='pat'>
+      <img src='gen/04.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/04.webp' class='ghost'>
-      <img src='gen/34.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g4.webp' class='gglyph'>
@@ -689,12 +717,12 @@ click.</b></p>
    <td class='cell'>
     <div class='stack'>
       <div class='cap'>f<sub>4</sub> H g<sub>4</sub></div>
+      <img src='gen/44.webp' class='pat'>
+      <img src='gen/04.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/04.webp' class='ghost'>
-      <img src='gen/44.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g4.webp' class='gglyph'>
@@ -703,12 +731,12 @@ click.</b></p>
    <td class='cell'>
     <div class='stack'>
       <div class='cap'>f<sub>5</sub> H g<sub>4</sub></div>
+      <img src='gen/54.webp' class='pat'>
+      <img src='gen/04.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/04.webp' class='ghost'>
-      <img src='gen/54.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g4.webp' class='gglyph'>
@@ -717,11 +745,11 @@ click.</b></p>
    <td class='cell marg'>
     <div class='stack'>
       <div class='cap'>all orbits of H g<sub>4</sub></div>
+      <img src='gen/s632-22s-6-1.o4.webp' class='pat'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/s632-22s-6-1.o4.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g4.webp' class='gglyph'>
@@ -733,12 +761,12 @@ click.</b></p>
    <td class='cell rep'>
     <div class='stack'>
       <div class='cap'>H g<sub>5</sub></div>
+      <img src='gen/05.webp' class='pat'>
+      <img src='gen/00.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/00.webp' class='ghost'>
-      <img src='gen/05.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g5.webp' class='gglyph'>
@@ -747,12 +775,12 @@ click.</b></p>
    <td class='cell rep'>
     <div class='stack'>
       <div class='cap'>f<sub>1</sub> H g<sub>5</sub></div>
+      <img src='gen/15.webp' class='pat'>
+      <img src='gen/05.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/05.webp' class='ghost'>
-      <img src='gen/15.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g5.webp' class='gglyph'>
@@ -761,12 +789,12 @@ click.</b></p>
    <td class='cell rep'>
     <div class='stack'>
       <div class='cap'>f<sub>2</sub> H g<sub>5</sub></div>
+      <img src='gen/25.webp' class='pat'>
+      <img src='gen/05.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/05.webp' class='ghost'>
-      <img src='gen/25.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g5.webp' class='gglyph'>
@@ -775,12 +803,12 @@ click.</b></p>
    <td class='cell'>
     <div class='stack'>
       <div class='cap'>f<sub>3</sub> H g<sub>5</sub></div>
+      <img src='gen/35.webp' class='pat'>
+      <img src='gen/05.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/05.webp' class='ghost'>
-      <img src='gen/35.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g5.webp' class='gglyph'>
@@ -789,12 +817,12 @@ click.</b></p>
    <td class='cell'>
     <div class='stack'>
       <div class='cap'>f<sub>4</sub> H g<sub>5</sub></div>
+      <img src='gen/45.webp' class='pat'>
+      <img src='gen/05.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/05.webp' class='ghost'>
-      <img src='gen/45.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g5.webp' class='gglyph'>
@@ -803,12 +831,12 @@ click.</b></p>
    <td class='cell'>
     <div class='stack'>
       <div class='cap'>f<sub>5</sub> H g<sub>5</sub></div>
+      <img src='gen/55.webp' class='pat'>
+      <img src='gen/05.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/05.webp' class='ghost'>
-      <img src='gen/55.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g5.webp' class='gglyph'>
@@ -817,11 +845,11 @@ click.</b></p>
    <td class='cell marg'>
     <div class='stack'>
       <div class='cap'>all orbits of H g<sub>5</sub></div>
+      <img src='gen/s632-22s-6-1.o5.webp' class='pat'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/s632-22s-6-1.o5.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g5.webp' class='gglyph'>
@@ -833,37 +861,78 @@ click.</b></p>
    <td class='cell marg rep'>
     <div class='stack'>
       <div class='cap'>&lowast;632/22&lowast;[6]#1.1</div>
-      <img src='gen/s632-22s-6-1.1.webp'>
+      <img src='gen/s632-22s-6-1.1.webp' class='pat'>
+      <img src='gen/group_tiling.webp' class='gtil'>
+      <img src='gen/sub_til.webp' class='htil'>
+      <img src='gen/group_domain.webp' class='gfd'>
+      <img src='gen/sub_domain.webp' class='hfd'>
+      <img src='gen/group_marks.webp' class='gsym'>
+      <img src='gen/sub_marks.webp' class='hsym'>
     </div>
    </td>
    <td class='cell marg rep'>
     <div class='stack'>
       <div class='cap'>&lowast;632/22&lowast;[6]#1.2</div>
-      <img src='gen/s632-22s-6-1.2.webp'>
+      <img src='gen/s632-22s-6-1.2.webp' class='pat'>
+      <img src='gen/group_tiling.webp' class='gtil'>
+      <img src='gen/sub_til.webp' class='htil'>
+      <img src='gen/group_domain.webp' class='gfd'>
+      <img src='gen/sub_domain.webp' class='hfd'>
+      <img src='gen/group_marks.webp' class='gsym'>
+      <img src='gen/sub_marks.webp' class='hsym'>
+      <img src='gen/f1.webp' class='fglyph'>
     </div>
    </td>
    <td class='cell marg rep'>
     <div class='stack'>
       <div class='cap'>&lowast;632/22&lowast;[6]#1.3</div>
-      <img src='gen/s632-22s-6-1.3.webp'>
+      <img src='gen/s632-22s-6-1.3.webp' class='pat'>
+      <img src='gen/group_tiling.webp' class='gtil'>
+      <img src='gen/sub_til.webp' class='htil'>
+      <img src='gen/group_domain.webp' class='gfd'>
+      <img src='gen/sub_domain.webp' class='hfd'>
+      <img src='gen/group_marks.webp' class='gsym'>
+      <img src='gen/sub_marks.webp' class='hsym'>
+      <img src='gen/f2.webp' class='fglyph'>
     </div>
    </td>
    <td class='cell marg'>
     <div class='stack'>
       <div class='cap'>&equiv; .1</div>
-      <img src='gen/s632-22s-6-1.4.webp'>
+      <img src='gen/s632-22s-6-1.4.webp' class='pat'>
+      <img src='gen/group_tiling.webp' class='gtil'>
+      <img src='gen/sub_til.webp' class='htil'>
+      <img src='gen/group_domain.webp' class='gfd'>
+      <img src='gen/sub_domain.webp' class='hfd'>
+      <img src='gen/group_marks.webp' class='gsym'>
+      <img src='gen/sub_marks.webp' class='hsym'>
+      <img src='gen/f3.webp' class='fglyph'>
     </div>
    </td>
    <td class='cell marg'>
     <div class='stack'>
       <div class='cap'>&equiv; .2</div>
-      <img src='gen/s632-22s-6-1.5.webp'>
+      <img src='gen/s632-22s-6-1.5.webp' class='pat'>
+      <img src='gen/group_tiling.webp' class='gtil'>
+      <img src='gen/sub_til.webp' class='htil'>
+      <img src='gen/group_domain.webp' class='gfd'>
+      <img src='gen/sub_domain.webp' class='hfd'>
+      <img src='gen/group_marks.webp' class='gsym'>
+      <img src='gen/sub_marks.webp' class='hsym'>
+      <img src='gen/f4.webp' class='fglyph'>
     </div>
    </td>
    <td class='cell marg'>
     <div class='stack'>
       <div class='cap'>&equiv; .3</div>
-      <img src='gen/s632-22s-6-1.6.webp'>
+      <img src='gen/s632-22s-6-1.6.webp' class='pat'>
+      <img src='gen/group_tiling.webp' class='gtil'>
+      <img src='gen/sub_til.webp' class='htil'>
+      <img src='gen/group_domain.webp' class='gfd'>
+      <img src='gen/sub_domain.webp' class='hfd'>
+      <img src='gen/group_marks.webp' class='gsym'>
+      <img src='gen/sub_marks.webp' class='hsym'>
+      <img src='gen/f5.webp' class='fglyph'>
     </div>
    </td>
    <td class='cell marg'></td>
@@ -881,17 +950,25 @@ comes from: <code>H&thinsp;g<sub>j</sub></code> panels show <code>H</code>, and
 <code>f<sub>i</sub>&hellip;</code> panels show their row&rsquo;s <code>H&thinsp;g<sub>j</sub></code>.
 The <b>bottom margin</b> is the coloring by cosets of every column &mdash; under a marked
 column the pictures from the top of the page, under a repeated column the same partition
-with its colors relabeled (titled <code>&equiv;</code> its marked twin). Under and over
-every panel sit faded context layers &mdash; the tilings, fundamental domains and
-symmetry centers of G and H; the <b>&#9776; menu</b> at the top right toggles each
-decoration.</p>
-
-<footer class="entry">
-<div><a href="../../../index.html">catalog</a> &middot; generated from the manifest
-(*632.6.7) and the render job &middot; <a href="gen/sheet.html">contact sheet</a></div>
-</footer>
+with its colors relabeled (titled <code>&equiv;</code> its marked twin). Over every
+panel sit faded context layers &mdash; the tilings, fundamental domains and symmetry
+centers of G and H; the <b>&#9776; menu</b> at the top right toggles each of them and
+the pattern itself, and remembers the choice.</p>
 
 </div>
+
+<footer class="bar">
+<div class="wrap">
+<nav class="up">
+ <a href="../../../index.html">Catalog</a>
+ <a href="../../index.html">All color groups of <b>&lowast;632</b></a>
+ <span class="grp"><b>&lowast;632</b> with <a href="../../1/index.html" title="1 color">1</a><a href="../../2/index.html" title="2 colors">2</a><a href="../../3/index.html" title="3 colors">3</a><a href="../../4/index.html" title="4 colors">4</a><span class="off" title="none">5</span><a class="now" href="../../6/index.html" title="6 colors">6</a> colors</span>
+ <a href="../../../colors/6/index.html">All symmetries with <b>6 colors</b></a>
+</nav>
+<div class="meta" title="generated from the manifest and the render job">*632.6.7 &middot;
+<a href="gen/sheet.html">contact sheet</a></div>
+</div>
+</footer>
 
 <div id="lb" hidden>
  <div>
@@ -944,19 +1021,6 @@ decoration.</p>
       var k = flow.indexOf(idx) + d[1];
       if (k >= 0 && k < flow.length) show(flow[k]);
     }
-  });
-})();
-(function () {
-  var btn = document.getElementById('deco-btn'),
-      panel = document.getElementById('deco-panel'),
-      boxes = [].slice.call(panel.querySelectorAll('input[data-k]'));
-  function apply(cb) {
-    document.body.classList.toggle('off-' + cb.getAttribute('data-k'), !cb.checked);
-  }
-  boxes.forEach(apply);
-  btn.addEventListener('click', function () { panel.hidden = !panel.hidden; });
-  panel.addEventListener('change', function (e) {
-    if (e.target.getAttribute('data-k')) apply(e.target);
   });
 })();
 </script>

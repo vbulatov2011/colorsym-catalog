@@ -3,14 +3,16 @@
   "Layer set for 333/333[3]#3 (333.3.3), 3 colours, 1 placements.",
   "Template: wp-333; permutations overridden to this subgroup's invcos.",
   "f words: e c a",
-  "g words: e a A"
+  "g words: e a A",
+  "View: the preset's own (centre and zoom), shared by every item."
  ],
  "outDir": "333/3/333-333-3-3/gen",
  "size": 800,
  "preset": "/catalog/presets/wp/wp-333.json",
- "autoView": {
-  "subgroup": "bca bca cab cab",
-  "fillRatio": 0.24
+ "view": {
+  "zoom": 0.664,
+  "centerX": 0,
+  "centerY": 0
  },
  "items": [
   {

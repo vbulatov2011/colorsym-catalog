@@ -4,14 +4,16 @@
   "Template: wp-s632; permutations overridden to this subgroup's invcos.",
   "f words: e c ac a ca cac",
   "g words: e c bcb b bc cb",
-  "Every item sets symmetry.options.iterations = 60."
+  "Every item sets symmetry.options.iterations = 60.",
+  "View: the preset's own (centre and zoom), shared by every item."
  ],
  "outDir": "s632/6/s632-22x-6/gen",
  "size": 800,
  "preset": "/catalog/presets/wp/wp-s632.json",
- "autoView": {
-  "subgroup": "dcbafe dfeacb bafedc",
-  "fillRatio": 0.24
+ "view": {
+  "zoom": 0.666,
+  "centerX": 0,
+  "centerY": 0
  },
  "items": [
   {

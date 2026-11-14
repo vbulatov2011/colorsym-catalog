@@ -3,14 +3,16 @@
   "Layer set for 333/333[1] (333.1.1), 1 colours, 1 placements.",
   "Template: wp-333; permutations overridden to this subgroup's invcos.",
   "f words: e",
-  "g words: e"
+  "g words: e",
+  "View: the preset's own (centre and zoom), shared by every item."
  ],
  "outDir": "333/1/333-333-1/gen",
  "size": 800,
  "preset": "/catalog/presets/wp/wp-333.json",
- "autoView": {
-  "subgroup": "a a a a",
-  "fillRatio": 0.24
+ "view": {
+  "zoom": 0.664,
+  "centerX": 0,
+  "centerY": 0
  },
  "items": [
   {

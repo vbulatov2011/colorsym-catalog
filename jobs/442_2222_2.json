@@ -4,14 +4,16 @@
   "Template: wp-442; permutations overridden to this subgroup's invcos.",
   "f words: e b",
   "g words: e b",
-  "Every item sets symmetry.options.iterations = 60."
+  "Every item sets symmetry.options.iterations = 60.",
+  "View: the preset's own (centre and zoom), shared by every item."
  ],
  "outDir": "442/2/442-2222-2/gen",
  "size": 800,
  "preset": "/catalog/presets/wp/wp-442.json",
- "autoView": {
-  "subgroup": "ab ba ba",
-  "fillRatio": 0.24
+ "view": {
+  "zoom": 1.34,
+  "centerX": 0,
+  "centerY": 4.126797873658747e-06
  },
  "items": [
   {

@@ -1,15 +1,11 @@
 {
  "_comment": [
   "Uncolored pattern of 442 for the index pages.",
-  "Preset wp-442.json (4a-4b-4b triangle); view framed on G's domain from 442.json."
+  "Preset wp-442.json (4a-4b-4b triangle); the preset's own view (centre and zoom)."
  ],
  "outDir": "442/gen",
  "size": 400,
  "preset": "/catalog/presets/wp/wp-442.json",
- "autoView": {
-  "subgroup": "a a a",
-  "fillRatio": 0.3
- },
  "items": [
   {
    "file": "group.png",
