@@ -208,3 +208,45 @@ nav.ntiles a.cur span { color: #ccc; }
 nav.ntiles a.cur span.in { color: #999; }
 
 footer { margin-top: 2.5rem; font-size: .8rem; color: var(--faint); }
+
+/* ---- the navigation bar: always on screen, as on the entry pages ------- */
+
+body.with-bar { padding-bottom: 0; }
+/* a page shorter than the window: main grows, so the bar meets the bottom edge */
+body.with-bar { display: flex; flex-direction: column; min-height: 100vh; }
+body.with-bar > header, body.with-bar > main, body.with-bar > footer.bar { width: 100%; }
+body.with-bar > main { flex: 1 0 auto; }
+footer.bar {
+  position: sticky; bottom: 0; z-index: 40;
+  margin-top: 2.5rem; padding: .45rem 0;
+  background: #e8e8e8; border-top: 1px solid var(--line);
+  box-shadow: 0 -2px 8px rgba(0,0,0,.06);
+  font-size: .87rem; color: var(--muted);
+}
+footer.bar nav.up { display: flex; flex-wrap: wrap; gap: .4rem; }
+footer.bar nav.up a, footer.bar nav.up .cur {
+  padding: .1rem .6rem; border: 1px solid var(--line); border-radius: 4px;
+  background: var(--panel); color: var(--accent); text-decoration: none;
+}
+footer.bar nav.up > * { white-space: nowrap; }     /* a narrow screen wraps whole chips */
+footer.bar nav.up a:hover { border-color: var(--accent); }
+footer.bar nav.up b { font-weight: 600; color: var(--ink); }
+footer.bar nav.up .cur { background: var(--ink); border-color: var(--ink); color: #ccc; }
+footer.bar nav.up .cur b { color: #fff; }
+/* a run of count links: '632 with 1 2 3 4 6 colors' */
+footer.bar nav.up .grp {
+  display: inline-flex; align-items: center; gap: .2rem;
+  padding: .1rem .6rem; border: 1px solid var(--line); border-radius: 4px;
+  background: var(--panel); color: var(--accent);
+}
+footer.bar nav.up .grp a, footer.bar nav.up .grp .off {
+  min-width: 1.5rem; padding: 0 .3rem; text-align: center; line-height: 1.45;
+  border: 1px solid var(--line); border-radius: 3px; background: #fafafa;
+}
+footer.bar nav.up .grp a { font-weight: 600; }
+footer.bar nav.up .grp .off { color: var(--faint); background: transparent; border-style: dashed; }
+footer.bar nav.up .grp .now {
+  min-width: 1.5rem; padding: 0 .3rem; text-align: center; line-height: 1.45; font-weight: 600;
+  border: 1px solid var(--ink); border-radius: 3px; background: var(--ink); color: #fff;
+}
+@media (max-width: 640px) { footer.bar { padding: .35rem 0; } }

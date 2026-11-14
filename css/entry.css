@@ -189,6 +189,47 @@ footer.entry {
 }
 footer.entry a { color: var(--accent); }
 
+/* the navigation bar: always on screen (sticky at the viewport bottom, and in
+ * its own place at the end of the page), under the lightbox and the menu */
+body.with-bar { padding-bottom: 0; }
+footer.bar {
+  position: sticky; bottom: 0; z-index: 40;
+  margin-top: 2.5rem; padding: .45rem 0;
+  background: #e8e8e8; border-top: 1px solid var(--line);
+  box-shadow: 0 -2px 8px rgba(0,0,0,.06);
+  font-size: .87rem; color: var(--muted);
+}
+footer.bar .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem 1rem; }
+footer.bar nav.up { display: flex; flex-wrap: wrap; gap: .4rem; }
+footer.bar nav.up a {
+  padding: .1rem .6rem; border: 1px solid var(--line); border-radius: 4px;
+  background: var(--panel); color: var(--accent); text-decoration: none;
+}
+footer.bar nav.up a:hover { border-color: var(--accent); }
+footer.bar nav.up b { font-weight: 600; color: var(--ink); }
+footer.bar nav.up > * { white-space: nowrap; }     /* a narrow screen wraps whole chips */
+/* the run of G's count pages, '632 with 1 2 3 4 6 colors': this entry's count
+ * dark, a count with no color group dashed (as on the index pages) */
+footer.bar nav.up .grp {
+  display: inline-flex; align-items: center; gap: .2rem;
+  padding: .1rem .6rem; border: 1px solid var(--line); border-radius: 4px;
+  background: var(--panel); color: var(--accent);
+}
+footer.bar nav.up .grp a, footer.bar nav.up .grp .off {
+  min-width: 1.5rem; padding: 0 .3rem; text-align: center; line-height: 1.45;
+  border: 1px solid var(--line); border-radius: 3px; background: #fafafa;
+}
+footer.bar nav.up .grp a { font-weight: 600; }
+footer.bar nav.up .grp .off { color: #a8a8a8; background: transparent; border-style: dashed; }
+footer.bar nav.up .grp a.now { background: var(--ink); border-color: var(--ink); color: #fff; }
+footer.bar nav.up .grp a.now:hover { border-color: var(--accent); }
+footer.bar .meta { margin-left: auto; font-size: .8rem; }
+footer.bar .meta a { color: var(--accent); }
+@media (max-width: 640px) {            /* a phone: the links only, in two rows */
+  footer.bar { padding: .35rem 0; }
+  footer.bar .meta { display: none; }
+}
+
 /* longer prose inside a .fact box (the f / g definitions) */
 .fact dd.small { font-size: .87rem; line-height: 1.5; color: var(--ink); }
 /* keep case-sensitive math symbols as written: lowercase f, g are not G */

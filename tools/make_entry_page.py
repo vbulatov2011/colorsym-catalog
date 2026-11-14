@@ -314,6 +314,18 @@ else:
                     "G&rsquo;s domain inside H&rsquo;s; the %d placements give %d distinct "
                     "colorings of the same uncolored pattern." % (K, N, K, K))
 
+# the bar's run of G's count pages, '632 with 1 2 3 4 6 colors': this entry's
+# count dark (still a link - the page is the entry, not the count page), a
+# count with no color group dashed
+_have = {s['index'] for s in m['subgroups']}
+def _count_link(k):
+    if k not in _have:
+        return '<span class="off" title="none">%d</span>' % k
+    return ('<a%s href="../../%d/index.html" title="%d color%s">%d</a>'
+            % (' class="now"' if k == N else '', k, k, '' if k == 1 else 's', k))
+count_run = ('<span class="grp"><b>%s</b> with %s colors</span>'
+             % (E(G), ''.join(_count_link(k) for k in range(1, m['maxIndex'] + 1))))
+
 # ---- page ----------------------------------------------------------------
 page = """<!doctype html>
 <html lang="en">
@@ -353,7 +365,7 @@ body.off-f img.fglyph, body.off-g img.gglyph { display: none; }
 #deco-panel hr { border: 0; border-top: 1px solid #ddd; margin: .3rem 0; }
 </style>
 </head>
-<body>
+<body class="with-bar">
 
 <div id="deco">
  <button id="deco-btn" aria-label="display options" title="display options">&#9776;</button>
@@ -444,12 +456,20 @@ every panel sit faded context layers &mdash; the tilings, fundamental domains an
 symmetry centers of G and H; the <b>&#9776; menu</b> at the top right toggles each
 decoration.</p>
 
-<footer class="entry">
-<div><a href="../../../index.html">catalog</a> &middot; generated from the manifest
-(%(id)s) and the render job &middot; <a href="gen/sheet.html">contact sheet</a></div>
-</footer>
-
 </div>
+
+<footer class="bar">
+<div class="wrap">
+<nav class="up">
+ <a href="../../../index.html">Catalog</a>
+ <a href="../../index.html">All color groups of <b>%(hG)s</b></a>
+ %(count_run)s
+ <a href="../../../colors/%(n)d/index.html">All symmetries with <b>%(ncolors)s</b></a>
+</nav>
+<div class="meta" title="generated from the manifest and the render job">%(id)s &middot;
+<a href="gen/sheet.html">contact sheet</a></div>
+</div>
+</footer>
 
 <div id="lb" hidden>
  <div>
@@ -537,6 +557,8 @@ decoration.</p>
     'geo': geo, 'table': table, 'place_sent': place_sent,
     'lede_place': lede_place, 'coset_legend': coset_legend,
     'id': entry['id'],
+    'ncolors': '%d color%s' % (N, '' if N == 1 else 's'),
+    'count_run': count_run,
 }
 
 out = os.path.join(out_dir, 'index.html')
