@@ -6,9 +6,9 @@
 <title>632/632[3]</title>
 <link rel="stylesheet" href="../../../css/entry.css">
 <style>
-.sw0 { background: #ff4242; }
-.sw1 { background: #403dff; }
-.sw2 { background: #40ff3d; }
+.sw0 { background: #fc4141; }
+.sw1 { background: #3f3dfc; }
+.sw2 { background: #3ffc3d; }
 table.action th, table.action td { padding: .25rem .35rem; }
 table.grid td.rep .stack { border-bottom: 4px solid #2040c0; }
 table.grid th.col.rep { border-bottom: 4px solid #2040c0; }
@@ -117,11 +117,11 @@ click.</b></p>
 <dl class="facts">
   <div class="fact">
     <dt>group G</dt>
-    <dd>632 <span class="note"><code>&lang; a, b, c | a^2, b^3, (a&lowast;b)^6, b&lowast;c &rang;</code></span></dd>
+    <dd>632 <span class="note"><code>&lang; a, b, c, d | a&lowast;d, b&lowast;c, d^6, (d&lowast;b)^2, c^3 &rang;</code></span></dd>
   </div>
   <div class="fact">
     <dt>subgroup H</dt>
-    <dd>632 <span class="note">index 3 &nbsp;&middot;&nbsp; generators <code>a</code> (rotation by 1*PI about (0,0)), <code>Bac</code> (rotation by 0.3333*PI about (0.75,-0))</span></dd>
+    <dd>632 <span class="note">index 3 &nbsp;&middot;&nbsp; generators <code>a</code> (rotation by -0.3333*PI about (0,0.433)), <code>d</code> (rotation by 0.3333*PI about (-0,0.433)), <code>Bdc</code> (rotation by 1*PI about (0.375,-0.2165))</span></dd>
   </div>
   <div class="fact">
     <dt>colors</dt>
@@ -139,6 +139,7 @@ click.</b></p>
  <tr><th class='gen'>a</th><td><span class='sw sw0'></span></td><td><span class='sw sw2'></span></td><td><span class='sw sw1'></span></td><td class='cyc'>(1 2)</td></tr>
  <tr><th class='gen'>b</th><td><span class='sw sw1'></span></td><td><span class='sw sw2'></span></td><td><span class='sw sw0'></span></td><td class='cyc'>(0 1 2)</td></tr>
  <tr><th class='gen'>c</th><td><span class='sw sw2'></span></td><td><span class='sw sw0'></span></td><td><span class='sw sw1'></span></td><td class='cyc'>(0 2 1)</td></tr>
+ <tr><th class='gen'>d</th><td><span class='sw sw0'></span></td><td><span class='sw sw2'></span></td><td><span class='sw sw1'></span></td><td class='cyc'>(1 2)</td></tr>
 </table>
 <p class="legend"><b>Words act left to right</b>: <code>(a*b)(p) = b(a(p))</code>.</p>
 
@@ -153,7 +154,7 @@ click.</b></p>
     <dt class="plain">g<sub>1</sub> &hellip; g<sub>2</sub> &mdash; what makes the colors</dt>
     <dd class="small">The coset transversal: <code>g<sub>j</sub></code> carries H onto
         coset j, and the sets <code>H&thinsp;g<sub>j</sub></code> are the color classes:
-        <code>g<sub>1</sub>=b</code>, <code>g<sub>2</sub>=B</code>.</dd>
+        <code>g<sub>1</sub>=Ab</code>, <code>g<sub>2</sub>=B</code>.</dd>
   </div>
 </dl>
 
@@ -172,7 +173,7 @@ click.</b></p>
       <div class='cap'>G domain</div>
       <img src='gen/group_domain.webp'>
     </div>
-    <div class='cellcap'>the fundamental domain of 632</div>
+    <div class='cellcap'>the fundamental domain of 632 &mdash; the 6-2-3-2 kite</div>
    </td>
    <td>
     <div class='stack'>
@@ -438,7 +439,7 @@ decoration.</p>
 
 <footer class="entry">
 <div><a href="../../../index.html">catalog</a> &middot; generated from the manifest
-(632.3.2) and the render job &middot; <a href="gen/sheet.html">contact sheet</a></div>
+(632.3.1) and the render job &middot; <a href="gen/sheet.html">contact sheet</a></div>
 </footer>
 
 </div>

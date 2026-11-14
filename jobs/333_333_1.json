@@ -54,6 +54,7 @@
   {
    "file": "00.png",
    "_note": "f_0 H g_0",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,

@@ -212,7 +212,8 @@ geo = "\n".join([
     "  <tr>\n   <th></th>\n   <th class='col'>domain</th>\n   <th class='col'>tiling</th>"
     "\n   <th class='col'>symmetries</th>\n  </tr>",
     "  <tr>\n   <th class='row'>G</th>",
-    geo_td('group_domain.png', 'G domain', 'the fundamental domain of %s' % E(G)),
+    geo_td('group_domain.png', 'G domain', 'the fundamental domain of %s' % E(G) +
+           (' &mdash; the %s' % E(m['group']['domainShape']) if m['group'].get('domainShape') else '')),
     geo_td('group_tiling.png', 'G tiling', 'the plane tiled by images of G&rsquo;s domain'),
     geo_td('group_gens.png', 'G gens', 'rotation centers of G, the hurricane&rsquo;s arm '
            'count = the order'),
@@ -374,7 +375,7 @@ body.off-f img.fglyph, body.off-g img.gglyph { display: none; }
 
 <header class="entry">
 <div class="wrap">
-<h1>%(hG)s/%(hH)s<span class="sub">[%(n)d]</span></h1>
+<h1>%(hG)s/%(hH)s<span class="sub">[%(n)d]%(hK)s</span></h1>
 <p class="lede">A %(n)d-coloring of the wallpaper group %(hG)s from its index-%(n)d subgroup of
 type %(hH)s. %(lede_place)s</p>
 </div>
@@ -522,6 +523,8 @@ decoration.</p>
 </html>
 """ % {
     'title': E(entry_name), 'hG': E(G), 'hH': E(entry['type']), 'n': N, 'k': K,
+    # '#k' tells apart subgroups sharing G/H[n] - without it two pages share a heading
+    'hK': ('#' + E(entry_name.split('#')[1])) if '#' in entry_name else '',
     'nm1': N - 1,
     'sw_css': sw_css,
     'hero_one': hero_one, 'hero_row': hero_row,

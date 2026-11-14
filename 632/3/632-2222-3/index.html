@@ -6,9 +6,9 @@
 <title>632/2222[3]</title>
 <link rel="stylesheet" href="../../../css/entry.css">
 <style>
-.sw0 { background: #ff4242; }
-.sw1 { background: #403dff; }
-.sw2 { background: #40ff3d; }
+.sw0 { background: #fc4141; }
+.sw1 { background: #3f3dfc; }
+.sw2 { background: #3ffc3d; }
 table.action th, table.action td { padding: .25rem .35rem; }
 table.grid td.rep .stack { border-bottom: 4px solid #2040c0; }
 table.grid th.col.rep { border-bottom: 4px solid #2040c0; }
@@ -103,11 +103,11 @@ click.</b></p>
 <dl class="facts">
   <div class="fact">
     <dt>group G</dt>
-    <dd>632 <span class="note"><code>&lang; a, b, c | a^2, b^3, (a&lowast;b)^6, b&lowast;c &rang;</code></span></dd>
+    <dd>632 <span class="note"><code>&lang; a, b, c, d | a&lowast;d, b&lowast;c, d^6, (d&lowast;b)^2, c^3 &rang;</code></span></dd>
   </div>
   <div class="fact">
     <dt>subgroup H</dt>
-    <dd>2222 <span class="note">index 3 &nbsp;&middot;&nbsp; generators <code>a</code> (rotation by 1*PI about (0,0)), <code>Cac</code> (rotation by 1*PI about (0.375,-0.2165)), <code>Bab</code> (rotation by 1*PI about (0.375,0.2165))</span></dd>
+    <dd>2222 <span class="note">index 3 &nbsp;&middot;&nbsp; generators <code>Ab</code> (rotation by 1*PI about (0,-0)), <code>Dc</code> (rotation by -1*PI about (0.375,0.2165)), <code>Acd</code> (translation by (0.75,0.433)), <code>Add</code> (rotation by 1*PI about (-0,0.433))</span></dd>
   </div>
   <div class="fact">
     <dt>colors</dt>
@@ -122,9 +122,10 @@ click.</b></p>
 <h2 class="sec">how G permutes the colors</h2>
 <table class='action'>
  <tr><th>generator</th><th><span class='sw sw0'></span></th><th><span class='sw sw1'></span></th><th><span class='sw sw2'></span></th><th>cycles</th></tr>
- <tr><th class='gen'>a</th><td><span class='sw sw0'></span></td><td><span class='sw sw1'></span></td><td><span class='sw sw2'></span></td><td class='cyc'>e</td></tr>
+ <tr><th class='gen'>a</th><td><span class='sw sw1'></span></td><td><span class='sw sw2'></span></td><td><span class='sw sw0'></span></td><td class='cyc'>(0 1 2)</td></tr>
  <tr><th class='gen'>b</th><td><span class='sw sw1'></span></td><td><span class='sw sw2'></span></td><td><span class='sw sw0'></span></td><td class='cyc'>(0 1 2)</td></tr>
  <tr><th class='gen'>c</th><td><span class='sw sw2'></span></td><td><span class='sw sw0'></span></td><td><span class='sw sw1'></span></td><td class='cyc'>(0 2 1)</td></tr>
+ <tr><th class='gen'>d</th><td><span class='sw sw2'></span></td><td><span class='sw sw0'></span></td><td><span class='sw sw1'></span></td><td class='cyc'>(0 2 1)</td></tr>
 </table>
 <p class="legend"><b>Words act left to right</b>: <code>(a*b)(p) = b(a(p))</code>.</p>
 
@@ -133,7 +134,7 @@ click.</b></p>
   <div class="fact">
     <dt class="plain">f<sub>1</sub> &hellip; f<sub>2</sub> &mdash; where the motif starts</dt>
     <dd class="small">The motions carrying the motif to the other cells of H&rsquo;s
-        domain (one cell per H-orbit): <code>f<sub>1</sub>=c</code>, <code>f<sub>2</sub>=b</code>.</dd>
+        domain (one cell per H-orbit): <code>f<sub>1</sub>=d</code>, <code>f<sub>2</sub>=a</code>.</dd>
   </div>
   <div class="fact">
     <dt class="plain">g<sub>1</sub> &hellip; g<sub>2</sub> &mdash; what makes the colors</dt>
@@ -158,7 +159,7 @@ click.</b></p>
       <div class='cap'>G domain</div>
       <img src='gen/group_domain.webp'>
     </div>
-    <div class='cellcap'>the fundamental domain of 632</div>
+    <div class='cellcap'>the fundamental domain of 632 &mdash; the 6-2-3-2 kite</div>
    </td>
    <td>
     <div class='stack'>
@@ -424,7 +425,7 @@ decoration.</p>
 
 <footer class="entry">
 <div><a href="../../../index.html">catalog</a> &middot; generated from the manifest
-(632.3.1) and the render job &middot; <a href="gen/sheet.html">contact sheet</a></div>
+(632.3.2) and the render job &middot; <a href="gen/sheet.html">contact sheet</a></div>
 </footer>
 
 </div>

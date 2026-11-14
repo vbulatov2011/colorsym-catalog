@@ -252,6 +252,7 @@
   {
    "file": "00.png",
    "_note": "f_0 H g_0",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,
@@ -272,6 +273,7 @@
   {
    "file": "01.png",
    "_note": "f_0 H g_1",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,
@@ -292,6 +294,7 @@
   {
    "file": "02.png",
    "_note": "f_0 H g_2",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,
@@ -312,6 +315,7 @@
   {
    "file": "03.png",
    "_note": "f_0 H g_3",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,
@@ -332,6 +336,7 @@
   {
    "file": "04.png",
    "_note": "f_0 H g_4",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,
@@ -352,6 +357,7 @@
   {
    "file": "05.png",
    "_note": "f_0 H g_5",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,
@@ -372,6 +378,7 @@
   {
    "file": "10.png",
    "_note": "f_1 H g_0",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,
@@ -392,6 +399,7 @@
   {
    "file": "11.png",
    "_note": "f_1 H g_1",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,
@@ -412,6 +420,7 @@
   {
    "file": "12.png",
    "_note": "f_1 H g_2",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,
@@ -432,6 +441,7 @@
   {
    "file": "13.png",
    "_note": "f_1 H g_3",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,
@@ -452,6 +462,7 @@
   {
    "file": "14.png",
    "_note": "f_1 H g_4",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,
@@ -472,6 +483,7 @@
   {
    "file": "15.png",
    "_note": "f_1 H g_5",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,
@@ -492,6 +504,7 @@
   {
    "file": "20.png",
    "_note": "f_2 H g_0",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,
@@ -512,6 +525,7 @@
   {
    "file": "21.png",
    "_note": "f_2 H g_1",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,
@@ -532,6 +546,7 @@
   {
    "file": "22.png",
    "_note": "f_2 H g_2",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,
@@ -552,6 +567,7 @@
   {
    "file": "23.png",
    "_note": "f_2 H g_3",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,
@@ -572,6 +588,7 @@
   {
    "file": "24.png",
    "_note": "f_2 H g_4",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,
@@ -592,6 +609,7 @@
   {
    "file": "25.png",
    "_note": "f_2 H g_5",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,
@@ -612,6 +630,7 @@
   {
    "file": "30.png",
    "_note": "f_3 H g_0",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,
@@ -632,6 +651,7 @@
   {
    "file": "31.png",
    "_note": "f_3 H g_1",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,
@@ -652,6 +672,7 @@
   {
    "file": "32.png",
    "_note": "f_3 H g_2",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,
@@ -672,6 +693,7 @@
   {
    "file": "33.png",
    "_note": "f_3 H g_3",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,
@@ -692,6 +714,7 @@
   {
    "file": "34.png",
    "_note": "f_3 H g_4",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,
@@ -712,6 +735,7 @@
   {
    "file": "35.png",
    "_note": "f_3 H g_5",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,
@@ -732,6 +756,7 @@
   {
    "file": "40.png",
    "_note": "f_4 H g_0",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,
@@ -752,6 +777,7 @@
   {
    "file": "41.png",
    "_note": "f_4 H g_1",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,
@@ -772,6 +798,7 @@
   {
    "file": "42.png",
    "_note": "f_4 H g_2",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,
@@ -792,6 +819,7 @@
   {
    "file": "43.png",
    "_note": "f_4 H g_3",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,
@@ -812,6 +840,7 @@
   {
    "file": "44.png",
    "_note": "f_4 H g_4",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,
@@ -832,6 +861,7 @@
   {
    "file": "45.png",
    "_note": "f_4 H g_5",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,
@@ -852,6 +882,7 @@
   {
    "file": "50.png",
    "_note": "f_5 H g_0",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,
@@ -872,6 +903,7 @@
   {
    "file": "51.png",
    "_note": "f_5 H g_1",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,
@@ -892,6 +924,7 @@
   {
    "file": "52.png",
    "_note": "f_5 H g_2",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,
@@ -912,6 +945,7 @@
   {
    "file": "53.png",
    "_note": "f_5 H g_3",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,
@@ -932,6 +966,7 @@
   {
    "file": "54.png",
    "_note": "f_5 H g_4",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,
@@ -952,6 +987,7 @@
   {
    "file": "55.png",
    "_note": "f_5 H g_5",
+   "size": 400,
    "layers": {
     "drawing": {
      "useOrbit": false,

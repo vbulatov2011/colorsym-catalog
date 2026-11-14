@@ -6,6 +6,9 @@
 #                   it also brings the group, which must be <manifestStem>'s
 #   --layer <id>    the preset's colour-symmetry layer (default 'arrows', the
 #                   sympix one; a symdraw document's is 'drawing')
+#   --piece-size <px>  pixel size of the N x N pieces f_i H g_j (default 400,
+#                   half the job's 800: they are only seen as table thumbnails,
+#                   and as the N^2 term they would otherwise be most of the bytes)
 # e.g.  python make_entry_job.py 333 "333/o[6]" #           --preset /catalog/presets/wp/wp-333.json --layer drawing
 # A symdraw job runs at /apps/symdraw/catalog_render.html?job=..., a sympix
 # one at /apps/sympix/catalog_render.html?job=...
@@ -33,6 +36,7 @@ assert TEMPLATE.startswith('/') and ':' not in TEMPLATE, (
     '--preset must be a server URL like /catalog/presets/wp/wp-333.json, got %r'
     ' (from Git Bash, prefix the command with MSYS_NO_PATHCONV=1)' % TEMPLATE)
 LAYER = _opt('--layer', LAYER)
+PIECE_SIZE = int(_opt('--piece-size', '400'))
 # the sympix template already colours by multiplying ('mult'); a document
 # that does not - a symdraw drawing starts with 'none' - needs it set, or the
 # colorings come out uncoloured.  Set only for a non-default template, so the
@@ -141,6 +145,7 @@ for j in range(1, N):
 for i in range(N):
     for j in range(N):
         items.append({"file": "%d%d.png" % (i, j), "_note": "f_%d H g_%d" % (i, j),
+                      "size": PIECE_SIZE,
                       **motif(permIndex=i, mask=mask_for(j))})
 union_stem = ''.join(str(i) for i in range(N))
 for j in range(N):

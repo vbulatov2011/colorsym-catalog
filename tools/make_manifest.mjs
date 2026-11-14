@@ -5,8 +5,16 @@
   SubgroupDomain builder (T1, SymmHub) for the canonical cells / transversal /
   pairing generators, and writes one JSON manifest per group:
 
-      node tools/make_manifest.mjs [group] [maxIndex]
+      node tools/make_manifest.mjs [group] [maxIndex] [--domain "<shape>"]
       node tools/make_manifest.mjs 632 6
+      node tools/make_manifest.mjs 632 8 --domain "6-2-3-2 kite"
+
+  --domain builds G on that fundamental domain (WallpaperDomainShapes) and
+  derives the presentation from its geometry (GroupPresentation.js) instead
+  of taking sublib's catalogue preset: other generators, other coset tables,
+  other f/g words - but the same names, since a name is keyed by the
+  conjugacy class.  It writes data/<stem>@<shape>.json ('6-2-3-2 kite' ->
+  632@6-2-3-2-kite.json) and leaves data/<stem>.json and index.json alone.
 
   output:  data/<stem>.json        (stem: '*632' -> 's632')
            data/index.json         (list of generated manifests)
@@ -41,6 +49,7 @@ const { buildSubgroupDomain, classifyEuclidean, isometryToString, sameTransform 
 const { reidemeisterSchreier } = await import('./reidemeister.mjs');
 const { computeFrame, subgroupClassKey } =
   await import(SYMMHUB + '/lib/grouplib/SubgroupKey.js');
+const { groupPresentation } = await import(SYMMHUB + '/lib/grouplib/GroupPresentation.js');
 
 const OUT_DIR = join(dirname(fileURLToPath(import.meta.url)), '..', 'data');
 
@@ -216,6 +225,54 @@ function countPlacements(cosets){
 }
 
 // ---------------------------------------------------------------------------
+// coset numbering with the placement representatives first
+//
+// Offsets i, i' give the same placement iff their point stabilizers in the
+// group the coset permutations generate coincide.  The pages show the
+// colourings .1 .. .K as offsets 0 .. K-1, so those must be one offset per
+// class.  Coset numbering is free except for coset 0 (= H), and another
+// presentation (another domain shape) numbers them differently - the 632
+// kite gives 632/333[8] the representatives 0,2,3,6.  So renumber: each
+// class's least coset first, in order, then the rest in their old order.
+// Done BEFORE anything is derived, so cells, transversal, colour action and
+// key all follow from the renumbered table.  Identity when already in order.
+// ---------------------------------------------------------------------------
+
+function placementOrder(cosets){
+  const gens = permStringToArrays(cosets);
+  const n = gens[0].length;
+  const key = q => q.join(',');
+  const id = [...Array(n).keys()];
+  const seen = new Map([[key(id), id]]);
+  const queue = [id];
+  while(queue.length){
+    const q0 = queue.pop();
+    for(const g of gens){
+      const q = q0.map(x => g[x]);
+      if(!seen.has(key(q))){ seen.set(key(q), q); queue.push(q); }
+    }
+  }
+  const classes = new Map();
+  for(let i = 0; i < n; i++){
+    const stab = [...seen.values()].filter(q => q[i] === i).map(key).sort().join('|');
+    if(!classes.has(stab)) classes.set(stab, []);
+    classes.get(stab).push(i);
+  }
+  const reps = [...classes.values()].map(c => c[0]).sort((a, b) => a - b);
+  const rest = id.filter(i => !reps.includes(i));
+  return reps.concat(rest);          // order[newIndex] = oldIndex
+}
+
+function renumberCosets(cosets, order){
+  const back = [];
+  order.forEach((old, k) => { back[old] = k; });
+  const letters = 'abcdefghijklmnopqrstuvwxyz';
+  return permStringToArrays(cosets)
+    .map(p => order.map(old => letters[back[p[old]]]).join(''))
+    .join(' ');
+}
+
+// ---------------------------------------------------------------------------
 // cycle notation of a permutation, for the color action table
 // ---------------------------------------------------------------------------
 
@@ -237,13 +294,25 @@ function cyclesOf(perm){
 // main
 // ---------------------------------------------------------------------------
 
-const groupName = process.argv[2] || '632';
-const maxIndex = Number(process.argv[3] || 6);
+const _argv = process.argv.slice(2);
+const _di = _argv.indexOf('--domain');
+const domainShape = _di >= 0 ? _argv.splice(_di, 2)[1] : null;
+const groupName = _argv[0] || '632';
+const maxIndex = Number(_argv[1] || 6);
 
-const presentation = getPreset('wallpaper:' + groupName);
-const data = subgroupsData({ preset: 'wallpaper:' + groupName, maxIndex, generators: 'none' });
-
-const group = new Group(iWallpaperGroup({ name: groupName, a: GEOMETRY_A }));
+let presentation, data, group;
+if(domainShape){
+  // the presentation of THIS domain: its pairing transforms are the generators
+  group = new Group(iWallpaperGroup({ name: groupName, a: GEOMETRY_A, domainShape }));
+  const p = groupPresentation(group);
+  presentation = { name: groupName, gens: p.gens, relators: p.relators };
+  data = subgroupsData({ name: groupName, gens: p.gens, relators: p.relators,
+                         maxIndex, generators: 'none' });
+} else {
+  presentation = getPreset('wallpaper:' + groupName);
+  data = subgroupsData({ preset: 'wallpaper:' + groupName, maxIndex, generators: 'none' });
+  group = new Group(iWallpaperGroup({ name: groupName, a: GEOMETRY_A }));
+}
 const genCountMatch = group.getFundDomain().length === presentation.gens.split(/\s+/).length;
 const corr = genCountMatch ? checkCorrespondence(group, presentation)
                            : { ok: false, badRelators: ['generator count mismatch'] };
@@ -258,13 +327,18 @@ const expandedRelators = String(presentation.relators).split(',').map(r => expan
 const subgroups = [];
 for(const sub of data.subgroups){
 
-  const st = subgroupStructure(data, sub.subgroup);
-  const perms = permStringToArrays(sub.cosets);
-  const placements = countPlacements(sub.cosets);
+  // a catalogue preset tells sublib its dimension, which is what turns on the
+  // abelianization; a presentation derived from a domain does not, so say it
+  const st = subgroupStructure(data, sub.subgroup, domainShape ? { dimension: 2 } : {});
+  const order = placementOrder(sub.cosets);
+  const renumbered = order.some((old, k) => old !== k);
+  const cosets = renumbered ? renumberCosets(sub.cosets, order) : sub.cosets;
+  const perms = permStringToArrays(cosets);
+  const placements = countPlacements(cosets);
 
   let domain = null;
   if(corr.ok){
-    domain = buildSubgroupDomain({ group, cosets: sub.cosets, testPoints: TEST_POINTS });
+    domain = buildSubgroupDomain({ group, cosets, testPoints: TEST_POINTS });
   }
 
   const cls = classifySubgroupType(perms, expandedRelators, st, refFingerprints);
@@ -276,7 +350,8 @@ for(const sub of data.subgroups){
     ...(cls.note ? { typeNote: cls.note } : {}),
     normal: placements === 1,
     placements,
-    cosets: sub.cosets,
+    cosets,
+    ...(renumbered ? { sublibCosets: sub.cosets, cosetOrder: order } : {}),
     orders: st.orders,
     abelianization: st.abelianization.text,
     colorAction: presentation.gens.split(/\s+/).map((g, k) => ({
@@ -289,7 +364,7 @@ for(const sub of data.subgroups){
   if(frame){
     try {
       // the key of the conjugacy class: the least key over the conjugates of H
-      const gk = subgroupClassKey({ group, frame, cosets: sub.cosets });
+      const gk = subgroupClassKey({ group, frame, cosets });
       entry.geoKey = gk.key;
       entry.keyCoset = gk.coset;                       // the coset whose stabilizer has the least key, 0 for H itself
       entry.representativeKey = gk.keys.get(0).key;    // the key of H itself, the geoKey of the manifests before 2026-09-05
@@ -356,6 +431,7 @@ const manifest = {
     gens: presentation.gens,
     relators: presentation.relators,
     geometry: { a: GEOMETRY_A },
+    ...(domainShape ? { domainShape } : {}),
     geometryVerified: corr.ok,
     ...(frame ? { frame: { origin: frame.origin, t1: frame.t1, t2: frame.t2,
                            maxOrder: frame.maxOrder } } : {}),
@@ -367,10 +443,14 @@ const manifest = {
 };
 
 mkdirSync(OUT_DIR, { recursive: true });
-const outFile = join(OUT_DIR, fileStem(groupName) + '.json');
+const outStem = fileStem(groupName) +
+                (domainShape ? '@' + domainShape.replace(/\*/g, 's').replace(/\s+/g, '-') : '');
+const outFile = join(OUT_DIR, outStem + '.json');
 writeFileSync(outFile, JSON.stringify(manifest, null, 1));
 
-// keep data/index.json current
+// keep data/index.json current - it lists the catalogue's own (default domain)
+// manifests only
+if(!domainShape){
 const indexFile = join(OUT_DIR, 'index.json');
 const index = existsSync(indexFile) ? JSON.parse(readFileSync(indexFile, 'utf8'))
                                     : { format: 'colorsym-catalog-index', groups: [] };
@@ -379,6 +459,7 @@ const rec = { name: groupName, stem: fileStem(groupName), file: fileStem(groupNa
 const at = index.groups.findIndex(g => g.name === groupName);
 if(at >= 0) index.groups[at] = rec; else index.groups.push(rec);
 writeFileSync(indexFile, JSON.stringify(index, null, 1));
+}
 
 console.log(`${groupName}: ${subgroups.length} subgroups to index ${maxIndex} -> ${outFile}`);
 for(const s of subgroups){

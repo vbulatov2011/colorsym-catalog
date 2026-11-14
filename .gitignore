@@ -14,8 +14,11 @@ desktop.ini
 node_modules/
 npm-debug.log*
 
-# rendered PNGs are intermediates: the job writes them, tools/to_webp.py
-# converts each entry to lossless WebP (identical pixels, 12% of the size)
+# rendered images are build output, not source: the job writes PNG,
+# tools/to_webp.py converts it to lossless WebP, and either can be rebuilt
+# from jobs/*.json + presets/ + data/ (see tools/make_entry_job.py).  The
+# generated pages and contact sheets (index.html, gen/sheet.html) stay tracked.
 **/gen/*.png
+**/gen/*.webp
 
 .claude/settings.local.json
