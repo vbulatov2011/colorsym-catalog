@@ -9,6 +9,7 @@
 # definitions, the fundamental domains, and the partition table with margins.
 # Every picture is click-to-enlarge with arrow key navigation.
 import json, io, os, sys
+from entry_names import entry_names
 
 CAT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -22,11 +23,9 @@ entry = next(s for s in m['subgroups'] if s['name'] == entry_name)
 G = m['group']['name']
 N = entry['index']
 K = entry['placements']
-gsym, rest = entry_name.split('/')
-hsym = rest.split('[')[0]
-slug = ('%s-%s-%d' % (gsym, hsym, N)).replace('*', 's')
-out_dir = os.path.join(CAT, gsym.replace('*', 's'), str(N), slug)
-title = entry_name + (('#' + entry_name.split('#')[1]) if '#' in entry_name else '')
+_nm = entry_names(entry_name, N)
+gsym, hsym, slug = _nm['gsym'], _nm['hsym'], _nm['slug']
+out_dir = os.path.join(CAT, *_nm['dir'].split('/'))
 union_stem = ''.join(str(i) for i in range(N))
 
 # placement classes: offsets i, i' are equivalent iff their point stabilizers
@@ -171,6 +170,37 @@ action_table = ("<table class='action'>\n <tr><th>generator</th>%s<th>cycles</th
 # ---- f/g fact boxes ------------------------------------------------------
 f_list = ", ".join("<code>f<sub>%d</sub>=%s</code>" % (k, f_words[k]) for k in range(1, N))
 g_list = ", ".join("<code>g<sub>%d</sub>=%s</code>" % (k, g_words[k]) for k in range(1, N))
+
+# the motions section: a range f_1 .. f_{N-1} needs N >= 3; with N = 2 there is
+# a single motion of each kind, and with N = 1 (H = G) there are none at all
+def _rng(x):
+    if N == 2: return '%s<sub>1</sub>' % x
+    return '%s<sub>1</sub> &hellip; %s<sub>%d</sub>' % (x, x, N - 1)
+if N == 1:
+    motions = """<dl class="facts">
+  <div class="fact">
+    <dt class="plain">no motions f or g</dt>
+    <dd class="small">H = G: H&rsquo;s domain is G&rsquo;s single cell and there is one
+        coset, so nothing carries the motif to another cell and nothing makes a
+        second color.</dd>
+  </div>
+</dl>
+"""
+else:
+    motions = """<dl class="facts">
+  <div class="fact">
+    <dt class="plain">%s &mdash; where the motif starts</dt>
+    <dd class="small">The motions carrying the motif to the other cells of H&rsquo;s
+        domain (one cell per H-orbit): %s.</dd>
+  </div>
+  <div class="fact">
+    <dt class="plain">%s &mdash; what makes the colors</dt>
+    <dd class="small">The coset transversal: <code>g<sub>j</sub></code> carries H onto
+        coset j, and the sets <code>H&thinsp;g<sub>j</sub></code> are the color classes:
+        %s.</dd>
+  </div>
+</dl>
+""" % (_rng('f'), f_list, _rng('g'), g_list)
 hgens_list = ", ".join("<code>%s</code> (%s)" % (h['word'], h['text']) for h in h_gens)
 
 # ---- domains panels: a 2 x 3 table (G / H  x  domain, tiling, symmetries) -
@@ -189,7 +219,8 @@ geo = "\n".join([
     "  </tr>",
     "  <tr>\n   <th class='row'>H</th>",
     geo_td('sub_domain.png', 'H domain', 'the fundamental domain of H: a union of %d '
-           'cells of G, internal walls shown' % N),
+           'cells of G, internal walls shown' % N if N > 1 else
+           'the fundamental domain of H: the single cell of G, as H = G'),
     geo_td('sub_tiling.png', 'H tiling', 'the plane tiled by H&rsquo;s domain, over '
            'G&rsquo;s finer tiling'),
     geo_td('sub_gens.png', 'H gens', 'rotation centers of H = %s; inequivalent axis '
@@ -388,20 +419,7 @@ click.</b></p>
 <p class="legend"><b>Words act left to right</b>: <code>(a*b)(p) = b(a(p))</code>.</p>
 
 <h2 class="sec">the two families of motions</h2>
-<dl class="facts">
-  <div class="fact">
-    <dt class="plain">f<sub>1</sub> &hellip; f<sub>%(nm1)d</sub> &mdash; where the motif starts</dt>
-    <dd class="small">The motions carrying the motif to the other cells of H&rsquo;s
-        domain (one cell per H-orbit): %(f_list)s.</dd>
-  </div>
-  <div class="fact">
-    <dt class="plain">g<sub>1</sub> &hellip; g<sub>%(nm1)d</sub> &mdash; what makes the colors</dt>
-    <dd class="small">The coset transversal: <code>g<sub>j</sub></code> carries H onto
-        coset j, and the sets <code>H&thinsp;g<sub>j</sub></code> are the color classes:
-        %(g_list)s.</dd>
-  </div>
-</dl>
-
+%(motions)s
 <h2 class="sec">fundamental domains and pairing transforms</h2>
 %(geo)s
 
@@ -512,7 +530,7 @@ decoration.</p>
     'hgens': hgens_list or '&mdash;',
     'normalnote': '' if K > 1 else ' &mdash; H is normal',
     'action_table': action_table,
-    'f_list': f_list, 'g_list': g_list,
+    'f_list': f_list, 'g_list': g_list, 'motions': motions,
     'geo': geo, 'table': table, 'place_sent': place_sent,
     'lede_place': lede_place, 'coset_legend': coset_legend,
     'id': entry['id'],

@@ -1,16 +1,46 @@
 # Generalized job generator: python make_entry_job.py <manifestStem> <entryName>
 # e.g.  python make_entry_job.py 632 "632/333[8]"
 #
+# Options:
+#   --preset <url>  the motif document (default the sympix wp_632_632_3.1);
+#                   it also brings the group, which must be <manifestStem>'s
+#   --layer <id>    the preset's colour-symmetry layer (default 'arrows', the
+#                   sympix one; a symdraw document's is 'drawing')
+# e.g.  python make_entry_job.py 333 "333/o[6]" #           --preset /catalog/presets/wp/wp-333.json --layer drawing
+# A symdraw job runs at /apps/symdraw/catalog_render.html?job=..., a sympix
+# one at /apps/sympix/catalog_render.html?job=...
+#
 # Builds catalog/jobs/<slug>.json rendering the full layer set for one entry,
 # using the wp_632_632_3.1 preset as the motif template and overriding the
 # subgroup permutations, colour count, placements and framing from the manifest.
 import json, io, copy, sys
+from entry_names import entry_names
 
 CAT = 'D:/home/projects/00.docs/250117_colorsym/catalog'
 TEMPLATE = '/catalog/presets/wp_632_632_3.1.json'
+LAYER = 'arrows'
 
-stem = sys.argv[1] if len(sys.argv) > 1 else '632'
-entry_name = sys.argv[2] if len(sys.argv) > 2 else '632/632[3]'
+_args = sys.argv[1:]
+def _opt(flag, default):
+    if flag in _args:
+        i = _args.index(flag); v = _args[i + 1]; del _args[i:i + 2]; return v
+    return default
+TEMPLATE = _opt('--preset', TEMPLATE)
+# a server URL such as /catalog/presets/..; Git Bash rewrites a leading '/'
+# into a Windows path (C:/Program Files/Git/catalog/..) unless the call is
+# prefixed with MSYS_NO_PATHCONV=1 - catch that here, not in the browser
+assert TEMPLATE.startswith('/') and ':' not in TEMPLATE, (
+    '--preset must be a server URL like /catalog/presets/wp/wp-333.json, got %r'
+    ' (from Git Bash, prefix the command with MSYS_NO_PATHCONV=1)' % TEMPLATE)
+LAYER = _opt('--layer', LAYER)
+# the sympix template already colours by multiplying ('mult'); a document
+# that does not - a symdraw drawing starts with 'none' - needs it set, or the
+# colorings come out uncoloured.  Set only for a non-default template, so the
+# default jobs stay byte for byte what they were.
+MOTIF_EXTRA = {} if TEMPLATE.endswith('/wp_632_632_3.1.json') else {"coloringType": "mult"}
+
+stem = _args[0] if len(_args) > 0 else '632'
+entry_name = _args[1] if len(_args) > 1 else '632/632[3]'
 
 m = json.load(open(CAT + '/data/%s.json' % stem, encoding='utf-8'))
 entry = next(s for s in m['subgroups'] if s['name'] == entry_name)
@@ -51,12 +81,9 @@ assert [c[0] for c in _classes] == list(range(K)), (
     'placement representatives %r are not offsets 0..%d' % ([c[0] for c in _classes], K - 1))
 
 # G / H / n from the name, for file names:  632/333[8] -> 632-333-8
-gsym, rest = entry_name.split('/')
-hsym = rest.split('[')[0]
-slug = '%s-%s-%d' % (gsym, hsym, N)
-slug_flat = slug.replace('*', 's')
-out_dir = '%s/%d/%s/gen' % (gsym.replace('*', 's'), N, slug_flat)
-job_file = '%s_%s_%d' % (gsym.replace('*', 's'), hsym.replace('*', 's'), N)
+_nm = entry_names(entry_name, N)
+gsym, hsym, slug_flat, job_file = _nm['gsym'], _nm['hsym'], _nm['slug'], _nm['job_file']
+out_dir = _nm['dir'] + '/gen'
 
 OFF = {"buffer": {"outline": {"enabled": False}, "fill": {"enabled": False}},
        "generators": {"enabled": False},
@@ -73,15 +100,15 @@ def motif(**arrows):
     # off, hence the override here - it applies to every motif image: the
     # colorings, the pieces and the uncolored pattern.
     a = {"useOrbit": False, "mask": "", "permutations": INVCOS,
-         "useMipmap": True, "colorTiles": {"count": N}}
+         "useMipmap": True, "colorTiles": {"count": N}, **MOTIF_EXTRA}
     a.update(arrows)
-    return {"layers": {"arrows": a}, "enable": {"overlay": False}}
+    return {"layers": {LAYER: a}, "enable": {"overlay": False}}
 
 def blank():
-    return {"enable": {"arrows": False, "overlay": False}}
+    return {"enable": {LAYER: False, "overlay": False}}
 
 def gstruct(overlay):
-    return {"subgroup": None, "enable": {"arrows": False, "overlay": True},
+    return {"subgroup": None, "enable": {LAYER: False, "overlay": True},
             "layers": {"overlay": overlay}}
 
 def mask_for(j):
@@ -160,7 +187,7 @@ for k in range(1, N):
 job = {
  "_comment": [
   "Layer set for %s (%s), %d colours, %d placements." % (entry_name, entry['id'], N, K),
-  "Template: wp_632_632_3.1; permutations overridden to this subgroup's invcos.",
+  "Template: %s; permutations overridden to this subgroup's invcos." % TEMPLATE.split('/')[-1][:-5],
   "f words: %s" % ' '.join(f_words),
   "g words: %s" % ' '.join(g_words)],
  "outDir": out_dir,

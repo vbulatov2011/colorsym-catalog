@@ -16,38 +16,55 @@
 # Measured over the 178 images of the three built entries: PNG 17.29 MB ->
 # lossless WebP 2.13 MB (12%), pixel identical, and decoding is ~0.7x the time
 # of PNG.  Effort: -z 6 gives 35 KB in 163 ms where -z 9 gives 34 KB in 3.2 s.
+#
+# Encoder: the cwebp/dwebp command line tools when they can be found, else
+# Pillow, whose WebP support is the same libwebp (1.6.0 on this machine).  -z N
+# is libwebp's lossless preset N, i.e. a (method, quality) pair, and Pillow is
+# given exactly that pair, so both paths run the same encoder configuration.
 import os, sys, glob, json, subprocess, shutil
 from concurrent.futures import ThreadPoolExecutor
+from entry_names import entry_names
 
 CAT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 def find_bin(name):
-    """cwebp/dwebp from PATH, else the winget install location"""
+    """cwebp/dwebp from PATH, else the winget install location, else None"""
     found = shutil.which(name)
     if found:
         return found
     pat = os.path.join(os.path.expandvars('%LOCALAPPDATA%'), 'Microsoft', 'WinGet',
                        'Packages', 'Google.Libwebp*', 'libwebp-*', 'bin', name + '.exe')
     hits = sorted(glob.glob(pat))
-    if hits:
-        return hits[-1]
-    sys.exit('%s not found - install libwebp (winget install Google.Libwebp --scope user)'
-             % name)
+    return hits[-1] if hits else None
 
+
+def pillow_webp():
+    """Pillow's PIL.Image when it was built with WebP support, else None"""
+    try:
+        from PIL import Image, features
+        return Image if features.check('webp') else None
+    except ImportError:
+        return None
+
+
+# libwebp's WebPConfigLosslessPreset: level -> (method, quality)
+LOSSLESS_PRESET = [(0, 0), (1, 20), (2, 25), (3, 30), (3, 50),
+                   (4, 50), (4, 75), (4, 90), (5, 90), (6, 100)]
 
 CWEBP = find_bin('cwebp')
 DWEBP = None          # resolved only when --verify is used
+PIL_IMAGE = None if CWEBP else pillow_webp()
+if not CWEBP and not PIL_IMAGE:
+    sys.exit('no WebP encoder: install libwebp (winget install Google.Libwebp '
+             '--scope user) or Pillow with WebP support (pip install pillow)')
 
 
 def gen_dir_for(stem, entry_name):
     m = json.load(open(os.path.join(CAT, 'data', '%s.json' % stem), encoding='utf-8'))
     entry = next(s for s in m['subgroups'] if s['name'] == entry_name)
-    n = entry['index']
-    gsym, rest = entry_name.split('/')
-    hsym = rest.split('[')[0]
-    slug = ('%s-%s-%d' % (gsym, hsym, n)).replace('*', 's')
-    return os.path.join(CAT, gsym.replace('*', 's'), str(n), slug, 'gen')
+    return os.path.join(CAT, *entry_names(entry_name, entry['index'])['dir'].split('/'),
+                        'gen')
 
 
 def rgba_of_webp(path):
@@ -68,7 +85,44 @@ def rgba_of_png(path):
     return data
 
 
+def same_pixels_pillow(png, webp):
+    """RGBA equal, except that a fully transparent pixel's colour is free - the
+    cwebp path compares the same way, since lossless WebP without -exact may
+    rewrite the RGB under alpha 0"""
+    a = PIL_IMAGE.open(png).convert('RGBA').tobytes()
+    b = PIL_IMAGE.open(webp).convert('RGBA').tobytes()
+    if len(a) != len(b):
+        return False
+    if a == b:
+        return True
+    for i in range(0, len(a), 4):
+        if a[i + 3] != b[i + 3]:
+            return False
+        if a[i + 3] and a[i:i + 3] != b[i:i + 3]:
+            return False
+    return True
+
+
+def convert_pillow(png, effort, keep, verify):
+    webp = png[:-4] + '.webp'
+    method, quality = LOSSLESS_PRESET[effort]
+    try:
+        PIL_IMAGE.open(png).save(webp, 'WEBP', lossless=True,
+                                 method=method, quality=quality)
+    except Exception as e:
+        return (png, None, 'Pillow failed: %s' % e)
+    if verify and not same_pixels_pillow(png, webp):
+        os.remove(webp)
+        return (png, None, 'NOT pixel exact')
+    before, after = os.path.getsize(png), os.path.getsize(webp)
+    if not keep:
+        os.remove(png)
+    return (png, (before, after), None)
+
+
 def convert(png, effort, keep, verify):
+    if not CWEBP:
+        return convert_pillow(png, effort, keep, verify)
     webp = png[:-4] + '.webp'
     r = subprocess.run([CWEBP, '-quiet', '-lossless', '-z', str(effort), png, '-o', webp],
                        capture_output=True)
@@ -115,9 +169,11 @@ def main():
     else:
         sys.exit(__doc__ or 'usage: to_webp.py <stem> "<entry>" | --all | --dir <path>')
 
-    if verify:
+    if verify and CWEBP:
         global DWEBP
         DWEBP = find_bin('dwebp')
+        if not DWEBP:
+            sys.exit('dwebp not found next to cwebp - needed for --verify')
 
     pngs = []
     for d in dirs:
@@ -137,8 +193,10 @@ def main():
                 after += sizes[1]
 
     MB = lambda b: round(b / 1048576.0, 2)
-    print('converted %d/%d images in %d dir(s), -z %d%s'
+    print('converted %d/%d images in %d dir(s), -z %d, %s%s'
           % (len(pngs) - len(failures), len(pngs), len(dirs), effort,
+             'cwebp' if CWEBP else 'Pillow (libwebp, method %d quality %d)'
+             % LOSSLESS_PRESET[effort],
              ', verified pixel exact' if verify else ''))
     print('  %s MB PNG  ->  %s MB WebP  (%d%%)'
           % (MB(before), MB(after), round(100.0 * after / before) if before else 0))

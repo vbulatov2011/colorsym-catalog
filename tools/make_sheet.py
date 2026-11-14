@@ -6,6 +6,7 @@
 # every image of the job, grouped: colorings, the N x N pieces, the row
 # unions, structure, motion glyphs.
 import json, io, os, re, sys
+from entry_names import entry_names
 
 CAT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -17,10 +18,8 @@ entry = next(s for s in m['subgroups'] if s['name'] == entry_name)
 N = entry['index']
 K = entry['placements']
 
-gsym, rest = entry_name.split('/')
-hsym = rest.split('[')[0]
-slug = ('%s-%s-%d' % (gsym, hsym, N)).replace('*', 's')
-job_file = ('%s_%s_%d' % (gsym, hsym, N)).replace('*', 's')
+_nm = entry_names(entry_name, N)
+gsym, hsym, slug, job_file = _nm['gsym'], _nm['hsym'], _nm['slug'], _nm['job_file']
 job = json.load(open(os.path.join(CAT, 'jobs', '%s.json' % job_file), encoding='utf-8'))
 out_dir = os.path.join(CAT, *job['outDir'].split('/'))
 
