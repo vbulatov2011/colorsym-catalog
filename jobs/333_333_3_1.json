@@ -1,0 +1,817 @@
+{
+ "_comment": [
+  "Layer set for 333/333[3]#1 (333.3.2), 3 colours, 1 placements.",
+  "Template: wp-333; permutations overridden to this subgroup's invcos.",
+  "f words: e c a",
+  "g words: e a A"
+ ],
+ "outDir": "333/3/333-333-3-1/gen",
+ "size": 800,
+ "preset": "/catalog/presets/wp/wp-333.json",
+ "autoView": {
+  "subgroup": "bca abc cab abc",
+  "fillRatio": 0.24
+ },
+ "items": [
+  {
+   "file": "333-333-3-1.1.png",
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "",
+     "permutations": "cab abc bca abc",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 3
+     },
+     "coloringType": "mult",
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "333-333-3-1.2.png",
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "",
+     "permutations": "cab abc bca abc",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 3
+     },
+     "coloringType": "mult",
+     "permIndex": 1
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "_note": "same placement as .1 - colors relabeled"
+  },
+  {
+   "file": "333-333-3-1.3.png",
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "",
+     "permutations": "cab abc bca abc",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 3
+     },
+     "coloringType": "mult",
+     "permIndex": 2
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "_note": "same placement as .1 - colors relabeled"
+  },
+  {
+   "file": "333-333-3-1.o.png",
+   "layers": {
+    "drawing": {
+     "useOrbit": true,
+     "mask": "",
+     "permutations": "cab abc bca abc",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 3
+     },
+     "coloringType": "mult",
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "333-333-3-1.o1.png",
+   "_note": "orbit coloring carried by g_1",
+   "layers": {
+    "drawing": {
+     "useOrbit": true,
+     "mask": "",
+     "permutations": "cab abc bca abc",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 3
+     },
+     "coloringType": "mult",
+     "permIndex": 1
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "333-333-3-1.o2.png",
+   "_note": "orbit coloring carried by g_2",
+   "layers": {
+    "drawing": {
+     "useOrbit": true,
+     "mask": "",
+     "permutations": "cab abc bca abc",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 3
+     },
+     "coloringType": "mult",
+     "permIndex": 2
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "00.png",
+   "_note": "f_0 H g_0",
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "100",
+     "permutations": "cab abc bca abc",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 3
+     },
+     "coloringType": "mult",
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "01.png",
+   "_note": "f_0 H g_1",
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "010",
+     "permutations": "cab abc bca abc",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 3
+     },
+     "coloringType": "mult",
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "02.png",
+   "_note": "f_0 H g_2",
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "001",
+     "permutations": "cab abc bca abc",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 3
+     },
+     "coloringType": "mult",
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "10.png",
+   "_note": "f_1 H g_0",
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "100",
+     "permutations": "cab abc bca abc",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 3
+     },
+     "coloringType": "mult",
+     "permIndex": 1
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "11.png",
+   "_note": "f_1 H g_1",
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "010",
+     "permutations": "cab abc bca abc",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 3
+     },
+     "coloringType": "mult",
+     "permIndex": 1
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "12.png",
+   "_note": "f_1 H g_2",
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "001",
+     "permutations": "cab abc bca abc",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 3
+     },
+     "coloringType": "mult",
+     "permIndex": 1
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "20.png",
+   "_note": "f_2 H g_0",
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "100",
+     "permutations": "cab abc bca abc",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 3
+     },
+     "coloringType": "mult",
+     "permIndex": 2
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "21.png",
+   "_note": "f_2 H g_1",
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "010",
+     "permutations": "cab abc bca abc",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 3
+     },
+     "coloringType": "mult",
+     "permIndex": 2
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "22.png",
+   "_note": "f_2 H g_2",
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "001",
+     "permutations": "cab abc bca abc",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 3
+     },
+     "coloringType": "mult",
+     "permIndex": 2
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "012_0.png",
+   "_note": "all orbits of H g_0 - the whole pattern in color 0",
+   "compose": [
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "100",
+       "permutations": "cab abc bca abc",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 3
+       },
+       "coloringType": "mult",
+       "permIndex": 0
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "100",
+       "permutations": "cab abc bca abc",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 3
+       },
+       "coloringType": "mult",
+       "permIndex": 1
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "100",
+       "permutations": "cab abc bca abc",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 3
+       },
+       "coloringType": "mult",
+       "permIndex": 2
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    }
+   ]
+  },
+  {
+   "file": "012_1.png",
+   "_note": "all orbits of H g_1 - the whole pattern in color 1",
+   "compose": [
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "010",
+       "permutations": "cab abc bca abc",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 3
+       },
+       "coloringType": "mult",
+       "permIndex": 0
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "010",
+       "permutations": "cab abc bca abc",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 3
+       },
+       "coloringType": "mult",
+       "permIndex": 1
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "010",
+       "permutations": "cab abc bca abc",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 3
+       },
+       "coloringType": "mult",
+       "permIndex": 2
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    }
+   ]
+  },
+  {
+   "file": "012_2.png",
+   "_note": "all orbits of H g_2 - the whole pattern in color 2",
+   "compose": [
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "001",
+       "permutations": "cab abc bca abc",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 3
+       },
+       "coloringType": "mult",
+       "permIndex": 0
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "001",
+       "permutations": "cab abc bca abc",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 3
+       },
+       "coloringType": "mult",
+       "permIndex": 1
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "001",
+       "permutations": "cab abc bca abc",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 3
+       },
+       "coloringType": "mult",
+       "permIndex": 2
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    }
+   ]
+  },
+  {
+   "file": "group_pattern.png",
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "",
+     "permutations": "cab abc bca abc",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 3
+     },
+     "coloringType": "none",
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "group_domain.png",
+   "subgroup": null,
+   "enable": {
+    "drawing": false,
+    "overlay": true
+   },
+   "layers": {
+    "overlay": {
+     "buffer": {
+      "outline": {
+       "enabled": false
+      },
+      "fill": {
+       "enabled": false
+      }
+     },
+     "generators": {
+      "enabled": false
+     },
+     "tiling": {
+      "outline": {
+       "enabled": false
+      }
+     },
+     "fundDomain": {
+      "fill": {
+       "enabled": true
+      },
+      "outline": {
+       "enabled": true
+      }
+     }
+    }
+   }
+  },
+  {
+   "file": "group_tiling.png",
+   "subgroup": null,
+   "enable": {
+    "drawing": false,
+    "overlay": true
+   },
+   "layers": {
+    "overlay": {
+     "buffer": {
+      "outline": {
+       "enabled": false
+      },
+      "fill": {
+       "enabled": false
+      }
+     },
+     "generators": {
+      "enabled": false
+     },
+     "tiling": {
+      "outline": {
+       "enabled": true
+      }
+     },
+     "fundDomain": {
+      "fill": {
+       "enabled": false
+      },
+      "outline": {
+       "enabled": false
+      }
+     }
+    }
+   }
+  },
+  {
+   "file": "group_gens.png",
+   "subgroup": null,
+   "enable": {
+    "drawing": false,
+    "overlay": true
+   },
+   "layers": {
+    "overlay": {
+     "buffer": {
+      "outline": {
+       "enabled": false
+      },
+      "fill": {
+       "enabled": false
+      }
+     },
+     "generators": {
+      "enabled": false
+     },
+     "tiling": {
+      "outline": {
+       "enabled": false
+      }
+     },
+     "fundDomain": {
+      "fill": {
+       "enabled": true
+      },
+      "outline": {
+       "enabled": true
+      }
+     }
+    }
+   },
+   "markers": {
+    "subgroup": null
+   }
+  },
+  {
+   "file": "sub_domain.png",
+   "_note": "H's domain as a union of 3 G cells",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "draw": {
+    "subgroup": "bca abc cab abc",
+    "fill": true,
+    "cells": true,
+    "outline": true
+   }
+  },
+  {
+   "file": "sub_tiling.png",
+   "compose": [
+    {
+     "subgroup": null,
+     "enable": {
+      "drawing": false,
+      "overlay": true
+     },
+     "layers": {
+      "overlay": {
+       "buffer": {
+        "outline": {
+         "enabled": false
+        },
+        "fill": {
+         "enabled": false
+        }
+       },
+       "generators": {
+        "enabled": false
+       },
+       "tiling": {
+        "outline": {
+         "enabled": true
+        }
+       },
+       "fundDomain": {
+        "fill": {
+         "enabled": false
+        },
+        "outline": {
+         "enabled": false
+        }
+       }
+      }
+     },
+     "opacity": 0.3
+    }
+   ],
+   "draw": {
+    "subgroup": "bca abc cab abc",
+    "tiling": true
+   }
+  },
+  {
+   "file": "sub_gens.png",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "draw": {
+    "subgroup": "bca abc cab abc",
+    "fill": true,
+    "outline": true
+   },
+   "markers": {
+    "subgroup": "bca abc cab abc"
+   }
+  },
+  {
+   "file": "sub_til.png",
+   "_note": "H tiling lines only",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "draw": {
+    "subgroup": "bca abc cab abc",
+    "tiling": true
+   }
+  },
+  {
+   "file": "group_marks.png",
+   "_note": "G rotation centres only",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "markers": {
+    "subgroup": null
+   }
+  },
+  {
+   "file": "sub_marks.png",
+   "_note": "H rotation centres only",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "markers": {
+    "subgroup": "bca abc cab abc"
+   }
+  },
+  {
+   "file": "f1.png",
+   "_note": "f_1 = c",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "glyphs": {
+    "subgroup": "bca abc cab abc",
+    "kind": "cell",
+    "list": [
+     {
+      "word": "c",
+      "style": {
+       "color": "#c02020",
+       "width": 3.5
+      }
+     }
+    ]
+   }
+  },
+  {
+   "file": "f2.png",
+   "_note": "f_2 = a",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "glyphs": {
+    "subgroup": "bca abc cab abc",
+    "kind": "cell",
+    "list": [
+     {
+      "word": "a",
+      "style": {
+       "color": "#c02020",
+       "width": 3.5
+      }
+     }
+    ]
+   }
+  },
+  {
+   "file": "g1.png",
+   "_note": "g_1 = a",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "glyphs": {
+    "subgroup": "bca abc cab abc",
+    "kind": "coset",
+    "list": [
+     {
+      "word": "a",
+      "style": {
+       "color": "#2040c0",
+       "width": 3.5
+      }
+     }
+    ]
+   }
+  },
+  {
+   "file": "g2.png",
+   "_note": "g_2 = A",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "glyphs": {
+    "subgroup": "bca abc cab abc",
+    "kind": "coset",
+    "list": [
+     {
+      "word": "A",
+      "style": {
+       "color": "#2040c0",
+       "width": 3.5
+      }
+     }
+    ]
+   }
+  }
+ ]
+}

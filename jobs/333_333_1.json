@@ -1,0 +1,337 @@
+{
+ "_comment": [
+  "Layer set for 333/333[1] (333.1.1), 1 colours, 1 placements.",
+  "Template: wp-333; permutations overridden to this subgroup's invcos.",
+  "f words: e",
+  "g words: e"
+ ],
+ "outDir": "333/1/333-333-1/gen",
+ "size": 800,
+ "preset": "/catalog/presets/wp/wp-333.json",
+ "autoView": {
+  "subgroup": "a a a a",
+  "fillRatio": 0.24
+ },
+ "items": [
+  {
+   "file": "333-333-1.1.png",
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "",
+     "permutations": "a a a a",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 1
+     },
+     "coloringType": "mult",
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "333-333-1.o.png",
+   "layers": {
+    "drawing": {
+     "useOrbit": true,
+     "mask": "",
+     "permutations": "a a a a",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 1
+     },
+     "coloringType": "mult",
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "00.png",
+   "_note": "f_0 H g_0",
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "1",
+     "permutations": "a a a a",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 1
+     },
+     "coloringType": "mult",
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "0_0.png",
+   "_note": "all orbits of H g_0 - the whole pattern in color 0",
+   "compose": [
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "1",
+       "permutations": "a a a a",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 1
+       },
+       "coloringType": "mult",
+       "permIndex": 0
+      }
+     },
+     "enable": {
+      "overlay": false
+     }
+    }
+   ]
+  },
+  {
+   "file": "group_pattern.png",
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "",
+     "permutations": "a a a a",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 1
+     },
+     "coloringType": "none",
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   }
+  },
+  {
+   "file": "group_domain.png",
+   "subgroup": null,
+   "enable": {
+    "drawing": false,
+    "overlay": true
+   },
+   "layers": {
+    "overlay": {
+     "buffer": {
+      "outline": {
+       "enabled": false
+      },
+      "fill": {
+       "enabled": false
+      }
+     },
+     "generators": {
+      "enabled": false
+     },
+     "tiling": {
+      "outline": {
+       "enabled": false
+      }
+     },
+     "fundDomain": {
+      "fill": {
+       "enabled": true
+      },
+      "outline": {
+       "enabled": true
+      }
+     }
+    }
+   }
+  },
+  {
+   "file": "group_tiling.png",
+   "subgroup": null,
+   "enable": {
+    "drawing": false,
+    "overlay": true
+   },
+   "layers": {
+    "overlay": {
+     "buffer": {
+      "outline": {
+       "enabled": false
+      },
+      "fill": {
+       "enabled": false
+      }
+     },
+     "generators": {
+      "enabled": false
+     },
+     "tiling": {
+      "outline": {
+       "enabled": true
+      }
+     },
+     "fundDomain": {
+      "fill": {
+       "enabled": false
+      },
+      "outline": {
+       "enabled": false
+      }
+     }
+    }
+   }
+  },
+  {
+   "file": "group_gens.png",
+   "subgroup": null,
+   "enable": {
+    "drawing": false,
+    "overlay": true
+   },
+   "layers": {
+    "overlay": {
+     "buffer": {
+      "outline": {
+       "enabled": false
+      },
+      "fill": {
+       "enabled": false
+      }
+     },
+     "generators": {
+      "enabled": false
+     },
+     "tiling": {
+      "outline": {
+       "enabled": false
+      }
+     },
+     "fundDomain": {
+      "fill": {
+       "enabled": true
+      },
+      "outline": {
+       "enabled": true
+      }
+     }
+    }
+   },
+   "markers": {
+    "subgroup": null
+   }
+  },
+  {
+   "file": "sub_domain.png",
+   "_note": "H's domain as a union of 1 G cells",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "draw": {
+    "subgroup": "a a a a",
+    "fill": true,
+    "cells": true,
+    "outline": true
+   }
+  },
+  {
+   "file": "sub_tiling.png",
+   "compose": [
+    {
+     "subgroup": null,
+     "enable": {
+      "drawing": false,
+      "overlay": true
+     },
+     "layers": {
+      "overlay": {
+       "buffer": {
+        "outline": {
+         "enabled": false
+        },
+        "fill": {
+         "enabled": false
+        }
+       },
+       "generators": {
+        "enabled": false
+       },
+       "tiling": {
+        "outline": {
+         "enabled": true
+        }
+       },
+       "fundDomain": {
+        "fill": {
+         "enabled": false
+        },
+        "outline": {
+         "enabled": false
+        }
+       }
+      }
+     },
+     "opacity": 0.3
+    }
+   ],
+   "draw": {
+    "subgroup": "a a a a",
+    "tiling": true
+   }
+  },
+  {
+   "file": "sub_gens.png",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "draw": {
+    "subgroup": "a a a a",
+    "fill": true,
+    "outline": true
+   },
+   "markers": {
+    "subgroup": "a a a a"
+   }
+  },
+  {
+   "file": "sub_til.png",
+   "_note": "H tiling lines only",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "draw": {
+    "subgroup": "a a a a",
+    "tiling": true
+   }
+  },
+  {
+   "file": "group_marks.png",
+   "_note": "G rotation centres only",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "markers": {
+    "subgroup": null
+   }
+  },
+  {
+   "file": "sub_marks.png",
+   "_note": "H rotation centres only",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "markers": {
+    "subgroup": "a a a a"
+   }
+  }
+ ]
+}
