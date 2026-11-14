@@ -169,10 +169,17 @@ table.counts .zero { color: var(--faint); font-weight: 400 !important; }
   background: var(--panel); border: 1px solid var(--line); border-radius: 6px; overflow: hidden;
 }
 .cg:hover { border-color: var(--accent); }
-.cg .pats { display: flex; flex-wrap: wrap; gap: 2px; background: var(--rule); border-bottom: 1px solid var(--rule); }
+/* the pictures are equal columns: all in one row at --pat when the page is
+   wide enough; on a narrower page they shrink together down to 60% of it,
+   then wrap - and a wrapped picture keeps its column's width (as flex items
+   the last ones grew to fill their row, up to the page width) */
+.cg .pats {
+  display: grid; gap: 2px;
+  grid-template-columns: repeat(auto-fit, minmax(min(calc(var(--pat) * .6), 100%), 1fr));
+  background: var(--rule); border-bottom: 1px solid var(--rule);
+}
 .cg .pat {
   position: relative; display: block;
-  flex: 1 1 var(--pat); min-width: min(var(--pat), 100%);
   aspect-ratio: 1; background: #fcfcfc;
 }
 .cg .pat img { display: block; width: 100%; height: 100%; object-fit: cover; }
