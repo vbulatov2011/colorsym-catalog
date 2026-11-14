@@ -55,6 +55,32 @@
    "count": 12
   }
  ],
+ "affineCountPerIndex": [
+  {
+   "index": 1,
+   "count": 1
+  },
+  {
+   "index": 2,
+   "count": 1
+  },
+  {
+   "index": 3,
+   "count": 1
+  },
+  {
+   "index": 4,
+   "count": 2
+  },
+  {
+   "index": 5,
+   "count": 1
+  },
+  {
+   "index": 6,
+   "count": 1
+  }
+ ],
  "subgroups": [
   {
    "id": "o.1.1",
@@ -152,7 +178,8 @@
     "boundary": 4,
     "interior": 0
    },
-   "name": "o/o[1]"
+   "name": "o/o[1]",
+   "affineClass": "o/o[1]"
   },
   {
    "id": "o.2.1",
@@ -287,7 +314,8 @@
     "boundary": 6,
     "interior": 2
    },
-   "name": "o/o[2]#1"
+   "name": "o/o[2]#1",
+   "affineClass": "o/o[2]#1"
   },
   {
    "id": "o.2.2",
@@ -422,7 +450,8 @@
     "boundary": 6,
     "interior": 2
    },
-   "name": "o/o[2]#3"
+   "name": "o/o[2]#3",
+   "affineClass": "o/o[2]#1"
   },
   {
    "id": "o.2.3",
@@ -557,7 +586,8 @@
     "boundary": 6,
     "interior": 2
    },
-   "name": "o/o[2]#2"
+   "name": "o/o[2]#2",
+   "affineClass": "o/o[2]#1"
   },
   {
    "id": "o.3.1",
@@ -729,7 +759,8 @@
     "boundary": 8,
     "interior": 4
    },
-   "name": "o/o[3]#1"
+   "name": "o/o[3]#1",
+   "affineClass": "o/o[3]#1"
   },
   {
    "id": "o.3.2",
@@ -901,7 +932,8 @@
     "boundary": 8,
     "interior": 4
    },
-   "name": "o/o[3]#4"
+   "name": "o/o[3]#4",
+   "affineClass": "o/o[3]#1"
   },
   {
    "id": "o.3.3",
@@ -1073,7 +1105,8 @@
     "boundary": 8,
     "interior": 4
    },
-   "name": "o/o[3]#3"
+   "name": "o/o[3]#3",
+   "affineClass": "o/o[3]#1"
   },
   {
    "id": "o.3.4",
@@ -1245,7 +1278,8 @@
     "boundary": 8,
     "interior": 4
    },
-   "name": "o/o[3]#2"
+   "name": "o/o[3]#2",
+   "affineClass": "o/o[3]#1"
   },
   {
    "id": "o.4.1",
@@ -1454,7 +1488,8 @@
     "boundary": 10,
     "interior": 6
    },
-   "name": "o/o[4]#1"
+   "name": "o/o[4]#1",
+   "affineClass": "o/o[4]#1"
   },
   {
    "id": "o.4.2",
@@ -1652,7 +1687,8 @@
     "boundary": 8,
     "interior": 8
    },
-   "name": "o/o[4]#5"
+   "name": "o/o[4]#5",
+   "affineClass": "o/o[4]#5"
   },
   {
    "id": "o.4.3",
@@ -1850,7 +1886,8 @@
     "boundary": 8,
     "interior": 8
    },
-   "name": "o/o[4]#3"
+   "name": "o/o[4]#3",
+   "affineClass": "o/o[4]#1"
   },
   {
    "id": "o.4.4",
@@ -2059,7 +2096,8 @@
     "boundary": 10,
     "interior": 6
    },
-   "name": "o/o[4]#7"
+   "name": "o/o[4]#7",
+   "affineClass": "o/o[4]#1"
   },
   {
    "id": "o.4.5",
@@ -2268,7 +2306,8 @@
     "boundary": 10,
     "interior": 6
    },
-   "name": "o/o[4]#4"
+   "name": "o/o[4]#4",
+   "affineClass": "o/o[4]#1"
   },
   {
    "id": "o.4.6",
@@ -2477,7 +2516,8 @@
     "boundary": 10,
     "interior": 6
    },
-   "name": "o/o[4]#2"
+   "name": "o/o[4]#2",
+   "affineClass": "o/o[4]#1"
   },
   {
    "id": "o.4.7",
@@ -2675,7 +2715,8 @@
     "boundary": 8,
     "interior": 8
    },
-   "name": "o/o[4]#6"
+   "name": "o/o[4]#6",
+   "affineClass": "o/o[4]#1"
   },
   {
    "id": "o.5.1",
@@ -2921,7 +2962,8 @@
     "boundary": 12,
     "interior": 8
    },
-   "name": "o/o[5]#1"
+   "name": "o/o[5]#1",
+   "affineClass": "o/o[5]#1"
   },
   {
    "id": "o.5.2",
@@ -3167,7 +3209,8 @@
     "boundary": 12,
     "interior": 8
    },
-   "name": "o/o[5]#6"
+   "name": "o/o[5]#6",
+   "affineClass": "o/o[5]#1"
   },
   {
    "id": "o.5.3",
@@ -3413,7 +3456,8 @@
     "boundary": 12,
     "interior": 8
    },
-   "name": "o/o[5]#5"
+   "name": "o/o[5]#5",
+   "affineClass": "o/o[5]#1"
   },
   {
    "id": "o.5.4",
@@ -3659,7 +3703,8 @@
     "boundary": 12,
     "interior": 8
    },
-   "name": "o/o[5]#2"
+   "name": "o/o[5]#2",
+   "affineClass": "o/o[5]#1"
   },
   {
    "id": "o.5.5",
@@ -3905,7 +3950,8 @@
     "boundary": 12,
     "interior": 8
    },
-   "name": "o/o[5]#3"
+   "name": "o/o[5]#3",
+   "affineClass": "o/o[5]#1"
   },
   {
    "id": "o.5.6",
@@ -4151,7 +4197,8 @@
     "boundary": 12,
     "interior": 8
    },
-   "name": "o/o[5]#4"
+   "name": "o/o[5]#4",
+   "affineClass": "o/o[5]#1"
   },
   {
    "id": "o.6.1",
@@ -4434,7 +4481,8 @@
     "boundary": 14,
     "interior": 10
    },
-   "name": "o/o[6]#1"
+   "name": "o/o[6]#1",
+   "affineClass": "o/o[6]#1"
   },
   {
    "id": "o.6.2",
@@ -4695,7 +4743,8 @@
     "boundary": 10,
     "interior": 14
    },
-   "name": "o/o[6]#7"
+   "name": "o/o[6]#7",
+   "affineClass": "o/o[6]#1"
   },
   {
    "id": "o.6.3",
@@ -4956,7 +5005,8 @@
     "boundary": 10,
     "interior": 14
    },
-   "name": "o/o[6]#4"
+   "name": "o/o[6]#4",
+   "affineClass": "o/o[6]#1"
   },
   {
    "id": "o.6.4",
@@ -5239,7 +5289,8 @@
     "boundary": 14,
     "interior": 10
    },
-   "name": "o/o[6]#12"
+   "name": "o/o[6]#12",
+   "affineClass": "o/o[6]#1"
   },
   {
    "id": "o.6.5",
@@ -5522,7 +5573,8 @@
     "boundary": 14,
     "interior": 10
    },
-   "name": "o/o[6]#6"
+   "name": "o/o[6]#6",
+   "affineClass": "o/o[6]#1"
   },
   {
    "id": "o.6.6",
@@ -5805,7 +5857,8 @@
     "boundary": 14,
     "interior": 10
    },
-   "name": "o/o[6]#2"
+   "name": "o/o[6]#2",
+   "affineClass": "o/o[6]#1"
   },
   {
    "id": "o.6.7",
@@ -6066,7 +6119,8 @@
     "boundary": 10,
     "interior": 14
    },
-   "name": "o/o[6]#10"
+   "name": "o/o[6]#10",
+   "affineClass": "o/o[6]#1"
   },
   {
    "id": "o.6.8",
@@ -6327,7 +6381,8 @@
     "boundary": 10,
     "interior": 14
    },
-   "name": "o/o[6]#11"
+   "name": "o/o[6]#11",
+   "affineClass": "o/o[6]#1"
   },
   {
    "id": "o.6.9",
@@ -6588,7 +6643,8 @@
     "boundary": 10,
     "interior": 14
    },
-   "name": "o/o[6]#3"
+   "name": "o/o[6]#3",
+   "affineClass": "o/o[6]#1"
   },
   {
    "id": "o.6.10",
@@ -6849,7 +6905,8 @@
     "boundary": 10,
     "interior": 14
    },
-   "name": "o/o[6]#5"
+   "name": "o/o[6]#5",
+   "affineClass": "o/o[6]#1"
   },
   {
    "id": "o.6.11",
@@ -7110,7 +7167,8 @@
     "boundary": 10,
     "interior": 14
    },
-   "name": "o/o[6]#9"
+   "name": "o/o[6]#9",
+   "affineClass": "o/o[6]#1"
   },
   {
    "id": "o.6.12",
@@ -7371,7 +7429,8 @@
     "boundary": 10,
     "interior": 14
    },
-   "name": "o/o[6]#8"
+   "name": "o/o[6]#8",
+   "affineClass": "o/o[6]#1"
   }
  ]
 }

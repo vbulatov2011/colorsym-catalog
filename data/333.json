@@ -47,6 +47,24 @@
    "count": 1
   }
  ],
+ "affineCountPerIndex": [
+  {
+   "index": 1,
+   "count": 1
+  },
+  {
+   "index": 3,
+   "count": 2
+  },
+  {
+   "index": 4,
+   "count": 1
+  },
+  {
+   "index": 6,
+   "count": 1
+  }
+ ],
  "subgroups": [
   {
    "id": "333.1.1",
@@ -150,7 +168,8 @@
     "boundary": 4,
     "interior": 0
    },
-   "name": "333/333[1]"
+   "name": "333/333[1]",
+   "affineClass": "333/333[1]"
   },
   {
    "id": "333.3.1",
@@ -322,7 +341,8 @@
     "boundary": 6,
     "interior": 6
    },
-   "name": "333/333[3]#2"
+   "name": "333/333[3]#2",
+   "affineClass": "333/333[3]#1"
   },
   {
    "id": "333.3.2",
@@ -494,7 +514,8 @@
     "boundary": 6,
     "interior": 6
    },
-   "name": "333/333[3]#1"
+   "name": "333/333[3]#1",
+   "affineClass": "333/333[3]#1"
   },
   {
    "id": "333.3.3",
@@ -666,7 +687,8 @@
     "boundary": 6,
     "interior": 6
    },
-   "name": "333/333[3]#3"
+   "name": "333/333[3]#3",
+   "affineClass": "333/333[3]#1"
   },
   {
    "id": "333.3.4",
@@ -831,7 +853,8 @@
     "boundary": 6,
     "interior": 6
    },
-   "name": "333/o[3]"
+   "name": "333/o[3]",
+   "affineClass": "333/o[3]"
   },
   {
    "id": "333.4.1",
@@ -1041,7 +1064,8 @@
     "boundary": 8,
     "interior": 8
    },
-   "name": "333/333[4]"
+   "name": "333/333[4]",
+   "affineClass": "333/333[4]"
   },
   {
    "id": "333.6.1",
@@ -1310,7 +1334,8 @@
     "boundary": 10,
     "interior": 14
    },
-   "name": "333/o[6]"
+   "name": "333/o[6]",
+   "affineClass": "333/o[6]"
   }
  ]
 }

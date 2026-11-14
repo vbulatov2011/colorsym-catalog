@@ -55,6 +55,32 @@
    "count": 7
   }
  ],
+ "affineCountPerIndex": [
+  {
+   "index": 1,
+   "count": 1
+  },
+  {
+   "index": 2,
+   "count": 2
+  },
+  {
+   "index": 3,
+   "count": 2
+  },
+  {
+   "index": 4,
+   "count": 4
+  },
+  {
+   "index": 5,
+   "count": 2
+  },
+  {
+   "index": 6,
+   "count": 5
+  }
+ ],
  "subgroups": [
   {
    "id": "xx.1.1",
@@ -162,7 +188,8 @@
     "boundary": 4,
     "interior": 0
    },
-   "name": "xx/xx[1]"
+   "name": "xx/xx[1]",
+   "affineClass": "xx/xx[1]"
   },
   {
    "id": "xx.2.1",
@@ -317,7 +344,8 @@
     "boundary": 6,
     "interior": 2
    },
-   "name": "xx/xx[2]#1"
+   "name": "xx/xx[2]#1",
+   "affineClass": "xx/xx[2]#1"
   },
   {
    "id": "xx.2.2",
@@ -472,7 +500,8 @@
     "boundary": 6,
     "interior": 2
    },
-   "name": "xx/o[2]"
+   "name": "xx/o[2]",
+   "affineClass": "xx/o[2]"
   },
   {
    "id": "xx.2.3",
@@ -637,7 +666,8 @@
     "boundary": 6,
     "interior": 2
    },
-   "name": "xx/xx[2]#2"
+   "name": "xx/xx[2]#2",
+   "affineClass": "xx/xx[2]#1"
   },
   {
    "id": "xx.3.1",
@@ -839,7 +869,8 @@
     "boundary": 8,
     "interior": 4
    },
-   "name": "xx/xx[3]#2"
+   "name": "xx/xx[3]#2",
+   "affineClass": "xx/xx[3]#2"
   },
   {
    "id": "xx.3.2",
@@ -1061,7 +1092,8 @@
     "boundary": 8,
     "interior": 4
    },
-   "name": "xx/xx[3]#1"
+   "name": "xx/xx[3]#1",
+   "affineClass": "xx/xx[3]#1"
   },
   {
    "id": "xx.4.1",
@@ -1310,7 +1342,8 @@
     "boundary": 10,
     "interior": 6
    },
-   "name": "xx/xx[4]#1"
+   "name": "xx/xx[4]#1",
+   "affineClass": "xx/xx[4]#1"
   },
   {
    "id": "xx.4.2",
@@ -1558,7 +1591,8 @@
     "boundary": 8,
     "interior": 8
    },
-   "name": "xx/xx[4]#2"
+   "name": "xx/xx[4]#2",
+   "affineClass": "xx/xx[4]#1"
   },
   {
    "id": "xx.4.3",
@@ -1796,7 +1830,8 @@
     "boundary": 8,
     "interior": 8
    },
-   "name": "xx/o[4]#3"
+   "name": "xx/o[4]#3",
+   "affineClass": "xx/o[4]#3"
   },
   {
    "id": "xx.4.4",
@@ -2045,7 +2080,8 @@
     "boundary": 10,
     "interior": 6
    },
-   "name": "xx/o[4]#1"
+   "name": "xx/o[4]#1",
+   "affineClass": "xx/o[4]#1"
   },
   {
    "id": "xx.4.5",
@@ -2283,7 +2319,8 @@
     "boundary": 8,
     "interior": 8
    },
-   "name": "xx/o[4]#2"
+   "name": "xx/o[4]#2",
+   "affineClass": "xx/o[4]#2"
   },
   {
    "id": "xx.5.1",
@@ -2579,7 +2616,8 @@
     "boundary": 12,
     "interior": 8
    },
-   "name": "xx/xx[5]#2"
+   "name": "xx/xx[5]#2",
+   "affineClass": "xx/xx[5]#2"
   },
   {
    "id": "xx.5.2",
@@ -2875,7 +2913,8 @@
     "boundary": 12,
     "interior": 8
    },
-   "name": "xx/xx[5]#1"
+   "name": "xx/xx[5]#1",
+   "affineClass": "xx/xx[5]#1"
   },
   {
    "id": "xx.6.1",
@@ -3218,7 +3257,8 @@
     "boundary": 14,
     "interior": 10
    },
-   "name": "xx/xx[6]#3"
+   "name": "xx/xx[6]#3",
+   "affineClass": "xx/xx[6]#3"
   },
   {
    "id": "xx.6.2",
@@ -3549,7 +3589,8 @@
     "boundary": 10,
     "interior": 14
    },
-   "name": "xx/xx[6]#4"
+   "name": "xx/xx[6]#4",
+   "affineClass": "xx/xx[6]#3"
   },
   {
    "id": "xx.6.3",
@@ -3870,7 +3911,8 @@
     "boundary": 10,
     "interior": 14
    },
-   "name": "xx/o[6]#3"
+   "name": "xx/o[6]#3",
+   "affineClass": "xx/o[6]#3"
   },
   {
    "id": "xx.6.4",
@@ -4213,7 +4255,8 @@
     "boundary": 14,
     "interior": 10
    },
-   "name": "xx/o[6]#1"
+   "name": "xx/o[6]#1",
+   "affineClass": "xx/o[6]#1"
   },
   {
    "id": "xx.6.5",
@@ -4574,7 +4617,8 @@
     "boundary": 10,
     "interior": 14
    },
-   "name": "xx/xx[6]#1"
+   "name": "xx/xx[6]#1",
+   "affineClass": "xx/xx[6]#1"
   },
   {
    "id": "xx.6.6",
@@ -4935,7 +4979,8 @@
     "boundary": 10,
     "interior": 14
    },
-   "name": "xx/xx[6]#2"
+   "name": "xx/xx[6]#2",
+   "affineClass": "xx/xx[6]#1"
   },
   {
    "id": "xx.6.7",
@@ -5256,7 +5301,8 @@
     "boundary": 10,
     "interior": 14
    },
-   "name": "xx/o[6]#2"
+   "name": "xx/o[6]#2",
+   "affineClass": "xx/o[6]#2"
   }
  ]
 }

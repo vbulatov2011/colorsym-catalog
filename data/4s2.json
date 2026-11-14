@@ -47,6 +47,24 @@
    "count": 2
   }
  ],
+ "affineCountPerIndex": [
+  {
+   "index": 1,
+   "count": 1
+  },
+  {
+   "index": 2,
+   "count": 3
+  },
+  {
+   "index": 4,
+   "count": 7
+  },
+  {
+   "index": 6,
+   "count": 2
+  }
+ ],
  "subgroups": [
   {
    "id": "4*2.1.1",
@@ -148,7 +166,8 @@
     "boundary": 3,
     "interior": 0
    },
-   "name": "4*2/4*2[1]"
+   "name": "4*2/4*2[1]",
+   "affineClass": "4*2/4*2[1]"
   },
   {
    "id": "4*2.2.1",
@@ -296,7 +315,8 @@
     "boundary": 4,
     "interior": 2
    },
-   "name": "4*2/2*22[2]"
+   "name": "4*2/2*22[2]",
+   "affineClass": "4*2/2*22[2]"
   },
   {
    "id": "4*2.2.2",
@@ -431,7 +451,8 @@
     "boundary": 4,
     "interior": 2
    },
-   "name": "4*2/442[2]"
+   "name": "4*2/442[2]",
+   "affineClass": "4*2/442[2]"
   },
   {
    "id": "4*2.2.3",
@@ -583,7 +604,8 @@
     "boundary": 4,
     "interior": 2
    },
-   "name": "4*2/22x[2]"
+   "name": "4*2/22x[2]",
+   "affineClass": "4*2/22x[2]"
   },
   {
    "id": "4*2.4.1",
@@ -807,7 +829,8 @@
     "boundary": 6,
     "interior": 6
    },
-   "name": "4*2/22*[4]"
+   "name": "4*2/22*[4]",
+   "affineClass": "4*2/22*[4]"
   },
   {
    "id": "4*2.4.2",
@@ -1034,7 +1057,8 @@
     "boundary": 4,
     "interior": 8
    },
-   "name": "4*2/*2222[4]"
+   "name": "4*2/*2222[4]",
+   "affineClass": "4*2/*2222[4]"
   },
   {
    "id": "4*2.4.3",
@@ -1242,7 +1266,8 @@
     "boundary": 4,
     "interior": 8
    },
-   "name": "4*2/*x[4]"
+   "name": "4*2/*x[4]",
+   "affineClass": "4*2/*x[4]"
   },
   {
    "id": "4*2.4.4",
@@ -1460,7 +1485,8 @@
     "boundary": 6,
     "interior": 6
    },
-   "name": "4*2/442[4]"
+   "name": "4*2/442[4]",
+   "affineClass": "4*2/442[4]"
   },
   {
    "id": "4*2.4.5",
@@ -1666,7 +1692,8 @@
     "boundary": 4,
     "interior": 8
    },
-   "name": "4*2/xx[4]"
+   "name": "4*2/xx[4]",
+   "affineClass": "4*2/xx[4]"
   },
   {
    "id": "4*2.4.6",
@@ -1886,7 +1913,8 @@
     "boundary": 6,
     "interior": 6
    },
-   "name": "4*2/2222[4]"
+   "name": "4*2/2222[4]",
+   "affineClass": "4*2/2222[4]"
   },
   {
    "id": "4*2.4.7",
@@ -2088,7 +2116,8 @@
     "boundary": 4,
     "interior": 8
    },
-   "name": "4*2/22x[4]"
+   "name": "4*2/22x[4]",
+   "affineClass": "4*2/22x[4]"
   },
   {
    "id": "4*2.6.1",
@@ -2408,7 +2437,8 @@
     "boundary": 6,
     "interior": 12
    },
-   "name": "4*2/2*22[6]"
+   "name": "4*2/2*22[6]",
+   "affineClass": "4*2/2*22[6]"
   },
   {
    "id": "4*2.6.2",
@@ -2751,7 +2781,8 @@
     "boundary": 8,
     "interior": 10
    },
-   "name": "4*2/22x[6]"
+   "name": "4*2/22x[6]",
+   "affineClass": "4*2/22x[6]"
   }
  ]
 }

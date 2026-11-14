@@ -106,10 +106,26 @@ for g in index['groups']:
                         manifest=os.path.basename(man), subs=subs,
                         thumb=thumb if os.path.exists(os.path.join(CAT, thumb)) else None,
                         per_n={n: sorted((s for s in subs if s['index'] == n),
-                                         key=lambda s: s['name'])
+                                         key=lambda s: (s['affineClass'], s['name']))
                                for n in range(1, MAX_N + 1)})
 
 total_all = sum(len(g['subs']) for g in groups.values())
+# the classical count: classes under the affine normalizer of G (affine_classes.mjs)
+CLASS_SIZE = {}
+for g in groups.values():
+    for s in g['subs']:
+        CLASS_SIZE[s['affineClass']] = CLASS_SIZE.get(s['affineClass'], 0) + 1
+
+
+def types(subs):
+    return len(set(s['affineClass'] for s in subs))
+
+
+def plural(k, word):
+    return '%d %s%s' % (k, word, '' if k == 1 else 's')
+
+
+types_all = sum(types(g['subs']) for g in groups.values())
 built_all = sum(s['built'] for g in groups.values() for s in g['subs'])
 
 
@@ -117,7 +133,8 @@ def count_strip(g, root):
     cells = []
     for n in range(1, MAX_N + 1):
         c = len(g['per_n'][n])
-        inner = '<span class="n">%d</span>%s' % (n, c if c else '–')
+        inner = ('<span class="n">%d</span>%d<i>/%d</i>' % (n, c, types(g['per_n'][n])) if c
+                 else '<span class="n">%d</span>–' % n)
         if c:
             cells.append('<a href="%s%s/%d/index.html" title="%s">%s</a>'
                          % (root, g['stem'], n, colours(n), inner))
@@ -149,8 +166,9 @@ def by_count_nav(root, cur=None):
         gs = sum(1 for nm in ORDER if groups[nm]['per_n'][n])
         cls = ' cur' if n == cur else ''
         tiles.append('<a class="ntile%s" href="%scolors/%d/index.html"><b>%s</b>'
-                     '<span>%d colour groups in %d symmetries</span></a>'
-                     % (cls, root, n, colours(n), cg, gs))
+                     '<span>%d colour groups, %d types, in %d symmetries</span></a>'
+                     % (cls, root, n, colours(n), cg,
+                        sum(types(groups[nm]['per_n'][n]) for nm in ORDER), gs))
     return '<nav class="ntiles">%s</nav>' % ''.join(tiles)
 
 
@@ -168,10 +186,11 @@ for fam, names in FAMILIES:
 %s
 <div class="body">
 <div class="name"><a href="%s">%s</a><span class="hm">%s</span></div>
-<div class="meta"><b>%d</b> colour groups with 1&ndash;%d colours %s</div>
+<div class="meta"><b>%d</b> colour groups, <b>%d</b> types, 1&ndash;%d colours %s</div>
 %s
 </div>
-</div>''' % (img, link, disp(name), HM[name], len(g['subs']), MAX_N, status(g['subs']),
+</div>''' % (img, link, disp(name), HM[name], len(g['subs']), types(g['subs']), MAX_N,
+             status(g['subs']),
              count_strip(g, '')))
     body.append('<h2 class="sec">%s</h2>\n<div class="grid">\n%s\n</div>' % (fam, '\n'.join(cards)))
 
@@ -180,8 +199,11 @@ write('index.html', page(
     'Color groups of the wallpaper groups',
     'The 17 wallpaper groups and their colour groups G/H[n] with 1 to %d colours: '
     '%d colour groups in all, %d rendered so far. A thumbnail shows the uncolored '
-    'pattern; the strip under it counts the colour groups for each number of '
-    'colours.' % (MAX_N, total_all, built_all),
+    'pattern; the strip under it gives, for each number of colours, colour groups / '
+    'types. Colour groups count every subgroup H up to conjugacy in G; types merge '
+    'those carried onto each other by an affine symmetry of G that need not belong '
+    'to G, the classical count (%d types in all; with 2 colours the classical 46).'
+    % (MAX_N, total_all, built_all, types_all),
     '\n'.join(body)))
 
 
@@ -209,19 +231,20 @@ for name, g in groups.items():
             else:
                 items.append('<span class="label">%s</span>' % disp(label))
         rows.append('<div class="row"><div class="what"><a href="%d/index.html">%s</a>'
-                    '<span class="cnt">%d colour group%s</span></div>'
+                    '<span class="cnt">%s, %s</span></div>'
                     '<div class="strip">%s</div></div>'
-                    % (n, colours(n), len(ss), '' if len(ss) == 1 else 's', ''.join(items)))
+                    % (n, colours(n), plural(len(ss), 'colour group'),
+                       plural(types(ss), 'type'), ''.join(items)))
     hero = ('<img src="gen/group.webp" alt="%s">' % disp(name)) if g['thumb'] else ''
     facts = '''<dl class="facts">
 <dt>Orbifold</dt><dd>%s</dd>
 <dt>Hermann&ndash;Mauguin</dt><dd>%s</dd>
-<dt>Colour groups</dt><dd>%d with 1&ndash;%d colours %s</dd>
-<dt>Per count</dt><dd style="max-width:20rem">%s</dd>
+<dt>Colour groups</dt><dd>%d with 1&ndash;%d colours, %d types %s</dd>
+<dt>Per count</dt><dd style="max-width:20rem">%s<span style="font-size:.75rem;color:var(--muted)">colour groups / types</span></dd>
 <dt>Motif</dt><dd><code>presets/wp/%s</code></dd>
 <dt>Domain</dt><dd>%s</dd>
 <dt>Manifest</dt><dd><code>data/%s</code></dd>
-</dl>''' % (disp(name), HM[name], len(g['subs']), MAX_N, status(g['subs']),
+</dl>''' % (disp(name), HM[name], len(g['subs']), MAX_N, types(g['subs']), status(g['subs']),
             count_strip(g, '../'), g['preset'],
             'default' if g['shape'] == 'default' else html.escape(g['shape']), g['manifest'])
     body = ('<div class="hero">%s<div>%s</div></div>\n'
@@ -232,6 +255,34 @@ for name, g in groups.items():
         '%s <span class="sub">%s</span>' % (disp(name), HM[name]),
         'The colour groups of %s with 1 to %d colours, by number of colours.'
         % (disp(name), MAX_N), body))
+
+
+def cg_card(s, root):
+    """a colour group's card, paths relative to the catalogue root"""
+    href = '%s%s/index.html' % (root, s['dir'])
+    if s['thumb']:
+        img = ('<a class="thumb" href="%s"><img src="%s%s" alt="%s" loading="lazy"></a>'
+               % (href, root, s['thumb'], disp(s['name'])))
+    else:
+        img = '<div class="thumb none">not rendered</div>'
+    title = '<a href="%s">%s</a>' % (href, disp(s['name'])) if s['built'] else disp(s['name'])
+    badge = ('<span class="badge">the uncolored group</span>' if s['index'] == 1 else
+             '<span class="badge on">normal</span>' if s['normal'] else '')
+    k = s['placements']
+    size = CLASS_SIZE[s['affineClass']]
+    if size == 1:
+        typ = 'a type of its own'
+    elif s['affineClass'] == s['name']:
+        typ = 'type of %d colour groups' % size
+    else:
+        typ = 'same type as %s' % disp(s['affineClass'])
+    return ('<div class="card">\n%s\n<div class="body">\n'
+            '<div class="name" style="font-size:1.05rem">%s</div>\n'
+            '<div class="meta">H = %s &middot; %d placement%s</div>\n'
+            '<div class="meta">%s</div>\n<div>%s</div>\n'
+            '</div>\n</div>' % (img, title, disp(s['type']), k, '' if k == 1 else 's',
+                                typ, badge))
+
 
 
 # ---- count pages -------------------------------------------------------------
@@ -252,39 +303,14 @@ for name, g in groups.items():
                 pager.append('<a href="../%d/index.html" title="%s">%d</a>' % (k, colours(k), k))
             else:
                 pager.append('<span class="off" title="none">%d</span>' % k)
-        cards = []
-        for s in ss:
-            rel = '/'.join(s['dir'].split('/')[2:])          # <slug>
-            href = '%s/index.html' % rel
-            if s['thumb']:
-                img = ('<a class="thumb" href="%s"><img src="%s/gen/%s.o.webp" alt="%s" '
-                       'loading="lazy"></a>' % (href, rel, s['slug'], disp(s['name'])))
-            else:
-                img = '<div class="thumb none">not rendered</div>'
-            title = ('<a href="%s">%s</a>' % (href, disp(s['name'])) if s['built']
-                     else disp(s['name']))
-            badges = []
-            if s['index'] == 1:
-                badges.append('<span class="badge">the uncolored group</span>')
-            elif s['normal']:
-                badges.append('<span class="badge on">normal</span>')
-            k = s['placements']
-            meta = ('H = %s &middot; %d placement%s'
-                    % (disp(s['type']), k, '' if k == 1 else 's'))
-            cards.append('''<div class="card">
-%s
-<div class="body">
-<div class="name" style="font-size:1.05rem">%s</div>
-<div class="meta">%s</div>
-<div>%s</div>
-</div>
-</div>''' % (img, title, meta, ''.join(badges)))
+        cards = [cg_card(s, root) for s in ss]
         pager.append('<a href="../../colors/%d/index.html">all symmetries with %s</a>'
                      % (n, colours(n)))
-        body = ('<nav class="pager">%s</nav>\n<h2 class="sec">%d colour group%s'
-                '<span class="note">thumbnail: the orbit colouring</span></h2>\n'
-                '<div class="grid">\n%s\n</div>'
-                % (''.join(pager), len(ss), '' if len(ss) == 1 else 's', '\n'.join(cards)))
+        body = ('<nav class="pager">%s</nav>\n<h2 class="sec">%s, %s'
+                '<span class="note">thumbnail: the orbit colouring; cards of one type '
+                'are adjacent</span></h2>\n<div class="grid">\n%s\n</div>'
+                % (''.join(pager), plural(len(ss), 'colour group'), plural(types(ss), 'type'),
+                   '\n'.join(cards)))
         write('%s/%d/index.html' % (g['stem'], n), page(
             '%s, %s - Color Groups Catalog' % (name, colours(n)), root, crumbs,
             '%s <span class="sub">with %s</span>' % (disp(name), colours(n)),
@@ -294,24 +320,6 @@ for name, g in groups.items():
 
 
 # ---- count pages across all groups: colors/<N>/index.html ------------------
-
-def cg_card(s, root):
-    """a colour group's card, paths relative to the catalogue root"""
-    href = '%s%s/index.html' % (root, s['dir'])
-    if s['thumb']:
-        img = ('<a class="thumb" href="%s"><img src="%s%s" alt="%s" loading="lazy"></a>'
-               % (href, root, s['thumb'], disp(s['name'])))
-    else:
-        img = '<div class="thumb none">not rendered</div>'
-    title = '<a href="%s">%s</a>' % (href, disp(s['name'])) if s['built'] else disp(s['name'])
-    badge = ('<span class="badge">the uncolored group</span>' if s['index'] == 1 else
-             '<span class="badge on">normal</span>' if s['normal'] else '')
-    k = s['placements']
-    return ('<div class="card">\n%s\n<div class="body">\n'
-            '<div class="name" style="font-size:1.05rem">%s</div>\n'
-            '<div class="meta">H = %s &middot; %d placement%s</div>\n<div>%s</div>\n'
-            '</div>\n</div>' % (img, title, disp(s['type']), k, '' if k == 1 else 's', badge))
-
 
 for n in range(1, MAX_N + 1):
     root = '../../'
@@ -324,17 +332,19 @@ for n in range(1, MAX_N + 1):
         if not ss:
             secs.append(head + ' &middot; none</span></h2>')
             continue
-        secs.append(head + ' &middot; %d colour group%s &middot; <a href="%s%s/%d/index.html">'
+        secs.append(head + ' &middot; %s, %s &middot; <a href="%s%s/%d/index.html">'
                     'on its own page</a></span></h2>\n<div class="grid">\n%s\n</div>'
-                    % (len(ss), '' if len(ss) == 1 else 's', root, g['stem'], n,
+                    % (plural(len(ss), 'colour group'), plural(types(ss), 'type'),
+                       root, g['stem'], n,
                        '\n'.join(cg_card(s, root) for s in ss)))
     cg = sum(len(groups[nm]['per_n'][n]) for nm in ORDER)
     write('colors/%d/index.html' % n, page(
         'All groups, %s - Color Groups Catalog' % colours(n), root,
         [('../../index.html', 'Catalog'), (None, 'All symmetries with %s' % colours(n))],
         'All symmetries <span class="sub">with %s</span>' % colours(n),
-        '%d colour groups G/H[%d] across the 17 wallpaper groups. Thumbnail: the orbit '
-        'colouring.' % (cg, n),
+        '%d colour groups G/H[%d] across the 17 wallpaper groups, %d types (the classical '
+        'count). Thumbnail: the orbit colouring.'
+        % (cg, n, sum(types(groups[nm]['per_n'][n]) for nm in ORDER)),
         by_count_nav(root, n) + '\n' + '\n'.join(secs)))
 
 print('%d groups, %d colour groups (%d rendered); wrote index.html, %d group pages, %d count pages'

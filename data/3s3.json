@@ -51,6 +51,28 @@
    "count": 5
   }
  ],
+ "affineCountPerIndex": [
+  {
+   "index": 1,
+   "count": 1
+  },
+  {
+   "index": 2,
+   "count": 1
+  },
+  {
+   "index": 3,
+   "count": 2
+  },
+  {
+   "index": 4,
+   "count": 1
+  },
+  {
+   "index": 6,
+   "count": 5
+  }
+ ],
  "subgroups": [
   {
    "id": "3*3.1.1",
@@ -152,7 +174,8 @@
     "boundary": 3,
     "interior": 0
    },
-   "name": "3*3/3*3[1]"
+   "name": "3*3/3*3[1]",
+   "affineClass": "3*3/3*3[1]"
   },
   {
    "id": "3*3.2.1",
@@ -287,7 +310,8 @@
     "boundary": 4,
     "interior": 2
    },
-   "name": "3*3/333[2]"
+   "name": "3*3/333[2]",
+   "affineClass": "3*3/333[2]"
   },
   {
    "id": "3*3.3.1",
@@ -468,7 +492,8 @@
     "boundary": 3,
     "interior": 6
    },
-   "name": "3*3/*333[3]"
+   "name": "3*3/*333[3]",
+   "affineClass": "3*3/*333[3]"
   },
   {
    "id": "3*3.3.2",
@@ -631,7 +656,8 @@
     "boundary": 3,
     "interior": 6
    },
-   "name": "3*3/*x[3]"
+   "name": "3*3/*x[3]",
+   "affineClass": "3*3/*x[3]"
   },
   {
    "id": "3*3.4.1",
@@ -846,7 +872,8 @@
     "boundary": 4,
     "interior": 8
    },
-   "name": "3*3/3*3[4]"
+   "name": "3*3/3*3[4]",
+   "affineClass": "3*3/3*3[4]"
   },
   {
    "id": "3*3.6.1",
@@ -1140,7 +1167,8 @@
     "boundary": 4,
     "interior": 14
    },
-   "name": "3*3/**[6]"
+   "name": "3*3/**[6]",
+   "affineClass": "3*3/**[6]"
   },
   {
    "id": "3*3.6.2",
@@ -1430,7 +1458,8 @@
     "boundary": 6,
     "interior": 12
    },
-   "name": "3*3/333[6]#1"
+   "name": "3*3/333[6]#1",
+   "affineClass": "3*3/333[6]#1"
   },
   {
    "id": "3*3.6.3",
@@ -1718,7 +1747,8 @@
     "boundary": 4,
     "interior": 14
    },
-   "name": "3*3/xx[6]"
+   "name": "3*3/xx[6]",
+   "affineClass": "3*3/xx[6]"
   },
   {
    "id": "3*3.6.4",
@@ -2011,7 +2041,8 @@
     "boundary": 6,
     "interior": 12
    },
-   "name": "3*3/333[6]#2"
+   "name": "3*3/333[6]#2",
+   "affineClass": "3*3/333[6]#2"
   },
   {
    "id": "3*3.6.5",
@@ -2294,7 +2325,8 @@
     "boundary": 6,
     "interior": 12
    },
-   "name": "3*3/o[6]"
+   "name": "3*3/o[6]",
+   "affineClass": "3*3/o[6]"
   }
  ]
 }

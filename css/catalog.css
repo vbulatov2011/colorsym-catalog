@@ -164,3 +164,4 @@ nav.ntiles b { display: block; font-size: 1.05rem; }
 nav.ntiles span { font-size: .78rem; color: var(--muted); }
 nav.ntiles a.cur span { color: #ccc; }
 h2.sec a { color: inherit; }
+.counts i { font-style: normal; color: var(--muted); font-size: .7rem; }

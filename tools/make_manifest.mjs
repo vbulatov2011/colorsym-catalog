@@ -50,6 +50,7 @@ const { reidemeisterSchreier } = await import('./reidemeister.mjs');
 const { computeFrame, subgroupClassKey } =
   await import(SYMMHUB + '/lib/grouplib/SubgroupKey.js');
 const { groupPresentation } = await import(SYMMHUB + '/lib/grouplib/GroupPresentation.js');
+const { affineClasses, affineCounts } = await import('./affine_classes.mjs');
 
 const OUT_DIR = join(dirname(fileURLToPath(import.meta.url)), '..', 'data');
 
@@ -421,6 +422,16 @@ for(const sub of data.subgroups){
   }
 }
 
+// classes under the affine normalizer of G: the classical colour group types
+// (tools/affine_classes.mjs); affineClass names the least entry of the class
+let affineCountPerIndex = null;
+if(frame){
+  const { classOf } = affineClasses({ group, frame, subgroups });
+  for(const s of subgroups) s.affineClass = classOf.get(s.name);
+  affineCountPerIndex = affineCounts(subgroups, classOf, maxIndex)
+    .map((count, i) => ({ index: i + 1, count })).filter(c => c.count);
+}
+
 const manifest = {
   format: 'colorsym-catalog-manifest',
   version: 3,            // 3: geoKey is the key of the conjugacy class; keyCoset and representativeKey added
@@ -439,6 +450,7 @@ const manifest = {
   maxIndex,
   totalCount: data.totalCount,
   countPerIndex: data.countPerIndex,
+  ...(affineCountPerIndex ? { affineCountPerIndex } : {}),
   subgroups,
 };
 
