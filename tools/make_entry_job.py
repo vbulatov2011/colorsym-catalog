@@ -9,6 +9,11 @@
 #   --piece-size <px>  pixel size of the N x N pieces f_i H g_j (default 400,
 #                   half the job's 800: they are only seen as table thumbnails,
 #                   and as the N^2 term they would otherwise be most of the bytes)
+#   --iterations <n>  the renderer's folding steps (symmetry.options.iterations),
+#                   patched into every item: a view zoomed out onto a large H
+#                   domain needs more steps than a preset saved for drawing may
+#                   have (wp-442 was saved with 10; the far cells then stay
+#                   unrendered - transparent, with flat color blocks)
 # e.g.  python make_entry_job.py 333 "333/o[6]" #           --preset /catalog/presets/wp/wp-333.json --layer drawing
 # A symdraw job runs at /apps/symdraw/catalog_render.html?job=..., a sympix
 # one at /apps/sympix/catalog_render.html?job=...
@@ -37,6 +42,7 @@ assert TEMPLATE.startswith('/') and ':' not in TEMPLATE, (
     ' (from Git Bash, prefix the command with MSYS_NO_PATHCONV=1)' % TEMPLATE)
 LAYER = _opt('--layer', LAYER)
 PIECE_SIZE = int(_opt('--piece-size', '400'))
+ITERATIONS = _opt('--iterations', None)
 # the sympix template already colours by multiplying ('mult'); a document
 # that does not - a symdraw drawing starts with 'none' - needs it set, or the
 # colorings come out uncoloured.  Set only for a non-default template, so the
@@ -189,12 +195,20 @@ for k in range(1, N):
                   "glyphs": {"subgroup": COS, "kind": "coset",
                              "list": [{"word": g_words[k], "style": G_STYLE}]}})
 
+if ITERATIONS is not None:
+    # a plain item applies its own params, a composed one each part's
+    for it in items:
+        for cfg in it.get("compose", [it]):
+            assert "params" not in cfg, cfg
+            cfg["params"] = {"symmetry": {"options": {"iterations": int(ITERATIONS)}}}
+
 job = {
  "_comment": [
   "Layer set for %s (%s), %d colours, %d placements." % (entry_name, entry['id'], N, K),
   "Template: %s; permutations overridden to this subgroup's invcos." % TEMPLATE.split('/')[-1][:-5],
   "f words: %s" % ' '.join(f_words),
-  "g words: %s" % ' '.join(g_words)],
+  "g words: %s" % ' '.join(g_words)]
+  + (["Every item sets symmetry.options.iterations = %s." % ITERATIONS] if ITERATIONS else []),
  "outDir": out_dir,
  "size": 800,
  "preset": TEMPLATE,
