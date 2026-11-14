@@ -37,10 +37,11 @@ The heart of an entry. Cell `(row j, column i)` is the piece `f_i H g_j`:
   coloring `.o` carried by that row's `g_j`.
 - the **bottom margin** is the coloring by cosets of each column.
 
-Each panel also carries its origin faded beneath it, plus toggleable context layers
+Each panel also carries its origin faded, plus context layers drawn over the pattern
 (tilings, fundamental domains, symmetry axes) — the ☰ menu at the top right of a page
-switches them. Every picture enlarges on click; arrow keys walk the table by row and
-column.
+switches each of them and the pattern itself, and remembers the choice for every entry
+page (browser local storage). Every picture enlarges on click; arrow keys walk the
+table by row and column.
 
 Rotation axes are drawn as hurricane symbols whose arm count is the order, and
 **inequivalent axis classes appear in different shades of the base color** — so `2222`

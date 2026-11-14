@@ -231,13 +231,17 @@ geo = "\n".join([
 ])
 
 # ---- partition table -----------------------------------------------------
-# decoration layers, each toggled by a checkbox in the hamburger menu
-DECOR_UNDER = [(sub('group_tiling.png'), 'gtil'),
-               (sub('sub_til.png'), 'htil'),
-               (sub('group_domain.png'), 'gfd'),
-               (sub('sub_domain.png'), 'hfd')]
-DECOR_OVER = [(sub('group_marks.png'), 'gsym'),
-              (sub('sub_marks.png'), 'hsym')]
+# A panel's layers, bottom to top: the pattern (the piece, or the row's orbits
+# in the margin) and its faded origin, then the decorations - tilings and
+# fundamental domains, symmetry centres, the f/g glyphs - so that the opaque
+# pattern hides none of them.  Each is toggled by a checkbox in the hamburger
+# menu, the pattern ('pat') too.
+DECOR_GEO = [(sub('group_tiling.png'), 'gtil'),
+             (sub('sub_til.png'), 'htil'),
+             (sub('group_domain.png'), 'gfd'),
+             (sub('sub_domain.png'), 'hfd')]
+DECOR_SYM = [(sub('group_marks.png'), 'gsym'),
+             (sub('sub_marks.png'), 'hsym')]
 # columns = ALL N cells f_i of H's domain (a row unions to the whole pattern);
 # the K placement-representative columns are marked when K < N.
 rep_td = lambda i: ' rep' if mark and i in reps else ''
@@ -245,33 +249,38 @@ trows = []
 for j in range(N):
     tds = []
     for i in range(N):
-        layers = list(DECOR_UNDER)
+        layers = [(sub('%d%d.png' % (i, j)), 'pat')]
         if i > 0:   layers.append((sub('0%d.png' % j), 'ghost'))  # origin H g_j
         elif j > 0: layers.append((sub('00.png'), 'ghost'))       # origin H
-        layers.append(sub('%d%d.png' % (i, j)))
-        layers += DECOR_OVER
+        layers += DECOR_GEO + DECOR_SYM
         if j == 0 and i > 0: layers.append((sub('f%d.png' % i), 'fglyph'))
         if j > 0: layers.append((sub('g%d.png' % j), 'gglyph'))
         lab = ('f<sub>%d</sub> ' % i if i > 0 else '') + ('H' if j == 0 else 'H g<sub>%d</sub>' % j)
         tds.append("   <td class='cell%s'>\n%s\n   </td>" % (rep_td(i), stack(layers, lab)))
     uimg = sub('%s.o.png' % slug) if orbit_off[j] == 0 else sub('%s.o%d.png' % (slug, orbit_off[j]))
-    ulayers = list(DECOR_UNDER) + [uimg] + DECOR_OVER
+    ulayers = [(uimg, 'pat')] + DECOR_GEO + DECOR_SYM
     if j > 0: ulayers.append((sub('g%d.png' % j), 'gglyph'))
     tds.append("   <td class='cell marg'>\n%s\n   </td>"
                % stack(ulayers,
                        'all orbits of %s' % ('H' if j == 0 else 'H g<sub>%d</sub>' % j)))
     trows.append("  <tr>\n   <th class='row'><span class='sw sw%d'></span> orbits of %s</th>\n%s\n  </tr>"
                  % (j, 'H' if j == 0 else 'H g<sub>%d</sub>' % j, "\n".join(tds)))
+# the bottom margin: each column's coloring by cosets, with the same layers as
+# the panels above it - and the column's f_i, as the right margin has its g_j
+def blayers(img, i):
+    layers = [(sub(img), 'pat')] + DECOR_GEO + DECOR_SYM
+    if i > 0: layers.append((sub('f%d.png' % i), 'fglyph'))
+    return layers
 tds = []
 for i in range(N):
     if i in reps:
         k = reps.index(i) + 1
         tds.append("   <td class='cell marg%s'>\n%s\n   </td>"
-                   % (rep_td(i), stack([sub('%s.%d.png' % (slug, k))], '%s.%d' % (E(entry_name), k))))
+                   % (rep_td(i), stack(blayers('%s.%d.png' % (slug, k), i), '%s.%d' % (E(entry_name), k))))
     else:
         k = reps.index(rep_of[i]) + 1
         tds.append("   <td class='cell marg'>\n%s\n   </td>"
-                   % stack([sub('%s.%d.png' % (slug, i + 1))], '&equiv; .%d' % k))
+                   % stack(blayers('%s.%d.png' % (slug, i + 1), i), '&equiv; .%d' % k))
 tds.append("   <td class='cell marg'></td>")
 trows.append("  <tr>\n   <th class='row'>all colors<span class='hint'>coloring by cosets</span></th>\n%s\n  </tr>"
              % "\n".join(tds))
@@ -350,7 +359,7 @@ table.geo .cellcap { font-size: .85rem; color: #556; margin-top: .3rem; max-widt
 .stack img.htil { opacity: .3; }
 .stack img.gfd, .stack img.hfd { opacity: .35; }
 .stack img.gsym, .stack img.hsym { opacity: .75; }
-body.off-ghost img.ghost, body.off-gfd img.gfd, body.off-hfd img.hfd,
+body.off-pat img.pat, body.off-ghost img.ghost, body.off-gfd img.gfd, body.off-hfd img.hfd,
 body.off-gtil img.gtil, body.off-htil img.htil,
 body.off-gsym img.gsym, body.off-hsym img.hsym,
 body.off-f img.fglyph, body.off-g img.gglyph { display: none; }
@@ -370,6 +379,7 @@ body.off-f img.fglyph, body.off-g img.gglyph { display: none; }
 <div id="deco">
  <button id="deco-btn" aria-label="display options" title="display options">&#9776;</button>
  <div id="deco-panel" hidden>
+  <label><input type="checkbox" data-k="pat" checked> pattern</label>
   <label><input type="checkbox" data-k="ghost" checked> ghost H</label>
   <hr>
   <label><input type="checkbox" data-k="gfd" checked> G fd</label>
@@ -384,6 +394,33 @@ body.off-f img.fglyph, body.off-g img.gglyph { display: none; }
   <label><input type="checkbox" data-k="f" checked> f-transforms</label>
  </div>
 </div>
+<script>
+// the menu's choices, kept in localStorage for every entry page; applied here,
+// before the panels, so a page opens as it was left
+(function () {
+  var KEY = 'colorsym-catalog.entry.layers', saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) {}
+  var btn = document.getElementById('deco-btn'),
+      panel = document.getElementById('deco-panel'),
+      boxes = [].slice.call(panel.querySelectorAll('input[data-k]'));
+  function apply(cb) {
+    document.body.classList.toggle('off-' + cb.getAttribute('data-k'), !cb.checked);
+  }
+  boxes.forEach(function (cb) {
+    var k = cb.getAttribute('data-k');
+    if (typeof saved[k] === 'boolean') cb.checked = saved[k];
+    apply(cb);
+  });
+  btn.addEventListener('click', function () { panel.hidden = !panel.hidden; });
+  panel.addEventListener('change', function (e) {
+    var k = e.target.getAttribute('data-k');
+    if (!k) return;
+    apply(e.target);
+    saved[k] = e.target.checked;
+    try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
+  });
+})();
+</script>
 
 <header class="entry">
 <div class="wrap">
@@ -451,10 +488,10 @@ comes from: <code>H&thinsp;g<sub>j</sub></code> panels show <code>H</code>, and
 <code>f<sub>i</sub>&hellip;</code> panels show their row&rsquo;s <code>H&thinsp;g<sub>j</sub></code>.
 The <b>bottom margin</b> is the coloring by cosets of every column &mdash; under a marked
 column the pictures from the top of the page, under a repeated column the same partition
-with its colors relabeled (titled <code>&equiv;</code> its marked twin). Under and over
-every panel sit faded context layers &mdash; the tilings, fundamental domains and
-symmetry centers of G and H; the <b>&#9776; menu</b> at the top right toggles each
-decoration.</p>
+with its colors relabeled (titled <code>&equiv;</code> its marked twin). Over every
+panel sit faded context layers &mdash; the tilings, fundamental domains and symmetry
+centers of G and H; the <b>&#9776; menu</b> at the top right toggles each of them and
+the pattern itself, and remembers the choice.</p>
 
 </div>
 
@@ -522,19 +559,6 @@ decoration.</p>
       var k = flow.indexOf(idx) + d[1];
       if (k >= 0 && k < flow.length) show(flow[k]);
     }
-  });
-})();
-(function () {
-  var btn = document.getElementById('deco-btn'),
-      panel = document.getElementById('deco-panel'),
-      boxes = [].slice.call(panel.querySelectorAll('input[data-k]'));
-  function apply(cb) {
-    document.body.classList.toggle('off-' + cb.getAttribute('data-k'), !cb.checked);
-  }
-  boxes.forEach(apply);
-  btn.addEventListener('click', function () { panel.hidden = !panel.hidden; });
-  panel.addEventListener('change', function (e) {
-    if (e.target.getAttribute('data-k')) apply(e.target);
   });
 })();
 </script>

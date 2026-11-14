@@ -22,7 +22,7 @@ table.geo .cellcap { font-size: .85rem; color: #556; margin-top: .3rem; max-widt
 .stack img.htil { opacity: .3; }
 .stack img.gfd, .stack img.hfd { opacity: .35; }
 .stack img.gsym, .stack img.hsym { opacity: .75; }
-body.off-ghost img.ghost, body.off-gfd img.gfd, body.off-hfd img.hfd,
+body.off-pat img.pat, body.off-ghost img.ghost, body.off-gfd img.gfd, body.off-hfd img.hfd,
 body.off-gtil img.gtil, body.off-htil img.htil,
 body.off-gsym img.gsym, body.off-hsym img.hsym,
 body.off-f img.fglyph, body.off-g img.gglyph { display: none; }
@@ -42,6 +42,7 @@ body.off-f img.fglyph, body.off-g img.gglyph { display: none; }
 <div id="deco">
  <button id="deco-btn" aria-label="display options" title="display options">&#9776;</button>
  <div id="deco-panel" hidden>
+  <label><input type="checkbox" data-k="pat" checked> pattern</label>
   <label><input type="checkbox" data-k="ghost" checked> ghost H</label>
   <hr>
   <label><input type="checkbox" data-k="gfd" checked> G fd</label>
@@ -56,6 +57,33 @@ body.off-f img.fglyph, body.off-g img.gglyph { display: none; }
   <label><input type="checkbox" data-k="f" checked> f-transforms</label>
  </div>
 </div>
+<script>
+// the menu's choices, kept in localStorage for every entry page; applied here,
+// before the panels, so a page opens as it was left
+(function () {
+  var KEY = 'colorsym-catalog.entry.layers', saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) {}
+  var btn = document.getElementById('deco-btn'),
+      panel = document.getElementById('deco-panel'),
+      boxes = [].slice.call(panel.querySelectorAll('input[data-k]'));
+  function apply(cb) {
+    document.body.classList.toggle('off-' + cb.getAttribute('data-k'), !cb.checked);
+  }
+  boxes.forEach(function (cb) {
+    var k = cb.getAttribute('data-k');
+    if (typeof saved[k] === 'boolean') cb.checked = saved[k];
+    apply(cb);
+  });
+  btn.addEventListener('click', function () { panel.hidden = !panel.hidden; });
+  panel.addEventListener('change', function (e) {
+    var k = e.target.getAttribute('data-k');
+    if (!k) return;
+    apply(e.target);
+    saved[k] = e.target.checked;
+    try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
+  });
+})();
+</script>
 
 <header class="entry">
 <div class="wrap">
@@ -215,11 +243,11 @@ click.</b></p>
    <td class='cell rep'>
     <div class='stack'>
       <div class='cap'>H</div>
+      <img src='gen/00.webp' class='pat'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/00.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
     </div>
@@ -227,12 +255,12 @@ click.</b></p>
    <td class='cell'>
     <div class='stack'>
       <div class='cap'>f<sub>1</sub> H</div>
+      <img src='gen/10.webp' class='pat'>
+      <img src='gen/00.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/00.webp' class='ghost'>
-      <img src='gen/10.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/f1.webp' class='fglyph'>
@@ -241,11 +269,11 @@ click.</b></p>
    <td class='cell marg'>
     <div class='stack'>
       <div class='cap'>all orbits of H</div>
+      <img src='gen/632-333-2.o.webp' class='pat'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/632-333-2.o.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
     </div>
@@ -256,12 +284,12 @@ click.</b></p>
    <td class='cell rep'>
     <div class='stack'>
       <div class='cap'>H g<sub>1</sub></div>
+      <img src='gen/01.webp' class='pat'>
+      <img src='gen/00.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/00.webp' class='ghost'>
-      <img src='gen/01.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g1.webp' class='gglyph'>
@@ -270,12 +298,12 @@ click.</b></p>
    <td class='cell'>
     <div class='stack'>
       <div class='cap'>f<sub>1</sub> H g<sub>1</sub></div>
+      <img src='gen/11.webp' class='pat'>
+      <img src='gen/01.webp' class='ghost'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/01.webp' class='ghost'>
-      <img src='gen/11.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g1.webp' class='gglyph'>
@@ -284,11 +312,11 @@ click.</b></p>
    <td class='cell marg'>
     <div class='stack'>
       <div class='cap'>all orbits of H g<sub>1</sub></div>
+      <img src='gen/632-333-2.o1.webp' class='pat'>
       <img src='gen/group_tiling.webp' class='gtil'>
       <img src='gen/sub_til.webp' class='htil'>
       <img src='gen/group_domain.webp' class='gfd'>
       <img src='gen/sub_domain.webp' class='hfd'>
-      <img src='gen/632-333-2.o1.webp'>
       <img src='gen/group_marks.webp' class='gsym'>
       <img src='gen/sub_marks.webp' class='hsym'>
       <img src='gen/g1.webp' class='gglyph'>
@@ -300,13 +328,26 @@ click.</b></p>
    <td class='cell marg rep'>
     <div class='stack'>
       <div class='cap'>632/333[2].1</div>
-      <img src='gen/632-333-2.1.webp'>
+      <img src='gen/632-333-2.1.webp' class='pat'>
+      <img src='gen/group_tiling.webp' class='gtil'>
+      <img src='gen/sub_til.webp' class='htil'>
+      <img src='gen/group_domain.webp' class='gfd'>
+      <img src='gen/sub_domain.webp' class='hfd'>
+      <img src='gen/group_marks.webp' class='gsym'>
+      <img src='gen/sub_marks.webp' class='hsym'>
     </div>
    </td>
    <td class='cell marg'>
     <div class='stack'>
       <div class='cap'>&equiv; .1</div>
-      <img src='gen/632-333-2.2.webp'>
+      <img src='gen/632-333-2.2.webp' class='pat'>
+      <img src='gen/group_tiling.webp' class='gtil'>
+      <img src='gen/sub_til.webp' class='htil'>
+      <img src='gen/group_domain.webp' class='gfd'>
+      <img src='gen/sub_domain.webp' class='hfd'>
+      <img src='gen/group_marks.webp' class='gsym'>
+      <img src='gen/sub_marks.webp' class='hsym'>
+      <img src='gen/f1.webp' class='fglyph'>
     </div>
    </td>
    <td class='cell marg'></td>
@@ -324,10 +365,10 @@ comes from: <code>H&thinsp;g<sub>j</sub></code> panels show <code>H</code>, and
 <code>f<sub>i</sub>&hellip;</code> panels show their row&rsquo;s <code>H&thinsp;g<sub>j</sub></code>.
 The <b>bottom margin</b> is the coloring by cosets of every column &mdash; under a marked
 column the pictures from the top of the page, under a repeated column the same partition
-with its colors relabeled (titled <code>&equiv;</code> its marked twin). Under and over
-every panel sit faded context layers &mdash; the tilings, fundamental domains and
-symmetry centers of G and H; the <b>&#9776; menu</b> at the top right toggles each
-decoration.</p>
+with its colors relabeled (titled <code>&equiv;</code> its marked twin). Over every
+panel sit faded context layers &mdash; the tilings, fundamental domains and symmetry
+centers of G and H; the <b>&#9776; menu</b> at the top right toggles each of them and
+the pattern itself, and remembers the choice.</p>
 
 </div>
 
@@ -395,19 +436,6 @@ decoration.</p>
       var k = flow.indexOf(idx) + d[1];
       if (k >= 0 && k < flow.length) show(flow[k]);
     }
-  });
-})();
-(function () {
-  var btn = document.getElementById('deco-btn'),
-      panel = document.getElementById('deco-panel'),
-      boxes = [].slice.call(panel.querySelectorAll('input[data-k]'));
-  function apply(cb) {
-    document.body.classList.toggle('off-' + cb.getAttribute('data-k'), !cb.checked);
-  }
-  boxes.forEach(apply);
-  btn.addEventListener('click', function () { panel.hidden = !panel.hidden; });
-  panel.addEventListener('change', function (e) {
-    if (e.target.getAttribute('data-k')) apply(e.target);
   });
 })();
 </script>
