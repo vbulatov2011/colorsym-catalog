@@ -3,14 +3,16 @@
   "Layer set for 632/2222[3] (632.3.2), 3 colours, 1 placements.",
   "Template: wp-632; permutations overridden to this subgroup's invcos.",
   "f words: e d a",
-  "g words: e b B"
+  "g words: e b B",
+  "View: the preset's own (centre and zoom), shared by every item."
  ],
  "outDir": "632/3/632-2222-3/gen",
  "size": 800,
  "preset": "/catalog/presets/wp/wp-632.json",
- "autoView": {
-  "subgroup": "bca bca cab cab",
-  "fillRatio": 0.24
+ "view": {
+  "zoom": 0.667,
+  "centerX": 0,
+  "centerY": 0
  },
  "items": [
   {
@@ -528,28 +530,21 @@
    },
    "layers": {
     "overlay": {
-     "buffer": {
-      "outline": {
+     "overlays": {
+      "tiling": {
        "enabled": false
       },
-      "fill": {
-       "enabled": false
-      }
-     },
-     "generators": {
-      "enabled": false
-     },
-     "tiling": {
-      "outline": {
-       "enabled": false
-      }
-     },
-     "fundDomain": {
-      "fill": {
-       "enabled": true
+      "fundDomain": {
+       "enabled": true,
+       "fill": {
+        "enabled": true
+       },
+       "outline": {
+        "enabled": true
+       }
       },
-      "outline": {
-       "enabled": true
+      "generators": {
+       "enabled": false
       }
      }
     }
@@ -564,27 +559,14 @@
    },
    "layers": {
     "overlay": {
-     "buffer": {
-      "outline": {
-       "enabled": false
-      },
-      "fill": {
-       "enabled": false
-      }
-     },
-     "generators": {
-      "enabled": false
-     },
-     "tiling": {
-      "outline": {
+     "overlays": {
+      "tiling": {
        "enabled": true
-      }
-     },
-     "fundDomain": {
-      "fill": {
+      },
+      "fundDomain": {
        "enabled": false
       },
-      "outline": {
+      "generators": {
        "enabled": false
       }
      }
@@ -600,28 +582,21 @@
    },
    "layers": {
     "overlay": {
-     "buffer": {
-      "outline": {
+     "overlays": {
+      "tiling": {
        "enabled": false
       },
-      "fill": {
-       "enabled": false
-      }
-     },
-     "generators": {
-      "enabled": false
-     },
-     "tiling": {
-      "outline": {
-       "enabled": false
-      }
-     },
-     "fundDomain": {
-      "fill": {
-       "enabled": true
+      "fundDomain": {
+       "enabled": true,
+       "fill": {
+        "enabled": true
+       },
+       "outline": {
+        "enabled": true
+       }
       },
-      "outline": {
-       "enabled": true
+      "generators": {
+       "enabled": false
       }
      }
     }
@@ -655,27 +630,14 @@
      },
      "layers": {
       "overlay": {
-       "buffer": {
-        "outline": {
-         "enabled": false
-        },
-        "fill": {
-         "enabled": false
-        }
-       },
-       "generators": {
-        "enabled": false
-       },
-       "tiling": {
-        "outline": {
+       "overlays": {
+        "tiling": {
          "enabled": true
-        }
-       },
-       "fundDomain": {
-        "fill": {
+        },
+        "fundDomain": {
          "enabled": false
         },
-        "outline": {
+        "generators": {
          "enabled": false
         }
        }

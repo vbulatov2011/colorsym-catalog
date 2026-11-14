@@ -14,6 +14,20 @@
 #                   domain needs more steps than a preset saved for drawing may
 #                   have (wp-442 was saved with 10; the far cells then stay
 #                   unrendered - transparent, with flat color blocks)
+#   --view preset|auto  the framing every image of the entry shares.
+#                   preset: the preset's own navigator view (centerX, centerY,
+#                   zoom), so the entry shows the motif exactly as the preset
+#                   and its .json.png thumbnail do - the default for --preset.
+#                   It is read from the preset file and written into the job
+#                   as "view": the driver draws its overlays (H's domain and
+#                   tiling, motions, markers) in the job's view, and without
+#                   one it falls back to reading the app's params - whose
+#                   symdraw form (tools.transform.params.euclidean) it misses,
+#                   drawing at zoom 1 over a renderer at the preset's zoom.
+#                   auto: centred on H's fundamental domain, zoomed so that the
+#                   domain fills 24% of the height (the view then differs per
+#                   entry) - the default for the sympix template, whose jobs
+#                   stay byte for byte what they were
 # e.g.  python make_entry_job.py 333 "333/o[6]" #           --preset /catalog/presets/wp/wp-333.json --layer drawing
 # A symdraw job runs at /apps/symdraw/catalog_render.html?job=..., a sympix
 # one at /apps/sympix/catalog_render.html?job=...
@@ -21,7 +35,9 @@
 # Builds catalog/jobs/<slug>.json rendering the full layer set for one entry,
 # using the wp_632_632_3.1 preset as the motif template and overriding the
 # subgroup permutations, colour count, placements and framing from the manifest.
-import json, io, copy, sys
+# G's structure images switch the items of the preset's overlay layer by id,
+# every item stated: {"overlays": {"tiling": {"enabled": true}, ...}}.
+import json, io, copy, sys, subprocess
 from entry_names import entry_names
 
 CAT = 'D:/home/projects/00.docs/250117_colorsym/catalog'
@@ -43,11 +59,43 @@ assert TEMPLATE.startswith('/') and ':' not in TEMPLATE, (
 LAYER = _opt('--layer', LAYER)
 PIECE_SIZE = int(_opt('--piece-size', '400'))
 ITERATIONS = _opt('--iterations', None)
+VIEW = _opt('--view', 'auto' if TEMPLATE.endswith('/wp_632_632_3.1.json') else 'preset')
+assert VIEW in ('preset', 'auto'), '--view must be preset or auto, got %r' % VIEW
+PRESET_VIEW = None
+if VIEW == 'preset':
+    # the navigator view saved in the preset (/catalog/... is this folder)
+    _doc = json.load(open(CAT + TEMPLATE[len('/catalog'):], encoding='utf-8'))
+    _e = _doc['params']['tools']['transform']['params']['euclidean']
+    _zoom = _e['zoom'][0] if isinstance(_e['zoom'], list) else _e['zoom']
+    # the driver maps world to pixels by centre and zoom only
+    assert not _e.get('angle'), 'preset view is rotated (angle %r): not supported' % _e['angle']
+    PRESET_VIEW = {"zoom": _zoom, "centerX": _e.get('centerX', 0), "centerY": _e.get('centerY', 0)}
 # the sympix template already colours by multiplying ('mult'); a document
 # that does not - a symdraw drawing starts with 'none' - needs it set, or the
 # colorings come out uncoloured.  Set only for a non-default template, so the
 # default jobs stay byte for byte what they were.
 MOTIF_EXTRA = {} if TEMPLATE.endswith('/wp_632_632_3.1.json') else {"coloringType": "mult"}
+
+SYMMHUB = 'D:/home/projects/00.docs/250125_symhub/repo_v2/SymmHub'
+
+def overlay_item_ids(url):
+    """Ids of the items of the preset's overlay layer, in their order.  A
+    document saved before the item list (the sympix template) gets them the
+    way SymmHub's document load does: VisualizationOverlayUpgradeData.js,
+    pure data mapping, run by node as is."""
+    doc = json.load(open(CAT + url[len('/catalog'):], encoding='utf-8'))
+    layers = doc['params']['visualization']['params']['layers']['params']['children']
+    ov = next(c['params'] for c in layers if c['className'] == 'VisualizationOverlay')
+    if 'overlays' not in ov:
+        js = ("import {upgradeOverlayParams} from 'file:///%s/lib/symhublib/VisualizationOverlayUpgradeData.js';"
+              "let s = ''; process.stdin.on('data', d => s += d).on('end', () =>"
+              " process.stdout.write(JSON.stringify(upgradeOverlayParams(JSON.parse(s)))));" % SYMMHUB)
+        r = subprocess.run(['node', '--input-type=module', '-e', js], input=json.dumps(ov),
+                           capture_output=True, text=True, check=True)
+        ov = json.loads(r.stdout)
+    ids = [c['params']['id'] for c in ov['overlays']['params']['children']]
+    # an overlay never touched loads with the items of a fresh one
+    return ids or ['tiling', 'fundDomain', 'generators']
 
 stem = _args[0] if len(_args) > 0 else '632'
 entry_name = _args[1] if len(_args) > 1 else '632/632[3]'
@@ -95,14 +143,15 @@ _nm = entry_names(entry_name, N)
 gsym, hsym, slug_flat, job_file = _nm['gsym'], _nm['hsym'], _nm['slug'], _nm['job_file']
 out_dir = _nm['dir'] + '/gen'
 
-OFF = {"buffer": {"outline": {"enabled": False}, "fill": {"enabled": False}},
-       "generators": {"enabled": False},
-       "tiling": {"outline": {"enabled": False}},
-       "fundDomain": {"fill": {"enabled": False}, "outline": {"enabled": False}}}
-def ov(**kw):
-    o = copy.deepcopy(OFF); o.update(kw); return o
-FD_ON = {"fill": {"enabled": True}, "outline": {"enabled": True}}
-TILE_ON = {"outline": {"enabled": True}}
+OVERLAY_IDS = overlay_item_ids(TEMPLATE)
+def ov(**on):
+    # a patch of the overlay layer's item list, by item id: the items named
+    # are switched on with their params, every other item of the preset off
+    for k in on:
+        assert k in OVERLAY_IDS, 'the preset has no overlay item %r (it has %s)' % (k, OVERLAY_IDS)
+    return {"overlays": {i: copy.deepcopy(on.get(i, {"enabled": False})) for i in OVERLAY_IDS}}
+FD_ON = {"enabled": True, "fill": {"enabled": True}, "outline": {"enabled": True}}
+TILE_ON = {"enabled": True}
 
 def motif(**arrows):
     # useMipmap: the motif texture is minified at this framing, so without
@@ -208,11 +257,14 @@ job = {
   "Template: %s; permutations overridden to this subgroup's invcos." % TEMPLATE.split('/')[-1][:-5],
   "f words: %s" % ' '.join(f_words),
   "g words: %s" % ' '.join(g_words)]
-  + (["Every item sets symmetry.options.iterations = %s." % ITERATIONS] if ITERATIONS else []),
+  + (["Every item sets symmetry.options.iterations = %s." % ITERATIONS] if ITERATIONS else [])
+  + (["View: the preset's own (centre and zoom), shared by every item."] if VIEW == 'preset' else []),
  "outDir": out_dir,
  "size": 800,
  "preset": TEMPLATE,
- "autoView": {"subgroup": COS, "fillRatio": 0.24},
+ # the view every item renders and draws its overlays in
+ **({"view": PRESET_VIEW} if VIEW == 'preset' else
+    {"autoView": {"subgroup": COS, "fillRatio": 0.24}}),
  "items": items,
 }
 path = CAT + '/jobs/%s.json' % job_file

@@ -75,7 +75,10 @@ for the catalog, `tools/serve_symmhub.mjs` for SymmHub with a `/save` endpoint) 
 http://localhost:8125/apps/sympix/catalog_render.html?job=/catalog/jobs/632_333_8.json
 ```
 
-which renders every image and POSTs it into the entry's `gen/`. Finally:
+which renders every image and POSTs it into the entry's `gen/`. The page is SymmHub's (a
+symdraw drawing as the motif: `/apps/symdraw/catalog_render.html`); the driver that runs
+the job is this repo's `tools/render/catalog_driver.js`, which the page loads from
+`/catalog/` (`?script=<url>` loads another). Finally:
 
 ```bash
 python tools/make_entry_page.py 632 "632/333[8]" "#f84848,#d808a8,..."   # index.html

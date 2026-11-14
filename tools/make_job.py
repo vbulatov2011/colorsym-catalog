@@ -14,16 +14,15 @@ f_words = [t['word'] for t in entry['orbitReps']]        # orbit reps (domain ce
 
 nonconvex = next(s for s in m['subgroups'] if s['name'] == '632/632[4]')
 
-OFF = {"buffer": {"outline": {"enabled": False}, "fill": {"enabled": False}},
-       "generators": {"enabled": False},
-       "tiling": {"outline": {"enabled": False}},
-       "fundDomain": {"fill": {"enabled": False}, "outline": {"enabled": False}}}
+# the overlay items of the sympix template, as its legacy overlay block loads
+# (make_entry_job.py reads them from the preset)
+OVERLAY_IDS = ['tiling', 'fundDomain', 'buffer']
 
-def ov(**kw):
-    o = copy.deepcopy(OFF); o.update(kw); return o
+def ov(**on):
+    return {"overlays": {i: copy.deepcopy(on.get(i, {"enabled": False})) for i in OVERLAY_IDS}}
 
-FD_ON = {"fill": {"enabled": True}, "outline": {"enabled": True}}
-TILE_ON = {"outline": {"enabled": True}}
+FD_ON = {"enabled": True, "fill": {"enabled": True}, "outline": {"enabled": True}}
+TILE_ON = {"enabled": True}
 
 def motif(**arrows):
     a = {"useOrbit": False, "mask": ""}; a.update(arrows)

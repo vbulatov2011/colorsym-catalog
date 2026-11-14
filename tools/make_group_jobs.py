@@ -2,22 +2,34 @@
 # of the catalogue's top page and of the group's own page:
 #
 #   python tools/make_group_jobs.py            -> jobs/group_<stem>.json  (17)
+#   python tools/make_group_jobs.py 632 s632   -> only those groups (by stem)
+#   --view preset|auto                          default preset
 #
 # The motif is the group's symdraw preset, presets/wp/wp-<name>.json ('*' is
-# written 's', and the presets spell the groups with capital X and O).  The
-# view is framed on G's fundamental domain - the driver frames a view on a
-# subgroup's domain, and G/G[1] is the subgroup whose domain is G's - taken
-# from the manifest built on the preset's own domain shape:
-# data/<stem>@<shape>.json when there is one, else data/<stem>.json.
+# written 's', and the presets spell the groups with capital X and O).
+# View 'preset': the preset's own centre and zoom, as its .json.png thumbnail
+# and the entries (make_entry_job.py) show it.  View 'auto': framed on G's
+# fundamental domain - the driver frames a view on a subgroup's domain, and
+# G/G[1] is the subgroup whose domain is G's - taken from the manifest built on
+# the preset's own domain shape: data/<stem>@<shape>.json when there is one,
+# else data/<stem>.json.
 #
 # Run each at /apps/symdraw/catalog_render.html, then tools/to_webp.py --dir
 # <stem>/gen.  Output: <stem>/gen/group.png (renders are not tracked in git).
-import json, io, os
+import json, io, os, sys
 
 CAT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SIZE = 400              # a thumbnail; the pages show it at ~200-280 px
-FILL = 0.3              # G's domain fills 30% of the height: the renderer tiles a
-                        # finite patch, which smaller ratios show as a round blob
+FILL = 0.3              # view auto: G's domain fills 30% of the height - the
+                        # renderer tiles a finite patch, which smaller ratios
+                        # show as a round blob
+
+ARGS = sys.argv[1:]
+VIEW = 'preset'
+if '--view' in ARGS:
+    i = ARGS.index('--view'); VIEW = ARGS[i + 1]; del ARGS[i:i + 2]
+assert VIEW in ('preset', 'auto'), '--view must be preset or auto, got %r' % VIEW
+ONLY = set(ARGS)        # stems; empty = all 17
 
 
 def preset_name(name):
@@ -30,6 +42,8 @@ def preset_name(name):
 index = json.load(open(os.path.join(CAT, 'data', 'index.json'), encoding='utf-8'))
 for g in index['groups']:
     name, stem = g['name'], g['stem']
+    if ONLY and stem not in ONLY:
+        continue
     preset = '/catalog/presets/wp/' + preset_name(name)
     doc = json.load(open(os.path.join(CAT, preset[len('/catalog/'):].replace('/', os.sep)),
                          encoding='utf-8'))
@@ -41,12 +55,15 @@ for g in index['groups']:
 
     job = {
         "_comment": ["Uncolored pattern of %s for the index pages." % name,
-                     "Preset %s (%s); view framed on G's domain from %s."
-                     % (preset_name(name), shape, os.path.basename(man_file))],
+                     ("Preset %s (%s); view framed on G's domain from %s."
+                      % (preset_name(name), shape, os.path.basename(man_file))
+                      if VIEW == 'auto' else
+                      "Preset %s (%s); the preset's own view (centre and zoom)."
+                      % (preset_name(name), shape))],
         "outDir": stem + "/gen",
         "size": SIZE,
         "preset": preset,
-        "autoView": {"subgroup": trivial, "fillRatio": FILL},
+        **({"autoView": {"subgroup": trivial, "fillRatio": FILL}} if VIEW == 'auto' else {}),
         "items": [{
             "file": "group.png",
             "layers": {"drawing": {"coloringType": "none", "useMipmap": True}},

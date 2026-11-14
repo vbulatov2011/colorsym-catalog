@@ -1,15 +1,11 @@
 {
  "_comment": [
   "Uncolored pattern of 632 for the index pages.",
-  "Preset wp-632.json (6-2-3-2 kite); view framed on G's domain from 632@6-2-3-2-kite.json."
+  "Preset wp-632.json (6-2-3-2 kite); the preset's own view (centre and zoom)."
  ],
  "outDir": "632/gen",
  "size": 400,
  "preset": "/catalog/presets/wp/wp-632.json",
- "autoView": {
-  "subgroup": "a a a a",
-  "fillRatio": 0.3
- },
  "items": [
   {
    "file": "group.png",
