@@ -1,11 +1,11 @@
 {
  "_comment": [
   "Uncolored pattern of 632 for the index pages.",
-  "Preset wp-632.json (6-2-3-2 kite); the preset's own view (centre and zoom)."
+  "Preset wpe/wpe-632.json (a trial motif) (6-2-3-2 kite); the preset's own view (centre and zoom)."
  ],
  "outDir": "632/gen",
  "size": 400,
- "preset": "/catalog/presets/wp/wp-632.json",
+ "preset": "/catalog/presets/wpe/wpe-632.json",
  "items": [
   {
    "file": "group.png",

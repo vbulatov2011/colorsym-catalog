@@ -1,16 +1,16 @@
 {
  "_comment": [
   "Layer set for 632/2222[6]#2 (632.6.3), 6 colours, 3 placements.",
-  "Template: wp-632; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
+  "Template: wpe-632; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
   "f words: e d a dd aa aaa",
   "g words: e b B ba BA bab",
   "View: the preset's own (centre and zoom), shared by every item."
  ],
  "outDir": "632/6/632-2222-6-2/gen",
  "size": 800,
- "preset": "/catalog/presets/wp/wp-632.json",
+ "preset": "/catalog/presets/wpe/wpe-632.json",
  "view": {
-  "zoom": 0.6669985255434917,
+  "zoom": 0.664,
   "centerX": 0,
   "centerY": 0
  },

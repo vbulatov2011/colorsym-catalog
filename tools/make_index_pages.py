@@ -145,9 +145,14 @@ index = json.load(open(os.path.join(CAT, 'data', 'index.json'), encoding='utf-8'
 groups = {}
 for g in index['groups']:
     name, stem = g['name'], g['stem']
+    # the motif: the preset the group's thumbnail job renders (a group can be
+    # tried on another preset), else the group's own presets/wp/wp-<name>.json
     lib = 'O' if name == 'o' else name.replace('x', 'X')
-    preset = 'wp-%s.json' % lib.replace('*', 's')
-    doc = json.load(open(os.path.join(CAT, 'presets', 'wp', preset), encoding='utf-8'))
+    preset = 'presets/wp/wp-%s.json' % lib.replace('*', 's')
+    gjob = os.path.join(CAT, 'jobs', 'group_%s.json' % stem)
+    if os.path.exists(gjob):
+        preset = json.load(open(gjob, encoding='utf-8'))['preset'].replace('/catalog/', '', 1)
+    doc = json.load(open(os.path.join(CAT, *preset.split('/')), encoding='utf-8'))
     shape = doc['params']['symmetry']['group']['params'].get('domainShape', 'default')
     variant = os.path.join(CAT, 'data', '%s@%s.json' % (stem, shape.replace(' ', '-')))
     man = variant if os.path.exists(variant) else os.path.join(CAT, 'data', stem + '.json')
@@ -347,7 +352,7 @@ for name, g in groups.items():
 <dt>Hermann&ndash;Mauguin</dt><dd>%s</dd>
 <dt>1&ndash;%d colors</dt><dd>%s %s</dd>
 <dt>Per count</dt><dd class="tbl">%s</dd>
-<dt>Motif</dt><dd><code>presets/wp/%s</code></dd>
+<dt>Motif</dt><dd><code>%s</code></dd>
 <dt>Domain</dt><dd>%s</dd>
 <dt>Manifest</dt><dd><code>data/%s</code></dd>
 </dl>''' % (disp(name), HM[name], MAX_N, counts_line(g['subs']), status(g['subs']),
