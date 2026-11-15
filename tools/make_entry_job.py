@@ -109,7 +109,17 @@ K = entry['placements']
 g_words = [t['word'] for t in entry['transversal']]
 f_words = [t['word'] for t in entry['orbitReps']]
 
-# the app feeds invcos into the layer's permutations
+# the layer's permutations, per mode.  A fold across sides s1, s2, ... composes
+# the side permutations in one order without useOrbit and in the other with it
+# (SymmHub SubgroupTable.checkPermutations), and the manifest's cosets are the
+# action read left to right.  So:
+#   useOrbit:  invcos -> the orbits of H                       (.o, .oN)
+#   cosets:    cosets -> the cosets of H                       (.1 .. .N, pieces)
+# invcos without useOrbit is NOT the cosets of H: it is the action with every
+# generator inverted, i.e. the cosets of iota(H) (iota: g -> g^-1 on the
+# generators; a mirror for 2222, 632, ...).  Harmless only when every generator
+# acts as an involution; 2222/o[6]#2 and #3 showed it - .1 of one was .o of the
+# other (2026-11-14).
 def invert_word(w):
     out = [None] * len(w)
     for i, ch in enumerate(w):
@@ -158,9 +168,11 @@ def motif(**arrows):
     # mipmaps its edges alias into hard stair steps.  The presets ship with it
     # off, hence the override here - it applies to every motif image: the
     # colorings, the pieces and the uncolored pattern.
-    a = {"useOrbit": False, "mask": "", "permutations": INVCOS,
+    a = {"useOrbit": False, "mask": "", "permutations": COS,
          "useMipmap": True, "colorTiles": {"count": N}, **MOTIF_EXTRA}
     a.update(arrows)
+    if a["useOrbit"]:
+        a["permutations"] = INVCOS
     return {"layers": {LAYER: a}, "enable": {"overlay": False}}
 
 def blank():
@@ -254,7 +266,7 @@ if ITERATIONS is not None:
 job = {
  "_comment": [
   "Layer set for %s (%s), %d colours, %d placements." % (entry_name, entry['id'], N, K),
-  "Template: %s; permutations overridden to this subgroup's invcos." % TEMPLATE.split('/')[-1][:-5],
+  "Template: %s; permutations overridden to this subgroup's cosets (invcos for the orbit images)." % TEMPLATE.split('/')[-1][:-5],
   "f words: %s" % ' '.join(f_words),
   "g words: %s" % ' '.join(g_words)]
   + (["Every item sets symmetry.options.iterations = %s." % ITERATIONS] if ITERATIONS else [])

@@ -21,6 +21,10 @@
 #               color of union image j
 #   relabel     coloring .k is the partition of its placement's representative
 #   normal      .o and .1 are the same partition exactly when H is normal
+#   identity    color 0 is the same set of pixels in .1 and in .o: the motif
+#               copies of the coset H and of the orbit H(F), for any H.  A job
+#               that feeds invcos to the cosets colors by iota(H) instead
+#               (make_entry_job.py) and fails here.
 # Partitions are compared on the pixels whose color is a palette color in both
 # images: the same partition means the colors correspond one to one there.
 #
@@ -154,6 +158,12 @@ def verify(stem, entry):
         fails.append('normal: H %s normal but .o and .1 are %s the same partition (%d of %d px conflict)'
                      % ('is' if entry['normal'] else 'is not', '' if same else 'not',
                         bad, cmp_px))
+    i1, io = color_index(col['1'], palette), color_index(col['o'], palette)
+    both = (i1 >= 0) & (io >= 0)
+    a, b = both & (i1 == 0), both & (io == 0)
+    if (a ^ b).any():
+        fails.append('identity: color 0 of .1 and of .o differ on %d of %d px'
+                     % (int((a ^ b).sum()), int((a | b).sum())))
     return palette, fails
 
 
