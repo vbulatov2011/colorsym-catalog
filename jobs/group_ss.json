@@ -1,15 +1,11 @@
 {
  "_comment": [
   "Uncolored pattern of ** for the index pages.",
-  "Preset wp-ss.json (default); view framed on G's domain from ss.json."
+  "Preset wp-ss.json (default); the preset's own view (centre and zoom)."
  ],
  "outDir": "ss/gen",
  "size": 400,
  "preset": "/catalog/presets/wp/wp-ss.json",
- "autoView": {
-  "subgroup": "a a a a",
-  "fillRatio": 0.3
- },
  "items": [
   {
    "file": "group.png",

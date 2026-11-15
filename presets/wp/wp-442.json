@@ -29,7 +29,7 @@
                     "style": {
                         "stroke": "#20304a",
                         "strokeOpacity": 1,
-                        "width": 0.012,
+                        "width": 0.004,
                         "filled": true,
                         "fill": "#fcfcfc",
                         "fillOpacity": 1,
@@ -75,8 +75,8 @@
                                                     0,
                                                     0.10298509740117773,
                                                     -0.0623092946507913,
-                                                    -0.002000045776367143,
-                                                    -0.24650001525878906
+                                                    0.00009325277821424505,
+                                                    -0.249621607628437
                                                 ],
                                                 "style": {
                                                     "stroke": {
@@ -87,7 +87,7 @@
                                                             1
                                                         ]
                                                     },
-                                                    "strokeWidth": 0.012,
+                                                    "strokeWidth": 0.004,
                                                     "lineCap": "round",
                                                     "lineJoin": "round",
                                                     "fill": {
@@ -195,7 +195,8 @@
                                                         ],
                                                         "smooth": true
                                                     }
-                                                ]
+                                                ],
+                                                "visible": false
                                             }
                                         ]
                                     }
@@ -561,8 +562,8 @@
                     },
                     "euclidean": {
                         "centerX": 0,
-                        "centerY": 0.000004126797873658747,
-                        "zoom": 1.34,
+                        "centerY": 0,
+                        "zoom": 1.215,
                         "angle": 0
                     },
                     "options": {

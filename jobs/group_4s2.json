@@ -1,15 +1,11 @@
 {
  "_comment": [
   "Uncolored pattern of 4*2 for the index pages.",
-  "Preset wp-4s2.json (4-*2-*2 triangle); view framed on G's domain from 4s2.json."
+  "Preset wp-4s2.json (4-*2-*2 triangle); the preset's own view (centre and zoom)."
  ],
  "outDir": "4s2/gen",
  "size": 400,
  "preset": "/catalog/presets/wp/wp-4s2.json",
- "autoView": {
-  "subgroup": "a a a",
-  "fillRatio": 0.3
- },
  "items": [
   {
    "file": "group.png",

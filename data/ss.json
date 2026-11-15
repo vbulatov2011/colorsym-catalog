@@ -6702,7 +6702,16 @@
    "type": "**",
    "normal": false,
    "placements": 3,
-   "cosets": "adcbfe baedcf ceafbd ceafbd",
+   "cosets": "acbdfe bacedf defabc defabc",
+   "sublibCosets": "adcbfe baedcf ceafbd ceafbd",
+   "cosetOrder": [
+    0,
+    1,
+    3,
+    2,
+    4,
+    5
+   ],
    "orders": [
     2,
     2,
@@ -6715,53 +6724,53 @@
      "generator": "a",
      "perm": [
       0,
-      3,
       2,
       1,
+      3,
       5,
       4
      ],
-     "cycles": "(1 3)(4 5)"
+     "cycles": "(1 2)(4 5)"
     },
     {
      "generator": "b",
      "perm": [
       1,
       0,
+      2,
       4,
       3,
-      2,
       5
      ],
-     "cycles": "(0 1)(2 4)"
+     "cycles": "(0 1)(3 4)"
     },
     {
      "generator": "c",
      "perm": [
-      2,
+      3,
       4,
-      0,
       5,
+      0,
       1,
-      3
+      2
      ],
-     "cycles": "(0 2)(1 4)(3 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     },
     {
      "generator": "d",
      "perm": [
-      2,
+      3,
       4,
-      0,
       5,
+      0,
       1,
-      3
+      2
      ],
-     "cycles": "(0 2)(1 4)(3 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     }
    ],
    "geoKey": "k1|n=6|L=3,0,2|P=-1,0,0,1:0,0",
-   "keyCoset": 3,
+   "keyCoset": 2,
    "representativeKey": "k1|n=6|L=3,0,2|P=-1,0,0,1:1,0",
    "latticeHNF": {
     "a": 3,
@@ -6796,17 +6805,6 @@
      "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
-     "word": "c",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0,
-       0.5
-      ]
-     },
-     "text": "translation by (0,0.5)"
-    },
-    {
      "word": "ab",
      "isometry": {
       "type": "translation",
@@ -6816,6 +6814,17 @@
       ]
      },
      "text": "translation by (-0.5,0)"
+    },
+    {
+     "word": "c",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0,
+       0.5
+      ]
+     },
+     "text": "translation by (0,0.5)"
     },
     {
      "word": "cb",
@@ -6876,17 +6885,6 @@
      "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
-     "word": "c",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0,
-       0.5
-      ]
-     },
-     "text": "translation by (0,0.5)"
-    },
-    {
      "word": "bab",
      "isometry": {
       "type": "reflection",
@@ -6902,6 +6900,17 @@
       }
      },
      "text": "reflection in line thru (-0.25,0) dir (0,1)"
+    },
+    {
+     "word": "c",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0,
+       0.5
+      ]
+     },
+     "text": "translation by (0,0.5)"
     },
     {
      "word": "bc",
@@ -6977,17 +6986,6 @@
      "text": "translation by (0,-1)"
     },
     {
-     "word": "cc",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0,
-       1
-      ]
-     },
-     "text": "translation by (0,1)"
-    },
-    {
      "word": "BAbab",
      "isometry": {
       "type": "reflection",
@@ -7003,6 +7001,17 @@
       }
      },
      "text": "reflection in line thru (-0.5,0) dir (0,1)"
+    },
+    {
+     "word": "cc",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0,
+       1
+      ]
+     },
+     "text": "translation by (0,1)"
     },
     {
      "word": "Bccb",
@@ -7029,7 +7038,16 @@
    "type": "*x",
    "normal": false,
    "placements": 3,
-   "cosets": "adcbfe baefcd ceafbd ceafbd",
+   "cosets": "acbdfe bafedc defabc defabc",
+   "sublibCosets": "adcbfe baefcd ceafbd ceafbd",
+   "cosetOrder": [
+    0,
+    1,
+    3,
+    2,
+    4,
+    5
+   ],
    "orders": [
     2,
     2
@@ -7040,53 +7058,53 @@
      "generator": "a",
      "perm": [
       0,
-      3,
       2,
       1,
+      3,
       5,
       4
      ],
-     "cycles": "(1 3)(4 5)"
+     "cycles": "(1 2)(4 5)"
     },
     {
      "generator": "b",
      "perm": [
       1,
       0,
-      4,
       5,
-      2,
-      3
+      4,
+      3,
+      2
      ],
-     "cycles": "(0 1)(2 4)(3 5)"
+     "cycles": "(0 1)(2 5)(3 4)"
     },
     {
      "generator": "c",
      "perm": [
-      2,
+      3,
       4,
-      0,
       5,
+      0,
       1,
-      3
+      2
      ],
-     "cycles": "(0 2)(1 4)(3 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     },
     {
      "generator": "d",
      "perm": [
-      2,
+      3,
       4,
-      0,
       5,
+      0,
       1,
-      3
+      2
      ],
-     "cycles": "(0 2)(1 4)(3 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     }
    ],
    "geoKey": "k1|n=6|L=3,1,2|P=-1,0,0,1:0,1",
-   "keyCoset": 3,
+   "keyCoset": 2,
    "representativeKey": "k1|n=6|L=3,1,2|P=-1,0,0,1:1,0",
    "latticeHNF": {
     "a": 3,
@@ -7121,17 +7139,6 @@
      "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
-     "word": "c",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0,
-       0.5
-      ]
-     },
-     "text": "translation by (0,0.5)"
-    },
-    {
      "word": "ab",
      "isometry": {
       "type": "translation",
@@ -7141,6 +7148,17 @@
       ]
      },
      "text": "translation by (-0.5,0)"
+    },
+    {
+     "word": "c",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0,
+       0.5
+      ]
+     },
+     "text": "translation by (0,0.5)"
     },
     {
      "word": "cb",
@@ -7201,17 +7219,6 @@
      "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
-     "word": "c",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0,
-       0.5
-      ]
-     },
-     "text": "translation by (0,0.5)"
-    },
-    {
      "word": "cbab",
      "isometry": {
       "type": "glide",
@@ -7231,6 +7238,17 @@
       ]
      },
      "text": "glide along (0,1) thru (-0.25,0) by (0,0.5)"
+    },
+    {
+     "word": "c",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0,
+       0.5
+      ]
+     },
+     "text": "translation by (0,0.5)"
     },
     {
      "word": "bc",
@@ -7302,17 +7320,6 @@
      "text": "translation by (0,-1)"
     },
     {
-     "word": "cc",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0,
-       1
-      ]
-     },
-     "text": "translation by (0,1)"
-    },
-    {
      "word": "BCAbab",
      "isometry": {
       "type": "glide",
@@ -7332,6 +7339,17 @@
       ]
      },
      "text": "glide along (0,1) thru (-0.5,0) by (-0,-0.5)"
+    },
+    {
+     "word": "cc",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0,
+       1
+      ]
+     },
+     "text": "translation by (0,1)"
     },
     {
      "word": "Bccb",
@@ -8374,7 +8392,16 @@
    "type": "*x",
    "normal": false,
    "placements": 3,
-   "cosets": "baefcd adcbfe ceafbd ceafbd",
+   "cosets": "bafedc acbdfe defabc defabc",
+   "sublibCosets": "baefcd adcbfe ceafbd ceafbd",
+   "cosetOrder": [
+    0,
+    1,
+    3,
+    2,
+    4,
+    5
+   ],
    "orders": [
     2,
     2
@@ -8386,48 +8413,48 @@
      "perm": [
       1,
       0,
-      4,
       5,
-      2,
-      3
+      4,
+      3,
+      2
      ],
-     "cycles": "(0 1)(2 4)(3 5)"
+     "cycles": "(0 1)(2 5)(3 4)"
     },
     {
      "generator": "b",
      "perm": [
       0,
-      3,
       2,
       1,
+      3,
       5,
       4
      ],
-     "cycles": "(1 3)(4 5)"
+     "cycles": "(1 2)(4 5)"
     },
     {
      "generator": "c",
      "perm": [
-      2,
+      3,
       4,
-      0,
       5,
+      0,
       1,
-      3
+      2
      ],
-     "cycles": "(0 2)(1 4)(3 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     },
     {
      "generator": "d",
      "perm": [
-      2,
+      3,
       4,
-      0,
       5,
+      0,
       1,
-      3
+      2
      ],
-     "cycles": "(0 2)(1 4)(3 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     }
    ],
    "geoKey": "k1|n=6|L=3,1,2|P=-1,0,0,1:0,0",
@@ -8466,17 +8493,6 @@
      "text": "reflection in line thru (0.25,-0) dir (0,1)"
     },
     {
-     "word": "c",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0,
-       0.5
-      ]
-     },
-     "text": "translation by (0,0.5)"
-    },
-    {
      "word": "ba",
      "isometry": {
       "type": "translation",
@@ -8486,6 +8502,17 @@
       ]
      },
      "text": "translation by (0.5,0)"
+    },
+    {
+     "word": "c",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0,
+       0.5
+      ]
+     },
+     "text": "translation by (0,0.5)"
     },
     {
      "word": "ca",
@@ -8546,17 +8573,6 @@
      "text": "reflection in line thru (0.25,-0) dir (0,1)"
     },
     {
-     "word": "c",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0,
-       0.5
-      ]
-     },
-     "text": "translation by (0,0.5)"
-    },
-    {
      "word": "abac",
      "isometry": {
       "type": "glide",
@@ -8576,6 +8592,17 @@
       ]
      },
      "text": "glide along (0,1) thru (0.5,-0) by (0,0.5)"
+    },
+    {
+     "word": "c",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0,
+       0.5
+      ]
+     },
+     "text": "translation by (0,0.5)"
     },
     {
      "word": "ac",
@@ -8647,17 +8674,6 @@
      "text": "translation by (0,-1)"
     },
     {
-     "word": "cc",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0,
-       1
-      ]
-     },
-     "text": "translation by (0,1)"
-    },
-    {
      "word": "ACBaba",
      "isometry": {
       "type": "glide",
@@ -8677,6 +8693,17 @@
       ]
      },
      "text": "glide along (0,1) thru (0.75,-0) by (-0,-0.5)"
+    },
+    {
+     "word": "cc",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0,
+       1
+      ]
+     },
+     "text": "translation by (0,1)"
     },
     {
      "word": "Acca",
@@ -10335,61 +10362,70 @@
    "type": "xx",
    "normal": false,
    "placements": 3,
-   "cosets": "baefcd cdabfe badcfe badcfe",
+   "cosets": "dcbafe bafedc defabc defabc",
+   "sublibCosets": "baefcd cdabfe badcfe badcfe",
+   "cosetOrder": [
+    0,
+    2,
+    4,
+    1,
+    3,
+    5
+   ],
    "orders": [],
    "abelianization": "Z^1 + Z/2",
    "colorAction": [
     {
      "generator": "a",
      "perm": [
+      3,
+      2,
       1,
       0,
-      4,
       5,
-      2,
-      3
+      4
      ],
-     "cycles": "(0 1)(2 4)(3 5)"
+     "cycles": "(0 3)(1 2)(4 5)"
     },
     {
      "generator": "b",
      "perm": [
-      2,
-      3,
-      0,
       1,
+      0,
       5,
-      4
+      4,
+      3,
+      2
      ],
-     "cycles": "(0 2)(1 3)(4 5)"
+     "cycles": "(0 1)(2 5)(3 4)"
     },
     {
      "generator": "c",
      "perm": [
-      1,
-      0,
       3,
-      2,
+      4,
       5,
-      4
+      0,
+      1,
+      2
      ],
-     "cycles": "(0 1)(2 3)(4 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     },
     {
      "generator": "d",
      "perm": [
-      1,
-      0,
       3,
-      2,
+      4,
       5,
-      4
+      0,
+      1,
+      2
      ],
-     "cycles": "(0 1)(2 3)(4 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     }
    ],
    "geoKey": "k1|n=6|L=3,0,2|P=-1,0,0,1:0,1",
-   "keyCoset": 4,
+   "keyCoset": 2,
    "representativeKey": "k1|n=6|L=3,0,2|P=-1,0,0,1:1,1",
    "latticeHNF": {
     "a": 3,
@@ -10405,23 +10441,6 @@
       "type": "identity"
      },
      "text": "identity"
-    },
-    {
-     "word": "a",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0.25,
-        -1.5308084989341915e-17
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0.25,-0) dir (0,1)"
     },
     {
      "word": "b",
@@ -10441,17 +10460,6 @@
      "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
-     "word": "ba",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0.5,
-       0
-      ]
-     },
-     "text": "translation by (0.5,0)"
-    },
-    {
      "word": "ab",
      "isometry": {
       "type": "translation",
@@ -10461,6 +10469,34 @@
       ]
      },
      "text": "translation by (-0.5,0)"
+    },
+    {
+     "word": "a",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0.25,
+        -1.5308084989341915e-17
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0.25,-0) dir (0,1)"
+    },
+    {
+     "word": "ba",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0.5,
+       0
+      ]
+     },
+     "text": "translation by (0.5,0)"
     },
     {
      "word": "aba",
@@ -10489,23 +10525,6 @@
      "text": "identity"
     },
     {
-     "word": "a",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0.25,
-        -1.5308084989341915e-17
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0.25,-0) dir (0,1)"
-    },
-    {
      "word": "b",
      "isometry": {
       "type": "reflection",
@@ -10523,17 +10542,6 @@
      "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
-     "word": "ab",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       -0.5,
-       0
-      ]
-     },
-     "text": "translation by (-0.5,0)"
-    },
-    {
      "word": "ba",
      "isometry": {
       "type": "translation",
@@ -10543,6 +10551,34 @@
       ]
      },
      "text": "translation by (0.5,0)"
+    },
+    {
+     "word": "a",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0.25,
+        -1.5308084989341915e-17
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0.25,-0) dir (0,1)"
+    },
+    {
+     "word": "ab",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       -0.5,
+       0
+      ]
+     },
+     "text": "translation by (-0.5,0)"
     },
     {
      "word": "bab",
@@ -10607,49 +10643,7 @@
      "text": "glide along (0,1) thru (0.25,-0) by (-0,-0.5)"
     },
     {
-     "word": "da",
-     "isometry": {
-      "type": "glide",
-      "axis": {
-       "point": [
-        0.25,
-        -2.7755575615628914e-17
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      },
-      "translation": [
-       -3.0616169978683824e-17,
-       -0.49999999999999994
-      ]
-     },
-     "text": "glide along (0,1) thru (0.25,-0) by (-0,-0.5)"
-    },
-    {
      "word": "ABdb",
-     "isometry": {
-      "type": "glide",
-      "axis": {
-       "point": [
-        0.25,
-        -2.7755575615628914e-17
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      },
-      "translation": [
-       -3.0616169978683824e-17,
-       -0.49999999999999994
-      ]
-     },
-     "text": "glide along (0,1) thru (0.25,-0) by (-0,-0.5)"
-    },
-    {
-     "word": "Bdba",
      "isometry": {
       "type": "glide",
       "axis": {
@@ -10682,6 +10676,48 @@
     },
     {
      "word": "ABAdab",
+     "isometry": {
+      "type": "glide",
+      "axis": {
+       "point": [
+        0.25,
+        -2.7755575615628914e-17
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      },
+      "translation": [
+       -3.0616169978683824e-17,
+       -0.49999999999999994
+      ]
+     },
+     "text": "glide along (0,1) thru (0.25,-0) by (-0,-0.5)"
+    },
+    {
+     "word": "da",
+     "isometry": {
+      "type": "glide",
+      "axis": {
+       "point": [
+        0.25,
+        -2.7755575615628914e-17
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      },
+      "translation": [
+       -3.0616169978683824e-17,
+       -0.49999999999999994
+      ]
+     },
+     "text": "glide along (0,1) thru (0.25,-0) by (-0,-0.5)"
+    },
+    {
+     "word": "Bdba",
      "isometry": {
       "type": "glide",
       "axis": {

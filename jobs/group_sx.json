@@ -1,15 +1,11 @@
 {
  "_comment": [
   "Uncolored pattern of *x for the index pages.",
-  "Preset wp-sX.json (default); view framed on G's domain from sx.json."
+  "Preset wp-sX.json (default); the preset's own view (centre and zoom)."
  ],
  "outDir": "sx/gen",
  "size": 400,
  "preset": "/catalog/presets/wp/wp-sX.json",
- "autoView": {
-  "subgroup": "a a a a",
-  "fillRatio": 0.3
- },
  "items": [
   {
    "file": "group.png",

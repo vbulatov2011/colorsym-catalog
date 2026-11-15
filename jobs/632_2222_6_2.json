@@ -1,7 +1,7 @@
 {
  "_comment": [
   "Layer set for 632/2222[6]#2 (632.6.3), 6 colours, 3 placements.",
-  "Template: wp-632; permutations overridden to this subgroup's invcos.",
+  "Template: wp-632; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
   "f words: e d a dd aa aaa",
   "g words: e b B ba BA bab",
   "View: the preset's own (centre and zoom), shared by every item."
@@ -10,7 +10,7 @@
  "size": 800,
  "preset": "/catalog/presets/wp/wp-632.json",
  "view": {
-  "zoom": 0.667,
+  "zoom": 0.6669985255434917,
   "centerX": 0,
   "centerY": 0
  },
@@ -21,7 +21,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -40,7 +40,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -59,7 +59,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -78,7 +78,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -98,7 +98,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -118,7 +118,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -259,7 +259,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "100000",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -280,7 +280,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "010000",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -301,7 +301,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "001000",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -322,7 +322,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "000100",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -343,7 +343,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "000010",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -364,7 +364,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "000001",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -385,7 +385,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "100000",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -406,7 +406,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "010000",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -427,7 +427,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "001000",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -448,7 +448,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "000100",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -469,7 +469,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "000010",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -490,7 +490,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "000001",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -511,7 +511,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "100000",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -532,7 +532,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "010000",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -553,7 +553,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "001000",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -574,7 +574,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "000100",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -595,7 +595,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "000010",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -616,7 +616,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "000001",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -637,7 +637,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "100000",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -658,7 +658,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "010000",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -679,7 +679,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "001000",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -700,7 +700,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "000100",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -721,7 +721,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "000010",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -742,7 +742,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "000001",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -763,7 +763,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "100000",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -784,7 +784,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "010000",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -805,7 +805,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "001000",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -826,7 +826,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "000100",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -847,7 +847,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "000010",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -868,7 +868,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "000001",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -889,7 +889,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "100000",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -910,7 +910,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "010000",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -931,7 +931,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "001000",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -952,7 +952,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "000100",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -973,7 +973,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "000010",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -994,7 +994,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "000001",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6
@@ -1016,7 +1016,7 @@
       "drawing": {
        "useOrbit": false,
        "mask": "100000",
-       "permutations": "caebfd cabefd bcafde bdafce",
+       "permutations": "bdafce bcafde cabefd caebfd",
        "useMipmap": true,
        "colorTiles": {
         "count": 6
@@ -1034,7 +1034,7 @@
       "drawing": {
        "useOrbit": false,
        "mask": "100000",
-       "permutations": "caebfd cabefd bcafde bdafce",
+       "permutations": "bdafce bcafde cabefd caebfd",
        "useMipmap": true,
        "colorTiles": {
         "count": 6
@@ -1052,7 +1052,7 @@
       "drawing": {
        "useOrbit": false,
        "mask": "100000",
-       "permutations": "caebfd cabefd bcafde bdafce",
+       "permutations": "bdafce bcafde cabefd caebfd",
        "useMipmap": true,
        "colorTiles": {
         "count": 6
@@ -1070,7 +1070,7 @@
       "drawing": {
        "useOrbit": false,
        "mask": "100000",
-       "permutations": "caebfd cabefd bcafde bdafce",
+       "permutations": "bdafce bcafde cabefd caebfd",
        "useMipmap": true,
        "colorTiles": {
         "count": 6
@@ -1088,7 +1088,7 @@
       "drawing": {
        "useOrbit": false,
        "mask": "100000",
-       "permutations": "caebfd cabefd bcafde bdafce",
+       "permutations": "bdafce bcafde cabefd caebfd",
        "useMipmap": true,
        "colorTiles": {
         "count": 6
@@ -1106,7 +1106,7 @@
       "drawing": {
        "useOrbit": false,
        "mask": "100000",
-       "permutations": "caebfd cabefd bcafde bdafce",
+       "permutations": "bdafce bcafde cabefd caebfd",
        "useMipmap": true,
        "colorTiles": {
         "count": 6
@@ -1130,7 +1130,7 @@
       "drawing": {
        "useOrbit": false,
        "mask": "010000",
-       "permutations": "caebfd cabefd bcafde bdafce",
+       "permutations": "bdafce bcafde cabefd caebfd",
        "useMipmap": true,
        "colorTiles": {
         "count": 6
@@ -1148,7 +1148,7 @@
       "drawing": {
        "useOrbit": false,
        "mask": "010000",
-       "permutations": "caebfd cabefd bcafde bdafce",
+       "permutations": "bdafce bcafde cabefd caebfd",
        "useMipmap": true,
        "colorTiles": {
         "count": 6
@@ -1166,7 +1166,7 @@
       "drawing": {
        "useOrbit": false,
        "mask": "010000",
-       "permutations": "caebfd cabefd bcafde bdafce",
+       "permutations": "bdafce bcafde cabefd caebfd",
        "useMipmap": true,
        "colorTiles": {
         "count": 6
@@ -1184,7 +1184,7 @@
       "drawing": {
        "useOrbit": false,
        "mask": "010000",
-       "permutations": "caebfd cabefd bcafde bdafce",
+       "permutations": "bdafce bcafde cabefd caebfd",
        "useMipmap": true,
        "colorTiles": {
         "count": 6
@@ -1202,7 +1202,7 @@
       "drawing": {
        "useOrbit": false,
        "mask": "010000",
-       "permutations": "caebfd cabefd bcafde bdafce",
+       "permutations": "bdafce bcafde cabefd caebfd",
        "useMipmap": true,
        "colorTiles": {
         "count": 6
@@ -1220,7 +1220,7 @@
       "drawing": {
        "useOrbit": false,
        "mask": "010000",
-       "permutations": "caebfd cabefd bcafde bdafce",
+       "permutations": "bdafce bcafde cabefd caebfd",
        "useMipmap": true,
        "colorTiles": {
         "count": 6
@@ -1244,7 +1244,7 @@
       "drawing": {
        "useOrbit": false,
        "mask": "001000",
-       "permutations": "caebfd cabefd bcafde bdafce",
+       "permutations": "bdafce bcafde cabefd caebfd",
        "useMipmap": true,
        "colorTiles": {
         "count": 6
@@ -1262,7 +1262,7 @@
       "drawing": {
        "useOrbit": false,
        "mask": "001000",
-       "permutations": "caebfd cabefd bcafde bdafce",
+       "permutations": "bdafce bcafde cabefd caebfd",
        "useMipmap": true,
        "colorTiles": {
         "count": 6
@@ -1280,7 +1280,7 @@
       "drawing": {
        "useOrbit": false,
        "mask": "001000",
-       "permutations": "caebfd cabefd bcafde bdafce",
+       "permutations": "bdafce bcafde cabefd caebfd",
        "useMipmap": true,
        "colorTiles": {
         "count": 6
@@ -1298,7 +1298,7 @@
       "drawing": {
        "useOrbit": false,
        "mask": "001000",
-       "permutations": "caebfd cabefd bcafde bdafce",
+       "permutations": "bdafce bcafde cabefd caebfd",
        "useMipmap": true,
        "colorTiles": {
         "count": 6
@@ -1316,7 +1316,7 @@
       "drawing": {
        "useOrbit": false,
        "mask": "001000",
-       "permutations": "caebfd cabefd bcafde bdafce",
+       "permutations": "bdafce bcafde cabefd caebfd",
        "useMipmap": true,
        "colorTiles": {
         "count": 6
@@ -1334,7 +1334,7 @@
       "drawing": {
        "useOrbit": false,
        "mask": "001000",
-       "permutations": "caebfd cabefd bcafde bdafce",
+       "permutations": "bdafce bcafde cabefd caebfd",
        "useMipmap": true,
        "colorTiles": {
         "count": 6
@@ -1358,7 +1358,7 @@
       "drawing": {
        "useOrbit": false,
        "mask": "000100",
-       "permutations": "caebfd cabefd bcafde bdafce",
+       "permutations": "bdafce bcafde cabefd caebfd",
        "useMipmap": true,
        "colorTiles": {
         "count": 6
@@ -1376,7 +1376,7 @@
       "drawing": {
        "useOrbit": false,
        "mask": "000100",
-       "permutations": "caebfd cabefd bcafde bdafce",
+       "permutations": "bdafce bcafde cabefd caebfd",
        "useMipmap": true,
        "colorTiles": {
         "count": 6
@@ -1394,7 +1394,7 @@
       "drawing": {
        "useOrbit": false,
        "mask": "000100",
-       "permutations": "caebfd cabefd bcafde bdafce",
+       "permutations": "bdafce bcafde cabefd caebfd",
        "useMipmap": true,
        "colorTiles": {
         "count": 6
@@ -1412,7 +1412,7 @@
       "drawing": {
        "useOrbit": false,
        "mask": "000100",
-       "permutations": "caebfd cabefd bcafde bdafce",
+       "permutations": "bdafce bcafde cabefd caebfd",
        "useMipmap": true,
        "colorTiles": {
         "count": 6
@@ -1430,7 +1430,7 @@
       "drawing": {
        "useOrbit": false,
        "mask": "000100",
-       "permutations": "caebfd cabefd bcafde bdafce",
+       "permutations": "bdafce bcafde cabefd caebfd",
        "useMipmap": true,
        "colorTiles": {
         "count": 6
@@ -1448,7 +1448,7 @@
       "drawing": {
        "useOrbit": false,
        "mask": "000100",
-       "permutations": "caebfd cabefd bcafde bdafce",
+       "permutations": "bdafce bcafde cabefd caebfd",
        "useMipmap": true,
        "colorTiles": {
         "count": 6
@@ -1472,7 +1472,7 @@
       "drawing": {
        "useOrbit": false,
        "mask": "000010",
-       "permutations": "caebfd cabefd bcafde bdafce",
+       "permutations": "bdafce bcafde cabefd caebfd",
        "useMipmap": true,
        "colorTiles": {
         "count": 6
@@ -1490,7 +1490,7 @@
       "drawing": {
        "useOrbit": false,
        "mask": "000010",
-       "permutations": "caebfd cabefd bcafde bdafce",
+       "permutations": "bdafce bcafde cabefd caebfd",
        "useMipmap": true,
        "colorTiles": {
         "count": 6
@@ -1508,7 +1508,7 @@
       "drawing": {
        "useOrbit": false,
        "mask": "000010",
-       "permutations": "caebfd cabefd bcafde bdafce",
+       "permutations": "bdafce bcafde cabefd caebfd",
        "useMipmap": true,
        "colorTiles": {
         "count": 6
@@ -1526,7 +1526,7 @@
       "drawing": {
        "useOrbit": false,
        "mask": "000010",
-       "permutations": "caebfd cabefd bcafde bdafce",
+       "permutations": "bdafce bcafde cabefd caebfd",
        "useMipmap": true,
        "colorTiles": {
         "count": 6
@@ -1544,7 +1544,7 @@
       "drawing": {
        "useOrbit": false,
        "mask": "000010",
-       "permutations": "caebfd cabefd bcafde bdafce",
+       "permutations": "bdafce bcafde cabefd caebfd",
        "useMipmap": true,
        "colorTiles": {
         "count": 6
@@ -1562,7 +1562,7 @@
       "drawing": {
        "useOrbit": false,
        "mask": "000010",
-       "permutations": "caebfd cabefd bcafde bdafce",
+       "permutations": "bdafce bcafde cabefd caebfd",
        "useMipmap": true,
        "colorTiles": {
         "count": 6
@@ -1586,7 +1586,7 @@
       "drawing": {
        "useOrbit": false,
        "mask": "000001",
-       "permutations": "caebfd cabefd bcafde bdafce",
+       "permutations": "bdafce bcafde cabefd caebfd",
        "useMipmap": true,
        "colorTiles": {
         "count": 6
@@ -1604,7 +1604,7 @@
       "drawing": {
        "useOrbit": false,
        "mask": "000001",
-       "permutations": "caebfd cabefd bcafde bdafce",
+       "permutations": "bdafce bcafde cabefd caebfd",
        "useMipmap": true,
        "colorTiles": {
         "count": 6
@@ -1622,7 +1622,7 @@
       "drawing": {
        "useOrbit": false,
        "mask": "000001",
-       "permutations": "caebfd cabefd bcafde bdafce",
+       "permutations": "bdafce bcafde cabefd caebfd",
        "useMipmap": true,
        "colorTiles": {
         "count": 6
@@ -1640,7 +1640,7 @@
       "drawing": {
        "useOrbit": false,
        "mask": "000001",
-       "permutations": "caebfd cabefd bcafde bdafce",
+       "permutations": "bdafce bcafde cabefd caebfd",
        "useMipmap": true,
        "colorTiles": {
         "count": 6
@@ -1658,7 +1658,7 @@
       "drawing": {
        "useOrbit": false,
        "mask": "000001",
-       "permutations": "caebfd cabefd bcafde bdafce",
+       "permutations": "bdafce bcafde cabefd caebfd",
        "useMipmap": true,
        "colorTiles": {
         "count": 6
@@ -1676,7 +1676,7 @@
       "drawing": {
        "useOrbit": false,
        "mask": "000001",
-       "permutations": "caebfd cabefd bcafde bdafce",
+       "permutations": "bdafce bcafde cabefd caebfd",
        "useMipmap": true,
        "colorTiles": {
         "count": 6
@@ -1697,7 +1697,7 @@
     "drawing": {
      "useOrbit": false,
      "mask": "",
-     "permutations": "caebfd cabefd bcafde bdafce",
+     "permutations": "bdafce bcafde cabefd caebfd",
      "useMipmap": true,
      "colorTiles": {
       "count": 6

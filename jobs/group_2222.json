@@ -1,15 +1,11 @@
 {
  "_comment": [
   "Uncolored pattern of 2222 for the index pages.",
-  "Preset wp-2222.json (rectangle); view framed on G's domain from 2222.json."
+  "Preset wp-2222.json (rectangle); the preset's own view (centre and zoom)."
  ],
  "outDir": "2222/gen",
  "size": 400,
  "preset": "/catalog/presets/wp/wp-2222.json",
- "autoView": {
-  "subgroup": "a a a a",
-  "fillRatio": 0.3
- },
  "items": [
   {
    "file": "group.png",

@@ -1,0 +1,674 @@
+{
+ "_comment": [
+  "Layer set for *x/o[2] (*x.2.3), 2 colours, 1 placements.",
+  "Template: wp-sX; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
+  "f words: e a",
+  "g words: e c",
+  "Every item sets symmetry.options.iterations = 60.",
+  "View: the preset's own (centre and zoom), shared by every item."
+ ],
+ "outDir": "sx/2/sx-o-2/gen",
+ "size": 800,
+ "preset": "/catalog/presets/wp/wp-sX.json",
+ "view": {
+  "zoom": 0.57,
+  "centerX": 0,
+  "centerY": 0
+ },
+ "items": [
+  {
+   "file": "sx-o-2.1.png",
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "",
+     "permutations": "ba ba ba ba",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 2
+     },
+     "coloringType": "mult",
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "sx-o-2.2.png",
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "",
+     "permutations": "ba ba ba ba",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 2
+     },
+     "coloringType": "mult",
+     "permIndex": 1
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "_note": "same placement as .1 - colors relabeled",
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "sx-o-2.o.png",
+   "layers": {
+    "drawing": {
+     "useOrbit": true,
+     "mask": "",
+     "permutations": "ba ba ba ba",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 2
+     },
+     "coloringType": "mult",
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "sx-o-2.o1.png",
+   "_note": "orbit coloring carried by g_1",
+   "layers": {
+    "drawing": {
+     "useOrbit": true,
+     "mask": "",
+     "permutations": "ba ba ba ba",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 2
+     },
+     "coloringType": "mult",
+     "permIndex": 1
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "00.png",
+   "_note": "f_0 H g_0",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "10",
+     "permutations": "ba ba ba ba",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 2
+     },
+     "coloringType": "mult",
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "01.png",
+   "_note": "f_0 H g_1",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "01",
+     "permutations": "ba ba ba ba",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 2
+     },
+     "coloringType": "mult",
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "10.png",
+   "_note": "f_1 H g_0",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "10",
+     "permutations": "ba ba ba ba",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 2
+     },
+     "coloringType": "mult",
+     "permIndex": 1
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "11.png",
+   "_note": "f_1 H g_1",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "01",
+     "permutations": "ba ba ba ba",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 2
+     },
+     "coloringType": "mult",
+     "permIndex": 1
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "01_0.png",
+   "_note": "all orbits of H g_0 - the whole pattern in color 0",
+   "compose": [
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "10",
+       "permutations": "ba ba ba ba",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 2
+       },
+       "coloringType": "mult",
+       "permIndex": 0
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "10",
+       "permutations": "ba ba ba ba",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 2
+       },
+       "coloringType": "mult",
+       "permIndex": 1
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "file": "01_1.png",
+   "_note": "all orbits of H g_1 - the whole pattern in color 1",
+   "compose": [
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "01",
+       "permutations": "ba ba ba ba",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 2
+       },
+       "coloringType": "mult",
+       "permIndex": 0
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "01",
+       "permutations": "ba ba ba ba",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 2
+       },
+       "coloringType": "mult",
+       "permIndex": 1
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "file": "group_pattern.png",
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "",
+     "permutations": "ba ba ba ba",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 2
+     },
+     "coloringType": "none",
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "group_domain.png",
+   "subgroup": null,
+   "enable": {
+    "drawing": false,
+    "overlay": true
+   },
+   "layers": {
+    "overlay": {
+     "overlays": {
+      "tiling": {
+       "enabled": false
+      },
+      "fundDomain": {
+       "enabled": true,
+       "fill": {
+        "enabled": true
+       },
+       "outline": {
+        "enabled": true
+       }
+      },
+      "generators": {
+       "enabled": false
+      }
+     }
+    }
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "group_tiling.png",
+   "subgroup": null,
+   "enable": {
+    "drawing": false,
+    "overlay": true
+   },
+   "layers": {
+    "overlay": {
+     "overlays": {
+      "tiling": {
+       "enabled": true
+      },
+      "fundDomain": {
+       "enabled": false
+      },
+      "generators": {
+       "enabled": false
+      }
+     }
+    }
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "group_gens.png",
+   "subgroup": null,
+   "enable": {
+    "drawing": false,
+    "overlay": true
+   },
+   "layers": {
+    "overlay": {
+     "overlays": {
+      "tiling": {
+       "enabled": false
+      },
+      "fundDomain": {
+       "enabled": true,
+       "fill": {
+        "enabled": true
+       },
+       "outline": {
+        "enabled": true
+       }
+      },
+      "generators": {
+       "enabled": false
+      }
+     }
+    }
+   },
+   "markers": {
+    "subgroup": null
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "sub_domain.png",
+   "_note": "H's domain as a union of 2 G cells",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "draw": {
+    "subgroup": "ba ba ba ba",
+    "fill": true,
+    "cells": true,
+    "outline": true
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "sub_tiling.png",
+   "compose": [
+    {
+     "subgroup": null,
+     "enable": {
+      "drawing": false,
+      "overlay": true
+     },
+     "layers": {
+      "overlay": {
+       "overlays": {
+        "tiling": {
+         "enabled": true
+        },
+        "fundDomain": {
+         "enabled": false
+        },
+        "generators": {
+         "enabled": false
+        }
+       }
+      }
+     },
+     "opacity": 0.3,
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    }
+   ],
+   "draw": {
+    "subgroup": "ba ba ba ba",
+    "tiling": true
+   }
+  },
+  {
+   "file": "sub_gens.png",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "draw": {
+    "subgroup": "ba ba ba ba",
+    "fill": true,
+    "outline": true
+   },
+   "markers": {
+    "subgroup": "ba ba ba ba"
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "sub_til.png",
+   "_note": "H tiling lines only",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "draw": {
+    "subgroup": "ba ba ba ba",
+    "tiling": true
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "group_marks.png",
+   "_note": "G rotation centres only",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "markers": {
+    "subgroup": null
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "sub_marks.png",
+   "_note": "H rotation centres only",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "markers": {
+    "subgroup": "ba ba ba ba"
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "f1.png",
+   "_note": "f_1 = a",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "glyphs": {
+    "subgroup": "ba ba ba ba",
+    "kind": "cell",
+    "list": [
+     {
+      "word": "a",
+      "style": {
+       "color": "#c02020",
+       "width": 3.5
+      }
+     }
+    ]
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "g1.png",
+   "_note": "g_1 = c",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "glyphs": {
+    "subgroup": "ba ba ba ba",
+    "kind": "coset",
+    "list": [
+     {
+      "word": "c",
+      "style": {
+       "color": "#2040c0",
+       "width": 3.5
+      }
+     }
+    ]
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  }
+ ]
+}

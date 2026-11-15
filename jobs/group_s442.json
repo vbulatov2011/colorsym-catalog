@@ -1,15 +1,11 @@
 {
  "_comment": [
   "Uncolored pattern of *442 for the index pages.",
-  "Preset wp-s442.json (default); view framed on G's domain from s442.json."
+  "Preset wp-s442.json (default); the preset's own view (centre and zoom)."
  ],
  "outDir": "s442/gen",
  "size": 400,
  "preset": "/catalog/presets/wp/wp-s442.json",
- "autoView": {
-  "subgroup": "a a a",
-  "fillRatio": 0.3
- },
  "items": [
   {
    "file": "group.png",

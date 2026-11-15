@@ -1,15 +1,11 @@
 {
  "_comment": [
   "Uncolored pattern of *333 for the index pages.",
-  "Preset wp-s333.json (default); view framed on G's domain from s333.json."
+  "Preset wp-s333.json (default); the preset's own view (centre and zoom)."
  ],
  "outDir": "s333/gen",
  "size": 400,
  "preset": "/catalog/presets/wp/wp-s333.json",
- "autoView": {
-  "subgroup": "a a a",
-  "fillRatio": 0.3
- },
  "items": [
   {
    "file": "group.png",

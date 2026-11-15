@@ -4676,7 +4676,14 @@
    "type": "2*22",
    "normal": false,
    "placements": 2,
-   "cosets": "abcd badc abdc cdab",
+   "cosets": "abcd cdab adcb badc",
+   "sublibCosets": "abcd badc abdc cdab",
+   "cosetOrder": [
+    0,
+    2,
+    1,
+    3
+   ],
    "orders": [
     2,
     2,
@@ -4704,36 +4711,36 @@
     {
      "generator": "b",
      "perm": [
-      1,
-      0,
-      3,
-      2
-     ],
-     "cycles": "(0 1)(2 3)"
-    },
-    {
-     "generator": "c",
-     "perm": [
-      0,
-      1,
-      3,
-      2
-     ],
-     "cycles": "(2 3)"
-    },
-    {
-     "generator": "d",
-     "perm": [
       2,
       3,
       0,
       1
      ],
      "cycles": "(0 2)(1 3)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      0,
+      3,
+      2,
+      1
+     ],
+     "cycles": "(1 3)"
+    },
+    {
+     "generator": "d",
+     "perm": [
+      1,
+      0,
+      3,
+      2
+     ],
+     "cycles": "(0 1)(2 3)"
     }
    ],
    "geoKey": "k1|n=4|L=1,2,4|P=-1,0,0,-1:0,1;-1,0,0,1:0,2;1,0,0,-1:0,3",
-   "keyCoset": 2,
+   "keyCoset": 1,
    "representativeKey": "k1|n=4|L=1,2,4|P=-1,0,0,-1:0,3;-1,0,0,1:0,2;1,0,0,-1:0,1",
    "latticeHNF": {
     "a": 1,
@@ -4751,23 +4758,6 @@
      "text": "identity"
     },
     {
-     "word": "b",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0,
-        0
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0,0) dir (0,1)"
-    },
-    {
      "word": "d",
      "isometry": {
       "type": "reflection",
@@ -4783,6 +4773,23 @@
       }
      },
      "text": "reflection in line thru (0,0) dir (1,0)"
+    },
+    {
+     "word": "b",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0,
+        0
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
      "word": "db",
@@ -4806,23 +4813,6 @@
      "text": "identity"
     },
     {
-     "word": "b",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0,
-        0
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0,0) dir (0,1)"
-    },
-    {
      "word": "d",
      "isometry": {
       "type": "reflection",
@@ -4838,6 +4828,23 @@
       }
      },
      "text": "reflection in line thru (0,0) dir (1,0)"
+    },
+    {
+     "word": "b",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0,
+        0
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
      "word": "bd",
@@ -4889,6 +4896,18 @@
      "text": "reflection in line thru (0,0.25) dir (1,0)"
     },
     {
+     "word": "BDcd",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       1.5308084989341915e-17,
+       -0.25
+      ]
+     },
+     "text": "rotation by 1*PI about (0,-0.25)"
+    },
+    {
      "word": "Bab",
      "isometry": {
       "type": "reflection",
@@ -4904,18 +4923,6 @@
       }
      },
      "text": "reflection in line thru (-0.25,0) dir (0,1)"
-    },
-    {
-     "word": "BDcd",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       1.5308084989341915e-17,
-       -0.25
-      ]
-     },
-     "text": "rotation by 1*PI about (0,-0.25)"
     }
    ],
    "sideCounts": {
@@ -5696,7 +5703,14 @@
    "type": "2*22",
    "normal": false,
    "placements": 2,
-   "cosets": "abcd badc cdab abdc",
+   "cosets": "abcd cdab badc adcb",
+   "sublibCosets": "abcd badc cdab abdc",
+   "cosetOrder": [
+    0,
+    2,
+    1,
+    3
+   ],
    "orders": [
     2,
     2,
@@ -5724,16 +5738,6 @@
     {
      "generator": "b",
      "perm": [
-      1,
-      0,
-      3,
-      2
-     ],
-     "cycles": "(0 1)(2 3)"
-    },
-    {
-     "generator": "c",
-     "perm": [
       2,
       3,
       0,
@@ -5742,18 +5746,28 @@
      "cycles": "(0 2)(1 3)"
     },
     {
-     "generator": "d",
+     "generator": "c",
      "perm": [
-      0,
       1,
+      0,
       3,
       2
      ],
-     "cycles": "(2 3)"
+     "cycles": "(0 1)(2 3)"
+    },
+    {
+     "generator": "d",
+     "perm": [
+      0,
+      3,
+      2,
+      1
+     ],
+     "cycles": "(1 3)"
     }
    ],
    "geoKey": "k1|n=4|L=1,2,4|P=-1,0,0,-1:0,0;-1,0,0,1:0,2;1,0,0,-1:0,2",
-   "keyCoset": 2,
+   "keyCoset": 1,
    "representativeKey": "k1|n=4|L=1,2,4|P=-1,0,0,-1:0,2;-1,0,0,1:0,2;1,0,0,-1:0,0",
    "latticeHNF": {
     "a": 1,
@@ -5771,23 +5785,6 @@
      "text": "identity"
     },
     {
-     "word": "b",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0,
-        0
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0,0) dir (0,1)"
-    },
-    {
      "word": "c",
      "isometry": {
       "type": "reflection",
@@ -5803,6 +5800,23 @@
       }
      },
      "text": "reflection in line thru (0,0.25) dir (1,0)"
+    },
+    {
+     "word": "b",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0,
+        0
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
      "word": "cb",
@@ -5826,23 +5840,6 @@
      "text": "identity"
     },
     {
-     "word": "b",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0,
-        0
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0,0) dir (0,1)"
-    },
-    {
      "word": "c",
      "isometry": {
       "type": "reflection",
@@ -5858,6 +5855,23 @@
       }
      },
      "text": "reflection in line thru (0,0.25) dir (1,0)"
+    },
+    {
+     "word": "b",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0,
+        0
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
      "word": "bc",
@@ -5909,6 +5923,18 @@
      "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
+     "word": "BCdc",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       -3.061616997868383e-17,
+       0.5
+      ]
+     },
+     "text": "rotation by 1*PI about (-0,0.5)"
+    },
+    {
      "word": "Bab",
      "isometry": {
       "type": "reflection",
@@ -5924,18 +5950,6 @@
       }
      },
      "text": "reflection in line thru (-0.25,0) dir (0,1)"
-    },
-    {
-     "word": "BCdc",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       -3.061616997868383e-17,
-       0.5
-      ]
-     },
-     "text": "rotation by 1*PI about (-0,0.5)"
     }
    ],
    "sideCounts": {
@@ -7721,7 +7735,14 @@
    "type": "2*22",
    "normal": false,
    "placements": 2,
-   "cosets": "badc abcd abdc cdab",
+   "cosets": "cdab abcd adcb badc",
+   "sublibCosets": "badc abcd abdc cdab",
+   "cosetOrder": [
+    0,
+    2,
+    1,
+    3
+   ],
    "orders": [
     2,
     2,
@@ -7739,12 +7760,12 @@
     {
      "generator": "a",
      "perm": [
-      1,
-      0,
+      2,
       3,
-      2
+      0,
+      1
      ],
-     "cycles": "(0 1)(2 3)"
+     "cycles": "(0 2)(1 3)"
     },
     {
      "generator": "b",
@@ -7760,21 +7781,21 @@
      "generator": "c",
      "perm": [
       0,
-      1,
       3,
-      2
+      2,
+      1
      ],
-     "cycles": "(2 3)"
+     "cycles": "(1 3)"
     },
     {
      "generator": "d",
      "perm": [
-      2,
-      3,
+      1,
       0,
-      1
+      3,
+      2
      ],
-     "cycles": "(0 2)(1 3)"
+     "cycles": "(0 1)(2 3)"
     }
    ],
    "geoKey": "k1|n=4|L=1,2,4|P=-1,0,0,-1:0,1;-1,0,0,1:0,0;1,0,0,-1:0,1",
@@ -7796,23 +7817,6 @@
      "text": "identity"
     },
     {
-     "word": "a",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0.25,
-        -1.5308084989341915e-17
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0.25,-0) dir (0,1)"
-    },
-    {
      "word": "d",
      "isometry": {
       "type": "reflection",
@@ -7828,6 +7832,23 @@
       }
      },
      "text": "reflection in line thru (0,0) dir (1,0)"
+    },
+    {
+     "word": "a",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0.25,
+        -1.5308084989341915e-17
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0.25,-0) dir (0,1)"
     },
     {
      "word": "da",
@@ -7851,23 +7872,6 @@
      "text": "identity"
     },
     {
-     "word": "a",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0.25,
-        -1.5308084989341915e-17
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0.25,-0) dir (0,1)"
-    },
-    {
      "word": "d",
      "isometry": {
       "type": "reflection",
@@ -7883,6 +7887,23 @@
       }
      },
      "text": "reflection in line thru (0,0) dir (1,0)"
+    },
+    {
+     "word": "a",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0.25,
+        -1.5308084989341915e-17
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0.25,-0) dir (0,1)"
     },
     {
      "word": "ad",
@@ -7934,6 +7955,18 @@
      "text": "reflection in line thru (0,0.25) dir (1,0)"
     },
     {
+     "word": "ADcd",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       0.25,
+       -0.24999999999999997
+      ]
+     },
+     "text": "rotation by 1*PI about (0.25,-0.25)"
+    },
+    {
      "word": "Aba",
      "isometry": {
       "type": "reflection",
@@ -7949,18 +7982,6 @@
       }
      },
      "text": "reflection in line thru (0.5,-0) dir (0,1)"
-    },
-    {
-     "word": "ADcd",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       0.25,
-       -0.24999999999999997
-      ]
-     },
-     "text": "rotation by 1*PI about (0.25,-0.25)"
     }
    ],
    "sideCounts": {
@@ -8741,7 +8762,14 @@
    "type": "2*22",
    "normal": false,
    "placements": 2,
-   "cosets": "badc abcd cdab abdc",
+   "cosets": "cdab abcd badc adcb",
+   "sublibCosets": "badc abcd cdab abdc",
+   "cosetOrder": [
+    0,
+    2,
+    1,
+    3
+   ],
    "orders": [
     2,
     2,
@@ -8759,12 +8787,12 @@
     {
      "generator": "a",
      "perm": [
-      1,
-      0,
+      2,
       3,
-      2
+      0,
+      1
      ],
-     "cycles": "(0 1)(2 3)"
+     "cycles": "(0 2)(1 3)"
     },
     {
      "generator": "b",
@@ -8779,22 +8807,22 @@
     {
      "generator": "c",
      "perm": [
-      2,
-      3,
+      1,
       0,
-      1
+      3,
+      2
      ],
-     "cycles": "(0 2)(1 3)"
+     "cycles": "(0 1)(2 3)"
     },
     {
      "generator": "d",
      "perm": [
       0,
-      1,
       3,
-      2
+      2,
+      1
      ],
-     "cycles": "(2 3)"
+     "cycles": "(1 3)"
     }
    ],
    "geoKey": "k1|n=4|L=1,2,4|P=-1,0,0,-1:0,0;-1,0,0,1:0,0;1,0,0,-1:0,0",
@@ -8816,23 +8844,6 @@
      "text": "identity"
     },
     {
-     "word": "a",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0.25,
-        -1.5308084989341915e-17
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0.25,-0) dir (0,1)"
-    },
-    {
      "word": "c",
      "isometry": {
       "type": "reflection",
@@ -8848,6 +8859,23 @@
       }
      },
      "text": "reflection in line thru (0,0.25) dir (1,0)"
+    },
+    {
+     "word": "a",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0.25,
+        -1.5308084989341915e-17
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0.25,-0) dir (0,1)"
     },
     {
      "word": "ca",
@@ -8871,23 +8899,6 @@
      "text": "identity"
     },
     {
-     "word": "a",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0.25,
-        -1.5308084989341915e-17
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0.25,-0) dir (0,1)"
-    },
-    {
      "word": "c",
      "isometry": {
       "type": "reflection",
@@ -8903,6 +8914,23 @@
       }
      },
      "text": "reflection in line thru (0,0.25) dir (1,0)"
+    },
+    {
+     "word": "a",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0.25,
+        -1.5308084989341915e-17
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0.25,-0) dir (0,1)"
     },
     {
      "word": "ac",
@@ -8954,6 +8982,18 @@
      "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
+     "word": "ACdc",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       0.24999999999999997,
+       0.5
+      ]
+     },
+     "text": "rotation by 1*PI about (0.25,0.5)"
+    },
+    {
      "word": "Aba",
      "isometry": {
       "type": "reflection",
@@ -8969,18 +9009,6 @@
       }
      },
      "text": "reflection in line thru (0.5,-0) dir (0,1)"
-    },
-    {
-     "word": "ACdc",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       0.24999999999999997,
-       0.5
-      ]
-     },
-     "text": "rotation by 1*PI about (0.25,0.5)"
     }
    ],
    "sideCounts": {
@@ -10483,7 +10511,14 @@
    "type": "22*",
    "normal": false,
    "placements": 2,
-   "cosets": "badc badc abdc cdab",
+   "cosets": "cdab cdab adcb badc",
+   "sublibCosets": "badc badc abdc cdab",
+   "cosetOrder": [
+    0,
+    2,
+    1,
+    3
+   ],
    "orders": [
     2,
     2,
@@ -10497,35 +10532,15 @@
     {
      "generator": "a",
      "perm": [
-      1,
-      0,
+      2,
       3,
-      2
+      0,
+      1
      ],
-     "cycles": "(0 1)(2 3)"
+     "cycles": "(0 2)(1 3)"
     },
     {
      "generator": "b",
-     "perm": [
-      1,
-      0,
-      3,
-      2
-     ],
-     "cycles": "(0 1)(2 3)"
-    },
-    {
-     "generator": "c",
-     "perm": [
-      0,
-      1,
-      3,
-      2
-     ],
-     "cycles": "(2 3)"
-    },
-    {
-     "generator": "d",
      "perm": [
       2,
       3,
@@ -10533,10 +10548,30 @@
       1
      ],
      "cycles": "(0 2)(1 3)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      0,
+      3,
+      2,
+      1
+     ],
+     "cycles": "(1 3)"
+    },
+    {
+     "generator": "d",
+     "perm": [
+      1,
+      0,
+      3,
+      2
+     ],
+     "cycles": "(0 1)(2 3)"
     }
    ],
    "geoKey": "k1|n=4|L=1,0,4|P=-1,0,0,-1:0,1;-1,0,0,1:0,2;1,0,0,-1:0,3",
-   "keyCoset": 2,
+   "keyCoset": 1,
    "representativeKey": "k1|n=4|L=1,0,4|P=-1,0,0,-1:0,3;-1,0,0,1:0,2;1,0,0,-1:0,1",
    "latticeHNF": {
     "a": 1,
@@ -10554,23 +10589,6 @@
      "text": "identity"
     },
     {
-     "word": "a",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0.25,
-        -1.5308084989341915e-17
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0.25,-0) dir (0,1)"
-    },
-    {
      "word": "d",
      "isometry": {
       "type": "reflection",
@@ -10586,6 +10604,23 @@
       }
      },
      "text": "reflection in line thru (0,0) dir (1,0)"
+    },
+    {
+     "word": "a",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0.25,
+        -1.5308084989341915e-17
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0.25,-0) dir (0,1)"
     },
     {
      "word": "da",
@@ -10609,23 +10644,6 @@
      "text": "identity"
     },
     {
-     "word": "b",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0,
-        0
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0,0) dir (0,1)"
-    },
-    {
      "word": "d",
      "isometry": {
       "type": "reflection",
@@ -10641,6 +10659,23 @@
       }
      },
      "text": "reflection in line thru (0,0) dir (1,0)"
+    },
+    {
+     "word": "b",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0,
+        0
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
      "word": "bd",
@@ -10686,17 +10721,6 @@
      "text": "reflection in line thru (0,0.25) dir (1,0)"
     },
     {
-     "word": "ba",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0.5,
-       0
-      ]
-     },
-     "text": "translation by (0.5,0)"
-    },
-    {
      "word": "ADcd",
      "isometry": {
       "type": "rotation",
@@ -10707,6 +10731,17 @@
       ]
      },
      "text": "rotation by 1*PI about (0.25,-0.25)"
+    },
+    {
+     "word": "ba",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0.5,
+       0
+      ]
+     },
+     "text": "translation by (0.5,0)"
     }
    ],
    "sideCounts": {
@@ -11200,7 +11235,14 @@
    "type": "22*",
    "normal": false,
    "placements": 2,
-   "cosets": "badc badc cdab abdc",
+   "cosets": "cdab cdab badc adcb",
+   "sublibCosets": "badc badc cdab abdc",
+   "cosetOrder": [
+    0,
+    2,
+    1,
+    3
+   ],
    "orders": [
     2,
     2,
@@ -11214,25 +11256,15 @@
     {
      "generator": "a",
      "perm": [
-      1,
-      0,
+      2,
       3,
-      2
+      0,
+      1
      ],
-     "cycles": "(0 1)(2 3)"
+     "cycles": "(0 2)(1 3)"
     },
     {
      "generator": "b",
-     "perm": [
-      1,
-      0,
-      3,
-      2
-     ],
-     "cycles": "(0 1)(2 3)"
-    },
-    {
-     "generator": "c",
      "perm": [
       2,
       3,
@@ -11242,18 +11274,28 @@
      "cycles": "(0 2)(1 3)"
     },
     {
-     "generator": "d",
+     "generator": "c",
      "perm": [
-      0,
       1,
+      0,
       3,
       2
      ],
-     "cycles": "(2 3)"
+     "cycles": "(0 1)(2 3)"
+    },
+    {
+     "generator": "d",
+     "perm": [
+      0,
+      3,
+      2,
+      1
+     ],
+     "cycles": "(1 3)"
     }
    ],
    "geoKey": "k1|n=4|L=1,0,4|P=-1,0,0,-1:0,0;-1,0,0,1:0,2;1,0,0,-1:0,2",
-   "keyCoset": 2,
+   "keyCoset": 1,
    "representativeKey": "k1|n=4|L=1,0,4|P=-1,0,0,-1:0,2;-1,0,0,1:0,2;1,0,0,-1:0,0",
    "latticeHNF": {
     "a": 1,
@@ -11271,23 +11313,6 @@
      "text": "identity"
     },
     {
-     "word": "a",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0.25,
-        -1.5308084989341915e-17
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0.25,-0) dir (0,1)"
-    },
-    {
      "word": "c",
      "isometry": {
       "type": "reflection",
@@ -11303,6 +11328,23 @@
       }
      },
      "text": "reflection in line thru (0,0.25) dir (1,0)"
+    },
+    {
+     "word": "a",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0.25,
+        -1.5308084989341915e-17
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0.25,-0) dir (0,1)"
     },
     {
      "word": "ca",
@@ -11326,23 +11368,6 @@
      "text": "identity"
     },
     {
-     "word": "b",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0,
-        0
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0,0) dir (0,1)"
-    },
-    {
      "word": "c",
      "isometry": {
       "type": "reflection",
@@ -11358,6 +11383,23 @@
       }
      },
      "text": "reflection in line thru (0,0.25) dir (1,0)"
+    },
+    {
+     "word": "b",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0,
+        0
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
      "word": "bc",
@@ -11403,17 +11445,6 @@
      "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
-     "word": "ba",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0.5,
-       0
-      ]
-     },
-     "text": "translation by (0.5,0)"
-    },
-    {
      "word": "ACdc",
      "isometry": {
       "type": "rotation",
@@ -11424,6 +11455,17 @@
       ]
      },
      "text": "rotation by 1*PI about (0.25,0.5)"
+    },
+    {
+     "word": "ba",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0.5,
+       0
+      ]
+     },
+     "text": "translation by (0.5,0)"
     }
    ],
    "sideCounts": {
@@ -18018,7 +18060,16 @@
    "type": "*2222",
    "normal": false,
    "placements": 3,
-   "cosets": "abcdef badcfe abefcd cdabef",
+   "cosets": "abcdef defabc acbdfe bacedf",
+   "sublibCosets": "abcdef badcfe abefcd cdabef",
+   "cosetOrder": [
+    0,
+    2,
+    4,
+    1,
+    3,
+    5
+   ],
    "orders": [
     2,
     2,
@@ -18052,42 +18103,42 @@
     {
      "generator": "b",
      "perm": [
-      1,
-      0,
       3,
-      2,
+      4,
       5,
-      4
+      0,
+      1,
+      2
      ],
-     "cycles": "(0 1)(2 3)(4 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     },
     {
      "generator": "c",
      "perm": [
       0,
-      1,
-      4,
-      5,
       2,
-      3
+      1,
+      3,
+      5,
+      4
      ],
-     "cycles": "(2 4)(3 5)"
+     "cycles": "(1 2)(4 5)"
     },
     {
      "generator": "d",
      "perm": [
-      2,
-      3,
-      0,
       1,
+      0,
+      2,
       4,
+      3,
       5
      ],
-     "cycles": "(0 2)(1 3)"
+     "cycles": "(0 1)(3 4)"
     }
    ],
    "geoKey": "k1|n=6|L=2,0,3|P=-1,0,0,-1:1,0;-1,0,0,1:1,0;1,0,0,-1:0,0",
-   "keyCoset": 4,
+   "keyCoset": 2,
    "representativeKey": "k1|n=6|L=2,0,3|P=-1,0,0,-1:1,1;-1,0,0,1:1,0;1,0,0,-1:0,1",
    "latticeHNF": {
     "a": 2,
@@ -18103,23 +18154,6 @@
       "type": "identity"
      },
      "text": "identity"
-    },
-    {
-     "word": "b",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0,
-        0
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
      "word": "d",
@@ -18139,6 +18173,34 @@
      "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
+     "word": "cd",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0,
+       -0.5
+      ]
+     },
+     "text": "translation by (0,-0.5)"
+    },
+    {
+     "word": "b",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0,
+        0
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0,0) dir (0,1)"
+    },
+    {
      "word": "db",
      "isometry": {
       "type": "rotation",
@@ -18149,17 +18211,6 @@
       ]
      },
      "text": "rotation by 1*PI about (0,0)"
-    },
-    {
-     "word": "cd",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0,
-       -0.5
-      ]
-     },
-     "text": "translation by (0,-0.5)"
     },
     {
      "word": "cdb",
@@ -18192,23 +18243,6 @@
      "text": "identity"
     },
     {
-     "word": "b",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0,
-        0
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0,0) dir (0,1)"
-    },
-    {
      "word": "d",
      "isometry": {
       "type": "reflection",
@@ -18226,18 +18260,6 @@
      "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
-     "word": "bd",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       0,
-       0
-      ]
-     },
-     "text": "rotation by 1*PI about (0,0)"
-    },
-    {
      "word": "dcd",
      "isometry": {
       "type": "reflection",
@@ -18253,6 +18275,35 @@
       }
      },
      "text": "reflection in line thru (0,-0.25) dir (1,0)"
+    },
+    {
+     "word": "b",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0,
+        0
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0,0) dir (0,1)"
+    },
+    {
+     "word": "bd",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       0,
+       0
+      ]
+     },
+     "text": "rotation by 1*PI about (0,0)"
     },
     {
      "word": "dbcd",
@@ -18304,23 +18355,6 @@
      "text": "reflection in line thru (0,0.25) dir (1,0)"
     },
     {
-     "word": "Bab",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        -0.25,
-        1.5308084989341915e-17
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (-0.25,0) dir (0,1)"
-    },
-    {
      "word": "DCdcd",
      "isometry": {
       "type": "reflection",
@@ -18336,6 +18370,23 @@
       }
      },
      "text": "reflection in line thru (0,-0.5) dir (1,0)"
+    },
+    {
+     "word": "Bab",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        -0.25,
+        1.5308084989341915e-17
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (-0.25,0) dir (0,1)"
     }
    ],
    "sideCounts": {
@@ -18351,7 +18402,16 @@
    "type": "2*22",
    "normal": false,
    "placements": 3,
-   "cosets": "abcdef badcfe abefcd cdabfe",
+   "cosets": "abcdef defabc acbdfe bafedc",
+   "sublibCosets": "abcdef badcfe abefcd cdabfe",
+   "cosetOrder": [
+    0,
+    2,
+    4,
+    1,
+    3,
+    5
+   ],
    "orders": [
     2,
     2,
@@ -18383,42 +18443,42 @@
     {
      "generator": "b",
      "perm": [
-      1,
-      0,
       3,
-      2,
+      4,
       5,
-      4
+      0,
+      1,
+      2
      ],
-     "cycles": "(0 1)(2 3)(4 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     },
     {
      "generator": "c",
      "perm": [
       0,
-      1,
-      4,
-      5,
       2,
-      3
+      1,
+      3,
+      5,
+      4
      ],
-     "cycles": "(2 4)(3 5)"
+     "cycles": "(1 2)(4 5)"
     },
     {
      "generator": "d",
      "perm": [
-      2,
-      3,
-      0,
       1,
+      0,
       5,
-      4
+      4,
+      3,
+      2
      ],
-     "cycles": "(0 2)(1 3)(4 5)"
+     "cycles": "(0 1)(2 5)(3 4)"
     }
    ],
    "geoKey": "k1|n=6|L=1,3,6|P=-1,0,0,-1:0,0;-1,0,0,1:0,3;1,0,0,-1:0,3",
-   "keyCoset": 4,
+   "keyCoset": 2,
    "representativeKey": "k1|n=6|L=1,3,6|P=-1,0,0,-1:0,4;-1,0,0,1:0,3;1,0,0,-1:0,1",
    "latticeHNF": {
     "a": 1,
@@ -18434,23 +18494,6 @@
       "type": "identity"
      },
      "text": "identity"
-    },
-    {
-     "word": "b",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0,
-        0
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
      "word": "d",
@@ -18470,6 +18513,34 @@
      "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
+     "word": "cd",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0,
+       -0.5
+      ]
+     },
+     "text": "translation by (0,-0.5)"
+    },
+    {
+     "word": "b",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0,
+        0
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0,0) dir (0,1)"
+    },
+    {
      "word": "db",
      "isometry": {
       "type": "rotation",
@@ -18480,17 +18551,6 @@
       ]
      },
      "text": "rotation by 1*PI about (0,0)"
-    },
-    {
-     "word": "cd",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0,
-       -0.5
-      ]
-     },
-     "text": "translation by (0,-0.5)"
     },
     {
      "word": "cdb",
@@ -18523,23 +18583,6 @@
      "text": "identity"
     },
     {
-     "word": "b",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0,
-        0
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0,0) dir (0,1)"
-    },
-    {
      "word": "d",
      "isometry": {
       "type": "reflection",
@@ -18557,18 +18600,6 @@
      "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
-     "word": "bd",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       0,
-       0
-      ]
-     },
-     "text": "rotation by 1*PI about (0,0)"
-    },
-    {
      "word": "dbcd",
      "isometry": {
       "type": "rotation",
@@ -18579,6 +18610,35 @@
       ]
      },
      "text": "rotation by 1*PI about (0,-0.25)"
+    },
+    {
+     "word": "b",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0,
+        0
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0,0) dir (0,1)"
+    },
+    {
+     "word": "bd",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       0,
+       0
+      ]
+     },
+     "text": "rotation by 1*PI about (0,0)"
     },
     {
      "word": "dcd",
@@ -18635,6 +18695,18 @@
      "text": "reflection in line thru (0,0.25) dir (1,0)"
     },
     {
+     "word": "BDCdcd",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       3.061616997868383e-17,
+       -0.5
+      ]
+     },
+     "text": "rotation by 1*PI about (0,-0.5)"
+    },
+    {
      "word": "Bab",
      "isometry": {
       "type": "reflection",
@@ -18650,18 +18722,6 @@
       }
      },
      "text": "reflection in line thru (-0.25,0) dir (0,1)"
-    },
-    {
-     "word": "BDCdcd",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       3.061616997868383e-17,
-       -0.5
-      ]
-     },
-     "text": "rotation by 1*PI about (0,-0.5)"
     }
    ],
    "sideCounts": {
@@ -18677,7 +18737,16 @@
    "type": "*2222",
    "normal": false,
    "placements": 3,
-   "cosets": "adcbfe baedcf abcdef ceafbd",
+   "cosets": "acbdfe bacedf abcdef defabc",
+   "sublibCosets": "adcbfe baedcf abcdef ceafbd",
+   "cosetOrder": [
+    0,
+    1,
+    3,
+    2,
+    4,
+    5
+   ],
    "orders": [
     2,
     2,
@@ -18700,25 +18769,25 @@
      "generator": "a",
      "perm": [
       0,
-      3,
       2,
       1,
+      3,
       5,
       4
      ],
-     "cycles": "(1 3)(4 5)"
+     "cycles": "(1 2)(4 5)"
     },
     {
      "generator": "b",
      "perm": [
       1,
       0,
+      2,
       4,
       3,
-      2,
       5
      ],
-     "cycles": "(0 1)(2 4)"
+     "cycles": "(0 1)(3 4)"
     },
     {
      "generator": "c",
@@ -18735,18 +18804,18 @@
     {
      "generator": "d",
      "perm": [
-      2,
+      3,
       4,
-      0,
       5,
+      0,
       1,
-      3
+      2
      ],
-     "cycles": "(0 2)(1 4)(3 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     }
    ],
    "geoKey": "k1|n=6|L=3,0,2|P=-1,0,0,-1:0,1;-1,0,0,1:0,0;1,0,0,-1:0,1",
-   "keyCoset": 3,
+   "keyCoset": 2,
    "representativeKey": "k1|n=6|L=3,0,2|P=-1,0,0,-1:1,1;-1,0,0,1:1,0;1,0,0,-1:0,1",
    "latticeHNF": {
     "a": 3,
@@ -18781,6 +18850,17 @@
      "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
+     "word": "ab",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       -0.5,
+       0
+      ]
+     },
+     "text": "translation by (-0.5,0)"
+    },
+    {
      "word": "d",
      "isometry": {
       "type": "reflection",
@@ -18796,17 +18876,6 @@
       }
      },
      "text": "reflection in line thru (0,0) dir (1,0)"
-    },
-    {
-     "word": "ab",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       -0.5,
-       0
-      ]
-     },
-     "text": "translation by (-0.5,0)"
     },
     {
      "word": "db",
@@ -18868,23 +18937,6 @@
      "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
-     "word": "d",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0,
-        0
-       ],
-       "dir": [
-        1,
-        0
-       ]
-      }
-     },
-     "text": "reflection in line thru (0,0) dir (1,0)"
-    },
-    {
      "word": "bab",
      "isometry": {
       "type": "reflection",
@@ -18900,6 +18952,23 @@
       }
      },
      "text": "reflection in line thru (-0.25,0) dir (0,1)"
+    },
+    {
+     "word": "d",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0,
+        0
+       ],
+       "dir": [
+        1,
+        0
+       ]
+      }
+     },
+     "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
      "word": "bd",
@@ -18963,23 +19032,6 @@
      "text": "reflection in line thru (0,0.25) dir (1,0)"
     },
     {
-     "word": "Dcd",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0,
-        -0.25
-       ],
-       "dir": [
-        1,
-        0
-       ]
-      }
-     },
-     "text": "reflection in line thru (0,-0.25) dir (1,0)"
-    },
-    {
      "word": "BAbab",
      "isometry": {
       "type": "reflection",
@@ -18995,6 +19047,23 @@
       }
      },
      "text": "reflection in line thru (-0.5,0) dir (0,1)"
+    },
+    {
+     "word": "Dcd",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0,
+        -0.25
+       ],
+       "dir": [
+        1,
+        0
+       ]
+      }
+     },
+     "text": "reflection in line thru (0,-0.25) dir (1,0)"
     }
    ],
    "sideCounts": {
@@ -19010,7 +19079,16 @@
    "type": "2*22",
    "normal": false,
    "placements": 3,
-   "cosets": "adcbfe baefcd abcdef ceafbd",
+   "cosets": "acbdfe bafedc abcdef defabc",
+   "sublibCosets": "adcbfe baefcd abcdef ceafbd",
+   "cosetOrder": [
+    0,
+    1,
+    3,
+    2,
+    4,
+    5
+   ],
    "orders": [
     2,
     2,
@@ -19031,25 +19109,25 @@
      "generator": "a",
      "perm": [
       0,
-      3,
       2,
       1,
+      3,
       5,
       4
      ],
-     "cycles": "(1 3)(4 5)"
+     "cycles": "(1 2)(4 5)"
     },
     {
      "generator": "b",
      "perm": [
       1,
       0,
-      4,
       5,
-      2,
-      3
+      4,
+      3,
+      2
      ],
-     "cycles": "(0 1)(2 4)(3 5)"
+     "cycles": "(0 1)(2 5)(3 4)"
     },
     {
      "generator": "c",
@@ -19066,18 +19144,18 @@
     {
      "generator": "d",
      "perm": [
-      2,
+      3,
       4,
-      0,
       5,
+      0,
       1,
-      3
+      2
      ],
-     "cycles": "(0 2)(1 4)(3 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     }
    ],
    "geoKey": "k1|n=6|L=3,1,2|P=-1,0,0,-1:0,0;-1,0,0,1:0,1;1,0,0,-1:0,1",
-   "keyCoset": 3,
+   "keyCoset": 2,
    "representativeKey": "k1|n=6|L=3,1,2|P=-1,0,0,-1:1,1;-1,0,0,1:1,0;1,0,0,-1:0,1",
    "latticeHNF": {
     "a": 3,
@@ -19112,6 +19190,17 @@
      "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
+     "word": "ab",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       -0.5,
+       0
+      ]
+     },
+     "text": "translation by (-0.5,0)"
+    },
+    {
      "word": "d",
      "isometry": {
       "type": "reflection",
@@ -19127,17 +19216,6 @@
       }
      },
      "text": "reflection in line thru (0,0) dir (1,0)"
-    },
-    {
-     "word": "ab",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       -0.5,
-       0
-      ]
-     },
-     "text": "translation by (-0.5,0)"
     },
     {
      "word": "db",
@@ -19199,6 +19277,18 @@
      "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
+     "word": "babd",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       -0.25,
+       -1.5308084989341915e-17
+      ]
+     },
+     "text": "rotation by 1*PI about (-0.25,-0)"
+    },
+    {
      "word": "d",
      "isometry": {
       "type": "reflection",
@@ -19214,18 +19304,6 @@
       }
      },
      "text": "reflection in line thru (0,0) dir (1,0)"
-    },
-    {
-     "word": "babd",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       -0.25,
-       -1.5308084989341915e-17
-      ]
-     },
-     "text": "rotation by 1*PI about (-0.25,-0)"
     },
     {
      "word": "bd",
@@ -19294,6 +19372,18 @@
      "text": "reflection in line thru (0,0.25) dir (1,0)"
     },
     {
+     "word": "BDAbab",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       -0.5,
+       -3.061616997868383e-17
+      ]
+     },
+     "text": "rotation by 1*PI about (-0.5,-0)"
+    },
+    {
      "word": "Dcd",
      "isometry": {
       "type": "reflection",
@@ -19309,18 +19399,6 @@
       }
      },
      "text": "reflection in line thru (0,-0.25) dir (1,0)"
-    },
-    {
-     "word": "BDAbab",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       -0.5,
-       -3.061616997868383e-17
-      ]
-     },
-     "text": "rotation by 1*PI about (-0.5,-0)"
     }
    ],
    "sideCounts": {
@@ -19336,7 +19414,16 @@
    "type": "2*22",
    "normal": false,
    "placements": 3,
-   "cosets": "abcdef badcfe baefcd cdabef",
+   "cosets": "abcdef defabc dcbafe bacedf",
+   "sublibCosets": "abcdef badcfe baefcd cdabef",
+   "cosetOrder": [
+    0,
+    2,
+    4,
+    1,
+    3,
+    5
+   ],
    "orders": [
     2,
     2,
@@ -19368,38 +19455,38 @@
     {
      "generator": "b",
      "perm": [
-      1,
-      0,
       3,
-      2,
+      4,
       5,
-      4
+      0,
+      1,
+      2
      ],
-     "cycles": "(0 1)(2 3)(4 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     },
     {
      "generator": "c",
      "perm": [
+      3,
+      2,
       1,
       0,
-      4,
       5,
-      2,
-      3
+      4
      ],
-     "cycles": "(0 1)(2 4)(3 5)"
+     "cycles": "(0 3)(1 2)(4 5)"
     },
     {
      "generator": "d",
      "perm": [
-      2,
-      3,
-      0,
       1,
+      0,
+      2,
       4,
+      3,
       5
      ],
-     "cycles": "(0 2)(1 3)"
+     "cycles": "(0 1)(3 4)"
     }
    ],
    "geoKey": "k1|n=6|L=1,3,6|P=-1,0,0,-1:0,1;-1,0,0,1:0,3;1,0,0,-1:0,4",
@@ -19421,23 +19508,6 @@
      "text": "identity"
     },
     {
-     "word": "b",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0,
-        0
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0,0) dir (0,1)"
-    },
-    {
      "word": "d",
      "isometry": {
       "type": "reflection",
@@ -19455,6 +19525,34 @@
      "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
+     "word": "cd",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0,
+       -0.5
+      ]
+     },
+     "text": "translation by (0,-0.5)"
+    },
+    {
+     "word": "b",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0,
+        0
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0,0) dir (0,1)"
+    },
+    {
      "word": "db",
      "isometry": {
       "type": "rotation",
@@ -19465,17 +19563,6 @@
       ]
      },
      "text": "rotation by 1*PI about (0,0)"
-    },
-    {
-     "word": "cd",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0,
-       -0.5
-      ]
-     },
-     "text": "translation by (0,-0.5)"
     },
     {
      "word": "cdb",
@@ -19508,23 +19595,6 @@
      "text": "identity"
     },
     {
-     "word": "b",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0,
-        0
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0,0) dir (0,1)"
-    },
-    {
      "word": "d",
      "isometry": {
       "type": "reflection",
@@ -19542,18 +19612,6 @@
      "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
-     "word": "bd",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       0,
-       0
-      ]
-     },
-     "text": "rotation by 1*PI about (0,0)"
-    },
-    {
      "word": "dcd",
      "isometry": {
       "type": "reflection",
@@ -19569,6 +19627,35 @@
       }
      },
      "text": "reflection in line thru (0,-0.25) dir (1,0)"
+    },
+    {
+     "word": "b",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0,
+        0
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0,0) dir (0,1)"
+    },
+    {
+     "word": "bd",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       0,
+       0
+      ]
+     },
+     "text": "rotation by 1*PI about (0,0)"
     },
     {
      "word": "dbcd",
@@ -19615,23 +19702,6 @@
      "text": "rotation by 1*PI about (-0,0.25)"
     },
     {
-     "word": "Bab",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        -0.25,
-        1.5308084989341915e-17
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (-0.25,0) dir (0,1)"
-    },
-    {
      "word": "DCdcd",
      "isometry": {
       "type": "reflection",
@@ -19647,6 +19717,23 @@
       }
      },
      "text": "reflection in line thru (0,-0.5) dir (1,0)"
+    },
+    {
+     "word": "Bab",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        -0.25,
+        1.5308084989341915e-17
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (-0.25,0) dir (0,1)"
     }
    ],
    "sideCounts": {
@@ -19662,7 +19749,16 @@
    "type": "22*",
    "normal": false,
    "placements": 3,
-   "cosets": "abcdef badcfe baefcd cdabfe",
+   "cosets": "abcdef defabc dcbafe bafedc",
+   "sublibCosets": "abcdef badcfe baefcd cdabfe",
+   "cosetOrder": [
+    0,
+    2,
+    4,
+    1,
+    3,
+    5
+   ],
    "orders": [
     2,
     2,
@@ -19692,42 +19788,42 @@
     {
      "generator": "b",
      "perm": [
-      1,
-      0,
       3,
-      2,
+      4,
       5,
-      4
+      0,
+      1,
+      2
      ],
-     "cycles": "(0 1)(2 3)(4 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     },
     {
      "generator": "c",
      "perm": [
+      3,
+      2,
       1,
       0,
-      4,
       5,
-      2,
-      3
+      4
      ],
-     "cycles": "(0 1)(2 4)(3 5)"
+     "cycles": "(0 3)(1 2)(4 5)"
     },
     {
      "generator": "d",
      "perm": [
-      2,
-      3,
-      0,
       1,
+      0,
       5,
-      4
+      4,
+      3,
+      2
      ],
-     "cycles": "(0 2)(1 3)(4 5)"
+     "cycles": "(0 1)(2 5)(3 4)"
     }
    ],
    "geoKey": "k1|n=6|L=2,0,3|P=-1,0,0,-1:0,0;-1,0,0,1:1,0;1,0,0,-1:1,0",
-   "keyCoset": 4,
+   "keyCoset": 2,
    "representativeKey": "k1|n=6|L=2,0,3|P=-1,0,0,-1:0,1;-1,0,0,1:1,0;1,0,0,-1:1,1",
    "latticeHNF": {
     "a": 2,
@@ -19743,23 +19839,6 @@
       "type": "identity"
      },
      "text": "identity"
-    },
-    {
-     "word": "b",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0,
-        0
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
      "word": "d",
@@ -19779,6 +19858,34 @@
      "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
+     "word": "cd",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0,
+       -0.5
+      ]
+     },
+     "text": "translation by (0,-0.5)"
+    },
+    {
+     "word": "b",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0,
+        0
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0,0) dir (0,1)"
+    },
+    {
      "word": "db",
      "isometry": {
       "type": "rotation",
@@ -19789,17 +19896,6 @@
       ]
      },
      "text": "rotation by 1*PI about (0,0)"
-    },
-    {
-     "word": "cd",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0,
-       -0.5
-      ]
-     },
-     "text": "translation by (0,-0.5)"
     },
     {
      "word": "cdb",
@@ -19832,23 +19928,6 @@
      "text": "identity"
     },
     {
-     "word": "b",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0,
-        0
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0,0) dir (0,1)"
-    },
-    {
      "word": "d",
      "isometry": {
       "type": "reflection",
@@ -19866,18 +19945,6 @@
      "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
-     "word": "bd",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       0,
-       0
-      ]
-     },
-     "text": "rotation by 1*PI about (0,0)"
-    },
-    {
      "word": "dbcd",
      "isometry": {
       "type": "rotation",
@@ -19888,6 +19955,35 @@
       ]
      },
      "text": "rotation by 1*PI about (0,-0.25)"
+    },
+    {
+     "word": "b",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0,
+        0
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0,0) dir (0,1)"
+    },
+    {
+     "word": "bd",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       0,
+       0
+      ]
+     },
+     "text": "rotation by 1*PI about (0,0)"
     },
     {
      "word": "dcd",
@@ -19939,6 +20035,18 @@
      "text": "rotation by 1*PI about (-0,0.25)"
     },
     {
+     "word": "BDCdcd",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       3.061616997868383e-17,
+       -0.5
+      ]
+     },
+     "text": "rotation by 1*PI about (0,-0.5)"
+    },
+    {
      "word": "Bab",
      "isometry": {
       "type": "reflection",
@@ -19954,18 +20062,6 @@
       }
      },
      "text": "reflection in line thru (-0.25,0) dir (0,1)"
-    },
-    {
-     "word": "BDCdcd",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       3.061616997868383e-17,
-       -0.5
-      ]
-     },
-     "text": "rotation by 1*PI about (0,-0.5)"
     }
    ],
    "sideCounts": {
@@ -19981,7 +20077,16 @@
    "type": "*2222",
    "normal": false,
    "placements": 3,
-   "cosets": "adcbfe baedcf ceafbd abcdef",
+   "cosets": "acbdfe bacedf defabc abcdef",
+   "sublibCosets": "adcbfe baedcf ceafbd abcdef",
+   "cosetOrder": [
+    0,
+    1,
+    3,
+    2,
+    4,
+    5
+   ],
    "orders": [
     2,
     2,
@@ -20004,37 +20109,37 @@
      "generator": "a",
      "perm": [
       0,
-      3,
       2,
       1,
+      3,
       5,
       4
      ],
-     "cycles": "(1 3)(4 5)"
+     "cycles": "(1 2)(4 5)"
     },
     {
      "generator": "b",
      "perm": [
       1,
       0,
+      2,
       4,
       3,
-      2,
       5
      ],
-     "cycles": "(0 1)(2 4)"
+     "cycles": "(0 1)(3 4)"
     },
     {
      "generator": "c",
      "perm": [
-      2,
+      3,
       4,
-      0,
       5,
+      0,
       1,
-      3
+      2
      ],
-     "cycles": "(0 2)(1 4)(3 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     },
     {
      "generator": "d",
@@ -20050,7 +20155,7 @@
     }
    ],
    "geoKey": "k1|n=6|L=3,0,2|P=-1,0,0,-1:0,0;-1,0,0,1:0,0;1,0,0,-1:0,0",
-   "keyCoset": 3,
+   "keyCoset": 2,
    "representativeKey": "k1|n=6|L=3,0,2|P=-1,0,0,-1:1,0;-1,0,0,1:1,0;1,0,0,-1:0,0",
    "latticeHNF": {
     "a": 3,
@@ -20085,6 +20190,17 @@
      "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
+     "word": "ab",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       -0.5,
+       0
+      ]
+     },
+     "text": "translation by (-0.5,0)"
+    },
+    {
      "word": "c",
      "isometry": {
       "type": "reflection",
@@ -20100,17 +20216,6 @@
       }
      },
      "text": "reflection in line thru (0,0.25) dir (1,0)"
-    },
-    {
-     "word": "ab",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       -0.5,
-       0
-      ]
-     },
-     "text": "translation by (-0.5,0)"
     },
     {
      "word": "cb",
@@ -20172,23 +20277,6 @@
      "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
-     "word": "c",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0,
-        0.25
-       ],
-       "dir": [
-        1,
-        0
-       ]
-      }
-     },
-     "text": "reflection in line thru (0,0.25) dir (1,0)"
-    },
-    {
      "word": "bab",
      "isometry": {
       "type": "reflection",
@@ -20204,6 +20292,23 @@
       }
      },
      "text": "reflection in line thru (-0.25,0) dir (0,1)"
+    },
+    {
+     "word": "c",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0,
+        0.25
+       ],
+       "dir": [
+        1,
+        0
+       ]
+      }
+     },
+     "text": "reflection in line thru (0,0.25) dir (1,0)"
     },
     {
      "word": "bc",
@@ -20267,23 +20372,6 @@
      "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
-     "word": "Cdc",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0,
-        0.5
-       ],
-       "dir": [
-        1,
-        0
-       ]
-      }
-     },
-     "text": "reflection in line thru (0,0.5) dir (1,0)"
-    },
-    {
      "word": "BAbab",
      "isometry": {
       "type": "reflection",
@@ -20299,6 +20387,23 @@
       }
      },
      "text": "reflection in line thru (-0.5,0) dir (0,1)"
+    },
+    {
+     "word": "Cdc",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0,
+        0.5
+       ],
+       "dir": [
+        1,
+        0
+       ]
+      }
+     },
+     "text": "reflection in line thru (0,0.5) dir (1,0)"
     }
    ],
    "sideCounts": {
@@ -20314,7 +20419,16 @@
    "type": "2*22",
    "normal": false,
    "placements": 3,
-   "cosets": "adcbfe baefcd ceafbd abcdef",
+   "cosets": "acbdfe bafedc defabc abcdef",
+   "sublibCosets": "adcbfe baefcd ceafbd abcdef",
+   "cosetOrder": [
+    0,
+    1,
+    3,
+    2,
+    4,
+    5
+   ],
    "orders": [
     2,
     2,
@@ -20335,37 +20449,37 @@
      "generator": "a",
      "perm": [
       0,
-      3,
       2,
       1,
+      3,
       5,
       4
      ],
-     "cycles": "(1 3)(4 5)"
+     "cycles": "(1 2)(4 5)"
     },
     {
      "generator": "b",
      "perm": [
       1,
       0,
-      4,
       5,
-      2,
-      3
+      4,
+      3,
+      2
      ],
-     "cycles": "(0 1)(2 4)(3 5)"
+     "cycles": "(0 1)(2 5)(3 4)"
     },
     {
      "generator": "c",
      "perm": [
-      2,
+      3,
       4,
-      0,
       5,
+      0,
       1,
-      3
+      2
      ],
-     "cycles": "(0 2)(1 4)(3 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     },
     {
      "generator": "d",
@@ -20381,7 +20495,7 @@
     }
    ],
    "geoKey": "k1|n=6|L=3,1,2|P=-1,0,0,-1:0,1;-1,0,0,1:0,1;1,0,0,-1:0,0",
-   "keyCoset": 3,
+   "keyCoset": 2,
    "representativeKey": "k1|n=6|L=3,1,2|P=-1,0,0,-1:1,0;-1,0,0,1:1,0;1,0,0,-1:0,0",
    "latticeHNF": {
     "a": 3,
@@ -20416,6 +20530,17 @@
      "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
+     "word": "ab",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       -0.5,
+       0
+      ]
+     },
+     "text": "translation by (-0.5,0)"
+    },
+    {
      "word": "c",
      "isometry": {
       "type": "reflection",
@@ -20431,17 +20556,6 @@
       }
      },
      "text": "reflection in line thru (0,0.25) dir (1,0)"
-    },
-    {
-     "word": "ab",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       -0.5,
-       0
-      ]
-     },
-     "text": "translation by (-0.5,0)"
     },
     {
      "word": "cb",
@@ -20503,6 +20617,18 @@
      "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
+     "word": "cbab",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       -0.25,
+       0.24999999999999997
+      ]
+     },
+     "text": "rotation by 1*PI about (-0.25,0.25)"
+    },
+    {
      "word": "c",
      "isometry": {
       "type": "reflection",
@@ -20518,18 +20644,6 @@
       }
      },
      "text": "reflection in line thru (0,0.25) dir (1,0)"
-    },
-    {
-     "word": "cbab",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       -0.25,
-       0.24999999999999997
-      ]
-     },
-     "text": "rotation by 1*PI about (-0.25,0.25)"
     },
     {
      "word": "bc",
@@ -20598,6 +20712,18 @@
      "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
+     "word": "BCAbab",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       -0.5,
+       0.24999999999999997
+      ]
+     },
+     "text": "rotation by 1*PI about (-0.5,0.25)"
+    },
+    {
      "word": "Cdc",
      "isometry": {
       "type": "reflection",
@@ -20613,18 +20739,6 @@
       }
      },
      "text": "reflection in line thru (0,0.5) dir (1,0)"
-    },
-    {
-     "word": "BCAbab",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       -0.5,
-       0.24999999999999997
-      ]
-     },
-     "text": "rotation by 1*PI about (-0.5,0.25)"
     }
    ],
    "sideCounts": {
@@ -20640,7 +20754,16 @@
    "type": "**",
    "normal": false,
    "placements": 3,
-   "cosets": "adcbfe baedcf ceafbd ceafbd",
+   "cosets": "acbdfe bacedf defabc defabc",
+   "sublibCosets": "adcbfe baedcf ceafbd ceafbd",
+   "cosetOrder": [
+    0,
+    1,
+    3,
+    2,
+    4,
+    5
+   ],
    "orders": [
     2,
     2,
@@ -20653,53 +20776,53 @@
      "generator": "a",
      "perm": [
       0,
-      3,
       2,
       1,
+      3,
       5,
       4
      ],
-     "cycles": "(1 3)(4 5)"
+     "cycles": "(1 2)(4 5)"
     },
     {
      "generator": "b",
      "perm": [
       1,
       0,
+      2,
       4,
       3,
-      2,
       5
      ],
-     "cycles": "(0 1)(2 4)"
+     "cycles": "(0 1)(3 4)"
     },
     {
      "generator": "c",
      "perm": [
-      2,
+      3,
       4,
-      0,
       5,
+      0,
       1,
-      3
+      2
      ],
-     "cycles": "(0 2)(1 4)(3 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     },
     {
      "generator": "d",
      "perm": [
-      2,
+      3,
       4,
-      0,
       5,
+      0,
       1,
-      3
+      2
      ],
-     "cycles": "(0 2)(1 4)(3 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     }
    ],
    "geoKey": "k1|n=6|L=3,0,1|P=-1,0,0,1:0,0",
-   "keyCoset": 3,
+   "keyCoset": 2,
    "representativeKey": "k1|n=6|L=3,0,1|P=-1,0,0,1:1,0",
    "latticeHNF": {
     "a": 3,
@@ -20734,6 +20857,17 @@
      "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
+     "word": "ab",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       -0.5,
+       0
+      ]
+     },
+     "text": "translation by (-0.5,0)"
+    },
+    {
      "word": "c",
      "isometry": {
       "type": "reflection",
@@ -20749,17 +20883,6 @@
       }
      },
      "text": "reflection in line thru (0,0.25) dir (1,0)"
-    },
-    {
-     "word": "ab",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       -0.5,
-       0
-      ]
-     },
-     "text": "translation by (-0.5,0)"
     },
     {
      "word": "cb",
@@ -20821,23 +20944,6 @@
      "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
-     "word": "d",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0,
-        0
-       ],
-       "dir": [
-        1,
-        0
-       ]
-      }
-     },
-     "text": "reflection in line thru (0,0) dir (1,0)"
-    },
-    {
      "word": "bab",
      "isometry": {
       "type": "reflection",
@@ -20853,6 +20959,23 @@
       }
      },
      "text": "reflection in line thru (-0.25,0) dir (0,1)"
+    },
+    {
+     "word": "d",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0,
+        0
+       ],
+       "dir": [
+        1,
+        0
+       ]
+      }
+     },
+     "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
      "word": "bd",
@@ -20910,17 +21033,6 @@
      "text": "translation by (0,-0.5)"
     },
     {
-     "word": "dc",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0,
-       0.5
-      ]
-     },
-     "text": "translation by (0,0.5)"
-    },
-    {
      "word": "BAbab",
      "isometry": {
       "type": "reflection",
@@ -20936,6 +21048,17 @@
       }
      },
      "text": "reflection in line thru (-0.5,0) dir (0,1)"
+    },
+    {
+     "word": "dc",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0,
+       0.5
+      ]
+     },
+     "text": "translation by (0,0.5)"
     },
     {
      "word": "Bdcb",
@@ -20962,7 +21085,16 @@
    "type": "22*",
    "normal": false,
    "placements": 3,
-   "cosets": "adcbfe baefcd ceafbd ceafbd",
+   "cosets": "acbdfe bafedc defabc defabc",
+   "sublibCosets": "adcbfe baefcd ceafbd ceafbd",
+   "cosetOrder": [
+    0,
+    1,
+    3,
+    2,
+    4,
+    5
+   ],
    "orders": [
     2,
     2,
@@ -20977,53 +21109,53 @@
      "generator": "a",
      "perm": [
       0,
-      3,
       2,
       1,
+      3,
       5,
       4
      ],
-     "cycles": "(1 3)(4 5)"
+     "cycles": "(1 2)(4 5)"
     },
     {
      "generator": "b",
      "perm": [
       1,
       0,
-      4,
       5,
-      2,
-      3
+      4,
+      3,
+      2
      ],
-     "cycles": "(0 1)(2 4)(3 5)"
+     "cycles": "(0 1)(2 5)(3 4)"
     },
     {
      "generator": "c",
      "perm": [
-      2,
+      3,
       4,
-      0,
       5,
+      0,
       1,
-      3
+      2
      ],
-     "cycles": "(0 2)(1 4)(3 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     },
     {
      "generator": "d",
      "perm": [
-      2,
+      3,
       4,
-      0,
       5,
+      0,
       1,
-      3
+      2
      ],
-     "cycles": "(0 2)(1 4)(3 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     }
    ],
    "geoKey": "k1|n=6|L=6,0,1|P=-1,0,0,-1:0,0;-1,0,0,1:3,0;1,0,0,-1:3,0",
-   "keyCoset": 3,
+   "keyCoset": 2,
    "representativeKey": "k1|n=6|L=6,0,1|P=-1,0,0,-1:4,0;-1,0,0,1:1,0;1,0,0,-1:3,0",
    "latticeHNF": {
     "a": 6,
@@ -21058,6 +21190,17 @@
      "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
+     "word": "ab",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       -0.5,
+       0
+      ]
+     },
+     "text": "translation by (-0.5,0)"
+    },
+    {
      "word": "c",
      "isometry": {
       "type": "reflection",
@@ -21073,17 +21216,6 @@
       }
      },
      "text": "reflection in line thru (0,0.25) dir (1,0)"
-    },
-    {
-     "word": "ab",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       -0.5,
-       0
-      ]
-     },
-     "text": "translation by (-0.5,0)"
     },
     {
      "word": "cb",
@@ -21145,6 +21277,18 @@
      "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
+     "word": "babd",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       -0.25,
+       -1.5308084989341915e-17
+      ]
+     },
+     "text": "rotation by 1*PI about (-0.25,-0)"
+    },
+    {
      "word": "d",
      "isometry": {
       "type": "reflection",
@@ -21160,18 +21304,6 @@
       }
      },
      "text": "reflection in line thru (0,0) dir (1,0)"
-    },
-    {
-     "word": "babd",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       -0.25,
-       -1.5308084989341915e-17
-      ]
-     },
-     "text": "rotation by 1*PI about (-0.25,-0)"
     },
     {
      "word": "bd",
@@ -21234,17 +21366,6 @@
      "text": "translation by (0,-0.5)"
     },
     {
-     "word": "dc",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0,
-       0.5
-      ]
-     },
-     "text": "translation by (0,0.5)"
-    },
-    {
      "word": "BCAbab",
      "isometry": {
       "type": "rotation",
@@ -21255,6 +21376,17 @@
       ]
      },
      "text": "rotation by 1*PI about (-0.5,0.25)"
+    },
+    {
+     "word": "dc",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0,
+       0.5
+      ]
+     },
+     "text": "translation by (0,0.5)"
     },
     {
      "word": "Bdcb",
@@ -21617,7 +21749,16 @@
    "type": "*2222",
    "normal": false,
    "placements": 3,
-   "cosets": "badcfe abcdef abefcd cdabef",
+   "cosets": "defabc abcdef acbdfe bacedf",
+   "sublibCosets": "badcfe abcdef abefcd cdabef",
+   "cosetOrder": [
+    0,
+    2,
+    4,
+    1,
+    3,
+    5
+   ],
    "orders": [
     2,
     2,
@@ -21639,14 +21780,14 @@
     {
      "generator": "a",
      "perm": [
-      1,
-      0,
       3,
-      2,
+      4,
       5,
-      4
+      0,
+      1,
+      2
      ],
-     "cycles": "(0 1)(2 3)(4 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     },
     {
      "generator": "b",
@@ -21664,29 +21805,29 @@
      "generator": "c",
      "perm": [
       0,
-      1,
-      4,
-      5,
       2,
-      3
+      1,
+      3,
+      5,
+      4
      ],
-     "cycles": "(2 4)(3 5)"
+     "cycles": "(1 2)(4 5)"
     },
     {
      "generator": "d",
      "perm": [
-      2,
-      3,
-      0,
       1,
+      0,
+      2,
       4,
+      3,
       5
      ],
-     "cycles": "(0 2)(1 3)"
+     "cycles": "(0 1)(3 4)"
     }
    ],
    "geoKey": "k1|n=6|L=2,0,3|P=-1,0,0,-1:0,0;-1,0,0,1:0,0;1,0,0,-1:0,0",
-   "keyCoset": 4,
+   "keyCoset": 2,
    "representativeKey": "k1|n=6|L=2,0,3|P=-1,0,0,-1:0,1;-1,0,0,1:0,0;1,0,0,-1:0,1",
    "latticeHNF": {
     "a": 2,
@@ -21702,23 +21843,6 @@
       "type": "identity"
      },
      "text": "identity"
-    },
-    {
-     "word": "a",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0.25,
-        -1.5308084989341915e-17
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0.25,-0) dir (0,1)"
     },
     {
      "word": "d",
@@ -21738,6 +21862,34 @@
      "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
+     "word": "cd",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0,
+       -0.5
+      ]
+     },
+     "text": "translation by (0,-0.5)"
+    },
+    {
+     "word": "a",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0.25,
+        -1.5308084989341915e-17
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0.25,-0) dir (0,1)"
+    },
+    {
      "word": "da",
      "isometry": {
       "type": "rotation",
@@ -21748,17 +21900,6 @@
       ]
      },
      "text": "rotation by 1*PI about (0.25,0)"
-    },
-    {
-     "word": "cd",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0,
-       -0.5
-      ]
-     },
-     "text": "translation by (0,-0.5)"
     },
     {
      "word": "cda",
@@ -21791,23 +21932,6 @@
      "text": "identity"
     },
     {
-     "word": "a",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0.25,
-        -1.5308084989341915e-17
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0.25,-0) dir (0,1)"
-    },
-    {
      "word": "d",
      "isometry": {
       "type": "reflection",
@@ -21825,18 +21949,6 @@
      "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
-     "word": "ad",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       0.25,
-       1.5308084989341915e-17
-      ]
-     },
-     "text": "rotation by 1*PI about (0.25,0)"
-    },
-    {
      "word": "dcd",
      "isometry": {
       "type": "reflection",
@@ -21852,6 +21964,35 @@
       }
      },
      "text": "reflection in line thru (0,-0.25) dir (1,0)"
+    },
+    {
+     "word": "a",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0.25,
+        -1.5308084989341915e-17
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0.25,-0) dir (0,1)"
+    },
+    {
+     "word": "ad",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       0.25,
+       1.5308084989341915e-17
+      ]
+     },
+     "text": "rotation by 1*PI about (0.25,0)"
     },
     {
      "word": "dacd",
@@ -21903,23 +22044,6 @@
      "text": "reflection in line thru (0,0.25) dir (1,0)"
     },
     {
-     "word": "Aba",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0.5,
-        -3.061616997868383e-17
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0.5,-0) dir (0,1)"
-    },
-    {
      "word": "DCdcd",
      "isometry": {
       "type": "reflection",
@@ -21935,6 +22059,23 @@
       }
      },
      "text": "reflection in line thru (0,-0.5) dir (1,0)"
+    },
+    {
+     "word": "Aba",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0.5,
+        -3.061616997868383e-17
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0.5,-0) dir (0,1)"
     }
    ],
    "sideCounts": {
@@ -21950,7 +22091,16 @@
    "type": "2*22",
    "normal": false,
    "placements": 3,
-   "cosets": "badcfe abcdef abefcd cdabfe",
+   "cosets": "defabc abcdef acbdfe bafedc",
+   "sublibCosets": "badcfe abcdef abefcd cdabfe",
+   "cosetOrder": [
+    0,
+    2,
+    4,
+    1,
+    3,
+    5
+   ],
    "orders": [
     2,
     2,
@@ -21970,14 +22120,14 @@
     {
      "generator": "a",
      "perm": [
-      1,
-      0,
       3,
-      2,
+      4,
       5,
-      4
+      0,
+      1,
+      2
      ],
-     "cycles": "(0 1)(2 3)(4 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     },
     {
      "generator": "b",
@@ -21995,25 +22145,25 @@
      "generator": "c",
      "perm": [
       0,
-      1,
-      4,
-      5,
       2,
-      3
+      1,
+      3,
+      5,
+      4
      ],
-     "cycles": "(2 4)(3 5)"
+     "cycles": "(1 2)(4 5)"
     },
     {
      "generator": "d",
      "perm": [
-      2,
-      3,
-      0,
       1,
+      0,
       5,
-      4
+      4,
+      3,
+      2
      ],
-     "cycles": "(0 2)(1 3)(4 5)"
+     "cycles": "(0 1)(2 5)(3 4)"
     }
    ],
    "geoKey": "k1|n=6|L=1,3,6|P=-1,0,0,-1:0,1;-1,0,0,1:0,0;1,0,0,-1:0,1",
@@ -22035,23 +22185,6 @@
      "text": "identity"
     },
     {
-     "word": "a",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0.25,
-        -1.5308084989341915e-17
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0.25,-0) dir (0,1)"
-    },
-    {
      "word": "d",
      "isometry": {
       "type": "reflection",
@@ -22069,6 +22202,34 @@
      "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
+     "word": "cd",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0,
+       -0.5
+      ]
+     },
+     "text": "translation by (0,-0.5)"
+    },
+    {
+     "word": "a",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0.25,
+        -1.5308084989341915e-17
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0.25,-0) dir (0,1)"
+    },
+    {
      "word": "da",
      "isometry": {
       "type": "rotation",
@@ -22079,17 +22240,6 @@
       ]
      },
      "text": "rotation by 1*PI about (0.25,0)"
-    },
-    {
-     "word": "cd",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0,
-       -0.5
-      ]
-     },
-     "text": "translation by (0,-0.5)"
     },
     {
      "word": "cda",
@@ -22122,23 +22272,6 @@
      "text": "identity"
     },
     {
-     "word": "a",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0.25,
-        -1.5308084989341915e-17
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0.25,-0) dir (0,1)"
-    },
-    {
      "word": "d",
      "isometry": {
       "type": "reflection",
@@ -22156,18 +22289,6 @@
      "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
-     "word": "ad",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       0.25,
-       1.5308084989341915e-17
-      ]
-     },
-     "text": "rotation by 1*PI about (0.25,0)"
-    },
-    {
      "word": "adcd",
      "isometry": {
       "type": "rotation",
@@ -22178,6 +22299,35 @@
       ]
      },
      "text": "rotation by 1*PI about (0.25,-0.25)"
+    },
+    {
+     "word": "a",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0.25,
+        -1.5308084989341915e-17
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0.25,-0) dir (0,1)"
+    },
+    {
+     "word": "ad",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       0.25,
+       1.5308084989341915e-17
+      ]
+     },
+     "text": "rotation by 1*PI about (0.25,0)"
     },
     {
      "word": "dcd",
@@ -22234,6 +22384,18 @@
      "text": "reflection in line thru (0,0.25) dir (1,0)"
     },
     {
+     "word": "ADCdcd",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       0.25000000000000006,
+       -0.5
+      ]
+     },
+     "text": "rotation by 1*PI about (0.25,-0.5)"
+    },
+    {
      "word": "Aba",
      "isometry": {
       "type": "reflection",
@@ -22249,18 +22411,6 @@
       }
      },
      "text": "reflection in line thru (0.5,-0) dir (0,1)"
-    },
-    {
-     "word": "ADCdcd",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       0.25000000000000006,
-       -0.5
-      ]
-     },
-     "text": "rotation by 1*PI about (0.25,-0.5)"
     }
    ],
    "sideCounts": {
@@ -22276,7 +22426,16 @@
    "type": "2*22",
    "normal": false,
    "placements": 3,
-   "cosets": "baefcd adcbfe abcdef ceafbd",
+   "cosets": "bafedc acbdfe abcdef defabc",
+   "sublibCosets": "baefcd adcbfe abcdef ceafbd",
+   "cosetOrder": [
+    0,
+    1,
+    3,
+    2,
+    4,
+    5
+   ],
    "orders": [
     2,
     2,
@@ -22298,24 +22457,24 @@
      "perm": [
       1,
       0,
-      4,
       5,
-      2,
-      3
+      4,
+      3,
+      2
      ],
-     "cycles": "(0 1)(2 4)(3 5)"
+     "cycles": "(0 1)(2 5)(3 4)"
     },
     {
      "generator": "b",
      "perm": [
       0,
-      3,
       2,
       1,
+      3,
       5,
       4
      ],
-     "cycles": "(1 3)(4 5)"
+     "cycles": "(1 2)(4 5)"
     },
     {
      "generator": "c",
@@ -22332,14 +22491,14 @@
     {
      "generator": "d",
      "perm": [
-      2,
+      3,
       4,
-      0,
       5,
+      0,
       1,
-      3
+      2
      ],
-     "cycles": "(0 2)(1 4)(3 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     }
    ],
    "geoKey": "k1|n=6|L=3,1,2|P=-1,0,0,-1:0,1;-1,0,0,1:0,0;1,0,0,-1:0,1",
@@ -22378,6 +22537,17 @@
      "text": "reflection in line thru (0.25,-0) dir (0,1)"
     },
     {
+     "word": "ba",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0.5,
+       0
+      ]
+     },
+     "text": "translation by (0.5,0)"
+    },
+    {
      "word": "d",
      "isometry": {
       "type": "reflection",
@@ -22393,17 +22563,6 @@
       }
      },
      "text": "reflection in line thru (0,0) dir (1,0)"
-    },
-    {
-     "word": "ba",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0.5,
-       0
-      ]
-     },
-     "text": "translation by (0.5,0)"
     },
     {
      "word": "da",
@@ -22465,6 +22624,18 @@
      "text": "reflection in line thru (0.25,-0) dir (0,1)"
     },
     {
+     "word": "abad",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       0.5,
+       3.061616997868383e-17
+      ]
+     },
+     "text": "rotation by 1*PI about (0.5,0)"
+    },
+    {
      "word": "d",
      "isometry": {
       "type": "reflection",
@@ -22480,18 +22651,6 @@
       }
      },
      "text": "reflection in line thru (0,0) dir (1,0)"
-    },
-    {
-     "word": "abad",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       0.5,
-       3.061616997868383e-17
-      ]
-     },
-     "text": "rotation by 1*PI about (0.5,0)"
     },
     {
      "word": "ad",
@@ -22560,6 +22719,18 @@
      "text": "reflection in line thru (0,0.25) dir (1,0)"
     },
     {
+     "word": "ADBaba",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       0.75,
+       4.592425496802574e-17
+      ]
+     },
+     "text": "rotation by 1*PI about (0.75,0)"
+    },
+    {
      "word": "Dcd",
      "isometry": {
       "type": "reflection",
@@ -22575,18 +22746,6 @@
       }
      },
      "text": "reflection in line thru (0,-0.25) dir (1,0)"
-    },
-    {
-     "word": "ADBaba",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       0.75,
-       4.592425496802574e-17
-      ]
-     },
-     "text": "rotation by 1*PI about (0.75,0)"
     }
    ],
    "sideCounts": {
@@ -22602,7 +22761,16 @@
    "type": "2*22",
    "normal": false,
    "placements": 3,
-   "cosets": "badcfe abcdef baefcd cdabef",
+   "cosets": "defabc abcdef dcbafe bacedf",
+   "sublibCosets": "badcfe abcdef baefcd cdabef",
+   "cosetOrder": [
+    0,
+    2,
+    4,
+    1,
+    3,
+    5
+   ],
    "orders": [
     2,
     2,
@@ -22622,14 +22790,14 @@
     {
      "generator": "a",
      "perm": [
-      1,
-      0,
       3,
-      2,
+      4,
       5,
-      4
+      0,
+      1,
+      2
      ],
-     "cycles": "(0 1)(2 3)(4 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     },
     {
      "generator": "b",
@@ -22646,30 +22814,30 @@
     {
      "generator": "c",
      "perm": [
+      3,
+      2,
       1,
       0,
-      4,
       5,
-      2,
-      3
+      4
      ],
-     "cycles": "(0 1)(2 4)(3 5)"
+     "cycles": "(0 3)(1 2)(4 5)"
     },
     {
      "generator": "d",
      "perm": [
-      2,
-      3,
-      0,
       1,
+      0,
+      2,
       4,
+      3,
       5
      ],
-     "cycles": "(0 2)(1 3)"
+     "cycles": "(0 1)(3 4)"
     }
    ],
    "geoKey": "k1|n=6|L=1,3,6|P=-1,0,0,-1:0,0;-1,0,0,1:0,0;1,0,0,-1:0,0",
-   "keyCoset": 4,
+   "keyCoset": 2,
    "representativeKey": "k1|n=6|L=1,3,6|P=-1,0,0,-1:0,4;-1,0,0,1:0,0;1,0,0,-1:0,4",
    "latticeHNF": {
     "a": 1,
@@ -22685,23 +22853,6 @@
       "type": "identity"
      },
      "text": "identity"
-    },
-    {
-     "word": "a",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0.25,
-        -1.5308084989341915e-17
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0.25,-0) dir (0,1)"
     },
     {
      "word": "d",
@@ -22721,6 +22872,34 @@
      "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
+     "word": "cd",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0,
+       -0.5
+      ]
+     },
+     "text": "translation by (0,-0.5)"
+    },
+    {
+     "word": "a",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0.25,
+        -1.5308084989341915e-17
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0.25,-0) dir (0,1)"
+    },
+    {
      "word": "da",
      "isometry": {
       "type": "rotation",
@@ -22731,17 +22910,6 @@
       ]
      },
      "text": "rotation by 1*PI about (0.25,0)"
-    },
-    {
-     "word": "cd",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0,
-       -0.5
-      ]
-     },
-     "text": "translation by (0,-0.5)"
     },
     {
      "word": "cda",
@@ -22774,23 +22942,6 @@
      "text": "identity"
     },
     {
-     "word": "a",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0.25,
-        -1.5308084989341915e-17
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0.25,-0) dir (0,1)"
-    },
-    {
      "word": "d",
      "isometry": {
       "type": "reflection",
@@ -22808,18 +22959,6 @@
      "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
-     "word": "ad",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       0.25,
-       1.5308084989341915e-17
-      ]
-     },
-     "text": "rotation by 1*PI about (0.25,0)"
-    },
-    {
      "word": "dcd",
      "isometry": {
       "type": "reflection",
@@ -22835,6 +22974,35 @@
       }
      },
      "text": "reflection in line thru (0,-0.25) dir (1,0)"
+    },
+    {
+     "word": "a",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0.25,
+        -1.5308084989341915e-17
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0.25,-0) dir (0,1)"
+    },
+    {
+     "word": "ad",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       0.25,
+       1.5308084989341915e-17
+      ]
+     },
+     "text": "rotation by 1*PI about (0.25,0)"
     },
     {
      "word": "dacd",
@@ -22881,23 +23049,6 @@
      "text": "rotation by 1*PI about (0.25,0.25)"
     },
     {
-     "word": "Aba",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0.5,
-        -3.061616997868383e-17
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0.5,-0) dir (0,1)"
-    },
-    {
      "word": "DCdcd",
      "isometry": {
       "type": "reflection",
@@ -22913,6 +23064,23 @@
       }
      },
      "text": "reflection in line thru (0,-0.5) dir (1,0)"
+    },
+    {
+     "word": "Aba",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0.5,
+        -3.061616997868383e-17
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0.5,-0) dir (0,1)"
     }
    ],
    "sideCounts": {
@@ -22928,7 +23096,16 @@
    "type": "22*",
    "normal": false,
    "placements": 3,
-   "cosets": "badcfe abcdef baefcd cdabfe",
+   "cosets": "defabc abcdef dcbafe bafedc",
+   "sublibCosets": "badcfe abcdef baefcd cdabfe",
+   "cosetOrder": [
+    0,
+    2,
+    4,
+    1,
+    3,
+    5
+   ],
    "orders": [
     2,
     2,
@@ -22946,14 +23123,14 @@
     {
      "generator": "a",
      "perm": [
-      1,
-      0,
       3,
-      2,
+      4,
       5,
-      4
+      0,
+      1,
+      2
      ],
-     "cycles": "(0 1)(2 3)(4 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     },
     {
      "generator": "b",
@@ -22970,30 +23147,30 @@
     {
      "generator": "c",
      "perm": [
+      3,
+      2,
       1,
       0,
-      4,
       5,
-      2,
-      3
+      4
      ],
-     "cycles": "(0 1)(2 4)(3 5)"
+     "cycles": "(0 3)(1 2)(4 5)"
     },
     {
      "generator": "d",
      "perm": [
-      2,
-      3,
-      0,
       1,
+      0,
       5,
-      4
+      4,
+      3,
+      2
      ],
-     "cycles": "(0 2)(1 3)(4 5)"
+     "cycles": "(0 1)(2 5)(3 4)"
     }
    ],
    "geoKey": "k1|n=6|L=2,0,3|P=-1,0,0,-1:1,0;-1,0,0,1:0,0;1,0,0,-1:1,0",
-   "keyCoset": 4,
+   "keyCoset": 2,
    "representativeKey": "k1|n=6|L=2,0,3|P=-1,0,0,-1:1,1;-1,0,0,1:0,0;1,0,0,-1:1,1",
    "latticeHNF": {
     "a": 2,
@@ -23009,23 +23186,6 @@
       "type": "identity"
      },
      "text": "identity"
-    },
-    {
-     "word": "a",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0.25,
-        -1.5308084989341915e-17
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0.25,-0) dir (0,1)"
     },
     {
      "word": "d",
@@ -23045,6 +23205,34 @@
      "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
+     "word": "cd",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0,
+       -0.5
+      ]
+     },
+     "text": "translation by (0,-0.5)"
+    },
+    {
+     "word": "a",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0.25,
+        -1.5308084989341915e-17
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0.25,-0) dir (0,1)"
+    },
+    {
      "word": "da",
      "isometry": {
       "type": "rotation",
@@ -23055,17 +23243,6 @@
       ]
      },
      "text": "rotation by 1*PI about (0.25,0)"
-    },
-    {
-     "word": "cd",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0,
-       -0.5
-      ]
-     },
-     "text": "translation by (0,-0.5)"
     },
     {
      "word": "cda",
@@ -23098,23 +23275,6 @@
      "text": "identity"
     },
     {
-     "word": "a",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0.25,
-        -1.5308084989341915e-17
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0.25,-0) dir (0,1)"
-    },
-    {
      "word": "d",
      "isometry": {
       "type": "reflection",
@@ -23132,18 +23292,6 @@
      "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
-     "word": "ad",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       0.25,
-       1.5308084989341915e-17
-      ]
-     },
-     "text": "rotation by 1*PI about (0.25,0)"
-    },
-    {
      "word": "adcd",
      "isometry": {
       "type": "rotation",
@@ -23154,6 +23302,35 @@
       ]
      },
      "text": "rotation by 1*PI about (0.25,-0.25)"
+    },
+    {
+     "word": "a",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0.25,
+        -1.5308084989341915e-17
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0.25,-0) dir (0,1)"
+    },
+    {
+     "word": "ad",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       0.25,
+       1.5308084989341915e-17
+      ]
+     },
+     "text": "rotation by 1*PI about (0.25,0)"
     },
     {
      "word": "dcd",
@@ -23205,6 +23382,18 @@
      "text": "rotation by 1*PI about (0.25,0.25)"
     },
     {
+     "word": "ADCdcd",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       0.25000000000000006,
+       -0.5
+      ]
+     },
+     "text": "rotation by 1*PI about (0.25,-0.5)"
+    },
+    {
      "word": "Aba",
      "isometry": {
       "type": "reflection",
@@ -23220,18 +23409,6 @@
       }
      },
      "text": "reflection in line thru (0.5,-0) dir (0,1)"
-    },
-    {
-     "word": "ADCdcd",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       0.25000000000000006,
-       -0.5
-      ]
-     },
-     "text": "rotation by 1*PI about (0.25,-0.5)"
     }
    ],
    "sideCounts": {
@@ -23247,7 +23424,16 @@
    "type": "2*22",
    "normal": false,
    "placements": 3,
-   "cosets": "baefcd adcbfe ceafbd abcdef",
+   "cosets": "bafedc acbdfe defabc abcdef",
+   "sublibCosets": "baefcd adcbfe ceafbd abcdef",
+   "cosetOrder": [
+    0,
+    1,
+    3,
+    2,
+    4,
+    5
+   ],
    "orders": [
     2,
     2,
@@ -23269,36 +23455,36 @@
      "perm": [
       1,
       0,
-      4,
       5,
-      2,
-      3
+      4,
+      3,
+      2
      ],
-     "cycles": "(0 1)(2 4)(3 5)"
+     "cycles": "(0 1)(2 5)(3 4)"
     },
     {
      "generator": "b",
      "perm": [
       0,
-      3,
       2,
       1,
+      3,
       5,
       4
      ],
-     "cycles": "(1 3)(4 5)"
+     "cycles": "(1 2)(4 5)"
     },
     {
      "generator": "c",
      "perm": [
-      2,
+      3,
       4,
-      0,
       5,
+      0,
       1,
-      3
+      2
      ],
-     "cycles": "(0 2)(1 4)(3 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     },
     {
      "generator": "d",
@@ -23349,6 +23535,17 @@
      "text": "reflection in line thru (0.25,-0) dir (0,1)"
     },
     {
+     "word": "ba",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0.5,
+       0
+      ]
+     },
+     "text": "translation by (0.5,0)"
+    },
+    {
      "word": "c",
      "isometry": {
       "type": "reflection",
@@ -23364,17 +23561,6 @@
       }
      },
      "text": "reflection in line thru (0,0.25) dir (1,0)"
-    },
-    {
-     "word": "ba",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0.5,
-       0
-      ]
-     },
-     "text": "translation by (0.5,0)"
     },
     {
      "word": "ca",
@@ -23436,6 +23622,18 @@
      "text": "reflection in line thru (0.25,-0) dir (0,1)"
     },
     {
+     "word": "abac",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       0.5,
+       0.25000000000000006
+      ]
+     },
+     "text": "rotation by 1*PI about (0.5,0.25)"
+    },
+    {
      "word": "c",
      "isometry": {
       "type": "reflection",
@@ -23451,18 +23649,6 @@
       }
      },
      "text": "reflection in line thru (0,0.25) dir (1,0)"
-    },
-    {
-     "word": "abac",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       0.5,
-       0.25000000000000006
-      ]
-     },
-     "text": "rotation by 1*PI about (0.5,0.25)"
     },
     {
      "word": "ac",
@@ -23531,6 +23717,18 @@
      "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
+     "word": "ACBaba",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       0.75,
+       0.25000000000000006
+      ]
+     },
+     "text": "rotation by 1*PI about (0.75,0.25)"
+    },
+    {
      "word": "Cdc",
      "isometry": {
       "type": "reflection",
@@ -23546,18 +23744,6 @@
       }
      },
      "text": "reflection in line thru (0,0.5) dir (1,0)"
-    },
-    {
-     "word": "ACBaba",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       0.75,
-       0.25000000000000006
-      ]
-     },
-     "text": "rotation by 1*PI about (0.75,0.25)"
     }
    ],
    "sideCounts": {
@@ -23573,7 +23759,16 @@
    "type": "22*",
    "normal": false,
    "placements": 3,
-   "cosets": "baefcd adcbfe ceafbd ceafbd",
+   "cosets": "bafedc acbdfe defabc defabc",
+   "sublibCosets": "baefcd adcbfe ceafbd ceafbd",
+   "cosetOrder": [
+    0,
+    1,
+    3,
+    2,
+    4,
+    5
+   ],
    "orders": [
     2,
     2,
@@ -23589,52 +23784,52 @@
      "perm": [
       1,
       0,
-      4,
       5,
-      2,
-      3
+      4,
+      3,
+      2
      ],
-     "cycles": "(0 1)(2 4)(3 5)"
+     "cycles": "(0 1)(2 5)(3 4)"
     },
     {
      "generator": "b",
      "perm": [
       0,
-      3,
       2,
       1,
+      3,
       5,
       4
      ],
-     "cycles": "(1 3)(4 5)"
+     "cycles": "(1 2)(4 5)"
     },
     {
      "generator": "c",
      "perm": [
-      2,
+      3,
       4,
-      0,
       5,
+      0,
       1,
-      3
+      2
      ],
-     "cycles": "(0 2)(1 4)(3 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     },
     {
      "generator": "d",
      "perm": [
-      2,
+      3,
       4,
-      0,
       5,
+      0,
       1,
-      3
+      2
      ],
-     "cycles": "(0 2)(1 4)(3 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     }
    ],
    "geoKey": "k1|n=6|L=6,0,1|P=-1,0,0,-1:1,0;-1,0,0,1:4,0;1,0,0,-1:3,0",
-   "keyCoset": 3,
+   "keyCoset": 2,
    "representativeKey": "k1|n=6|L=6,0,1|P=-1,0,0,-1:3,0;-1,0,0,1:0,0;1,0,0,-1:3,0",
    "latticeHNF": {
     "a": 6,
@@ -23669,6 +23864,17 @@
      "text": "reflection in line thru (0.25,-0) dir (0,1)"
     },
     {
+     "word": "ba",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0.5,
+       0
+      ]
+     },
+     "text": "translation by (0.5,0)"
+    },
+    {
      "word": "c",
      "isometry": {
       "type": "reflection",
@@ -23684,17 +23890,6 @@
       }
      },
      "text": "reflection in line thru (0,0.25) dir (1,0)"
-    },
-    {
-     "word": "ba",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0.5,
-       0
-      ]
-     },
-     "text": "translation by (0.5,0)"
     },
     {
      "word": "ca",
@@ -23756,6 +23951,18 @@
      "text": "reflection in line thru (0.25,-0) dir (0,1)"
     },
     {
+     "word": "abad",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       0.5,
+       3.061616997868383e-17
+      ]
+     },
+     "text": "rotation by 1*PI about (0.5,0)"
+    },
+    {
      "word": "d",
      "isometry": {
       "type": "reflection",
@@ -23771,18 +23978,6 @@
       }
      },
      "text": "reflection in line thru (0,0) dir (1,0)"
-    },
-    {
-     "word": "abad",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       0.5,
-       3.061616997868383e-17
-      ]
-     },
-     "text": "rotation by 1*PI about (0.5,0)"
     },
     {
      "word": "ad",
@@ -23845,17 +24040,6 @@
      "text": "translation by (0,-0.5)"
     },
     {
-     "word": "dc",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0,
-       0.5
-      ]
-     },
-     "text": "translation by (0,0.5)"
-    },
-    {
      "word": "ACBaba",
      "isometry": {
       "type": "rotation",
@@ -23866,6 +24050,17 @@
       ]
      },
      "text": "rotation by 1*PI about (0.75,0.25)"
+    },
+    {
+     "word": "dc",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0,
+       0.5
+      ]
+     },
+     "text": "translation by (0,0.5)"
     },
     {
      "word": "Adca",
@@ -23892,7 +24087,16 @@
    "type": "**",
    "normal": false,
    "placements": 3,
-   "cosets": "badcfe badcfe abefcd cdabef",
+   "cosets": "defabc defabc acbdfe bacedf",
+   "sublibCosets": "badcfe badcfe abefcd cdabef",
+   "cosetOrder": [
+    0,
+    2,
+    4,
+    1,
+    3,
+    5
+   ],
    "orders": [
     2,
     2,
@@ -23904,54 +24108,54 @@
     {
      "generator": "a",
      "perm": [
-      1,
-      0,
       3,
-      2,
+      4,
       5,
-      4
+      0,
+      1,
+      2
      ],
-     "cycles": "(0 1)(2 3)(4 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     },
     {
      "generator": "b",
      "perm": [
-      1,
-      0,
       3,
-      2,
+      4,
       5,
-      4
+      0,
+      1,
+      2
      ],
-     "cycles": "(0 1)(2 3)(4 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     },
     {
      "generator": "c",
      "perm": [
       0,
-      1,
-      4,
-      5,
       2,
-      3
+      1,
+      3,
+      5,
+      4
      ],
-     "cycles": "(2 4)(3 5)"
+     "cycles": "(1 2)(4 5)"
     },
     {
      "generator": "d",
      "perm": [
-      2,
-      3,
-      0,
       1,
+      0,
+      2,
       4,
+      3,
       5
      ],
-     "cycles": "(0 2)(1 3)"
+     "cycles": "(0 1)(3 4)"
     }
    ],
    "geoKey": "k1|n=6|L=1,0,3|P=1,0,0,-1:0,0",
-   "keyCoset": 4,
+   "keyCoset": 2,
    "representativeKey": "k1|n=6|L=1,0,3|P=1,0,0,-1:0,1",
    "latticeHNF": {
     "a": 1,
@@ -23969,23 +24173,6 @@
      "text": "identity"
     },
     {
-     "word": "a",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0.25,
-        -1.5308084989341915e-17
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0.25,-0) dir (0,1)"
-    },
-    {
      "word": "d",
      "isometry": {
       "type": "reflection",
@@ -24003,6 +24190,34 @@
      "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
+     "word": "cd",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0,
+       -0.5
+      ]
+     },
+     "text": "translation by (0,-0.5)"
+    },
+    {
+     "word": "a",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0.25,
+        -1.5308084989341915e-17
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0.25,-0) dir (0,1)"
+    },
+    {
      "word": "da",
      "isometry": {
       "type": "rotation",
@@ -24013,17 +24228,6 @@
       ]
      },
      "text": "rotation by 1*PI about (0.25,0)"
-    },
-    {
-     "word": "cd",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0,
-       -0.5
-      ]
-     },
-     "text": "translation by (0,-0.5)"
     },
     {
      "word": "cda",
@@ -24056,23 +24260,6 @@
      "text": "identity"
     },
     {
-     "word": "b",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0,
-        0
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0,0) dir (0,1)"
-    },
-    {
      "word": "d",
      "isometry": {
       "type": "reflection",
@@ -24090,18 +24277,6 @@
      "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
-     "word": "bd",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       0,
-       0
-      ]
-     },
-     "text": "rotation by 1*PI about (0,0)"
-    },
-    {
      "word": "dcd",
      "isometry": {
       "type": "reflection",
@@ -24117,6 +24292,35 @@
       }
      },
      "text": "reflection in line thru (0,-0.25) dir (1,0)"
+    },
+    {
+     "word": "b",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0,
+        0
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0,0) dir (0,1)"
+    },
+    {
+     "word": "bd",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       0,
+       0
+      ]
+     },
+     "text": "rotation by 1*PI about (0,0)"
     },
     {
      "word": "dbcd",
@@ -24160,28 +24364,6 @@
       }
      },
      "text": "reflection in line thru (0,0.25) dir (1,0)"
-    },
-    {
-     "word": "ba",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0.5,
-       0
-      ]
-     },
-     "text": "translation by (0.5,0)"
-    },
-    {
-     "word": "Dbda",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0.5,
-       0
-      ]
-     },
-     "text": "translation by (0.5,0)"
     },
     {
      "word": "DCdcd",
@@ -24199,6 +24381,28 @@
       }
      },
      "text": "reflection in line thru (0,-0.5) dir (1,0)"
+    },
+    {
+     "word": "ba",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0.5,
+       0
+      ]
+     },
+     "text": "translation by (0.5,0)"
+    },
+    {
+     "word": "Dbda",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0.5,
+       0
+      ]
+     },
+     "text": "translation by (0.5,0)"
     }
    ],
    "sideCounts": {
@@ -24214,7 +24418,16 @@
    "type": "22*",
    "normal": false,
    "placements": 3,
-   "cosets": "badcfe badcfe abefcd cdabfe",
+   "cosets": "defabc defabc acbdfe bafedc",
+   "sublibCosets": "badcfe badcfe abefcd cdabfe",
+   "cosetOrder": [
+    0,
+    2,
+    4,
+    1,
+    3,
+    5
+   ],
    "orders": [
     2,
     2,
@@ -24228,54 +24441,54 @@
     {
      "generator": "a",
      "perm": [
-      1,
-      0,
       3,
-      2,
+      4,
       5,
-      4
+      0,
+      1,
+      2
      ],
-     "cycles": "(0 1)(2 3)(4 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     },
     {
      "generator": "b",
      "perm": [
-      1,
-      0,
       3,
-      2,
+      4,
       5,
-      4
+      0,
+      1,
+      2
      ],
-     "cycles": "(0 1)(2 3)(4 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     },
     {
      "generator": "c",
      "perm": [
       0,
-      1,
-      4,
-      5,
       2,
-      3
+      1,
+      3,
+      5,
+      4
      ],
-     "cycles": "(2 4)(3 5)"
+     "cycles": "(1 2)(4 5)"
     },
     {
      "generator": "d",
      "perm": [
-      2,
-      3,
-      0,
       1,
+      0,
       5,
-      4
+      4,
+      3,
+      2
      ],
-     "cycles": "(0 2)(1 3)(4 5)"
+     "cycles": "(0 1)(2 5)(3 4)"
     }
    ],
    "geoKey": "k1|n=6|L=1,0,6|P=-1,0,0,-1:0,0;-1,0,0,1:0,3;1,0,0,-1:0,3",
-   "keyCoset": 4,
+   "keyCoset": 2,
    "representativeKey": "k1|n=6|L=1,0,6|P=-1,0,0,-1:0,4;-1,0,0,1:0,3;1,0,0,-1:0,1",
    "latticeHNF": {
     "a": 1,
@@ -24291,23 +24504,6 @@
       "type": "identity"
      },
      "text": "identity"
-    },
-    {
-     "word": "a",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0.25,
-        -1.5308084989341915e-17
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0.25,-0) dir (0,1)"
     },
     {
      "word": "d",
@@ -24327,6 +24523,34 @@
      "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
+     "word": "cd",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0,
+       -0.5
+      ]
+     },
+     "text": "translation by (0,-0.5)"
+    },
+    {
+     "word": "a",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0.25,
+        -1.5308084989341915e-17
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0.25,-0) dir (0,1)"
+    },
+    {
      "word": "da",
      "isometry": {
       "type": "rotation",
@@ -24337,17 +24561,6 @@
       ]
      },
      "text": "rotation by 1*PI about (0.25,0)"
-    },
-    {
-     "word": "cd",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0,
-       -0.5
-      ]
-     },
-     "text": "translation by (0,-0.5)"
     },
     {
      "word": "cda",
@@ -24380,23 +24593,6 @@
      "text": "identity"
     },
     {
-     "word": "b",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0,
-        0
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0,0) dir (0,1)"
-    },
-    {
      "word": "d",
      "isometry": {
       "type": "reflection",
@@ -24414,18 +24610,6 @@
      "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
-     "word": "bd",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       0,
-       0
-      ]
-     },
-     "text": "rotation by 1*PI about (0,0)"
-    },
-    {
      "word": "dbcd",
      "isometry": {
       "type": "rotation",
@@ -24436,6 +24620,35 @@
       ]
      },
      "text": "rotation by 1*PI about (0,-0.25)"
+    },
+    {
+     "word": "b",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0,
+        0
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0,0) dir (0,1)"
+    },
+    {
+     "word": "bd",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       0,
+       0
+      ]
+     },
+     "text": "rotation by 1*PI about (0,0)"
     },
     {
      "word": "dcd",
@@ -24486,6 +24699,18 @@
      "text": "reflection in line thru (0,0.25) dir (1,0)"
     },
     {
+     "word": "ADCdcd",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       0.25000000000000006,
+       -0.5
+      ]
+     },
+     "text": "rotation by 1*PI about (0.25,-0.5)"
+    },
+    {
      "word": "ba",
      "isometry": {
       "type": "translation",
@@ -24506,18 +24731,6 @@
       ]
      },
      "text": "translation by (0.5,0)"
-    },
-    {
-     "word": "ADCdcd",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       0.25000000000000006,
-       -0.5
-      ]
-     },
-     "text": "rotation by 1*PI about (0.25,-0.5)"
     }
    ],
    "sideCounts": {
@@ -24533,7 +24746,16 @@
    "type": "22*",
    "normal": false,
    "placements": 3,
-   "cosets": "badcfe badcfe baefcd cdabef",
+   "cosets": "defabc defabc dcbafe bacedf",
+   "sublibCosets": "badcfe badcfe baefcd cdabef",
+   "cosetOrder": [
+    0,
+    2,
+    4,
+    1,
+    3,
+    5
+   ],
    "orders": [
     2,
     2,
@@ -24547,50 +24769,50 @@
     {
      "generator": "a",
      "perm": [
-      1,
-      0,
       3,
-      2,
+      4,
       5,
-      4
+      0,
+      1,
+      2
      ],
-     "cycles": "(0 1)(2 3)(4 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     },
     {
      "generator": "b",
      "perm": [
-      1,
-      0,
       3,
-      2,
+      4,
       5,
-      4
+      0,
+      1,
+      2
      ],
-     "cycles": "(0 1)(2 3)(4 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     },
     {
      "generator": "c",
      "perm": [
+      3,
+      2,
       1,
       0,
-      4,
       5,
-      2,
-      3
+      4
      ],
-     "cycles": "(0 1)(2 4)(3 5)"
+     "cycles": "(0 3)(1 2)(4 5)"
     },
     {
      "generator": "d",
      "perm": [
-      2,
-      3,
-      0,
       1,
+      0,
+      2,
       4,
+      3,
       5
      ],
-     "cycles": "(0 2)(1 3)"
+     "cycles": "(0 1)(3 4)"
     }
    ],
    "geoKey": "k1|n=6|L=1,0,6|P=-1,0,0,-1:0,1;-1,0,0,1:0,3;1,0,0,-1:0,4",
@@ -24612,23 +24834,6 @@
      "text": "identity"
     },
     {
-     "word": "a",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0.25,
-        -1.5308084989341915e-17
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0.25,-0) dir (0,1)"
-    },
-    {
      "word": "d",
      "isometry": {
       "type": "reflection",
@@ -24646,6 +24851,34 @@
      "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
+     "word": "cd",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0,
+       -0.5
+      ]
+     },
+     "text": "translation by (0,-0.5)"
+    },
+    {
+     "word": "a",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0.25,
+        -1.5308084989341915e-17
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0.25,-0) dir (0,1)"
+    },
+    {
      "word": "da",
      "isometry": {
       "type": "rotation",
@@ -24656,17 +24889,6 @@
       ]
      },
      "text": "rotation by 1*PI about (0.25,0)"
-    },
-    {
-     "word": "cd",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0,
-       -0.5
-      ]
-     },
-     "text": "translation by (0,-0.5)"
     },
     {
      "word": "cda",
@@ -24699,23 +24921,6 @@
      "text": "identity"
     },
     {
-     "word": "b",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0,
-        0
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0,0) dir (0,1)"
-    },
-    {
      "word": "d",
      "isometry": {
       "type": "reflection",
@@ -24733,18 +24938,6 @@
      "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
-     "word": "bd",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       0,
-       0
-      ]
-     },
-     "text": "rotation by 1*PI about (0,0)"
-    },
-    {
      "word": "dcd",
      "isometry": {
       "type": "reflection",
@@ -24760,6 +24953,35 @@
       }
      },
      "text": "reflection in line thru (0,-0.25) dir (1,0)"
+    },
+    {
+     "word": "b",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0,
+        0
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0,0) dir (0,1)"
+    },
+    {
+     "word": "bd",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       0,
+       0
+      ]
+     },
+     "text": "rotation by 1*PI about (0,0)"
     },
     {
      "word": "dbcd",
@@ -24798,28 +25020,6 @@
       ]
      },
      "text": "rotation by 1*PI about (0.25,0.25)"
-    },
-    {
-     "word": "ba",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0.5,
-       0
-      ]
-     },
-     "text": "translation by (0.5,0)"
-    },
-    {
-     "word": "Dbda",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0.5,
-       0
-      ]
-     },
-     "text": "translation by (0.5,0)"
     },
     {
      "word": "DCdcd",
@@ -24837,6 +25037,28 @@
       }
      },
      "text": "reflection in line thru (0,-0.5) dir (1,0)"
+    },
+    {
+     "word": "ba",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0.5,
+       0
+      ]
+     },
+     "text": "translation by (0.5,0)"
+    },
+    {
+     "word": "Dbda",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0.5,
+       0
+      ]
+     },
+     "text": "translation by (0.5,0)"
     }
    ],
    "sideCounts": {
@@ -24852,7 +25074,16 @@
    "type": "2222",
    "normal": false,
    "placements": 3,
-   "cosets": "badcfe badcfe baefcd cdabfe",
+   "cosets": "defabc defabc dcbafe bafedc",
+   "sublibCosets": "badcfe badcfe baefcd cdabfe",
+   "cosetOrder": [
+    0,
+    2,
+    4,
+    1,
+    3,
+    5
+   ],
    "orders": [
     2,
     2,
@@ -24868,54 +25099,54 @@
     {
      "generator": "a",
      "perm": [
-      1,
-      0,
       3,
-      2,
+      4,
       5,
-      4
+      0,
+      1,
+      2
      ],
-     "cycles": "(0 1)(2 3)(4 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     },
     {
      "generator": "b",
      "perm": [
-      1,
-      0,
       3,
-      2,
+      4,
       5,
-      4
+      0,
+      1,
+      2
      ],
-     "cycles": "(0 1)(2 3)(4 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     },
     {
      "generator": "c",
      "perm": [
+      3,
+      2,
       1,
       0,
-      4,
       5,
-      2,
-      3
+      4
      ],
-     "cycles": "(0 1)(2 4)(3 5)"
+     "cycles": "(0 3)(1 2)(4 5)"
     },
     {
      "generator": "d",
      "perm": [
-      2,
-      3,
-      0,
       1,
+      0,
       5,
-      4
+      4,
+      3,
+      2
      ],
-     "cycles": "(0 2)(1 3)(4 5)"
+     "cycles": "(0 1)(2 5)(3 4)"
     }
    ],
    "geoKey": "k1|n=6|L=1,0,3|P=-1,0,0,-1:0,0",
-   "keyCoset": 4,
+   "keyCoset": 2,
    "representativeKey": "k1|n=6|L=1,0,3|P=-1,0,0,-1:0,1",
    "latticeHNF": {
     "a": 1,
@@ -24931,23 +25162,6 @@
       "type": "identity"
      },
      "text": "identity"
-    },
-    {
-     "word": "a",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0.25,
-        -1.5308084989341915e-17
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0.25,-0) dir (0,1)"
     },
     {
      "word": "d",
@@ -24967,6 +25181,34 @@
      "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
+     "word": "cd",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0,
+       -0.5
+      ]
+     },
+     "text": "translation by (0,-0.5)"
+    },
+    {
+     "word": "a",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0.25,
+        -1.5308084989341915e-17
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0.25,-0) dir (0,1)"
+    },
+    {
      "word": "da",
      "isometry": {
       "type": "rotation",
@@ -24977,17 +25219,6 @@
       ]
      },
      "text": "rotation by 1*PI about (0.25,0)"
-    },
-    {
-     "word": "cd",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0,
-       -0.5
-      ]
-     },
-     "text": "translation by (0,-0.5)"
     },
     {
      "word": "cda",
@@ -25020,23 +25251,6 @@
      "text": "identity"
     },
     {
-     "word": "b",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0,
-        0
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0,0) dir (0,1)"
-    },
-    {
      "word": "d",
      "isometry": {
       "type": "reflection",
@@ -25054,18 +25268,6 @@
      "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
-     "word": "bd",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       0,
-       0
-      ]
-     },
-     "text": "rotation by 1*PI about (0,0)"
-    },
-    {
      "word": "dbcd",
      "isometry": {
       "type": "rotation",
@@ -25076,6 +25278,35 @@
       ]
      },
      "text": "rotation by 1*PI about (0,-0.25)"
+    },
+    {
+     "word": "b",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0,
+        0
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0,0) dir (0,1)"
+    },
+    {
+     "word": "bd",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       0,
+       0
+      ]
+     },
+     "text": "rotation by 1*PI about (0,0)"
     },
     {
      "word": "dcd",
@@ -25121,6 +25352,18 @@
      "text": "rotation by 1*PI about (0.25,0.25)"
     },
     {
+     "word": "ADCdcd",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       0.25000000000000006,
+       -0.5
+      ]
+     },
+     "text": "rotation by 1*PI about (0.25,-0.5)"
+    },
+    {
      "word": "ba",
      "isometry": {
       "type": "translation",
@@ -25141,18 +25384,6 @@
       ]
      },
      "text": "translation by (0.5,0)"
-    },
-    {
-     "word": "ADCdcd",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       0.25000000000000006,
-       -0.5
-      ]
-     },
-     "text": "rotation by 1*PI about (0.25,-0.5)"
     }
    ],
    "sideCounts": {
@@ -25469,7 +25700,16 @@
    "type": "22*",
    "normal": false,
    "placements": 3,
-   "cosets": "baefcd cdabfe abcdef badcfe",
+   "cosets": "dcbafe bafedc abcdef defabc",
+   "sublibCosets": "baefcd cdabfe abcdef badcfe",
+   "cosetOrder": [
+    0,
+    2,
+    4,
+    1,
+    3,
+    5
+   ],
    "orders": [
     2,
     2,
@@ -25487,26 +25727,26 @@
     {
      "generator": "a",
      "perm": [
+      3,
+      2,
       1,
       0,
-      4,
       5,
-      2,
-      3
+      4
      ],
-     "cycles": "(0 1)(2 4)(3 5)"
+     "cycles": "(0 3)(1 2)(4 5)"
     },
     {
      "generator": "b",
      "perm": [
-      2,
-      3,
-      0,
       1,
+      0,
       5,
-      4
+      4,
+      3,
+      2
      ],
-     "cycles": "(0 2)(1 3)(4 5)"
+     "cycles": "(0 1)(2 5)(3 4)"
     },
     {
      "generator": "c",
@@ -25523,18 +25763,18 @@
     {
      "generator": "d",
      "perm": [
-      1,
-      0,
       3,
-      2,
+      4,
       5,
-      4
+      0,
+      1,
+      2
      ],
-     "cycles": "(0 1)(2 3)(4 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     }
    ],
    "geoKey": "k1|n=6|L=3,0,2|P=-1,0,0,-1:0,0;-1,0,0,1:0,1;1,0,0,-1:0,1",
-   "keyCoset": 4,
+   "keyCoset": 2,
    "representativeKey": "k1|n=6|L=3,0,2|P=-1,0,0,-1:1,0;-1,0,0,1:1,1;1,0,0,-1:0,1",
    "latticeHNF": {
     "a": 3,
@@ -25550,23 +25790,6 @@
       "type": "identity"
      },
      "text": "identity"
-    },
-    {
-     "word": "d",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0,
-        0
-       ],
-       "dir": [
-        1,
-        0
-       ]
-      }
-     },
-     "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
      "word": "b",
@@ -25586,6 +25809,34 @@
      "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
+     "word": "ab",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       -0.5,
+       0
+      ]
+     },
+     "text": "translation by (-0.5,0)"
+    },
+    {
+     "word": "d",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0,
+        0
+       ],
+       "dir": [
+        1,
+        0
+       ]
+      }
+     },
+     "text": "reflection in line thru (0,0) dir (1,0)"
+    },
+    {
      "word": "db",
      "isometry": {
       "type": "rotation",
@@ -25596,17 +25847,6 @@
       ]
      },
      "text": "rotation by 1*PI about (0,0)"
-    },
-    {
-     "word": "ab",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       -0.5,
-       0
-      ]
-     },
-     "text": "translation by (-0.5,0)"
     },
     {
      "word": "adb",
@@ -25639,23 +25879,6 @@
      "text": "identity"
     },
     {
-     "word": "d",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0,
-        0
-       ],
-       "dir": [
-        1,
-        0
-       ]
-      }
-     },
-     "text": "reflection in line thru (0,0) dir (1,0)"
-    },
-    {
      "word": "b",
      "isometry": {
       "type": "reflection",
@@ -25673,18 +25896,6 @@
      "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
-     "word": "bd",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       0,
-       0
-      ]
-     },
-     "text": "rotation by 1*PI about (0,0)"
-    },
-    {
      "word": "babd",
      "isometry": {
       "type": "rotation",
@@ -25695,6 +25906,35 @@
       ]
      },
      "text": "rotation by 1*PI about (-0.25,-0)"
+    },
+    {
+     "word": "d",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0,
+        0
+       ],
+       "dir": [
+        1,
+        0
+       ]
+      }
+     },
+     "text": "reflection in line thru (0,0) dir (1,0)"
+    },
+    {
+     "word": "bd",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       0,
+       0
+      ]
+     },
+     "text": "rotation by 1*PI about (0,0)"
     },
     {
      "word": "bab",
@@ -25746,6 +25986,18 @@
      "text": "reflection in line thru (0,0.25) dir (1,0)"
     },
     {
+     "word": "BDAbab",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       -0.5,
+       -3.061616997868383e-17
+      ]
+     },
+     "text": "rotation by 1*PI about (-0.5,-0)"
+    },
+    {
      "word": "Dcd",
      "isometry": {
       "type": "reflection",
@@ -25761,18 +26013,6 @@
       }
      },
      "text": "reflection in line thru (0,-0.25) dir (1,0)"
-    },
-    {
-     "word": "BDAbab",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       -0.5,
-       -3.061616997868383e-17
-      ]
-     },
-     "text": "rotation by 1*PI about (-0.5,-0)"
     }
    ],
    "sideCounts": {
@@ -25788,7 +26028,16 @@
    "type": "22*",
    "normal": false,
    "placements": 3,
-   "cosets": "baefcd cdabfe badcfe abcdef",
+   "cosets": "dcbafe bafedc defabc abcdef",
+   "sublibCosets": "baefcd cdabfe badcfe abcdef",
+   "cosetOrder": [
+    0,
+    2,
+    4,
+    1,
+    3,
+    5
+   ],
    "orders": [
     2,
     2,
@@ -25806,38 +26055,38 @@
     {
      "generator": "a",
      "perm": [
+      3,
+      2,
       1,
       0,
-      4,
       5,
-      2,
-      3
+      4
      ],
-     "cycles": "(0 1)(2 4)(3 5)"
+     "cycles": "(0 3)(1 2)(4 5)"
     },
     {
      "generator": "b",
      "perm": [
-      2,
-      3,
-      0,
       1,
+      0,
       5,
-      4
+      4,
+      3,
+      2
      ],
-     "cycles": "(0 2)(1 3)(4 5)"
+     "cycles": "(0 1)(2 5)(3 4)"
     },
     {
      "generator": "c",
      "perm": [
-      1,
-      0,
       3,
-      2,
+      4,
       5,
-      4
+      0,
+      1,
+      2
      ],
-     "cycles": "(0 1)(2 3)(4 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     },
     {
      "generator": "d",
@@ -25853,7 +26102,7 @@
     }
    ],
    "geoKey": "k1|n=6|L=3,0,2|P=-1,0,0,-1:0,1;-1,0,0,1:0,1;1,0,0,-1:0,0",
-   "keyCoset": 4,
+   "keyCoset": 2,
    "representativeKey": "k1|n=6|L=3,0,2|P=-1,0,0,-1:1,1;-1,0,0,1:1,1;1,0,0,-1:0,0",
    "latticeHNF": {
     "a": 3,
@@ -25869,23 +26118,6 @@
       "type": "identity"
      },
      "text": "identity"
-    },
-    {
-     "word": "c",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0,
-        0.25
-       ],
-       "dir": [
-        1,
-        0
-       ]
-      }
-     },
-     "text": "reflection in line thru (0,0.25) dir (1,0)"
     },
     {
      "word": "b",
@@ -25905,6 +26137,34 @@
      "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
+     "word": "ab",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       -0.5,
+       0
+      ]
+     },
+     "text": "translation by (-0.5,0)"
+    },
+    {
+     "word": "c",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0,
+        0.25
+       ],
+       "dir": [
+        1,
+        0
+       ]
+      }
+     },
+     "text": "reflection in line thru (0,0.25) dir (1,0)"
+    },
+    {
      "word": "cb",
      "isometry": {
       "type": "rotation",
@@ -25915,17 +26175,6 @@
       ]
      },
      "text": "rotation by 1*PI about (-0,0.25)"
-    },
-    {
-     "word": "ab",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       -0.5,
-       0
-      ]
-     },
-     "text": "translation by (-0.5,0)"
     },
     {
      "word": "acb",
@@ -25958,23 +26207,6 @@
      "text": "identity"
     },
     {
-     "word": "a",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0.25,
-        -1.5308084989341915e-17
-       ],
-       "dir": [
-        6.123233995736766e-17,
-        1
-       ]
-      }
-     },
-     "text": "reflection in line thru (0.25,-0) dir (0,1)"
-    },
-    {
      "word": "b",
      "isometry": {
       "type": "reflection",
@@ -25992,6 +26224,34 @@
      "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
+     "word": "ba",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0.5,
+       0
+      ]
+     },
+     "text": "translation by (0.5,0)"
+    },
+    {
+     "word": "a",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0.25,
+        -1.5308084989341915e-17
+       ],
+       "dir": [
+        6.123233995736766e-17,
+        1
+       ]
+      }
+     },
+     "text": "reflection in line thru (0.25,-0) dir (0,1)"
+    },
+    {
      "word": "cb",
      "isometry": {
       "type": "rotation",
@@ -26002,17 +26262,6 @@
       ]
      },
      "text": "rotation by 1*PI about (-0,0.25)"
-    },
-    {
-     "word": "ba",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       0.5,
-       0
-      ]
-     },
-     "text": "translation by (0.5,0)"
     },
     {
      "word": "bab",
@@ -26064,6 +26313,18 @@
      "text": "reflection in line thru (0,0) dir (1,0)"
     },
     {
+     "word": "BCAbab",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       -0.5,
+       0.24999999999999997
+      ]
+     },
+     "text": "rotation by 1*PI about (-0.5,0.25)"
+    },
+    {
      "word": "Cdc",
      "isometry": {
       "type": "reflection",
@@ -26079,18 +26340,6 @@
       }
      },
      "text": "reflection in line thru (0,0.5) dir (1,0)"
-    },
-    {
-     "word": "BCAbab",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       -0.5,
-       0.24999999999999997
-      ]
-     },
-     "text": "rotation by 1*PI about (-0.5,0.25)"
     }
    ],
    "sideCounts": {
@@ -26106,7 +26355,16 @@
    "type": "2222",
    "normal": false,
    "placements": 3,
-   "cosets": "baefcd cdabfe badcfe badcfe",
+   "cosets": "dcbafe bafedc defabc defabc",
+   "sublibCosets": "baefcd cdabfe badcfe badcfe",
+   "cosetOrder": [
+    0,
+    2,
+    4,
+    1,
+    3,
+    5
+   ],
    "orders": [
     2,
     2,
@@ -26122,54 +26380,54 @@
     {
      "generator": "a",
      "perm": [
+      3,
+      2,
       1,
       0,
-      4,
       5,
-      2,
-      3
+      4
      ],
-     "cycles": "(0 1)(2 4)(3 5)"
+     "cycles": "(0 3)(1 2)(4 5)"
     },
     {
      "generator": "b",
      "perm": [
-      2,
-      3,
-      0,
       1,
+      0,
       5,
-      4
+      4,
+      3,
+      2
      ],
-     "cycles": "(0 2)(1 3)(4 5)"
+     "cycles": "(0 1)(2 5)(3 4)"
     },
     {
      "generator": "c",
      "perm": [
-      1,
-      0,
       3,
-      2,
+      4,
       5,
-      4
+      0,
+      1,
+      2
      ],
-     "cycles": "(0 1)(2 3)(4 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     },
     {
      "generator": "d",
      "perm": [
-      1,
-      0,
       3,
-      2,
+      4,
       5,
-      4
+      0,
+      1,
+      2
      ],
-     "cycles": "(0 1)(2 3)(4 5)"
+     "cycles": "(0 3)(1 4)(2 5)"
     }
    ],
    "geoKey": "k1|n=6|L=3,0,1|P=-1,0,0,-1:0,0",
-   "keyCoset": 4,
+   "keyCoset": 2,
    "representativeKey": "k1|n=6|L=3,0,1|P=-1,0,0,-1:1,0",
    "latticeHNF": {
     "a": 3,
@@ -26185,23 +26443,6 @@
       "type": "identity"
      },
      "text": "identity"
-    },
-    {
-     "word": "c",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0,
-        0.25
-       ],
-       "dir": [
-        1,
-        0
-       ]
-      }
-     },
-     "text": "reflection in line thru (0,0.25) dir (1,0)"
     },
     {
      "word": "b",
@@ -26221,6 +26462,34 @@
      "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
+     "word": "ab",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       -0.5,
+       0
+      ]
+     },
+     "text": "translation by (-0.5,0)"
+    },
+    {
+     "word": "c",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0,
+        0.25
+       ],
+       "dir": [
+        1,
+        0
+       ]
+      }
+     },
+     "text": "reflection in line thru (0,0.25) dir (1,0)"
+    },
+    {
      "word": "cb",
      "isometry": {
       "type": "rotation",
@@ -26231,17 +26500,6 @@
       ]
      },
      "text": "rotation by 1*PI about (-0,0.25)"
-    },
-    {
-     "word": "ab",
-     "isometry": {
-      "type": "translation",
-      "translation": [
-       -0.5,
-       0
-      ]
-     },
-     "text": "translation by (-0.5,0)"
     },
     {
      "word": "acb",
@@ -26274,23 +26532,6 @@
      "text": "identity"
     },
     {
-     "word": "d",
-     "isometry": {
-      "type": "reflection",
-      "axis": {
-       "point": [
-        0,
-        0
-       ],
-       "dir": [
-        1,
-        0
-       ]
-      }
-     },
-     "text": "reflection in line thru (0,0) dir (1,0)"
-    },
-    {
      "word": "b",
      "isometry": {
       "type": "reflection",
@@ -26308,18 +26549,6 @@
      "text": "reflection in line thru (0,0) dir (0,1)"
     },
     {
-     "word": "bd",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       0,
-       0
-      ]
-     },
-     "text": "rotation by 1*PI about (0,0)"
-    },
-    {
      "word": "babd",
      "isometry": {
       "type": "rotation",
@@ -26330,6 +26559,35 @@
       ]
      },
      "text": "rotation by 1*PI about (-0.25,-0)"
+    },
+    {
+     "word": "d",
+     "isometry": {
+      "type": "reflection",
+      "axis": {
+       "point": [
+        0,
+        0
+       ],
+       "dir": [
+        1,
+        0
+       ]
+      }
+     },
+     "text": "reflection in line thru (0,0) dir (1,0)"
+    },
+    {
+     "word": "bd",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       0,
+       0
+      ]
+     },
+     "text": "rotation by 1*PI about (0,0)"
     },
     {
      "word": "bab",
@@ -26375,6 +26633,18 @@
      "text": "translation by (0,-0.5)"
     },
     {
+     "word": "BCAbab",
+     "isometry": {
+      "type": "rotation",
+      "angle": 3.141592653589793,
+      "center": [
+       -0.5,
+       0.24999999999999997
+      ]
+     },
+     "text": "rotation by 1*PI about (-0.5,0.25)"
+    },
+    {
      "word": "dc",
      "isometry": {
       "type": "translation",
@@ -26395,18 +26665,6 @@
       ]
      },
      "text": "translation by (0,0.5)"
-    },
-    {
-     "word": "BCAbab",
-     "isometry": {
-      "type": "rotation",
-      "angle": 3.141592653589793,
-      "center": [
-       -0.5,
-       0.24999999999999997
-      ]
-     },
-     "text": "rotation by 1*PI about (-0.5,0.25)"
     }
    ],
    "sideCounts": {

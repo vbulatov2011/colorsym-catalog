@@ -1,7 +1,7 @@
 {
  "_comment": [
   "Layer set for *632/632[6] (*632.6.9), 6 colours, 3 placements.",
-  "Template: wp-s632; permutations overridden to this subgroup's invcos.",
+  "Template: wp-s632; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
   "f words: e c bc cac ac bac",
   "g words: e c cb b bc bcb",
   "Every item sets symmetry.options.iterations = 60.",
