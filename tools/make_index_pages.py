@@ -1,7 +1,7 @@
 # The catalog's index pages, generated from the manifests:
 #
 #   index.html                  the 17 wallpaper groups: uncolored thumbnail and
-#                               the counts for 1..6 colors
+#                               the counts for 1..7 colors
 #   <stem>/index.html           one group: thumbnail, facts, a section per color
 #                               count with a picture of every pattern
 #   <stem>/<N>/index.html       the color groups of that group with N colors, each
@@ -27,7 +27,7 @@
 import json, io, os, html, re, sys
 
 CAT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MAX_N = 6
+MAX_N = 7
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from entry_names import entry_names
@@ -266,7 +266,7 @@ def cg_box(s, root):
 # ---- top page ----------------------------------------------------------------
 
 def by_count_nav(root, cur=None):
-    """the six 'all symmetries with N colors' pages, one tile each"""
+    """the 'all symmetries with N colors' pages, one tile each"""
     tiles = []
     for n in range(1, MAX_N + 1):
         ss = all_n(n)
@@ -282,7 +282,7 @@ def by_count_nav(root, cur=None):
 
 
 def group_count_nav(g):
-    """a group page's six counts, one tile each, as by_count_nav: a jump to
+    """a group page's counts, one tile each, as by_count_nav: a jump to
     that count's section of the page"""
     tiles = []
     for n in range(1, MAX_N + 1):

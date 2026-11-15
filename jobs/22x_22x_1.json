@@ -1,7 +1,7 @@
 {
  "_comment": [
   "Layer set for 22x/22x[1] (22x.1.1), 1 colours, 1 placements.",
-  "Template: wp-22X; permutations overridden to this subgroup's invcos.",
+  "Template: wp-22X; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
   "f words: e",
   "g words: e",
   "Every item sets symmetry.options.iterations = 60.",

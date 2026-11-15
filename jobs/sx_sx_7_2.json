@@ -1,0 +1,3633 @@
+{
+ "_comment": [
+  "Layer set for *x/*x[7]#2 (*x.7.1), 7 colours, 7 placements.",
+  "Template: wp-sX; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
+  "f words: e c d dc cd cdc dcd",
+  "g words: e c d cd dc cdc dcd",
+  "Every item sets symmetry.options.iterations = 60.",
+  "View: the preset's own (centre and zoom), shared by every item."
+ ],
+ "outDir": "sx/7/sx-sx-7-2/gen",
+ "size": 800,
+ "preset": "/catalog/presets/wp/wp-sX.json",
+ "view": {
+  "zoom": 0.57,
+  "centerX": 0,
+  "centerY": 0
+ },
+ "items": [
+  {
+   "file": "sx-sx-7-2.1.png",
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "sx-sx-7-2.2.png",
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 1
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "sx-sx-7-2.3.png",
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 2
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "sx-sx-7-2.4.png",
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 3
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "sx-sx-7-2.5.png",
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 4
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "sx-sx-7-2.6.png",
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 5
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "sx-sx-7-2.7.png",
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 6
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "sx-sx-7-2.o.png",
+   "layers": {
+    "drawing": {
+     "useOrbit": true,
+     "mask": "",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "sx-sx-7-2.o1.png",
+   "_note": "orbit coloring carried by g_1",
+   "layers": {
+    "drawing": {
+     "useOrbit": true,
+     "mask": "",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 1
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "sx-sx-7-2.o2.png",
+   "_note": "orbit coloring carried by g_2",
+   "layers": {
+    "drawing": {
+     "useOrbit": true,
+     "mask": "",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 2
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "sx-sx-7-2.o3.png",
+   "_note": "orbit coloring carried by g_3",
+   "layers": {
+    "drawing": {
+     "useOrbit": true,
+     "mask": "",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 3
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "sx-sx-7-2.o4.png",
+   "_note": "orbit coloring carried by g_4",
+   "layers": {
+    "drawing": {
+     "useOrbit": true,
+     "mask": "",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 4
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "sx-sx-7-2.o5.png",
+   "_note": "orbit coloring carried by g_5",
+   "layers": {
+    "drawing": {
+     "useOrbit": true,
+     "mask": "",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 5
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "sx-sx-7-2.o6.png",
+   "_note": "orbit coloring carried by g_6",
+   "layers": {
+    "drawing": {
+     "useOrbit": true,
+     "mask": "",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 6
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "00.png",
+   "_note": "f_0 H g_0",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "1000000",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "01.png",
+   "_note": "f_0 H g_1",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0100000",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "02.png",
+   "_note": "f_0 H g_2",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0010000",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "03.png",
+   "_note": "f_0 H g_3",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0001000",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "04.png",
+   "_note": "f_0 H g_4",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0000100",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "05.png",
+   "_note": "f_0 H g_5",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0000010",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "06.png",
+   "_note": "f_0 H g_6",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0000001",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "10.png",
+   "_note": "f_1 H g_0",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "1000000",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 1
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "11.png",
+   "_note": "f_1 H g_1",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0100000",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 1
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "12.png",
+   "_note": "f_1 H g_2",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0010000",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 1
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "13.png",
+   "_note": "f_1 H g_3",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0001000",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 1
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "14.png",
+   "_note": "f_1 H g_4",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0000100",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 1
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "15.png",
+   "_note": "f_1 H g_5",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0000010",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 1
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "16.png",
+   "_note": "f_1 H g_6",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0000001",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 1
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "20.png",
+   "_note": "f_2 H g_0",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "1000000",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 2
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "21.png",
+   "_note": "f_2 H g_1",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0100000",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 2
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "22.png",
+   "_note": "f_2 H g_2",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0010000",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 2
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "23.png",
+   "_note": "f_2 H g_3",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0001000",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 2
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "24.png",
+   "_note": "f_2 H g_4",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0000100",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 2
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "25.png",
+   "_note": "f_2 H g_5",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0000010",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 2
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "26.png",
+   "_note": "f_2 H g_6",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0000001",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 2
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "30.png",
+   "_note": "f_3 H g_0",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "1000000",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 3
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "31.png",
+   "_note": "f_3 H g_1",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0100000",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 3
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "32.png",
+   "_note": "f_3 H g_2",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0010000",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 3
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "33.png",
+   "_note": "f_3 H g_3",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0001000",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 3
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "34.png",
+   "_note": "f_3 H g_4",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0000100",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 3
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "35.png",
+   "_note": "f_3 H g_5",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0000010",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 3
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "36.png",
+   "_note": "f_3 H g_6",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0000001",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 3
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "40.png",
+   "_note": "f_4 H g_0",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "1000000",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 4
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "41.png",
+   "_note": "f_4 H g_1",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0100000",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 4
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "42.png",
+   "_note": "f_4 H g_2",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0010000",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 4
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "43.png",
+   "_note": "f_4 H g_3",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0001000",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 4
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "44.png",
+   "_note": "f_4 H g_4",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0000100",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 4
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "45.png",
+   "_note": "f_4 H g_5",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0000010",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 4
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "46.png",
+   "_note": "f_4 H g_6",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0000001",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 4
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "50.png",
+   "_note": "f_5 H g_0",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "1000000",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 5
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "51.png",
+   "_note": "f_5 H g_1",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0100000",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 5
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "52.png",
+   "_note": "f_5 H g_2",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0010000",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 5
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "53.png",
+   "_note": "f_5 H g_3",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0001000",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 5
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "54.png",
+   "_note": "f_5 H g_4",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0000100",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 5
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "55.png",
+   "_note": "f_5 H g_5",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0000010",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 5
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "56.png",
+   "_note": "f_5 H g_6",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0000001",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 5
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "60.png",
+   "_note": "f_6 H g_0",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "1000000",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 6
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "61.png",
+   "_note": "f_6 H g_1",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0100000",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 6
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "62.png",
+   "_note": "f_6 H g_2",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0010000",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 6
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "63.png",
+   "_note": "f_6 H g_3",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0001000",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 6
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "64.png",
+   "_note": "f_6 H g_4",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0000100",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 6
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "65.png",
+   "_note": "f_6 H g_5",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0000010",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 6
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "66.png",
+   "_note": "f_6 H g_6",
+   "size": 400,
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "0000001",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "mult",
+     "permIndex": 6
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "0123456_0.png",
+   "_note": "all orbits of H g_0 - the whole pattern in color 0",
+   "compose": [
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "1000000",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 0
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "1000000",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 1
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "1000000",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 2
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "1000000",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 3
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "1000000",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 4
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "1000000",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 5
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "1000000",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 6
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "file": "0123456_1.png",
+   "_note": "all orbits of H g_1 - the whole pattern in color 1",
+   "compose": [
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0100000",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 0
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0100000",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 1
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0100000",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 2
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0100000",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 3
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0100000",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 4
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0100000",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 5
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0100000",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 6
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "file": "0123456_2.png",
+   "_note": "all orbits of H g_2 - the whole pattern in color 2",
+   "compose": [
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0010000",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 0
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0010000",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 1
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0010000",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 2
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0010000",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 3
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0010000",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 4
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0010000",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 5
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0010000",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 6
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "file": "0123456_3.png",
+   "_note": "all orbits of H g_3 - the whole pattern in color 3",
+   "compose": [
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0001000",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 0
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0001000",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 1
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0001000",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 2
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0001000",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 3
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0001000",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 4
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0001000",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 5
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0001000",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 6
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "file": "0123456_4.png",
+   "_note": "all orbits of H g_4 - the whole pattern in color 4",
+   "compose": [
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0000100",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 0
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0000100",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 1
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0000100",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 2
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0000100",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 3
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0000100",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 4
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0000100",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 5
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0000100",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 6
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "file": "0123456_5.png",
+   "_note": "all orbits of H g_5 - the whole pattern in color 5",
+   "compose": [
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0000010",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 0
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0000010",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 1
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0000010",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 2
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0000010",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 3
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0000010",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 4
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0000010",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 5
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0000010",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 6
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "file": "0123456_6.png",
+   "_note": "all orbits of H g_6 - the whole pattern in color 6",
+   "compose": [
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0000001",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 0
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0000001",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 1
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0000001",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 2
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0000001",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 3
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0000001",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 4
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0000001",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 5
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    },
+    {
+     "layers": {
+      "drawing": {
+       "useOrbit": false,
+       "mask": "0000001",
+       "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+       "useMipmap": true,
+       "colorTiles": {
+        "count": 7
+       },
+       "coloringType": "mult",
+       "permIndex": 6
+      }
+     },
+     "enable": {
+      "overlay": false
+     },
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    }
+   ]
+  },
+  {
+   "file": "group_pattern.png",
+   "layers": {
+    "drawing": {
+     "useOrbit": false,
+     "mask": "",
+     "permutations": "acbedgf acbedgf baefcdg cdabgfe",
+     "useMipmap": true,
+     "colorTiles": {
+      "count": 7
+     },
+     "coloringType": "none",
+     "permIndex": 0
+    }
+   },
+   "enable": {
+    "overlay": false
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "group_domain.png",
+   "subgroup": null,
+   "enable": {
+    "drawing": false,
+    "overlay": true
+   },
+   "layers": {
+    "overlay": {
+     "overlays": {
+      "tiling": {
+       "enabled": false
+      },
+      "fundDomain": {
+       "enabled": true,
+       "fill": {
+        "enabled": true
+       },
+       "outline": {
+        "enabled": true
+       }
+      },
+      "generators": {
+       "enabled": false
+      }
+     }
+    }
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "group_tiling.png",
+   "subgroup": null,
+   "enable": {
+    "drawing": false,
+    "overlay": true
+   },
+   "layers": {
+    "overlay": {
+     "overlays": {
+      "tiling": {
+       "enabled": true
+      },
+      "fundDomain": {
+       "enabled": false
+      },
+      "generators": {
+       "enabled": false
+      }
+     }
+    }
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "group_gens.png",
+   "subgroup": null,
+   "enable": {
+    "drawing": false,
+    "overlay": true
+   },
+   "layers": {
+    "overlay": {
+     "overlays": {
+      "tiling": {
+       "enabled": false
+      },
+      "fundDomain": {
+       "enabled": true,
+       "fill": {
+        "enabled": true
+       },
+       "outline": {
+        "enabled": true
+       }
+      },
+      "generators": {
+       "enabled": false
+      }
+     }
+    }
+   },
+   "markers": {
+    "subgroup": null
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "sub_domain.png",
+   "_note": "H's domain as a union of 7 G cells",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "draw": {
+    "subgroup": "acbedgf acbedgf baefcdg cdabgfe",
+    "fill": true,
+    "cells": true,
+    "outline": true
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "sub_tiling.png",
+   "compose": [
+    {
+     "subgroup": null,
+     "enable": {
+      "drawing": false,
+      "overlay": true
+     },
+     "layers": {
+      "overlay": {
+       "overlays": {
+        "tiling": {
+         "enabled": true
+        },
+        "fundDomain": {
+         "enabled": false
+        },
+        "generators": {
+         "enabled": false
+        }
+       }
+      }
+     },
+     "opacity": 0.3,
+     "params": {
+      "symmetry": {
+       "options": {
+        "iterations": 60
+       }
+      }
+     }
+    }
+   ],
+   "draw": {
+    "subgroup": "acbedgf acbedgf baefcdg cdabgfe",
+    "tiling": true
+   }
+  },
+  {
+   "file": "sub_gens.png",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "draw": {
+    "subgroup": "acbedgf acbedgf baefcdg cdabgfe",
+    "fill": true,
+    "outline": true
+   },
+   "markers": {
+    "subgroup": "acbedgf acbedgf baefcdg cdabgfe"
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "sub_til.png",
+   "_note": "H tiling lines only",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "draw": {
+    "subgroup": "acbedgf acbedgf baefcdg cdabgfe",
+    "tiling": true
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "group_marks.png",
+   "_note": "G rotation centres only",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "markers": {
+    "subgroup": null
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "sub_marks.png",
+   "_note": "H rotation centres only",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "markers": {
+    "subgroup": "acbedgf acbedgf baefcdg cdabgfe"
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "f1.png",
+   "_note": "f_1 = c",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "glyphs": {
+    "subgroup": "acbedgf acbedgf baefcdg cdabgfe",
+    "kind": "cell",
+    "list": [
+     {
+      "word": "c",
+      "style": {
+       "color": "#c02020",
+       "width": 3.5
+      }
+     }
+    ]
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "f2.png",
+   "_note": "f_2 = d",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "glyphs": {
+    "subgroup": "acbedgf acbedgf baefcdg cdabgfe",
+    "kind": "cell",
+    "list": [
+     {
+      "word": "d",
+      "style": {
+       "color": "#c02020",
+       "width": 3.5
+      }
+     }
+    ]
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "f3.png",
+   "_note": "f_3 = dc",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "glyphs": {
+    "subgroup": "acbedgf acbedgf baefcdg cdabgfe",
+    "kind": "cell",
+    "list": [
+     {
+      "word": "dc",
+      "style": {
+       "color": "#c02020",
+       "width": 3.5
+      }
+     }
+    ]
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "f4.png",
+   "_note": "f_4 = cd",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "glyphs": {
+    "subgroup": "acbedgf acbedgf baefcdg cdabgfe",
+    "kind": "cell",
+    "list": [
+     {
+      "word": "cd",
+      "style": {
+       "color": "#c02020",
+       "width": 3.5
+      }
+     }
+    ]
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "f5.png",
+   "_note": "f_5 = cdc",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "glyphs": {
+    "subgroup": "acbedgf acbedgf baefcdg cdabgfe",
+    "kind": "cell",
+    "list": [
+     {
+      "word": "cdc",
+      "style": {
+       "color": "#c02020",
+       "width": 3.5
+      }
+     }
+    ]
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "f6.png",
+   "_note": "f_6 = dcd",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "glyphs": {
+    "subgroup": "acbedgf acbedgf baefcdg cdabgfe",
+    "kind": "cell",
+    "list": [
+     {
+      "word": "dcd",
+      "style": {
+       "color": "#c02020",
+       "width": 3.5
+      }
+     }
+    ]
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "g1.png",
+   "_note": "g_1 = c",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "glyphs": {
+    "subgroup": "acbedgf acbedgf baefcdg cdabgfe",
+    "kind": "coset",
+    "list": [
+     {
+      "word": "c",
+      "style": {
+       "color": "#2040c0",
+       "width": 3.5
+      }
+     }
+    ]
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "g2.png",
+   "_note": "g_2 = d",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "glyphs": {
+    "subgroup": "acbedgf acbedgf baefcdg cdabgfe",
+    "kind": "coset",
+    "list": [
+     {
+      "word": "d",
+      "style": {
+       "color": "#2040c0",
+       "width": 3.5
+      }
+     }
+    ]
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "g3.png",
+   "_note": "g_3 = cd",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "glyphs": {
+    "subgroup": "acbedgf acbedgf baefcdg cdabgfe",
+    "kind": "coset",
+    "list": [
+     {
+      "word": "cd",
+      "style": {
+       "color": "#2040c0",
+       "width": 3.5
+      }
+     }
+    ]
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "g4.png",
+   "_note": "g_4 = dc",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "glyphs": {
+    "subgroup": "acbedgf acbedgf baefcdg cdabgfe",
+    "kind": "coset",
+    "list": [
+     {
+      "word": "dc",
+      "style": {
+       "color": "#2040c0",
+       "width": 3.5
+      }
+     }
+    ]
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "g5.png",
+   "_note": "g_5 = cdc",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "glyphs": {
+    "subgroup": "acbedgf acbedgf baefcdg cdabgfe",
+    "kind": "coset",
+    "list": [
+     {
+      "word": "cdc",
+      "style": {
+       "color": "#2040c0",
+       "width": 3.5
+      }
+     }
+    ]
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  },
+  {
+   "file": "g6.png",
+   "_note": "g_6 = dcd",
+   "enable": {
+    "drawing": false,
+    "overlay": false
+   },
+   "glyphs": {
+    "subgroup": "acbedgf acbedgf baefcdg cdabgfe",
+    "kind": "coset",
+    "list": [
+     {
+      "word": "dcd",
+      "style": {
+       "color": "#2040c0",
+       "width": 3.5
+      }
+     }
+    ]
+   },
+   "params": {
+    "symmetry": {
+     "options": {
+      "iterations": 60
+     }
+    }
+   }
+  }
+ ]
+}
