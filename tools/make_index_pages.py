@@ -2,7 +2,8 @@
 #
 #   index.html                  the 17 wallpaper groups: uncolored thumbnail and
 #                               the counts for 1..6 colors
-#   <stem>/index.html           one group: thumbnail, facts, a row per color count
+#   <stem>/index.html           one group: thumbnail, facts, a section per color
+#                               count with a picture of every pattern
 #   <stem>/<N>/index.html       the color groups of that group with N colors, each
 #                               with a picture of every pattern it gives
 #   colors/<N>/index.html       the same for all 17 groups on one page
@@ -23,7 +24,7 @@
 # entry's <slug>.<k>.webp for placement k.  A color group whose entry has not
 # been built is listed with placeholders and without a link.
 # Styles: css/catalog.css.
-import json, io, os, html, sys
+import json, io, os, html, re, sys
 
 CAT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MAX_N = 6
@@ -65,30 +66,36 @@ def write(rel, text):
     io.open(path, 'w', encoding='utf-8', newline='\n').write(text)
 
 
-# tried on these groups first (None = every group): the navigation bar at the
-# foot of the screen (as on the entry pages) on the group page and the count
-# pages, and on the group page the full-size pictures of the count pages
-TRIAL_GROUPS = {'632'}
+def name_key(name):
+    """sort key of a color group name G/H[n]#k: the ordinal k as a number, so
+    #2 comes before #10; G/H stays a string (orbifold symbols are no numbers)"""
+    m = re.match(r'(.*)\[(\d+)\](?:#(\d+))?$', name)
+    return (m.group(1), int(m.group(2)), int(m.group(3) or 0)) if m else (name, 0, 0)
 
 
-def trial(name):
-    return TRIAL_GROUPS is None or name in TRIAL_GROUPS
+def section_id(n):
+    """the anchor of a count's section on a group page"""
+    return 'c%d' % n
 
 
-def count_run(label, has, up, cur=None, link_cur=False):
+def count_run(label, has, up, cur=None, link_cur=False, here=False):
     """the bar's run of count links, '632 with 1 2 3 4 6 colors' or 'All
     symmetries with 1 2 3 4 5 6 colors': a count n with no color group
     (has(n) false) is dashed, the page's own count dark; up = the path from
     the page to the folder of the count pages.  link_cur: the dark count is
     still a link - the run leads to other pages with the same count (a
-    group's count page to the all-symmetries page)"""
+    group's count page to the all-symmetries page).  here: the counts are
+    sections of this page (a group page) instead of pages"""
+    def href(n):
+        return '#' + section_id(n) if here else '%s%d/index.html' % (up, n)
+
     def one(n):
         if n == cur and link_cur:
-            return '<a class="now" href="%s%d/index.html" title="%s">%d</a>' % (up, n, colors(n), n)
+            return '<a class="now" href="%s" title="%s">%d</a>' % (href(n), colors(n), n)
         if n == cur:
             return '<span class="now" title="%s">%d</span>' % (colors(n), n)
         if has(n):
-            return '<a href="%s%d/index.html" title="%s">%d</a>' % (up, n, colors(n), n)
+            return '<a href="%s" title="%s">%d</a>' % (href(n), colors(n), n)
         return '<span class="off" title="none">%d</span>' % n
     return ('<span class="grp">%s with %s colors</span>'
             % (label, ''.join(one(n) for n in range(1, MAX_N + 1))))
@@ -161,9 +168,10 @@ for g in index['groups']:
     groups[name] = dict(name=name, stem=stem, preset=preset, shape=shape,
                         manifest=os.path.basename(man), subs=subs,
                         thumb=thumb if os.path.exists(os.path.join(CAT, thumb)) else None,
-                        # color groups of one type side by side
+                        # color groups of one type side by side, #2 before #10
                         per_n={n: sorted((s for s in subs if s['index'] == n),
-                                         key=lambda s: (s['affineClass'], s['name']))
+                                         key=lambda s: (name_key(s['affineClass']),
+                                                        name_key(s['name'])))
                                for n in range(1, MAX_N + 1)})
 
 EVERY = [s for g in groups.values() for s in g['subs']]
@@ -231,13 +239,14 @@ def type_line(s):
 
 def cg_box(s, root):
     """a color group with a picture of each of its patterns, one per placement;
-    paths relative to the catalog root"""
+    paths relative to the catalog root.  A pattern's chip reads {k} for
+    placement k (the tooltip spells it out)"""
     href = '%s%s/index.html' % (root, s['dir'])
     K = s['placements']
     pats = []
     for k, img in enumerate(s['pats'], 1):
         tip = '%s.%d: coloring by cosets, placement %d of %d' % (disp(s['name']), k, k, K)
-        chip = '<span class="pk">placement %d</span>' % k if K > 1 else ''
+        chip = '<span class="pk">{%d}</span>' % k if K > 1 else ''
         if img:
             pats.append('<a class="pat" href="%s" title="%s"><img src="%s%s" alt="%s.%d" '
                         'loading="lazy">%s</a>' % (href, tip, root, img, disp(s['name']), k, chip))
@@ -252,20 +261,6 @@ def cg_box(s, root):
             '<div class="meta">%s</div>\n<div>%s</div>\n</div>\n</div>'
             % (K, ''.join(pats), title, disp(s['type']), plural(K, 'placement'),
                type_line(s), badge))
-
-
-def cg_minis(s, root):
-    """a color group on its group's page: a small picture per pattern, or its name"""
-    K = s['placements']
-    if all(s['pats']):
-        href = '%s%s/index.html' % (root, s['dir'])
-        minis = ''.join('<a class="mini" href="%s" title="%s.%d: placement %d of %d">'
-                        '<img src="%s%s" alt="" loading="lazy"></a>'
-                        % (href, disp(s['name']), k, k, K, root, img)
-                        for k, img in enumerate(s['pats'], 1))
-        return '<span class="cgbox">%s</span>' % minis
-    more = ' <i>&middot; %s</i>' % plural(K, 'pattern') if K > 1 else ''
-    return '<span class="label">%s%s</span>' % (disp(s['name'].split('/')[1]), more)
 
 
 # ---- top page ----------------------------------------------------------------
@@ -283,6 +278,26 @@ def by_count_nav(root, cur=None):
                         plural(ntypes(ss), 'type'), plural(len(ss), 'color group'),
                         plural(npatterns(ss), 'pattern'),
                         '%d %s' % (syms, 'symmetry' if syms == 1 else 'symmetries')))
+    return '<nav class="ntiles">%s</nav>' % ''.join(tiles)
+
+
+def group_count_nav(g):
+    """a group page's six counts, one tile each, as by_count_nav: a jump to
+    that count's section of the page"""
+    tiles = []
+    for n in range(1, MAX_N + 1):
+        ss = g['per_n'][n]
+        if not ss:
+            tiles.append('<div class="off" title="no color group with %s"><b>%s</b>'
+                         '<span>no color group</span></div>' % (colors(n), colors(n)))
+            continue
+        built = sum(s['built'] for s in ss)
+        tiles.append('<a href="#%s"><b>%s</b><span>%s</span><span>%s</span><span>%s</span>'
+                     '<span class="in">%s</span></a>'
+                     % (section_id(n), colors(n), plural(ntypes(ss), 'type'),
+                        plural(len(ss), 'color group'), plural(npatterns(ss), 'pattern'),
+                        'rendered' if built == len(ss) else
+                        '%d of %d rendered' % (built, len(ss)) if built else 'not rendered'))
     return '<nav class="ntiles">%s</nav>' % ''.join(tiles)
 
 
@@ -326,18 +341,6 @@ write('index.html', page(
 for name, g in groups.items():
     root = '../'
     crumbs = [('../index.html', 'Catalog'), (None, disp(name))]
-    rows = []
-    for n in range(1, MAX_N + 1):
-        ss = g['per_n'][n]
-        if not ss:
-            rows.append('<div class="row empty"><div class="what">%s'
-                        '<span class="cnt">no color group</span></div><div></div></div>'
-                        % colors(n))
-            continue
-        rows.append('<div class="row"><div class="what"><a href="%d/index.html">%s</a>'
-                    '<span class="cnt">%s</span></div><div class="strip">%s</div></div>'
-                    % (n, colors(n), counts_line(ss),
-                       ''.join(cg_minis(s, root) for s in ss)))
     hero = ('<img src="gen/group.webp" alt="%s">' % disp(name)) if g['thumb'] else ''
     facts = '''<dl class="facts">
 <dt>Orbifold</dt><dd>%s</dd>
@@ -350,27 +353,24 @@ for name, g in groups.items():
 </dl>''' % (disp(name), HM[name], MAX_N, counts_line(g['subs']), status(g['subs']),
             count_table(g, root), g['preset'],
             'default' if g['shape'] == 'default' else html.escape(g['shape']), g['manifest'])
-    if trial(name):
-        # a section per count, its color groups as on the count pages: a
-        # full-size picture of every pattern
-        secs = []
-        for n in range(1, MAX_N + 1):
-            ss = g['per_n'][n]
-            if not ss:
-                secs.append('<h2 class="sec">%s <span class="note">none</span></h2>' % colors(n))
-                continue
-            secs.append('<h2 class="sec"><a href="%d/index.html">%s</a> <span class="note">%s '
-                        '&middot; <a href="%d/index.html">on its own page</a></span></h2>\n'
-                        '<div class="pgrid">\n%s\n</div>'
-                        % (n, colors(n), counts_line(ss), n,
-                           '\n'.join(cg_box(s, root) for s in ss)))
-        body = ('<div class="hero">%s<div>%s</div></div>\n%s'
-                % (hero, facts, '\n'.join(secs)))
-    else:
-        body = ('<div class="hero">%s<div>%s</div></div>\n'
-                '<h2 class="sec">By number of colors<span class="note">a small picture per '
-                'pattern</span></h2>\n<div class="rows">\n%s\n</div>'
-                % (hero, facts, '\n'.join(rows)))
+    # a section per count, its color groups as on the count pages: a full-size
+    # picture of every pattern; the tiles and the bar jump to the sections
+    secs = []
+    for n in range(1, MAX_N + 1):
+        ss = g['per_n'][n]
+        if not ss:
+            secs.append('<h2 class="sec" id="%s">%s <span class="note">none</span></h2>'
+                        % (section_id(n), colors(n)))
+            continue
+        secs.append('<h2 class="sec" id="%s"><a href="%d/index.html">%s</a> <span class="note">%s '
+                    '&middot; <a href="%d/index.html">on its own page</a></span></h2>\n'
+                    '<div class="pgrid">\n%s\n</div>'
+                    % (section_id(n), n, colors(n), counts_line(ss), n,
+                       '\n'.join(cg_box(s, root) for s in ss)))
+    body = ('<div class="hero">%s<div>%s</div></div>\n'
+            '<h2 class="sec">By number of colors<span class="note">a section each, '
+            'below</span></h2>\n%s\n%s'
+            % (hero, facts, group_count_nav(g), '\n'.join(secs)))
     write('%s/index.html' % g['stem'], page(
         '%s - Color Groups Catalog' % name, root, crumbs,
         '%s <span class="sub">%s</span>' % (disp(name), HM[name]),
@@ -378,8 +378,8 @@ for name, g in groups.items():
         'number of colors.' % (disp(name), MAX_N), body,
         bar([('../index.html', 'Catalog'),
              (None, 'All color groups of <b>%s</b>' % disp(name)),
-             count_run('<b>%s</b>' % disp(name), lambda n: g['per_n'][n], '')])
-        if trial(name) else ''))
+             count_run('<b>%s</b>' % disp(name), lambda n: g['per_n'][n], '', here=True),
+             count_run('All symmetries', all_n, '../colors/')])))
 
 
 # ---- count pages of one group: <stem>/<N>/index.html -------------------------
@@ -415,8 +415,7 @@ for name, g in groups.items():
             bar([('../../index.html', 'Catalog'),
                  ('../index.html', 'All color groups of <b>%s</b>' % disp(name)),
                  count_run('<b>%s</b>' % disp(name), lambda k: g['per_n'][k], '../', cur=n),
-                 count_run('All symmetries', all_n, '../../colors/', cur=n, link_cur=True)])
-            if trial(name) else ''))
+                 count_run('All symmetries', all_n, '../../colors/', cur=n, link_cur=True)])))
 
 
 # ---- count pages across all groups: colors/<N>/index.html ------------------

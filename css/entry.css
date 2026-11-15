@@ -211,7 +211,7 @@ footer.bar nav.up > * { white-space: nowrap; }     /* a narrow screen wraps whol
 /* the run of G's count pages, '632 with 1 2 3 4 6 colors': this entry's count
  * dark, a count with no color group dashed (as on the index pages) */
 footer.bar nav.up .grp {
-  display: inline-flex; align-items: center; gap: .2rem;
+  display: inline-flex; flex-wrap: wrap; max-width: 100%; align-items: center; gap: .2rem;
   padding: .1rem .6rem; border: 1px solid var(--line); border-radius: 4px;
   background: var(--panel); color: var(--accent);
 }
