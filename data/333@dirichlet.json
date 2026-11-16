@@ -1,0 +1,2349 @@
+{
+ "format": "colorsym-catalog-manifest",
+ "version": 3,
+ "group": {
+  "name": "333",
+  "stem": "333",
+  "family": "wallpaper",
+  "gens": "a b c d",
+  "relators": "a^3, b^3, a*c, b*d, (a*d)^3",
+  "geometry": {
+   "a": 0.5
+  },
+  "dirichlet": {
+   "preset": "presets/wpe/wpe-333-3.json",
+   "baseX": -0.216,
+   "baseY": 0.02,
+   "words": "b d cb da a c",
+   "sideWords": [
+    "b",
+    "d",
+    "cb",
+    "da",
+    "a",
+    "c"
+   ],
+   "geometry": {
+    "a": 0.5,
+    "b": 0.5,
+    "c": 0,
+    "angle_a": 0,
+    "angle_b": 90
+   }
+  },
+  "geometryVerified": true,
+  "frame": {
+   "origin": [
+    -0.24999999999999992,
+    0
+   ],
+   "t1": [
+    0.7499999999999999,
+    0.43301270189221924
+   ],
+   "t2": [
+    -1.6653345369377348e-16,
+    0.8660254037844386
+   ],
+   "maxOrder": 3
+  }
+ },
+ "maxIndex": 7,
+ "totalCount": 9,
+ "countPerIndex": [
+  {
+   "index": 1,
+   "count": 1
+  },
+  {
+   "index": 3,
+   "count": 4
+  },
+  {
+   "index": 4,
+   "count": 1
+  },
+  {
+   "index": 6,
+   "count": 1
+  },
+  {
+   "index": 7,
+   "count": 2
+  }
+ ],
+ "affineCountPerIndex": [
+  {
+   "index": 1,
+   "count": 1
+  },
+  {
+   "index": 3,
+   "count": 2
+  },
+  {
+   "index": 4,
+   "count": 1
+  },
+  {
+   "index": 6,
+   "count": 1
+  },
+  {
+   "index": 7,
+   "count": 1
+  }
+ ],
+ "subgroups": [
+  {
+   "id": "333.1.1",
+   "index": 1,
+   "type": "333",
+   "normal": true,
+   "placements": 1,
+   "cosets": "a a a a",
+   "orders": [
+    3,
+    3,
+    3
+   ],
+   "abelianization": "Z^0 + Z/3 + Z/3",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      0
+     ],
+     "cycles": "e"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      0
+     ],
+     "cycles": "e"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      0
+     ],
+     "cycles": "e"
+    },
+    {
+     "generator": "d",
+     "perm": [
+      0
+     ],
+     "cycles": "e"
+    }
+   ],
+   "geoKey": "k1|n=1|L=1,0,1|P=-1,-1,1,0:0,0;0,1,-1,-1:0,0",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=1|L=1,0,1|P=-1,-1,1,0:0,0;0,1,-1,-1:0,0",
+   "latticeHNF": {
+    "a": 1,
+    "b": 0,
+    "d": 1
+   },
+   "latticeIndex": 1,
+   "pointIndex": 1,
+   "orbitReps": [
+    {
+     "word": "e",
+     "isometry": {
+      "type": "identity"
+     },
+     "text": "identity"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "isometry": {
+      "type": "identity"
+     },
+     "text": "identity"
+    }
+   ],
+   "simplyConnected": true,
+   "hGenerators": [
+    {
+     "word": "b",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931957,
+      "center": [
+       -0.2499999999999999,
+       3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-0.25,0)"
+    },
+    {
+     "word": "cb",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931957,
+      "center": [
+       3.7007434154171876e-17,
+       0.4330127018922192
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (0,0.433)"
+    },
+    {
+     "word": "a",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931957,
+      "center": [
+       0.2499999999999999,
+       3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (0.25,0)"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 6,
+    "interior": 0
+   },
+   "name": "333/333[1]",
+   "affineClass": "333/333[1]"
+  },
+  {
+   "id": "333.3.1",
+   "index": 3,
+   "type": "333",
+   "normal": true,
+   "placements": 1,
+   "cosets": "abc bca abc cab",
+   "orders": [
+    3,
+    3,
+    3
+   ],
+   "abelianization": "Z^0 + Z/3 + Z/3",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      0,
+      1,
+      2
+     ],
+     "cycles": "e"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      1,
+      2,
+      0
+     ],
+     "cycles": "(0 1 2)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      0,
+      1,
+      2
+     ],
+     "cycles": "e"
+    },
+    {
+     "generator": "d",
+     "perm": [
+      2,
+      0,
+      1
+     ],
+     "cycles": "(0 2 1)"
+    }
+   ],
+   "geoKey": "k1|n=3|L=1,1,3|P=-1,-1,1,0:0,1;0,1,-1,-1:0,2",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=3|L=1,1,3|P=-1,-1,1,0:0,1;0,1,-1,-1:0,2",
+   "latticeHNF": {
+    "a": 1,
+    "b": 1,
+    "d": 3
+   },
+   "latticeIndex": 3,
+   "pointIndex": 1,
+   "orbitReps": [
+    {
+     "word": "e",
+     "isometry": {
+      "type": "identity"
+     },
+     "text": "identity"
+    },
+    {
+     "word": "d",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931957,
+      "center": [
+       -0.2499999999999999,
+       -3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (-0.25,-0)"
+    },
+    {
+     "word": "b",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931957,
+      "center": [
+       -0.2499999999999999,
+       3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-0.25,0)"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "isometry": {
+      "type": "identity"
+     },
+     "text": "identity"
+    },
+    {
+     "word": "b",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931957,
+      "center": [
+       -0.2499999999999999,
+       3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-0.25,0)"
+    },
+    {
+     "word": "B",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931957,
+      "center": [
+       -0.2499999999999999,
+       -3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (-0.25,-0)"
+    }
+   ],
+   "simplyConnected": true,
+   "hGenerators": [
+    {
+     "word": "Bcb",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931953,
+      "center": [
+       -0.4999999999999998,
+       0.4330127018922192
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-0.5,0.433)"
+    },
+    {
+     "word": "a",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931953,
+      "center": [
+       0.24999999999999997,
+       1.8503717077085944e-17
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (0.25,0)"
+    },
+    {
+     "word": "c",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931957,
+      "center": [
+       0.2499999999999999,
+       -3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (0.25,-0)"
+    },
+    {
+     "word": "Bdad",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.094395102393195,
+      "center": [
+       -0.5,
+       -0.4330127018922192
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (-0.5,-0.433)"
+    },
+    {
+     "word": "Dcd",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931953,
+      "center": [
+       -0.5,
+       -0.4330127018922194
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-0.5,-0.433)"
+    },
+    {
+     "word": "dab",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931953,
+      "center": [
+       -0.5,
+       0.4330127018922194
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (-0.5,0.433)"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 12,
+    "interior": 6
+   },
+   "name": "333/333[3]#2",
+   "affineClass": "333/333[3]#1"
+  },
+  {
+   "id": "333.3.2",
+   "index": 3,
+   "type": "333",
+   "normal": true,
+   "placements": 1,
+   "cosets": "bca abc cab abc",
+   "orders": [
+    3,
+    3,
+    3
+   ],
+   "abelianization": "Z^0 + Z/3 + Z/3",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      1,
+      2,
+      0
+     ],
+     "cycles": "(0 1 2)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      0,
+      1,
+      2
+     ],
+     "cycles": "e"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      2,
+      0,
+      1
+     ],
+     "cycles": "(0 2 1)"
+    },
+    {
+     "generator": "d",
+     "perm": [
+      0,
+      1,
+      2
+     ],
+     "cycles": "e"
+    }
+   ],
+   "geoKey": "k1|n=3|L=1,1,3|P=-1,-1,1,0:0,0;0,1,-1,-1:0,0",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=3|L=1,1,3|P=-1,-1,1,0:0,0;0,1,-1,-1:0,0",
+   "latticeHNF": {
+    "a": 1,
+    "b": 1,
+    "d": 3
+   },
+   "latticeIndex": 3,
+   "pointIndex": 1,
+   "orbitReps": [
+    {
+     "word": "e",
+     "isometry": {
+      "type": "identity"
+     },
+     "text": "identity"
+    },
+    {
+     "word": "cb",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931957,
+      "center": [
+       3.7007434154171876e-17,
+       0.4330127018922192
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (0,0.433)"
+    },
+    {
+     "word": "da",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931957,
+      "center": [
+       -3.7007434154171876e-17,
+       0.4330127018922192
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-0,0.433)"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "isometry": {
+      "type": "identity"
+     },
+     "text": "identity"
+    },
+    {
+     "word": "a",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931957,
+      "center": [
+       0.2499999999999999,
+       3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (0.25,0)"
+    },
+    {
+     "word": "A",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931957,
+      "center": [
+       0.2499999999999999,
+       -3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (0.25,-0)"
+    }
+   ],
+   "simplyConnected": true,
+   "hGenerators": [
+    {
+     "word": "b",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931957,
+      "center": [
+       -0.2499999999999999,
+       3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-0.25,0)"
+    },
+    {
+     "word": "d",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931957,
+      "center": [
+       -0.2499999999999999,
+       -3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (-0.25,-0)"
+    },
+    {
+     "word": "ADa",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931957,
+      "center": [
+       0.49999999999999994,
+       0.4330127018922192
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (0.5,0.433)"
+    },
+    {
+     "word": "BCbcb",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931957,
+      "center": [
+       -0.24999999999999953,
+       0.8660254037844384
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-0.25,0.866)"
+    },
+    {
+     "word": "BCdcb",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.094395102393195,
+      "center": [
+       -0.2499999999999998,
+       0.8660254037844389
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (-0.25,0.866)"
+    },
+    {
+     "word": "Ada",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931957,
+      "center": [
+       0.4999999999999998,
+       0.4330127018922192
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (0.5,0.433)"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 12,
+    "interior": 6
+   },
+   "name": "333/333[3]#1",
+   "affineClass": "333/333[3]#1"
+  },
+  {
+   "id": "333.3.3",
+   "index": 3,
+   "type": "333",
+   "normal": true,
+   "placements": 1,
+   "cosets": "bca bca cab cab",
+   "orders": [
+    3,
+    3,
+    3
+   ],
+   "abelianization": "Z^0 + Z/3 + Z/3",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      1,
+      2,
+      0
+     ],
+     "cycles": "(0 1 2)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      1,
+      2,
+      0
+     ],
+     "cycles": "(0 1 2)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      2,
+      0,
+      1
+     ],
+     "cycles": "(0 2 1)"
+    },
+    {
+     "generator": "d",
+     "perm": [
+      2,
+      0,
+      1
+     ],
+     "cycles": "(0 2 1)"
+    }
+   ],
+   "geoKey": "k1|n=3|L=1,1,3|P=-1,-1,1,0:0,2;0,1,-1,-1:0,1",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=3|L=1,1,3|P=-1,-1,1,0:0,2;0,1,-1,-1:0,1",
+   "latticeHNF": {
+    "a": 1,
+    "b": 1,
+    "d": 3
+   },
+   "latticeIndex": 3,
+   "pointIndex": 1,
+   "orbitReps": [
+    {
+     "word": "e",
+     "isometry": {
+      "type": "identity"
+     },
+     "text": "identity"
+    },
+    {
+     "word": "d",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931957,
+      "center": [
+       -0.2499999999999999,
+       -3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (-0.25,-0)"
+    },
+    {
+     "word": "b",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931957,
+      "center": [
+       -0.2499999999999999,
+       3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-0.25,0)"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "isometry": {
+      "type": "identity"
+     },
+     "text": "identity"
+    },
+    {
+     "word": "a",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931957,
+      "center": [
+       0.2499999999999999,
+       3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (0.25,0)"
+    },
+    {
+     "word": "A",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931957,
+      "center": [
+       0.2499999999999999,
+       -3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (0.25,-0)"
+    }
+   ],
+   "simplyConnected": true,
+   "hGenerators": [
+    {
+     "word": "cb",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931957,
+      "center": [
+       3.7007434154171876e-17,
+       0.4330127018922192
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (0,0.433)"
+    },
+    {
+     "word": "da",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931957,
+      "center": [
+       -3.7007434154171876e-17,
+       0.4330127018922192
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-0,0.433)"
+    },
+    {
+     "word": "Dc",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931957,
+      "center": [
+       -3.7007434154171876e-17,
+       -0.4330127018922192
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (-0,-0.433)"
+    },
+    {
+     "word": "ad",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931957,
+      "center": [
+       3.7007434154171876e-17,
+       -0.43301270189221913
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (0,-0.433)"
+    },
+    {
+     "word": "Bcd",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931957,
+      "center": [
+       -0.7499999999999997,
+       -1.8503717077085936e-16
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (-0.75,-0)"
+    },
+    {
+     "word": "Bdab",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931953,
+      "center": [
+       -0.7500000000000001,
+       -3.700743415417189e-17
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-0.75,-0)"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 12,
+    "interior": 6
+   },
+   "name": "333/333[3]#3",
+   "affineClass": "333/333[3]#1"
+  },
+  {
+   "id": "333.3.4",
+   "index": 3,
+   "type": "o",
+   "normal": true,
+   "placements": 1,
+   "cosets": "bca cab cab bca",
+   "orders": [],
+   "abelianization": "Z^2",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      1,
+      2,
+      0
+     ],
+     "cycles": "(0 1 2)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      2,
+      0,
+      1
+     ],
+     "cycles": "(0 2 1)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      2,
+      0,
+      1
+     ],
+     "cycles": "(0 2 1)"
+    },
+    {
+     "generator": "d",
+     "perm": [
+      1,
+      2,
+      0
+     ],
+     "cycles": "(0 1 2)"
+    }
+   ],
+   "geoKey": "k1|n=3|L=1,0,1|P=",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=3|L=1,0,1|P=",
+   "latticeHNF": {
+    "a": 1,
+    "b": 0,
+    "d": 1
+   },
+   "latticeIndex": 1,
+   "pointIndex": 3,
+   "orbitReps": [
+    {
+     "word": "e",
+     "isometry": {
+      "type": "identity"
+     },
+     "text": "identity"
+    },
+    {
+     "word": "b",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931957,
+      "center": [
+       -0.2499999999999999,
+       3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-0.25,0)"
+    },
+    {
+     "word": "d",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931957,
+      "center": [
+       -0.2499999999999999,
+       -3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (-0.25,-0)"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "isometry": {
+      "type": "identity"
+     },
+     "text": "identity"
+    },
+    {
+     "word": "a",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931957,
+      "center": [
+       0.2499999999999999,
+       3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (0.25,0)"
+    },
+    {
+     "word": "A",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931957,
+      "center": [
+       0.2499999999999999,
+       -3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (0.25,-0)"
+    }
+   ],
+   "simplyConnected": true,
+   "hGenerators": [
+    {
+     "word": "Dcb",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       1.6653345369377348e-16,
+       0.8660254037844386
+      ]
+     },
+     "text": "translation by (0,0.866)"
+    },
+    {
+     "word": "Bda",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0.75,
+       0.4330127018922194
+      ]
+     },
+     "text": "translation by (0.75,0.433)"
+    },
+    {
+     "word": "Bc",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0.7499999999999999,
+       -0.43301270189221924
+      ]
+     },
+     "text": "translation by (0.75,-0.433)"
+    },
+    {
+     "word": "cbb",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       -0.75,
+       -0.43301270189221924
+      ]
+     },
+     "text": "translation by (-0.75,-0.433)"
+    },
+    {
+     "word": "ab",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       -0.7499999999999999,
+       0.4330127018922192
+      ]
+     },
+     "text": "translation by (-0.75,0.433)"
+    },
+    {
+     "word": "dad",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       1.6653345369377348e-16,
+       -0.8660254037844386
+      ]
+     },
+     "text": "translation by (0,-0.866)"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 12,
+    "interior": 6
+   },
+   "name": "333/o[3]",
+   "affineClass": "333/o[3]"
+  },
+  {
+   "id": "333.4.1",
+   "index": 4,
+   "type": "333",
+   "normal": false,
+   "placements": 4,
+   "cosets": "acdb bcad adbc cabd",
+   "orders": [
+    3,
+    3,
+    3
+   ],
+   "abelianization": "Z^0 + Z/3 + Z/3",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      0,
+      2,
+      3,
+      1
+     ],
+     "cycles": "(1 2 3)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      1,
+      2,
+      0,
+      3
+     ],
+     "cycles": "(0 1 2)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      0,
+      3,
+      1,
+      2
+     ],
+     "cycles": "(1 3 2)"
+    },
+    {
+     "generator": "d",
+     "perm": [
+      2,
+      0,
+      1,
+      3
+     ],
+     "cycles": "(0 2 1)"
+    }
+   ],
+   "geoKey": "k1|n=4|L=2,0,2|P=-1,-1,1,0:0,0;0,1,-1,-1:0,0",
+   "keyCoset": 3,
+   "representativeKey": "k1|n=4|L=2,0,2|P=-1,-1,1,0:1,1;0,1,-1,-1:1,0",
+   "latticeHNF": {
+    "a": 2,
+    "b": 0,
+    "d": 2
+   },
+   "latticeIndex": 4,
+   "pointIndex": 1,
+   "orbitReps": [
+    {
+     "word": "e",
+     "isometry": {
+      "type": "identity"
+     },
+     "text": "identity"
+    },
+    {
+     "word": "d",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931957,
+      "center": [
+       -0.2499999999999999,
+       -3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (-0.25,-0)"
+    },
+    {
+     "word": "b",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931957,
+      "center": [
+       -0.2499999999999999,
+       3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-0.25,0)"
+    },
+    {
+     "word": "cb",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931957,
+      "center": [
+       3.7007434154171876e-17,
+       0.4330127018922192
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (0,0.433)"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "isometry": {
+      "type": "identity"
+     },
+     "text": "identity"
+    },
+    {
+     "word": "b",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931957,
+      "center": [
+       -0.2499999999999999,
+       3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-0.25,0)"
+    },
+    {
+     "word": "B",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931957,
+      "center": [
+       -0.2499999999999999,
+       -3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (-0.25,-0)"
+    },
+    {
+     "word": "BC",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931957,
+      "center": [
+       -3.7007434154171876e-17,
+       0.4330127018922192
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-0,0.433)"
+    }
+   ],
+   "simplyConnected": true,
+   "hGenerators": [
+    {
+     "word": "a",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931953,
+      "center": [
+       0.24999999999999997,
+       1.8503717077085944e-17
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (0.25,0)"
+    },
+    {
+     "word": "c",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931957,
+      "center": [
+       0.2499999999999999,
+       -3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (0.25,-0)"
+    },
+    {
+     "word": "cbd",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931957,
+      "center": [
+       0.2499999999999999,
+       -7.401486830834375e-17
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (0.25,-0)"
+    },
+    {
+     "word": "BCad",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931944,
+      "center": [
+       -0.7500000000000003,
+       2.5905203907920336e-16
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (-0.75,0)"
+    },
+    {
+     "word": "Bdab",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931953,
+      "center": [
+       -0.7500000000000001,
+       -3.700743415417189e-17
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-0.75,-0)"
+    },
+    {
+     "word": "Dab",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931957,
+      "center": [
+       -0.7499999999999997,
+       1.8503717077085936e-16
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-0.75,0)"
+    },
+    {
+     "word": "BCbcb",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931957,
+      "center": [
+       -0.24999999999999953,
+       0.8660254037844384
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-0.25,0.866)"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 14,
+    "interior": 10
+   },
+   "name": "333/333[4]",
+   "affineClass": "333/333[4]"
+  },
+  {
+   "id": "333.6.1",
+   "index": 6,
+   "type": "o",
+   "normal": false,
+   "placements": 3,
+   "cosets": "bcafde cedafb cabefd dfacbe",
+   "orders": [],
+   "abelianization": "Z^2",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      1,
+      2,
+      0,
+      5,
+      3,
+      4
+     ],
+     "cycles": "(0 1 2)(3 5 4)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      2,
+      4,
+      3,
+      0,
+      5,
+      1
+     ],
+     "cycles": "(0 2 3)(1 4 5)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      2,
+      0,
+      1,
+      4,
+      5,
+      3
+     ],
+     "cycles": "(0 2 1)(3 4 5)"
+    },
+    {
+     "generator": "d",
+     "perm": [
+      3,
+      5,
+      0,
+      2,
+      1,
+      4
+     ],
+     "cycles": "(0 3 2)(1 5 4)"
+    }
+   ],
+   "geoKey": "k1|n=6|L=1,0,2|P=",
+   "keyCoset": 0,
+   "representativeKey": "k1|n=6|L=1,0,2|P=",
+   "latticeHNF": {
+    "a": 1,
+    "b": 0,
+    "d": 2
+   },
+   "latticeIndex": 2,
+   "pointIndex": 3,
+   "orbitReps": [
+    {
+     "word": "e",
+     "isometry": {
+      "type": "identity"
+     },
+     "text": "identity"
+    },
+    {
+     "word": "dcb",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931953,
+      "center": [
+       -0.4999999999999998,
+       0.4330127018922192
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-0.5,0.433)"
+    },
+    {
+     "word": "d",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931957,
+      "center": [
+       -0.2499999999999999,
+       -3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (-0.25,-0)"
+    },
+    {
+     "word": "b",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931957,
+      "center": [
+       -0.2499999999999999,
+       3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-0.25,0)"
+    },
+    {
+     "word": "bcb",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       1.6653345369377348e-16,
+       0.8660254037844386
+      ]
+     },
+     "text": "translation by (0,0.866)"
+    },
+    {
+     "word": "cb",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931957,
+      "center": [
+       3.7007434154171876e-17,
+       0.4330127018922192
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (0,0.433)"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "isometry": {
+      "type": "identity"
+     },
+     "text": "identity"
+    },
+    {
+     "word": "a",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931957,
+      "center": [
+       0.2499999999999999,
+       3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (0.25,0)"
+    },
+    {
+     "word": "A",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931957,
+      "center": [
+       0.2499999999999999,
+       -3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (0.25,-0)"
+    },
+    {
+     "word": "B",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931957,
+      "center": [
+       -0.2499999999999999,
+       -3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (-0.25,-0)"
+    },
+    {
+     "word": "bcb",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       1.6653345369377348e-16,
+       0.8660254037844386
+      ]
+     },
+     "text": "translation by (0,0.866)"
+    },
+    {
+     "word": "BC",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931957,
+      "center": [
+       -3.7007434154171876e-17,
+       0.4330127018922192
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-0,0.433)"
+    }
+   ],
+   "simplyConnected": true,
+   "hGenerators": [
+    {
+     "word": "Bda",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0.75,
+       0.4330127018922194
+      ]
+     },
+     "text": "translation by (0.75,0.433)"
+    },
+    {
+     "word": "BCDc",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       0.7499999999999996,
+       -1.299038105676658
+      ]
+     },
+     "text": "translation by (0.75,-1.299)"
+    },
+    {
+     "word": "BCBcbdcb",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       -0.7499999999999998,
+       -0.4330127018922197
+      ]
+     },
+     "text": "translation by (-0.75,-0.433)"
+    },
+    {
+     "word": "adcb",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       -0.7499999999999996,
+       1.2990381056766576
+      ]
+     },
+     "text": "translation by (-0.75,1.299)"
+    },
+    {
+     "word": "Dcdcb",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       2.220446049250313e-16,
+       1.7320508075688772
+      ]
+     },
+     "text": "translation by (0,1.7321)"
+    },
+    {
+     "word": "BCBdad",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       6.661338147750939e-16,
+       -1.7320508075688767
+      ]
+     },
+     "text": "translation by (0,-1.7321)"
+    },
+    {
+     "word": "cd",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       -0.7499999999999999,
+       -0.43301270189221924
+      ]
+     },
+     "text": "translation by (-0.75,-0.433)"
+    },
+    {
+     "word": "cbb",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       -0.75,
+       -0.43301270189221924
+      ]
+     },
+     "text": "translation by (-0.75,-0.433)"
+    },
+    {
+     "word": "BCdab",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       -0.7499999999999996,
+       -0.4330127018922194
+      ]
+     },
+     "text": "translation by (-0.75,-0.433)"
+    },
+    {
+     "word": "BCBab",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       -0.7499999999999996,
+       -0.4330127018922194
+      ]
+     },
+     "text": "translation by (-0.75,-0.433)"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 20,
+    "interior": 16
+   },
+   "name": "333/o[6]",
+   "affineClass": "333/o[6]"
+  },
+  {
+   "id": "333.7.1",
+   "index": 7,
+   "type": "333",
+   "normal": false,
+   "placements": 7,
+   "cosets": "adfebgc bcadfge aegbdcf cabdgef",
+   "orders": [
+    3,
+    3,
+    3
+   ],
+   "abelianization": "Z^0 + Z/3 + Z/3",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      0,
+      3,
+      5,
+      4,
+      1,
+      6,
+      2
+     ],
+     "cycles": "(1 3 4)(2 5 6)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      1,
+      2,
+      0,
+      3,
+      5,
+      6,
+      4
+     ],
+     "cycles": "(0 1 2)(4 5 6)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      0,
+      4,
+      6,
+      1,
+      3,
+      2,
+      5
+     ],
+     "cycles": "(1 4 3)(2 6 5)"
+    },
+    {
+     "generator": "d",
+     "perm": [
+      2,
+      0,
+      1,
+      3,
+      6,
+      4,
+      5
+     ],
+     "cycles": "(0 2 1)(4 6 5)"
+    }
+   ],
+   "geoKey": "k1|n=7|L=1,4,7|P=-1,-1,1,0:0,0;0,1,-1,-1:0,0",
+   "keyCoset": 3,
+   "representativeKey": "k1|n=7|L=1,4,7|P=-1,-1,1,0:0,2;0,1,-1,-1:0,3",
+   "latticeHNF": {
+    "a": 1,
+    "b": 4,
+    "d": 7
+   },
+   "latticeIndex": 7,
+   "pointIndex": 1,
+   "orbitReps": [
+    {
+     "word": "e",
+     "isometry": {
+      "type": "identity"
+     },
+     "text": "identity"
+    },
+    {
+     "word": "d",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931957,
+      "center": [
+       -0.2499999999999999,
+       -3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (-0.25,-0)"
+    },
+    {
+     "word": "b",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931957,
+      "center": [
+       -0.2499999999999999,
+       3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-0.25,0)"
+    },
+    {
+     "word": "cbb",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       -0.75,
+       -0.43301270189221924
+      ]
+     },
+     "text": "translation by (-0.75,-0.433)"
+    },
+    {
+     "word": "dab",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931953,
+      "center": [
+       -0.5,
+       0.4330127018922194
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (-0.5,0.433)"
+    },
+    {
+     "word": "bab",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931957,
+      "center": [
+       -0.7499999999999997,
+       1.8503717077085936e-16
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-0.75,0)"
+    },
+    {
+     "word": "ab",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       -0.7499999999999999,
+       0.43301270189221924
+      ]
+     },
+     "text": "translation by (-0.75,0.433)"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "isometry": {
+      "type": "identity"
+     },
+     "text": "identity"
+    },
+    {
+     "word": "b",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931957,
+      "center": [
+       -0.2499999999999999,
+       3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-0.25,0)"
+    },
+    {
+     "word": "B",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931957,
+      "center": [
+       -0.2499999999999999,
+       -3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (-0.25,-0)"
+    },
+    {
+     "word": "baB",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931953,
+      "center": [
+       -0.4999999999999998,
+       -0.4330127018922192
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (-0.5,-0.433)"
+    },
+    {
+     "word": "BCB",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       1.6653345369377348e-16,
+       -0.8660254037844386
+      ]
+     },
+     "text": "translation by (0,-0.866)"
+    },
+    {
+     "word": "BC",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931957,
+      "center": [
+       -3.7007434154171876e-17,
+       0.4330127018922192
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-0,0.433)"
+    },
+    {
+     "word": "BCb",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931953,
+      "center": [
+       -0.5,
+       0.4330127018922194
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (-0.5,0.433)"
+    }
+   ],
+   "simplyConnected": true,
+   "hGenerators": [
+    {
+     "word": "BABcb",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.094395102393195,
+      "center": [
+       -0.7499999999999999,
+       0.866025403784438
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-0.75,0.866)"
+    },
+    {
+     "word": "a",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931953,
+      "center": [
+       0.24999999999999997,
+       1.8503717077085944e-17
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (0.25,0)"
+    },
+    {
+     "word": "c",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931957,
+      "center": [
+       0.2499999999999999,
+       -3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (0.25,-0)"
+    },
+    {
+     "word": "BABdad",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.094395102393196,
+      "center": [
+       -0.9999999999999987,
+       -0.43301270189221985
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (-1,-0.433)"
+    },
+    {
+     "word": "BBCbcbb",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931953,
+      "center": [
+       -0.9999999999999996,
+       -0.43301270189221863
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-1,-0.433)"
+    },
+    {
+     "word": "BBCadab",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931966,
+      "center": [
+       -0.9999999999999999,
+       -0.43301270189221863
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-1,-0.433)"
+    },
+    {
+     "word": "Dcdab",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931944,
+      "center": [
+       -0.9999999999999999,
+       -0.43301270189221996
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-1,-0.433)"
+    },
+    {
+     "word": "dabab",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.094395102393193,
+      "center": [
+       -0.7499999999999994,
+       0.8660254037844406
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (-0.75,0.866)"
+    },
+    {
+     "word": "Babab",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.094395102393193,
+      "center": [
+       -0.7499999999999994,
+       0.8660254037844406
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (-0.75,0.866)"
+    },
+    {
+     "word": "BAcbab",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931957,
+      "center": [
+       -0.7499999999999998,
+       0.8660254037844387
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (-0.75,0.866)"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 20,
+    "interior": 22
+   },
+   "name": "333/333[7]#2",
+   "affineClass": "333/333[7]#1"
+  },
+  {
+   "id": "333.7.2",
+   "index": 7,
+   "type": "333",
+   "normal": false,
+   "placements": 7,
+   "cosets": "adfebgc bcaefdg aegbdcf cabfdeg",
+   "orders": [
+    3,
+    3,
+    3
+   ],
+   "abelianization": "Z^0 + Z/3 + Z/3",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      0,
+      3,
+      5,
+      4,
+      1,
+      6,
+      2
+     ],
+     "cycles": "(1 3 4)(2 5 6)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      1,
+      2,
+      0,
+      4,
+      5,
+      3,
+      6
+     ],
+     "cycles": "(0 1 2)(3 4 5)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      0,
+      4,
+      6,
+      1,
+      3,
+      2,
+      5
+     ],
+     "cycles": "(1 4 3)(2 6 5)"
+    },
+    {
+     "generator": "d",
+     "perm": [
+      2,
+      0,
+      1,
+      5,
+      3,
+      4,
+      6
+     ],
+     "cycles": "(0 2 1)(3 5 4)"
+    }
+   ],
+   "geoKey": "k1|n=7|L=1,2,7|P=-1,-1,1,0:0,0;0,1,-1,-1:0,0",
+   "keyCoset": 6,
+   "representativeKey": "k1|n=7|L=1,2,7|P=-1,-1,1,0:0,4;0,1,-1,-1:0,5",
+   "latticeHNF": {
+    "a": 1,
+    "b": 2,
+    "d": 7
+   },
+   "latticeIndex": 7,
+   "pointIndex": 1,
+   "orbitReps": [
+    {
+     "word": "e",
+     "isometry": {
+      "type": "identity"
+     },
+     "text": "identity"
+    },
+    {
+     "word": "d",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931957,
+      "center": [
+       -0.2499999999999999,
+       -3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (-0.25,-0)"
+    },
+    {
+     "word": "b",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931957,
+      "center": [
+       -0.2499999999999999,
+       3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-0.25,0)"
+    },
+    {
+     "word": "cbb",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       -0.75,
+       -0.43301270189221924
+      ]
+     },
+     "text": "translation by (-0.75,-0.433)"
+    },
+    {
+     "word": "dcbb",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931957,
+      "center": [
+       -0.7499999999999998,
+       1.8503717077085936e-16
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (-0.75,0)"
+    },
+    {
+     "word": "bcbb",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.094395102393194,
+      "center": [
+       -0.49999999999999994,
+       -0.43301270189221974
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-0.5,-0.433)"
+    },
+    {
+     "word": "dab",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931953,
+      "center": [
+       -0.5,
+       0.4330127018922194
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (-0.5,0.433)"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "isometry": {
+      "type": "identity"
+     },
+     "text": "identity"
+    },
+    {
+     "word": "b",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931957,
+      "center": [
+       -0.2499999999999999,
+       3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-0.25,0)"
+    },
+    {
+     "word": "B",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931957,
+      "center": [
+       -0.2499999999999999,
+       -3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (-0.25,-0)"
+    },
+    {
+     "word": "BCb",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931953,
+      "center": [
+       -0.5,
+       0.4330127018922194
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (-0.5,0.433)"
+    },
+    {
+     "word": "BCB",
+     "isometry": {
+      "type": "translation",
+      "translation": [
+       1.6653345369377348e-16,
+       -0.8660254037844386
+      ]
+     },
+     "text": "translation by (0,-0.866)"
+    },
+    {
+     "word": "BC",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931957,
+      "center": [
+       -3.7007434154171876e-17,
+       0.4330127018922192
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-0,0.433)"
+    },
+    {
+     "word": "Bcb",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931953,
+      "center": [
+       -0.4999999999999998,
+       0.4330127018922192
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-0.5,0.433)"
+    }
+   ],
+   "simplyConnected": true,
+   "hGenerators": [
+    {
+     "word": "BBCBcb",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931953,
+      "center": [
+       -0.9999999999999996,
+       0.43301270189221924
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-1,0.433)"
+    },
+    {
+     "word": "a",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931953,
+      "center": [
+       0.24999999999999997,
+       1.8503717077085944e-17
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (0.25,0)"
+    },
+    {
+     "word": "c",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.0943951023931957,
+      "center": [
+       0.2499999999999999,
+       -3.7007434154171876e-17
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (0.25,-0)"
+    },
+    {
+     "word": "BBCBdad",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931953,
+      "center": [
+       -0.7499999999999996,
+       -0.8660254037844388
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (-0.75,-0.866)"
+    },
+    {
+     "word": "BBCadcbb",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.094395102393195,
+      "center": [
+       -0.7499999999999999,
+       -0.8660254037844397
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-0.75,-0.866)"
+    },
+    {
+     "word": "BBCadcbb",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.094395102393196,
+      "center": [
+       -0.7500000000000001,
+       -0.8660254037844382
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-0.75,-0.866)"
+    },
+    {
+     "word": "Dcdcbb",
+     "isometry": {
+      "type": "rotation",
+      "angle": 2.094395102393195,
+      "center": [
+       -0.7499999999999999,
+       -0.8660254037844388
+      ]
+     },
+     "text": "rotation by 0.6667*PI about (-0.75,-0.866)"
+    },
+    {
+     "word": "dabcbb",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931953,
+      "center": [
+       -0.9999999999999999,
+       0.43301270189221974
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (-1,0.433)"
+    },
+    {
+     "word": "Babcbb",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.0943951023931953,
+      "center": [
+       -0.9999999999999999,
+       0.43301270189221974
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (-1,0.433)"
+    },
+    {
+     "word": "BAdab",
+     "isometry": {
+      "type": "rotation",
+      "angle": -2.094395102393195,
+      "center": [
+       -1,
+       0.43301270189221946
+      ]
+     },
+     "text": "rotation by -0.6667*PI about (-1,0.433)"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 20,
+    "interior": 22
+   },
+   "name": "333/333[7]#1",
+   "affineClass": "333/333[7]#1"
+  }
+ ]
+}

@@ -1,16 +1,16 @@
 {
  "_comment": [
   "Layer set for 333/333[4] (333.4.1), 4 colours, 4 placements.",
-  "Template: wpe-333; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
-  "f words: e ab b cb",
-  "g words: e b B bAb",
+  "Template: wpe-333-3; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
+  "f words: e d b cb",
+  "g words: e b B BC",
   "View: the preset's own (centre and zoom), shared by every item."
  ],
  "outDir": "333/4/333-333-4/gen",
  "size": 800,
- "preset": "/catalog/presets/wpe/wpe-333.json",
+ "preset": "/catalog/presets/wpe/wpe-333-3.json",
  "view": {
-  "zoom": 0.664,
+  "zoom": 0.663963187479151,
   "centerX": 0,
   "centerY": 0
  },
@@ -1018,7 +1018,7 @@
   },
   {
    "file": "f1.png",
-   "_note": "f_1 = ab",
+   "_note": "f_1 = d",
    "enable": {
     "drawing": false,
     "overlay": false
@@ -1028,7 +1028,7 @@
     "kind": "cell",
     "list": [
      {
-      "word": "ab",
+      "word": "d",
       "style": {
        "color": "#c02020",
        "width": 3.5
@@ -1123,7 +1123,7 @@
   },
   {
    "file": "g3.png",
-   "_note": "g_3 = bAb",
+   "_note": "g_3 = BC",
    "enable": {
     "drawing": false,
     "overlay": false
@@ -1133,7 +1133,7 @@
     "kind": "coset",
     "list": [
      {
-      "word": "bAb",
+      "word": "BC",
       "style": {
        "color": "#2040c0",
        "width": 3.5

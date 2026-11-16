@@ -6,8 +6,10 @@
   pairing generators, and writes one JSON manifest per group:
 
       node tools/make_manifest.mjs [group] [maxIndex] [--domain "<shape>"]
+                                   [--dirichlet <preset.json>]
       node tools/make_manifest.mjs 632 6
       node tools/make_manifest.mjs 632 8 --domain "6-2-3-2 kite"
+      node tools/make_manifest.mjs 333 7 --dirichlet presets/wpe/wpe-333-3.json
 
   --domain builds G on that fundamental domain (WallpaperDomainShapes) and
   derives the presentation from its geometry (GroupPresentation.js) instead
@@ -15,6 +17,15 @@
   other f/g words - but the same names, since a name is keyed by the
   conjugacy class.  It writes data/<stem>@<shape>.json ('6-2-3-2 kite' ->
   632@6-2-3-2-kite.json) and leaves data/<stem>.json and index.json alone.
+
+  --dirichlet takes the Dirichlet domain the preset turns on (its
+  symmetry.dirichlet: base point and side words; tools/render/dirichlet_group.mjs
+  builds it as the renderer does) as the cell H's domain is made of.  The
+  presentation, the coset tables, the names and keys stay those of G's own
+  domain; the cells, the f/g words, H's generators and side counts come from the
+  Dirichlet cells, their words written back in G's generators.  It writes
+  data/<stem>@dirichlet.json (632@...-kite@dirichlet.json with --domain too),
+  the base and words recorded under group.dirichlet.
 
   output:  data/<stem>.json        (stem: '*632' -> 's632')
            data/index.json         (list of generated manifests)
@@ -51,6 +62,10 @@ const { computeFrame, subgroupClassKey } =
   await import(SYMMHUB + '/lib/grouplib/SubgroupKey.js');
 const { groupPresentation } = await import(SYMMHUB + '/lib/grouplib/GroupPresentation.js');
 const { affineClasses, affineCounts } = await import('./affine_classes.mjs');
+const { resolveWallpaperDomainShape } = await import(SYMMHUB + '/lib/grouplib/WallpaperGroups.js');
+const dirichletLib = { ...(await import(SYMMHUB + '/lib/grouplib/DirichletDomain.js')),
+                       ...(await import(SYMMHUB + '/lib/grouplib/Permutations.js')) };
+const { dirichletGroup, sideCosets, sourceWord } = await import('./render/dirichlet_group.mjs');
 
 const OUT_DIR = join(dirname(fileURLToPath(import.meta.url)), '..', 'data');
 
@@ -298,6 +313,8 @@ function cyclesOf(perm){
 const _argv = process.argv.slice(2);
 const _di = _argv.indexOf('--domain');
 const domainShape = _di >= 0 ? _argv.splice(_di, 2)[1] : null;
+const _dd = _argv.indexOf('--dirichlet');
+const dirichletPreset = _dd >= 0 ? _argv.splice(_dd, 2)[1] : null;
 const groupName = _argv[0] || '632';
 const maxIndex = Number(_argv[1] || 6);
 
@@ -321,6 +338,33 @@ if(!corr.ok)
   console.warn(`WARNING ${groupName}: geometry does not satisfy the presentation ` +
                `(${corr.badRelators.join(', ')}) - geometric fields omitted`);
 
+// G on the preset's Dirichlet domain: the preset's geometry and domain shape,
+// whose generators must be the presentation's (the coset tables are theirs)
+let DG = null, dirichletInfo = null;
+if(dirichletPreset){
+  const sym = JSON.parse(readFileSync(dirichletPreset, 'utf8')).params.symmetry;
+  const gp = sym.group.params;
+  const shapeOf = sh => resolveWallpaperDomainShape(groupName, sh || 'default');
+  if(gp.type !== groupName.replace(/x/g, 'X').replace(/^o$/, 'O'))
+    throw new Error(`${dirichletPreset} is a preset of ${gp.type}, not ${groupName}`);
+  if(shapeOf(gp.domainShape) !== shapeOf(domainShape))
+    throw new Error(`${dirichletPreset} is on the domain '${gp.domainShape}': pass --domain "${gp.domainShape}"`);
+  if(!(sym.dirichlet && sym.dirichlet.enabled))
+    throw new Error(`${dirichletPreset} has no Dirichlet domain turned on`);
+  const G0 = new Group(iWallpaperGroup({
+    name: groupName, a: gp.a, b: gp.b, c: gp.c,
+    angle_a: (gp.angle_a || 0) * Math.PI / 180,
+    angle_b: (gp.angle_b === undefined ? 90 : gp.angle_b) * Math.PI / 180,
+    ...(domainShape ? { domainShape } : {}) }));
+  const c0 = checkCorrespondence(G0, presentation);
+  if(!c0.ok) throw new Error(`the preset's geometry does not satisfy the presentation (${c0.badRelators.join(', ')})`);
+  DG = dirichletGroup(dirichletLib, G0, sym.dirichlet);
+  dirichletInfo = { preset: dirichletPreset.replace(/\\/g, '/'), baseX: sym.dirichlet.baseX,
+                    baseY: sym.dirichlet.baseY, words: sym.dirichlet.words,
+                    sideWords: DG.dirichletWords,
+                    geometry: { a: gp.a, b: gp.b, c: gp.c, angle_a: gp.angle_a, angle_b: gp.angle_b } };
+}
+
 const refFingerprints = makeReferenceFingerprints();
 const frame = corr.ok ? computeFrame(group) : null;
 const expandedRelators = String(presentation.relators).split(',').map(r => expandRelator(r));
@@ -339,8 +383,12 @@ for(const sub of data.subgroups){
 
   let domain = null;
   if(corr.ok){
-    domain = buildSubgroupDomain({ group, cosets, testPoints: TEST_POINTS });
+    domain = DG ? buildSubgroupDomain({ group: DG, cosets: sideCosets(dirichletLib, DG, cosets),
+                                        testPoints: TEST_POINTS })
+                : buildSubgroupDomain({ group, cosets, testPoints: TEST_POINTS });
   }
+  // a cell's word in G's generators (a Dirichlet cell's is in DG's letters)
+  const gWord = w => (DG ? sourceWord(dirichletLib, DG, w) : w) || 'e';
 
   const cls = classifySubgroupType(perms, expandedRelators, st, refFingerprints);
 
@@ -380,18 +428,18 @@ for(const sub of data.subgroups){
   if(domain){
     // f_i: the domain's cells, one per orbit class; g_j: the coset transversal
     entry.orbitReps = domain.cells.map(c => ({
-      word: c.word === '' ? 'e' : c.word,
+      word: gWord(c.word),
       isometry: classifyEuclidean(c.itrans),
       text: isometryToString(classifyEuclidean(c.itrans)),
     }));
     entry.transversal = domain.cosetTransversal.map(t => ({
-      word: t.word === '' ? 'e' : t.word,
+      word: gWord(t.word),
       isometry: classifyEuclidean(t.itrans),
       text: isometryToString(classifyEuclidean(t.itrans)),
     }));
     entry.simplyConnected = domain.simplyConnected;
     entry.hGenerators = domain.generators.map(gi => ({
-      word: domain.pairings[gi].word,
+      word: DG ? gWord(domain.pairings[gi].word) : domain.pairings[gi].word,
       isometry: domain.pairings[gi].isometry,
       text: isometryToString(domain.pairings[gi].isometry),
     }));
@@ -443,6 +491,7 @@ const manifest = {
     relators: presentation.relators,
     geometry: { a: GEOMETRY_A },
     ...(domainShape ? { domainShape } : {}),
+    ...(dirichletInfo ? { dirichlet: dirichletInfo } : {}),
     geometryVerified: corr.ok,
     ...(frame ? { frame: { origin: frame.origin, t1: frame.t1, t2: frame.t2,
                            maxOrder: frame.maxOrder } } : {}),
@@ -456,13 +505,14 @@ const manifest = {
 
 mkdirSync(OUT_DIR, { recursive: true });
 const outStem = fileStem(groupName) +
-                (domainShape ? '@' + domainShape.replace(/\*/g, 's').replace(/\s+/g, '-') : '');
+                (domainShape ? '@' + domainShape.replace(/\*/g, 's').replace(/\s+/g, '-') : '') +
+                (DG ? '@dirichlet' : '');
 const outFile = join(OUT_DIR, outStem + '.json');
 writeFileSync(outFile, JSON.stringify(manifest, null, 1));
 
 // keep data/index.json current - it lists the catalogue's own (default domain)
 // manifests only
-if(!domainShape){
+if(!domainShape && !DG){
 const indexFile = join(OUT_DIR, 'index.json');
 const index = existsSync(indexFile) ? JSON.parse(readFileSync(indexFile, 'utf8'))
                                     : { format: 'colorsym-catalog-index', groups: [] };

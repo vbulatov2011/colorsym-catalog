@@ -9,7 +9,7 @@
 # definitions, the fundamental domains, and the partition table with margins.
 # Every picture is click-to-enlarge with arrow key navigation.
 import json, io, os, sys
-from entry_names import entry_names
+from entry_names import entry_names, MIN_N
 
 CAT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -325,7 +325,7 @@ else:
 
 # the bar's run of G's count pages, '632 with 1 2 3 4 6 colors': this entry's
 # count dark (still a link - the page is the entry, not the count page), a
-# count with no color group dashed
+# count with no color group dashed; from MIN_N (2) on
 _have = {s['index'] for s in m['subgroups']}
 def _count_link(k):
     if k not in _have:
@@ -333,7 +333,7 @@ def _count_link(k):
     return ('<a%s href="../../%d/index.html" title="%d color%s">%d</a>'
             % (' class="now"' if k == N else '', k, k, '' if k == 1 else 's', k))
 count_run = ('<span class="grp"><b>%s</b> with %s colors</span>'
-             % (E(G), ''.join(_count_link(k) for k in range(1, m['maxIndex'] + 1))))
+             % (E(G), ''.join(_count_link(k) for k in range(MIN_N, m['maxIndex'] + 1))))
 
 # ---- page ----------------------------------------------------------------
 page = """<!doctype html>

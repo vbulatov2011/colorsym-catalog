@@ -1,17 +1,17 @@
 {
  "_comment": [
   "Layer set for 333/333[7]#2 (333.7.1), 7 colours, 7 placements.",
-  "Template: wpe-333; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
-  "f words: e d b cd ad cb ab",
-  "g words: e b B baB BaB bAb Bab",
+  "Template: wpe-333-3; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
+  "f words: e d b cbb dab bab ab",
+  "g words: e b B baB BCB BC BCb",
   "Every item sets symmetry.options.iterations = 60.",
   "View: the preset's own (centre and zoom), shared by every item."
  ],
  "outDir": "333/7/333-333-7-2/gen",
  "size": 800,
- "preset": "/catalog/presets/wpe/wpe-333.json",
+ "preset": "/catalog/presets/wpe/wpe-333-3.json",
  "view": {
-  "zoom": 0.664,
+  "zoom": 0.663963187479151,
   "centerX": 0,
   "centerY": 0
  },
@@ -3351,7 +3351,7 @@
   },
   {
    "file": "f3.png",
-   "_note": "f_3 = cd",
+   "_note": "f_3 = cbb",
    "enable": {
     "drawing": false,
     "overlay": false
@@ -3361,7 +3361,7 @@
     "kind": "cell",
     "list": [
      {
-      "word": "cd",
+      "word": "cbb",
       "style": {
        "color": "#c02020",
        "width": 3.5
@@ -3379,7 +3379,7 @@
   },
   {
    "file": "f4.png",
-   "_note": "f_4 = ad",
+   "_note": "f_4 = dab",
    "enable": {
     "drawing": false,
     "overlay": false
@@ -3389,7 +3389,7 @@
     "kind": "cell",
     "list": [
      {
-      "word": "ad",
+      "word": "dab",
       "style": {
        "color": "#c02020",
        "width": 3.5
@@ -3407,7 +3407,7 @@
   },
   {
    "file": "f5.png",
-   "_note": "f_5 = cb",
+   "_note": "f_5 = bab",
    "enable": {
     "drawing": false,
     "overlay": false
@@ -3417,7 +3417,7 @@
     "kind": "cell",
     "list": [
      {
-      "word": "cb",
+      "word": "bab",
       "style": {
        "color": "#c02020",
        "width": 3.5
@@ -3547,7 +3547,7 @@
   },
   {
    "file": "g4.png",
-   "_note": "g_4 = BaB",
+   "_note": "g_4 = BCB",
    "enable": {
     "drawing": false,
     "overlay": false
@@ -3557,7 +3557,7 @@
     "kind": "coset",
     "list": [
      {
-      "word": "BaB",
+      "word": "BCB",
       "style": {
        "color": "#2040c0",
        "width": 3.5
@@ -3575,7 +3575,7 @@
   },
   {
    "file": "g5.png",
-   "_note": "g_5 = bAb",
+   "_note": "g_5 = BC",
    "enable": {
     "drawing": false,
     "overlay": false
@@ -3585,7 +3585,7 @@
     "kind": "coset",
     "list": [
      {
-      "word": "bAb",
+      "word": "BC",
       "style": {
        "color": "#2040c0",
        "width": 3.5
@@ -3603,7 +3603,7 @@
   },
   {
    "file": "g6.png",
-   "_note": "g_6 = Bab",
+   "_note": "g_6 = BCb",
    "enable": {
     "drawing": false,
     "overlay": false
@@ -3613,7 +3613,7 @@
     "kind": "coset",
     "list": [
      {
-      "word": "Bab",
+      "word": "BCb",
       "style": {
        "color": "#2040c0",
        "width": 3.5

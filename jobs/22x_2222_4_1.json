@@ -1,7 +1,7 @@
 {
  "_comment": [
   "Layer set for 22x/2222[4]#1 (22x.4.2), 4 colours, 2 placements.",
-  "Template: wpe-22X-4; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
+  "Template: wpe-22X-5; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
   "f words: e a c da",
   "g words: e a C Ac",
   "Every item sets symmetry.options.iterations = 60.",
@@ -9,11 +9,11 @@
  ],
  "outDir": "22x/4/22x-2222-4-1/gen",
  "size": 800,
- "preset": "/catalog/presets/wpe/wpe-22X-4.json",
+ "preset": "/catalog/presets/wpe/wpe-22X-5.json",
  "view": {
-  "zoom": 0.43,
-  "centerX": 0.052136555359704725,
-  "centerY": -0.03906391513695279
+  "zoom": 0.488,
+  "centerX": 0,
+  "centerY": 0
  },
  "items": [
   {

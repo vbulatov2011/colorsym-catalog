@@ -1,11 +1,11 @@
 {
  "_comment": [
   "Uncolored pattern of 22x for the index pages.",
-  "Preset wpe/wpe-22X-4.json (a trial motif) (default); the preset's own view (centre and zoom)."
+  "Preset wpe/wpe-22X-5.json (a trial motif) (a trial motif) (default); the preset's own view (centre and zoom)."
  ],
  "outDir": "22x/gen",
  "size": 400,
- "preset": "/catalog/presets/wpe/wpe-22X-4.json",
+ "preset": "/catalog/presets/wpe/wpe-22X-5.json",
  "items": [
   {
    "file": "group.png",

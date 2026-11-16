@@ -1,7 +1,7 @@
 # The catalog's index pages, generated from the manifests:
 #
 #   index.html                  the 17 wallpaper groups: uncolored thumbnail and
-#                               the counts for 1..7 colors
+#                               the counts for 2..7 colors
 #   <stem>/index.html           one group: thumbnail, facts, a section per color
 #                               count with a picture of every pattern
 #   <stem>/<N>/index.html       the color groups of that group with N colors, each
@@ -23,6 +23,8 @@
 # Pictures: <stem>/gen/group.webp (tools/make_group_jobs.py) for a group, the
 # entry's <slug>.<k>.webp for placement k.  A color group whose entry has not
 # been built is listed with placeholders and without a link.
+# The counts run from MIN_N = 2 (entry_names.py): the 1-color group G/G is no
+# coloring and is left out.
 # Styles: css/catalog.css.
 import json, io, os, html, re, sys
 
@@ -30,7 +32,7 @@ CAT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MAX_N = 7
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from entry_names import entry_names
+from entry_names import entry_names, group_motif, MIN_N
 
 # Hermann-Mauguin names, and families by the highest rotation order
 HM = {'o': 'p1', '2222': 'p2', '**': 'pm', 'xx': 'pg', '*x': 'cm', '*2222': 'pmm',
@@ -79,8 +81,8 @@ def section_id(n):
 
 
 def count_run(label, has, up, cur=None, link_cur=False, here=False):
-    """the bar's run of count links, '632 with 1 2 3 4 6 colors' or 'All
-    symmetries with 1 2 3 4 5 6 colors': a count n with no color group
+    """the bar's run of count links, '632 with 2 3 4 6 colors' or 'All
+    symmetries with 2 3 4 5 6 7 colors': a count n with no color group
     (has(n) false) is dashed, the page's own count dark; up = the path from
     the page to the folder of the count pages.  link_cur: the dark count is
     still a link - the run leads to other pages with the same count (a
@@ -98,7 +100,7 @@ def count_run(label, has, up, cur=None, link_cur=False, here=False):
             return '<a href="%s" title="%s">%d</a>' % (href(n), colors(n), n)
         return '<span class="off" title="none">%d</span>' % n
     return ('<span class="grp">%s with %s colors</span>'
-            % (label, ''.join(one(n) for n in range(1, MAX_N + 1))))
+            % (label, ''.join(one(n) for n in range(MIN_N, MAX_N + 1))))
 
 
 def bar(items):
@@ -145,21 +147,16 @@ index = json.load(open(os.path.join(CAT, 'data', 'index.json'), encoding='utf-8'
 groups = {}
 for g in index['groups']:
     name, stem = g['name'], g['stem']
-    # the motif: the preset the group's thumbnail job renders (a group can be
-    # tried on another preset), else the group's own presets/wp/wp-<name>.json
-    lib = 'O' if name == 'o' else name.replace('x', 'X')
-    preset = 'presets/wp/wp-%s.json' % lib.replace('*', 's')
-    gjob = os.path.join(CAT, 'jobs', 'group_%s.json' % stem)
-    if os.path.exists(gjob):
-        preset = json.load(open(gjob, encoding='utf-8'))['preset'].replace('/catalog/', '', 1)
-    doc = json.load(open(os.path.join(CAT, *preset.split('/')), encoding='utf-8'))
-    shape = doc['params']['symmetry']['group']['params'].get('domainShape', 'default')
-    variant = os.path.join(CAT, 'data', '%s@%s.json' % (stem, shape.replace(' ', '-')))
-    man = variant if os.path.exists(variant) else os.path.join(CAT, 'data', stem + '.json')
+    # the motif and the manifest of its domain (entry_names.group_motif)
+    mo = group_motif(CAT, name, stem)
+    if mo['stale']:
+        print('WARNING %s: %s' % (name, mo['stale']))
+    preset, shape = mo['preset'], mo['shape']
+    man = os.path.join(CAT, 'data', mo['manifest'] + '.json')
     m = json.load(open(man, encoding='utf-8'))
     subs = []
     for s in m['subgroups']:
-        if s['index'] > MAX_N:
+        if not MIN_N <= s['index'] <= MAX_N:
             continue
         nm = entry_names(s['name'], s['index'])
         built = os.path.exists(os.path.join(CAT, *nm['dir'].split('/'), 'index.html'))
@@ -170,19 +167,16 @@ for g in index['groups']:
                         else None)
         subs.append(dict(s, dir=nm['dir'], slug=nm['slug'], built=built, pats=pats))
     thumb = '%s/gen/group.webp' % stem
-    groups[name] = dict(name=name, stem=stem, preset=preset, shape=shape,
+    groups[name] = dict(name=name, stem=stem, preset=preset, shape=shape, dirichlet=mo['dirichlet'],
                         manifest=os.path.basename(man), subs=subs,
                         thumb=thumb if os.path.exists(os.path.join(CAT, thumb)) else None,
                         # color groups of one type side by side, #2 before #10
                         per_n={n: sorted((s for s in subs if s['index'] == n),
                                          key=lambda s: (name_key(s['affineClass']),
                                                         name_key(s['name'])))
-                               for n in range(1, MAX_N + 1)})
+                               for n in range(MIN_N, MAX_N + 1)})
 
 EVERY = [s for g in groups.values() for s in g['subs']]
-CLASS_SIZE = {}
-for s in EVERY:
-    CLASS_SIZE[s['affineClass']] = CLASS_SIZE.get(s['affineClass'], 0) + 1
 
 
 def ntypes(subs):
@@ -206,10 +200,10 @@ def counts_line(subs, bold=False):
 
 
 def count_table(g, root):
-    """types / color groups / patterns for 1..MAX_N colors; a column head links
+    """types / color groups / patterns for MIN_N..MAX_N colors; a column head links
     to that count's page"""
     head = ['<th>colors</th>']
-    for n in range(1, MAX_N + 1):
+    for n in range(MIN_N, MAX_N + 1):
         if g['per_n'][n]:
             head.append('<th><a href="%s%s/%d/index.html" title="%s">%d</a></th>'
                         % (root, g['stem'], n, colors(n), n))
@@ -219,7 +213,7 @@ def count_table(g, root):
     rows = ['<tr>%s</tr>' % ''.join(head)]
     for label, count in (('types', ntypes), ('color groups', len), ('patterns', npatterns)):
         cells = [('<td>%d</td>' % count(g['per_n'][n])) if g['per_n'][n]
-                 else '<td class="zero">–</td>' for n in range(1, MAX_N + 1)]
+                 else '<td class="zero">–</td>' for n in range(MIN_N, MAX_N + 1)]
         rows.append('<tr><th>%s</th>%s</tr>' % (label, ''.join(cells)))
     return '<table class="counts">%s</table>' % ''.join(rows)
 
@@ -233,19 +227,12 @@ def status(subs):
     return '<span class="badge">not rendered</span>'
 
 
-def type_line(s):
-    size = CLASS_SIZE[s['affineClass']]
-    if size == 1:
-        return 'a type of its own'
-    if s['affineClass'] == s['name']:
-        return 'type of %d color groups' % size
-    return 'same type as %s' % disp(s['affineClass'])
-
-
 def cg_box(s, root):
     """a color group with a picture of each of its patterns, one per placement;
     paths relative to the catalog root.  A pattern's chip reads {k} for
-    placement k (the tooltip spells it out)"""
+    placement k (the tooltip spells it out).  Under the pictures its name and
+    the normal badge only: its type is the frame it sits in (type_frames), H
+    is in the name and the placements are the pictures (2026-11-16)"""
     href = '%s%s/index.html' % (root, s['dir'])
     K = s['placements']
     pats = []
@@ -258,14 +245,26 @@ def cg_box(s, root):
         else:
             pats.append('<div class="pat none" title="%s">not rendered%s</div>' % (tip, chip))
     title = '<a href="%s">%s</a>' % (href, disp(s['name'])) if s['built'] else disp(s['name'])
-    badge = ('<span class="badge">the uncolored group</span>' if s['index'] == 1 else
-             '<span class="badge on">normal</span>' if s['normal'] else '')
+    badge = '<span class="badge on">normal</span>' if s['normal'] else ''
     return ('<div class="cg" style="--k:%d">\n<div class="pats">%s</div>\n<div class="body">\n'
-            '<div class="name">%s</div>\n'
-            '<div class="meta">H = %s &middot; %s</div>\n'
-            '<div class="meta">%s</div>\n<div>%s</div>\n</div>\n</div>'
-            % (K, ''.join(pats), title, disp(s['type']), plural(K, 'placement'),
-               type_line(s), badge))
+            '<div class="name">%s%s</div>\n</div>\n</div>'
+            % (K, ''.join(pats), title, (' ' + badge) if badge else ''))
+
+
+def type_frames(ss, root):
+    """the color groups ss of one group (sorted by type: per_n) in a frame per
+    type - one frame for each type, also of a single color group - as the
+    .pgrid.typed of a group page or a count page"""
+    frames, cur = [], None
+    for s in ss:
+        if cur is None or s['affineClass'] != cur:
+            cur = s['affineClass']
+            frames.append([])
+        frames[-1].append(cg_box(s, root))
+    tip = 'one type: color groups an affine symmetry of the group carries onto each other'
+    return ('<div class="pgrid typed">\n%s\n</div>'
+            % '\n'.join('<div class="tframe" title="%s">\n%s\n</div>' % (tip, '\n'.join(f))
+                        for f in frames))
 
 
 # ---- top page ----------------------------------------------------------------
@@ -273,7 +272,7 @@ def cg_box(s, root):
 def by_count_nav(root, cur=None):
     """the 'all symmetries with N colors' pages, one tile each"""
     tiles = []
-    for n in range(1, MAX_N + 1):
+    for n in range(MIN_N, MAX_N + 1):
         ss = all_n(n)
         syms = sum(1 for nm in ORDER if groups[nm]['per_n'][n])
         tiles.append('<a class="ntile%s" href="%scolors/%d/index.html"><b>%s</b>'
@@ -290,7 +289,7 @@ def group_count_nav(g):
     """a group page's counts, one tile each, as by_count_nav: a jump to
     that count's section of the page"""
     tiles = []
-    for n in range(1, MAX_N + 1):
+    for n in range(MIN_N, MAX_N + 1):
         ss = g['per_n'][n]
         if not ss:
             tiles.append('<div class="off" title="no color group with %s"><b>%s</b>'
@@ -330,14 +329,14 @@ for fam, names in FAMILIES:
 write('index.html', page(
     'Color Groups Catalog', '', None,
     'Color groups of the wallpaper groups',
-    'The 17 wallpaper groups and their color groups with 1 to %d colors, counted three '
+    'The 17 wallpaper groups and their color groups with %d to %d colors, counted three '
     'ways, each finer than the one before. <b>Types</b> (%d) merge the color groups '
     'that an affine symmetry of G carries onto each other: the classical count, 46 with '
     '2 colors. <b>Color groups</b> G/H[n] (%d) are the subgroups H of index n up to '
     'conjugacy in G. <b>Patterns</b> (%d) are the colorings by cosets, one for each '
     'placement of H in G. %d color groups are rendered so far; a thumbnail shows the '
     'uncolored pattern.'
-    % (MAX_N, ntypes(EVERY), len(EVERY), npatterns(EVERY), sum(s['built'] for s in EVERY)),
+    % (MIN_N, MAX_N, ntypes(EVERY), len(EVERY), npatterns(EVERY), sum(s['built'] for s in EVERY)),
     '\n'.join(body)))
 
 
@@ -350,28 +349,30 @@ for name, g in groups.items():
     facts = '''<dl class="facts">
 <dt>Orbifold</dt><dd>%s</dd>
 <dt>Hermann&ndash;Mauguin</dt><dd>%s</dd>
-<dt>1&ndash;%d colors</dt><dd>%s %s</dd>
+<dt>%d&ndash;%d colors</dt><dd>%s %s</dd>
 <dt>Per count</dt><dd class="tbl">%s</dd>
 <dt>Motif</dt><dd><code>%s</code></dd>
 <dt>Domain</dt><dd>%s</dd>
 <dt>Manifest</dt><dd><code>data/%s</code></dd>
-</dl>''' % (disp(name), HM[name], MAX_N, counts_line(g['subs']), status(g['subs']),
+</dl>''' % (disp(name), HM[name], MIN_N, MAX_N, counts_line(g['subs']), status(g['subs']),
             count_table(g, root), g['preset'],
-            'default' if g['shape'] == 'default' else html.escape(g['shape']), g['manifest'])
-    # a section per count, its color groups as on the count pages: a full-size
-    # picture of every pattern; the tiles and the bar jump to the sections
+            ('default' if g['shape'] == 'default' else html.escape(g['shape'])) +
+            (' &middot; Dirichlet domain about (%g, %g)' % (g['dirichlet']['baseX'], g['dirichlet']['baseY'])
+             if g['dirichlet'] else ''), g['manifest'])
+    # a section per count, its color groups with a full-size picture of every
+    # pattern, in a frame per type (type_frames, 2026-11-16); the tiles and the
+    # bar jump to the sections
     secs = []
-    for n in range(1, MAX_N + 1):
+    # its heading a banner (css h2.sec.cnt), so each count starts visibly
+    for n in range(MIN_N, MAX_N + 1):
         ss = g['per_n'][n]
         if not ss:
-            secs.append('<h2 class="sec" id="%s">%s <span class="note">none</span></h2>'
+            secs.append('<h2 class="sec cnt none" id="%s">%s <span class="note">none</span></h2>'
                         % (section_id(n), colors(n)))
             continue
-        secs.append('<h2 class="sec" id="%s"><a href="%d/index.html">%s</a> <span class="note">%s '
-                    '&middot; <a href="%d/index.html">on its own page</a></span></h2>\n'
-                    '<div class="pgrid">\n%s\n</div>'
-                    % (section_id(n), n, colors(n), counts_line(ss), n,
-                       '\n'.join(cg_box(s, root) for s in ss)))
+        secs.append('<h2 class="sec cnt" id="%s"><a href="%d/index.html">%s</a> <span class="note">%s '
+                    '&middot; <a href="%d/index.html">on its own page</a></span></h2>\n%s'
+                    % (section_id(n), n, colors(n), counts_line(ss), n, type_frames(ss, root)))
     body = ('<div class="hero">%s<div>%s</div></div>\n'
             '<h2 class="sec">By number of colors<span class="note">a section each, '
             'below</span></h2>\n%s\n%s'
@@ -379,8 +380,9 @@ for name, g in groups.items():
     write('%s/index.html' % g['stem'], page(
         '%s - Color Groups Catalog' % name, root, crumbs,
         '%s <span class="sub">%s</span>' % (disp(name), HM[name]),
-        'The color groups of %s with 1 to %d colors and the patterns they give, by '
-        'number of colors.' % (disp(name), MAX_N), body,
+        'The color groups of %s with %d to %d colors and the patterns they give, by '
+        'number of colors. A frame holds the color groups of one type.'
+        % (disp(name), MIN_N, MAX_N), body,
         bar([('../index.html', 'Catalog'),
              (None, 'All color groups of <b>%s</b>' % disp(name)),
              count_run('<b>%s</b>' % disp(name), lambda n: g['per_n'][n], '', here=True),
@@ -390,7 +392,7 @@ for name, g in groups.items():
 # ---- count pages of one group: <stem>/<N>/index.html -------------------------
 
 for name, g in groups.items():
-    for n in range(1, MAX_N + 1):
+    for n in range(MIN_N, MAX_N + 1):
         ss = g['per_n'][n]
         if not ss:
             continue
@@ -398,7 +400,7 @@ for name, g in groups.items():
         crumbs = [('../../index.html', 'Catalog'), ('../index.html', disp(name)),
                   (None, colors(n))]
         pager = []
-        for k in range(1, MAX_N + 1):
+        for k in range(MIN_N, MAX_N + 1):
             if k == n:
                 pager.append('<span class="cur">%d</span>' % k)
             elif g['per_n'][k]:
@@ -408,9 +410,8 @@ for name, g in groups.items():
         pager.append('<a href="../../colors/%d/index.html">all symmetries with %s</a>'
                      % (n, colors(n)))
         body = ('<nav class="pager">%s</nav>\n<h2 class="sec">%s<span class="note">a '
-                'picture per pattern; color groups of one type side by side</span></h2>\n'
-                '<div class="pgrid">\n%s\n</div>'
-                % (''.join(pager), counts_line(ss), '\n'.join(cg_box(s, root) for s in ss)))
+                'picture per pattern; a frame holds the color groups of one type</span></h2>\n%s'
+                % (''.join(pager), counts_line(ss), type_frames(ss, root)))
         write('%s/%d/index.html' % (g['stem'], n), page(
             '%s, %s - Color Groups Catalog' % (name, colors(n)), root, crumbs,
             '%s <span class="sub">with %s</span>' % (disp(name), colors(n)),
@@ -425,7 +426,7 @@ for name, g in groups.items():
 
 # ---- count pages across all groups: colors/<N>/index.html ------------------
 
-for n in range(1, MAX_N + 1):
+for n in range(MIN_N, MAX_N + 1):
     root = '../../'
     secs = []
     for name in ORDER:
@@ -437,9 +438,8 @@ for n in range(1, MAX_N + 1):
             secs.append(head + ' &middot; none</span></h2>')
             continue
         secs.append(head + ' &middot; %s &middot; <a href="%s%s/%d/index.html">on its own '
-                    'page</a></span></h2>\n<div class="pgrid">\n%s\n</div>'
-                    % (counts_line(ss), root, g['stem'], n,
-                       '\n'.join(cg_box(s, root) for s in ss)))
+                    'page</a></span></h2>\n%s'
+                    % (counts_line(ss), root, g['stem'], n, type_frames(ss, root)))
     ss = all_n(n)
     write('colors/%d/index.html' % n, page(
         'All groups, %s - Color Groups Catalog' % colors(n), root,
@@ -455,4 +455,4 @@ print('%d groups: %d types, %d color groups, %d patterns (%d color groups render
       'wrote index.html, %d group pages, %d count pages, %d all-symmetries pages'
       % (len(groups), ntypes(EVERY), len(EVERY), npatterns(EVERY),
          sum(s['built'] for s in EVERY), len(groups),
-         sum(1 for g in groups.values() for n in g['per_n'] if g['per_n'][n]), MAX_N))
+         sum(1 for g in groups.values() for n in g['per_n'] if g['per_n'][n]), MAX_N - MIN_N + 1))

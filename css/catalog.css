@@ -137,6 +137,26 @@ table.counts .zero { color: var(--faint); font-weight: 400 !important; }
 /* the anchors of a count's section: clear of the window's top edge */
 h2.sec[id] { scroll-margin-top: 1rem; }
 
+/* a group page's count sections ('6 colors'): a banner, so each starts
+   visibly; an empty count is a quiet dashed line */
+h2.sec.cnt {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: .15rem .9rem;
+  margin: 2.6rem 0 1rem; padding: .55rem .9rem;
+  font-size: 1.35rem; font-weight: 600; line-height: 1.25;
+  text-transform: none; letter-spacing: 0; color: var(--ink);
+  background: var(--accent-bg); border: 1px solid #b7cde3;
+  border-left: 6px solid var(--accent); border-radius: 6px;
+}
+h2.sec.cnt > a { color: var(--ink); }
+h2.sec.cnt > a:hover { color: var(--accent); }
+h2.sec.cnt .note { margin-left: 0; font-size: .85rem; color: var(--muted); }
+h2.sec.cnt.none {
+  margin: 1.6rem 0 .6rem; padding: .35rem .9rem;
+  font-size: 1.05rem; color: var(--faint);
+  background: transparent; border: 1px dashed var(--line);
+}
+h2.sec.cnt.none .note { color: var(--faint); }
+
 /* ---- count pages: a color group framing a picture per pattern ---------- */
 
 .pgrid { display: flex; flex-wrap: wrap; gap: 1rem; align-items: flex-start; }
@@ -167,6 +187,16 @@ h2.sec[id] { scroll-margin-top: 1rem; }
   background: rgba(255, 255, 255, .88); color: var(--ink); border: 1px solid var(--rule);
 }
 .cg .name { font-size: 1.05rem; font-weight: 600; line-height: 1.25; }
+.cg .name .badge { vertical-align: .15em; margin-left: .3rem; font-weight: 400; }
+
+/* a frame per type (make_index_pages type_frames): the color groups an affine
+   symmetry of G carries onto each other, slim cards side by side in it */
+.pgrid.typed { gap: 1.1rem; }
+.tframe {
+  display: flex; flex-wrap: wrap; gap: .6rem; align-items: flex-start;
+  max-width: 100%; padding: .6rem;
+  background: #e7e7e7; border: 1px solid #d2d2d2; border-radius: 10px;
+}
 
 /* ---- prev / next between counts ---------------------------------------- */
 

@@ -69,6 +69,11 @@ if VIEW == 'preset':
     _zoom = _e['zoom'][0] if isinstance(_e['zoom'], list) else _e['zoom']
     # the driver maps world to pixels by centre and zoom only
     assert not _e.get('angle'), 'preset view is rotated (angle %r): not supported' % _e['angle']
+    # since 2026-11-16 the view is the document's frame (SymmHub DocumentView.js):
+    # 2/zoom wide, aspect * 2/zoom high - the square images show it whole only
+    # when it is square (a preset saved before it has no aspect: square)
+    assert abs(_e.get('aspect', 1) - 1) < 1e-9, \
+        'preset frame is not square (aspect %r): the catalog images are' % _e['aspect']
     PRESET_VIEW = {"zoom": _zoom, "centerX": _e.get('centerX', 0), "centerY": _e.get('centerY', 0)}
 # the sympix template already colours by multiplying ('mult'); a document
 # that does not - a symdraw drawing starts with 'none' - needs it set, or the

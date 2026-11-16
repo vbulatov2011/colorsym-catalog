@@ -191,14 +191,41 @@ export default function catalogDriver(api) {
     let mGroupLib = null;
     async function groupLib() {
         if (!mGroupLib) {
-            const [sd, wp, inv] = await Promise.all([
+            const [sd, wp, inv, dd, pm, dg] = await Promise.all([
                 import('/lib/grouplib/SubgroupDomain.js'),
                 import('/lib/grouplib/WallpaperGroups.js'),
                 import('/lib/invlib/invlib.js'),
+                import('/lib/grouplib/DirichletDomain.js'),
+                import('/lib/grouplib/Permutations.js'),
+                import(new URL('dirichlet_group.mjs', import.meta.url).href),   // beside this file
             ]);
-            mGroupLib = { ...sd, ...wp, Group: inv.Group };
+            mGroupLib = { ...sd, ...wp, Group: inv.Group,
+                          dirichlet: { lib: { ...dd, ...pm }, ...dg } };
         }
         return mGroupLib;
+    }
+
+    /**
+     * G as the document draws it: the group of its parameters on its domain
+     * shape (G0, whose generators the job's coset tables and words are written
+     * in) and, when the document turns on a Dirichlet domain, the group on that
+     * domain (DG, built as the renderer builds it: dirichlet_group.mjs).
+     * @returns {Promise<{G0, G, DG}>}  G = DG || G0, the group whose cells to draw
+     */
+    async function documentGroup() {
+        const lib = await groupLib();
+        const sym = api.getParams().symmetry;
+        const gp = sym.group.params;
+        // rebuild G from its parameters rather than reading the live group, so
+        // the symmetry transform is applied once, by the renderer, not twice
+        const G0 = new lib.Group(lib.iWallpaperGroup({
+            name: gp.type, a: gp.a, b: gp.b, c: gp.c,
+            angle_a: (gp.angle_a || 0) * Math.PI / 180,
+            angle_b: (gp.angle_b === undefined ? 90 : gp.angle_b) * Math.PI / 180,
+            domainShape: gp.domainShape,
+        }));
+        const DG = lib.dirichlet.dirichletGroup(lib.dirichlet.lib, G0, sym.dirichlet);
+        return { G0, G: DG || G0, DG };
     }
 
     /**
@@ -329,20 +356,23 @@ export default function catalogDriver(api) {
     const geoCache = new Map();
 
     async function subgroupGeo(cosets) {
-        const gp = api.getParams().symmetry.group.params;
-        const cacheKey = JSON.stringify([gp.type, gp.a, gp.b, gp.c, gp.domainShape, cosets]);
+        const sym = api.getParams().symmetry;
+        const gp = sym.group.params;
+        const dc = sym.dirichlet || {};
+        const cacheKey = JSON.stringify([gp.type, gp.a, gp.b, gp.c, gp.domainShape,
+                                         dc.enabled ? [dc.baseX, dc.baseY, dc.words] : null, cosets]);
         if (geoCache.has(cacheKey)) return geoCache.get(cacheKey);
 
         const lib = await groupLib();
         const inv = await import('/lib/invlib/invlib.js');
-        const G = new lib.Group(lib.iWallpaperGroup({
-            name: gp.type, a: gp.a, b: gp.b, c: gp.c,
-            angle_a: (gp.angle_a || 0) * Math.PI / 180,
-            angle_b: (gp.angle_b === undefined ? 90 : gp.angle_b) * Math.PI / 180,
-            // the document's fundamental domain: its pairing transforms are the
-            // generators the job's coset tables and words are written in
-            domainShape: gp.domainShape,
-        }));
+        // the cells: G's domain as the document draws it - a Dirichlet domain
+        // when it has one.  H's domain is then a union of those cells: the
+        // coset tables go over to the sides (sideCosets) and the cells' words
+        // come back in G0's generators, the words of the job's glyphs (the
+        // manifest's f/g words, made the same way by make_manifest.mjs).
+        const { G, DG } = await documentGroup();
+        const D = lib.dirichlet;
+        const gWord = w => DG ? D.sourceWord(D.lib, DG, w) : w;
         const apply = (it, v) => {
             const p = it.transform(inv.iPoint([v[0], v[1], 0, 0]));
             return [p.v[0], p.v[1]];
@@ -381,10 +411,11 @@ export default function catalogDriver(api) {
             return { a: v, b: w, side };
         });
 
-        const dom = lib.buildSubgroupDomain({ group: G, cosets, checkConvex: false });
+        const dom = lib.buildSubgroupDomain({ group: G, checkConvex: false,
+                                              cosets: DG ? D.sideCosets(D.lib, DG, cosets) : cosets });
         const cells = dom.cells.map(c => ({
             coset: c.coset,
-            word: c.word,
+            word: gWord(c.word),
             itrans: c.itrans,
             poly: verts.map(v => apply(c.itrans, v)),
         }));
@@ -408,7 +439,7 @@ export default function catalogDriver(api) {
         const geo = { G, dom, cells, boundary, bbox, center, diam,
                       fdCentroid: [cx, cy], hGens,
                       cosetTransversal: (dom.cosetTransversal || []).map(t => ({
-                          word: t.word, itrans: t.itrans })),
+                          word: gWord(t.word), itrans: t.itrans })),
                       classify: lib.classifyEuclidean, apply,
                       Identity: () => new inv.ITransform([], '') };
         geoCache.set(cacheKey, geo);
@@ -788,6 +819,28 @@ export default function catalogDriver(api) {
                  centerX: geo.center[0], centerY: geo.center[1] };
     }
 
+    /**
+     * The document view a preset file holds: its frame (SymmHub DocumentView.js,
+     * 2026-11-16) is centred at the centre, 2/zoom wide and aspect * 2/zoom
+     * high, and a square image at that centre and zoom shows exactly the frame
+     * when the aspect is 1.  Loading a preset with an aspect fits the frame into
+     * the page's canvas ('contain'), which zooms out on a canvas of another
+     * shape - so a job without a view of its own (a group's thumbnail) sets the
+     * document view.  The working view of a preset saved before it is the saved
+     * view anyway.  null when the file has no view.
+     */
+    async function presetView(url) {
+        const doc = await (await fetch(url)).json();
+        const t = ((doc.params || doc).tools || {}).transform || {};
+        const e = t.euclidean || (t.params && t.params.euclidean);
+        if (!e) return null;
+        if (e.aspect !== undefined && Math.abs(e.aspect - 1) > 1e-9)
+            console.warn('[catalog_driver] the document frame of ' + url + ' is not square (aspect ' +
+                         e.aspect + '); the square image shows its width');
+        const zoom = Array.isArray(e.zoom) ? e.zoom[0] : e.zoom;
+        return { zoom, centerX: e.centerX || 0, centerY: e.centerY || 0 };
+    }
+
     /** apply the shared view, so every image of an entry is framed identically */
     function setView(view) {
         if (!view) return;
@@ -846,6 +899,7 @@ export default function catalogDriver(api) {
         // relies on.  Global params are restored only where an item's `params`
         // patch touched them.
         let loadedPreset = null;
+        let docView = null;         // the loaded preset's document view, for a job without a view
         let layerBaseline = null;
         let globalBaseline = null;
         const touchedGlobals = new Set();
@@ -856,6 +910,7 @@ export default function catalogDriver(api) {
                 await api.loadPreset(preset);
                 await waitForIdle(job.settleMs);
                 loadedPreset = preset;
+                docView = (job.view || job.autoView) ? null : await presetView(preset);
                 layerBaseline = snapshotLayers();
                 globalBaseline = api.getParams();
                 touchedGlobals.clear();
@@ -877,7 +932,7 @@ export default function catalogDriver(api) {
             if (!jobView && job.autoView)
                 jobView = await autoView(job.autoView.subgroup, job.autoView.fillRatio);
 
-            setView(item.view || jobView);
+            setView(item.view || jobView || docView);
 
             const size = item.size || job.size || DEFAULT_SIZE;
             const file = (job.outDir ? job.outDir + '/' : '') + item.file;
