@@ -1,11 +1,11 @@
 {
  "_comment": [
   "Uncolored pattern of 442 for the index pages.",
-  "Preset wp-442.json (4a-4b-4b triangle); the preset's own view (centre and zoom)."
+  "Preset wpe/wpe-442-2.json (a trial motif) (4a-4b-4b triangle); the preset's own view (centre and zoom)."
  ],
  "outDir": "442/gen",
  "size": 400,
- "preset": "/catalog/presets/wp/wp-442.json",
+ "preset": "/catalog/presets/wpe/wpe-442-2.json",
  "items": [
   {
    "file": "group.png",

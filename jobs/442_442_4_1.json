@@ -1,7 +1,7 @@
 {
  "_comment": [
   "Layer set for 442/442[4]#1 (442.4.4), 4 colours, 2 placements.",
-  "Template: wp-442; permutations overridden to this subgroup's invcos.",
+  "Template: wpe-442-2; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
   "f words: e a ba aba",
   "g words: e a ab aba",
   "Every item sets symmetry.options.iterations = 60.",
@@ -9,7 +9,7 @@
  ],
  "outDir": "442/4/442-442-4-1/gen",
  "size": 800,
- "preset": "/catalog/presets/wp/wp-442.json",
+ "preset": "/catalog/presets/wpe/wpe-442-2.json",
  "view": {
   "zoom": 1.215,
   "centerX": 0,
