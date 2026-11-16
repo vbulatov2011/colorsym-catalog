@@ -1,14 +1,14 @@
 {
  "_comment": [
   "Layer set for 333/333[1] (333.1.1), 1 colours, 1 placements.",
-  "Template: wp-333; permutations overridden to this subgroup's invcos.",
+  "Template: wpe-333; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
   "f words: e",
   "g words: e",
   "View: the preset's own (centre and zoom), shared by every item."
  ],
  "outDir": "333/1/333-333-1/gen",
  "size": 800,
- "preset": "/catalog/presets/wp/wp-333.json",
+ "preset": "/catalog/presets/wpe/wpe-333.json",
  "view": {
   "zoom": 0.664,
   "centerX": 0,

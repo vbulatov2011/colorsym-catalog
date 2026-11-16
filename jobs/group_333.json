@@ -1,11 +1,11 @@
 {
  "_comment": [
   "Uncolored pattern of 333 for the index pages.",
-  "Preset wp-333.json (3a-3c-3b-3c rhombus); the preset's own view (centre and zoom)."
+  "Preset wpe/wpe-333.json (a trial motif) (3a-3c-3b-3c rhombus); the preset's own view (centre and zoom)."
  ],
  "outDir": "333/gen",
  "size": 400,
- "preset": "/catalog/presets/wp/wp-333.json",
+ "preset": "/catalog/presets/wpe/wpe-333.json",
  "items": [
   {
    "file": "group.png",

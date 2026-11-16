@@ -1,7 +1,7 @@
 {
  "_comment": [
   "Layer set for 22*/2222[6]#2 (22*.6.7), 6 colours, 6 placements.",
-  "Template: wp-22s; permutations overridden to this subgroup's invcos.",
+  "Template: wpe-22s-2; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
   "f words: e cd c d dc cdc",
   "g words: e b c bc bab cb",
   "Every item sets symmetry.options.iterations = 60.",
@@ -9,11 +9,11 @@
  ],
  "outDir": "22s/6/22s-2222-6-2/gen",
  "size": 800,
- "preset": "/catalog/presets/wp/wp-22s.json",
+ "preset": "/catalog/presets/wpe/wpe-22s-2.json",
  "view": {
-  "zoom": 0.63,
-  "centerX": 0,
-  "centerY": -0.00021752014186059496
+  "zoom": 0.655,
+  "centerX": 0.11255814150056338,
+  "centerY": -0.03679785395210728
  },
  "items": [
   {

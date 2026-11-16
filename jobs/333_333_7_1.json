@@ -1,7 +1,7 @@
 {
  "_comment": [
   "Layer set for 333/333[7]#1 (333.7.2), 7 colours, 7 placements.",
-  "Template: wp-333; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
+  "Template: wpe-333; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
   "f words: e d b cd ad cb ab",
   "g words: e b B Bab BaB bAb BAb",
   "Every item sets symmetry.options.iterations = 60.",
@@ -9,7 +9,7 @@
  ],
  "outDir": "333/7/333-333-7-1/gen",
  "size": 800,
- "preset": "/catalog/presets/wp/wp-333.json",
+ "preset": "/catalog/presets/wpe/wpe-333.json",
  "view": {
   "zoom": 0.664,
   "centerX": 0,
