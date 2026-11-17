@@ -1,11 +1,11 @@
 {
  "_comment": [
   "Uncolored pattern of *x for the index pages.",
-  "Preset wp-sX.json (default); the preset's own view (centre and zoom)."
+  "Preset wpe/wpe-sX.json (a trial motif) (default); the preset's own view (centre and zoom)."
  ],
  "outDir": "sx/gen",
  "size": 400,
- "preset": "/catalog/presets/wp/wp-sX.json",
+ "preset": "/catalog/presets/wpe/wpe-sX.json",
  "items": [
   {
    "file": "group.png",

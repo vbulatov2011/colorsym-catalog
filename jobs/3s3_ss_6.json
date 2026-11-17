@@ -1,7 +1,7 @@
 {
  "_comment": [
   "Layer set for 3*3/**[6] (3*3.6.1), 6 colours, 3 placements.",
-  "Template: wp-3s3; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
+  "Template: wpe-3s3-3; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
   "f words: e c b cab ab bab",
   "g words: e b B Bab baB bab",
   "Every item sets symmetry.options.iterations = 60.",
@@ -9,7 +9,7 @@
  ],
  "outDir": "3s3/6/3s3-ss-6/gen",
  "size": 800,
- "preset": "/catalog/presets/wp/wp-3s3.json",
+ "preset": "/catalog/presets/wpe/wpe-3s3-3.json",
  "view": {
   "zoom": 0.667,
   "centerX": 0,

@@ -6,10 +6,10 @@
 <title>632/632[4]</title>
 <link rel="stylesheet" href="../../../css/entry.css">
 <style>
-.sw0 { background: #fc4141; }
-.sw1 { background: #7e10ec; }
-.sw2 { background: #00bbbb; }
-.sw3 { background: #7eec10; }
+.sw0 { background: #fce3a5; }
+.sw1 { background: #cd8238; }
+.sw2 { background: #622001; }
+.sw3 { background: #0d0226; }
 table.action th, table.action td { padding: .25rem .35rem; }
 table.grid td.rep .stack { border-bottom: 4px solid #2040c0; }
 table.grid th.col.rep { border-bottom: 4px solid #2040c0; }
@@ -157,7 +157,13 @@ click.</b></p>
   </div>
   <div class="fact">
     <dt>subgroup H</dt>
-    <dd>632 <span class="note">index 4 &nbsp;&middot;&nbsp; generators <code>a</code> (rotation by -0.3333*PI about (0,0.433)), <code>d</code> (rotation by 0.3333*PI about (-0,0.433)), <code>BAdc</code> (rotation by -0.6667*PI about (0.5,-0.433)), <code>Caab</code> (rotation by 0.6667*PI about (0.5,-0.433))</span></dd>
+    <dd>632 <span class="note">index 4 &nbsp;&middot;&nbsp; generators</span>
+    <ul class="gens">
+      <li><code>a</code>: rotation by −π/3 about (0, √3/4)</li>
+      <li><code>d</code>: rotation by π/3 about (0, √3/4)</li>
+      <li><code>BAdc</code>: rotation by −2π/3 about (1/2, −√3/4)</li>
+      <li><code>Caab</code>: rotation by 2π/3 about (1/2, −√3/4)</li>
+    </ul></dd>
   </div>
   <div class="fact">
     <dt>colors</dt>
@@ -220,10 +226,10 @@ click.</b></p>
    </td>
    <td>
     <div class='stack'>
-      <div class='cap'>G gens</div>
+      <div class='cap'>G symmetries</div>
       <img src='gen/group_gens.webp'>
     </div>
-    <div class='cellcap'>rotation centers of G, the hurricane&rsquo;s arm count = the order</div>
+    <div class='cellcap'>every symmetry element of G: rotation centers (the hurricane&rsquo;s arm count = the order), mirrors (solid red) and glide axes (dashed red)</div>
    </td>
   </tr>
   <tr>
@@ -244,10 +250,10 @@ click.</b></p>
    </td>
    <td>
     <div class='stack'>
-      <div class='cap'>H gens</div>
+      <div class='cap'>H symmetries</div>
       <img src='gen/sub_gens.webp'>
     </div>
-    <div class='cellcap'>rotation centers of H = 632; inequivalent axis classes in shades of the base color</div>
+    <div class='cellcap'>every symmetry element of H = 632: rotation centers, inequivalent ones in shades of the base color; mirrors solid, glide axes dashed</div>
    </td>
   </tr>
 </table>

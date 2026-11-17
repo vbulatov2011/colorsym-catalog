@@ -1,7 +1,7 @@
 {
  "_comment": [
   "Layer set for *442/2*22[4]#3 (*442.4.3), 4 colours, 2 placements.",
-  "Template: wp-s442; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
+  "Template: wpe-s442; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
   "f words: e c ac cac",
   "g words: e c cb cbc",
   "Every item sets symmetry.options.iterations = 60.",
@@ -9,7 +9,7 @@
  ],
  "outDir": "s442/4/s442-2s22-4-3/gen",
  "size": 800,
- "preset": "/catalog/presets/wp/wp-s442.json",
+ "preset": "/catalog/presets/wpe/wpe-s442.json",
  "view": {
   "zoom": 0.997,
   "centerX": 0,

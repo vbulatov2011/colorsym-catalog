@@ -442,7 +442,7 @@
                                         "className": "ColorTiles",
                                         "params": {
                                             "count": 6,
-                                            "palette": "pastel",
+                                            "palette": "custom",
                                             "a": {
                                                 "R": 0.5,
                                                 "G": 0.5,
@@ -460,8 +460,8 @@
                                             },
                                             "d": {
                                                 "R": 0,
-                                                "G": 0.33,
-                                                "B": 0.67
+                                                "G": 0.1,
+                                                "B": 0.2
                                             },
                                             "adjust": {
                                                 "hueShift": 0,
@@ -469,7 +469,15 @@
                                                 "lightOffset": 0,
                                                 "contrastMult": 1
                                             },
-                                            "edited": {},
+                                            "edited": {
+                                                "0": "#ffe6a7",
+                                                "1": "#cf8439",
+                                                "2": "#632001",
+                                                "3": "#0d0226",
+                                                "4": "#0d4392",
+                                                "5": "#63b2ee",
+                                                "6": "#cffaf6"
+                                            },
                                             "alphas": {}
                                         }
                                     },

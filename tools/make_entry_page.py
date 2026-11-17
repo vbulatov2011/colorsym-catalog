@@ -8,7 +8,7 @@
 # coloring, the placement colorings, facts, the color action table, the f/g
 # definitions, the fundamental domains, and the partition table with margins.
 # Every picture is click-to-enlarge with arrow key navigation.
-import json, io, os, sys
+import json, io, os, re, sys
 from entry_names import entry_names, MIN_N
 
 CAT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -201,7 +201,50 @@ else:
   </div>
 </dl>
 """ % (_rng('f'), f_list, _rng('g'), g_list)
-hgens_list = ", ".join("<code>%s</code> (%s)" % (h['word'], h['text']) for h in h_gens)
+# the manifest describes a generator in decimals ('rotation by -0.3333*PI about
+# (0,0.433)'): written exactly here, 'rotation by −π/3 about (0, √3/4)'.  The
+# decimals are rounded to 4 places; every number in the 17 manifests is p/q,
+# p√3/q or p√2/q with q dividing 16 or 12, and a number that is none of them
+# stays as it is
+_MINUS = '−'
+def _exact_num(s):
+    v = float(s)
+    if abs(v) < 6e-5:
+        return '0'
+    sign, a = (_MINUS if v < 0 else ''), abs(v)
+    for root, rs in ((1, ''), (3, '√3'), (2, '√2')):
+        for q in (1, 2, 3, 4, 6, 8, 12, 16):          # the smallest q first: p/q is reduced
+            p = round(a * q / root ** .5)
+            if p and abs(a - p * root ** .5 / q) < 6e-5:
+                num = (str(p) if p > 1 or not rs else '') + rs
+                return sign + num + ('/%d' % q if q > 1 else '')
+    return s
+
+def _exact_angle(m):
+    # a multiple of π; a half turn is π either way round
+    v = float(m.group(1))
+    if abs(abs(v) - 1) < 6e-5:
+        return 'π'
+    for q in (2, 3, 4, 6, 8, 12):
+        p = round(abs(v) * q)
+        if p and abs(abs(v) - p / q) < 6e-5:
+            return (_MINUS if v < 0 else '') + (str(p) if p > 1 else '') + 'π/%d' % q
+    return m.group(0).replace('PI', 'π')
+
+def _exact_point(m):
+    parts = [x.strip() for x in m.group(1).split(',')]
+    try:
+        return '(' + ', '.join(_exact_num(x) for x in parts) + ')'
+    except ValueError:
+        return m.group(0)
+
+def exact(text):
+    text = re.sub(r'(-?\d+(?:\.\d+)?)\*PI', _exact_angle, text)
+    return re.sub(r'\(([^()]*)\)', _exact_point, text)
+
+# one generator a line: 'a: rotation by −π/3 about (0, √3/4)'
+hgens_list = ''.join('\n      <li><code>%s</code>: %s</li>' % (h['word'], exact(h['text']))
+                     for h in h_gens)
 
 # ---- domains panels: a 2 x 3 table (G / H  x  domain, tiling, symmetries) -
 def geo_td(img, cap, note):
@@ -215,8 +258,9 @@ geo = "\n".join([
     geo_td('group_domain.png', 'G domain', 'the fundamental domain of %s' % E(G) +
            (' &mdash; the %s' % E(m['group']['domainShape']) if m['group'].get('domainShape') else '')),
     geo_td('group_tiling.png', 'G tiling', 'the plane tiled by images of G&rsquo;s domain'),
-    geo_td('group_gens.png', 'G gens', 'rotation centers of G, the hurricane&rsquo;s arm '
-           'count = the order'),
+    geo_td('group_gens.png', 'G symmetries', 'every symmetry element of G: rotation '
+           'centers (the hurricane&rsquo;s arm count = the order), mirrors (solid red) and '
+           'glide axes (dashed red)'),
     "  </tr>",
     "  <tr>\n   <th class='row'>H</th>",
     geo_td('sub_domain.png', 'H domain', 'the fundamental domain of H: a union of %d '
@@ -224,8 +268,9 @@ geo = "\n".join([
            'the fundamental domain of H: the single cell of G, as H = G'),
     geo_td('sub_tiling.png', 'H tiling', 'the plane tiled by H&rsquo;s domain, over '
            'G&rsquo;s finer tiling'),
-    geo_td('sub_gens.png', 'H gens', 'rotation centers of H = %s; inequivalent axis '
-           'classes in shades of the base color' % E(entry['type'])),
+    geo_td('sub_gens.png', 'H symmetries', 'every symmetry element of H = %s: rotation '
+           'centers, inequivalent ones in shades of the base color; mirrors solid, glide '
+           'axes dashed' % E(entry['type'])),
     "  </tr>",
     "</table>",
 ])
@@ -452,7 +497,9 @@ click.</b></p>
   </div>
   <div class="fact">
     <dt>subgroup H</dt>
-    <dd>%(hH)s <span class="note">index %(n)d &nbsp;&middot;&nbsp; generators %(hgens)s</span></dd>
+    <dd>%(hH)s <span class="note">index %(n)d &nbsp;&middot;&nbsp; generators</span>
+    <ul class="gens">%(hgens)s
+    </ul></dd>
   </div>
   <div class="fact">
     <dt>colors</dt>
@@ -574,7 +621,7 @@ the pattern itself, and remembers the choice.</p>
     'hero_one': hero_one, 'hero_row': hero_row,
     'gens': m['group']['gens'].replace(' ', ', '),
     'rels': E(str(m['group']['relators'])),
-    'hgens': hgens_list or '&mdash;',
+    'hgens': hgens_list or '\n      <li>&mdash;</li>',
     'normalnote': '' if K > 1 else ' &mdash; H is normal',
     'action_table': action_table,
     'f_list': f_list, 'g_list': g_list, 'motions': motions,

@@ -6,13 +6,13 @@
 <title>333/333[7]#2</title>
 <link rel="stylesheet" href="../../../css/entry.css">
 <style>
-.sw0 { background: #fc4141; }
-.sw1 { background: #cd02ae; }
-.sw2 { background: #6220f7; }
-.sw3 { background: #0c85e5; }
-.sw4 { background: #0ce585; }
-.sw5 { background: #62f720; }
-.sw6 { background: #cdae02; }
+.sw0 { background: #fce3a5; }
+.sw1 { background: #cd8238; }
+.sw2 { background: #622001; }
+.sw3 { background: #0d0226; }
+.sw4 { background: #0d4290; }
+.sw5 { background: #62b0eb; }
+.sw6 { background: #cdf7f3; }
 table.action th, table.action td { padding: .25rem .35rem; }
 table.grid td.rep .stack { border-bottom: 4px solid #2040c0; }
 table.grid th.col.rep { border-bottom: 4px solid #2040c0; }
@@ -181,7 +181,14 @@ click.</b></p>
   </div>
   <div class="fact">
     <dt>subgroup H</dt>
-    <dd>333 <span class="note">index 7 &nbsp;&middot;&nbsp; generators <code>BABcb</code> (rotation by 0.6667*PI about (-0.75,0.866)), <code>a</code> (rotation by -0.6667*PI about (0.25,0)), <code>c</code> (rotation by 0.6667*PI about (0.25,-0)), <code>BABdad</code> (rotation by -0.6667*PI about (-1,-0.433)), <code>BBCbcbb</code> (rotation by 0.6667*PI about (-1,-0.433)), <code>BBCadab</code> (rotation by 0.6667*PI about (-1,-0.433)), <code>Dcdab</code> (rotation by 0.6667*PI about (-1,-0.433)), <code>dabab</code> (rotation by -0.6667*PI about (-0.75,0.866)), <code>Babab</code> (rotation by -0.6667*PI about (-0.75,0.866)), <code>BAcbab</code> (rotation by -0.6667*PI about (-0.75,0.866))</span></dd>
+    <dd>333 <span class="note">index 7 &nbsp;&middot;&nbsp; generators</span>
+    <ul class="gens">
+      <li><code>a</code>: rotation by −2π/3 about (1/4, 0)</li>
+      <li><code>c</code>: rotation by 2π/3 about (1/4, 0)</li>
+      <li><code>DCbcd</code>: rotation by 2π/3 about (−1, −√3/4)</li>
+      <li><code>DCdcd</code>: rotation by −2π/3 about (−1, −√3/4)</li>
+      <li><code>BAdcb</code>: rotation by 2π/3 about (−3/4, √3/2)</li>
+    </ul></dd>
   </div>
   <div class="fact">
     <dt>colors</dt>
@@ -208,13 +215,13 @@ click.</b></p>
   <div class="fact">
     <dt class="plain">f<sub>1</sub> &hellip; f<sub>6</sub> &mdash; where the motif starts</dt>
     <dd class="small">The motions carrying the motif to the other cells of H&rsquo;s
-        domain (one cell per H-orbit): <code>f<sub>1</sub>=d</code>, <code>f<sub>2</sub>=b</code>, <code>f<sub>3</sub>=cbb</code>, <code>f<sub>4</sub>=dab</code>, <code>f<sub>5</sub>=bab</code>, <code>f<sub>6</sub>=ab</code>.</dd>
+        domain (one cell per H-orbit): <code>f<sub>1</sub>=d</code>, <code>f<sub>2</sub>=b</code>, <code>f<sub>3</sub>=cd</code>, <code>f<sub>4</sub>=ad</code>, <code>f<sub>5</sub>=cb</code>, <code>f<sub>6</sub>=ab</code>.</dd>
   </div>
   <div class="fact">
     <dt class="plain">g<sub>1</sub> &hellip; g<sub>6</sub> &mdash; what makes the colors</dt>
     <dd class="small">The coset transversal: <code>g<sub>j</sub></code> carries H onto
         coset j, and the sets <code>H&thinsp;g<sub>j</sub></code> are the color classes:
-        <code>g<sub>1</sub>=b</code>, <code>g<sub>2</sub>=B</code>, <code>g<sub>3</sub>=baB</code>, <code>g<sub>4</sub>=BCB</code>, <code>g<sub>5</sub>=BC</code>, <code>g<sub>6</sub>=BCb</code>.</dd>
+        <code>g<sub>1</sub>=b</code>, <code>g<sub>2</sub>=B</code>, <code>g<sub>3</sub>=baB</code>, <code>g<sub>4</sub>=BaB</code>, <code>g<sub>5</sub>=bAb</code>, <code>g<sub>6</sub>=Bab</code>.</dd>
   </div>
 </dl>
 
@@ -244,10 +251,10 @@ click.</b></p>
    </td>
    <td>
     <div class='stack'>
-      <div class='cap'>G gens</div>
+      <div class='cap'>G symmetries</div>
       <img src='gen/group_gens.webp'>
     </div>
-    <div class='cellcap'>rotation centers of G, the hurricane&rsquo;s arm count = the order</div>
+    <div class='cellcap'>every symmetry element of G: rotation centers (the hurricane&rsquo;s arm count = the order), mirrors (solid red) and glide axes (dashed red)</div>
    </td>
   </tr>
   <tr>
@@ -268,10 +275,10 @@ click.</b></p>
    </td>
    <td>
     <div class='stack'>
-      <div class='cap'>H gens</div>
+      <div class='cap'>H symmetries</div>
       <img src='gen/sub_gens.webp'>
     </div>
-    <div class='cellcap'>rotation centers of H = 333; inequivalent axis classes in shades of the base color</div>
+    <div class='cellcap'>every symmetry element of H = 333: rotation centers, inequivalent ones in shades of the base color; mirrors solid, glide axes dashed</div>
    </td>
   </tr>
 </table>

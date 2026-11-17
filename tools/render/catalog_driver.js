@@ -790,6 +790,178 @@ export default function catalogDriver(api) {
         return cnv;
     }
 
+    // ── Every symmetry element in the frame ──────────────────────────────────
+    //
+    //  An entry page shows all symmetry elements of G and of H in its images:
+    //  every rotation centre (the hurricane of its highest order), every mirror
+    //  (a solid line) and every glide axis (a dashed line), as the International
+    //  Tables draw them.  axisCenters walks short words about the origin and so
+    //  misses the outer parts of a wide frame; here the walk takes every element
+    //  that moves the frame's centre p by less than the frame's reach, and that
+    //  holds every element whose centre or axis meets the frame: a rotation about
+    //  c moves p by at most 2|p - c|, a reflection in L by 2 dist(p, L), a glide
+    //  by that and its step.  A glide on a mirror line is the mirror times a
+    //  translation along it, so a mirror line is drawn as a mirror only.
+
+    const symCache = new Map();
+
+    async function symmetryElements(cosets, view) {
+        const inv = await import('/lib/invlib/invlib.js');
+        const lib = await groupLib();
+        const sym = api.getParams().symmetry;
+        const gp = sym.group.params, dc = sym.dirichlet || {};
+        const zoom = view.zoom, cx = view.centerX || 0, cy = view.centerY || 0;
+        const cacheKey = JSON.stringify([gp.type, gp.a, gp.b, gp.c, gp.angle_a, gp.angle_b,
+                                         gp.domainShape, dc.enabled ? [dc.baseX, dc.baseY, dc.words] : null,
+                                         cosets, zoom, cx, cy]);
+        if (symCache.has(cacheKey)) return symCache.get(cacheKey);
+
+        // the generators, with their inverses: H's pairings, or G's
+        let gens;
+        if (cosets) {
+            gens = (await subgroupGeo(cosets)).hGens;
+        } else {
+            const { G0 } = await documentGroup();
+            gens = G0.transforms.map(t => new inv.ITransform(t.slice(), ''));
+            gens = gens.concat(gens.map(g => g.getInverse()));
+        }
+        const P = (t, x, y) => { const v = t.transform(inv.iPoint([x, y, 0, 0])).v; return [v[0], v[1]]; };
+        const moves = t => { const q = P(t, cx, cy); return Math.hypot(q[0] - cx, q[1] - cy); };
+        const half = 1 / zoom, reach = half * Math.SQRT2;
+        const step = Math.max(...gens.map(moves));
+        const bound = 2 * reach + 2 * step + 1e-6;
+
+        // breadth first over the elements within the bound, told apart by
+        // their action on two points
+        const keyOf = t => {
+            const a = P(t, cx + 0.1234, cy + 0.0567), b = P(t, cx - 0.0721, cy + 0.1618);
+            return [a[0], a[1], b[0], b[1]].map(v => v.toFixed(5)).join(',');
+        };
+        const id = new inv.ITransform([], '');
+        const seen = new Map([[keyOf(id), id]]);
+        let frontier = [id];
+        while (frontier.length && seen.size < 60000) {
+            const next = [];
+            for (const t of frontier) for (const g of gens) {
+                const c = t.getCopy().concat(g);
+                if (moves(c) > bound) continue;
+                const k = keyOf(c);
+                if (!seen.has(k)) { seen.set(k, c); next.push(c); }
+            }
+            frontier = next;
+        }
+        if (seen.size >= 60000)
+            console.warn('[catalog_driver] symmetryElements: the walk stopped at 60000 elements');
+
+        const z = v => (Math.abs(v) < 5e-7 ? 0 : v);
+        const ptKey = (x, y) => z(x).toFixed(4) + ',' + z(y).toFixed(4);
+        // centres a little past the frame: their symbols show in part, and the
+        // classes below join through them
+        const far = 2 * step;
+        const near = (x, y, m) => Math.abs(x - cx) <= half + m && Math.abs(y - cy) <= half + m;
+        const lineOf = (pt, dir) => {
+            let th = Math.atan2(dir[1], dir[0]);
+            if (th < 0) th += Math.PI;
+            if (th > Math.PI - 1e-6) th -= Math.PI;
+            th = z(th);
+            const n = [-Math.sin(th), Math.cos(th)];
+            const off = n[0] * pt[0] + n[1] * pt[1];
+            return { k: th.toFixed(4) + ':' + z(off).toFixed(4), n, off, d: [Math.cos(th), Math.sin(th)] };
+        };
+        const centers = new Map(), mirrors = new Map(), glides = new Map();
+        for (const t of seen.values()) {
+            const cls = lib.classifyEuclidean(t);
+            if (cls.type === 'rotation') {
+                const [x, y] = cls.center;
+                if (!near(x, y, far)) continue;
+                const order = Math.round(2 * Math.PI / Math.abs(cls.angle));
+                if (!(order >= 2 && order <= 12)) continue;
+                const k = ptKey(x, y);
+                const prev = centers.get(k);
+                if (!prev || order > prev.order) centers.set(k, { x, y, order });
+            } else if (cls.type === 'reflection' || cls.type === 'glide') {
+                const L = lineOf(cls.axis.point, cls.axis.dir);
+                if (Math.abs(L.n[0] * cx + L.n[1] * cy - L.off) > reach) continue;   // misses the frame
+                (cls.type === 'reflection' ? mirrors : glides).set(L.k, L);
+            }
+        }
+        for (const k of mirrors.keys()) glides.delete(k);
+
+        // classes of centres: joined by the short elements (the lattice's
+        // steps and the point group about the frame's centre), which map every
+        // centre; the chains run through the centres past the frame
+        const list = [...centers.values()];
+        const idx = new Map(list.map((c, i) => [ptKey(c.x, c.y), i]));
+        const parent = list.map((_, i) => i);
+        const find = i => { while (parent[i] !== i) { parent[i] = parent[parent[i]]; i = parent[i]; } return i; };
+        for (const t of seen.values()) {
+            if (moves(t) > 2 * step + 1e-6) continue;
+            for (let i = 0; i < list.length; i++) {
+                const q = P(t, list[i].x, list[i].y);
+                const j = idx.get(ptKey(q[0], q[1]));
+                if (j !== undefined && list[j].order === list[i].order) {
+                    const a = find(i), b = find(j);
+                    if (a !== b) parent[a] = b;
+                }
+            }
+        }
+        // numbered per order by the class's centre nearest the origin, ties by angle
+        const roots = new Map();
+        list.forEach((c, i) => { const r = find(i); if (!roots.has(r)) roots.set(r, []); roots.get(r).push(i); });
+        const perOrder = new Map();
+        for (const members of roots.values()) {
+            const d = i => Math.hypot(list[i].x, list[i].y), a = i => Math.atan2(list[i].y, list[i].x);
+            const best = members.reduce((b, i) => (d(i) < d(b) - 1e-6 ||
+                                                   (Math.abs(d(i) - d(b)) <= 1e-6 && a(i) < a(b) - 1e-9)) ? i : b);
+            const o = list[best].order;
+            if (!perOrder.has(o)) perOrder.set(o, []);
+            perOrder.get(o).push({ members, d: d(best), a: a(best) });
+        }
+        for (const cl of perOrder.values()) {
+            cl.sort((u, v) => u.d - v.d || u.a - v.a);
+            cl.forEach((c, n) => { for (const i of c.members) list[i].cls = n; });
+        }
+
+        const els = { centers: list.filter(c => near(c.x, c.y, 0.06 * half)),
+                      mirrors: [...mirrors.values()], glides: [...glides.values()],
+                      walked: seen.size };
+        symCache.set(cacheKey, els);
+        return els;
+    }
+
+    // mirrors solid, glide axes dashed; a white halo keeps them apart from
+    // the pattern and the tilings underneath
+    const MIRROR_STYLE = { color: '#c8102e', width: 4.2, halo: 'rgba(255,255,255,0.9)', haloWidth: 8.5 };
+    const GLIDE_STYLE  = { color: '#c8102e', width: 3.4, dash: [16, 11],
+                           halo: 'rgba(255,255,255,0.9)', haloWidth: 7.5 };
+
+    async function drawSymmetryElements(ctx, size, els, view, scale = 1) {
+        const W = worldMap(size, view);
+        const half = 1 / view.zoom, cx = view.centerX || 0, cy = view.centerY || 0;
+        const seg = L => {
+            // the line's point nearest the frame's centre, and 2 frames each way
+            const t0 = (cx - L.n[0] * L.off) * L.d[0] + (cy - L.n[1] * L.off) * L.d[1];
+            const p = t => W([L.n[0] * L.off + t * L.d[0], L.n[1] * L.off + t * L.d[1]]);
+            const a = p(t0 - 2 * half), b = p(t0 + 2 * half);
+            ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]);
+        };
+        ctx.save();
+        ctx.lineCap = 'butt';
+        for (const pass of ['halo', 'line']) {
+            for (const [lines, st] of [[els.glides, GLIDE_STYLE], [els.mirrors, MIRROR_STYLE]]) {
+                if (!lines.length) continue;
+                ctx.setLineDash(st.dash ? st.dash.map(v => v * scale) : []);
+                ctx.strokeStyle = pass === 'halo' ? st.halo : st.color;
+                ctx.lineWidth = (pass === 'halo' ? st.haloWidth : st.width) * scale;
+                ctx.beginPath();
+                for (const L of lines) seg(L);
+                ctx.stroke();
+            }
+        }
+        ctx.restore();
+        await drawAxisMarkers(ctx, size, els.centers, view, scale);
+    }
+
     /**
      * The view actually in effect, for world -> pixel mapping.  getParams()
      * gives the navigator in its document form, the values one level down
@@ -834,7 +1006,7 @@ export default function catalogDriver(api) {
         const t = ((doc.params || doc).tools || {}).transform || {};
         const e = t.euclidean || (t.params && t.params.euclidean);
         if (!e) return null;
-        if (e.aspect !== undefined && Math.abs(e.aspect - 1) > 1e-9)
+        if (e.aspect !== undefined && Math.abs(e.aspect - 1) > 1e-3)    // as make_entry_job.py
             console.warn('[catalog_driver] the document frame of ' + url + ' is not square (aspect ' +
                          e.aspect + '); the square image shows its width');
         const zoom = Array.isArray(e.zoom) ? e.zoom[0] : e.zoom;
@@ -969,9 +1141,10 @@ export default function catalogDriver(api) {
                 }
             }
             if (item.markers) {
-                const centers = await axisCenters(item.markers.subgroup);
-                await drawAxisMarkers(cnv.getContext('2d'), size, centers,
-                                effView, item.markers.scale || 1);
+                // every symmetry element in the frame: rotation centres, mirrors, glide axes
+                const els = await symmetryElements(item.markers.subgroup, effView);
+                await drawSymmetryElements(cnv.getContext('2d'), size, els,
+                                           effView, item.markers.scale || 1);
             }
 
             while (pending.size >= maxInFlight) await Promise.race(pending);
@@ -998,6 +1171,7 @@ export default function catalogDriver(api) {
         setSubgroup,
         composeCanvas,
         axisCenters,
+        symmetryElements,
         subgroupGeo,
         drawSubgroup,
         drawMotionGlyph,

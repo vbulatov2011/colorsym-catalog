@@ -1,7 +1,7 @@
 {
  "_comment": [
   "Layer set for **/o[6]#1 (**.6.11), 6 colours, 1 placements.",
-  "Template: wp-ss; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
+  "Template: wpe-ss-3; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
   "f words: e a d c da ca",
   "g words: e b c C bc bC",
   "Every item sets symmetry.options.iterations = 60.",
@@ -9,9 +9,9 @@
  ],
  "outDir": "ss/6/ss-o-6-1/gen",
  "size": 800,
- "preset": "/catalog/presets/wp/wp-ss.json",
+ "preset": "/catalog/presets/wpe/wpe-ss-3.json",
  "view": {
-  "zoom": 0.65,
+  "zoom": 0.6666666666666666,
   "centerX": 0,
   "centerY": 0
  },

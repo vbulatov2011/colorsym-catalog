@@ -1,16 +1,16 @@
 {
  "_comment": [
   "Layer set for 333/o[6] (333.6.1), 6 colours, 3 placements.",
-  "Template: wpe-333-3; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
-  "f words: e dcb d b bcb cb",
-  "g words: e a A B bcb BC",
+  "Template: wpe-333-2; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
+  "f words: e c a b ab cb",
+  "g words: e a A B ab Ba",
   "View: the preset's own (centre and zoom), shared by every item."
  ],
  "outDir": "333/6/333-o-6/gen",
  "size": 800,
- "preset": "/catalog/presets/wpe/wpe-333-3.json",
+ "preset": "/catalog/presets/wpe/wpe-333-2.json",
  "view": {
-  "zoom": 0.663963187479151,
+  "zoom": 0.664,
   "centerX": 0,
   "centerY": 0
  },
@@ -1891,7 +1891,7 @@
   },
   {
    "file": "f1.png",
-   "_note": "f_1 = dcb",
+   "_note": "f_1 = c",
    "enable": {
     "drawing": false,
     "overlay": false
@@ -1901,7 +1901,7 @@
     "kind": "cell",
     "list": [
      {
-      "word": "dcb",
+      "word": "c",
       "style": {
        "color": "#c02020",
        "width": 3.5
@@ -1912,7 +1912,7 @@
   },
   {
    "file": "f2.png",
-   "_note": "f_2 = d",
+   "_note": "f_2 = a",
    "enable": {
     "drawing": false,
     "overlay": false
@@ -1922,7 +1922,7 @@
     "kind": "cell",
     "list": [
      {
-      "word": "d",
+      "word": "a",
       "style": {
        "color": "#c02020",
        "width": 3.5
@@ -1954,7 +1954,7 @@
   },
   {
    "file": "f4.png",
-   "_note": "f_4 = bcb",
+   "_note": "f_4 = ab",
    "enable": {
     "drawing": false,
     "overlay": false
@@ -1964,7 +1964,7 @@
     "kind": "cell",
     "list": [
      {
-      "word": "bcb",
+      "word": "ab",
       "style": {
        "color": "#c02020",
        "width": 3.5
@@ -2059,7 +2059,7 @@
   },
   {
    "file": "g4.png",
-   "_note": "g_4 = bcb",
+   "_note": "g_4 = ab",
    "enable": {
     "drawing": false,
     "overlay": false
@@ -2069,7 +2069,7 @@
     "kind": "coset",
     "list": [
      {
-      "word": "bcb",
+      "word": "ab",
       "style": {
        "color": "#2040c0",
        "width": 3.5
@@ -2080,7 +2080,7 @@
   },
   {
    "file": "g5.png",
-   "_note": "g_5 = BC",
+   "_note": "g_5 = Ba",
    "enable": {
     "drawing": false,
     "overlay": false
@@ -2090,7 +2090,7 @@
     "kind": "coset",
     "list": [
      {
-      "word": "BC",
+      "word": "Ba",
       "style": {
        "color": "#2040c0",
        "width": 3.5

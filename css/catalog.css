@@ -47,10 +47,18 @@ header.top h1 .sub { color: var(--muted); font-weight: 400; }
 header.top .lede { margin: .25rem 0 0; color: var(--muted); font-size: .9rem; max-width: 78ch; }
 header.top .lede b { color: var(--ink); font-weight: 600; }
 
-nav.crumbs { font-size: .85rem; color: var(--muted); margin-bottom: .35rem; }
-nav.crumbs a { color: var(--muted); }
-nav.crumbs a:hover { color: var(--accent); }
-nav.crumbs .sep { margin: 0 .4rem; color: var(--faint); }
+/* a group page's title: a larger banner than its count sections (h2.sec.cnt) */
+header.top.group h1 {
+  display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: .1rem 1rem;
+  margin: .25rem 0 .5rem; padding: .4rem 1.4rem .5rem 1.1rem;
+  font-size: 2.7rem; font-weight: 700; line-height: 1.1; color: var(--accent);
+  background: #fff; border: 1px solid #b7cde3;
+  border-left: 10px solid var(--accent); border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .08);
+}
+header.top.group h1 .sub { font-size: 1.35rem; font-weight: 400; color: var(--muted); }
+header.top.group .lede { font-size: .95rem; }
+
 
 /* ---- section headings -------------------------------------------------- */
 
@@ -137,8 +145,9 @@ table.counts .zero { color: var(--faint); font-weight: 400 !important; }
 /* the anchors of a count's section: clear of the window's top edge */
 h2.sec[id] { scroll-margin-top: 1rem; }
 
-/* a group page's count sections ('6 colors'): a banner, so each starts
-   visibly; an empty count is a quiet dashed line */
+/* a group page's count sections ('6 colors') and a count page's group
+   sections (colors/N: '**'): a banner, so each starts visibly; an empty
+   one is a quiet dashed line */
 h2.sec.cnt {
   display: flex; flex-wrap: wrap; align-items: baseline; gap: .15rem .9rem;
   margin: 2.6rem 0 1rem; padding: .55rem .9rem;

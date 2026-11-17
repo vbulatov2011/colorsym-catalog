@@ -1,7 +1,7 @@
 {
  "_comment": [
   "Layer set for *x/xx[6]#2 (*x.6.1), 6 colours, 3 placements.",
-  "Template: wp-sX; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
+  "Template: wpe-sX; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
   "f words: e c d dc cd cdc",
   "g words: e c d cd dc cdc",
   "Every item sets symmetry.options.iterations = 60.",
@@ -9,7 +9,7 @@
  ],
  "outDir": "sx/6/sx-xx-6-2/gen",
  "size": 800,
- "preset": "/catalog/presets/wp/wp-sX.json",
+ "preset": "/catalog/presets/wpe/wpe-sX.json",
  "view": {
   "zoom": 0.57,
   "centerX": 0,

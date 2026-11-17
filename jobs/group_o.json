@@ -1,11 +1,11 @@
 {
  "_comment": [
   "Uncolored pattern of o for the index pages.",
-  "Preset wp-O.json (default); the preset's own view (centre and zoom)."
+  "Preset wpe/wpe-O.json (a trial motif) (default); the preset's own view (centre and zoom)."
  ],
  "outDir": "o/gen",
  "size": 400,
- "preset": "/catalog/presets/wp/wp-O.json",
+ "preset": "/catalog/presets/wpe/wpe-O.json",
  "items": [
   {
    "file": "group.png",

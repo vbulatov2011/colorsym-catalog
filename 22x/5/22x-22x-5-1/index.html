@@ -6,11 +6,11 @@
 <title>22x/22x[5]#1</title>
 <link rel="stylesheet" href="../../../css/entry.css">
 <style>
-.sw0 { background: #fc4141; }
-.sw1 { background: #a502d4; }
-.sw2 { background: #186ef0; }
-.sw3 { background: #18f06e; }
-.sw4 { background: #a5d402; }
+.sw0 { background: #fce3a5; }
+.sw1 { background: #cd8238; }
+.sw2 { background: #622001; }
+.sw3 { background: #0d0226; }
+.sw4 { background: #0d4290; }
 table.action th, table.action td { padding: .25rem .35rem; }
 table.grid td.rep .stack { border-bottom: 4px solid #2040c0; }
 table.grid th.col.rep { border-bottom: 4px solid #2040c0; }
@@ -165,7 +165,15 @@ click.</b></p>
   </div>
   <div class="fact">
     <dt>subgroup H</dt>
-    <dd>22x <span class="note">index 5 &nbsp;&middot;&nbsp; generators <code>a</code> (glide along (1,0) thru (0,0) by (0.5,0)), <code>b</code> (glide along (1,0) thru (0,0) by (-0.5,0)), <code>Cad</code> (glide along (1,0) thru (0,0) by (-0.5,0)), <code>Dac</code> (glide along (1,0) thru (0,0) by (-0.5,0)), <code>CCbdd</code> (glide along (1,0) thru (0,0) by (-0.5,0)), <code>CCddd</code> (glide along (0,1) thru (0,0) by (-0,-2.5))</span></dd>
+    <dd>22x <span class="note">index 5 &nbsp;&middot;&nbsp; generators</span>
+    <ul class="gens">
+      <li><code>a</code>: glide along (1, 0) thru (0, 0) by (1/2, 0)</li>
+      <li><code>b</code>: glide along (1, 0) thru (0, 0) by (−1/2, 0)</li>
+      <li><code>Cad</code>: glide along (1, 0) thru (0, 0) by (−1/2, 0)</li>
+      <li><code>Dac</code>: glide along (1, 0) thru (0, 0) by (−1/2, 0)</li>
+      <li><code>CCbdd</code>: glide along (1, 0) thru (0, 0) by (−1/2, 0)</li>
+      <li><code>CCddd</code>: glide along (0, 1) thru (0, 0) by (0, −5/2)</li>
+    </ul></dd>
   </div>
   <div class="fact">
     <dt>colors</dt>
@@ -228,10 +236,10 @@ click.</b></p>
    </td>
    <td>
     <div class='stack'>
-      <div class='cap'>G gens</div>
+      <div class='cap'>G symmetries</div>
       <img src='gen/group_gens.webp'>
     </div>
-    <div class='cellcap'>rotation centers of G, the hurricane&rsquo;s arm count = the order</div>
+    <div class='cellcap'>every symmetry element of G: rotation centers (the hurricane&rsquo;s arm count = the order), mirrors (solid red) and glide axes (dashed red)</div>
    </td>
   </tr>
   <tr>
@@ -252,10 +260,10 @@ click.</b></p>
    </td>
    <td>
     <div class='stack'>
-      <div class='cap'>H gens</div>
+      <div class='cap'>H symmetries</div>
       <img src='gen/sub_gens.webp'>
     </div>
-    <div class='cellcap'>rotation centers of H = 22x; inequivalent axis classes in shades of the base color</div>
+    <div class='cellcap'>every symmetry element of H = 22x: rotation centers, inequivalent ones in shades of the base color; mirrors solid, glide axes dashed</div>
    </td>
   </tr>
 </table>

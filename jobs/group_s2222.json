@@ -1,11 +1,11 @@
 {
  "_comment": [
   "Uncolored pattern of *2222 for the index pages.",
-  "Preset wp-s2222.json (default); the preset's own view (centre and zoom)."
+  "Preset wpe/wpe-s2222.json (a trial motif) (default); the preset's own view (centre and zoom)."
  ],
  "outDir": "s2222/gen",
  "size": 400,
- "preset": "/catalog/presets/wp/wp-s2222.json",
+ "preset": "/catalog/presets/wpe/wpe-s2222.json",
  "items": [
   {
    "file": "group.png",

@@ -1,11 +1,11 @@
 {
  "_comment": [
   "Uncolored pattern of 333 for the index pages.",
-  "Preset wpe/wpe-333-3.json (a trial motif) (3a-3c-3b-3c rhombus); the preset's own view (centre and zoom)."
+  "Preset wpe/wpe-333-2.json (a trial motif) (3a-3c-3b-3c rhombus); the preset's own view (centre and zoom)."
  ],
  "outDir": "333/gen",
  "size": 400,
- "preset": "/catalog/presets/wpe/wpe-333-3.json",
+ "preset": "/catalog/presets/wpe/wpe-333-2.json",
  "items": [
   {
    "file": "group.png",

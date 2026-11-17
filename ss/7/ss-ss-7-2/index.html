@@ -6,13 +6,13 @@
 <title>&lowast;&lowast;/&lowast;&lowast;[7]#2</title>
 <link rel="stylesheet" href="../../../css/entry.css">
 <style>
-.sw0 { background: #fc4141; }
-.sw1 { background: #cd02ae; }
-.sw2 { background: #6220f7; }
-.sw3 { background: #0c85e5; }
-.sw4 { background: #0ce585; }
-.sw5 { background: #62f720; }
-.sw6 { background: #cdae02; }
+.sw0 { background: #fce3a5; }
+.sw1 { background: #cd8238; }
+.sw2 { background: #622001; }
+.sw3 { background: #0d0226; }
+.sw4 { background: #0d4290; }
+.sw5 { background: #62b0eb; }
+.sw6 { background: #cdf7f3; }
 table.action th, table.action td { padding: .25rem .35rem; }
 table.grid td.rep .stack { border-bottom: 4px solid #2040c0; }
 table.grid th.col.rep { border-bottom: 4px solid #2040c0; }
@@ -181,7 +181,18 @@ click.</b></p>
   </div>
   <div class="fact">
     <dt>subgroup H</dt>
-    <dd>&lowast;&lowast; <span class="note">index 7 &nbsp;&middot;&nbsp; generators <code>a</code> (reflection in line thru (0.25,-0) dir (0,1)), <code>c</code> (translation by (0,0.5)), <code>d</code> (translation by (0,-0.5)), <code>Bdb</code> (translation by (0,-0.5)), <code>BAdab</code> (translation by (0,-0.5)), <code>BABdbab</code> (translation by (0,-0.5)), <code>BABAdabab</code> (translation by (0,-0.5)), <code>BABABdbabab</code> (translation by (0,-0.5)), <code>BABABAbababab</code> (reflection in line thru (-1.5,0) dir (0,1))</span></dd>
+    <dd>&lowast;&lowast; <span class="note">index 7 &nbsp;&middot;&nbsp; generators</span>
+    <ul class="gens">
+      <li><code>a</code>: reflection in line thru (1/4, 0) dir (0, 1)</li>
+      <li><code>c</code>: translation by (0, 1/2)</li>
+      <li><code>d</code>: translation by (0, −1/2)</li>
+      <li><code>Bdb</code>: translation by (0, −1/2)</li>
+      <li><code>BAdab</code>: translation by (0, −1/2)</li>
+      <li><code>BABdbab</code>: translation by (0, −1/2)</li>
+      <li><code>BABAdabab</code>: translation by (0, −1/2)</li>
+      <li><code>BABABdbabab</code>: translation by (0, −1/2)</li>
+      <li><code>BABABAbababab</code>: reflection in line thru (−3/2, 0) dir (0, 1)</li>
+    </ul></dd>
   </div>
   <div class="fact">
     <dt>colors</dt>
@@ -244,10 +255,10 @@ click.</b></p>
    </td>
    <td>
     <div class='stack'>
-      <div class='cap'>G gens</div>
+      <div class='cap'>G symmetries</div>
       <img src='gen/group_gens.webp'>
     </div>
-    <div class='cellcap'>rotation centers of G, the hurricane&rsquo;s arm count = the order</div>
+    <div class='cellcap'>every symmetry element of G: rotation centers (the hurricane&rsquo;s arm count = the order), mirrors (solid red) and glide axes (dashed red)</div>
    </td>
   </tr>
   <tr>
@@ -268,10 +279,10 @@ click.</b></p>
    </td>
    <td>
     <div class='stack'>
-      <div class='cap'>H gens</div>
+      <div class='cap'>H symmetries</div>
       <img src='gen/sub_gens.webp'>
     </div>
-    <div class='cellcap'>rotation centers of H = &lowast;&lowast;; inequivalent axis classes in shades of the base color</div>
+    <div class='cellcap'>every symmetry element of H = &lowast;&lowast;: rotation centers, inequivalent ones in shades of the base color; mirrors solid, glide axes dashed</div>
    </td>
   </tr>
 </table>

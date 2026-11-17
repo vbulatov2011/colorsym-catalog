@@ -1,7 +1,7 @@
 {
  "_comment": [
   "Layer set for 4*2/2*22[6] (4*2.6.1), 6 colours, 6 placements.",
-  "Template: wp-4s2; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
+  "Template: wpe-4s2; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
   "f words: e b ab cab bab ccab",
   "g words: e b Ba Bab babbab Babab",
   "Every item sets symmetry.options.iterations = 60.",
@@ -9,9 +9,9 @@
  ],
  "outDir": "4s2/6/4s2-2s22-6/gen",
  "size": 800,
- "preset": "/catalog/presets/wp/wp-4s2.json",
+ "preset": "/catalog/presets/wpe/wpe-4s2.json",
  "view": {
-  "zoom": 0.66,
+  "zoom": 0.6600660066006601,
   "centerX": 0,
   "centerY": -3.0382274160027638e-06
  },

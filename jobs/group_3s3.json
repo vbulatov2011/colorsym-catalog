@@ -1,11 +1,11 @@
 {
  "_comment": [
   "Uncolored pattern of 3*3 for the index pages.",
-  "Preset wp-3s3.json (3-*3-*3 triangle); the preset's own view (centre and zoom)."
+  "Preset wpe/wpe-3s3-3.json (a trial motif) (3-*3-*3 triangle); the preset's own view (centre and zoom)."
  ],
  "outDir": "3s3/gen",
  "size": 400,
- "preset": "/catalog/presets/wp/wp-3s3.json",
+ "preset": "/catalog/presets/wpe/wpe-3s3-3.json",
  "items": [
   {
    "file": "group.png",

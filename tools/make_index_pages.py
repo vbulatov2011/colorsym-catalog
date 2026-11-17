@@ -113,12 +113,9 @@ def bar(items):
             '</div>\n</footer>\n' % links)
 
 
-def page(title, root, crumbs, h1, lede, body, foot=''):
-    nav = ''
-    if crumbs:
-        parts = ['<a href="%s">%s</a>' % (href, text) for href, text in crumbs[:-1]]
-        parts.append('<span>%s</span>' % crumbs[-1][1])
-        nav = '<nav class="crumbs">%s</nav>\n' % '<span class="sep">/</span>'.join(parts)
+def page(title, root, h1, lede, body, foot='', kind=''):
+    # kind: a class of the header ('group': a group page's title as a banner).
+    # No links above the title: the bar at the bottom carries them.
     return '''<!doctype html>
 <html lang="en">
 <head>
@@ -128,8 +125,8 @@ def page(title, root, crumbs, h1, lede, body, foot=''):
 <link rel="stylesheet" href="%scss/catalog.css">
 </head>
 <body%s>
-<header class="top"><div class="wrap">
-%s<h1>%s</h1>
+<header class="top%s"><div class="wrap">
+<h1>%s</h1>
 <p class="lede">%s</p>
 </div></header>
 <main class="wrap">
@@ -138,7 +135,8 @@ def page(title, root, crumbs, h1, lede, body, foot=''):
 </main>
 %s</body>
 </html>
-''' % (html.escape(title), root, ' class="with-bar"' if foot else '', nav, h1, lede, body, foot)
+''' % (html.escape(title), root, ' class="with-bar"' if foot else '',
+       (' ' + kind) if kind else '', h1, lede, body, foot)
 
 
 # ---- collect ---------------------------------------------------------------
@@ -305,8 +303,8 @@ def group_count_nav(g):
     return '<nav class="ntiles">%s</nav>' % ''.join(tiles)
 
 
-body = ['<h2 class="sec">By number of colors<span class="note">every symmetry '
-        'on one page</span></h2>\n' + by_count_nav('')]
+# the counts' pages are in the bar at the bottom; the page is the groups alone
+body = []
 for fam, names in FAMILIES:
     cards = []
     for name in names:
@@ -324,10 +322,11 @@ for fam, names in FAMILIES:
 </div>
 </div>''' % (img, link, disp(name), HM[name], counts_line(g['subs'], bold=True),
              status(g['subs']), count_table(g, '')))
-    body.append('<h2 class="sec">%s</h2>\n<div class="grid">\n%s\n</div>' % (fam, '\n'.join(cards)))
+    # a family's banner, as a group's on the all-symmetries pages
+    body.append('<h2 class="sec cnt">%s</h2>\n<div class="grid">\n%s\n</div>' % (fam, '\n'.join(cards)))
 
 write('index.html', page(
-    'Color Groups Catalog', '', None,
+    'Color Groups Catalog', '',
     'Color groups of the wallpaper groups',
     'The 17 wallpaper groups and their color groups with %d to %d colors, counted three '
     'ways, each finer than the one before. <b>Types</b> (%d) merge the color groups '
@@ -337,14 +336,14 @@ write('index.html', page(
     'placement of H in G. %d color groups are rendered so far; a thumbnail shows the '
     'uncolored pattern.'
     % (MIN_N, MAX_N, ntypes(EVERY), len(EVERY), npatterns(EVERY), sum(s['built'] for s in EVERY)),
-    '\n'.join(body)))
+    '\n'.join(body),
+    bar([(None, 'Catalog'), count_run('All symmetries', all_n, 'colors/')])))
 
 
 # ---- group pages -------------------------------------------------------------
 
 for name, g in groups.items():
     root = '../'
-    crumbs = [('../index.html', 'Catalog'), (None, disp(name))]
     hero = ('<img src="gen/group.webp" alt="%s">' % disp(name)) if g['thumb'] else ''
     facts = '''<dl class="facts">
 <dt>Orbifold</dt><dd>%s</dd>
@@ -378,7 +377,7 @@ for name, g in groups.items():
             'below</span></h2>\n%s\n%s'
             % (hero, facts, group_count_nav(g), '\n'.join(secs)))
     write('%s/index.html' % g['stem'], page(
-        '%s - Color Groups Catalog' % name, root, crumbs,
+        '%s - Color Groups Catalog' % name, root,
         '%s <span class="sub">%s</span>' % (disp(name), HM[name]),
         'The color groups of %s with %d to %d colors and the patterns they give, by '
         'number of colors. A frame holds the color groups of one type.'
@@ -386,7 +385,7 @@ for name, g in groups.items():
         bar([('../index.html', 'Catalog'),
              (None, 'All color groups of <b>%s</b>' % disp(name)),
              count_run('<b>%s</b>' % disp(name), lambda n: g['per_n'][n], '', here=True),
-             count_run('All symmetries', all_n, '../colors/')])))
+             count_run('All symmetries', all_n, '../colors/')]), kind='group'))
 
 
 # ---- count pages of one group: <stem>/<N>/index.html -------------------------
@@ -397,8 +396,6 @@ for name, g in groups.items():
         if not ss:
             continue
         root = '../../'
-        crumbs = [('../../index.html', 'Catalog'), ('../index.html', disp(name)),
-                  (None, colors(n))]
         pager = []
         for k in range(MIN_N, MAX_N + 1):
             if k == n:
@@ -413,7 +410,7 @@ for name, g in groups.items():
                 'picture per pattern; a frame holds the color groups of one type</span></h2>\n%s'
                 % (''.join(pager), counts_line(ss), type_frames(ss, root)))
         write('%s/%d/index.html' % (g['stem'], n), page(
-            '%s, %s - Color Groups Catalog' % (name, colors(n)), root, crumbs,
+            '%s, %s - Color Groups Catalog' % (name, colors(n)), root,
             '%s <span class="sub">with %s</span>' % (disp(name), colors(n)),
             'The color groups G/H[%d] of %s, H a subgroup of index %d, and their patterns: '
             'each placement of H in G colors the pattern by cosets in its own way.'
@@ -432,8 +429,9 @@ for n in range(MIN_N, MAX_N + 1):
     for name in ORDER:
         g = groups[name]
         ss = g['per_n'][n]
-        head = ('<h2 class="sec"><a href="%s%s/index.html">%s</a> <span class="note">%s'
-                % (root, g['stem'], disp(name), HM[name]))
+        # a banner per group, as the count sections of a group page
+        head = ('<h2 class="sec cnt%s" id="%s"><a href="%s%s/index.html">%s</a> <span class="note">%s'
+                % ('' if ss else ' none', g['stem'], root, g['stem'], disp(name), HM[name]))
         if not ss:
             secs.append(head + ' &middot; none</span></h2>')
             continue
@@ -443,7 +441,6 @@ for n in range(MIN_N, MAX_N + 1):
     ss = all_n(n)
     write('colors/%d/index.html' % n, page(
         'All groups, %s - Color Groups Catalog' % colors(n), root,
-        [('../../index.html', 'Catalog'), (None, 'All symmetries with %s' % colors(n))],
         'All symmetries <span class="sub">with %s</span>' % colors(n),
         '%s across the 17 wallpaper groups, with a picture of every pattern: one for each '
         'placement of H in G.' % counts_line(ss),

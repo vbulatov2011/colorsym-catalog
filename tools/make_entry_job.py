@@ -71,8 +71,10 @@ if VIEW == 'preset':
     assert not _e.get('angle'), 'preset view is rotated (angle %r): not supported' % _e['angle']
     # since 2026-11-16 the view is the document's frame (SymmHub DocumentView.js):
     # 2/zoom wide, aspect * 2/zoom high - the square images show it whole only
-    # when it is square (a preset saved before it has no aspect: square)
-    assert abs(_e.get('aspect', 1) - 1) < 1e-9, \
+    # when it is square (a preset saved before it has no aspect: square).  A frame
+    # sized by hand is square only nearly (wpe/wpe-4s2: 1.0001): within 0.1% the
+    # square image shows its width and cuts under a pixel off its height
+    assert abs(_e.get('aspect', 1) - 1) < 1e-3, \
         'preset frame is not square (aspect %r): the catalog images are' % _e['aspect']
     PRESET_VIEW = {"zoom": _zoom, "centerX": _e.get('centerX', 0), "centerY": _e.get('centerY', 0)}
 # the sympix template already colours by multiplying ('mult'); a document
