@@ -1,7 +1,7 @@
 {
  "_comment": [
   "Layer set for *632/632[2] (*632.2.3), 2 colours, 1 placements.",
-  "Template: wpe-s632-2; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
+  "Template: wpe-s632; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
   "f words: e c",
   "g words: e b",
   "Every item sets symmetry.options.iterations = 60.",
@@ -9,7 +9,7 @@
  ],
  "outDir": "s632/2/s632-632-2/gen",
  "size": 800,
- "preset": "/catalog/presets/wpe/wpe-s632-2.json",
+ "preset": "/catalog/presets/wpe/wpe-s632.json",
  "view": {
   "zoom": 0.801,
   "centerX": 0,
@@ -352,12 +352,12 @@
     "drawing": {
      "useOrbit": false,
      "mask": "",
-     "permutations": "ba ba ba",
+     "permutations": "a a a",
      "useMipmap": true,
      "colorTiles": {
-      "count": 2
+      "count": 1
      },
-     "coloringType": "none",
+     "coloringType": "mult",
      "permIndex": 0
     }
    },

@@ -1,7 +1,7 @@
 {
  "_comment": [
   "Layer set for **/o[4]#1 (**.4.10), 4 colours, 1 placements.",
-  "Template: wpe-ss-3; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
+  "Template: wpe-ss; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
   "f words: e a c ca",
   "g words: e b c bc",
   "Every item sets symmetry.options.iterations = 60.",
@@ -9,7 +9,7 @@
  ],
  "outDir": "ss/4/ss-o-4-1/gen",
  "size": 800,
- "preset": "/catalog/presets/wpe/wpe-ss-3.json",
+ "preset": "/catalog/presets/wpe/wpe-ss.json",
  "view": {
   "zoom": 0.6666666666666666,
   "centerX": 0,
@@ -1108,12 +1108,12 @@
     "drawing": {
      "useOrbit": false,
      "mask": "",
-     "permutations": "badc badc cdab cdab",
+     "permutations": "a a a a",
      "useMipmap": true,
      "colorTiles": {
-      "count": 4
+      "count": 1
      },
-     "coloringType": "none",
+     "coloringType": "mult",
      "permIndex": 0
     }
    },

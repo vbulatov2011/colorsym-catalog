@@ -334,7 +334,7 @@ write('index.html', page(
     '2 colors. <b>Color groups</b> G/H[n] (%d) are the subgroups H of index n up to '
     'conjugacy in G. <b>Patterns</b> (%d) are the colorings by cosets, one for each '
     'placement of H in G. %d color groups are rendered so far; a thumbnail shows the '
-    'uncolored pattern.'
+    'pattern of the group in one color.'
     % (MIN_N, MAX_N, ntypes(EVERY), len(EVERY), npatterns(EVERY), sum(s['built'] for s in EVERY)),
     '\n'.join(body),
     bar([(None, 'Catalog'), count_run('All symmetries', all_n, 'colors/')])))

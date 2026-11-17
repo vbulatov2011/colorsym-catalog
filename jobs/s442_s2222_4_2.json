@@ -1107,12 +1107,12 @@
     "drawing": {
      "useOrbit": false,
      "mask": "",
-     "permutations": "abcd acbd badc",
+     "permutations": "a a a",
      "useMipmap": true,
      "colorTiles": {
-      "count": 4
+      "count": 1
      },
-     "coloringType": "none",
+     "coloringType": "mult",
      "permIndex": 0
     }
    },

@@ -1,7 +1,7 @@
 {
  "_comment": [
-  "Uncolored pattern of *x for the index pages.",
-  "Preset wpe/wpe-sX.json (a trial motif) (default); the preset's own view (centre and zoom)."
+  "Pattern of *x in one colour (the palette's first) for the index pages.",
+  "Preset wpe-sX.json (default); the preset's own view (centre and zoom)."
  ],
  "outDir": "sx/gen",
  "size": 400,
@@ -11,7 +11,14 @@
    "file": "group.png",
    "layers": {
     "drawing": {
-     "coloringType": "none",
+     "coloringType": "mult",
+     "colorTiles": {
+      "count": 1
+     },
+     "permutations": "a a a a",
+     "permIndex": 0,
+     "useOrbit": false,
+     "mask": "",
      "useMipmap": true
     }
    },

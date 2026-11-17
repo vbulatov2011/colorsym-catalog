@@ -1,7 +1,7 @@
 {
  "_comment": [
-  "Uncolored pattern of 632 for the index pages.",
-  "Preset wpe/wpe-632.json (a trial motif) (6-2-3-2 kite); the preset's own view (centre and zoom)."
+  "Pattern of 632 in one colour (the palette's first) for the index pages.",
+  "Preset wpe-632.json (6-2-3-2 kite); the preset's own view (centre and zoom)."
  ],
  "outDir": "632/gen",
  "size": 400,
@@ -11,7 +11,14 @@
    "file": "group.png",
    "layers": {
     "drawing": {
-     "coloringType": "none",
+     "coloringType": "mult",
+     "colorTiles": {
+      "count": 1
+     },
+     "permutations": "a a a a",
+     "permIndex": 0,
+     "useOrbit": false,
+     "mask": "",
      "useMipmap": true
     }
    },

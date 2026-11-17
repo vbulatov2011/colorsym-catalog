@@ -1,7 +1,7 @@
 {
  "_comment": [
-  "Uncolored pattern of *442 for the index pages.",
-  "Preset wpe/wpe-s442.json (a trial motif) (default); the preset's own view (centre and zoom)."
+  "Pattern of *442 in one colour (the palette's first) for the index pages.",
+  "Preset wpe-s442.json (default); the preset's own view (centre and zoom)."
  ],
  "outDir": "s442/gen",
  "size": 400,
@@ -11,7 +11,14 @@
    "file": "group.png",
    "layers": {
     "drawing": {
-     "coloringType": "none",
+     "coloringType": "mult",
+     "colorTiles": {
+      "count": 1
+     },
+     "permutations": "a a a",
+     "permIndex": 0,
+     "useOrbit": false,
+     "mask": "",
      "useMipmap": true
     }
    },

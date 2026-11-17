@@ -131,7 +131,7 @@ cell_px = max(70, min(235, 720 // N))
 hero_one = "\n".join([
     " <figure>",
     stack([sub('group_pattern.png')], 'G'),
-    "  <figcaption><b>G = %s</b> &mdash; the uncolored pattern: one orbit of the motif "
+    "  <figcaption><b>G = %s</b> &mdash; the pattern in one color: one orbit of the motif "
     "<code>p</code>.</figcaption>" % E(G),
     " </figure>",
     " <figure>",

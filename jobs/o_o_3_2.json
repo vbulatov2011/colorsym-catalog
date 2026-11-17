@@ -677,12 +677,12 @@
     "drawing": {
      "useOrbit": false,
      "mask": "",
-     "permutations": "bca cab cab bca",
+     "permutations": "a a a a",
      "useMipmap": true,
      "colorTiles": {
-      "count": 3
+      "count": 1
      },
-     "coloringType": "none",
+     "coloringType": "mult",
      "permIndex": 0
     }
    },

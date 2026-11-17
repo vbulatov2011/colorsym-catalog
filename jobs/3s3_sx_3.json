@@ -1,7 +1,7 @@
 {
  "_comment": [
   "Layer set for 3*3/*x[3] (3*3.3.2), 3 colours, 3 placements.",
-  "Template: wpe-3s3-3; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
+  "Template: wpe-3s3; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
   "f words: e c b",
   "g words: e b B",
   "Every item sets symmetry.options.iterations = 60.",
@@ -9,7 +9,7 @@
  ],
  "outDir": "3s3/3/3s3-sx-3/gen",
  "size": 800,
- "preset": "/catalog/presets/wpe/wpe-3s3-3.json",
+ "preset": "/catalog/presets/wpe/wpe-3s3.json",
  "view": {
   "zoom": 0.667,
   "centerX": 0,
@@ -675,12 +675,12 @@
     "drawing": {
      "useOrbit": false,
      "mask": "",
-     "permutations": "acb bca cab",
+     "permutations": "a a a",
      "useMipmap": true,
      "colorTiles": {
-      "count": 3
+      "count": 1
      },
-     "coloringType": "none",
+     "coloringType": "mult",
      "permIndex": 0
     }
    },

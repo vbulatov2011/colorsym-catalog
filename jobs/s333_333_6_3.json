@@ -11,7 +11,7 @@
  "size": 800,
  "preset": "/catalog/presets/wpe/wpe-s333.json",
  "view": {
-  "zoom": 0.796,
+  "zoom": 0.8,
   "centerX": 0,
   "centerY": 0
  },
@@ -2288,12 +2288,12 @@
     "drawing": {
      "useOrbit": false,
      "mask": "",
-     "permutations": "baefcd baefcd cdabfe",
+     "permutations": "a a a",
      "useMipmap": true,
      "colorTiles": {
-      "count": 6
+      "count": 1
      },
-     "coloringType": "none",
+     "coloringType": "mult",
      "permIndex": 0
     }
    },

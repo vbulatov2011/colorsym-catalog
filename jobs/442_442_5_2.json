@@ -1,7 +1,7 @@
 {
  "_comment": [
   "Layer set for 442/442[5]#2 (442.5.2), 5 colours, 5 placements.",
-  "Template: wpe-442-2; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
+  "Template: wpe-442; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
   "f words: e c b ac bb",
   "g words: e b B bab bb",
   "Every item sets symmetry.options.iterations = 60.",
@@ -9,7 +9,7 @@
  ],
  "outDir": "442/5/442-442-5-2/gen",
  "size": 800,
- "preset": "/catalog/presets/wpe/wpe-442-2.json",
+ "preset": "/catalog/presets/wpe/wpe-442.json",
  "view": {
   "zoom": 1.215,
   "centerX": 0,
@@ -1641,12 +1641,12 @@
     "drawing": {
      "useOrbit": false,
      "mask": "",
-     "permutations": "adebc beadc caedb",
+     "permutations": "a a a",
      "useMipmap": true,
      "colorTiles": {
-      "count": 5
+      "count": 1
      },
-     "coloringType": "none",
+     "coloringType": "mult",
      "permIndex": 0
     }
    },

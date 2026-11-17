@@ -352,12 +352,12 @@
     "drawing": {
      "useOrbit": false,
      "mask": "",
-     "permutations": "ba ba ba",
+     "permutations": "a a a",
      "useMipmap": true,
      "colorTiles": {
-      "count": 2
+      "count": 1
      },
-     "coloringType": "none",
+     "coloringType": "mult",
      "permIndex": 0
     }
    },

@@ -227,7 +227,11 @@ for j in range(N):
                   "_note": "all orbits of H g_%d - the whole pattern in color %d" % (j, j),
                   "compose": [motif(permIndex=i, mask=mask_for(j)) for i in range(N)]})
 
-items.append({"file": "group_pattern.png", **motif(permIndex=0, coloringType="none")})
+# G's own pattern: the preset's colouring with ONE colour, every shape in the
+# palette's first colour (the coloring of G/G[1]: each generator fixes the coset)
+ONE = ' '.join('a' for _ in COS.split())
+items.append({"file": "group_pattern.png",
+              **motif(permIndex=0, permutations=ONE, colorTiles={"count": 1})})
 items.append({"file": "group_domain.png", **gstruct(ov(fundDomain=FD_ON))})
 items.append({"file": "group_tiling.png", **gstruct(ov(tiling=TILE_ON))})
 items.append({"file": "group_gens.png", **gstruct(ov(fundDomain=FD_ON)),

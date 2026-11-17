@@ -1,7 +1,7 @@
 {
  "_comment": [
   "Layer set for xx/xx[5]#2 (xx.5.1), 5 colours, 5 placements.",
-  "Template: wpe-XX-2; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
+  "Template: wpe-XX; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
   "f words: e d c dd cc",
   "g words: e c C cc CC",
   "Every item sets symmetry.options.iterations = 60.",
@@ -9,7 +9,7 @@
  ],
  "outDir": "xx/5/xx-xx-5-2/gen",
  "size": 800,
- "preset": "/catalog/presets/wpe/wpe-XX-2.json",
+ "preset": "/catalog/presets/wpe/wpe-XX.json",
  "view": {
   "zoom": 0.568,
   "centerX": 0.022706568254950044,
@@ -1641,12 +1641,12 @@
     "drawing": {
      "useOrbit": false,
      "mask": "",
-     "permutations": "acbed acbed bdaec caebd",
+     "permutations": "a a a a",
      "useMipmap": true,
      "colorTiles": {
-      "count": 5
+      "count": 1
      },
-     "coloringType": "none",
+     "coloringType": "mult",
      "permIndex": 0
     }
    },

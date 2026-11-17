@@ -11,7 +11,7 @@
  "size": 800,
  "preset": "/catalog/presets/wpe/wpe-s2222.json",
  "view": {
-  "zoom": 0.665,
+  "zoom": 0.5714285714285714,
   "centerX": 0,
   "centerY": 0
  },
@@ -1108,12 +1108,12 @@
     "drawing": {
      "useOrbit": false,
      "mask": "",
-     "permutations": "badc abcd abcd cdab",
+     "permutations": "a a a a",
      "useMipmap": true,
      "colorTiles": {
-      "count": 4
+      "count": 1
      },
-     "coloringType": "none",
+     "coloringType": "mult",
      "permIndex": 0
     }
    },

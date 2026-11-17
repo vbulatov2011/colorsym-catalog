@@ -2283,12 +2283,12 @@
     "drawing": {
      "useOrbit": false,
      "mask": "",
-     "permutations": "badcfe baefcd acbdef",
+     "permutations": "a a a",
      "useMipmap": true,
      "colorTiles": {
-      "count": 6
+      "count": 1
      },
-     "coloringType": "none",
+     "coloringType": "mult",
      "permIndex": 0
     }
    },

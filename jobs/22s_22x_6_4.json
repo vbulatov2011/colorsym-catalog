@@ -1,7 +1,7 @@
 {
  "_comment": [
   "Layer set for 22*/22x[6]#4 (22*.6.4), 6 colours, 3 placements.",
-  "Template: wpe-22s-3; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
+  "Template: wpe-22s; permutations overridden to this subgroup's cosets (invcos for the orbit images).",
   "f words: e b ab c db adb",
   "g words: e b cbab c bc bab",
   "Every item sets symmetry.options.iterations = 60.",
@@ -9,7 +9,7 @@
  ],
  "outDir": "22s/6/22s-22x-6-4/gen",
  "size": 800,
- "preset": "/catalog/presets/wpe/wpe-22s-3.json",
+ "preset": "/catalog/presets/wpe/wpe-22s.json",
  "view": {
   "zoom": 0.655,
   "centerX": 0.11255814150056338,
@@ -2286,12 +2286,12 @@
     "drawing": {
      "useOrbit": false,
      "mask": "",
-     "permutations": "acbdfe bafedc defabc defabc",
+     "permutations": "a a a a",
      "useMipmap": true,
      "colorTiles": {
-      "count": 6
+      "count": 1
      },
-     "coloringType": "none",
+     "coloringType": "mult",
      "permIndex": 0
     }
    },

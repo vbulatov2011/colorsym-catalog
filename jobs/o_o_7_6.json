@@ -3037,12 +3037,12 @@
     "drawing": {
      "useOrbit": false,
      "mask": "",
-     "permutations": "bfagdec cagefbd dgebacf edfacgb",
+     "permutations": "a a a a",
      "useMipmap": true,
      "colorTiles": {
-      "count": 7
+      "count": 1
      },
-     "coloringType": "none",
+     "coloringType": "mult",
      "permIndex": 0
     }
    },

@@ -1,11 +1,12 @@
-# One job per wallpaper group rendering its UNCOLORED pattern, the thumbnail
-# of the catalogue's top page and of the group's own page:
+# One job per wallpaper group rendering its pattern in ONE colour (the
+# palette's first: colorTiles count 1, every generator fixing the one coset),
+# the thumbnail of the catalogue's top page and of the group's own page:
 #
 #   python tools/make_group_jobs.py            -> jobs/group_<stem>.json  (17)
 #   python tools/make_group_jobs.py 632 s632   -> only those groups (by stem)
 #   --view preset|auto                          default preset
 #
-# The motif is the group's symdraw preset, presets/wp/wp-<name>.json ('*' is
+# The motif is the group's symdraw preset, presets/wpe/wpe-<name>.json ('*' is
 # written 's', and the presets spell the groups with capital X and O).
 # View 'preset': the preset's own centre and zoom, as its .json.png thumbnail
 # and the entries (make_entry_job.py) show it.  View 'auto': framed on G's
@@ -36,7 +37,7 @@ def preset_name(name):
     # manifest names are lower case ('o', 'xx', '*x', '22x'); the presets use
     # the library's own spelling ('O', 'XX', '*X', '22X')
     lib = 'O' if name == 'o' else name.replace('x', 'X')
-    return 'wp-%s.json' % lib.replace('*', 's')
+    return 'wpe-%s.json' % lib.replace('*', 's')
 
 
 index = json.load(open(os.path.join(CAT, 'data', 'index.json'), encoding='utf-8'))
@@ -44,17 +45,17 @@ for g in index['groups']:
     name, stem = g['name'], g['stem']
     if ONLY and stem not in ONLY:
         continue
-    preset = '/catalog/presets/wp/' + preset_name(name)
+    preset = '/catalog/presets/wpe/' + preset_name(name)
     doc = json.load(open(os.path.join(CAT, preset[len('/catalog/'):].replace('/', os.sep)),
                          encoding='utf-8'))
     shape = doc['params']['symmetry']['group']['params'].get('domainShape', 'default')
-    variant = os.path.join(CAT, 'data', '%s@%s.json' % (stem, shape.replace(' ', '-')))
+    variant = os.path.join(CAT, 'data', '%s@%s.json' % (stem, shape.replace('*', 's').replace(' ', '-')))
     man_file = variant if os.path.exists(variant) else os.path.join(CAT, 'data', stem + '.json')
     m = json.load(open(man_file, encoding='utf-8'))
     trivial = next(s for s in m['subgroups'] if s['index'] == 1)['cosets']
 
     job = {
-        "_comment": ["Uncolored pattern of %s for the index pages." % name,
+        "_comment": ["Pattern of %s in one colour (the palette's first) for the index pages." % name,
                      ("Preset %s (%s); view framed on G's domain from %s."
                       % (preset_name(name), shape, os.path.basename(man_file))
                       if VIEW == 'auto' else
@@ -66,7 +67,9 @@ for g in index['groups']:
         **({"autoView": {"subgroup": trivial, "fillRatio": FILL}} if VIEW == 'auto' else {}),
         "items": [{
             "file": "group.png",
-            "layers": {"drawing": {"coloringType": "none", "useMipmap": True}},
+            "layers": {"drawing": {"coloringType": "mult", "colorTiles": {"count": 1},
+                                   "permutations": trivial, "permIndex": 0,
+                                   "useOrbit": False, "mask": "", "useMipmap": True}},
             "enable": {"overlay": False},
         }],
     }

@@ -65,6 +65,12 @@
                                                     0,
                                                     0.25000000000000006,
                                                     0,
+                                                    0.19336499080659353,
+                                                    0.12946872769336504,
+                                                    0.12043376506138423,
+                                                    0,
+                                                    0.11893119944260575,
+                                                    0,
                                                     -0.25000000000000006,
                                                     0.010591521446645243,
                                                     -0.23482442894437877,
@@ -202,6 +208,31 @@
                                                     {
                                                         "p": [
                                                             0,
+                                                            0.19336499080659353
+                                                        ],
+                                                        "h1": null,
+                                                        "h2": null
+                                                    },
+                                                    {
+                                                        "p": [
+                                                            0.12946872769336504,
+                                                            0.12043376506138423
+                                                        ],
+                                                        "h1": null,
+                                                        "h2": null,
+                                                        "smooth": true
+                                                    },
+                                                    {
+                                                        "p": [
+                                                            0,
+                                                            0.11893119944260575
+                                                        ],
+                                                        "h1": null,
+                                                        "h2": null
+                                                    },
+                                                    {
+                                                        "p": [
+                                                            0,
                                                             -0.25000000000000006
                                                         ],
                                                         "h1": null,
@@ -254,32 +285,7 @@
                                                         ],
                                                         "smooth": true
                                                     }
-                                                ],
-                                                "tile": {
-                                                    "edges": [
-                                                        {
-                                                            "count": 1,
-                                                            "pair": null,
-                                                            "word": null,
-                                                            "reversed": false,
-                                                            "locked": true
-                                                        },
-                                                        {
-                                                            "count": 2,
-                                                            "pair": 2,
-                                                            "word": "b",
-                                                            "reversed": true,
-                                                            "locked": false
-                                                        },
-                                                        {
-                                                            "count": 2,
-                                                            "pair": 1,
-                                                            "word": "c",
-                                                            "reversed": true,
-                                                            "locked": false
-                                                        }
-                                                    ]
-                                                }
+                                                ]
                                             }
                                         ]
                                     }
@@ -376,7 +382,7 @@
                                     "useCrown": true,
                                     "useTilt": false,
                                     "patternTiltDirection": 0,
-                                    "useMipmap": false,
+                                    "useMipmap": true,
                                     "interpolation": "linear"
                                 }
                             },

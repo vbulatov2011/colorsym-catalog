@@ -19,7 +19,7 @@ MIN_N = 2
 def group_motif(cat, name, stem):
     """The motif a group renders and the manifest its entries are built from.
     The preset is the one its thumbnail job renders (jobs/group_<stem>.json; a
-    group can be tried on another preset), else presets/wp/wp-<name>.json.  The
+    group can be tried on another preset), else presets/wpe/wpe-<name>.json.  The
     manifest follows that preset's domain: data/<stem>@<shape>.json for another
     domain shape, <stem>@...@dirichlet.json when it turns on a Dirichlet domain
     (make_manifest.mjs --domain / --dirichlet), whichever exists, else
@@ -28,7 +28,7 @@ def group_motif(cat, name, stem):
     else None."""
     import json, os
     lib = 'O' if name == 'o' else name.replace('x', 'X')
-    preset = 'presets/wp/wp-%s.json' % lib.replace('*', 's')
+    preset = 'presets/wpe/wpe-%s.json' % lib.replace('*', 's')
     gjob = os.path.join(cat, 'jobs', 'group_%s.json' % stem)
     if os.path.exists(gjob):
         preset = json.load(open(gjob, encoding='utf-8'))['preset'].replace('/catalog/', '', 1)
