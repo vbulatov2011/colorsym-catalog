@@ -39,9 +39,9 @@
 # every item stated: {"overlays": {"tiling": {"enabled": true}, ...}}.
 import json, io, copy, sys, subprocess
 from entry_names import entry_names
+import catalog_paths as P
 
-CAT = 'D:/home/projects/00.docs/250117_colorsym/catalog'
-TEMPLATE = '/catalog/presets/wp_632_632_3.1.json'
+TEMPLATE = P.url(P.PRESETS_DIR, 'wp_632_632_3.1.json')
 LAYER = 'arrows'
 
 _args = sys.argv[1:]
@@ -64,7 +64,7 @@ assert VIEW in ('preset', 'auto'), '--view must be preset or auto, got %r' % VIE
 PRESET_VIEW = None
 if VIEW == 'preset':
     # the navigator view saved in the preset (/catalog/... is this folder)
-    _doc = json.load(open(CAT + TEMPLATE[len('/catalog'):], encoding='utf-8'))
+    _doc = json.load(open(P.path(P.from_url(TEMPLATE)), encoding='utf-8'))
     _e = _doc['params']['tools']['transform']['params']['euclidean']
     _zoom = _e['zoom'][0] if isinstance(_e['zoom'], list) else _e['zoom']
     # the driver maps world to pixels by centre and zoom only
@@ -90,7 +90,7 @@ def overlay_item_ids(url):
     document saved before the item list (the sympix template) gets them the
     way SymmHub's document load does: VisualizationOverlayUpgradeData.js,
     pure data mapping, run by node as is."""
-    doc = json.load(open(CAT + url[len('/catalog'):], encoding='utf-8'))
+    doc = json.load(open(P.path(P.from_url(url)), encoding='utf-8'))
     layers = doc['params']['visualization']['params']['layers']['params']['children']
     ov = next(c['params'] for c in layers if c['className'] == 'VisualizationOverlay')
     if 'overlays' not in ov:
@@ -107,7 +107,7 @@ def overlay_item_ids(url):
 stem = _args[0] if len(_args) > 0 else '632'
 entry_name = _args[1] if len(_args) > 1 else '632/632[3]'
 
-m = json.load(open(CAT + '/data/%s.json' % stem, encoding='utf-8'))
+m = json.load(open(P.data_file(stem), encoding='utf-8'))
 entry = next(s for s in m['subgroups'] if s['name'] == entry_name)
 
 COS = entry['cosets']
@@ -158,7 +158,7 @@ assert [c[0] for c in _classes] == list(range(K)), (
 # G / H / n from the name, for file names:  632/333[8] -> 632-333-8
 _nm = entry_names(entry_name, N)
 gsym, hsym, slug_flat, job_file = _nm['gsym'], _nm['hsym'], _nm['slug'], _nm['job_file']
-out_dir = _nm['dir'] + '/gen'
+out_dir = P.fam(_nm['dir'], 'gen')
 
 OVERLAY_IDS = overlay_item_ids(TEMPLATE)
 def ov(**on):
@@ -290,7 +290,7 @@ job = {
     {"autoView": {"subgroup": COS, "fillRatio": 0.24}}),
  "items": items,
 }
-path = CAT + '/jobs/%s.json' % job_file
+path = P.job_file(job_file)
 io.open(path, 'w', encoding='utf-8', newline='\n').write(json.dumps(job, indent=1))
 print('job written:', path, len(items), 'items ->', out_dir)
 print('simplyConnected:', entry.get('simplyConnected'), ' f:', ' '.join(f_words), ' g:', ' '.join(g_words))

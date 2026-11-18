@@ -27,21 +27,23 @@ def group_motif(cat, name, stem):
     (a Dirichlet domain without its manifest, or one of another base or words),
     else None."""
     import json, os
+    import catalog_paths as P
     lib = 'O' if name == 'o' else name.replace('x', 'X')
-    preset = 'presets/wpe/wpe-%s.json' % lib.replace('*', 's')
-    gjob = os.path.join(cat, 'jobs', 'group_%s.json' % stem)
+    preset = P.join(P.PRESETS_DIR, 'wpe', 'wpe-%s.json' % lib.replace('*', 's'))
+    gjob = os.path.join(cat, *P.JOBS_DIR.split('/'), 'group_%s.json' % stem)
     if os.path.exists(gjob):
-        preset = json.load(open(gjob, encoding='utf-8'))['preset'].replace('/catalog/', '', 1)
+        preset = P.from_url(json.load(open(gjob, encoding='utf-8'))['preset'])
     sym = json.load(open(os.path.join(cat, *preset.split('/')), encoding='utf-8'))['params']['symmetry']
     shape = sym['group']['params'].get('domainShape', 'default')
     dc = sym.get('dirichlet') or {}
     dirichlet = dc if dc.get('enabled') else None
     sh = '@' + shape.replace('*', 's').replace(' ', '-')
     tries = ([stem + sh + '@dirichlet', stem + '@dirichlet'] if dirichlet else []) + [stem + sh, stem]
-    mstem = next(t for t in tries if os.path.exists(os.path.join(cat, 'data', t + '.json')))
+    data = os.path.join(cat, *P.DATA_DIR.split('/'))
+    mstem = next(t for t in tries if os.path.exists(os.path.join(data, t + '.json')))
     stale = None
     if dirichlet:
-        md = json.load(open(os.path.join(cat, 'data', mstem + '.json'), encoding='utf-8'))['group'].get('dirichlet')
+        md = json.load(open(os.path.join(data, mstem + '.json'), encoding='utf-8'))['group'].get('dirichlet')
         if not md:
             stale = 'no Dirichlet manifest: make_manifest.mjs --dirichlet %s' % preset
         elif [md['baseX'], md['baseY'], md['words']] != [dc['baseX'], dc['baseY'], dc['words']]:

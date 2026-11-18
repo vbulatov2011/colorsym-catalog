@@ -25,7 +25,8 @@ import os, sys, glob, json, subprocess, shutil
 from concurrent.futures import ThreadPoolExecutor
 from entry_names import entry_names
 
-CAT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+import catalog_paths as P
+CAT = P.CAT
 
 
 def find_bin(name):
@@ -61,9 +62,9 @@ if not CWEBP and not PIL_IMAGE:
 
 
 def gen_dir_for(stem, entry_name):
-    m = json.load(open(os.path.join(CAT, 'data', '%s.json' % stem), encoding='utf-8'))
+    m = json.load(open(P.data_file(stem), encoding='utf-8'))
     entry = next(s for s in m['subgroups'] if s['name'] == entry_name)
-    return os.path.join(CAT, *entry_names(entry_name, entry['index'])['dir'].split('/'),
+    return os.path.join(P.path(P.fam(entry_names(entry_name, entry['index'])['dir'])),
                         'gen')
 
 
@@ -150,12 +151,12 @@ def main():
 
     dirs = []
     if '--all' in args:
-        index = json.load(open(os.path.join(CAT, 'data', 'index.json'), encoding='utf-8'))
+        index = json.load(open(P.data_file('index'), encoding='utf-8'))
         stems = index if isinstance(index, list) else index.get('groups', [])
         for st in stems:
             stem = st if isinstance(st, str) else st.get('stem') or st.get('name')
             try:
-                m = json.load(open(os.path.join(CAT, 'data', '%s.json' % stem), encoding='utf-8'))
+                m = json.load(open(P.data_file(stem), encoding='utf-8'))
             except IOError:
                 continue
             for sub in m['subgroups']:

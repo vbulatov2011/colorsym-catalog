@@ -47,6 +47,7 @@
 import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { DATA_DIR } from './catalog_paths.mjs';
 
 const SUBLIB = 'file:///D:/home/projects/00.docs/250117_colorsym/wieting/sublib/src/sublib.js';
 const SYMMHUB = 'file:///D:/home/projects/00.docs/250125_symhub/repo_v2/SymmHub';
@@ -67,7 +68,7 @@ const dirichletLib = { ...(await import(SYMMHUB + '/lib/grouplib/DirichletDomain
                        ...(await import(SYMMHUB + '/lib/grouplib/Permutations.js')) };
 const { dirichletGroup, sideCosets, sourceWord } = await import('./render/dirichlet_group.mjs');
 
-const OUT_DIR = join(dirname(fileURLToPath(import.meta.url)), '..', 'data');
+const OUT_DIR = DATA_DIR;             // the family's manifests (tools/catalog_paths.json)
 
 // the five orientation preserving wallpaper types (rotations only)
 const DIRECT_TYPES = new Set(['o', '2222', '442', '333', '632']);

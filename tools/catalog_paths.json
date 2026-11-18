@@ -1,0 +1,18 @@
+{
+ "_comment": [
+  "Where the catalog keeps things: read by tools/catalog_paths.py and .mjs, so every tool",
+  "takes its paths from here.  Paths are relative to the catalog root (the folder above",
+  "tools/, served by the render server at urlRoot) and '/'-separated: one string is a file",
+  "path, a server URL and a render job's outDir (the driver saves under the root).",
+  "family: the kind of groups the tools build (wp = the 17 wallpaper groups; later frieze,",
+  "spherical, hyperbolic).  familyDir: the family's page tree ('' = the root itself).",
+  "dataDir: its manifests.  jobsDir: its render jobs.  presetsDir: its symdraw presets, in",
+  "sets (presetsDir/<set>/)."
+ ],
+ "urlRoot": "/catalog",
+ "family": "wp",
+ "familyDir": "",
+ "dataDir": "data",
+ "jobsDir": "jobs",
+ "presetsDir": "presets"
+}

@@ -184,7 +184,7 @@ if(process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]){
   const { Group } = await import(SYMMHUB + '/lib/invlib/invlib.js');
   const { computeFrame } = await import(SYMMHUB + '/lib/grouplib/SubgroupKey.js');
 
-  const DATA = join(dirname(fileURLToPath(import.meta.url)), '..', 'data');
+  const { DATA_DIR: DATA } = await import('./catalog_paths.mjs');
   const files = readdirSync(DATA).filter(f => f.endsWith('.json') && f !== 'index.json');
   const totals = [];
   for(const f of files){

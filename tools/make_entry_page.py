@@ -10,14 +10,13 @@
 # Every picture is click-to-enlarge with arrow key navigation.
 import json, io, os, re, sys
 from entry_names import entry_names, MIN_N
-
-CAT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+import catalog_paths as P
 
 stem = sys.argv[1]
 entry_name = sys.argv[2]
 palette = sys.argv[3].split(',') if len(sys.argv) > 3 else []
 
-m = json.load(open(os.path.join(CAT, 'data', '%s.json' % stem), encoding='utf-8'))
+m = json.load(open(P.data_file(stem), encoding='utf-8'))
 entry = next(s for s in m['subgroups'] if s['name'] == entry_name)
 
 G = m['group']['name']
@@ -25,7 +24,7 @@ N = entry['index']
 K = entry['placements']
 _nm = entry_names(entry_name, N)
 gsym, hsym, slug = _nm['gsym'], _nm['hsym'], _nm['slug']
-out_dir = os.path.join(CAT, *_nm['dir'].split('/'))
+out_dir = P.path(P.fam(_nm['dir']))
 union_stem = ''.join(str(i) for i in range(N))
 
 # placement classes: offsets i, i' are equivalent iff their point stabilizers
@@ -387,7 +386,7 @@ page = """<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>%(title)s</title>
-<link rel="stylesheet" href="../../../css/entry.css">
+<link rel="stylesheet" href="%(site)scss/entry.css">
 <style>
 %(sw_css)s
 table.action th, table.action td { padding: .25rem .35rem; }
@@ -614,6 +613,8 @@ the pattern itself, and remembers the choice.</p>
 </html>
 """ % {
     'title': E(entry_name), 'hG': E(G), 'hH': E(entry['type']), 'n': N, 'k': K,
+    # the way up from this page to the catalog root, for the site-wide css
+    'site': P.up(P.fam(_nm['dir'])),
     # '#k' tells apart subgroups sharing G/H[n] - without it two pages share a heading
     'hK': ('#' + E(entry_name.split('#')[1])) if '#' in entry_name else '',
     'nm1': N - 1,

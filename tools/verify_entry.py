@@ -35,7 +35,7 @@ import numpy as np
 from PIL import Image
 from entry_names import entry_names
 
-CAT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+import catalog_paths as P
 
 
 def find(gen, name):
@@ -101,8 +101,8 @@ SPARSE = '--sparse' in sys.argv
 def verify(stem, entry):
     n, K = entry['index'], entry['placements']
     names = entry_names(entry['name'], n)
-    gen = os.path.join(CAT, *names['dir'].split('/'), 'gen')
-    job = json.load(open(os.path.join(CAT, 'jobs', names['job_file'] + '.json'), encoding='utf-8'))
+    gen = P.path(P.fam(names['dir'], 'gen'))
+    job = json.load(open(P.job_file(names['job_file']), encoding='utf-8'))
     files = [it['file'] for it in job['items']]
     fails = []
 
@@ -170,11 +170,11 @@ def verify(stem, entry):
 def main():
     args = sys.argv[1:]
     stem = args[0]
-    m = json.load(open(os.path.join(CAT, 'data', stem + '.json'), encoding='utf-8'))
+    m = json.load(open(P.data_file(stem), encoding='utf-8'))
     args = [a for a in args if a != '--sparse']
     if '--all' in args:
         entries = [s for s in m['subgroups']
-                   if os.path.isdir(os.path.join(CAT, *entry_names(s['name'], s['index'])['dir'].split('/'), 'gen'))]
+                   if os.path.isdir(P.path(P.fam(entry_names(s['name'], s['index'])['dir'], 'gen')))]
     else:
         entries = [next(s for s in m['subgroups'] if s['name'] == a) for a in args[1:]]
     bad = 0

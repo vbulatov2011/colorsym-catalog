@@ -13,13 +13,14 @@
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { DATA_DIR } from './catalog_paths.mjs';
 
 const SYMMHUB = 'D:/home/projects/00.docs/250125_symhub/repo_v2/SymmHub';
 const { subgroupsData, findByPermutations } =
   await import('file:///' + SYMMHUB + '/lib/sublib/src/sublib.js');
 
 const DIR = SYMMHUB + '/lib/color_groups/';
-const OUT = join(dirname(fileURLToPath(import.meta.url)), '..', 'data');
+const OUT = DATA_DIR;                 // the family's manifests (tools/catalog_paths.json)
 const norm = s => String(s).trim().split(/\s+/).join(' ');
 
 const families = { wallpaper: 'wallpaper:', klm: 'klm:', '*klm': 'sklm:' };

@@ -8,20 +8,20 @@
 import json, io, os, re, sys
 from entry_names import entry_names
 
-CAT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+import catalog_paths as P
 
 stem = sys.argv[1]
 entry_name = sys.argv[2]
 
-m = json.load(open(os.path.join(CAT, 'data', '%s.json' % stem), encoding='utf-8'))
+m = json.load(open(P.data_file(stem), encoding='utf-8'))
 entry = next(s for s in m['subgroups'] if s['name'] == entry_name)
 N = entry['index']
 K = entry['placements']
 
 _nm = entry_names(entry_name, N)
 gsym, hsym, slug, job_file = _nm['gsym'], _nm['hsym'], _nm['slug'], _nm['job_file']
-job = json.load(open(os.path.join(CAT, 'jobs', '%s.json' % job_file), encoding='utf-8'))
-out_dir = os.path.join(CAT, *job['outDir'].split('/'))
+job = json.load(open(P.job_file(job_file), encoding='utf-8'))
+out_dir = P.path(job['outDir'])        # a job's outDir is root-relative
 
 files = [it['file'] for it in job['items']]
 pieces = [f for f in files if re.fullmatch(r'\d\d\.png', f)]

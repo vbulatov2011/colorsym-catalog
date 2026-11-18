@@ -19,7 +19,8 @@
 # <stem>/gen.  Output: <stem>/gen/group.png (renders are not tracked in git).
 import json, io, os, sys
 
-CAT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+import catalog_paths as P
+CAT = P.CAT
 SIZE = 400              # a thumbnail; the pages show it at ~200-280 px
 FILL = 0.3              # view auto: G's domain fills 30% of the height - the
                         # renderer tiles a finite patch, which smaller ratios
@@ -40,17 +41,17 @@ def preset_name(name):
     return 'wpe-%s.json' % lib.replace('*', 's')
 
 
-index = json.load(open(os.path.join(CAT, 'data', 'index.json'), encoding='utf-8'))
+index = json.load(open(P.data_file('index'), encoding='utf-8'))
 for g in index['groups']:
     name, stem = g['name'], g['stem']
     if ONLY and stem not in ONLY:
         continue
-    preset = '/catalog/presets/wpe/' + preset_name(name)
-    doc = json.load(open(os.path.join(CAT, preset[len('/catalog/'):].replace('/', os.sep)),
+    preset = P.url(P.PRESETS_DIR, 'wpe', preset_name(name))
+    doc = json.load(open(P.path(P.from_url(preset)),
                          encoding='utf-8'))
     shape = doc['params']['symmetry']['group']['params'].get('domainShape', 'default')
-    variant = os.path.join(CAT, 'data', '%s@%s.json' % (stem, shape.replace('*', 's').replace(' ', '-')))
-    man_file = variant if os.path.exists(variant) else os.path.join(CAT, 'data', stem + '.json')
+    variant = P.data_file('%s@%s' % (stem, shape.replace('*', 's').replace(' ', '-')))
+    man_file = variant if os.path.exists(variant) else P.data_file(stem)
     m = json.load(open(man_file, encoding='utf-8'))
     trivial = next(s for s in m['subgroups'] if s['index'] == 1)['cosets']
 
@@ -61,7 +62,7 @@ for g in index['groups']:
                       if VIEW == 'auto' else
                       "Preset %s (%s); the preset's own view (centre and zoom)."
                       % (preset_name(name), shape))],
-        "outDir": stem + "/gen",
+        "outDir": P.fam(stem, "gen"),
         "size": SIZE,
         "preset": preset,
         **({"autoView": {"subgroup": trivial, "fillRatio": FILL}} if VIEW == 'auto' else {}),
@@ -73,6 +74,6 @@ for g in index['groups']:
             "enable": {"overlay": False},
         }],
     }
-    out = os.path.join(CAT, 'jobs', 'group_%s.json' % stem)
+    out = P.job_file('group_%s' % stem)
     io.open(out, 'w', encoding='utf-8', newline='\n').write(json.dumps(job, indent=1))
     print('%-6s %-16s %-22s -> jobs/group_%s.json' % (name, preset_name(name), shape, stem))
