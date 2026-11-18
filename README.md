@@ -50,14 +50,22 @@ the orbifold symbol.
 
 ## Layout
 
+The catalog holds families of groups, each a page tree of its own: the 17 wallpaper
+groups (`wp`) now; frieze, spherical and hyperbolic groups later. Tools, styles, data
+and presets stay outside the family trees; `tools/catalog_paths.json` says where each
+lives, and every tool takes its paths from it.
+
 ```
-<G>/<colors>/<G>-<H>-<n>/     entry: index.html + gen/ (its rendered images)
-data/                          per-group manifests (subgroups, geometry, names)
-jobs/                          declarative render jobs
-tools/                         the generators (see below)
-presets/                       SymmHub documents used as render templates
-work/                          hand-drawn assets (axis_N.svg) and scratch art
-css/entry.css                  entry page styles
+index.html                         landing page: the families
+wp/                                the wallpaper groups' pages
+  index.html  colors/<n>/          the family's index, all groups by number of colors
+  <G>/<colors>/<G>-<H>-<n>/        entry: index.html + gen/ (its rendered images)
+data/wp/                           per-group manifests (subgroups, geometry, names)
+presets/wp/<set>/                  SymmHub documents used as motifs, in sets (wp0, wpe, wpe1)
+jobs/                              declarative render jobs (outDir under wp/)
+tools/                             the generators (see below); tools/render/ the driver
+css/                               page styles, shared by all families
+work/                              hand-drawn assets (axis_N.svg) and scratch art
 ```
 
 ## Building an entry
@@ -65,7 +73,7 @@ css/entry.css                  entry page styles
 Requires a checkout of SymmHub next to this one and python 3 + node.
 
 ```bash
-node tools/make_manifest.mjs               # data/<group>.json for all 17 groups
+node tools/make_manifest.mjs               # data/wp/<group>.json for all 17 groups
 python tools/make_entry_job.py 632 "632/333[8]"    # -> jobs/632_333_8.json
 ```
 
@@ -76,7 +84,7 @@ for the catalog, `tools/serve_symmhub.mjs` for SymmHub with a `/save` endpoint) 
 http://localhost:8125/apps/sympix/catalog_render.html?job=/catalog/jobs/632_333_8.json
 ```
 
-which renders every image and POSTs it into the entry's `gen/`. The page is SymmHub's (a
+which renders every image and POSTs it into the entry's `gen/` (under `wp/`). The page is SymmHub's (a
 symdraw drawing as the motif: `/apps/symdraw/catalog_render.html`); the driver that runs
 the job is this repo's `tools/render/catalog_driver.js`, which the page loads from
 `/catalog/` (`?script=<url>` loads another). Finally:
@@ -99,5 +107,5 @@ That key is a property of the conjugacy class, so the names survive the alternat
 fundamental-domain variants, which enumerate other conjugates of the same classes
 (checked for four domain shapes in SymmHub's `tests/subgroups/catalog_names.mjs`). The
 manifests also carry `representativeKey`, the key of the enumerated representative alone,
-which the ordinals used before 2026-09-05. `data/gap_id_map.json` maps the older
+which the ordinals used before 2026-09-05. `data/wp/gap_id_map.json` maps the older
 GAP-derived ids onto the coset strings.

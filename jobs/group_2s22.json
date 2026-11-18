@@ -3,9 +3,9 @@
   "Pattern of 2*22 in one colour (the palette's first) for the index pages.",
   "Preset wpe-2s22.json (default); the preset's own view (centre and zoom)."
  ],
- "outDir": "2s22/gen",
+ "outDir": "wp/2s22/gen",
  "size": 400,
- "preset": "/catalog/presets/wpe/wpe-2s22.json",
+ "preset": "/catalog/presets/wp/wpe/wpe-2s22.json",
  "items": [
   {
    "file": "group.png",

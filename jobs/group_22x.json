@@ -3,9 +3,9 @@
   "Pattern of 22x in one colour (the palette's first) for the index pages.",
   "Preset wpe-22X.json (default); the preset's own view (centre and zoom)."
  ],
- "outDir": "22x/gen",
+ "outDir": "wp/22x/gen",
  "size": 400,
- "preset": "/catalog/presets/wpe/wpe-22X.json",
+ "preset": "/catalog/presets/wp/wpe/wpe-22X.json",
  "items": [
   {
    "file": "group.png",

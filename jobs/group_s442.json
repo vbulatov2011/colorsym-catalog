@@ -3,9 +3,9 @@
   "Pattern of *442 in one colour (the palette's first) for the index pages.",
   "Preset wpe-s442.json (default); the preset's own view (centre and zoom)."
  ],
- "outDir": "s442/gen",
+ "outDir": "wp/s442/gen",
  "size": 400,
- "preset": "/catalog/presets/wpe/wpe-s442.json",
+ "preset": "/catalog/presets/wp/wpe/wpe-s442.json",
  "items": [
   {
    "file": "group.png",

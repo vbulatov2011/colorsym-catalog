@@ -3,9 +3,9 @@
   "Pattern of *333 in one colour (the palette's first) for the index pages.",
   "Preset wpe-s333.json (default); the preset's own view (centre and zoom)."
  ],
- "outDir": "s333/gen",
+ "outDir": "wp/s333/gen",
  "size": 400,
- "preset": "/catalog/presets/wpe/wpe-s333.json",
+ "preset": "/catalog/presets/wp/wpe/wpe-s333.json",
  "items": [
   {
    "file": "group.png",

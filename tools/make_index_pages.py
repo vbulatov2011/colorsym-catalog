@@ -63,8 +63,9 @@ def plural(k, word):
     return '%d %s%s' % (k, word, '' if k == 1 else 's')
 
 
-def write(rel, text):
-    path = P.path(P.fam(rel))
+def write(rel, text, site=False):
+    # rel: a path in the family's page tree, or with site=True in the catalog root
+    path = P.path(rel if site else P.fam(rel))
     os.makedirs(os.path.dirname(path), exist_ok=True)
     io.open(path, 'w', encoding='utf-8', newline='\n').write(text)
 
@@ -114,16 +115,18 @@ def bar(items):
             '</div>\n</footer>\n' % links)
 
 
-def page(title, root, h1, lede, body, foot='', kind=''):
+def page(title, root, h1, lede, body, foot='', kind='', css_root=None):
     # kind: a class of the header ('group': a group page's title as a banner).
     # No links above the title: the bar at the bottom carries them.
+    # root leads to the family's tree; css_root to the catalog root (css/),
+    # by default root and then up out of the family's folder.
     return '''<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>%s</title>
-<link rel="stylesheet" href="%s%scss/catalog.css">
+<link rel="stylesheet" href="%scss/catalog.css">
 </head>
 <body%s>
 <header class="top%s"><div class="wrap">
@@ -136,7 +139,8 @@ def page(title, root, h1, lede, body, foot='', kind=''):
 </main>
 %s</body>
 </html>
-''' % (html.escape(title), root, P.up(P.FAMILY_DIR), ' class="with-bar"' if foot else '',
+''' % (html.escape(title), root + P.up(P.FAMILY_DIR) if css_root is None else css_root,
+       ' class="with-bar"' if foot else '',
        (' ' + kind) if kind else '', h1, lede, body, P.DATA_DIR, foot)
 
 
@@ -327,7 +331,7 @@ for fam, names in FAMILIES:
     body.append('<h2 class="sec cnt">%s</h2>\n<div class="grid">\n%s\n</div>' % (fam, '\n'.join(cards)))
 
 write('index.html', page(
-    'Color Groups Catalog', '',
+    'Wallpaper Groups - Color Groups Catalog', '',
     'Color groups of the wallpaper groups',
     'The 17 wallpaper groups and their color groups with %d to %d colors, counted three '
     'ways, each finer than the one before. <b>Types</b> (%d) merge the color groups '
@@ -338,7 +342,35 @@ write('index.html', page(
     'pattern of the group in one color.'
     % (MIN_N, MAX_N, ntypes(EVERY), len(EVERY), npatterns(EVERY), sum(s['built'] for s in EVERY)),
     '\n'.join(body),
-    bar([(None, 'Catalog'), count_run('All symmetries', all_n, 'colors/')])))
+    bar([(P.up(P.FAMILY_DIR) + 'index.html', 'Catalog'), (None, 'Wallpaper groups'),
+         count_run('All symmetries', all_n, 'colors/')])))
+
+
+# ---- the catalog's landing page: its families of groups -----------------------
+# A card per family, each a page tree of its own (tools/catalog_paths.json
+# familyDir).  The wallpaper groups are the only family so far; frieze,
+# spherical and hyperbolic groups are to come.
+_fam = P.FAMILY_DIR + '/'
+_pic = groups['*632']['thumb']
+write('index.html', page(
+    'Color Groups Catalog', '',
+    'Color groups catalog',
+    'Color groups of symmetry groups, family by family. For a group G and a subgroup H '
+    'of finite index n, G&rsquo;s pattern is colored with n colors by the cosets of H '
+    '&mdash; once for each placement of H in G &mdash; and by its orbits.',
+    '''<div class="grid">
+<div class="card">
+%s
+<div class="body">
+<div class="name"><a href="%sindex.html">Wallpaper groups</a><span class="hm">17 groups</span></div>
+<div class="meta">%s %s</div>
+</div>
+</div>
+</div>''' % (('<a class="thumb" href="%sindex.html"><img src="%s%s" alt="wallpaper groups" '
+              'loading="lazy"></a>' % (_fam, _fam, _pic)) if _pic else '',
+             _fam, counts_line(EVERY, bold=True), status(EVERY)),
+    bar([(None, 'Catalog'), ('%sindex.html' % _fam, 'Wallpaper groups')]),
+    css_root=''), site=True)
 
 
 # ---- group pages -------------------------------------------------------------

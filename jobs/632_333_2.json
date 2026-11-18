@@ -6,9 +6,9 @@
   "g words: e Ba",
   "View: the preset's own (centre and zoom), shared by every item."
  ],
- "outDir": "632/2/632-333-2/gen",
+ "outDir": "wp/632/2/632-333-2/gen",
  "size": 800,
- "preset": "/catalog/presets/wpe/wpe-632.json",
+ "preset": "/catalog/presets/wp/wpe/wpe-632.json",
  "view": {
   "zoom": 0.665,
   "centerX": 0,

@@ -2,7 +2,7 @@
 # lossless WebPs after tools/to_webp.py (pixel identical):
 #
 #   python tools/verify_entry.py 442 "442/442[4]#1" "442/o[4]"
-#   python tools/verify_entry.py 442 --all       every entry of data/442.json with a gen/ dir
+#   python tools/verify_entry.py 442 --all       every entry of data/wp/442.json with a gen/ dir
 #   python tools/verify_entry.py 632@6-2-3-2-kite --all
 #
 # Checks, pixel exact (a footprint is alpha > 0):

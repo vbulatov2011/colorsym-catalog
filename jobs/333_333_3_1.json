@@ -6,9 +6,9 @@
   "g words: e a A",
   "View: the preset's own (centre and zoom), shared by every item."
  ],
- "outDir": "333/3/333-333-3-1/gen",
+ "outDir": "wp/333/3/333-333-3-1/gen",
  "size": 800,
- "preset": "/catalog/presets/wpe/wpe-333.json",
+ "preset": "/catalog/presets/wp/wpe/wpe-333.json",
  "view": {
   "zoom": 0.664,
   "centerX": 0,

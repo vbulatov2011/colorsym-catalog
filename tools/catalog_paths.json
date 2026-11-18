@@ -11,8 +11,8 @@
  ],
  "urlRoot": "/catalog",
  "family": "wp",
- "familyDir": "",
- "dataDir": "data",
+ "familyDir": "wp",
+ "dataDir": "data/wp",
  "jobsDir": "jobs",
- "presetsDir": "presets"
+ "presetsDir": "presets/wp"
 }

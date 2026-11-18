@@ -6,17 +6,17 @@
 #   python tools/make_group_jobs.py 632 s632   -> only those groups (by stem)
 #   --view preset|auto                          default preset
 #
-# The motif is the group's symdraw preset, presets/wpe/wpe-<name>.json ('*' is
+# The motif is the group's symdraw preset, presets/wp/wpe/wpe-<name>.json ('*' is
 # written 's', and the presets spell the groups with capital X and O).
 # View 'preset': the preset's own centre and zoom, as its .json.png thumbnail
 # and the entries (make_entry_job.py) show it.  View 'auto': framed on G's
 # fundamental domain - the driver frames a view on a subgroup's domain, and
 # G/G[1] is the subgroup whose domain is G's - taken from the manifest built on
-# the preset's own domain shape: data/<stem>@<shape>.json when there is one,
-# else data/<stem>.json.
+# the preset's own domain shape: data/wp/<stem>@<shape>.json when there is one,
+# else data/wp/<stem>.json.
 #
 # Run each at /apps/symdraw/catalog_render.html, then tools/to_webp.py --dir
-# <stem>/gen.  Output: <stem>/gen/group.png (renders are not tracked in git).
+# wp/<stem>/gen.  Output: wp/<stem>/gen/group.png (renders are not tracked in git).
 import json, io, os, sys
 
 import catalog_paths as P

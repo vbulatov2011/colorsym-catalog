@@ -19,11 +19,11 @@ MIN_N = 2
 def group_motif(cat, name, stem):
     """The motif a group renders and the manifest its entries are built from.
     The preset is the one its thumbnail job renders (jobs/group_<stem>.json; a
-    group can be tried on another preset), else presets/wpe/wpe-<name>.json.  The
-    manifest follows that preset's domain: data/<stem>@<shape>.json for another
+    group can be tried on another preset), else presets/wp/wpe/wpe-<name>.json.  The
+    manifest follows that preset's domain: data/wp/<stem>@<shape>.json for another
     domain shape, <stem>@...@dirichlet.json when it turns on a Dirichlet domain
     (make_manifest.mjs --domain / --dirichlet), whichever exists, else
-    data/<stem>.json.  'stale': what is wrong with the manifest for this preset
+    data/wp/<stem>.json.  'stale': what is wrong with the manifest for this preset
     (a Dirichlet domain without its manifest, or one of another base or words),
     else None."""
     import json, os

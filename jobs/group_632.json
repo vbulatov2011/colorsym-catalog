@@ -3,9 +3,9 @@
   "Pattern of 632 in one colour (the palette's first) for the index pages.",
   "Preset wpe-632.json (6-2-3-2 kite); the preset's own view (centre and zoom)."
  ],
- "outDir": "632/gen",
+ "outDir": "wp/632/gen",
  "size": 400,
- "preset": "/catalog/presets/wpe/wpe-632.json",
+ "preset": "/catalog/presets/wp/wpe/wpe-632.json",
  "items": [
   {
    "file": "group.png",

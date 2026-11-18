@@ -9,14 +9,14 @@
                                    [--dirichlet <preset.json>]
       node tools/make_manifest.mjs 632 6
       node tools/make_manifest.mjs 632 8 --domain "6-2-3-2 kite"
-      node tools/make_manifest.mjs 333 7 --dirichlet presets/wpe/wpe-333-3.json
+      node tools/make_manifest.mjs 333 7 --dirichlet presets/wp/wpe/wpe-333-3.json
 
   --domain builds G on that fundamental domain (WallpaperDomainShapes) and
   derives the presentation from its geometry (GroupPresentation.js) instead
   of taking sublib's catalogue preset: other generators, other coset tables,
   other f/g words - but the same names, since a name is keyed by the
-  conjugacy class.  It writes data/<stem>@<shape>.json ('6-2-3-2 kite' ->
-  632@6-2-3-2-kite.json) and leaves data/<stem>.json and index.json alone.
+  conjugacy class.  It writes data/wp/<stem>@<shape>.json ('6-2-3-2 kite' ->
+  632@6-2-3-2-kite.json) and leaves data/wp/<stem>.json and index.json alone.
 
   --dirichlet takes the Dirichlet domain the preset turns on (its
   symmetry.dirichlet: base point and side words; tools/render/dirichlet_group.mjs
@@ -24,11 +24,11 @@
   presentation, the coset tables, the names and keys stay those of G's own
   domain; the cells, the f/g words, H's generators and side counts come from the
   Dirichlet cells, their words written back in G's generators.  It writes
-  data/<stem>@dirichlet.json (632@...-kite@dirichlet.json with --domain too),
+  data/wp/<stem>@dirichlet.json (632@...-kite@dirichlet.json with --domain too),
   the base and words recorded under group.dirichlet.
 
-  output:  data/<stem>.json        (stem: '*632' -> 's632')
-           data/index.json         (list of generated manifests)
+  output:  data/wp/<stem>.json     (stem: '*632' -> 's632')
+           data/wp/index.json      (list of generated manifests)
 
   Group theory comes from sublib (the standalone copy, which carries
   subgroupStructure); geometry comes from SymmHub's grouplib + SubgroupDomain.
@@ -511,7 +511,7 @@ const outStem = fileStem(groupName) +
 const outFile = join(OUT_DIR, outStem + '.json');
 writeFileSync(outFile, JSON.stringify(manifest, null, 1));
 
-// keep data/index.json current - it lists the catalogue's own (default domain)
+// keep data/wp/index.json current - it lists the catalogue's own (default domain)
 // manifests only
 if(!domainShape && !DG){
 const indexFile = join(OUT_DIR, 'index.json');

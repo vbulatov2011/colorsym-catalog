@@ -18,7 +18,7 @@
   A job is a plain object:
 
     {
-      outDir: '632/3/632-632-3/gen',
+      outDir: 'wp/632/3/632-632-3/gen',
       size:   800,
       preset: '/catalog/presets/wp_632_632_3.1.json',   // template for all items
       view:   { zoom: 0.45, centerX: 0, centerY: 0 },   // same framing for all

@@ -1,8 +1,8 @@
 # Convert an entry's rendered PNGs to lossless WebP.
 #
 #   python tools/to_webp.py 632 "632/333[8]"      one entry
-#   python tools/to_webp.py --all                 every entry in data/index.json
-#   python tools/to_webp.py --dir 632/8/632-333-8/gen
+#   python tools/to_webp.py --all                 every entry in data/wp/index.json
+#   python tools/to_webp.py --dir wp/632/8/632-333-8/gen
 #
 #   --keep     leave the PNGs in place (default: delete after a good convert)
 #   --verify   decode each result back and require the RGBA to match exactly

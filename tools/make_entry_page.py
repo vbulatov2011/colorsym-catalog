@@ -2,8 +2,8 @@
 #
 #   python tools/make_entry_page.py 632 "632/333[8]" "#f84848,#d808a8,..."
 #
-# Reads  data/<stem>.json  (the manifest) and expects the images produced by
-# the render job in  <G>/<n>/<G>-<H>-<n>/gen/.  Writes index.html next to gen/.
+# Reads  data/wp/<stem>.json  (the manifest) and expects the images produced by
+# the render job in  wp/<G>/<n>/<G>-<H>-<n>/gen/.  Writes index.html next to gen/.
 # The design follows the hand built 632/632[3] page: hero with the orbit
 # coloring, the placement colorings, facts, the color action table, the f/g
 # definitions, the fundamental domains, and the partition table with margins.

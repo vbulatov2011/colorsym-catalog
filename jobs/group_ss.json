@@ -3,9 +3,9 @@
   "Pattern of ** in one colour (the palette's first) for the index pages.",
   "Preset wpe-ss.json (default); the preset's own view (centre and zoom)."
  ],
- "outDir": "ss/gen",
+ "outDir": "wp/ss/gen",
  "size": 400,
- "preset": "/catalog/presets/wpe/wpe-ss.json",
+ "preset": "/catalog/presets/wp/wpe/wpe-ss.json",
  "items": [
   {
    "file": "group.png",

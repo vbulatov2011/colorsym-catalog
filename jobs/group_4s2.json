@@ -3,9 +3,9 @@
   "Pattern of 4*2 in one colour (the palette's first) for the index pages.",
   "Preset wpe-4s2.json (4-*2-*2 triangle); the preset's own view (centre and zoom)."
  ],
- "outDir": "4s2/gen",
+ "outDir": "wp/4s2/gen",
  "size": 400,
- "preset": "/catalog/presets/wpe/wpe-4s2.json",
+ "preset": "/catalog/presets/wp/wpe/wpe-4s2.json",
  "items": [
   {
    "file": "group.png",

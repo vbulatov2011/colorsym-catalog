@@ -28,7 +28,7 @@
 #                   domain fills 24% of the height (the view then differs per
 #                   entry) - the default for the sympix template, whose jobs
 #                   stay byte for byte what they were
-# e.g.  python make_entry_job.py 333 "333/o[6]" #           --preset /catalog/presets/wp/wp-333.json --layer drawing
+# e.g.  python make_entry_job.py 333 "333/o[6]" #           --preset /catalog/presets/wp/wpe/wpe-333.json --layer drawing
 # A symdraw job runs at /apps/symdraw/catalog_render.html?job=..., a sympix
 # one at /apps/sympix/catalog_render.html?job=...
 #
@@ -54,7 +54,7 @@ TEMPLATE = _opt('--preset', TEMPLATE)
 # into a Windows path (C:/Program Files/Git/catalog/..) unless the call is
 # prefixed with MSYS_NO_PATHCONV=1 - catch that here, not in the browser
 assert TEMPLATE.startswith('/') and ':' not in TEMPLATE, (
-    '--preset must be a server URL like /catalog/presets/wp/wp-333.json, got %r'
+    '--preset must be a server URL like /catalog/presets/wp/wpe/wpe-333.json, got %r'
     ' (from Git Bash, prefix the command with MSYS_NO_PATHCONV=1)' % TEMPLATE)
 LAYER = _opt('--layer', LAYER)
 PIECE_SIZE = int(_opt('--piece-size', '400'))

@@ -3,9 +3,9 @@
   "Pattern of o in one colour (the palette's first) for the index pages.",
   "Preset wpe-O.json (default); the preset's own view (centre and zoom)."
  ],
- "outDir": "o/gen",
+ "outDir": "wp/o/gen",
  "size": 400,
- "preset": "/catalog/presets/wpe/wpe-O.json",
+ "preset": "/catalog/presets/wp/wpe/wpe-O.json",
  "items": [
   {
    "file": "group.png",

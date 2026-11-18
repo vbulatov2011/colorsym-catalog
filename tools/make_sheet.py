@@ -2,7 +2,7 @@
 #
 #   python tools/make_sheet.py 632 "632/333[8]"
 #
-# Reads data/<stem>.json + jobs/<slug>.json and writes gen/sheet.html listing
+# Reads data/wp/<stem>.json + jobs/<slug>.json and writes gen/sheet.html listing
 # every image of the job, grouped: colorings, the N x N pieces, the row
 # unions, structure, motion glyphs.
 import json, io, os, re, sys

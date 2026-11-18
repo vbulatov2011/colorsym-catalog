@@ -3,9 +3,9 @@
   "Pattern of 2222 in one colour (the palette's first) for the index pages.",
   "Preset wpe-2222.json (rectangle); the preset's own view (centre and zoom)."
  ],
- "outDir": "2222/gen",
+ "outDir": "wp/2222/gen",
  "size": 400,
- "preset": "/catalog/presets/wpe/wpe-2222.json",
+ "preset": "/catalog/presets/wp/wpe/wpe-2222.json",
  "items": [
   {
    "file": "group.png",

@@ -3,9 +3,9 @@
   "Pattern of 333 in one colour (the palette's first) for the index pages.",
   "Preset wpe-333.json (3a-3c-3b-3c rhombus); the preset's own view (centre and zoom)."
  ],
- "outDir": "333/gen",
+ "outDir": "wp/333/gen",
  "size": 400,
- "preset": "/catalog/presets/wpe/wpe-333.json",
+ "preset": "/catalog/presets/wp/wpe/wpe-333.json",
  "items": [
   {
    "file": "group.png",

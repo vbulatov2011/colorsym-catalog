@@ -3,9 +3,9 @@
   "Pattern of 442 in one colour (the palette's first) for the index pages.",
   "Preset wpe-442.json (4a-4b-4b triangle); the preset's own view (centre and zoom)."
  ],
- "outDir": "442/gen",
+ "outDir": "wp/442/gen",
  "size": 400,
- "preset": "/catalog/presets/wpe/wpe-442.json",
+ "preset": "/catalog/presets/wp/wpe/wpe-442.json",
  "items": [
   {
    "file": "group.png",

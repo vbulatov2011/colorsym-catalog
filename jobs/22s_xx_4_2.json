@@ -7,9 +7,9 @@
   "Every item sets symmetry.options.iterations = 60.",
   "View: the preset's own (centre and zoom), shared by every item."
  ],
- "outDir": "22s/4/22s-xx-4-2/gen",
+ "outDir": "wp/22s/4/22s-xx-4-2/gen",
  "size": 800,
- "preset": "/catalog/presets/wpe/wpe-22s.json",
+ "preset": "/catalog/presets/wp/wpe/wpe-22s.json",
  "view": {
   "zoom": 0.655,
   "centerX": 0.11255814150056338,

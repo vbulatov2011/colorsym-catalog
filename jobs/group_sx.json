@@ -3,9 +3,9 @@
   "Pattern of *x in one colour (the palette's first) for the index pages.",
   "Preset wpe-sX.json (default); the preset's own view (centre and zoom)."
  ],
- "outDir": "sx/gen",
+ "outDir": "wp/sx/gen",
  "size": 400,
- "preset": "/catalog/presets/wpe/wpe-sX.json",
+ "preset": "/catalog/presets/wp/wpe/wpe-sX.json",
  "items": [
   {
    "file": "group.png",

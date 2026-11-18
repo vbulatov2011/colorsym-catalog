@@ -3,9 +3,9 @@
   "Pattern of 3*3 in one colour (the palette's first) for the index pages.",
   "Preset wpe-3s3.json (3-*3-*3 triangle); the preset's own view (centre and zoom)."
  ],
- "outDir": "3s3/gen",
+ "outDir": "wp/3s3/gen",
  "size": 400,
- "preset": "/catalog/presets/wpe/wpe-3s3.json",
+ "preset": "/catalog/presets/wp/wpe/wpe-3s3.json",
  "items": [
   {
    "file": "group.png",

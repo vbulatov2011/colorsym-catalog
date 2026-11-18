@@ -3,9 +3,9 @@
   "Pattern of *632 in one colour (the palette's first) for the index pages.",
   "Preset wpe-s632-2.json (default); the preset's own view (centre and zoom)."
  ],
- "outDir": "s632/gen",
+ "outDir": "wp/s632/gen",
  "size": 400,
- "preset": "/catalog/presets/wpe/wpe-s632-2.json",
+ "preset": "/catalog/presets/wp/wpe/wpe-s632-2.json",
  "items": [
   {
    "file": "group.png",
