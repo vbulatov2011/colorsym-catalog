@@ -1,0 +1,13 @@
+{
+ "main": "wpe",
+ "versions": {
+  "wpe": {
+   "label": "wpe presets, one custom palette",
+   "created": "2026-11-18"
+  },
+  "wpe1": {
+   "label": "wpe1 presets, pastel palette",
+   "created": "2026-11-18"
+  }
+ }
+}

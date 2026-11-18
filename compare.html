@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Compare Versions</title>
+<link rel="stylesheet" href="css/catalog.css">
+<!-- Two versions of the catalog side by side (tools/version.py).  It reads
+     versions/index.json and each version's versions/<name>/entries.json, which
+     version.py post / pages write; a version's images are <tree>/<dir>/gen/.
+     URL: compare.html?a=<version>&b=<version>&entry=<G/H[n]#k>&show=main|all
+     (a defaults to the main version, b to the newest other). -->
+<style>
+  .controls { display: flex; flex-wrap: wrap; gap: .6rem 1.2rem; align-items: center;
+              margin: 0 0 1rem; font-size: .9rem; }
+  .controls label { display: inline-flex; gap: .4rem; align-items: center; color: var(--muted);
+                    max-width: 100%; min-width: 0; }
+  .controls select { font: inherit; padding: .2rem .3rem; max-width: min(22rem, 100%); min-width: 0; }
+  .controls button { font: inherit; padding: .2rem .7rem; cursor: pointer; }
+  .heads, .pair { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+  .heads { position: sticky; top: 0; z-index: 2; background: var(--bg);
+           padding: .4rem 0; border-bottom: 1px solid var(--line); margin-bottom: .6rem; }
+  .heads div { font-weight: 600; }
+  .heads .lbl { font-weight: 400; color: var(--muted); font-size: .85rem; }
+  .row { margin: 0 0 1.2rem; }
+  .row h3 { margin: 0 0 .3rem; font: 500 .85rem var(--mono); color: var(--muted); }
+  .row h3 .same { color: #2a7a2a; font-family: system-ui, sans-serif; margin-left: .5rem; }
+  .pair figure { margin: 0; background: var(--panel); border: 1px solid var(--rule);
+                 aspect-ratio: 1; display: flex; align-items: center; justify-content: center; }
+  .pair img { width: 100%; height: 100%; object-fit: contain; display: block;
+              background: repeating-conic-gradient(#eee 0 25%, #fff 0 50%) 0 0 / 16px 16px; }
+  .pair .none { color: var(--faint); font-size: .85rem; }
+  .blink .pair { grid-template-columns: 1fr; max-width: 820px; }
+  .blink .pair figure + figure { display: none; }
+  .blink.showB .pair figure:first-child { display: none; }
+  .blink.showB .pair figure + figure { display: flex; }
+  .overview .pair figure { cursor: pointer; }
+  .overview .row { display: inline-block; width: min(100%, 460px); vertical-align: top; margin-right: 1rem; }
+  .msg { color: var(--muted); }
+  h2.sec .note { font-size: .85rem; }
+</style>
+</head>
+<body class="with-bar">
+<header class="top"><div class="wrap">
+<h1>Compare versions</h1>
+<p class="lede">Two versions of the catalog, rendered from different presets, image by image:
+pick the versions and a color group. <b>Blink</b> shows the two in one place, switching
+every second; a click on a picture switches by hand.</p>
+</div></header>
+<main class="wrap">
+<div class="controls">
+ <label>A <select id="a"></select></label>
+ <label>B <select id="b"></select></label>
+ <label>Group <select id="group"></select></label>
+ <label>Color group <select id="entry"></select></label>
+ <label>Images <select id="show">
+  <option value="main">colorings and structure</option>
+  <option value="all">all, with the pieces</option>
+ </select></label>
+ <label><input type="checkbox" id="blink"> Blink</label>
+ <button id="prev" title="previous color group (key [)">&larr;</button>
+ <button id="next" title="next color group (key ])">&rarr;</button>
+</div>
+<div id="out"><p class="msg">Loading&hellip;</p></div>
+</main>
+<footer class="bar">
+<div class="wrap">
+<nav class="up">
+ <a href="index.html">Catalog</a>
+ <span class="cur">Compare versions</span>
+</nav>
+</div>
+</footer>
+<script>
+(async function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var q = new URLSearchParams(location.search);
+  var out = $('out');
+  var reg, data = {}, flat = [];
+
+  function fail(msg) { out.innerHTML = '<p class="msg">' + msg + '</p>'; }
+  async function getJson(url) {
+    var r = await fetch(url, {cache: 'no-store'});
+    if (!r.ok) throw new Error(url + ': ' + r.status);
+    return r.json();
+  }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) {
+    return {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]; }); }
+  function disp(name) { return name; }
+
+  try { reg = await getJson('versions/index.json'); }
+  catch (e) { return fail('No versions yet: <code>python tools/version.py new ...</code>'); }
+  var names = Object.keys(reg.versions);
+  var others = names.filter(function (v) { return v !== reg.main; })
+                    .sort(function (x, y) { return (reg.versions[x].created || '').localeCompare(reg.versions[y].created || ''); });
+  var A = q.get('a') || reg.main || names[0];
+  var B = q.get('b') || others[others.length - 1] || names[0];
+  if (A === B && names.length > 1) A = names.find(function (v) { return v !== B; });
+
+  function fillVersions(sel, cur) {
+    sel.innerHTML = names.map(function (v) {
+      var meta = reg.versions[v];
+      return '<option value="' + esc(v) + '"' + (v === cur ? ' selected' : '') + '>' + esc(v) +
+             (v === reg.main ? ' (main)' : '') + (meta.label ? ' – ' + esc(meta.label) : '') + '</option>';
+    }).join('');
+  }
+  fillVersions($('a'), A);
+  fillVersions($('b'), B);
+  $('show').value = q.get('show') === 'all' ? 'all' : 'main';
+
+  async function load(v) {
+    if (!data[v]) {
+      try { data[v] = await getJson('versions/' + encodeURIComponent(v) + '/entries.json'); }
+      catch (e) { data[v] = {version: v, tree: '', groups: [], missing: true}; }
+    }
+    return data[v];
+  }
+
+  // the color groups either version has, by group then by number of colors
+  function entryIndex(da, db) {
+    var byName = {}, list = [];
+    [da, db].forEach(function (d) {
+      d.groups.forEach(function (g) {
+        g.entries.forEach(function (e) {
+          if (!byName[e.name]) { byName[e.name] = {name: e.name, n: e.n, group: g.name}; list.push(byName[e.name]); }
+        });
+      });
+    });
+    var order = {};
+    (da.groups.length ? da : db).groups.forEach(function (g, i) { order[g.name] = i; });
+    list.sort(function (x, y) {
+      return (order[x.group] - order[y.group]) || (x.n - y.n) ||
+             x.name.localeCompare(y.name, undefined, {numeric: true});
+    });
+    return list;
+  }
+
+  function find(d, name) {
+    for (var g of d.groups) for (var e of g.entries) if (e.name === name) return e;
+    return null;
+  }
+
+  // an entry's images in the order the page shows them
+  function kind(file, slug) {
+    var base = file.replace(/\.webp$/, '');
+    if (base.indexOf(slug + '.') === 0) return 0;          // the colorings .1 .. .N, .o
+    if (/^group_/.test(base)) return 1;
+    if (/^sub_/.test(base)) return 2;
+    if (/^\d\d$/.test(base) || /^\d+_\d+$/.test(base) || /^[fg]\d+$/.test(base)) return 3;   // pieces
+    return 4;
+  }
+  function files(ea, eb, all) {
+    var slug = (ea || eb).slug, seen = {}, list = [];
+    [ea, eb].forEach(function (e) {
+      if (e) e.files.forEach(function (f) { if (!seen[f]) { seen[f] = 1; list.push(f); } });
+    });
+    list = list.filter(function (f) { var k = kind(f, slug); return all ? true : k <= 2; });
+    list.sort(function (x, y) {
+      return (kind(x, slug) - kind(y, slug)) || x.localeCompare(y, undefined, {numeric: true});
+    });
+    return list;
+  }
+
+  function fig(d, e, f) {
+    if (!e || e.files.indexOf(f) < 0) return '<figure><span class="none">not rendered</span></figure>';
+    var src = d.tree + '/' + e.dir + '/gen/' + f;
+    return '<figure><img loading="lazy" src="' + esc(src) + '" alt="' + esc(f) + '"></figure>';
+  }
+
+  function heads(da, db, link) {
+    function one(d) {
+      var v = d.version, meta = reg.versions[v] || {};
+      var head = esc(v) + (v === reg.main ? ' (main)' : '');
+      if (link) head = '<a href="' + esc(link(d)) + '">' + head + '</a>';
+      return '<div>' + head + (meta.label ? ' <span class="lbl">' + esc(meta.label) + '</span>' : '') +
+             (d.missing ? ' <span class="lbl">&mdash; no entries.json: version.py pages ' + esc(v) + '</span>' : '') + '</div>';
+    }
+    return '<div class="heads">' + one(da) + one(db) + '</div>';
+  }
+
+  var timer = null;
+  function setBlink() {
+    var on = $('blink').checked;
+    out.classList.toggle('blink', on);
+    out.classList.remove('showB');
+    clearInterval(timer);
+    if (on) timer = setInterval(function () { out.classList.toggle('showB'); }, 1000);
+  }
+  out.addEventListener('click', function (ev) {
+    if (!$('blink').checked || !ev.target.closest('figure')) return;
+    clearInterval(timer);
+    out.classList.toggle('showB');
+  });
+
+  async function render() {
+    A = $('a').value; B = $('b').value;
+    var da = await load(A), db = await load(B);
+    flat = entryIndex(da, db);
+    var groupsList = [];
+    flat.forEach(function (e) { if (groupsList.indexOf(e.group) < 0) groupsList.push(e.group); });
+    var cur = q.get('entry');
+    var curG = cur ? (flat.find(function (e) { return e.name === cur; }) || {}).group : q.get('group');
+    $('group').innerHTML = '<option value="">all groups (thumbnails)</option>' + groupsList.map(function (g) {
+      return '<option' + (g === curG ? ' selected' : '') + '>' + esc(g) + '</option>';
+    }).join('');
+    fillEntries(curG, cur);
+    show();
+  }
+
+  function fillEntries(g, cur) {
+    var es = flat.filter(function (e) { return e.group === g; });
+    $('entry').innerHTML = (g ? '' : '<option value="">&mdash;</option>') + es.map(function (e) {
+      return '<option' + (e.name === cur ? ' selected' : '') + '>' + esc(e.name) + '</option>';
+    }).join('');
+    $('entry').disabled = !g;
+  }
+
+  function state() {
+    var p = new URLSearchParams();
+    p.set('a', A); p.set('b', B);
+    if ($('entry').value) p.set('entry', $('entry').value);
+    else if ($('group').value) p.set('group', $('group').value);
+    if ($('show').value === 'all') p.set('show', 'all');
+    history.replaceState(null, '', '?' + p.toString());
+    q = p;
+  }
+
+  function show() {
+    state();
+    var da = data[A], db = data[B], name = $('entry').value;
+    var html = '';
+    if (!name) {                                   // the groups' thumbnails
+      out.classList.add('overview');
+      html += heads(da, db, function (d) { return d.tree + '/index.html'; });
+      (da.groups.length ? da : db).groups.forEach(function (g) {
+        var ga = da.groups.find(function (x) { return x.name === g.name; });
+        var gb = db.groups.find(function (x) { return x.name === g.name; });
+        function t(d, gg) {
+          return gg && gg.thumb ? '<figure data-group="' + esc(g.name) + '"><img loading="lazy" src="' +
+                 esc(d.tree + '/' + gg.thumb) + '" alt=""></figure>' : '<figure><span class="none">no thumbnail</span></figure>';
+        }
+        var n = function (gg) { return gg ? gg.entries.length : 0; };
+        html += '<div class="row"><h3>' + esc(g.name) + ' <span class="lbl">' + n(ga) + ' / ' + n(gb) +
+                ' rendered</span></h3><div class="pair">' + t(da, ga) + t(db, gb) + '</div></div>';
+      });
+      out.innerHTML = html;
+      return;
+    }
+    out.classList.remove('overview');
+    var ea = find(da, name), eb = find(db, name);
+    html += heads(da, db, function (d) {
+      var e = find(d, name); return e ? d.tree + '/' + e.dir + '/index.html' : d.tree + '/index.html';
+    });
+    var fs = files(ea, eb, $('show').value === 'all');
+    if (!fs.length) html += '<p class="msg">Neither version has rendered ' + esc(name) + '.</p>';
+    fs.forEach(function (f) {
+      html += '<div class="row"><h3>' + esc(f) + '</h3><div class="pair">' + fig(da, ea, f) + fig(db, eb, f) + '</div></div>';
+    });
+    out.innerHTML = html;
+  }
+
+  out.addEventListener('click', function (ev) {
+    var f = ev.target.closest('figure[data-group]');
+    if (!f) return;
+    $('group').value = f.dataset.group;
+    fillEntries(f.dataset.group, null);
+    show();
+    scrollTo(0, 0);
+  });
+  $('a').onchange = $('b').onchange = function () { q.delete('entry'); q.set('entry', $('entry').value); render(); };
+  $('group').onchange = function () { fillEntries($('group').value, null); show(); };
+  $('entry').onchange = show;
+  $('show').onchange = show;
+  $('blink').onchange = setBlink;
+  function step(d) {
+    var i = flat.findIndex(function (e) { return e.name === $('entry').value; });
+    var e = flat[Math.max(0, Math.min(flat.length - 1, i + d))];
+    if (!e) return;
+    if ($('group').value !== e.group) { $('group').value = e.group; fillEntries(e.group, e.name); }
+    $('entry').value = e.name;
+    show();
+  }
+  $('prev').onclick = function () { step(-1); };
+  $('next').onclick = function () { step(1); };
+  document.addEventListener('keydown', function (ev) {
+    if (ev.target.tagName === 'SELECT') return;
+    if (ev.key === '[') step(-1);
+    if (ev.key === ']') step(1);
+  });
+  render();
+})();
+</script>
+</body>
+</html>

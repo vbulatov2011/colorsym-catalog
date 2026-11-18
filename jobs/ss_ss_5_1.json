@@ -9,7 +9,7 @@
  ],
  "outDir": "wp/ss/5/ss-ss-5-1/gen",
  "size": 800,
- "preset": "/catalog/presets/wp/wpe/wpe-ss.json",
+ "preset": "/catalog/versions/wpe/presets/wp/wpe/wpe-ss.json",
  "view": {
   "zoom": 0.6666666666666666,
   "centerX": 0,

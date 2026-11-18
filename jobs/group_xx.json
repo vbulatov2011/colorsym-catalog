@@ -5,7 +5,7 @@
  ],
  "outDir": "wp/xx/gen",
  "size": 400,
- "preset": "/catalog/presets/wp/wpe/wpe-XX.json",
+ "preset": "/catalog/versions/wpe/presets/wp/wpe/wpe-XX.json",
  "items": [
   {
    "file": "group.png",

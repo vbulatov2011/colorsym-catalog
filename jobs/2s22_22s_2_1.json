@@ -9,7 +9,7 @@
  ],
  "outDir": "wp/2s22/2/2s22-22s-2-1/gen",
  "size": 800,
- "preset": "/catalog/presets/wp/wpe/wpe-2s22.json",
+ "preset": "/catalog/versions/wpe/presets/wp/wpe/wpe-2s22.json",
  "view": {
   "zoom": 0.57,
   "centerX": 0,

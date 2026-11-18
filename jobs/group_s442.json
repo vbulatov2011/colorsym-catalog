@@ -5,7 +5,7 @@
  ],
  "outDir": "wp/s442/gen",
  "size": 400,
- "preset": "/catalog/presets/wp/wpe/wpe-s442.json",
+ "preset": "/catalog/versions/wpe/presets/wp/wpe/wpe-s442.json",
  "items": [
   {
    "file": "group.png",

@@ -14,12 +14,14 @@
 # out (2026-11-16) - no entry, job or page.  make_index_pages.py and
 # make_entry_page.py both run their counts from here.
 MIN_N = 2
+MAX_N = 7               # ... and run up to MAX_N
 
 
 def group_motif(cat, name, stem):
     """The motif a group renders and the manifest its entries are built from.
-    The preset is the one its thumbnail job renders (jobs/group_<stem>.json; a
-    group can be tried on another preset), else presets/wp/wpe/wpe-<name>.json.  The
+    The preset is the version's (catalog_paths: the snapshot of the preset its
+    versions/<v>/version.json gives the group), else the one its thumbnail job
+    renders (<jobs>/group_<stem>.json), else presets/wp/wpe/wpe-<name>.json.  The
     manifest follows that preset's domain: data/wp/<stem>@<shape>.json for another
     domain shape, <stem>@...@dirichlet.json when it turns on a Dirichlet domain
     (make_manifest.mjs --domain / --dirichlet), whichever exists, else
@@ -31,7 +33,9 @@ def group_motif(cat, name, stem):
     lib = 'O' if name == 'o' else name.replace('x', 'X')
     preset = P.join(P.PRESETS_DIR, 'wpe', 'wpe-%s.json' % lib.replace('*', 's'))
     gjob = os.path.join(cat, *P.JOBS_DIR.split('/'), 'group_%s.json' % stem)
-    if os.path.exists(gjob):
+    if P.version_preset(name):
+        preset = P.version_preset(name)
+    elif os.path.exists(gjob):
         preset = P.from_url(json.load(open(gjob, encoding='utf-8'))['preset'])
     sym = json.load(open(os.path.join(cat, *preset.split('/')), encoding='utf-8'))['params']['symmetry']
     shape = sym['group']['params'].get('domainShape', 'default')

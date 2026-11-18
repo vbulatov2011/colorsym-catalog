@@ -1,0 +1,26 @@
+{
+ "name": "wpe",
+ "label": "wpe presets, one custom palette",
+ "created": "2026-11-18",
+ "family": "wp",
+ "set": "wpe",
+ "presets": {
+  "o": "presets/wp/wpe/wpe-O.json",
+  "2222": "presets/wp/wpe/wpe-2222.json",
+  "**": "presets/wp/wpe/wpe-ss.json",
+  "xx": "presets/wp/wpe/wpe-XX.json",
+  "*x": "presets/wp/wpe/wpe-sX.json",
+  "*2222": "presets/wp/wpe/wpe-s2222.json",
+  "22x": "presets/wp/wpe/wpe-22X.json",
+  "442": "presets/wp/wpe/wpe-442.json",
+  "*442": "presets/wp/wpe/wpe-s442.json",
+  "4*2": "presets/wp/wpe/wpe-4s2.json",
+  "333": "presets/wp/wpe/wpe-333.json",
+  "*333": "presets/wp/wpe/wpe-s333.json",
+  "3*3": "presets/wp/wpe/wpe-3s3.json",
+  "632": "presets/wp/wpe/wpe-632.json",
+  "*632": "presets/wp/wpe/wpe-s632-2.json",
+  "22*": "presets/wp/wpe/wpe-22s.json",
+  "2*22": "presets/wp/wpe/wpe-2s22.json"
+ }
+}

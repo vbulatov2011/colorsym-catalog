@@ -470,7 +470,7 @@ body.off-f img.fglyph, body.off-g img.gglyph { display: none; }
 <div class="wrap">
 <h1>%(hG)s/%(hH)s<span class="sub">[%(n)d]%(hK)s</span></h1>
 <p class="lede">A %(n)d-coloring of the wallpaper group %(hG)s from its index-%(n)d subgroup of
-type %(hH)s. %(lede_place)s</p>
+type %(hH)s. %(lede_place)s</p>%(version_note)s
 </div>
 </header>
 
@@ -550,7 +550,8 @@ the pattern itself, and remembers the choice.</p>
  <a href="../../../colors/%(n)d/index.html">All symmetries with <b>%(ncolors)s</b></a>
 </nav>
 <div class="meta" title="generated from the manifest and the render job">%(id)s &middot;
-<a href="gen/sheet.html">contact sheet</a></div>
+<a href="gen/sheet.html">contact sheet</a> &middot;
+<a href="%(compare)s">compare versions</a></div>
 </div>
 </footer>
 
@@ -615,6 +616,8 @@ the pattern itself, and remembers the choice.</p>
     'title': E(entry_name), 'hG': E(G), 'hH': E(entry['type']), 'n': N, 'k': K,
     # the way up from this page to the catalog root, for the site-wide css
     'site': P.up(P.fam(_nm['dir'])),
+    'version_note': ('\n' + P.version_note(P.up(P.fam(_nm['dir'])))) if P.version_note('') else '',
+    'compare': P.compare_link(P.up(P.fam(_nm['dir'])), entry_name),
     # '#k' tells apart subgroups sharing G/H[n] - without it two pages share a heading
     'hK': ('#' + E(entry_name.split('#')[1])) if '#' in entry_name else '',
     'nm1': N - 1,

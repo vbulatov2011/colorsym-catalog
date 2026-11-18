@@ -6,8 +6,10 @@
 #   python tools/make_group_jobs.py 632 s632   -> only those groups (by stem)
 #   --view preset|auto                          default preset
 #
-# The motif is the group's symdraw preset, presets/wp/wpe/wpe-<name>.json ('*' is
-# written 's', and the presets spell the groups with capital X and O).
+# The motif is the group's symdraw preset: the one the catalog's version gives
+# it (catalog_paths.version_preset: CATALOG_VERSION, else the main version),
+# else presets/wp/wpe/wpe-<name>.json ('*' is written 's', and the presets spell
+# the groups with capital X and O).
 # View 'preset': the preset's own centre and zoom, as its .json.png thumbnail
 # and the entries (make_entry_job.py) show it.  View 'auto': framed on G's
 # fundamental domain - the driver frames a view on a subgroup's domain, and
@@ -46,7 +48,8 @@ for g in index['groups']:
     name, stem = g['name'], g['stem']
     if ONLY and stem not in ONLY:
         continue
-    preset = P.url(P.PRESETS_DIR, 'wpe', preset_name(name))
+    preset = P.url(P.version_preset(name) or P.join(P.PRESETS_DIR, 'wpe', preset_name(name)))
+    pname = preset.rsplit('/', 1)[1]
     doc = json.load(open(P.path(P.from_url(preset)),
                          encoding='utf-8'))
     shape = doc['params']['symmetry']['group']['params'].get('domainShape', 'default')
@@ -58,10 +61,10 @@ for g in index['groups']:
     job = {
         "_comment": ["Pattern of %s in one colour (the palette's first) for the index pages." % name,
                      ("Preset %s (%s); view framed on G's domain from %s."
-                      % (preset_name(name), shape, os.path.basename(man_file))
+                      % (pname, shape, os.path.basename(man_file))
                       if VIEW == 'auto' else
                       "Preset %s (%s); the preset's own view (centre and zoom)."
-                      % (preset_name(name), shape))],
+                      % (pname, shape))],
         "outDir": P.fam(stem, "gen"),
         "size": SIZE,
         "preset": preset,
@@ -76,4 +79,4 @@ for g in index['groups']:
     }
     out = P.job_file('group_%s' % stem)
     io.open(out, 'w', encoding='utf-8', newline='\n').write(json.dumps(job, indent=1))
-    print('%-6s %-16s %-22s -> jobs/group_%s.json' % (name, preset_name(name), shape, stem))
+    print('%-6s %-16s %-22s -> %s/group_%s.json' % (name, pname, shape, P.JOBS_DIR, stem))

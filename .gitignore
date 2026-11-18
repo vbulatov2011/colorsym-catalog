@@ -10,6 +10,9 @@ desktop.ini
 .idea/
 .vscode/
 
+# python
+__pycache__/
+
 # node
 node_modules/
 npm-debug.log*
@@ -22,3 +25,13 @@ npm-debug.log*
 **/gen/*.webp
 
 .claude/settings.local.json
+
+# versions of the catalog (tools/version.py): git keeps each version's
+# version.json and preset snapshot (versions/<name>/presets/); the page tree and
+# jobs only of the main version, which are wp/ and jobs/ at the root.  The render
+# list, done marker and entries.json are build output.
+versions/*/wp/
+versions/*/jobs/
+versions/*/render_list.json
+versions/*/render_done.json
+versions/*/entries.json

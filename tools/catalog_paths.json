@@ -7,12 +7,13 @@
   "family: the kind of groups the tools build (wp = the 17 wallpaper groups; later frieze,",
   "spherical, hyperbolic).  familyDir: the family's page tree ('' = the root itself).",
   "dataDir: its manifests.  jobsDir: its render jobs.  presetsDir: its symdraw presets, in",
-  "sets (presetsDir/<set>/)."
+  "sets (presetsDir/<set>/).  versionsDir: the catalog's versions, see catalog_paths.py."
  ],
  "urlRoot": "/catalog",
  "family": "wp",
  "familyDir": "wp",
  "dataDir": "data/wp",
  "jobsDir": "jobs",
- "presetsDir": "presets/wp"
+ "presetsDir": "presets/wp",
+ "versionsDir": "versions"
 }

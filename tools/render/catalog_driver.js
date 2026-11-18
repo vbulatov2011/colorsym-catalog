@@ -36,6 +36,14 @@
   Run one with:   await catalog.runJob(jobObject)
               or  await catalog.runJobUrl('/catalog/jobs/632_632_3.json')
               or  open the page with ?job=<url>
+
+  A render list - a JSON array of job URLs (tools/version.py build writes one
+  per version) - runs them one after another:
+                  await catalog.runList('/catalog/versions/wpe/render_list.json',
+                                        {done: 'versions/wpe/render_done.json'})
+              or  open the page with ?list=<url>&done=<path>
+  window.catalogRun shows its progress; `done`, a path under the catalog root,
+  gets the run's report when the list is through.
 */
 
 export default function catalogDriver(api) {
@@ -1161,6 +1169,44 @@ export default function catalogDriver(api) {
         return runJob(job);
     }
 
+    /**
+     * Runs the jobs of a render list in order.  The jobs and presets are read
+     * past the browser cache: a version's build rewrites them in place, at the
+     * same URLs, and a cached copy would render the old ones.  A job that throws
+     * is noted and the run goes on.  The report - also POSTed to `done`, a path
+     * relative to the catalog root, when given - is {list, done, total, images,
+     * errors, secs}.
+     */
+    async function runList(url, {done} = {}) {
+        const list = await (await fetch(url, {cache: 'no-store'})).json();
+        const run = window.catalogRun = {list: url, total: list.length, done: 0, images: 0,
+                                         errors: [], t0: performance.now(), finished: false};
+        const fresh = new Set();
+        for (const u of list) {
+            try {
+                const job = await (await fetch(u, {cache: 'no-store'})).json();
+                for (const p of [job.preset, ...(job.items || []).map(it => it.preset)]) {
+                    if (p && !fresh.has(p)) { await fetch(p, {cache: 'reload'}); fresh.add(p); }
+                }
+                const r = await runJob(job);
+                run.images += Array.isArray(r) ? r.length : 0;
+            } catch (e) {
+                run.errors.push(u + ': ' + (e && e.message || e));
+            }
+            run.done++;
+        }
+        run.finished = true;
+        run.secs = Math.round((performance.now() - run.t0) / 1000);
+        const report = {list: url, done: run.done, total: run.total, images: run.images,
+                        errors: run.errors, secs: run.secs};
+        if (done) {
+            await fetch('/save?path=' + encodeURIComponent(done),
+                        {method: 'POST', body: JSON.stringify(report, null, 1)});
+        }
+        console.log('[catalog_driver] list finished', report);
+        return report;
+    }
+
     const catalog = {
         api,
         canvas,
@@ -1182,12 +1228,18 @@ export default function catalogDriver(api) {
         save,
         runJob,
         runJobUrl,
+        runList,
     };
 
     window.catalog = catalog;
     console.log('[catalog_driver] ready; window.catalog =', Object.keys(catalog));
 
-    const jobUrl = new URLSearchParams(location.search).get('job');
+    const query = new URLSearchParams(location.search);
+    const listUrl = query.get('list');
+    if (listUrl) {
+        runList(listUrl, {done: query.get('done') || undefined});
+    }
+    const jobUrl = query.get('job');
     if (jobUrl) {
         runJobUrl(jobUrl).then(r => {
             window.catalogJobReport = r;

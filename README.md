@@ -56,17 +56,45 @@ and presets stay outside the family trees; `tools/catalog_paths.json` says where
 lives, and every tool takes its paths from it.
 
 ```
-index.html                         landing page: the families
-wp/                                the wallpaper groups' pages
+index.html                         landing page: the families, the versions
+compare.html                       two versions side by side
+wp/                                the wallpaper groups' pages (the main version's)
   index.html  colors/<n>/          the family's index, all groups by number of colors
   <G>/<colors>/<G>-<H>-<n>/        entry: index.html + gen/ (its rendered images)
 data/wp/                           per-group manifests (subgroups, geometry, names)
 presets/wp/<set>/                  SymmHub documents used as motifs, in sets (wp0, wpe, wpe1)
-jobs/                              declarative render jobs (outDir under wp/)
+jobs/                              the main version's render jobs (outDir under wp/)
+versions/index.json                the versions, and which one is main
+versions/<name>/                   a version: version.json, presets/ (its snapshot);
+                                   wp/ and jobs/ too unless it is the main one
 tools/                             the generators (see below); tools/render/ the driver
 css/                               page styles, shared by all families
 work/                              hand-drawn assets (axis_N.svg) and scratch art
 ```
+
+## Versions
+
+A version is the catalog rendered from presets of its own, to compare renderings:
+`versions/<name>/version.json` gives each group its preset, and a build copies them
+into `versions/<name>/presets/` - the snapshot the version's jobs render, so editing
+a preset afterwards changes nothing until the next build. The main version's pages
+and jobs are the catalog's own (`wp/`, `jobs/`); any other version keeps them under
+`versions/<name>/` (not in git - only its `version.json` and snapshot are). The tools
+work on the version in `CATALOG_VERSION`, else on the main one.
+
+```
+python tools/version.py new wpe1 --set wpe1 --label "pastel palette"   # presets/wp/wpe1/<x>-<G>.json
+python tools/version.py build wpe1          # snapshot, jobs, versions/wpe1/render_list.json
+#   SymmHub: catalog_render.html?list=/catalog/versions/wpe1/render_list.json&done=versions/wpe1/render_done.json
+python tools/version.py post wpe1           # verify, WebP, pages, sheets, index pages, entries.json
+python tools/version.py compare             # -> compare.html?a=<main>&b=wpe1
+python tools/version.py promote wpe1        # make it the main version (swaps the trees)
+python tools/version.py list
+```
+
+`--preset <G>=<file>` picks a group's preset by hand (`--preset "*632=wpe-s632-2.json"`);
+`build <name> <stem>...` builds some groups only; `pages <name>` writes the pages again
+without a render. The render driver runs a list with `catalog.runList(url, {done})`.
 
 ## Building an entry
 

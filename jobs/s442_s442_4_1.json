@@ -9,7 +9,7 @@
  ],
  "outDir": "wp/s442/4/s442-s442-4-1/gen",
  "size": 800,
- "preset": "/catalog/presets/wp/wpe/wpe-s442.json",
+ "preset": "/catalog/versions/wpe/presets/wp/wpe/wpe-s442.json",
  "view": {
   "zoom": 0.997,
   "centerX": 0,

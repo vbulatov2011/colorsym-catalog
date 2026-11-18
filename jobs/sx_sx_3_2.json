@@ -9,7 +9,7 @@
  ],
  "outDir": "wp/sx/3/sx-sx-3-2/gen",
  "size": 800,
- "preset": "/catalog/presets/wp/wpe/wpe-sX.json",
+ "preset": "/catalog/versions/wpe/presets/wp/wpe/wpe-sX.json",
  "view": {
   "zoom": 0.57,
   "centerX": 0,

@@ -5,7 +5,7 @@
  ],
  "outDir": "wp/22s/gen",
  "size": 400,
- "preset": "/catalog/presets/wp/wpe/wpe-22s.json",
+ "preset": "/catalog/versions/wpe/presets/wp/wpe/wpe-22s.json",
  "items": [
   {
    "file": "group.png",

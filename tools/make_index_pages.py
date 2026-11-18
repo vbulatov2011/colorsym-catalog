@@ -30,10 +30,9 @@ import json, io, os, html, re, sys
 
 import catalog_paths as P
 CAT = P.CAT
-MAX_N = 7
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from entry_names import entry_names, group_motif, MIN_N
+from entry_names import entry_names, group_motif, MIN_N, MAX_N
 
 # Hermann-Mauguin names, and families by the highest rotation order
 HM = {'o': 'p1', '2222': 'p2', '**': 'pm', 'xx': 'pg', '*x': 'cm', '*2222': 'pmm',
@@ -131,7 +130,7 @@ def page(title, root, h1, lede, body, foot='', kind='', css_root=None):
 <body%s>
 <header class="top%s"><div class="wrap">
 <h1>%s</h1>
-<p class="lede">%s</p>
+<p class="lede">%s</p>%s
 </div></header>
 <main class="wrap">
 %s
@@ -139,9 +138,16 @@ def page(title, root, h1, lede, body, foot='', kind='', css_root=None):
 </main>
 %s</body>
 </html>
-''' % (html.escape(title), root + P.up(P.FAMILY_DIR) if css_root is None else css_root,
+''' % (html.escape(title), _site(root, css_root),
        ' class="with-bar"' if foot else '',
-       (' ' + kind) if kind else '', h1, lede, body, P.DATA_DIR, foot)
+       (' ' + kind) if kind else '', h1, lede,
+       ('\n' + P.version_note(_site(root, css_root))) if P.version_note('') else '',
+       body, P.DATA_DIR, foot)
+
+
+def _site(root, css_root):
+    # the way up to the catalog root
+    return root + P.up(P.FAMILY_DIR) if css_root is None else css_root
 
 
 # ---- collect ---------------------------------------------------------------
@@ -349,10 +355,33 @@ write('index.html', page(
 # ---- the catalog's landing page: its families of groups -----------------------
 # A card per family, each a page tree of its own (tools/catalog_paths.json
 # familyDir).  The wallpaper groups are the only family so far; frieze,
-# spherical and hyperbolic groups are to come.
+# spherical and hyperbolic groups are to come.  Under them the catalog's
+# versions (tools/version.py), each a link to its family index if built.
+# Written with the main version's pages only: it is the main version's page.
+def _versions():
+    reg = P.registry()
+    rows = []
+    for v, meta in reg['versions'].items():
+        fi = P.join(P.family_dir(v), 'index.html')
+        name = ('<a href="%s"><b>%s</b></a>' % (fi, html.escape(v))
+                if os.path.exists(P.path(fi)) else '<b>%s</b>' % html.escape(v))
+        rows.append('<li>%s%s%s</li>' % (name, ' &mdash; the main version' if v == reg['main'] else '',
+                                         ': ' + html.escape(meta['label']) if meta.get('label') else ''))
+    if len(rows) < 2:
+        return ''
+    return ('''
+<h2 class="sec">Versions</h2>
+<p>The catalog rendered from other sets of presets, to compare with the main one
+&mdash; <a href="%s">compare versions</a>.</p>
+<ul class="versions">
+%s
+</ul>''' % (P.compare_link(''), '\n'.join(rows)))
+
+
 _fam = P.FAMILY_DIR + '/'
 _pic = groups['*632']['thumb']
-write('index.html', page(
+if P.is_main():
+  write('index.html', page(
     'Color Groups Catalog', '',
     'Color groups catalog',
     'Color groups of symmetry groups, family by family. For a group G and a subgroup H '
@@ -366,9 +395,9 @@ write('index.html', page(
 <div class="meta">%s %s</div>
 </div>
 </div>
-</div>''' % (('<a class="thumb" href="%sindex.html"><img src="%s%s" alt="wallpaper groups" '
+</div>%s''' % (('<a class="thumb" href="%sindex.html"><img src="%s%s" alt="wallpaper groups" '
               'loading="lazy"></a>' % (_fam, _fam, _pic)) if _pic else '',
-             _fam, counts_line(EVERY, bold=True), status(EVERY)),
+             _fam, counts_line(EVERY, bold=True), status(EVERY), _versions()),
     bar([(None, 'Catalog'), ('%sindex.html' % _fam, 'Wallpaper groups')]),
     css_root=''), site=True)
 

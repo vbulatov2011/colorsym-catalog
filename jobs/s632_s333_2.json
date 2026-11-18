@@ -9,7 +9,7 @@
  ],
  "outDir": "wp/s632/2/s632-s333-2/gen",
  "size": 800,
- "preset": "/catalog/presets/wp/wpe/wpe-s632-2.json",
+ "preset": "/catalog/versions/wpe/presets/wp/wpe/wpe-s632-2.json",
  "view": {
   "zoom": 0.801,
   "centerX": 0,

@@ -238,3 +238,7 @@ footer.bar .meta a { color: var(--accent); }
 .fact dd.small { font-size: .87rem; line-height: 1.5; color: var(--ink); }
 /* keep case-sensitive math symbols as written: lowercase f, g are not G */
 .fact dt.plain { text-transform: none; letter-spacing: .01em; font-size: .82rem; }
+
+/* the note on the pages of a version other than the main one (tools/version.py) */
+.version { margin: .6rem 0 0; padding: .35rem .7rem; border-left: 4px solid #c86400;
+           background: #fff3e2; color: #1a1a1a; font-size: .9rem; }

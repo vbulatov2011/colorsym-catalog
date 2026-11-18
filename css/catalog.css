@@ -277,3 +277,7 @@ footer.bar nav.up .grp .now {
 }
 footer.bar nav.up .grp a.now:hover { border-color: var(--accent); }
 @media (max-width: 640px) { footer.bar { padding: .35rem 0; } }
+
+/* the note on the pages of a version other than the main one (tools/version.py) */
+.version { margin: .6rem 0 0; padding: .35rem .7rem; border-left: 4px solid #c86400;
+           background: #fff3e2; color: #1a1a1a; font-size: .9rem; }
