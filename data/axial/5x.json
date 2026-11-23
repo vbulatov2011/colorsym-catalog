@@ -1,0 +1,254 @@
+{
+ "format": "colorsym-catalog-manifest",
+ "version": 3,
+ "group": {
+  "name": "5x",
+  "stem": "5x",
+  "family": "axial",
+  "gens": "a b",
+  "relators": "a*b, (b*b)^5",
+  "geometry": {},
+  "geometryVerified": true
+ },
+ "maxIndex": 6,
+ "totalCount": 3,
+ "countPerIndex": [
+  {
+   "index": 1,
+   "count": 1
+  },
+  {
+   "index": 2,
+   "count": 1
+  },
+  {
+   "index": 5,
+   "count": 1
+  }
+ ],
+ "affineCountPerIndex": [
+  {
+   "index": 1,
+   "count": 1
+  },
+  {
+   "index": 2,
+   "count": 1
+  },
+  {
+   "index": 5,
+   "count": 1
+  }
+ ],
+ "subgroups": [
+  {
+   "id": "5x.1.1",
+   "index": 1,
+   "type": "5x",
+   "normal": true,
+   "placements": 1,
+   "cosets": "a a",
+   "orders": [
+    10
+   ],
+   "abelianization": "Z^0 + Z/10",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      0
+     ],
+     "cycles": "e"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      0
+     ],
+     "cycles": "e"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    }
+   ],
+   "simplyConnected": true,
+   "hGenerators": [
+    {
+     "word": "a",
+     "text": "rotoreflection 1/5*PI (order 10)"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 2,
+    "interior": 0
+   },
+   "name": "5x/5x[1]",
+   "affineClass": "5x/5x[1]"
+  },
+  {
+   "id": "5x.2.1",
+   "index": 2,
+   "type": "55",
+   "normal": true,
+   "placements": 1,
+   "cosets": "ba ba",
+   "orders": [
+    5
+   ],
+   "abelianization": "Z^0 + Z/5",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      1,
+      0
+     ],
+     "cycles": "(0 1)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      1,
+      0
+     ],
+     "cycles": "(0 1)"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "a",
+     "text": "rotoreflection 1/5*PI (order 10)"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "a",
+     "text": "rotoreflection 1/5*PI (order 10)"
+    }
+   ],
+   "simplyConnected": true,
+   "hGenerators": [
+    {
+     "word": "Ab",
+     "text": "rotation 2/5*PI (order 5)"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 2,
+    "interior": 2
+   },
+   "name": "5x/55[2]",
+   "affineClass": "5x/55[2]"
+  },
+  {
+   "id": "5x.5.1",
+   "index": 5,
+   "type": "x",
+   "normal": true,
+   "placements": 1,
+   "cosets": "bdaec caebd",
+   "orders": [
+    2
+   ],
+   "abelianization": "Z^0 + Z/2",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      1,
+      3,
+      0,
+      4,
+      2
+     ],
+     "cycles": "(0 1 3 4 2)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      2,
+      0,
+      4,
+      1,
+      3
+     ],
+     "cycles": "(0 2 4 3 1)"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "A",
+     "text": "rotoreflection 1/5*PI (order 10)"
+    },
+    {
+     "word": "a",
+     "text": "rotoreflection 1/5*PI (order 10)"
+    },
+    {
+     "word": "AA",
+     "text": "rotation 2/5*PI (order 5)"
+    },
+    {
+     "word": "aa",
+     "text": "rotation 2/5*PI (order 5)"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "a",
+     "text": "rotoreflection 1/5*PI (order 10)"
+    },
+    {
+     "word": "A",
+     "text": "rotoreflection 1/5*PI (order 10)"
+    },
+    {
+     "word": "aa",
+     "text": "rotation 2/5*PI (order 5)"
+    },
+    {
+     "word": "AA",
+     "text": "rotation 2/5*PI (order 5)"
+    }
+   ],
+   "simplyConnected": true,
+   "hGenerators": [
+    {
+     "word": "AAbAA",
+     "text": "central inversion"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 2,
+    "interior": 8
+   },
+   "name": "5x/x[5]",
+   "affineClass": "5x/x[5]"
+  }
+ ]
+}

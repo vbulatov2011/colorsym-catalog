@@ -1,0 +1,39 @@
+{
+ "id": "polyhedral",
+ "title": "Polyhedral groups",
+ "shortTitle": "Polyhedral",
+ "groupSingular": "polyhedral group",
+ "groupPlural": "polyhedral groups",
+ "geometry": "spherical",
+ "spaceNoun": "the sphere",
+ "heroGroup": "*432",
+ "colorRange": [2, 12],
+ "hasAffineClasses": true,
+ "curved": true,
+ "sparse": true,
+ "defaultPresetSet": "ph",
+ "defaultPresetPrefix": "ph-",
+ "renderIterations": {
+  "default": 40
+ },
+ "liveApp": {
+  "symdraw": "/apps/symdraw/symdraw_spherical.html",
+  "layer": "drawing"
+ },
+ "description": "The 7 polyhedral symmetry groups of the sphere (tetrahedral, octahedral, icosahedral) and their finite-index colorings up to 12 colors.",
+ "altNamesLabel": "Schoenflies",
+ "altNames": {
+  "332": "T (|G|=12)",
+  "3*2": "Th (|G|=24)",
+  "*332": "Td (|G|=24)",
+  "432": "O (|G|=24)",
+  "*432": "Oh (|G|=48)",
+  "532": "I (|G|=60)",
+  "*532": "Ih (|G|=120)"
+ },
+ "sections": [
+  { "title": "Tetrahedral", "groups": ["332", "3*2", "*332"] },
+  { "title": "Octahedral",  "groups": ["432", "*432"] },
+  { "title": "Icosahedral", "groups": ["532", "*532"] }
+ ]
+}

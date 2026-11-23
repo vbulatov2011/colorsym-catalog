@@ -1,0 +1,338 @@
+{
+ "format": "colorsym-catalog-manifest",
+ "version": 3,
+ "group": {
+  "name": "66",
+  "stem": "66",
+  "family": "axial",
+  "gens": "a b",
+  "relators": "a*b, b^6",
+  "geometry": {},
+  "geometryVerified": true
+ },
+ "maxIndex": 6,
+ "totalCount": 4,
+ "countPerIndex": [
+  {
+   "index": 1,
+   "count": 1
+  },
+  {
+   "index": 2,
+   "count": 1
+  },
+  {
+   "index": 3,
+   "count": 1
+  },
+  {
+   "index": 6,
+   "count": 1
+  }
+ ],
+ "affineCountPerIndex": [
+  {
+   "index": 1,
+   "count": 1
+  },
+  {
+   "index": 2,
+   "count": 1
+  },
+  {
+   "index": 3,
+   "count": 1
+  },
+  {
+   "index": 6,
+   "count": 1
+  }
+ ],
+ "subgroups": [
+  {
+   "id": "66.1.1",
+   "index": 1,
+   "type": "66",
+   "normal": true,
+   "placements": 1,
+   "cosets": "a a",
+   "orders": [
+    6
+   ],
+   "abelianization": "Z^0 + Z/6",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      0
+     ],
+     "cycles": "e"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      0
+     ],
+     "cycles": "e"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    }
+   ],
+   "simplyConnected": true,
+   "hGenerators": [
+    {
+     "word": "a",
+     "text": "rotation 1/3*PI (order 6)"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 2,
+    "interior": 0
+   },
+   "name": "66/66[1]",
+   "affineClass": "66/66[1]"
+  },
+  {
+   "id": "66.2.1",
+   "index": 2,
+   "type": "33",
+   "normal": true,
+   "placements": 1,
+   "cosets": "ba ba",
+   "orders": [
+    3
+   ],
+   "abelianization": "Z^0 + Z/3",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      1,
+      0
+     ],
+     "cycles": "(0 1)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      1,
+      0
+     ],
+     "cycles": "(0 1)"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "a",
+     "text": "rotation 1/3*PI (order 6)"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "a",
+     "text": "rotation 1/3*PI (order 6)"
+    }
+   ],
+   "simplyConnected": true,
+   "hGenerators": [
+    {
+     "word": "Ab",
+     "text": "rotation 2/3*PI (order 3)"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 2,
+    "interior": 2
+   },
+   "name": "66/33[2]",
+   "affineClass": "66/33[2]"
+  },
+  {
+   "id": "66.3.1",
+   "index": 3,
+   "type": "22",
+   "normal": true,
+   "placements": 1,
+   "cosets": "bca cab",
+   "orders": [
+    2
+   ],
+   "abelianization": "Z^0 + Z/2",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      1,
+      2,
+      0
+     ],
+     "cycles": "(0 1 2)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      2,
+      0,
+      1
+     ],
+     "cycles": "(0 2 1)"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "A",
+     "text": "rotation 1/3*PI (order 6)"
+    },
+    {
+     "word": "a",
+     "text": "rotation 1/3*PI (order 6)"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "a",
+     "text": "rotation 1/3*PI (order 6)"
+    },
+    {
+     "word": "A",
+     "text": "rotation 1/3*PI (order 6)"
+    }
+   ],
+   "simplyConnected": true,
+   "hGenerators": [
+    {
+     "word": "AbA",
+     "text": "rotation 1*PI (order 2)"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 2,
+    "interior": 4
+   },
+   "name": "66/22[3]",
+   "affineClass": "66/22[3]"
+  },
+  {
+   "id": "66.6.1",
+   "index": 6,
+   "type": "1",
+   "normal": true,
+   "placements": 1,
+   "cosets": "bdafce caebfd",
+   "orders": [],
+   "abelianization": "Z^0",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      1,
+      3,
+      0,
+      5,
+      2,
+      4
+     ],
+     "cycles": "(0 1 3 5 4 2)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      2,
+      0,
+      4,
+      1,
+      5,
+      3
+     ],
+     "cycles": "(0 2 4 5 3 1)"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "A",
+     "text": "rotation 1/3*PI (order 6)"
+    },
+    {
+     "word": "a",
+     "text": "rotation 1/3*PI (order 6)"
+    },
+    {
+     "word": "AA",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "aa",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "aaa",
+     "text": "rotation 1*PI (order 2)"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "a",
+     "text": "rotation 1/3*PI (order 6)"
+    },
+    {
+     "word": "A",
+     "text": "rotation 1/3*PI (order 6)"
+    },
+    {
+     "word": "aa",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "AA",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "aaa",
+     "text": "rotation 1*PI (order 2)"
+    }
+   ],
+   "simplyConnected": false,
+   "hGenerators": [],
+   "sideCounts": {
+    "boundary": 0,
+    "interior": 12
+   },
+   "name": "66/1[6]",
+   "affineClass": "66/1[6]"
+  }
+ ]
+}

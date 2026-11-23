@@ -11,6 +11,7 @@
   var LAYER_KEY = 'colorsym-catalog.entry.layers';
   var BG_KEY = 'colorsym-catalog.entry.backdrop';
   var SYNC_OV_KEY = 'colorsym-catalog.live.syncOverlays';
+  var PROJ_KEY = 'colorsym-catalog.live.projection';
   var PRESETS = {
     clean:   { pat: true,  ghost: true,  gfd: false, hfd: false, gtil: false, htil: false, gsym: false, hsym: false, g: false, f: false },
     domains: { pat: true,  ghost: true,  gfd: true,  hfd: true,  gtil: true,  htil: true,  gsym: false, hsym: false, g: true,  f: true  },
@@ -39,6 +40,12 @@
 
   var syncOverlays = false;
   try { syncOverlays = localStorage.getItem(SYNC_OV_KEY) === '1'; } catch (e) {}
+
+  var liveProj = 'stereo';
+  try {
+    var sp = localStorage.getItem(PROJ_KEY);
+    if (sp === 'sphere' || sp === 'stereo') liveProj = sp;
+  } catch (e) {}
 
   function hydrateLayer(k) {
     var cls = KEY_TO_CLASS[k];
@@ -189,6 +196,7 @@
   function liveUrlFor(kind, permIndex, uiMode) {
     if (!liveData || !window.CATALOG_LIVE) return null;
     var ov = currentOverlayOpt(kind);
+    var proj = liveData.curved ? liveProj : undefined;
     if (kind === 'group') {
       return window.CATALOG_LIVE.buildLiveUrl({
         app: liveData.app,
@@ -204,6 +212,7 @@
         iterations: liveData.iterations,
         ui: uiMode || '',
         overlays: ov,
+        projection: proj,
       });
     }
     var isOrbit = kind === 'orbit';
@@ -223,6 +232,7 @@
       iterations: liveData.iterations,
       ui: uiMode || '',
       overlays: ov,
+      projection: proj,
     });
   }
 
@@ -238,6 +248,15 @@
     });
     var syncBoxes = document.querySelectorAll('input[data-sync-overlays]');
     syncBoxes.forEach(function (cb) { cb.checked = syncOverlays; });
+    document.querySelectorAll('[data-live-proj]').forEach(function (b) {
+      b.classList.toggle('active', b.getAttribute('data-live-proj') === liveProj);
+    });
+    var footHint = document.getElementById('live-foot-hint');
+    if (footHint && liveData && liveData.curved) {
+      footHint.innerHTML = (liveProj === 'sphere'
+        ? 'Drag to rotate sphere &middot; Ctrl+scroll to zoom'
+        : 'Drag to turn stereographic view &middot; scroll to zoom') + ' &middot; powered by SymmHub';
+    }
   };
 
   // Sync overlays checkboxes (in header and inside live drawer)
@@ -306,6 +325,17 @@
     var tabBtn = e.target.closest && e.target.closest('[data-drawer-tab]');
     if (tabBtn) {
       openLiveDrawer(tabBtn.getAttribute('data-drawer-kind'), tabBtn.getAttribute('data-drawer-perm'));
+      return;
+    }
+    var projBtn = e.target.closest && e.target.closest('[data-live-proj]');
+    if (projBtn) {
+      var nextProj = projBtn.getAttribute('data-live-proj');
+      if (nextProj === 'sphere' || nextProj === 'stereo') {
+        liveProj = nextProj;
+        try { localStorage.setItem(PROJ_KEY, liveProj); } catch (err) {}
+        refreshAllLiveLinks();
+        refreshLiveDrawer();
+      }
       return;
     }
     if (e.target.closest && e.target.closest('#live-close')) {

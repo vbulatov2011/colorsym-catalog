@@ -37,7 +37,6 @@ LO_N, HI_N = int(_cr[0]), int(_cr[1])
 
 PLANNED_FAMILIES = [
     ('frieze', 'Frieze groups', '7 groups', '1D translational strip symmetries and their finite-index colorings.', '\u27df'),
-    ('spherical', 'Spherical groups', 'Point & polyhedral', 'Finite symmetry groups of the sphere and polyhedra with colorings.', '\u25ce'),
     ('hyperbolic', 'Hyperbolic groups', 'Triangle & orbifold', 'Colorings of hyperbolic KLM and orbifold groups in the Poincar\u00e9 disk.', '\u2734'),
 ]
 
@@ -317,10 +316,16 @@ def type_frames(ss, root):
             frames.append((ac, []))
         frames[-1][1].append(cg_box(s, root))
     tip = 'one type: color groups an affine symmetry of the group carries onto each other'
+    has_multi = any(len(boxes) > 1 for _, boxes in frames)
     parts = []
     for ac, boxes in frames:
-        lbl = ('<div class="tframe-lbl"><span>Affine type <b>%s</b> &middot; %d color groups</span></div>\n'
-               % (disp(ac), len(boxes))) if len(boxes) > 1 else ''
+        if len(boxes) > 1:
+            lbl = ('<div class="tframe-lbl"><span>Affine type <b>%s</b> &middot; %d color groups</span></div>\n'
+                   % (disp(ac), len(boxes)))
+        elif has_multi:
+            lbl = '<div class="tframe-lbl"><span>Affine type &middot; 1 color group</span></div>\n'
+        else:
+            lbl = ''
         parts.append('<div class="tframe" title="%s">\n%s<div class="tframe-row">\n%s\n</div>\n</div>'
                      % (tip, lbl, '\n'.join(boxes)))
     return '<div class="pgrid typed">\n%s\n</div>' % '\n'.join(parts)
@@ -332,6 +337,10 @@ def by_count_nav(root, cur=None):
     tiles = []
     for n in range(LO_N, HI_N + 1):
         ss = all_n(n)
+        if not ss:
+            tiles.append('<div class="ntile off" title="no color group with %s"><b>%s</b>'
+                         '<span>no color group</span></div>' % (colors(n), colors(n)))
+            continue
         syms = sum(1 for nm in ORDER if groups[nm]['per_n'][n])
         tiles.append('<a class="ntile%s" href="%scolors/%d/index.html"><b>%s</b>'
                      '<span>%s</span><span>%s</span><span>%s</span>'
@@ -586,13 +595,13 @@ for name, g in groups.items():
         'trivial': g['trivial'],
     }, ensure_ascii=False).replace('</', '<\\/')
     hero_img = ('<img src="gen/group.webp" alt="%s">' % disp(name)) if g['thumb'] else ''
-    hero = (
-        '<div class="hero-media">%s'
+    hero_live = (
         '<div class="hero-live">'
         '<a class="btn sm primary" target="_blank" rel="noopener" data-live-group="simple" href="#">Explore in SymmHub &#8599;</a>'
         '<a class="btn sm" target="_blank" rel="noopener" data-live-group="studio" href="#">Studio &#8599;</a>'
-        '</div></div>' % hero_img
-    )
+        '</div>'
+    ) if g['preset'] else ''
+    hero = '<div class="hero-media">%s%s</div>' % (hero_img, hero_live)
     hm_row = ('<dt>%s</dt><dd>%s</dd>\n' % (html.escape(ALT_LABEL), html.escape(hm))) if hm else ''
     facts = '''<dl class="facts">
 <dt>Orbifold</dt><dd>%s</dd>
@@ -602,7 +611,7 @@ for name, g in groups.items():
 <dt>Domain</dt><dd>%s</dd>
 <dt>Manifest</dt><dd><code>%s/%s</code></dd>
 </dl>''' % (disp(name), hm_row, LO_N, HI_N, counts_line(g['subs']), status(g['subs']),
-            count_table(g, root), html.escape(g['preset']),
+            count_table(g, root), html.escape(g['preset'] or 'none yet'),
             ('default' if g['shape'] == 'default' else html.escape(g['shape'])) +
             (' &middot; Dirichlet domain about (%g, %g)' % (g['dirichlet']['baseX'], g['dirichlet']['baseY'])
              if g['dirichlet'] else ''), P.DATA_DIR, html.escape(g['manifest']))

@@ -31,6 +31,20 @@
    "jobsDir": "jobs_frieze",
    "presetsDir": "presets/frieze",
    "metaFile": "data/frieze/family.json"
+  },
+  "axial": {
+   "familyDir": "axial",
+   "dataDir": "data/axial",
+   "jobsDir": "jobs_axial",
+   "presetsDir": "presets/axial",
+   "metaFile": "data/axial/family.json"
+  },
+  "polyhedral": {
+   "familyDir": "polyhedral",
+   "dataDir": "data/polyhedral",
+   "jobsDir": "jobs_polyhedral",
+   "presetsDir": "presets/polyhedral",
+   "metaFile": "data/polyhedral/family.json"
   }
  },
  "external": {

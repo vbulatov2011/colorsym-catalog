@@ -1,5 +1,5 @@
 {
- "main": "wpe",
+ "main": "wpe2",
  "versions": {
   "wpe": {
    "label": "wpe presets, one custom palette",
@@ -18,10 +18,22 @@
    "label": "wpe2 presets",
    "created": "2026-11-23",
    "family": "wp"
+  },
+  "ax": {
+   "label": "axial tile-from-domain presets (n=2..8, <=6 colors)",
+   "created": "2026-11-23",
+   "family": "axial"
+  },
+  "ph": {
+   "label": "polyhedral tile-from-domain presets (<=12 colors)",
+   "created": "2026-11-23",
+   "family": "polyhedral"
   }
  },
  "mainByFamily": {
-  "wp": "wpe",
-  "frieze": "fe"
+  "wp": "wpe2",
+  "frieze": "fe",
+  "axial": "ax",
+  "polyhedral": "ph"
  }
 }

@@ -79,13 +79,13 @@ header.entry .lede b { color: var(--ink); font-weight: 600; }
   border-bottom: 1px solid var(--line);
   font-size: .84rem;
 }
-.live-tabs {
+.live-tabs, .live-proj {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: .28rem;
 }
-.live-tabs .lt-lbl {
+.live-tabs .lt-lbl, .live-proj .lt-lbl {
   font-size: .74rem;
   text-transform: uppercase;
   letter-spacing: .06em;

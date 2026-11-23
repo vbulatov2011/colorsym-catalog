@@ -119,9 +119,11 @@ def switch(args, flag):
 
 
 def entries_of(manifest):
-    """the color groups of a manifest the catalog has: MIN_N..MAX_N colors"""
+    """the color groups of a manifest the catalog has: family colorRange (default MIN_N..MAX_N)"""
     m = json.load(open(P.data_file(manifest), encoding='utf-8'))
-    return [s for s in m['subgroups'] if MIN_N <= s['index'] <= MAX_N]
+    cr = (P.family_meta() or {}).get('colorRange') or [MIN_N, MAX_N]
+    lo, hi = int(cr[0]), int(cr[1])
+    return [s for s in m['subgroups'] if lo <= s['index'] <= hi]
 
 
 def gen_dirs(stem):
@@ -480,9 +482,9 @@ def cmd_promote(args):
         sys.exit('usage: version.py promote <name>')
     v = args[0]
     reg = use(v)
-    old = reg['main']
+    old = P.main_version(P.FAMILY)
     if old == v:
-        sys.exit('%s is the main version already' % v)
+        sys.exit('%s is the main version for %s already' % (v, P.FAMILY))
     root = [P.TREE, P.JOBS]
     here = [P.join(P.VERSIONS_DIR, v, d) for d in root]
     if not all(os.path.isdir(P.path(d)) for d in here):
@@ -496,12 +498,15 @@ def cmd_promote(args):
             if os.path.exists(P.path(a)):
                 shutil.move(P.path(a), P.path(b))
     elif any(os.path.exists(P.path(d)) for d in root):
-        sys.exit('wp/ and jobs/ are of no version: make them one first (version.py new <name> --main)')
+        sys.exit('%s/ and %s/ are of no version: make them one first (version.py new <name> --main)' % (P.TREE, P.JOBS))
     for a, b in zip(here, root):
         shutil.move(P.path(a), P.path(b))
-    reg['main'] = v
+    mbf = reg.setdefault('mainByFamily', {})
+    mbf[P.FAMILY] = v
+    if P.FAMILY == P.DEFAULT_FAMILY:
+        reg['main'] = v
     save(P.join(P.VERSIONS_DIR, 'index.json'), reg)
-    print('main version: %s (was %s)' % (v, old))
+    print('main version for %s: %s (was %s)' % (P.FAMILY, v, old))
     for w in [v] + ([old] if old else []):
         print('--- %s: jobs and pages again' % w)
         write_jobs(w, keep=True)

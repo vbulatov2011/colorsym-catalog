@@ -1,0 +1,16 @@
+{
+ "name": "ph",
+ "label": "polyhedral tile-from-domain presets (<=12 colors)",
+ "created": "2026-11-23",
+ "family": "polyhedral",
+ "set": "ph",
+ "presets": {
+  "332": "presets/polyhedral/ph/ph-332.json",
+  "3*2": "presets/polyhedral/ph/ph-3s2.json",
+  "*332": "presets/polyhedral/ph/ph-s332.json",
+  "432": "presets/polyhedral/ph/ph-432.json",
+  "*432": "presets/polyhedral/ph/ph-s432.json",
+  "532": "presets/polyhedral/ph/ph-532.json",
+  "*532": "presets/polyhedral/ph/ph-s532.json"
+ }
+}

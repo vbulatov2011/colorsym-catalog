@@ -1,0 +1,794 @@
+{
+ "name": "ax-3s",
+ "appInfo": {
+  "appName": "SymRenderer.Group_Spherical.PatternDrawing.InversiveNavigator_v1",
+  "fileFormatRelease": 1
+ },
+ "params": {
+  "files": {},
+  "display": {
+   "backgroundColor": "#FFFFFF00"
+  },
+  "recording": {
+   "animTime": 0,
+   "animSpeed": 1,
+   "startFrame": 0,
+   "endFrame": 100,
+   "currentFrame": 0
+  },
+  "pattern": {
+   "patternParams": {
+    "className": "PatternDrawing",
+    "params": {
+     "id": "drawing1",
+     "resolution": "1024",
+     "useCrown": false,
+     "sprites": true,
+     "spriteResolution": "1024",
+     "layer": "layer1",
+     "style": {
+      "stroke": "#20304a",
+      "strokeOpacity": 1,
+      "width": 0.02,
+      "filled": true,
+      "fill": "#ffffff",
+      "fillOpacity": 1,
+      "fillRule": "nonzero",
+      "cap": "round",
+      "join": "round",
+      "snap": true,
+      "fitCurves": false,
+      "geometry": true,
+      "incremental": false,
+      "keepInCell": true,
+      "geodesic": true,
+      "stroked": true,
+      "curvedTiles": true
+     },
+     "layers": {
+      "className": "ObjArray",
+      "params": {
+       "id": "layers",
+       "children": [
+        {
+         "className": "DrawingLayer",
+         "params": {
+          "id": "layer1",
+          "enabled": true,
+          "locked": false,
+          "opacity": 1,
+          "items": [
+           {
+            "type": "path",
+            "closed": true,
+            "style": {
+             "stroke": {
+              "rgba": [
+               0.12549019607843137,
+               0.18823529411764706,
+               0.2901960784313726,
+               1
+              ]
+             },
+             "strokeWidth": 0.02,
+             "lineCap": "round",
+             "lineJoin": "round",
+             "fill": {
+              "rgba": [
+               1,
+               1,
+               1,
+               1
+              ]
+             },
+             "opacity": 1
+            },
+            "tile": {
+             "edges": [
+              {
+               "count": 1,
+               "pair": 1,
+               "word": "c",
+               "reversed": true,
+               "locked": false
+              },
+              {
+               "count": 1,
+               "pair": 0,
+               "word": "a",
+               "reversed": true,
+               "locked": false,
+               "fitted": true
+              },
+              {
+               "count": 1,
+               "pair": null,
+               "word": null,
+               "reversed": false,
+               "locked": true
+              }
+             ]
+            },
+            "nodes": [
+             {
+              "p": [
+               0,
+               -0.5773502691896256
+              ],
+              "h1": null,
+              "h2": [
+               0.41253476901133734,
+               -0.5773502691896256
+              ]
+             },
+             {
+              "p": [
+               1,
+               0
+              ],
+              "h1": [
+               0.7937326154943313,
+               -0.3572655899081635
+              ],
+              "h2": [
+               0.7937326154943313,
+               0.3572655899081635
+              ]
+             },
+             {
+              "p": [
+               0,
+               0.5773502691896256
+              ],
+              "h1": [
+               0.41253476901133734,
+               0.5773502691896256
+              ],
+              "h2": null
+             }
+            ],
+            "points": [
+             0,
+             -0.5773502691896256,
+             0.07694798261227967,
+             -0.5747913920321901,
+             0.15295116400399908,
+             -0.5671957212714609,
+             0.227799202076356,
+             -0.5546846979748032,
+             0.30128175473054825,
+             -0.5373797632095821,
+             0.37318847986777354,
+             -0.5154023580431633,
+             0.4433090353892297,
+             -0.48887392354291215,
+             0.5114330791961146,
+             -0.457915900776194,
+             0.5773502691896257,
+             -0.4226497308103741,
+             0.6408502632709612,
+             -0.38319685471281795,
+             0.7017227193413185,
+             -0.33967871355089085,
+             0.7597572953018956,
+             -0.29221674839195827,
+             0.8147436490538904,
+             -0.24093240030338547,
+             0.8664714384985004,
+             -0.1859471103525379,
+             0.9147303215369235,
+             -0.12738231960678087,
+             0.9593099560703574,
+             -0.06535946913347977,
+             1,
+             0,
+             0.9593099560703574,
+             0.06535946913347977,
+             0.9147303215369235,
+             0.12738231960678087,
+             0.8664714384985004,
+             0.1859471103525379,
+             0.8147436490538904,
+             0.24093240030338547,
+             0.7597572953018956,
+             0.29221674839195827,
+             0.7017227193413185,
+             0.33967871355089085,
+             0.6408502632709612,
+             0.38319685471281795,
+             0.5773502691896257,
+             0.4226497308103741,
+             0.5114330791961146,
+             0.457915900776194,
+             0.4433090353892297,
+             0.48887392354291215,
+             0.37318847986777354,
+             0.5154023580431633,
+             0.30128175473054825,
+             0.5373797632095821,
+             0.227799202076356,
+             0.5546846979748032,
+             0.15295116400399908,
+             0.5671957212714609,
+             0.07694798261227967,
+             0.5747913920321901,
+             0,
+             0.5773502691896256
+            ],
+            "id": "tile_fd"
+           },
+           {
+            "type": "polyline",
+            "id": "orn_leaf",
+            "closed": true,
+            "points": [
+             0.3938234889521696,
+             0.09714707044263084,
+             0.388032569058541,
+             0.09675660638173812,
+             0.3789272091196573,
+             0.09048280880461435,
+             0.3662432074210723,
+             0.07910308122855213,
+             0.35008517401852957,
+             0.06352927076921946,
+             0.3310265391544489,
+             0.044694361501580654,
+             0.3101277004178065,
+             0.023475575734200487,
+             0.28886210928612094,
+             0.0006637038668838581,
+             0.26895811132799163,
+             -0.023022436923079866,
+             0.25218116251413525,
+             -0.04688785777357506,
+             0.24009331159496966,
+             -0.07019865593951741,
+             0.23383211264325368,
+             -0.09212715072085037,
+             0.23394832934137155,
+             -0.11172580401178234,
+             0.24033141604383845,
+             -0.12794461880961028,
+             0.25223580169263127,
+             -0.1396971078959936,
+             0.2684025506510526,
+             -0.14596888706180117,
+             0.28725360821862417,
+             -0.1459527299691865,
+             0.3071229211712927,
+             -0.13918663769256118,
+             0.32648274043738384,
+             -0.1256686702940159,
+             0.34412548281687544,
+             -0.10592462691706556,
+             0.3592711855921459,
+             -0.08101179503042219,
+             0.3715858764204085,
+             -0.05245261617231334,
+             0.38111404531374504,
+             -0.02210423215564948,
+             0.38814529649891366,
+             0.008018829179354998,
+             0.39304783616399575,
+             0.035943262644734214,
+             0.3961072492521633,
+             0.05992760048685462,
+             0.39740692503863445,
+             0.07861711966847504,
+             0.3967769742975395,
+             0.09114188834703969
+            ],
+            "style": {
+             "stroke": {
+              "rgba": [
+               0.12549019607843137,
+               0.18823529411764706,
+               0.2901960784313726,
+               1
+              ]
+             },
+             "strokeWidth": 0.015,
+             "lineCap": "round",
+             "lineJoin": "round",
+             "fill": {
+              "rgba": [
+               0.8,
+               0.78,
+               0.75,
+               1
+              ]
+             },
+             "opacity": 1
+            }
+           },
+           {
+            "type": "polyline",
+            "id": "orn_dot",
+            "closed": true,
+            "points": [
+             0.475947750511936,
+             0.01154548865220252,
+             0.47357747750286705,
+             0.023461655757814642,
+             0.4668275110547127,
+             0.03356369444192112,
+             0.45672547237060623,
+             0.04031366089007546,
+             0.4448093052649941,
+             0.04268393389914438,
+             0.432893138159382,
+             0.04031366089007546,
+             0.42279109947527554,
+             0.03356369444192113,
+             0.4160411330271212,
+             0.02346165575781465,
+             0.41367086001805226,
+             0.011545488652202524,
+             0.4160411330271212,
+             -0.0003706784534095991,
+             0.4227910994752755,
+             -0.010472717137516081,
+             0.43289313815938196,
+             -0.01722268358567041,
+             0.4448093052649941,
+             -0.019592956594739332,
+             0.45672547237060623,
+             -0.017222683585670414,
+             0.4668275110547127,
+             -0.010472717137516088,
+             0.47357747750286705,
+             -0.00037067845340962163
+            ],
+            "style": {
+             "stroke": {
+              "rgba": [
+               0.12549019607843137,
+               0.18823529411764706,
+               0.2901960784313726,
+               1
+              ]
+             },
+             "strokeWidth": 0.010499999999999999,
+             "lineCap": "round",
+             "lineJoin": "round",
+             "fill": {
+              "rgba": [
+               0.22,
+               0.26,
+               0.34,
+               1
+              ]
+             },
+             "opacity": 1
+            }
+           }
+          ]
+         }
+        }
+       ]
+      }
+     }
+    }
+   },
+   "patternTransform": {
+    "centerX": 0,
+    "centerY": 0,
+    "scale": 1,
+    "angle": 0,
+    "pivotX": 0,
+    "pivotY": 0,
+    "bendX": 0,
+    "bendY": 0,
+    "geometric": true
+   }
+  },
+  "visualization": {
+   "className": "VisualizationManager",
+   "params": {
+    "layers": {
+     "className": "ObjArray",
+     "params": {
+      "id": "layers",
+      "children": [
+       {
+        "className": "VisualizationColorSym",
+        "params": {
+         "id": "drawing",
+         "enabled": true,
+         "useSymmetry": true,
+         "opacity": 1,
+         "frame": "fit",
+         "imageId": "",
+         "permutations": "",
+         "permIndex": 0,
+         "useOrbit": false,
+         "mask": "",
+         "subgroups": {
+          "className": "Subgroups",
+          "params": {
+           "maxIndex": 24,
+           "subgroup": "[select]"
+          }
+         },
+         "coloringType": "mult",
+         "colorTiles": {
+          "className": "ColorTiles",
+          "params": {
+           "count": 6,
+           "palette": "pastel",
+           "a": {
+            "R": 0.5,
+            "G": 0.5,
+            "B": 0.5
+           },
+           "b": {
+            "R": 0.5,
+            "G": 0.5,
+            "B": 0.5
+           },
+           "c": {
+            "R": 1,
+            "G": 1,
+            "B": 1
+           },
+           "d": {
+            "R": 0,
+            "G": 0.33,
+            "B": 0.67
+           },
+           "adjust": {
+            "hueShift": 0,
+            "satMult": 1,
+            "lightOffset": 0,
+            "contrastMult": 1
+           },
+           "edited": {
+            "0": "#ffe6a7",
+            "1": "#cf8439",
+            "2": "#632001",
+            "3": "#a14b12",
+            "4": "#cffaf6",
+            "5": "#63b2ee",
+            "6": "#0d4392"
+           },
+           "alphas": {}
+          }
+         },
+         "useCrown": true,
+         "useTilt": false,
+         "patternTiltDirection": 0,
+         "useMipmap": false,
+         "interpolation": "linear"
+        }
+       },
+       {
+        "className": "VisualizationImage",
+        "params": {
+         "id": "image",
+         "enabled": false,
+         "useSymmetry": true,
+         "opacity": 1,
+         "frame": "fit",
+         "interpolation": "linear",
+         "dataSource": "u",
+         "useMipmap": false,
+         "imageId": "",
+         "useCrown": false,
+         "useTilt": false,
+         "patternTiltDirection": 0
+        }
+       },
+       {
+        "className": "VisualizationOverlay",
+        "params": {
+         "id": "overlay",
+         "enabled": false,
+         "opacity": 1,
+         "overlays": {
+          "className": "ObjArray",
+          "params": {
+           "id": "overlays",
+           "children": [
+            {
+             "className": "OverlayTiling",
+             "params": {
+              "id": "tiling",
+              "enabled": false,
+              "opacity": 1,
+              "width": 1,
+              "color": "#000000FF",
+              "symmetry": {
+               "type": "renderer",
+               "maxIndex": 8,
+               "cosets": "",
+               "iterations": 0
+              }
+             }
+            },
+            {
+             "className": "OverlayFundDomain",
+             "params": {
+              "id": "fundDomain",
+              "enabled": false,
+              "opacity": 1,
+              "fill": {
+               "enabled": false,
+               "color": "#FF0000AA"
+              },
+              "outline": {
+               "enabled": true,
+               "width": 1,
+               "color": "#000000AA",
+               "shadowsWidth": 10,
+               "shadowsColor": "#0000FFAA"
+              },
+              "walls": {
+               "enabled": false,
+               "width": 1,
+               "color": "#00000055"
+              },
+              "symmetry": {
+               "type": "renderer",
+               "maxIndex": 8,
+               "cosets": "",
+               "iterations": 0
+              }
+             }
+            },
+            {
+             "className": "OverlayGenerators",
+             "params": {
+              "id": "generators",
+              "enabled": false,
+              "opacity": 1,
+              "showSides": true,
+              "width": 2,
+              "color": "#0000AAAA",
+              "shadow": {
+               "enabled": true,
+               "color": "#0000AA55",
+               "width": 10
+              },
+              "elements": {
+               "enabled": true,
+               "width": 2,
+               "cone": {
+                "enabled": true,
+                "size": 12,
+                "color2": "#283CDCCC",
+                "color3": "#F08C14CC",
+                "color4": "#14AA78CC",
+                "color6": "#E61EC8CC",
+                "color": "#808080CC",
+                "outline": "#000000C0"
+               },
+               "mirror": {
+                "enabled": true,
+                "color": "#AA0000FF"
+               },
+               "glide": {
+                "enabled": true,
+                "color": "#AA00AAFF",
+                "dash": 8
+               },
+               "translation": {
+                "enabled": true,
+                "color": "#008888FF"
+               }
+              },
+              "symmetry": {
+               "type": "renderer",
+               "maxIndex": 8,
+               "cosets": "",
+               "iterations": 0
+              }
+             }
+            }
+           ]
+          }
+         }
+        }
+       }
+      ]
+     }
+    }
+   }
+  },
+  "misc": {
+   "dataPlot": {
+    "className": "DataPlot",
+    "params": {
+     "potType": 0,
+     "viewport": {
+      "xmin": -1.3,
+      "xmax": 1.3,
+      "ymin": -0.2,
+      "ymax": 1.1
+     },
+     "viewbox": {
+      "width": 65,
+      "height": 20,
+      "left": 17.5,
+      "bottom": 0,
+      "centerX": 0,
+      "centerY": 0,
+      "zoom": 1
+     }
+    }
+   }
+  },
+  "symmetry": {
+   "groupType": "Spherical",
+   "group": {
+    "className": "Group_Spherical",
+    "params": {
+     "type": "n*",
+     "n": 3,
+     "subtype": 0,
+     "centered": false
+    }
+   },
+   "transform": {
+    "translationX": 0,
+    "translationY": 0,
+    "rotation": 0,
+    "scale": 1
+   },
+   "dirichlet": {
+    "enabled": false,
+    "autoSides": true,
+    "baseX": 0.01,
+    "baseY": 0.02,
+    "showPoints": false,
+    "showPlanes": false,
+    "showSides": true,
+    "showLabels": true,
+    "words": "",
+    "searchTime": 10,
+    "depth": 2,
+    "minScale": 0.01,
+    "iterations": 200
+   },
+   "options": {
+    "iterations": 40
+   }
+  },
+  "tools": {
+   "transform": {
+    "className": "InversiveNavigator_v1",
+    "params": {
+     "mode": "spherical",
+     "projection": {
+      "className": "ProjectionTransform",
+      "params": {
+       "enabled": true,
+       "fpdMap": {
+        "className": "FixedPointTransform",
+        "params": {
+         "enabled": false,
+         "showUI": false,
+         "animate": false,
+         "word": "ac",
+         "orientation": "none",
+         "fp0x": -1,
+         "fp0y": 0,
+         "fp1x": 1,
+         "fp1y": 0,
+         "basex": 0,
+         "basey": 0,
+         "translation": 1,
+         "rotation": 0,
+         "fraction": 0,
+         "loopTime": 5
+        }
+       },
+       "bandMap": {
+        "enabled": false,
+        "fraction": 1
+       },
+       "logMap": {
+        "enabled": false
+       },
+       "periodicMap": {
+        "enabled": false,
+        "a1x": 1,
+        "a1y": 0,
+        "a2x": 0,
+        "a2y": 1,
+        "cx": 0,
+        "cy": 0
+       },
+       "scaleMap": {
+        "enabled": false,
+        "a1x": 1,
+        "a1y": 0,
+        "a2x": 0,
+        "a2y": 1,
+        "n1": 10,
+        "n2": 0,
+        "shift1": 0,
+        "shift2": 0
+       },
+       "expMap": {
+        "enabled": false
+       },
+       "loxMap": {
+        "enabled": false
+       },
+       "uhpMap": {
+        "enabled": false
+       },
+       "rationalMap": {
+        "enabled": false,
+        "x1": 1,
+        "y1": 0,
+        "n1": 1,
+        "x2": 0,
+        "y2": 1,
+        "n2": -1,
+        "x3": -1,
+        "y3": 0,
+        "n3": 1,
+        "x4": 0,
+        "y4": -1,
+        "n4": -1
+       }
+      }
+     },
+     "inversive": {
+      "enabled": true,
+      "itrans": [
+       {
+        "v": [
+         0.08545675626000725,
+         -3.80794703553302e-17,
+         0,
+         1.003644786361431
+        ],
+        "type": 1
+       },
+       {
+        "v": [
+         1.1868840141676305,
+         1.3629525846315891e-17,
+         0,
+         1.5519966698052765
+        ],
+        "type": 1
+       }
+      ]
+     },
+     "spherical": {
+      "enabled": false
+     },
+     "euclidean": {
+      "centerX": 0,
+      "centerY": 0,
+      "zoom": 0.38
+     },
+     "options": {
+      "animation": true
+     }
+    }
+   },
+   "drawing": {
+    "className": "DrawingToolRenderer",
+    "params": {
+     "symmetry": false,
+     "brushR": 1,
+     "brushG": 0,
+     "brushB": 0,
+     "brushA": 1,
+     "brushRadius": 0.01,
+     "brushBlur": 0.5,
+     "brushX": 0,
+     "brushY": 0
+    }
+   }
+  },
+  "scripting": {
+   "scriptParams": {}
+  }
+ }
+}

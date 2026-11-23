@@ -1,0 +1,3968 @@
+{
+ "format": "colorsym-catalog-manifest",
+ "version": 3,
+ "group": {
+  "name": "*432",
+  "stem": "s432",
+  "family": "polyhedral",
+  "gens": "a b c",
+  "relators": "a^2, b^2, c^2, (a*b)^4, (a*c)^2, (b*c)^3",
+  "geometry": {},
+  "geometryVerified": true
+ },
+ "maxIndex": 12,
+ "totalCount": 26,
+ "countPerIndex": [
+  {
+   "index": 1,
+   "count": 1
+  },
+  {
+   "index": 2,
+   "count": 3
+  },
+  {
+   "index": 3,
+   "count": 1
+  },
+  {
+   "index": 4,
+   "count": 2
+  },
+  {
+   "index": 6,
+   "count": 7
+  },
+  {
+   "index": 8,
+   "count": 3
+  },
+  {
+   "index": 12,
+   "count": 9
+  }
+ ],
+ "affineCountPerIndex": [
+  {
+   "index": 1,
+   "count": 1
+  },
+  {
+   "index": 2,
+   "count": 3
+  },
+  {
+   "index": 3,
+   "count": 1
+  },
+  {
+   "index": 4,
+   "count": 2
+  },
+  {
+   "index": 6,
+   "count": 7
+  },
+  {
+   "index": 8,
+   "count": 3
+  },
+  {
+   "index": 12,
+   "count": 9
+  }
+ ],
+ "subgroups": [
+  {
+   "id": "*432.1.1",
+   "index": 1,
+   "type": "*432",
+   "normal": true,
+   "placements": 1,
+   "cosets": "a a a",
+   "orders": [
+    2,
+    2,
+    2,
+    2,
+    3,
+    4
+   ],
+   "abelianization": "Z^0 + Z/2 + Z/2",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      0
+     ],
+     "cycles": "e"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      0
+     ],
+     "cycles": "e"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      0
+     ],
+     "cycles": "e"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    }
+   ],
+   "simplyConnected": true,
+   "hGenerators": [
+    {
+     "word": "a",
+     "text": "reflection"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "c",
+     "text": "reflection"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 3,
+    "interior": 0
+   },
+   "name": "*432/*432[1]",
+   "affineClass": "*432/*432[1]"
+  },
+  {
+   "id": "*432.2.1",
+   "index": 2,
+   "type": "3*2",
+   "normal": true,
+   "placements": 1,
+   "cosets": "ab ba ba",
+   "orders": [
+    2,
+    2,
+    2,
+    3,
+    3
+   ],
+   "abelianization": "Z^0 + Z/2 + Z/3",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      0,
+      1
+     ],
+     "cycles": "e"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      1,
+      0
+     ],
+     "cycles": "(0 1)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      1,
+      0
+     ],
+     "cycles": "(0 1)"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    }
+   ],
+   "simplyConnected": true,
+   "hGenerators": [
+    {
+     "word": "a",
+     "text": "reflection"
+    },
+    {
+     "word": "Bc",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "Bab",
+     "text": "reflection"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 4,
+    "interior": 2
+   },
+   "name": "*432/3*2[2]",
+   "affineClass": "*432/3*2[2]"
+  },
+  {
+   "id": "*432.2.2",
+   "index": 2,
+   "type": "*332",
+   "normal": true,
+   "placements": 1,
+   "cosets": "ba ab ab",
+   "orders": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    3,
+    3
+   ],
+   "abelianization": "Z^0 + Z/2",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      1,
+      0
+     ],
+     "cycles": "(0 1)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      0,
+      1
+     ],
+     "cycles": "e"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      0,
+      1
+     ],
+     "cycles": "e"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "a",
+     "text": "reflection"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "a",
+     "text": "reflection"
+    }
+   ],
+   "simplyConnected": false,
+   "hGenerators": [
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "c",
+     "text": "reflection"
+    },
+    {
+     "word": "Aba",
+     "text": "reflection"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 4,
+    "interior": 2
+   },
+   "name": "*432/*332[2]",
+   "affineClass": "*432/*332[2]"
+  },
+  {
+   "id": "*432.2.3",
+   "index": 2,
+   "type": "432",
+   "normal": true,
+   "placements": 1,
+   "cosets": "ba ba ba",
+   "orders": [
+    2,
+    2,
+    3,
+    3,
+    4,
+    4
+   ],
+   "abelianization": "Z^0 + Z/2",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      1,
+      0
+     ],
+     "cycles": "(0 1)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      1,
+      0
+     ],
+     "cycles": "(0 1)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      1,
+      0
+     ],
+     "cycles": "(0 1)"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    }
+   ],
+   "simplyConnected": true,
+   "hGenerators": [
+    {
+     "word": "Ba",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "Bc",
+     "text": "rotation 2/3*PI (order 3)"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 4,
+    "interior": 2
+   },
+   "name": "*432/432[2]",
+   "affineClass": "*432/432[2]"
+  },
+  {
+   "id": "*432.3.1",
+   "index": 3,
+   "type": "*224",
+   "normal": false,
+   "placements": 3,
+   "cosets": "abc acb bac",
+   "orders": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    4
+   ],
+   "abelianization": "Z^0 + Z/2 + Z/2 + Z/2",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      0,
+      1,
+      2
+     ],
+     "cycles": "e"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      0,
+      2,
+      1
+     ],
+     "cycles": "(1 2)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      1,
+      0,
+      2
+     ],
+     "cycles": "(0 1)"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "c",
+     "text": "reflection"
+    },
+    {
+     "word": "bc",
+     "text": "rotation 2/3*PI (order 3)"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "c",
+     "text": "reflection"
+    },
+    {
+     "word": "cbc",
+     "text": "reflection"
+    }
+   ],
+   "simplyConnected": false,
+   "hGenerators": [
+    {
+     "word": "a",
+     "text": "reflection"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "CBabc",
+     "text": "reflection"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 5,
+    "interior": 4
+   },
+   "name": "*432/*224[3]",
+   "affineClass": "*432/*224[3]"
+  },
+  {
+   "id": "*432.4.1",
+   "index": 4,
+   "type": "2*3",
+   "normal": false,
+   "placements": 4,
+   "cosets": "badc acbd abdc",
+   "orders": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    3
+   ],
+   "abelianization": "Z^0 + Z/2 + Z/2",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      1,
+      0,
+      3,
+      2
+     ],
+     "cycles": "(0 1)(2 3)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      0,
+      2,
+      1,
+      3
+     ],
+     "cycles": "(1 2)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      0,
+      1,
+      3,
+      2
+     ],
+     "cycles": "(2 3)"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "a",
+     "text": "reflection"
+    },
+    {
+     "word": "ba",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "aba",
+     "text": "reflection"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "a",
+     "text": "reflection"
+    },
+    {
+     "word": "ab",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "aba",
+     "text": "reflection"
+    }
+   ],
+   "simplyConnected": false,
+   "hGenerators": [
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "c",
+     "text": "reflection"
+    },
+    {
+     "word": "ABAcba",
+     "text": "rotation 1*PI (order 2)"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 6,
+    "interior": 6
+   },
+   "name": "*432/2*3[4]",
+   "affineClass": "*432/2*3[4]"
+  },
+  {
+   "id": "*432.4.2",
+   "index": 4,
+   "type": "332",
+   "normal": true,
+   "placements": 1,
+   "cosets": "badc cdab cdab",
+   "orders": [
+    2,
+    2,
+    3,
+    3,
+    3,
+    3
+   ],
+   "abelianization": "Z^0 + Z/3",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      1,
+      0,
+      3,
+      2
+     ],
+     "cycles": "(0 1)(2 3)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      2,
+      3,
+      0,
+      1
+     ],
+     "cycles": "(0 2)(1 3)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      2,
+      3,
+      0,
+      1
+     ],
+     "cycles": "(0 2)(1 3)"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "a",
+     "text": "reflection"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "ba",
+     "text": "rotation 1/2*PI (order 4)"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "a",
+     "text": "reflection"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "ab",
+     "text": "rotation 1/2*PI (order 4)"
+    }
+   ],
+   "simplyConnected": true,
+   "hGenerators": [
+    {
+     "word": "Bc",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "ABca",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "ABab",
+     "text": "rotation 1*PI (order 2)"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 6,
+    "interior": 6
+   },
+   "name": "*432/332[4]",
+   "affineClass": "*432/332[4]"
+  },
+  {
+   "id": "*432.6.1",
+   "index": 6,
+   "type": "*44",
+   "normal": false,
+   "placements": 3,
+   "cosets": "abdcef acbedf bacdfe",
+   "orders": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    4,
+    4
+   ],
+   "abelianization": "Z^0 + Z/2 + Z/2",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      0,
+      1,
+      3,
+      2,
+      4,
+      5
+     ],
+     "cycles": "(2 3)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      0,
+      2,
+      1,
+      4,
+      3,
+      5
+     ],
+     "cycles": "(1 2)(3 4)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      1,
+      0,
+      2,
+      3,
+      5,
+      4
+     ],
+     "cycles": "(0 1)(4 5)"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "c",
+     "text": "reflection"
+    },
+    {
+     "word": "bc",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "abc",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "babc",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "cbabc",
+     "text": "reflection"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "c",
+     "text": "reflection"
+    },
+    {
+     "word": "cb",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "cba",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "cbab",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "cbabc",
+     "text": "reflection"
+    }
+   ],
+   "simplyConnected": false,
+   "hGenerators": [
+    {
+     "word": "a",
+     "text": "reflection"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 8,
+    "interior": 10
+   },
+   "name": "*432/*44[6]",
+   "affineClass": "*432/*44[6]"
+  },
+  {
+   "id": "*432.6.2",
+   "index": 6,
+   "type": "*222",
+   "normal": false,
+   "placements": 3,
+   "cosets": "adfbec bacedf acbfed",
+   "sublibCosets": "acbfed baedcf adfbec",
+   "cosetOrder": [
+    0,
+    1,
+    3,
+    2,
+    4,
+    5
+   ],
+   "orders": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "abelianization": "Z^0 + Z/2 + Z/2 + Z/2",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      0,
+      3,
+      5,
+      1,
+      4,
+      2
+     ],
+     "cycles": "(1 3)(2 5)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      1,
+      0,
+      2,
+      4,
+      3,
+      5
+     ],
+     "cycles": "(0 1)(3 4)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      0,
+      2,
+      1,
+      5,
+      4,
+      3
+     ],
+     "cycles": "(1 2)(3 5)"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "cb",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "ab",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "bab",
+     "text": "reflection"
+    },
+    {
+     "word": "cab",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "bc",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "ba",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "bab",
+     "text": "reflection"
+    },
+    {
+     "word": "bacb",
+     "text": "rotation 1*PI (order 2)"
+    }
+   ],
+   "simplyConnected": true,
+   "hGenerators": [
+    {
+     "word": "a",
+     "text": "reflection"
+    },
+    {
+     "word": "c",
+     "text": "reflection"
+    },
+    {
+     "word": "BABcbab",
+     "text": "reflection"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 6,
+    "interior": 12
+   },
+   "name": "*432/*222[6]#2",
+   "affineClass": "*432/*222[6]#2"
+  },
+  {
+   "id": "*432.6.3",
+   "index": 6,
+   "type": "*222",
+   "normal": true,
+   "placements": 1,
+   "cosets": "abcdef baefcd cdabfe",
+   "orders": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "abelianization": "Z^0 + Z/2 + Z/2 + Z/2",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "cycles": "e"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      1,
+      0,
+      4,
+      5,
+      2,
+      3
+     ],
+     "cycles": "(0 1)(2 4)(3 5)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      2,
+      3,
+      0,
+      1,
+      5,
+      4
+     ],
+     "cycles": "(0 2)(1 3)(4 5)"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "c",
+     "text": "reflection"
+    },
+    {
+     "word": "cb",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "bc",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "cbc",
+     "text": "reflection"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "c",
+     "text": "reflection"
+    },
+    {
+     "word": "bc",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "cb",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "bcb",
+     "text": "reflection"
+    }
+   ],
+   "simplyConnected": false,
+   "hGenerators": [
+    {
+     "word": "a",
+     "text": "reflection"
+    },
+    {
+     "word": "Bab",
+     "text": "reflection"
+    },
+    {
+     "word": "CBabc",
+     "text": "reflection"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 6,
+    "interior": 12
+   },
+   "name": "*432/*222[6]#1",
+   "affineClass": "*432/*222[6]#1"
+  },
+  {
+   "id": "*432.6.4",
+   "index": 6,
+   "type": "2*2",
+   "normal": false,
+   "placements": 3,
+   "cosets": "abfdec dcbafe bafedc",
+   "sublibCosets": "abcdfe baefcd cdabfe",
+   "cosetOrder": [
+    0,
+    2,
+    4,
+    1,
+    3,
+    5
+   ],
+   "orders": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "abelianization": "Z^0 + Z/2 + Z/2",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      0,
+      1,
+      5,
+      3,
+      4,
+      2
+     ],
+     "cycles": "(2 5)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      3,
+      2,
+      1,
+      0,
+      5,
+      4
+     ],
+     "cycles": "(0 3)(1 2)(4 5)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      1,
+      0,
+      5,
+      4,
+      3,
+      2
+     ],
+     "cycles": "(0 1)(2 5)(3 4)"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "c",
+     "text": "reflection"
+    },
+    {
+     "word": "bc",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "cb",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "cbc",
+     "text": "reflection"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "c",
+     "text": "reflection"
+    },
+    {
+     "word": "cb",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "bc",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "bcb",
+     "text": "reflection"
+    }
+   ],
+   "simplyConnected": false,
+   "hGenerators": [
+    {
+     "word": "a",
+     "text": "reflection"
+    },
+    {
+     "word": "CBCabc",
+     "text": "rotation 1*PI (order 2)"
+    },
+    {
+     "word": "Bab",
+     "text": "reflection"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 6,
+    "interior": 12
+   },
+   "name": "*432/2*2[6]#1",
+   "affineClass": "*432/2*2[6]#1"
+  },
+  {
+   "id": "*432.6.5",
+   "index": 6,
+   "type": "4*",
+   "normal": false,
+   "placements": 3,
+   "cosets": "aefdbc bafedc dcbafe",
+   "sublibCosets": "adcbfe badcfe ceafbd",
+   "cosetOrder": [
+    0,
+    1,
+    4,
+    2,
+    3,
+    5
+   ],
+   "orders": [
+    2,
+    2,
+    4,
+    4
+   ],
+   "abelianization": "Z^0 + Z/2 + Z/4",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      0,
+      4,
+      5,
+      3,
+      1,
+      2
+     ],
+     "cycles": "(1 4)(2 5)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      1,
+      0,
+      5,
+      4,
+      3,
+      2
+     ],
+     "cycles": "(0 1)(2 5)(3 4)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      3,
+      2,
+      1,
+      0,
+      5,
+      4
+     ],
+     "cycles": "(0 3)(1 2)(4 5)"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "cb",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "c",
+     "text": "reflection"
+    },
+    {
+     "word": "bc",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "bcb",
+     "text": "reflection"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "bacb",
+     "text": "rotation 1*PI (order 2)"
+    },
+    {
+     "word": "bab",
+     "text": "reflection"
+    },
+    {
+     "word": "cb",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "bcb",
+     "text": "reflection"
+    }
+   ],
+   "simplyConnected": false,
+   "hGenerators": [
+    {
+     "word": "a",
+     "text": "reflection"
+    },
+    {
+     "word": "CBab",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "Babc",
+     "text": "rotation 1/2*PI (order 4)"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 6,
+    "interior": 12
+   },
+   "name": "*432/4*[6]",
+   "affineClass": "*432/4*[6]"
+  },
+  {
+   "id": "*432.6.6",
+   "index": 6,
+   "type": "2*2",
+   "normal": false,
+   "placements": 3,
+   "cosets": "defabc acbdfe bacedf",
+   "sublibCosets": "badcfe abefcd cdabef",
+   "cosetOrder": [
+    0,
+    2,
+    4,
+    1,
+    3,
+    5
+   ],
+   "orders": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "abelianization": "Z^0 + Z/2 + Z/2",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      3,
+      4,
+      5,
+      0,
+      1,
+      2
+     ],
+     "cycles": "(0 3)(1 4)(2 5)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      0,
+      2,
+      1,
+      3,
+      5,
+      4
+     ],
+     "cycles": "(1 2)(4 5)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      1,
+      0,
+      2,
+      4,
+      3,
+      5
+     ],
+     "cycles": "(0 1)(3 4)"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "c",
+     "text": "reflection"
+    },
+    {
+     "word": "bc",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "a",
+     "text": "reflection"
+    },
+    {
+     "word": "ca",
+     "text": "rotation 1*PI (order 2)"
+    },
+    {
+     "word": "bca",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "c",
+     "text": "reflection"
+    },
+    {
+     "word": "cbc",
+     "text": "reflection"
+    },
+    {
+     "word": "a",
+     "text": "reflection"
+    },
+    {
+     "word": "ac",
+     "text": "rotation 1*PI (order 2)"
+    },
+    {
+     "word": "cbac",
+     "text": "rotation 1/2*PI (order 4)"
+    }
+   ],
+   "simplyConnected": true,
+   "hGenerators": [
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "ACBabc",
+     "text": "rotation 1*PI (order 2)"
+    },
+    {
+     "word": "Aba",
+     "text": "reflection"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 6,
+    "interior": 12
+   },
+   "name": "*432/2*2[6]#2",
+   "affineClass": "*432/2*2[6]#2"
+  },
+  {
+   "id": "*432.6.7",
+   "index": 6,
+   "type": "224",
+   "normal": false,
+   "placements": 3,
+   "cosets": "defabc dcbafe bafedc",
+   "sublibCosets": "badcfe baefcd cdabfe",
+   "cosetOrder": [
+    0,
+    2,
+    4,
+    1,
+    3,
+    5
+   ],
+   "orders": [
+    2,
+    2,
+    2,
+    2,
+    4,
+    4
+   ],
+   "abelianization": "Z^0 + Z/2 + Z/2",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      3,
+      4,
+      5,
+      0,
+      1,
+      2
+     ],
+     "cycles": "(0 3)(1 4)(2 5)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      3,
+      2,
+      1,
+      0,
+      5,
+      4
+     ],
+     "cycles": "(0 3)(1 2)(4 5)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      1,
+      0,
+      5,
+      4,
+      3,
+      2
+     ],
+     "cycles": "(0 1)(2 5)(3 4)"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "c",
+     "text": "reflection"
+    },
+    {
+     "word": "bc",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "cb",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "cbc",
+     "text": "reflection"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "c",
+     "text": "reflection"
+    },
+    {
+     "word": "cb",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "ac",
+     "text": "rotation 1*PI (order 2)"
+    },
+    {
+     "word": "cbc",
+     "text": "reflection"
+    }
+   ],
+   "simplyConnected": false,
+   "hGenerators": [
+    {
+     "word": "Ba",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "CBCabc",
+     "text": "rotation 1*PI (order 2)"
+    },
+    {
+     "word": "ab",
+     "text": "rotation 1/2*PI (order 4)"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 6,
+    "interior": 12
+   },
+   "name": "*432/224[6]",
+   "affineClass": "*432/224[6]"
+  },
+  {
+   "id": "*432.8.1",
+   "index": 8,
+   "type": "*33",
+   "normal": false,
+   "placements": 4,
+   "cosets": "badcfehg acbdegfh abefcdgh",
+   "orders": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    3,
+    3
+   ],
+   "abelianization": "Z^0 + Z/2",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      1,
+      0,
+      3,
+      2,
+      5,
+      4,
+      7,
+      6
+     ],
+     "cycles": "(0 1)(2 3)(4 5)(6 7)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      0,
+      2,
+      1,
+      3,
+      4,
+      6,
+      5,
+      7
+     ],
+     "cycles": "(1 2)(5 6)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      0,
+      1,
+      4,
+      5,
+      2,
+      3,
+      6,
+      7
+     ],
+     "cycles": "(2 4)(3 5)"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "a",
+     "text": "reflection"
+    },
+    {
+     "word": "ba",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "aba",
+     "text": "reflection"
+    },
+    {
+     "word": "cba",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "caba",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "bcaba",
+     "text": "rotoreflection 1/2*PI (order 4)"
+    },
+    {
+     "word": "abcaba",
+     "text": "rotation 1*PI (order 2)"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "a",
+     "text": "reflection"
+    },
+    {
+     "word": "ab",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "aba",
+     "text": "reflection"
+    },
+    {
+     "word": "abc",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "abca",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "abcabacba",
+     "text": "reflection"
+    },
+    {
+     "word": "abacba",
+     "text": "rotation 1*PI (order 2)"
+    }
+   ],
+   "simplyConnected": false,
+   "hGenerators": [
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "c",
+     "text": "reflection"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 8,
+    "interior": 16
+   },
+   "name": "*432/*33[8]",
+   "affineClass": "*432/*33[8]"
+  },
+  {
+   "id": "*432.8.2",
+   "index": 8,
+   "type": "223",
+   "normal": false,
+   "placements": 4,
+   "cosets": "badcfehg ecbhagfd baghfecd",
+   "sublibCosets": "baefcdhg cdabghef baegchdf",
+   "cosetOrder": [
+    0,
+    1,
+    3,
+    5,
+    2,
+    4,
+    6,
+    7
+   ],
+   "orders": [
+    2,
+    2,
+    2,
+    2,
+    3,
+    3
+   ],
+   "abelianization": "Z^0 + Z/2",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      1,
+      0,
+      3,
+      2,
+      5,
+      4,
+      7,
+      6
+     ],
+     "cycles": "(0 1)(2 3)(4 5)(6 7)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      4,
+      2,
+      1,
+      7,
+      0,
+      6,
+      5,
+      3
+     ],
+     "cycles": "(0 4)(1 2)(3 7)(5 6)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      1,
+      0,
+      6,
+      7,
+      5,
+      4,
+      2,
+      3
+     ],
+     "cycles": "(0 1)(2 6)(3 7)(4 5)"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "a",
+     "text": "reflection"
+    },
+    {
+     "word": "ba",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "aba",
+     "text": "reflection"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "ab",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "bab",
+     "text": "reflection"
+    },
+    {
+     "word": "abab",
+     "text": "rotation 1*PI (order 2)"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "a",
+     "text": "reflection"
+    },
+    {
+     "word": "ab",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "aba",
+     "text": "reflection"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "ba",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "bab",
+     "text": "reflection"
+    },
+    {
+     "word": "abab",
+     "text": "rotation 1*PI (order 2)"
+    }
+   ],
+   "simplyConnected": false,
+   "hGenerators": [
+    {
+     "word": "Ac",
+     "text": "rotation 1*PI (order 2)"
+    },
+    {
+     "word": "BABcba",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "BAcb",
+     "text": "rotation 1*PI (order 2)"
+    },
+    {
+     "word": "ABcbab",
+     "text": "rotation 2/3*PI (order 3)"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 8,
+    "interior": 16
+   },
+   "name": "*432/223[8]",
+   "affineClass": "*432/223[8]"
+  },
+  {
+   "id": "*432.8.3",
+   "index": 8,
+   "type": "3x",
+   "normal": false,
+   "placements": 4,
+   "cosets": "badcfehg ecbgahdf efghabcd",
+   "sublibCosets": "baefcdhg cdabhgfe ceagbhdf",
+   "cosetOrder": [
+    0,
+    1,
+    3,
+    5,
+    2,
+    4,
+    6,
+    7
+   ],
+   "orders": [
+    3,
+    3
+   ],
+   "abelianization": "Z^0 + Z/6",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      1,
+      0,
+      3,
+      2,
+      5,
+      4,
+      7,
+      6
+     ],
+     "cycles": "(0 1)(2 3)(4 5)(6 7)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      4,
+      2,
+      1,
+      6,
+      0,
+      7,
+      3,
+      5
+     ],
+     "cycles": "(0 4)(1 2)(3 6)(5 7)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      4,
+      5,
+      6,
+      7,
+      0,
+      1,
+      2,
+      3
+     ],
+     "cycles": "(0 4)(1 5)(2 6)(3 7)"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "a",
+     "text": "reflection"
+    },
+    {
+     "word": "ba",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "aba",
+     "text": "reflection"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "ab",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "abab",
+     "text": "rotation 1*PI (order 2)"
+    },
+    {
+     "word": "bab",
+     "text": "reflection"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "a",
+     "text": "reflection"
+    },
+    {
+     "word": "ab",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "aba",
+     "text": "reflection"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "ba",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "abab",
+     "text": "rotation 1*PI (order 2)"
+    },
+    {
+     "word": "bab",
+     "text": "reflection"
+    }
+   ],
+   "simplyConnected": false,
+   "hGenerators": [
+    {
+     "word": "Bc",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "BABAcba",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "cb",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "ABcabab",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 8,
+    "interior": 16
+   },
+   "name": "*432/3x[8]",
+   "affineClass": "*432/3x[8]"
+  },
+  {
+   "id": "*432.12.1",
+   "index": 12,
+   "type": "*22",
+   "normal": false,
+   "placements": 6,
+   "cosets": "acbfedgjkhil baedchifgjlk adfbgceihkjl",
+   "orders": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "abelianization": "Z^0 + Z/2 + Z/2",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      0,
+      2,
+      1,
+      5,
+      4,
+      3,
+      6,
+      9,
+      10,
+      7,
+      8,
+      11
+     ],
+     "cycles": "(1 2)(3 5)(7 9)(8 10)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      1,
+      0,
+      4,
+      3,
+      2,
+      7,
+      8,
+      5,
+      6,
+      9,
+      11,
+      10
+     ],
+     "cycles": "(0 1)(2 4)(5 7)(6 8)(10 11)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      0,
+      3,
+      5,
+      1,
+      6,
+      2,
+      4,
+      8,
+      7,
+      10,
+      9,
+      11
+     ],
+     "cycles": "(1 3)(2 5)(4 6)(7 8)(9 10)"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "ab",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "cb",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "bab",
+     "text": "reflection"
+    },
+    {
+     "word": "cab",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "cbab",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "bcab",
+     "text": "rotation 1*PI (order 2)"
+    },
+    {
+     "word": "cbcab",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "abcab",
+     "text": "rotoreflection 1/2*PI (order 4)"
+    },
+    {
+     "word": "acbcab",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "bacbcab",
+     "text": "reflection"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "ba",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "bc",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "bab",
+     "text": "reflection"
+    },
+    {
+     "word": "bac",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "babc",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "bacb",
+     "text": "rotation 1*PI (order 2)"
+    },
+    {
+     "word": "babcb",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "bcbabab",
+     "text": "rotoreflection 1/2*PI (order 4)"
+    },
+    {
+     "word": "bcbababcbab",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "babcbab",
+     "text": "reflection"
+    }
+   ],
+   "simplyConnected": false,
+   "hGenerators": [
+    {
+     "word": "a",
+     "text": "reflection"
+    },
+    {
+     "word": "c",
+     "text": "reflection"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 8,
+    "interior": 28
+   },
+   "name": "*432/*22[12]#2",
+   "affineClass": "*432/*22[12]#2"
+  },
+  {
+   "id": "*432.12.2",
+   "index": 12,
+   "type": "*22",
+   "normal": false,
+   "placements": 3,
+   "cosets": "abgdehcfijkl dcbafeijghlk bafedchgklij",
+   "sublibCosets": "abcdghefijkl baefcdijghlk cdabfehgklij",
+   "cosetOrder": [
+    0,
+    2,
+    4,
+    1,
+    3,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "orders": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "abelianization": "Z^0 + Z/2 + Z/2",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      0,
+      1,
+      6,
+      3,
+      4,
+      7,
+      2,
+      5,
+      8,
+      9,
+      10,
+      11
+     ],
+     "cycles": "(2 6)(5 7)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      3,
+      2,
+      1,
+      0,
+      5,
+      4,
+      8,
+      9,
+      6,
+      7,
+      11,
+      10
+     ],
+     "cycles": "(0 3)(1 2)(4 5)(6 8)(7 9)(10 11)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      1,
+      0,
+      5,
+      4,
+      3,
+      2,
+      7,
+      6,
+      10,
+      11,
+      8,
+      9
+     ],
+     "cycles": "(0 1)(2 5)(3 4)(6 7)(8 10)(9 11)"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "c",
+     "text": "reflection"
+    },
+    {
+     "word": "bc",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "cb",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "cbc",
+     "text": "reflection"
+    },
+    {
+     "word": "abc",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "acbc",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "babc",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "bacbc",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "cbabc",
+     "text": "reflection"
+    },
+    {
+     "word": "cbacbc",
+     "text": "rotation 1*PI (order 2)"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "c",
+     "text": "reflection"
+    },
+    {
+     "word": "cb",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "bc",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "bcb",
+     "text": "reflection"
+    },
+    {
+     "word": "cba",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "cbac",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "cbab",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "cbacb",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "cbabc",
+     "text": "reflection"
+    },
+    {
+     "word": "bcbabc",
+     "text": "rotation 1*PI (order 2)"
+    }
+   ],
+   "simplyConnected": false,
+   "hGenerators": [
+    {
+     "word": "a",
+     "text": "reflection"
+    },
+    {
+     "word": "Bab",
+     "text": "reflection"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 8,
+    "interior": 28
+   },
+   "name": "*432/*22[12]#1",
+   "affineClass": "*432/*22[12]#1"
+  },
+  {
+   "id": "*432.12.3",
+   "index": 12,
+   "type": "2*",
+   "normal": false,
+   "placements": 3,
+   "cosets": "aehdbjgclfki baifgdelckjh dcbahikeflgj",
+   "sublibCosets": "adcbhjgelfki bafgicdlekjh ceahbikdflgj",
+   "cosetOrder": [
+    0,
+    1,
+    4,
+    2,
+    3,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "orders": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "abelianization": "Z^0 + Z/2 + Z/2",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      0,
+      4,
+      7,
+      3,
+      1,
+      9,
+      6,
+      2,
+      11,
+      5,
+      10,
+      8
+     ],
+     "cycles": "(1 4)(2 7)(5 9)(8 11)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      1,
+      0,
+      8,
+      5,
+      6,
+      3,
+      4,
+      11,
+      2,
+      10,
+      9,
+      7
+     ],
+     "cycles": "(0 1)(2 8)(3 5)(4 6)(7 11)(9 10)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      3,
+      2,
+      1,
+      0,
+      7,
+      8,
+      10,
+      4,
+      5,
+      11,
+      6,
+      9
+     ],
+     "cycles": "(0 3)(1 2)(4 7)(5 8)(6 10)(9 11)"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "cb",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "c",
+     "text": "reflection"
+    },
+    {
+     "word": "ab",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "bc",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "bab",
+     "text": "reflection"
+    },
+    {
+     "word": "cab",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "cbc",
+     "text": "reflection"
+    },
+    {
+     "word": "cbcab",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "cbab",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "bcab",
+     "text": "rotation 1*PI (order 2)"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "bc",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "c",
+     "text": "reflection"
+    },
+    {
+     "word": "ba",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "cb",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "bab",
+     "text": "reflection"
+    },
+    {
+     "word": "bac",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "bcb",
+     "text": "reflection"
+    },
+    {
+     "word": "babcb",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "cbab",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "bacb",
+     "text": "rotation 1*PI (order 2)"
+    }
+   ],
+   "simplyConnected": false,
+   "hGenerators": [
+    {
+     "word": "a",
+     "text": "reflection"
+    },
+    {
+     "word": "BACBCabc",
+     "text": "rotation 1*PI (order 2)"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 8,
+    "interior": 28
+   },
+   "name": "*432/2*[12]#1",
+   "affineClass": "*432/2*[12]#1"
+  },
+  {
+   "id": "*432.12.4",
+   "index": 12,
+   "type": "*22",
+   "normal": false,
+   "placements": 3,
+   "cosets": "degabhcfjilk acbdfeijghkl bacedfghklij",
+   "sublibCosets": "badcghefjilk abefcdijghkl cdabefghklij",
+   "cosetOrder": [
+    0,
+    2,
+    4,
+    1,
+    3,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "orders": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "abelianization": "Z^0 + Z/2 + Z/2",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      3,
+      4,
+      6,
+      0,
+      1,
+      7,
+      2,
+      5,
+      9,
+      8,
+      11,
+      10
+     ],
+     "cycles": "(0 3)(1 4)(2 6)(5 7)(8 9)(10 11)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      0,
+      2,
+      1,
+      3,
+      5,
+      4,
+      8,
+      9,
+      6,
+      7,
+      10,
+      11
+     ],
+     "cycles": "(1 2)(4 5)(6 8)(7 9)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      1,
+      0,
+      2,
+      4,
+      3,
+      5,
+      6,
+      7,
+      10,
+      11,
+      8,
+      9
+     ],
+     "cycles": "(0 1)(3 4)(8 10)(9 11)"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "c",
+     "text": "reflection"
+    },
+    {
+     "word": "bc",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "a",
+     "text": "reflection"
+    },
+    {
+     "word": "ca",
+     "text": "rotation 1*PI (order 2)"
+    },
+    {
+     "word": "bca",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "abc",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "abca",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "babc",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "babca",
+     "text": "rotoreflection 1/2*PI (order 4)"
+    },
+    {
+     "word": "cbabc",
+     "text": "reflection"
+    },
+    {
+     "word": "cbabca",
+     "text": "rotation 1*PI (order 2)"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "c",
+     "text": "reflection"
+    },
+    {
+     "word": "cb",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "a",
+     "text": "reflection"
+    },
+    {
+     "word": "ac",
+     "text": "rotation 1*PI (order 2)"
+    },
+    {
+     "word": "acb",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "cba",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "acba",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "cbab",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "cbaba",
+     "text": "rotoreflection 1/2*PI (order 4)"
+    },
+    {
+     "word": "cbabc",
+     "text": "reflection"
+    },
+    {
+     "word": "acbabc",
+     "text": "rotation 1*PI (order 2)"
+    }
+   ],
+   "simplyConnected": false,
+   "hGenerators": [
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "Aba",
+     "text": "reflection"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 8,
+    "interior": 28
+   },
+   "name": "*432/*22[12]#3",
+   "affineClass": "*432/*22[12]#3"
+  },
+  {
+   "id": "*432.12.5",
+   "index": 12,
+   "type": "2*",
+   "normal": false,
+   "placements": 6,
+   "cosets": "badcjlhgkeif agefcdbhlkji cdabelikgjhf",
+   "sublibCosets": "baegcjdklfhi adfbicglekjh ceahbfkdljgi",
+   "cosetOrder": [
+    0,
+    1,
+    2,
+    4,
+    5,
+    8,
+    3,
+    6,
+    7,
+    9,
+    10,
+    11
+   ],
+   "orders": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "abelianization": "Z^0 + Z/2 + Z/2",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      1,
+      0,
+      3,
+      2,
+      9,
+      11,
+      7,
+      6,
+      10,
+      4,
+      8,
+      5
+     ],
+     "cycles": "(0 1)(2 3)(4 9)(5 11)(6 7)(8 10)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      0,
+      6,
+      4,
+      5,
+      2,
+      3,
+      1,
+      7,
+      11,
+      10,
+      9,
+      8
+     ],
+     "cycles": "(1 6)(2 4)(3 5)(8 11)(9 10)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      2,
+      3,
+      0,
+      1,
+      4,
+      11,
+      8,
+      10,
+      6,
+      9,
+      7,
+      5
+     ],
+     "cycles": "(0 2)(1 3)(5 11)(6 8)(7 10)"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "a",
+     "text": "reflection"
+    },
+    {
+     "word": "c",
+     "text": "reflection"
+    },
+    {
+     "word": "ca",
+     "text": "rotation 1*PI (order 2)"
+    },
+    {
+     "word": "bc",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "bca",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "ba",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "aba",
+     "text": "reflection"
+    },
+    {
+     "word": "cba",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "bcaba",
+     "text": "rotoreflection 1/2*PI (order 4)"
+    },
+    {
+     "word": "caba",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "cbca",
+     "text": "rotation 1/2*PI (order 4)"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "a",
+     "text": "reflection"
+    },
+    {
+     "word": "c",
+     "text": "reflection"
+    },
+    {
+     "word": "ac",
+     "text": "rotation 1*PI (order 2)"
+    },
+    {
+     "word": "cb",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "abcba",
+     "text": "reflection"
+    },
+    {
+     "word": "ab",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "aba",
+     "text": "reflection"
+    },
+    {
+     "word": "cbaba",
+     "text": "rotoreflection 1/2*PI (order 4)"
+    },
+    {
+     "word": "cba",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "abac",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "acba",
+     "text": "rotation 2/3*PI (order 3)"
+    }
+   ],
+   "simplyConnected": false,
+   "hGenerators": [
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "ABACBabc",
+     "text": "rotation 1*PI (order 2)"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 8,
+    "interior": 28
+   },
+   "name": "*432/2*[12]#2",
+   "affineClass": "*432/2*[12]#2"
+  },
+  {
+   "id": "*432.12.6",
+   "index": 12,
+   "type": "44",
+   "normal": false,
+   "placements": 3,
+   "cosets": "degabhcfjilk dcbafeijghlk bafedchgklij",
+   "sublibCosets": "badcghefjilk baefcdijghlk cdabfehgklij",
+   "cosetOrder": [
+    0,
+    2,
+    4,
+    1,
+    3,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "orders": [
+    4,
+    4,
+    4,
+    4
+   ],
+   "abelianization": "Z^0 + Z/4",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      3,
+      4,
+      6,
+      0,
+      1,
+      7,
+      2,
+      5,
+      9,
+      8,
+      11,
+      10
+     ],
+     "cycles": "(0 3)(1 4)(2 6)(5 7)(8 9)(10 11)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      3,
+      2,
+      1,
+      0,
+      5,
+      4,
+      8,
+      9,
+      6,
+      7,
+      11,
+      10
+     ],
+     "cycles": "(0 3)(1 2)(4 5)(6 8)(7 9)(10 11)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      1,
+      0,
+      5,
+      4,
+      3,
+      2,
+      7,
+      6,
+      10,
+      11,
+      8,
+      9
+     ],
+     "cycles": "(0 1)(2 5)(3 4)(6 7)(8 10)(9 11)"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "c",
+     "text": "reflection"
+    },
+    {
+     "word": "bc",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "cb",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "cbc",
+     "text": "reflection"
+    },
+    {
+     "word": "abc",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "acbc",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "babc",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "bacbc",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "cbabc",
+     "text": "reflection"
+    },
+    {
+     "word": "bcbabc",
+     "text": "rotation 1*PI (order 2)"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "c",
+     "text": "reflection"
+    },
+    {
+     "word": "cb",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "ac",
+     "text": "rotation 1*PI (order 2)"
+    },
+    {
+     "word": "acb",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "cba",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "abcbac",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "cbab",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "cbabcbabc",
+     "text": "reflection"
+    },
+    {
+     "word": "cbabc",
+     "text": "reflection"
+    },
+    {
+     "word": "bcbabc",
+     "text": "rotation 1*PI (order 2)"
+    }
+   ],
+   "simplyConnected": false,
+   "hGenerators": [
+    {
+     "word": "Ba",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "ab",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "Cacb",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "CBABabacbc",
+     "text": "rotation 1/2*PI (order 4)"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 8,
+    "interior": 28
+   },
+   "name": "*432/44[12]",
+   "affineClass": "*432/44[12]"
+  },
+  {
+   "id": "*432.12.7",
+   "index": 12,
+   "type": "222",
+   "normal": false,
+   "placements": 3,
+   "cosets": "dfjagbelkcih bahedikcflgj dcbahjlekfig",
+   "sublibCosets": "baegcjdlkfih cdabihkfelgj bafhjcldkeig",
+   "cosetOrder": [
+    0,
+    2,
+    5,
+    1,
+    3,
+    4,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+   ],
+   "orders": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "abelianization": "Z^0 + Z/2 + Z/2",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      3,
+      5,
+      9,
+      0,
+      6,
+      1,
+      4,
+      11,
+      10,
+      2,
+      8,
+      7
+     ],
+     "cycles": "(0 3)(1 5)(2 9)(4 6)(7 11)(8 10)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      1,
+      0,
+      7,
+      4,
+      3,
+      8,
+      10,
+      2,
+      5,
+      11,
+      6,
+      9
+     ],
+     "cycles": "(0 1)(2 7)(3 4)(5 8)(6 10)(9 11)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      3,
+      2,
+      1,
+      0,
+      7,
+      9,
+      11,
+      4,
+      10,
+      5,
+      8,
+      6
+     ],
+     "cycles": "(0 3)(1 2)(4 7)(5 9)(6 11)(8 10)"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "cb",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "a",
+     "text": "reflection"
+    },
+    {
+     "word": "ba",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "ab",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "aba",
+     "text": "reflection"
+    },
+    {
+     "word": "cba",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "bab",
+     "text": "reflection"
+    },
+    {
+     "word": "cab",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "abab",
+     "text": "rotation 1*PI (order 2)"
+    },
+    {
+     "word": "caba",
+     "text": "rotation 2/3*PI (order 3)"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "bc",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "a",
+     "text": "reflection"
+    },
+    {
+     "word": "ab",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "ba",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "aba",
+     "text": "reflection"
+    },
+    {
+     "word": "bcb",
+     "text": "reflection"
+    },
+    {
+     "word": "bab",
+     "text": "reflection"
+    },
+    {
+     "word": "bca",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "abab",
+     "text": "rotation 1*PI (order 2)"
+    },
+    {
+     "word": "bacb",
+     "text": "rotation 1*PI (order 2)"
+    }
+   ],
+   "simplyConnected": false,
+   "hGenerators": [
+    {
+     "word": "Ac",
+     "text": "rotation 1*PI (order 2)"
+    },
+    {
+     "word": "BABAcbab",
+     "text": "rotation 1*PI (order 2)"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 8,
+    "interior": 28
+   },
+   "name": "*432/222[12]#2",
+   "affineClass": "*432/222[12]#2"
+  },
+  {
+   "id": "*432.12.8",
+   "index": 12,
+   "type": "2x",
+   "normal": false,
+   "placements": 3,
+   "cosets": "dglafebihkjc ecbfadjklghi bakghideflcj",
+   "sublibCosets": "baefcdilgkjh ceahbjkdlfgi dfgaibckelhj",
+   "cosetOrder": [
+    0,
+    3,
+    7,
+    1,
+    2,
+    4,
+    5,
+    6,
+    8,
+    9,
+    10,
+    11
+   ],
+   "orders": [
+    2,
+    2
+   ],
+   "abelianization": "Z^0 + Z/4",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      3,
+      6,
+      11,
+      0,
+      5,
+      4,
+      1,
+      8,
+      7,
+      10,
+      9,
+      2
+     ],
+     "cycles": "(0 3)(1 6)(2 11)(4 5)(7 8)(9 10)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      4,
+      2,
+      1,
+      5,
+      0,
+      3,
+      9,
+      10,
+      11,
+      6,
+      7,
+      8
+     ],
+     "cycles": "(0 4)(1 2)(3 5)(6 9)(7 10)(8 11)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      1,
+      0,
+      10,
+      6,
+      7,
+      8,
+      3,
+      4,
+      5,
+      11,
+      2,
+      9
+     ],
+     "cycles": "(0 1)(2 10)(3 6)(4 7)(5 8)(9 11)"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "c",
+     "text": "reflection"
+    },
+    {
+     "word": "bc",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "a",
+     "text": "reflection"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "ab",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "ca",
+     "text": "rotation 1*PI (order 2)"
+    },
+    {
+     "word": "cb",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "cab",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "bca",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "cbc",
+     "text": "reflection"
+    },
+    {
+     "word": "bcab",
+     "text": "rotation 1*PI (order 2)"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "c",
+     "text": "reflection"
+    },
+    {
+     "word": "cb",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "a",
+     "text": "reflection"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "ab",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "ac",
+     "text": "rotation 1*PI (order 2)"
+    },
+    {
+     "word": "bc",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "bac",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "acb",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "bcb",
+     "text": "reflection"
+    },
+    {
+     "word": "bacb",
+     "text": "rotation 1*PI (order 2)"
+    }
+   ],
+   "simplyConnected": false,
+   "hGenerators": [
+    {
+     "word": "BACBabc",
+     "text": "rotoreflection 1/2*PI (order 4)"
+    },
+    {
+     "word": "BAba",
+     "text": "rotation 1*PI (order 2)"
+    },
+    {
+     "word": "ACBacbc",
+     "text": "rotoreflection 1/2*PI (order 4)"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 8,
+    "interior": 28
+   },
+   "name": "*432/2x[12]",
+   "affineClass": "*432/2x[12]"
+  },
+  {
+   "id": "*432.12.9",
+   "index": 12,
+   "type": "222",
+   "normal": true,
+   "placements": 1,
+   "cosets": "baefcdijghlk ceahbjkdlfgi dfgaibckelhj",
+   "orders": [
+    2,
+    2,
+    2,
+    2,
+    2,
+    2
+   ],
+   "abelianization": "Z^0 + Z/2 + Z/2",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      1,
+      0,
+      4,
+      5,
+      2,
+      3,
+      8,
+      9,
+      6,
+      7,
+      11,
+      10
+     ],
+     "cycles": "(0 1)(2 4)(3 5)(6 8)(7 9)(10 11)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      2,
+      4,
+      0,
+      7,
+      1,
+      9,
+      10,
+      3,
+      11,
+      5,
+      6,
+      8
+     ],
+     "cycles": "(0 2)(1 4)(3 7)(5 9)(6 10)(8 11)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      3,
+      5,
+      6,
+      0,
+      8,
+      1,
+      2,
+      10,
+      4,
+      11,
+      7,
+      9
+     ],
+     "cycles": "(0 3)(1 5)(2 6)(4 8)(7 10)(9 11)"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "a",
+     "text": "reflection"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "c",
+     "text": "reflection"
+    },
+    {
+     "word": "ab",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "ca",
+     "text": "rotation 1*PI (order 2)"
+    },
+    {
+     "word": "cb",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "bc",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "cab",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "bca",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "cbc",
+     "text": "reflection"
+    },
+    {
+     "word": "bcab",
+     "text": "rotation 1*PI (order 2)"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "a",
+     "text": "reflection"
+    },
+    {
+     "word": "b",
+     "text": "reflection"
+    },
+    {
+     "word": "c",
+     "text": "reflection"
+    },
+    {
+     "word": "ab",
+     "text": "rotation 1/2*PI (order 4)"
+    },
+    {
+     "word": "ac",
+     "text": "rotation 1*PI (order 2)"
+    },
+    {
+     "word": "bc",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "cb",
+     "text": "rotation 2/3*PI (order 3)"
+    },
+    {
+     "word": "bac",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "acb",
+     "text": "rotoreflection 1/3*PI (order 6)"
+    },
+    {
+     "word": "bcb",
+     "text": "reflection"
+    },
+    {
+     "word": "bacb",
+     "text": "rotation 1*PI (order 2)"
+    }
+   ],
+   "simplyConnected": false,
+   "hGenerators": [
+    {
+     "word": "BAba",
+     "text": "rotation 1*PI (order 2)"
+    },
+    {
+     "word": "ACBabc",
+     "text": "rotation 1*PI (order 2)"
+    },
+    {
+     "word": "BACBacbc",
+     "text": "rotation 1*PI (order 2)"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 8,
+    "interior": 28
+   },
+   "name": "*432/222[12]#1",
+   "affineClass": "*432/222[12]#1"
+  }
+ ]
+}

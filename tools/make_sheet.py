@@ -6,7 +6,7 @@
 # every image of the job, grouped: colorings, the N x N pieces, the row
 # unions, structure, motion glyphs.
 import json, io, os, re, sys
-from entry_names import entry_names
+from entry_names import entry_names, piece_file, union_file
 
 import catalog_paths as P
 
@@ -24,11 +24,13 @@ job = json.load(open(P.job_file(job_file), encoding='utf-8'))
 out_dir = P.path(job['outDir'])        # a job's outDir is root-relative
 
 files = [it['file'] for it in job['items']]
-pieces = [f for f in files if re.fullmatch(r'\d\d\.png', f)]
-unions = [f for f in files if re.fullmatch(r'\d{3,}_\d+\.png', f)]
+piece_set = {piece_file(i, j, N) for i in range(N) for j in range(N)}
+union_set = {union_file(j, N) for j in range(N)}
+pieces = [f for f in files if f in piece_set]
+unions = [f for f in files if f in union_set]
 colorings = [f for f in files if f.startswith(slug + '.')]
 glyphs = [f for f in files if re.fullmatch(r'[fg]\d+\.png', f)]
-rest_files = [f for f in files if f not in pieces + unions + colorings + glyphs]
+rest_files = [f for f in files if f not in piece_set and f not in union_set and f not in colorings and f not in glyphs]
 
 # job items name PNGs; the entry ships the converted WebP (see tools/to_webp.py)
 IMG_EXT = '.webp'
@@ -43,13 +45,14 @@ parts.append(grid('g5', [fig(f) for f in colorings]))
 parts.append("<h3>pieces f<sub>i</sub> H g<sub>j</sub>: rows = cells f<sub>0</sub>..f<sub>%d</sub>, "
              "cols = cosets 0..%d (first %d rows = the placement reps)</h3>" % (N - 1, N - 1, K))
 for i in range(N):
-    parts.append(grid('g8', [fig('%d%d.png' % (i, j), '%d%d' % (i, j)) for j in range(N)]))
+    parts.append(grid('g8', [fig(piece_file(i, j, N), '%d,%d' % (i, j) if N >= 10 else '%d%d' % (i, j)) for j in range(N)]))
 parts.append("<h3>row unions (whole pattern in one color)</h3>")
 parts.append(grid('g8', [fig(f) for f in unions]))
 parts.append("<h3>structure</h3>")
 parts.append(grid('g4', [fig(f) for f in rest_files]))
-parts.append("<h3>motion glyphs</h3>")
-parts.append(grid('g8', [fig(f) for f in glyphs]))
+if glyphs:
+    parts.append("<h3>motion glyphs</h3>")
+    parts.append(grid('g8', [fig(f) for f in glyphs]))
 
 page = """<!doctype html><html><head><meta charset="utf-8"><title>%s generated</title>
 <style>body{font:13px system-ui;background:#f4f4f4;margin:1rem}

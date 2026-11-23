@@ -38,7 +38,7 @@
 # G's structure images switch the items of the preset's overlay layer by id,
 # every item stated: {"overlays": {"tiling": {"enabled": true}, ...}}.
 import json, io, copy, sys, subprocess
-from entry_names import entry_names
+from entry_names import entry_names, piece_file, union_file
 import catalog_paths as P
 
 TEMPLATE = P.url(P.PRESETS_DIR, 'wp_632_632_3.1.json')
@@ -220,12 +220,11 @@ _piece_dims = ({"size": PIECE_SIZE} if PRESET_ASPECT == 1.0
                else {"width": PIECE_SIZE, "height": max(1, round(PIECE_SIZE * PRESET_ASPECT))})
 for i in range(N):
     for j in range(N):
-        items.append({"file": "%d%d.png" % (i, j), "_note": "f_%d H g_%d" % (i, j),
+        items.append({"file": piece_file(i, j, N), "_note": "f_%d H g_%d" % (i, j),
                       **_piece_dims,
                       **motif(permIndex=i, mask=mask_for(j))})
-union_stem = ''.join(str(i) for i in range(N))
 for j in range(N):
-    items.append({"file": "%s_%d.png" % (union_stem, j),
+    items.append({"file": union_file(j, N),
                   "_note": "all orbits of H g_%d - the whole pattern in color %d" % (j, j),
                   "compose": [motif(permIndex=i, mask=mask_for(j)) for i in range(N)]})
 
@@ -234,40 +233,84 @@ for j in range(N):
 ONE = ' '.join('a' for _ in COS.split())
 items.append({"file": "group_pattern.png",
               **motif(permIndex=0, permutations=ONE, colorTiles={"count": 1})})
-items.append({"file": "group_domain.png", **gstruct(ov(fundDomain=FD_ON))})
-items.append({"file": "group_tiling.png", **gstruct(ov(tiling=TILE_ON))})
-items.append({"file": "group_gens.png", **gstruct(ov(fundDomain=FD_ON)),
-              "markers": {"subgroup": None}})
 
-items.append({"file": "sub_domain.png",
-              "_note": "H's domain as a union of %d G cells" % N,
-              **blank(),
-              "draw": {"subgroup": COS, "fill": True, "cells": True, "outline": True}})
-items.append({"file": "sub_tiling.png",
-              "compose": [{**gstruct(ov(tiling=TILE_ON)), "opacity": 0.3}],
-              "draw": {"subgroup": COS, "tiling": True}})
-items.append({"file": "sub_gens.png", **blank(),
-              "draw": {"subgroup": COS, "fill": True, "outline": True},
-              "markers": {"subgroup": COS}})
+CURVED = bool((P.family_meta() or {}).get('curved'))
+if CURVED:
+    # Native SymmHub GPU overlays on curved geometries (spherical / polyhedral / hyperbolic)
+    G_SYM = {"type": "renderer", "cosets": ""}
+    H_SYM = {"type": "subgroup", "cosets": COS}
+    G_FD = {"enabled": True, "symmetry": G_SYM,
+            "fill": {"enabled": True, "color": "#E0483848"},
+            "outline": {"enabled": True, "width": 2.0, "color": "#222222DD", "shadowsWidth": 0},
+            "walls": {"enabled": False}}
+    G_TILE = {"enabled": True, "symmetry": G_SYM, "width": 1.6, "color": "#1A1A1ADD"}
+    G_GENS = {"enabled": True, "symmetry": G_SYM, "showSides": False,
+              "shadow": {"enabled": False},
+              "elements": {"enabled": True, "width": 2.5,
+                           "cone": {"enabled": True, "size": 16},
+                           "mirror": {"enabled": True, "color": "#C81E1EFF"},
+                           "glide": {"enabled": True},
+                           "translation": {"enabled": True}}}
+    H_FD = {"enabled": True, "symmetry": H_SYM,
+            "fill": {"enabled": True, "color": "#2668D642"},
+            "outline": {"enabled": True, "width": 2.5, "color": "#1E52A8EE", "shadowsWidth": 0},
+            "walls": {"enabled": True, "width": 1.0, "color": "#1E52A877"}}
+    H_FD_NOWALLS = {**H_FD, "walls": {"enabled": False}}
+    H_TILE = {"enabled": True, "symmetry": H_SYM, "width": 2.2, "color": "#1E52A8EE"}
+    H_GENS = {**G_GENS, "symmetry": H_SYM}
 
-# pure single-purpose layers for the entry page's toggles
-items.append({"file": "sub_til.png", "_note": "H tiling lines only",
-              **blank(), "draw": {"subgroup": COS, "tiling": True}})
-items.append({"file": "group_marks.png", "_note": "G rotation centres only",
-              **blank(), "markers": {"subgroup": None}})
-items.append({"file": "sub_marks.png", "_note": "H rotation centres only",
-              **blank(), "markers": {"subgroup": COS}})
+    items.append({"file": "group_domain.png", **gstruct(ov(fundDomain=G_FD))})
+    items.append({"file": "group_tiling.png", **gstruct(ov(tiling=G_TILE))})
+    items.append({"file": "group_gens.png", **gstruct(ov(fundDomain=G_FD, generators=G_GENS))})
+    items.append({"file": "sub_domain.png",
+                  "_note": "H's domain as a union of %d G cells (GPU overlay)" % N,
+                  **gstruct(ov(fundDomain=H_FD))})
+    items.append({"file": "sub_tiling.png",
+                  "compose": [{**gstruct(ov(tiling=G_TILE)), "opacity": 0.3},
+                              gstruct(ov(tiling=H_TILE))]})
+    items.append({"file": "sub_gens.png",
+                  **gstruct(ov(fundDomain=H_FD_NOWALLS, generators=H_GENS))})
+    items.append({"file": "sub_til.png", "_note": "H tiling lines only (GPU overlay)",
+                  **gstruct(ov(tiling=H_TILE))})
+    items.append({"file": "group_marks.png", "_note": "G symmetry elements only (GPU overlay)",
+                  **gstruct(ov(generators=G_GENS))})
+    items.append({"file": "sub_marks.png", "_note": "H symmetry elements only (GPU overlay)",
+                  **gstruct(ov(generators=H_GENS))})
+else:
+    items.append({"file": "group_domain.png", **gstruct(ov(fundDomain=FD_ON))})
+    items.append({"file": "group_tiling.png", **gstruct(ov(tiling=TILE_ON))})
+    items.append({"file": "group_gens.png", **gstruct(ov(fundDomain=FD_ON)),
+                  "markers": {"subgroup": None}})
 
-for k in range(1, N):
-    items.append({"file": "f%d.png" % k, "_note": "f_%d = %s" % (k, f_words[k]),
+    items.append({"file": "sub_domain.png",
+                  "_note": "H's domain as a union of %d G cells" % N,
                   **blank(),
-                  "glyphs": {"subgroup": COS, "kind": "cell",
-                             "list": [{"word": f_words[k], "style": F_STYLE}]}})
-for k in range(1, N):
-    items.append({"file": "g%d.png" % k, "_note": "g_%d = %s" % (k, g_words[k]),
-                  **blank(),
-                  "glyphs": {"subgroup": COS, "kind": "coset",
-                             "list": [{"word": g_words[k], "style": G_STYLE}]}})
+                  "draw": {"subgroup": COS, "fill": True, "cells": True, "outline": True}})
+    items.append({"file": "sub_tiling.png",
+                  "compose": [{**gstruct(ov(tiling=TILE_ON)), "opacity": 0.3}],
+                  "draw": {"subgroup": COS, "tiling": True}})
+    items.append({"file": "sub_gens.png", **blank(),
+                  "draw": {"subgroup": COS, "fill": True, "outline": True},
+                  "markers": {"subgroup": COS}})
+
+    # pure single-purpose layers for the entry page's toggles
+    items.append({"file": "sub_til.png", "_note": "H tiling lines only",
+                  **blank(), "draw": {"subgroup": COS, "tiling": True}})
+    items.append({"file": "group_marks.png", "_note": "G rotation centres only",
+                  **blank(), "markers": {"subgroup": None}})
+    items.append({"file": "sub_marks.png", "_note": "H rotation centres only",
+                  **blank(), "markers": {"subgroup": COS}})
+
+    for k in range(1, N):
+        items.append({"file": "f%d.png" % k, "_note": "f_%d = %s" % (k, f_words[k]),
+                      **blank(),
+                      "glyphs": {"subgroup": COS, "kind": "cell",
+                                 "list": [{"word": f_words[k], "style": F_STYLE}]}})
+    for k in range(1, N):
+        items.append({"file": "g%d.png" % k, "_note": "g_%d = %s" % (k, g_words[k]),
+                      **blank(),
+                      "glyphs": {"subgroup": COS, "kind": "coset",
+                                 "list": [{"word": g_words[k], "style": G_STYLE}]}})
 
 if ITERATIONS is not None:
     # a plain item applies its own params, a composed one each part's

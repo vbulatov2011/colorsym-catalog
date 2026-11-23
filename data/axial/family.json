@@ -1,0 +1,165 @@
+{
+ "id": "axial",
+ "title": "Axial groups",
+ "shortTitle": "Axial",
+ "groupSingular": "axial group",
+ "groupPlural": "axial groups",
+ "geometry": "spherical",
+ "spaceNoun": "the sphere",
+ "heroGroup": "*224",
+ "colorRange": [
+  2,
+  6
+ ],
+ "hasAffineClasses": true,
+ "curved": true,
+ "sparse": true,
+ "defaultPresetSet": "ax",
+ "defaultPresetPrefix": "ax-",
+ "renderIterations": {
+  "default": 40
+ },
+ "liveApp": {
+  "symdraw": "/apps/symdraw/symdraw_spherical.html",
+  "layer": "drawing"
+ },
+ "description": "The 7 axial spherical symmetry families for n = 2..8 (49 groups) and their finite-index colorings up to 6 colors.",
+ "altNamesLabel": "Schoenflies",
+ "altNames": {
+  "22": "C2",
+  "2x": "S4",
+  "*22": "C2v",
+  "2*": "C2h",
+  "222": "D2",
+  "2*2": "D2d",
+  "*222": "D2h",
+  "33": "C3",
+  "3x": "S6",
+  "*33": "C3v",
+  "3*": "C3h",
+  "223": "D3",
+  "2*3": "D3d",
+  "*223": "D3h",
+  "44": "C4",
+  "4x": "S8",
+  "*44": "C4v",
+  "4*": "C4h",
+  "224": "D4",
+  "2*4": "D4d",
+  "*224": "D4h",
+  "55": "C5",
+  "5x": "S10",
+  "*55": "C5v",
+  "5*": "C5h",
+  "225": "D5",
+  "2*5": "D5d",
+  "*225": "D5h",
+  "66": "C6",
+  "6x": "S12",
+  "*66": "C6v",
+  "6*": "C6h",
+  "226": "D6",
+  "2*6": "D6d",
+  "*226": "D6h",
+  "77": "C7",
+  "7x": "S14",
+  "*77": "C7v",
+  "7*": "C7h",
+  "227": "D7",
+  "2*7": "D7d",
+  "*227": "D7h",
+  "88": "C8",
+  "8x": "S16",
+  "*88": "C8v",
+  "8*": "C8h",
+  "228": "D8",
+  "2*8": "D8d",
+  "*228": "D8h"
+ },
+ "sections": [
+  {
+   "title": "2-fold axis (n = 2)",
+   "groups": [
+    "22",
+    "2x",
+    "*22",
+    "2*",
+    "222",
+    "2*2",
+    "*222"
+   ]
+  },
+  {
+   "title": "3-fold axis (n = 3)",
+   "groups": [
+    "33",
+    "3x",
+    "*33",
+    "3*",
+    "223",
+    "2*3",
+    "*223"
+   ]
+  },
+  {
+   "title": "4-fold axis (n = 4)",
+   "groups": [
+    "44",
+    "4x",
+    "*44",
+    "4*",
+    "224",
+    "2*4",
+    "*224"
+   ]
+  },
+  {
+   "title": "5-fold axis (n = 5)",
+   "groups": [
+    "55",
+    "5x",
+    "*55",
+    "5*",
+    "225",
+    "2*5",
+    "*225"
+   ]
+  },
+  {
+   "title": "6-fold axis (n = 6)",
+   "groups": [
+    "66",
+    "6x",
+    "*66",
+    "6*",
+    "226",
+    "2*6",
+    "*226"
+   ]
+  },
+  {
+   "title": "7-fold axis (n = 7)",
+   "groups": [
+    "77",
+    "7x",
+    "*77",
+    "7*",
+    "227",
+    "2*7",
+    "*227"
+   ]
+  },
+  {
+   "title": "8-fold axis (n = 8)",
+   "groups": [
+    "88",
+    "8x",
+    "*88",
+    "8*",
+    "228",
+    "2*8",
+    "*228"
+   ]
+  }
+ ]
+}

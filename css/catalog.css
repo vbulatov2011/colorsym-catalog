@@ -438,6 +438,9 @@ nav.jump-chips span.off {
 }
 .tframe .tframe-lbl {
   font-size: .72rem;
+  line-height: 1.35;
+  min-height: 1.35em;
+  white-space: nowrap;
   color: var(--muted);
   padding: 0 .2rem;
   display: flex;

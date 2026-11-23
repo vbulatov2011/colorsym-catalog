@@ -1,0 +1,146 @@
+{
+ "format": "colorsym-catalog-manifest",
+ "version": 3,
+ "group": {
+  "name": "22",
+  "stem": "22",
+  "family": "axial",
+  "gens": "a b",
+  "relators": "a^2, b*A",
+  "geometry": {},
+  "geometryVerified": true
+ },
+ "maxIndex": 6,
+ "totalCount": 2,
+ "countPerIndex": [
+  {
+   "index": 1,
+   "count": 1
+  },
+  {
+   "index": 2,
+   "count": 1
+  }
+ ],
+ "affineCountPerIndex": [
+  {
+   "index": 1,
+   "count": 1
+  },
+  {
+   "index": 2,
+   "count": 1
+  }
+ ],
+ "subgroups": [
+  {
+   "id": "22.1.1",
+   "index": 1,
+   "type": "22",
+   "normal": true,
+   "placements": 1,
+   "cosets": "a a",
+   "orders": [
+    2
+   ],
+   "abelianization": "Z^0 + Z/2",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      0
+     ],
+     "cycles": "e"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      0
+     ],
+     "cycles": "e"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    }
+   ],
+   "simplyConnected": false,
+   "hGenerators": [
+    {
+     "word": "a",
+     "text": "rotation 1*PI (order 2)"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 2,
+    "interior": 0
+   },
+   "name": "22/22[1]",
+   "affineClass": "22/22[1]"
+  },
+  {
+   "id": "22.2.1",
+   "index": 2,
+   "type": "1",
+   "normal": true,
+   "placements": 1,
+   "cosets": "ba ba",
+   "orders": [],
+   "abelianization": "Z^0",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      1,
+      0
+     ],
+     "cycles": "(0 1)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      1,
+      0
+     ],
+     "cycles": "(0 1)"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "a",
+     "text": "rotation 1*PI (order 2)"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "a",
+     "text": "rotation 1*PI (order 2)"
+    }
+   ],
+   "simplyConnected": false,
+   "hGenerators": [],
+   "sideCounts": {
+    "boundary": 0,
+    "interior": 4
+   },
+   "name": "22/1[2]",
+   "affineClass": "22/1[2]"
+  }
+ ]
+}

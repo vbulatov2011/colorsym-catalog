@@ -7,7 +7,7 @@
 # to gen/. Shared styles and interactions live in css/entry.css, js/theme.js, and
 # js/entry.js.
 import html as _html, json, io, os, re, sys
-from entry_names import entry_names, group_motif, MIN_N, MAX_N
+from entry_names import entry_names, group_motif, piece_file, MIN_N, MAX_N
 import catalog_paths as P
 
 stem = sys.argv[1]
@@ -234,7 +234,8 @@ sub = lambda i: '%s%s' % (GEN, i[:-4] + IMG_EXT if i.endswith('.png') else i)
 # ---- swatch css for n colours -------------------------------------------
 sw_css = "\n".join(".sw%d { background: %s; }" % (j, palette[j] if j < len(palette) else '#ccc')
                    for j in range(N))
-cell_px = max(76, min(235, 720 // N))
+CURVED = bool(fmeta.get('curved'))
+cell_px = max(62, min(235, 760 // N)) if N >= 10 else max(76, min(235, 720 // N))
 
 
 def live_btns(kind, perm=0):
@@ -373,6 +374,7 @@ def _exact_point(mm):
 
 
 def exact(text):
+    text = re.sub(r'(\d+)/(\d+)\*PI', lambda mm: (mm.group(1) if mm.group(1) != '1' else '') + '\u03c0/' + mm.group(2), text)
     text = re.sub(r'(-?\d+(?:\.\d+)?)\*PI', _exact_angle, text)
     return re.sub(r'\(([^()]*)\)', _exact_point, text)
 
@@ -423,17 +425,17 @@ trows = []
 for j in range(N):
     tds = []
     for i in range(N):
-        layers = [(sub('%d%d.png' % (i, j)), 'pat')]
-        if i > 0:   layers.append((sub('0%d.png' % j), 'ghost'))
-        elif j > 0: layers.append((sub('00.png'), 'ghost'))
+        layers = [(sub(piece_file(i, j, N)), 'pat')]
+        if i > 0:   layers.append((sub(piece_file(0, j, N)), 'ghost'))
+        elif j > 0: layers.append((sub(piece_file(0, 0, N)), 'ghost'))
         layers += DECOR_GEO + DECOR_SYM
-        if j == 0 and i > 0: layers.append((sub('f%d.png' % i), 'fglyph'))
-        if j > 0: layers.append((sub('g%d.png' % j), 'gglyph'))
+        if not CURVED and j == 0 and i > 0: layers.append((sub('f%d.png' % i), 'fglyph'))
+        if not CURVED and j > 0: layers.append((sub('g%d.png' % j), 'gglyph'))
         lab = ('f<sub>%d</sub> ' % i if i > 0 else '') + ('H' if j == 0 else 'H g<sub>%d</sub>' % j)
         tds.append("   <td class='cell%s'>\n%s\n   </td>" % (rep_td(i), stack(layers, lab, lazy=True)))
     uimg = sub('%s.o.png' % slug) if orbit_off[j] == 0 else sub('%s.o%d.png' % (slug, orbit_off[j]))
     ulayers = [(uimg, 'pat')] + DECOR_GEO + DECOR_SYM
-    if j > 0: ulayers.append((sub('g%d.png' % j), 'gglyph'))
+    if not CURVED and j > 0: ulayers.append((sub('g%d.png' % j), 'gglyph'))
     tds.append("   <td class='cell marg'>\n%s\n   </td>"
                % stack(ulayers,
                        'all orbits of %s' % ('H' if j == 0 else 'H g<sub>%d</sub>' % j),
@@ -444,7 +446,7 @@ for j in range(N):
 
 def blayers(img, i):
     layers = [(sub(img), 'pat')] + DECOR_GEO + DECOR_SYM
-    if i > 0: layers.append((sub('f%d.png' % i), 'fglyph'))
+    if not CURVED and i > 0: layers.append((sub('f%d.png' % i), 'fglyph'))
     return layers
 
 
@@ -622,10 +624,18 @@ if _preset_rel:
         '<button type="button" class="seg-btn" data-drawer-tab="1" data-drawer-kind="orbit" data-drawer-perm="0">.o</button>',
         '<button type="button" class="seg-btn" data-drawer-tab="1" data-drawer-kind="group" data-drawer-perm="0">G</button>',
     ]
+    _proj_switch = (
+        '    <div class="live-proj" role="group" aria-label="Projection">'
+        '<span class="lt-lbl">Projection</span>'
+        '<button type="button" class="seg-btn" data-live-proj="stereo">Stereographic</button>'
+        '<button type="button" class="seg-btn" data-live-proj="sphere">Sphere</button>'
+        '</div>\n'
+    ) if CURVED else ''
     live_drawer = (
         '<section id="live-drawer" hidden aria-label="Interactive SymmHub preview">\n'
         '  <div class="live-head">\n'
         '    <div class="live-tabs"><span class="lt-lbl">Coloring</span>%s</div>\n'
+        '%s'
         '    <div class="live-acts">\n'
         '      <label class="sync-ov-lbl"><input type="checkbox" data-sync-overlays> Sync overlays</label>\n'
         '      <button type="button" class="btn sm" id="live-tall">Tall</button>\n'
@@ -635,9 +645,10 @@ if _preset_rel:
         '    </div>\n'
         '  </div>\n'
         '  <div class="live-frame-wrap"><iframe id="live-iframe" title="Interactive SymmHub view" src="about:blank" allow="fullscreen"></iframe></div>\n'
-        '  <div class="live-foot"><span>Drag to pan &middot; scroll to zoom &middot; powered by SymmHub</span>'
+        '  <div class="live-foot"><span id="live-foot-hint">%s &middot; powered by SymmHub</span>'
         '<span>Change SymmHub URL in top-right <b>&#9881;</b> settings</span></div>\n'
-        '</section>\n' % ''.join(_dtabs)
+        '</section>\n' % (''.join(_dtabs), _proj_switch,
+                          'Drag to rotate &middot; scroll to zoom' if CURVED else 'Drag to pan &middot; scroll to zoom')
     )
 
 # Embedded live metadata JSON for js/entry.js
@@ -652,6 +663,7 @@ live_json = json.dumps({
     'cosets': COS,
     'invcos': INVCOS,
     'one': ONE,
+    'curved': CURVED,
     **({'iterations': _iterations} if _iterations else {}),
 }, ensure_ascii=False)
 
@@ -776,9 +788,7 @@ click.</b></p>
     <label><input type="checkbox" data-k="gtil" checked> G tiling</label>
     <label><input type="checkbox" data-k="htil" checked> H tiling</label>
     <label><input type="checkbox" data-k="gsym"> G sym</label>
-    <label><input type="checkbox" data-k="hsym"> H sym</label>
-    <label><input type="checkbox" data-k="g" checked> g</label>
-    <label><input type="checkbox" data-k="f" checked> f</label>
+    <label><input type="checkbox" data-k="hsym"> H sym</label>%(glyph_toggles)s
   </div>
   <div class="layer-group">
     <span class="lg-lbl">Bg</span>
@@ -854,9 +864,7 @@ are remembered across entry pages.</p>
     <label><input type="checkbox" data-k="gtil" checked> G tiling</label>
     <label><input type="checkbox" data-k="htil" checked> H tiling</label>
     <label><input type="checkbox" data-k="gsym"> G sym</label>
-    <label><input type="checkbox" data-k="hsym"> H sym</label>
-    <label><input type="checkbox" data-k="g" checked> g</label>
-    <label><input type="checkbox" data-k="f" checked> f</label>
+    <label><input type="checkbox" data-k="hsym"> H sym</label>%(glyph_toggles)s
   </div>
   <div id="lb-hint">click backdrop or press Esc to close &middot; arrow keys move through panels</div>
 </div>
@@ -903,6 +911,10 @@ are remembered across entry pages.</p>
     'id': _html.escape(entry['id']),
     'ncolors': '%d color%s' % (N, '' if N == 1 else 's'),
     'count_run': count_run,
+    'glyph_toggles': '' if CURVED else (
+        '\n    <label><input type="checkbox" data-k="g" checked> g</label>'
+        '\n    <label><input type="checkbox" data-k="f" checked> f</label>'
+    ),
     'live_json': live_json.replace('</', '<\\/'),
 }
 

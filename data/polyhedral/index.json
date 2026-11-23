@@ -1,0 +1,54 @@
+{
+ "format": "colorsym-catalog-index",
+ "groups": [
+  {
+   "name": "332",
+   "stem": "332",
+   "file": "332.json",
+   "maxIndex": 12,
+   "totalCount": 5
+  },
+  {
+   "name": "3*2",
+   "stem": "3s2",
+   "file": "3s2.json",
+   "maxIndex": 12,
+   "totalCount": 11
+  },
+  {
+   "name": "*332",
+   "stem": "s332",
+   "file": "s332.json",
+   "maxIndex": 12,
+   "totalCount": 10
+  },
+  {
+   "name": "432",
+   "stem": "432",
+   "file": "432.json",
+   "maxIndex": 12,
+   "totalCount": 10
+  },
+  {
+   "name": "*432",
+   "stem": "s432",
+   "file": "s432.json",
+   "maxIndex": 12,
+   "totalCount": 26
+  },
+  {
+   "name": "532",
+   "stem": "532",
+   "file": "532.json",
+   "maxIndex": 12,
+   "totalCount": 5
+  },
+  {
+   "name": "*532",
+   "stem": "s532",
+   "file": "s532.json",
+   "maxIndex": 12,
+   "totalCount": 9
+  }
+ ]
+}

@@ -27,7 +27,9 @@ jobs_*/
 # non-main version build trees (git keeps version.json and preset snapshots only)
 versions/*/wp/
 versions/*/frieze/
+versions/*/axial/
 versions/*/spherical/
+versions/*/polyhedral/
 versions/*/klm/
 versions/*/jobs/
 versions/*/jobs_*/

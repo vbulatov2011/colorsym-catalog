@@ -241,6 +241,7 @@ export default function catalogDriver(api) {
         if (gt === 'Spherical' || cls === 'Group_Spherical') {
             return new lib.Group_Spherical({
                 type: gp.type, n: gp.n, subtype: gp.subtype,
+                ...(gp.centered !== undefined ? { centered: gp.centered } : {}),
             }).getGroup();
         }
         if (gt === 'KLM' || cls === 'Group_KLM') {

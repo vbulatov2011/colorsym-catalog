@@ -476,6 +476,329 @@ function classifyFriezeSubgroup(domain){
   return '∞∞';
 }
 
+function stereoInv(u, v){
+  if(!Number.isFinite(u) || !Number.isFinite(v)) return [0, 0, -1];
+  const r2 = u*u + v*v;
+  if(r2 > 1e12) return [0, 0, -1];
+  const d = 1 + r2;
+  return [2*u/d, 2*v/d, (1 - r2)/d];
+}
+
+function itransToO3(it){
+  const applyS2 = p => {
+    const q = it.transform(iPoint([p[0], p[1], 0, 0])).v;
+    return stereoInv(q[0], q[1]);
+  };
+  const c1 = applyS2([1, 0]), c2 = applyS2([0, 1]), c3 = applyS2([0, 0]);
+  return [
+    [c1[0], c2[0], c3[0]],
+    [c1[1], c2[1], c3[1]],
+    [c1[2], c2[2], c3[2]],
+  ];
+}
+
+function matMul3(A, B){
+  const C = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
+  for(let i = 0; i < 3; i++) for(let j = 0; j < 3; j++)
+    C[i][j] = A[i][0]*B[0][j] + A[i][1]*B[1][j] + A[i][2]*B[2][j];
+  return C;
+}
+
+function matTrans3(A){
+  return [
+    [A[0][0], A[1][0], A[2][0]],
+    [A[0][1], A[1][1], A[2][1]],
+    [A[0][2], A[1][2], A[2][2]],
+  ];
+}
+
+function det3(M){
+  return M[0][0]*(M[1][1]*M[2][2] - M[1][2]*M[2][1])
+       - M[0][1]*(M[1][0]*M[2][2] - M[1][2]*M[2][0])
+       + M[0][2]*(M[1][0]*M[2][1] - M[1][1]*M[2][0]);
+}
+
+function trace3(M){ return M[0][0] + M[1][1] + M[2][2]; }
+
+function matKey3(M){
+  return M.flat().map(v => (Math.abs(v) < 1e-4 ? 0 : v).toFixed(3)).join(',');
+}
+
+function rotAngle3(M){
+  const c = Math.max(-1, Math.min(1, (trace3(M) - 1) / 2));
+  return Math.acos(c);
+}
+
+function matOrder3(M){
+  let cur = [[1, 0, 0], [0, 1, 0], [0, 0, 1]];
+  for(let k = 1; k <= 60; k++){
+    cur = matMul3(M, cur);
+    if(Math.abs(cur[0][0] - 1) < 1e-3 && Math.abs(cur[1][1] - 1) < 1e-3 && Math.abs(cur[2][2] - 1) < 1e-3
+       && Math.abs(cur[0][1]) < 1e-3 && Math.abs(cur[0][2]) < 1e-3 && Math.abs(cur[1][2]) < 1e-3)
+      return k;
+  }
+  return 0;
+}
+
+function fmtPiAngle(rad){
+  const f = rad / Math.PI;
+  if(Math.abs(f - 1) < 1e-3) return '1*PI';
+  for(const q of [2, 3, 4, 5, 6, 8, 10, 12, 16]){
+    const p = Math.round(f * q);
+    if(p > 0 && Math.abs(f - p / q) < 1e-3) return `${p}/${q}*PI`;
+  }
+  return `${f.toFixed(4)}*PI`;
+}
+
+function describeSphericalIsometry(it){
+  const M = itransToO3(it);
+  const d = det3(M);
+  const tr = trace3(M);
+  if(d > 0){
+    if(Math.abs(tr - 3) < 1e-3) return { text: 'identity' };
+    const ang = rotAngle3(M);
+    const ord = matOrder3(M);
+    return { text: `rotation ${fmtPiAngle(ang)}` + (ord ? ` (order ${ord})` : '') };
+  }
+  if(Math.abs(tr + 3) < 1e-3) return { text: 'central inversion' };
+  if(Math.abs(tr - 1) < 1e-3) return { text: 'reflection' };
+  const negM = M.map(r => r.map(v => -v));
+  const ang = rotAngle3(negM);
+  const ord = matOrder3(M);
+  return { text: `rotoreflection ${fmtPiAngle(Math.PI - ang)}` + (ord ? ` (order ${ord})` : '') };
+}
+
+function generateO3Group(genMats){
+  const ID3 = [[1, 0, 0], [0, 1, 0], [0, 0, 1]];
+  const steps = genMats.concat(genMats.map(matTrans3));
+  const seen = new Map([[matKey3(ID3), ID3]]);
+  const queue = [ID3];
+  while(queue.length && seen.size < 250){
+    const cur = queue.shift();
+    for(const g of steps){
+      const nxt = matMul3(g, cur);
+      const k = matKey3(nxt);
+      if(!seen.has(k)){ seen.set(k, nxt); queue.push(nxt); }
+    }
+  }
+  return [...seen.values()];
+}
+
+function classifySphericalSubgroup(domain){
+  // Exact classification of every finite subgroup H <= O(3) from its exact 3x3
+  // matrix closure (|H| <= 120).  Returns Conway orbifold notation:
+  //   polyhedral: 332, 3*2, *332, 432, *432, 532, *532
+  //   dihedral:   22n, 2*n, *22n  (n >= 2)
+  //   cyclic:     nn, *nn, n*, nx (n >= 2)
+  //   small:      1 (C1), * (Cs), x (Ci)
+  const genMats = domain.generators.map(gi => itransToO3(domain.pairings[gi].itrans));
+  const elems = generateO3Group(genMats);
+  const N = elems.length;
+  const pos = elems.filter(M => det3(M) > 0);
+  const Npos = pos.length;
+  const refls = elems.filter(M => det3(M) < 0 && Math.abs(trace3(M) - 1) < 1e-3).length;
+  const hasInv = elems.some(M => det3(M) < 0 && Math.abs(trace3(M) + 3) < 1e-3);
+
+  const orderCounts = new Map();
+  let maxOrd = 1;
+  for(const M of pos){
+    const o = matOrder3(M);
+    orderCounts.set(o, (orderCounts.get(o) || 0) + 1);
+    if(o > maxOrd) maxOrd = o;
+  }
+  const c2 = orderCounts.get(2) || 0;
+  const c3 = orderCounts.get(3) || 0;
+
+  // Polyhedral groups (more than one axis of order >= 3 -> c3 >= 8)
+  if(c3 >= 8){
+    if(Npos === 60) return N === 120 ? '*532' : '532';
+    if(Npos === 24) return N === 48 ? '*432' : '432';
+    if(Npos === 12){
+      if(N === 12) return '332';
+      return hasInv ? '3*2' : '*332';
+    }
+    throw new Error(`unexpected polyhedral subgroup N=${N} N+=${Npos}`);
+  }
+
+  // Order-1 orientation-preserving part (H+ = {I})
+  if(Npos === 1){
+    if(N === 1) return '1';
+    if(refls === 1) return '*';
+    if(hasInv) return 'x';
+    throw new Error(`unexpected N+ = 1 subgroup N=${N}`);
+  }
+
+  // Dihedral H+ = D_n (either n=2 with N+=4, c2=3; or n>=3 with N+=2*maxOrd)
+  const isDihedral = (Npos === 4 && c2 === 3) || (maxOrd >= 3 && Npos === 2 * maxOrd);
+  if(isDihedral){
+    const n = Npos / 2;
+    if(N === Npos) return `22${n}`;
+    if(refls === n + 1) return `*22${n}`;
+    if(refls === n) return `2*${n}`;
+    throw new Error(`unexpected dihedral subgroup N=${N} N+=${Npos} refls=${refls}`);
+  }
+
+  // Cyclic H+ = C_n (n = N+ >= 2)
+  const n = Npos;
+  if(N === n) return `${n}${n}`;
+  if(refls === n) return `*${n}${n}`;
+  if(refls === 1) return `${n}*`;
+  if(refls === 0) return `${n}x`;
+  throw new Error(`unexpected cyclic subgroup N=${N} N+=${Npos} refls=${refls}`);
+}
+
+function sphericalAffineClasses(group, presentation, subgroups, maxIndex, spec){
+  // Exact geometric equivalence classes of subgroups of a spherical/polyhedral
+  // group G under conjugation by its normalizer N_{O(3)}(G).
+  const genNames = presentation.gens.split(/\s+/);
+  const gens = group.transforms.map((t, k) => ({
+    name: genNames[k],
+    M: itransToO3(new ITransform(t.slice(), genNames[k])),
+  }));
+  const steps = gens.concat(gens.map(g => ({ name: g.name.toUpperCase(), M: matTrans3(g.M) })));
+  const ID3 = [[1, 0, 0], [0, 1, 0], [0, 0, 1]];
+
+  // Full BFS in finite group G (|G| <= 120): left-to-right word w -> matrix M(w)
+  // Remember: (a*b)(p) = b(a(p)) => M(a*b) = M(b) * M(a).
+  const byKey = new Map([[matKey3(ID3), { word: '', M: ID3 }]]);
+  const queue = [{ word: '', M: ID3 }];
+  while(queue.length && byKey.size < 250){
+    const cur = queue.shift();
+    for(const s of steps){
+      const M = matMul3(s.M, cur.M);
+      const k = matKey3(M);
+      if(!byKey.has(k)){
+        const rec = { word: cur.word + s.name, M };
+        byKey.set(k, rec); queue.push(rec);
+      }
+    }
+  }
+
+  // Build candidate O(3) normalizer elements A
+  const cands = [];
+  const rotZ = th => [[Math.cos(th), -Math.sin(th), 0], [Math.sin(th), Math.cos(th), 0], [0, 0, 1]];
+  const reflX = [[-1, 0, 0], [0, 1, 0], [0, 0, 1]];
+  const reflZ = [[1, 0, 0], [0, 1, 0], [0, 0, -1]];
+  const isPoly = ['332', '3*2', '*332', '432', '*432', '532', '*532'].includes(spec.type);
+  if(isPoly){
+    // For tetrahedral/octahedral groups, N_{O(3)}(G) <= O_h sharing G's axes;
+    // collect G plus -I plus 90-deg rotations around every 2-fold axis of G.
+    const seeds = gens.map(g => g.M);
+    seeds.push([[-1, 0, 0], [0, -1, 0], [0, 0, -1]]);
+    for(const rec of byKey.values()){
+      const M = rec.M;
+      if(det3(M) > 0 && matOrder3(M) === 2){
+        // unit axis u of half-turn satisfies (M + I) has rank 1 -> largest column
+        const cols = [0, 1, 2].map(j => [M[0][j] + (j === 0 ? 1 : 0), M[1][j] + (j === 1 ? 1 : 0), M[2][j] + (j === 2 ? 1 : 0)]);
+        cols.sort((a, b) => (b[0]*b[0]+b[1]*b[1]+b[2]*b[2]) - (a[0]*a[0]+a[1]*a[1]+a[2]*a[2]));
+        const u = cols[0];
+        const len = Math.hypot(u[0], u[1], u[2]);
+        if(len > 1e-3){
+          const ux = u[0]/len, uy = u[1]/len, uz = u[2]/len;
+          // 90-degree rotation around u: R = u u^T + [u]_x
+          seeds.push([
+            [ux*ux,        ux*uy - uz, ux*uz + uy],
+            [uy*ux + uz,   uy*uy,      uy*uz - ux],
+            [uz*ux - uy,   uz*uy + ux, uz*uz     ],
+          ]);
+        }
+      }
+    }
+    cands.push(...generateO3Group(seeds));
+  } else {
+    const n = spec.n;
+    const seeds = [rotZ(Math.PI / (2 * n)), reflX, reflZ];
+    if(n === 2){
+      // Also allow full O_h axis permutations for D_2 / D_{2h} / D_{2d} / C_{2v} / C_{2h}
+      seeds.push([[0, 1, 0], [0, 0, 1], [1, 0, 0]], [[0, 1, 0], [1, 0, 0], [0, 0, 1]]);
+    }
+    cands.push(...generateO3Group(seeds));
+  }
+
+  // Keep only A in N_{O(3)}(G), recording induced generator words A * M(g) * A^-1
+  const autos = [];
+  const autoSeen = new Set();
+  for(const A of cands){
+    const Ainv = matTrans3(A);
+    const words = [];
+    let ok = true;
+    for(const g of gens){
+      const conj = matMul3(A, matMul3(g.M, Ainv));
+      const hit = byKey.get(matKey3(conj));
+      if(!hit){ ok = false; break; }
+      words.push(hit.word);
+    }
+    if(ok){
+      const key = words.join('|');
+      if(!autoSeen.has(key)){ autoSeen.add(key); autos.push(words); }
+    }
+  }
+
+  const invPerm = p => { const r = new Array(p.length); for(let i = 0; i < p.length; i++) r[p[i]] = i; return r; };
+  const evalWord = (perms, word) => {
+    const n = perms[0].length;
+    let cur = Array.from({ length: n }, (_, i) => i);
+    for(const ch of word){
+      const lower = ch.toLowerCase();
+      const gi = genNames.indexOf(lower);
+      const p = ch === lower ? perms[gi] : invPerm(perms[gi]);
+      cur = cur.map(x => p[x]);
+    }
+    return cur;
+  };
+  const sameAction = (P, Q) => {
+    const n = P[0].length;
+    for(let t0 = 0; t0 < n; t0++){
+      const phi = new Array(n).fill(-1);
+      phi[0] = t0;
+      const q = [0];
+      let ok = true;
+      while(q.length && ok){
+        const x = q.pop(), px = phi[x];
+        for(let g = 0; g < P.length; g++){
+          const nx = P[g][x], ny = Q[g][px];
+          if(phi[nx] === -1){ phi[nx] = ny; q.push(nx); }
+          else if(phi[nx] !== ny){ ok = false; break; }
+        }
+      }
+      if(ok) return true;
+    }
+    return false;
+  };
+
+  const parent = subgroups.map((_, i) => i);
+  const find = i => { while(parent[i] !== i){ parent[i] = parent[parent[i]]; i = parent[i]; } return i; };
+  const permsOf = subgroups.map(s => permStringToArrays(s.cosets));
+  for(let i = 0; i < subgroups.length; i++){
+    for(const words of autos){
+      const img = words.map(w => evalWord(permsOf[i], w));
+      for(let j = i + 1; j < subgroups.length; j++){
+        if(subgroups[j].index !== subgroups[i].index || subgroups[j].type !== subgroups[i].type) continue;
+        if(sameAction(img, permsOf[j])){
+          const a = find(i), b = find(j);
+          if(a !== b) parent[Math.max(a, b)] = Math.min(a, b);
+        }
+      }
+    }
+  }
+  const byRoot = new Map();
+  subgroups.forEach((s, i) => {
+    const r = find(i);
+    if(!byRoot.has(r)) byRoot.set(r, []);
+    byRoot.get(r).push(s);
+  });
+  const classOf = new Map();
+  const perIdx = new Array(maxIndex + 1).fill(0);
+  for(const members of byRoot.values()){
+    members.sort((a, b) => a.name < b.name ? -1 : 1);
+    const rep = members[0].name;
+    for(const s of members) classOf.set(s.name, rep);
+    if(members[0].index <= maxIndex) perIdx[members[0].index]++;
+  }
+  const affineCountPerIndex = perIdx.map((count, index) => ({ index, count })).filter(c => c.count);
+  return { classOf, affineCountPerIndex };
+}
+
 function parseSphericalSpec(name){
   const fixed = new Set(['*332', '332', '3*2', '*432', '432', '*532', '532']);
   if(fixed.has(name)) return { type: name, n: 2 };
@@ -517,17 +840,18 @@ const domainShape = _optFlag('--domain');
 const dirichletPreset = _optFlag('--dirichlet');
 const customOut = _optFlag('--out');
 const dryRun = _optFlag('--dry-run', false);
-const rawGroupName = _argv[0] || (famKey === 'frieze' ? '*22∞' : famKey === 'spherical' ? '*532' : famKey === 'klm' ? '*237' : '632');
+const rawGroupName = _argv[0] || (famKey === 'frieze' ? '*22∞' : (famKey === 'axial' || famKey === 'spherical') ? '*224' : famKey === 'polyhedral' ? '*432' : famKey === 'klm' ? '*237' : '632');
 const groupName = famKey === 'frieze' ? (FRIEZE_ALIASES[rawGroupName] || rawGroupName) : rawGroupName;
 const maxIndex = Number(_argv[1] || 6);
 
 const isWallpaper = famKey === 'wp';
 const isEuclidean = famKey === 'wp' || famKey === 'frieze';
+const isSpherical = famKey === 'axial' || famKey === 'spherical' || famKey === 'polyhedral';
 const outDir = customOut ? customOut
              : (FAMILIES[famKey] ? join(CAT, ...FAMILIES[famKey].dataDir.split('/'))
                                  : join(CAT, 'data', famKey));
 
-let presentation, data, group;
+let presentation, data, group, sphericalSpec = null;
 if(isWallpaper){
   if(domainShape){
     // the presentation of THIS domain: its pairing transforms are the generators
@@ -547,9 +871,9 @@ if(isWallpaper){
   presentation = maker.getPresentation();
   data = subgroupsData({ name: groupName, gens: presentation.gens, relators: presentation.relators,
                          maxIndex, generators: 'none' });
-} else if(famKey === 'spherical'){
-  const spec = parseSphericalSpec(groupName);
-  const maker = new Group_Spherical(spec);
+} else if(isSpherical){
+  sphericalSpec = parseSphericalSpec(groupName);
+  const maker = new Group_Spherical(sphericalSpec);
   group = maker.getGroup();
   presentation = maker.getPresentation();
   data = subgroupsData({ name: groupName, gens: presentation.gens, relators: presentation.relators,
@@ -563,7 +887,7 @@ if(isWallpaper){
   data = subgroupsData({ name: groupName, gens: presentation.gens, relators: presentation.relators,
                          maxIndex, generators: 'none' });
 } else {
-  throw new Error(`unsupported family '${famKey}' (expected wp, frieze, spherical, klm)`);
+  throw new Error(`unsupported family '${famKey}' (expected wp, frieze, spherical, polyhedral, klm)`);
 }
 
 const genCountMatch = group.getFundDomain().length === presentation.gens.split(/\s+/).length;
@@ -631,7 +955,9 @@ for(const sub of data.subgroups){
     ? classifySubgroupType(perms, expandedRelators, st, refFingerprints)
     : (famKey === 'frieze' && domain
        ? { type: classifyFriezeSubgroup(domain) }
-       : { type: sub.index === 1 ? groupName : 'sub' });
+       : (isSpherical && domain
+          ? { type: classifySphericalSubgroup(domain) }
+          : { type: sub.index === 1 ? groupName : 'sub' }));
 
   const entry = {
     id: sub.subgroup,                    // sublib id: stable only within this file
@@ -668,7 +994,7 @@ for(const sub of data.subgroups){
   if(domain){
     const describeIso = itrans => isEuclidean
       ? { isometry: classifyEuclidean(itrans), text: isometryToString(classifyEuclidean(itrans)) }
-      : { text: itrans.word || 'e' };
+      : (isSpherical ? describeSphericalIsometry(itrans) : { text: itrans.word || 'e' });
     entry.orbitReps = domain.cells.map(c => ({ word: gWord(c.word), ...describeIso(c.itrans) }));
     entry.transversal = domain.cosetTransversal.map(t => ({ word: gWord(t.word), ...describeIso(t.itrans) }));
     entry.simplyConnected = domain.simplyConnected;
@@ -676,7 +1002,7 @@ for(const sub of data.subgroups){
       word: DG ? gWord(domain.pairings[gi].word) : domain.pairings[gi].word,
       ...(isEuclidean
           ? { isometry: domain.pairings[gi].isometry, text: isometryToString(domain.pairings[gi].isometry) }
-          : { text: domain.pairings[gi].word }),
+          : (isSpherical ? describeSphericalIsometry(domain.pairings[gi].itrans) : { text: domain.pairings[gi].word })),
     }));
     entry.sideCounts = {
       boundary: domain.sides.filter(s => s.kind === 'boundary').length,
@@ -711,6 +1037,10 @@ if(frame){
     .map((count, i) => ({ index: i + 1, count })).filter(c => c.count);
 } else if(famKey === 'frieze' && corr.ok){
   const res = friezeAffineClasses(group, presentation, subgroups, maxIndex);
+  for(const s of subgroups) s.affineClass = res.classOf.get(s.name);
+  affineCountPerIndex = res.affineCountPerIndex;
+} else if(isSpherical && corr.ok){
+  const res = sphericalAffineClasses(group, presentation, subgroups, maxIndex, sphericalSpec);
   for(const s of subgroups) s.affineClass = res.classOf.get(s.name);
   affineCountPerIndex = res.affineCountPerIndex;
 }

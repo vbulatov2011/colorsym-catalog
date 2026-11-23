@@ -156,6 +156,12 @@
     if (opt.iterations) {
       hashObj.params = { symmetry: { options: { iterations: opt.iterations } } };
     }
+    if (opt.projection === 'sphere' || opt.projection === 'stereo') {
+      hashObj.params = hashObj.params || {};
+      var trPatch = { spherical: { enabled: opt.projection === 'sphere' } };
+      if (opt.projection === 'sphere') trPatch.euclidean = { zoom: 0.92 };
+      hashObj.params.tools = { transform: { params: trPatch } };
+    }
     var q = opt.ui ? ('?ui=' + encodeURIComponent(opt.ui)) : '';
     return base + appPath + q + '#' + encodeURIComponent(JSON.stringify(hashObj));
   }

@@ -1,0 +1,348 @@
+{
+ "format": "colorsym-catalog-index",
+ "groups": [
+  {
+   "name": "22",
+   "stem": "22",
+   "file": "22.json",
+   "maxIndex": 6,
+   "totalCount": 2
+  },
+  {
+   "name": "2x",
+   "stem": "2x",
+   "file": "2x.json",
+   "maxIndex": 6,
+   "totalCount": 3
+  },
+  {
+   "name": "*22",
+   "stem": "s22",
+   "file": "s22.json",
+   "maxIndex": 6,
+   "totalCount": 5
+  },
+  {
+   "name": "2*",
+   "stem": "2s",
+   "file": "2s.json",
+   "maxIndex": 6,
+   "totalCount": 5
+  },
+  {
+   "name": "222",
+   "stem": "222",
+   "file": "222.json",
+   "maxIndex": 6,
+   "totalCount": 5
+  },
+  {
+   "name": "2*2",
+   "stem": "2s2",
+   "file": "2s2.json",
+   "maxIndex": 6,
+   "totalCount": 7
+  },
+  {
+   "name": "*222",
+   "stem": "s222",
+   "file": "s222.json",
+   "maxIndex": 6,
+   "totalCount": 15
+  },
+  {
+   "name": "33",
+   "stem": "33",
+   "file": "33.json",
+   "maxIndex": 6,
+   "totalCount": 2
+  },
+  {
+   "name": "3x",
+   "stem": "3x",
+   "file": "3x.json",
+   "maxIndex": 6,
+   "totalCount": 4
+  },
+  {
+   "name": "*33",
+   "stem": "s33",
+   "file": "s33.json",
+   "maxIndex": 6,
+   "totalCount": 4
+  },
+  {
+   "name": "3*",
+   "stem": "3s",
+   "file": "3s.json",
+   "maxIndex": 6,
+   "totalCount": 4
+  },
+  {
+   "name": "223",
+   "stem": "223",
+   "file": "223.json",
+   "maxIndex": 6,
+   "totalCount": 4
+  },
+  {
+   "name": "2*3",
+   "stem": "2s3",
+   "file": "2s3.json",
+   "maxIndex": 6,
+   "totalCount": 9
+  },
+  {
+   "name": "*223",
+   "stem": "s223",
+   "file": "s223.json",
+   "maxIndex": 6,
+   "totalCount": 9
+  },
+  {
+   "name": "44",
+   "stem": "44",
+   "file": "44.json",
+   "maxIndex": 6,
+   "totalCount": 3
+  },
+  {
+   "name": "4x",
+   "stem": "4x",
+   "file": "4x.json",
+   "maxIndex": 6,
+   "totalCount": 3
+  },
+  {
+   "name": "*44",
+   "stem": "s44",
+   "file": "s44.json",
+   "maxIndex": 6,
+   "totalCount": 7
+  },
+  {
+   "name": "4*",
+   "stem": "4s",
+   "file": "4s.json",
+   "maxIndex": 6,
+   "totalCount": 7
+  },
+  {
+   "name": "224",
+   "stem": "224",
+   "file": "224.json",
+   "maxIndex": 6,
+   "totalCount": 7
+  },
+  {
+   "name": "2*4",
+   "stem": "2s4",
+   "file": "2s4.json",
+   "maxIndex": 6,
+   "totalCount": 7
+  },
+  {
+   "name": "*224",
+   "stem": "s224",
+   "file": "s224.json",
+   "maxIndex": 6,
+   "totalCount": 19
+  },
+  {
+   "name": "55",
+   "stem": "55",
+   "file": "55.json",
+   "maxIndex": 6,
+   "totalCount": 2
+  },
+  {
+   "name": "5x",
+   "stem": "5x",
+   "file": "5x.json",
+   "maxIndex": 6,
+   "totalCount": 3
+  },
+  {
+   "name": "*55",
+   "stem": "s55",
+   "file": "s55.json",
+   "maxIndex": 6,
+   "totalCount": 3
+  },
+  {
+   "name": "5*",
+   "stem": "5s",
+   "file": "5s.json",
+   "maxIndex": 6,
+   "totalCount": 3
+  },
+  {
+   "name": "225",
+   "stem": "225",
+   "file": "225.json",
+   "maxIndex": 6,
+   "totalCount": 3
+  },
+  {
+   "name": "2*5",
+   "stem": "2s5",
+   "file": "2s5.json",
+   "maxIndex": 6,
+   "totalCount": 6
+  },
+  {
+   "name": "*225",
+   "stem": "s225",
+   "file": "s225.json",
+   "maxIndex": 6,
+   "totalCount": 6
+  },
+  {
+   "name": "66",
+   "stem": "66",
+   "file": "66.json",
+   "maxIndex": 6,
+   "totalCount": 4
+  },
+  {
+   "name": "6x",
+   "stem": "6x",
+   "file": "6x.json",
+   "maxIndex": 6,
+   "totalCount": 5
+  },
+  {
+   "name": "*66",
+   "stem": "s66",
+   "file": "s66.json",
+   "maxIndex": 6,
+   "totalCount": 9
+  },
+  {
+   "name": "6*",
+   "stem": "6s",
+   "file": "6s.json",
+   "maxIndex": 6,
+   "totalCount": 9
+  },
+  {
+   "name": "226",
+   "stem": "226",
+   "file": "226.json",
+   "maxIndex": 6,
+   "totalCount": 9
+  },
+  {
+   "name": "2*6",
+   "stem": "2s6",
+   "file": "2s6.json",
+   "maxIndex": 6,
+   "totalCount": 11
+  },
+  {
+   "name": "*226",
+   "stem": "s226",
+   "file": "s226.json",
+   "maxIndex": 6,
+   "totalCount": 23
+  },
+  {
+   "name": "77",
+   "stem": "77",
+   "file": "77.json",
+   "maxIndex": 6,
+   "totalCount": 1
+  },
+  {
+   "name": "7x",
+   "stem": "7x",
+   "file": "7x.json",
+   "maxIndex": 6,
+   "totalCount": 2
+  },
+  {
+   "name": "*77",
+   "stem": "s77",
+   "file": "s77.json",
+   "maxIndex": 6,
+   "totalCount": 2
+  },
+  {
+   "name": "7*",
+   "stem": "7s",
+   "file": "7s.json",
+   "maxIndex": 6,
+   "totalCount": 2
+  },
+  {
+   "name": "227",
+   "stem": "227",
+   "file": "227.json",
+   "maxIndex": 6,
+   "totalCount": 2
+  },
+  {
+   "name": "2*7",
+   "stem": "2s7",
+   "file": "2s7.json",
+   "maxIndex": 6,
+   "totalCount": 5
+  },
+  {
+   "name": "*227",
+   "stem": "s227",
+   "file": "s227.json",
+   "maxIndex": 6,
+   "totalCount": 5
+  },
+  {
+   "name": "88",
+   "stem": "88",
+   "file": "88.json",
+   "maxIndex": 6,
+   "totalCount": 3
+  },
+  {
+   "name": "8x",
+   "stem": "8x",
+   "file": "8x.json",
+   "maxIndex": 6,
+   "totalCount": 3
+  },
+  {
+   "name": "*88",
+   "stem": "s88",
+   "file": "s88.json",
+   "maxIndex": 6,
+   "totalCount": 7
+  },
+  {
+   "name": "8*",
+   "stem": "8s",
+   "file": "8s.json",
+   "maxIndex": 6,
+   "totalCount": 7
+  },
+  {
+   "name": "228",
+   "stem": "228",
+   "file": "228.json",
+   "maxIndex": 6,
+   "totalCount": 7
+  },
+  {
+   "name": "2*8",
+   "stem": "2s8",
+   "file": "2s8.json",
+   "maxIndex": 6,
+   "totalCount": 7
+  },
+  {
+   "name": "*228",
+   "stem": "s228",
+   "file": "s228.json",
+   "maxIndex": 6,
+   "totalCount": 19
+  }
+ ]
+}

@@ -43,6 +43,8 @@ def group_motif(cat, name, stem):
         preset = P.version_preset(name)
     elif os.path.exists(gjob):
         preset = P.from_url(json.load(open(gjob, encoding='utf-8'))['preset'])
+    if not os.path.exists(os.path.join(cat, *preset.split('/'))):
+        return dict(preset=None, shape='default', dirichlet=None, manifest=stem, stale=None)
     sym = json.load(open(os.path.join(cat, *preset.split('/')), encoding='utf-8'))['params']['symmetry']
     shape = sym['group']['params'].get('domainShape', 'default')
     dc = sym.get('dirichlet') or {}
@@ -63,6 +65,16 @@ def group_motif(cat, name, stem):
 
 def _safe_sym(s):
     return s.replace('\u221e', 'oo').replace('*', 's')
+
+
+def piece_file(i, j, n):
+    """Filename of partition piece f_i H g_j: '%d%d.png' for n <= 9, 'p%02d_%02d.png' for n >= 10."""
+    return '%d%d.png' % (i, j) if n <= 9 else 'p%02d_%02d.png' % (i, j)
+
+
+def union_file(j, n):
+    """Filename of row-union image j: '012..._j.png' for n <= 9, 'u%d_%02d.png' for n >= 10."""
+    return ('%s_%d.png' % (''.join(str(k) for k in range(n)), j)) if n <= 9 else ('u%d_%02d.png' % (n, j))
 
 
 def entry_names(entry_name, n):
