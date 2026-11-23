@@ -251,7 +251,7 @@ table.action .sw { cursor: pointer; }
 
 .stack {
   position: relative;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: var(--panel-aspect, 1 / 1);
   background: var(--art-bg);
   border: 1px solid var(--line);
   border-radius: 3px;
@@ -546,7 +546,7 @@ table.grid th.hl-rep {
 .lb-arrow:disabled { opacity: .22; cursor: default; }
 
 #lb-stack {
-  width: min(76vw, 66vh, 720px);
+  width: min(84vw, calc(66vh * var(--panel-aspect-num, 1)), 840px);
   border-color: rgba(255, 255, 255, .3);
   cursor: zoom-out;
   box-shadow: 0 12px 44px rgba(0, 0, 0, .6);

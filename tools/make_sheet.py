@@ -56,13 +56,13 @@ page = """<!doctype html><html><head><meta charset="utf-8"><title>%s generated</
 .g{display:grid;gap:.45rem;margin-bottom:.7rem}
 .g5{grid-template-columns:repeat(5,152px)}.g8{grid-template-columns:repeat(8,96px)}
 .g4{grid-template-columns:repeat(4,190px)}
-img{width:100%%;aspect-ratio:1;border:1px solid #999;background:#fff;display:block}
+img{width:100%%;aspect-ratio:%s;border:1px solid #999;background:#fff;display:block}
 figure{margin:0}figcaption{font-size:10.5px;color:#333}
 h3{margin:.7rem 0 .3rem;font-size:.78rem;text-transform:uppercase;color:#666}</style></head><body>
 <h2>%s &mdash; %d colors, %d placements (%d images)</h2>
 %s
 </body></html>
-""" % (entry_name, entry_name, N, K, len(files), "\n".join(parts))
+""" % (entry_name, (P.family_meta() or {}).get('imageAspect', '1'), entry_name, N, K, len(files), "\n".join(parts))
 
 out = os.path.join(out_dir, 'sheet.html')
 io.open(out, 'w', encoding='utf-8', newline='\n').write(page)

@@ -145,12 +145,15 @@ h2.sec.cnt.none .note { color: var(--faint); }
 
 .card .thumb {
   display: block;
-  aspect-ratio: 1;
+  aspect-ratio: var(--panel-aspect, 1);
   background: var(--art-bg);
   border-bottom: 1px solid var(--rule);
   overflow: hidden;
 }
 .card .thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.grid.families .card .thumb { aspect-ratio: 1; }
+.grid.families .card .thumb img { object-fit: contain; }
+.ver-card .vthumb { object-fit: contain; background: var(--art-bg); }
 .card .thumb.none, .cg .pat.none {
   display: flex;
   align-items: center;
@@ -395,7 +398,7 @@ nav.jump-chips span.off {
 .cg .pat {
   position: relative;
   display: block;
-  aspect-ratio: 1;
+  aspect-ratio: var(--panel-aspect, 1);
   background: var(--art-bg);
 }
 .cg .pat img { display: block; width: 100%; height: 100%; object-fit: cover; }

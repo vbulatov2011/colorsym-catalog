@@ -556,18 +556,20 @@ export default function catalogDriver(api) {
         return [...seen.values()];
     }
 
-    function worldMap(size, view) {
+    function worldMap(width, height, view) {
         const zoom = view.zoom, cx = view.centerX || 0, cy = view.centerY || 0;
-        return p => [((p[0] - cx) * zoom + 1) * size / 2,
-                     (1 - (p[1] - cy) * zoom) * size / 2];
+        // Matches SymmHub CanvasTransform.world2screen: scale is (width * zoom / 2)
+        // pixels per world unit along both x and y, centred at (width/2, height/2).
+        return p => [((p[0] - cx) * zoom + 1) * width / 2,
+                     height / 2 - (p[1] - cy) * zoom * width / 2];
     }
 
     /**
      * Draw subgroup geometry onto a 2d context.
      * what = { tiling, fill, cells, outline }, each true or a style override.
      */
-    function drawSubgroup(ctx, size, view, geo, what = {}) {
-        const W = worldMap(size, view);
+    function drawSubgroup(ctx, width, height, view, geo, what = {}) {
+        const W = worldMap(width, height, view);
         const path = poly => {
             ctx.beginPath();
             poly.forEach((q, i) => { const s2 = W(q);
@@ -612,8 +614,8 @@ export default function catalogDriver(api) {
      * arrowhead about its centre, a translation as a straight arrow.
      * The word names a transversal cell of the geometry ('' or 'e' = identity).
      */
-    function drawMotionGlyph(ctx, size, view, geo, word, anchor, style = {}, kind = 'cell') {
-        const W = worldMap(size, view);
+    function drawMotionGlyph(ctx, width, height, view, geo, word, anchor, style = {}, kind = 'cell') {
+        const W = worldMap(width, height, view);
         const w = (word === 'e') ? '' : word;
         const pool = (kind === 'coset') ? geo.cosetTransversal : geo.cells;
         const cell = pool.find(c => c.word === w) ||
@@ -814,12 +816,12 @@ export default function catalogDriver(api) {
 
     /**
      * Draw axis markers onto a canvas, mapping world to pixels the same way
-     * CanvasTransform does (square canvas, so aspect is 1).
+     * CanvasTransform does (supporting square and rectangular frames).
      */
-    async function drawAxisMarkers(ctx, size, centers, view, scale = 1) {
+    async function drawAxisMarkers(ctx, width, height, centers, view, scale = 1) {
         const zoom = view.zoom, cx = view.centerX || 0, cy = view.centerY || 0;
-        const toX = x => ((x - cx) * zoom + 1) * size / 2;
-        const toY = y => (1 - (y - cy) * zoom) * size / 2;
+        const toX = x => ((x - cx) * zoom + 1) * width / 2;
+        const toY = y => height / 2 - (y - cy) * zoom * width / 2;
         await ensureAxisImages();
         for (const c of centers) {
             const st = AXIS_STYLE[c.order] || AXIS_DEFAULT;
@@ -1016,9 +1018,9 @@ export default function catalogDriver(api) {
     const GLIDE_STYLE  = { color: '#c8102e', width: 3.4, dash: [16, 11],
                            halo: 'rgba(255,255,255,0.9)', haloWidth: 7.5 };
 
-    async function drawSymmetryElements(ctx, size, els, view, scale = 1) {
-        const W = worldMap(size, view);
-        const half = 1 / view.zoom, cx = view.centerX || 0, cy = view.centerY || 0;
+    async function drawSymmetryElements(ctx, width, height, els, view, scale = 1) {
+        const W = worldMap(width, height, view);
+        const half = Math.max(1, height / width) / view.zoom, cx = view.centerX || 0, cy = view.centerY || 0;
         const seg = L => {
             // the line's point nearest the frame's centre, and 2 frames each way
             const t0 = (cx - L.n[0] * L.off) * L.d[0] + (cy - L.n[1] * L.off) * L.d[1];
@@ -1040,7 +1042,7 @@ export default function catalogDriver(api) {
             }
         }
         ctx.restore();
-        await drawAxisMarkers(ctx, size, els.centers, view, scale);
+        await drawAxisMarkers(ctx, width, height, els.centers, view, scale);
     }
 
     /**
@@ -1126,14 +1128,14 @@ export default function catalogDriver(api) {
         const maxInFlight = job.maxInFlight || 16;
         const pending = new Set();
 
-        function queueSave(cnv, file, slot, size, missing) {
+        function queueSave(cnv, file, slot, width, height, missing) {
             const task = (async () => {
                 const blob = await new Promise(r => cnv.toBlob(r, 'image/png'));
                 const resp = await fetch('/save?path=' + encodeURIComponent(file),
                                          { method: 'POST', body: blob });
                 const out = await resp.json();
                 report[slot] = { file: out.saved, bytes: out.bytes,
-                                 size: size + 'x' + size,
+                                 size: width + 'x' + height,
                                  ...(missing.length ? { missingParams: missing } : {}) };
                 console.log('[catalog]', out.saved, out.bytes, 'bytes',
                             missing.length ? ' MISSING: ' + missing.join(',') : '');
@@ -1187,14 +1189,15 @@ export default function catalogDriver(api) {
 
             setView(item.view || jobView || docView);
 
-            const size = item.size || job.size || DEFAULT_SIZE;
+            const width  = item.width  || item.size || job.width  || job.size || DEFAULT_SIZE;
+            const height = item.height || item.size || job.height || job.size || DEFAULT_SIZE;
             const file = (job.outDir ? job.outDir + '/' : '') + item.file;
             const missing = [];
 
             let cnv;
             if (item.compose) {
                 // stacked image: one render per configuration, composited
-                const composed = await composeCanvas(item.compose, size, size);
+                const composed = await composeCanvas(item.compose, width, height);
                 missing.push(...composed.missing);
                 cnv = composed.canvas;
             } else {
@@ -1202,20 +1205,20 @@ export default function catalogDriver(api) {
                 else if (job.subgroup !== undefined) await setSubgroup(job.subgroup);
                 else api.setGroupOverride(null);
                 missing.push(...await applyConfig(item));
-                cnv = api.renderToCanvas(size, size);
+                cnv = api.renderToCanvas(width, height);
             }
 
             const effView = item.view || jobView || currentView();
 
             if (item.draw) {
                 const geo = await subgroupGeo(item.draw.subgroup);
-                drawSubgroup(cnv.getContext('2d'), size, effView, geo, item.draw);
+                drawSubgroup(cnv.getContext('2d'), width, height, effView, geo, item.draw);
             }
             if (item.glyphs) {
                 const geo = await subgroupGeo(item.glyphs.subgroup);
                 const anchor = item.glyphs.anchor || geo.fdCentroid;
                 for (const g of item.glyphs.list) {
-                    const err = drawMotionGlyph(cnv.getContext('2d'), size, effView,
+                    const err = drawMotionGlyph(cnv.getContext('2d'), width, height, effView,
                                                 geo, g.word, anchor, g.style,
                                                 item.glyphs.kind);
                     if (err) missing.push('glyph: ' + err);
@@ -1224,14 +1227,14 @@ export default function catalogDriver(api) {
             if (item.markers) {
                 // every symmetry element in the frame: rotation centres, mirrors, glide axes
                 const els = await symmetryElements(item.markers.subgroup, effView);
-                await drawSymmetryElements(cnv.getContext('2d'), size, els,
+                await drawSymmetryElements(cnv.getContext('2d'), width, height, els,
                                            effView, item.markers.scale || 1);
             }
 
             while (pending.size >= maxInFlight) await Promise.race(pending);
             const slot = report.length;
             report.push(null);
-            queueSave(cnv, file, slot, size, missing);
+            queueSave(cnv, file, slot, width, height, missing);
         }
         await Promise.all(pending);
         return report;

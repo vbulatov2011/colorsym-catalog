@@ -11,6 +11,8 @@
  "hasAffineClasses": true,
  "sparse": true,
  "unboundedY": true,
+ "imageAspect": "2 / 1",
+ "imageAspectNum": 2,
  "defaultPresetSet": "fe",
  "defaultPresetPrefix": "fe-",
  "renderIterations": {

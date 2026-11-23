@@ -62,6 +62,11 @@ for g in index['groups']:
     m = json.load(open(man_file, encoding='utf-8'))
     trivial = next(s for s in m['subgroups'] if s['index'] == 1)['cosets']
 
+    _eu = doc['params']['tools']['transform']['params']['euclidean']
+    _asp = float(_eu.get('aspect', 1.0))
+    _dims = ({"size": SIZE} if abs(_asp - 1.0) < 1e-3 else
+             {"width": min(600, max(SIZE, round(SIZE / max(_asp, 0.25)))),
+              "height": max(1, round(min(600, max(SIZE, round(SIZE / max(_asp, 0.25)))) * _asp))})
     job = {
         "_comment": ["Pattern of %s in one colour (the palette's first) for the index pages." % name,
                      ("Preset %s (%s); view framed on G's domain from %s."
@@ -70,7 +75,7 @@ for g in index['groups']:
                       "Preset %s (%s); the preset's own view (centre and zoom)."
                       % (pname, shape))],
         "outDir": P.fam(stem, "gen"),
-        "size": SIZE,
+        **_dims,
         "preset": preset,
         **({"autoView": {"subgroup": trivial, "fillRatio": FILL}} if VIEW == 'auto' else {}),
         "items": [{

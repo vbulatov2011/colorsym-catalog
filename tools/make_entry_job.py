@@ -62,6 +62,7 @@ ITERATIONS = _opt('--iterations', None)
 VIEW = _opt('--view', 'auto' if TEMPLATE.endswith('/wp_632_632_3.1.json') else 'preset')
 assert VIEW in ('preset', 'auto'), '--view must be preset or auto, got %r' % VIEW
 PRESET_VIEW = None
+PRESET_ASPECT = 1.0
 if VIEW == 'preset':
     # the navigator view saved in the preset (/catalog/... is this folder)
     _doc = json.load(open(P.path(P.from_url(TEMPLATE)), encoding='utf-8'))
@@ -70,12 +71,11 @@ if VIEW == 'preset':
     # the driver maps world to pixels by centre and zoom only
     assert not _e.get('angle'), 'preset view is rotated (angle %r): not supported' % _e['angle']
     # since 2026-11-16 the view is the document's frame (SymmHub DocumentView.js):
-    # 2/zoom wide, aspect * 2/zoom high - the square images show it whole only
-    # when it is square (a preset saved before it has no aspect: square).  A frame
-    # sized by hand is square only nearly (wpe/wpe-4s2: 1.0001): within 0.1% the
-    # square image shows its width and cuts under a pixel off its height
-    assert abs(_e.get('aspect', 1) - 1) < 1e-3, \
-        'preset frame is not square (aspect %r): the catalog images are' % _e['aspect']
+    # 2/zoom wide, aspect * 2/zoom high. Square frames (within 0.1%, e.g. wpe/wpe-4s2: 1.0001)
+    # render square 800x800; non-square frames (e.g. frieze aspect 0.5 = 2:1) render 800 x round(800*aspect).
+    _asp = float(_e.get('aspect', 1))
+    assert 0.1 <= _asp <= 4.0, 'unexpected preset frame aspect %r' % _asp
+    PRESET_ASPECT = 1.0 if abs(_asp - 1.0) < 1e-3 else _asp
     PRESET_VIEW = {"zoom": _zoom, "centerX": _e.get('centerX', 0), "centerY": _e.get('centerY', 0)}
 # the sympix template already colours by multiplying ('mult'); a document
 # that does not - a symdraw drawing starts with 'none' - needs it set, or the
@@ -216,10 +216,12 @@ for j in range(1, N):
 # cells f_i (piece ij = f_i H g_j, rendered as offset i + mask j).  Only K of the
 # N columns give inequivalent colorings, but a row needs all N pieces to union to
 # the whole pattern:  U_i f_i H g_j = G g_j.
+_piece_dims = ({"size": PIECE_SIZE} if PRESET_ASPECT == 1.0
+               else {"width": PIECE_SIZE, "height": max(1, round(PIECE_SIZE * PRESET_ASPECT))})
 for i in range(N):
     for j in range(N):
         items.append({"file": "%d%d.png" % (i, j), "_note": "f_%d H g_%d" % (i, j),
-                      "size": PIECE_SIZE,
+                      **_piece_dims,
                       **motif(permIndex=i, mask=mask_for(j))})
 union_stem = ''.join(str(i) for i in range(N))
 for j in range(N):
@@ -274,6 +276,8 @@ if ITERATIONS is not None:
             assert "params" not in cfg, cfg
             cfg["params"] = {"symmetry": {"options": {"iterations": int(ITERATIONS)}}}
 
+_job_dims = ({"size": 800} if PRESET_ASPECT == 1.0
+             else {"width": 800, "height": max(1, round(800 * PRESET_ASPECT))})
 job = {
  "_comment": [
   "Layer set for %s (%s), %d colours, %d placements." % (entry_name, entry['id'], N, K),
@@ -283,7 +287,7 @@ job = {
   + (["Every item sets symmetry.options.iterations = %s." % ITERATIONS] if ITERATIONS else [])
   + (["View: the preset's own (centre and zoom), shared by every item."] if VIEW == 'preset' else []),
  "outDir": out_dir,
- "size": 800,
+ **_job_dims,
  "preset": TEMPLATE,
  # the view every item renders and draws its overlays in
  **({"view": PRESET_VIEW} if VIEW == 'preset' else

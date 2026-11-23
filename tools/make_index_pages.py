@@ -133,6 +133,9 @@ def _site(root, css_root):
 
 def page(title, root, h1, lede, body, nav_html='', foot_html='', kind='', css_root=None, cat_rel=''):
     sroot = _site(root, css_root)
+    img_asp = FMETA.get('imageAspect') if css_root is None else None
+    img_asp_num = FMETA.get('imageAspectNum', 1) if css_root is None else 1
+    body_style = (' style="--panel-aspect:%s;--panel-aspect-num:%s"' % (img_asp, img_asp_num)) if img_asp else ''
     return '''<!doctype html>
 <html lang="en">
 <head>
@@ -148,7 +151,7 @@ def page(title, root, h1, lede, body, nav_html='', foot_html='', kind='', css_ro
 <link rel="stylesheet" href="%scss/catalog.css">
 <script src="%sjs/theme.js"></script>
 </head>
-<body>
+<body%s>
 %s<header class="top%s"><div class="wrap">
 <h1>%s</h1>
 <p class="lede">%s</p>%s
@@ -161,7 +164,7 @@ def page(title, root, h1, lede, body, nav_html='', foot_html='', kind='', css_ro
 </html>
 ''' % (html.escape(P.SYMMHUB_URL), html.escape(sroot), html.escape(P.FAMILY or 'wp'),
        html.escape(P.VERSION or ''), '1' if P.is_main() else '0',
-       html.escape(cat_rel), html.escape(title), sroot, sroot,
+       html.escape(cat_rel), html.escape(title), sroot, sroot, body_style,
        nav_html, (' ' + kind) if kind else '', h1, lede,
        ('\n' + P.version_note(sroot)) if P.version_note('') else '',
        body, foot_html, sroot)

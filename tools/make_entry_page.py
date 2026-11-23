@@ -674,7 +674,7 @@ page = """<!doctype html>
 %(sw_css)s
 </style>
 </head>
-<body>
+<body%(body_style)s>
 
 <nav class="topnav" aria-label="Catalog navigation">
 <div class="wrap topnav__inner">
@@ -868,6 +868,8 @@ are remembered across entry pages.</p>
 """ % {
     'symmhub_url': _html.escape(P.SYMMHUB_URL),
     'fam_id': _html.escape(P.FAMILY or 'wp'),
+    'body_style': (' style="--panel-aspect:%s;--panel-aspect-num:%s"'
+                   % (fmeta['imageAspect'], fmeta.get('imageAspectNum', 1))) if fmeta.get('imageAspect') else '',
     'ver_name': _html.escape(P.VERSION or ''),
     'ver_is_main': '1' if P.is_main() else '0',
     'cat_rel': _html.escape(P.join(P.TREE, _nm['dir'], 'index.html')),
