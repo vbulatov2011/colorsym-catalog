@@ -1,6 +1,3 @@
-# transient render jobs (built by tools/make_entry_job.py, run, then deleted)
-jobs/delta_*.json
-
 # editors / OS
 .DS_Store
 Thumbs.db
@@ -9,29 +6,30 @@ desktop.ini
 *~
 .idea/
 .vscode/
+.claude/settings.local.json
 
-# python
+# python / node
 __pycache__/
-
-# node
 node_modules/
 npm-debug.log*
 
-# rendered images are build output, not source: the job writes PNG,
-# tools/to_webp.py converts it to lossless WebP, and either can be rebuilt
-# from jobs/*.json + presets/ + data/ (see tools/make_entry_job.py).  The
-# generated pages and contact sheets (index.html, gen/sheet.html) stay tracked.
-**/gen/*.png
-**/gen/*.webp
+# atomic-write temp files
+*.tmp.*
 
-.claude/settings.local.json
+# auto-generated catalog outputs (rebuilt from data/, presets/, tools/, versions/*/version.json)
+/index.html
+/search_index.json
+**/index.html
+**/gen/
+jobs/
 
-# versions of the catalog (tools/version.py): git keeps each version's
-# version.json and preset snapshot (versions/<name>/presets/); the page tree and
-# jobs only of the main version, which are wp/ and jobs/ at the root.  The render
-# list, done marker and entries.json are build output.
+# non-main version build trees (git keeps version.json and preset snapshots only)
 versions/*/wp/
+versions/*/frieze/
+versions/*/spherical/
+versions/*/klm/
 versions/*/jobs/
 versions/*/render_list.json
 versions/*/render_done.json
 versions/*/entries.json
+versions/*/search_index.json
