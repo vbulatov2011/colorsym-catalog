@@ -13,6 +13,11 @@
    "label": "tile-from-domain frieze presets, wpe palette",
    "created": "2026-11-22",
    "family": "frieze"
+  },
+  "wpe2": {
+   "label": "wpe2 presets",
+   "created": "2026-11-23",
+   "family": "wp"
   }
  },
  "mainByFamily": {

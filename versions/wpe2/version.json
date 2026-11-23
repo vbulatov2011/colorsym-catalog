@@ -1,0 +1,26 @@
+{
+ "name": "wpe2",
+ "label": "wpe2 presets",
+ "created": "2026-11-23",
+ "family": "wp",
+ "set": "wpe2",
+ "presets": {
+  "o": "presets/wp/wpe2/wp-O.json",
+  "2222": "presets/wp/wpe2/wp-2222.json",
+  "**": "presets/wp/wpe2/wp-ss.json",
+  "xx": "presets/wp/wpe2/wp-XX.json",
+  "*x": "presets/wp/wpe2/wp-sX.json",
+  "*2222": "presets/wp/wpe2/wp-s2222.json",
+  "22x": "presets/wp/wpe2/wp-22X.json",
+  "442": "presets/wp/wpe2/wp-442.json",
+  "*442": "presets/wp/wpe2/wp-s442.json",
+  "4*2": "presets/wp/wpe2/wp-4s2.json",
+  "333": "presets/wp/wpe2/wp-333.json",
+  "*333": "presets/wp/wpe2/wp-s333.json",
+  "3*3": "presets/wp/wpe2/wp-3s3.json",
+  "632": "presets/wp/wpe2/wp-632.json",
+  "*632": "presets/wp/wpe2/wp-s632.json",
+  "22*": "presets/wp/wpe2/wp-22s.json",
+  "2*22": "presets/wp/wpe2/wp-2s22.json"
+ }
+}

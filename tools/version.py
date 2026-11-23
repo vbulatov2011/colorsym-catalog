@@ -512,8 +512,8 @@ def cmd_promote(args):
 
 # ---- list / compare ----------------------------------------------------------------
 
-def built(v):
-    tree = P.path(P.family_dir(v))
+def built(v, f=None):
+    tree = P.path(P.family_dir(v, f=f))
     return len(glob.glob(os.path.join(tree, '*', '*', '*', 'index.html')))
 
 
@@ -523,20 +523,26 @@ def cmd_list(args):
         print('no versions (python tools/version.py new ...)')
     for v, meta in reg['versions'].items():
         cfg = P.version_config(v) or {}
+        vfam = meta.get('family') or cfg.get('family') or P.DEFAULT_FAMILY
+        fdir = P.family_dir(v, f=vfam)
+        is_m = (v == P.main_version(vfam))
         done = P.path(P.version_dir(v), 'render_done.json')
         d = json.load(open(done, encoding='utf-8')) if os.path.exists(done) else None
-        print('%-4s %-12s %-10s set %-8s %3d entry pages in %-18s %s%s'
-              % ('main' if v == reg['main'] else '', v, meta.get('created', ''), cfg.get('set', '?'),
-                 built(v), P.family_dir(v) + '/',
+        print('%-4s %-12s %-6s %-10s set %-8s %3d entry pages in %-18s %s%s'
+              % ('main' if is_m else '', v, vfam, meta.get('created', ''), cfg.get('set', '?'),
+                 built(v, f=vfam), fdir + '/',
                  ('last render %d/%d jobs, %d errors' % (d['done'], d['total'], len(d['errors']))) if d else '',
                  ('  - ' + meta['label']) if meta.get('label') else ''))
 
 
 def cmd_compare(args):
     reg = P.registry()
-    others = sorted((v for v in reg['versions'] if v != reg['main']),
+    fam_main = P.main_version(P.FAMILY) or reg['main']
+    fam_of = lambda v: reg['versions'][v].get('family') or (P.version_config(v) or {}).get('family') or P.DEFAULT_FAMILY
+    a = args[0] if len(args) > 0 else fam_main
+    a_fam = fam_of(a) if a in reg['versions'] else P.FAMILY
+    others = sorted((v for v in reg['versions'] if v != a and fam_of(v) == a_fam),
                     key=lambda v: reg['versions'][v].get('created', ''))
-    a = args[0] if len(args) > 0 else reg['main']
     b = args[1] if len(args) > 1 else (others[-1] if others else None)
     if not a or not b:
         sys.exit('need two versions to compare: %s' % ', '.join(reg['versions']))
