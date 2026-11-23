@@ -3,80 +3,300 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Compare Versions</title>
+<meta name="catalog-root" content="">
+<meta name="symmhub-base" content="http://localhost:8125">
+<title>Compare Versions - Color Groups Catalog</title>
 <link rel="stylesheet" href="css/catalog.css">
-<!-- Two versions of the catalog side by side (tools/version.py).  It reads
-     versions/index.json and each version's versions/<name>/entries.json, which
-     version.py post / pages write; a version's images are <tree>/<dir>/gen/.
-     URL: compare.html?a=<version>&b=<version>&entry=<G/H[n]#k>&show=main|all
-     (a defaults to the main version, b to the newest other). -->
+<script src="js/theme.js"></script>
+<!-- Two versions of the catalog side by side (tools/version.py). Reads
+     versions/index.json and each version's versions/<name>/entries.json.
+     URL: compare.html?a=<v>&b=<v>&entry=<G/H[n]#k>&show=main|all&mode=side|slider|blink -->
 <style>
-  .controls { display: flex; flex-wrap: wrap; gap: .6rem 1.2rem; align-items: center;
-              margin: 0 0 1rem; font-size: .9rem; }
-  .controls label { display: inline-flex; gap: .4rem; align-items: center; color: var(--muted);
-                    max-width: 100%; min-width: 0; }
-  .controls select { font: inherit; padding: .2rem .3rem; max-width: min(22rem, 100%); min-width: 0; }
-  .controls button { font: inherit; padding: .2rem .7rem; cursor: pointer; }
-  .heads, .pair { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
-  .heads { position: sticky; top: 0; z-index: 2; background: var(--bg);
-           padding: .4rem 0; border-bottom: 1px solid var(--line); margin-bottom: .6rem; }
-  .heads div { font-weight: 600; }
-  .heads .lbl { font-weight: 400; color: var(--muted); font-size: .85rem; }
-  .row { margin: 0 0 1.2rem; }
-  .row h3 { margin: 0 0 .3rem; font: 500 .85rem var(--mono); color: var(--muted); }
-  .row h3 .same { color: #2a7a2a; font-family: system-ui, sans-serif; margin-left: .5rem; }
-  .pair figure { margin: 0; background: var(--panel); border: 1px solid var(--rule);
-                 aspect-ratio: 1; display: flex; align-items: center; justify-content: center; }
-  .pair img { width: 100%; height: 100%; object-fit: contain; display: block;
-              background: repeating-conic-gradient(#eee 0 25%, #fff 0 50%) 0 0 / 16px 16px; }
+  .controls {
+    display: flex; flex-wrap: wrap; gap: .55rem .9rem; align-items: center;
+    margin: 0 0 1rem; padding: .6rem .8rem;
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: var(--radius-md); box-shadow: var(--shadow-sm);
+    font-size: .88rem;
+  }
+  .controls label {
+    display: inline-flex; gap: .38rem; align-items: center;
+    color: var(--muted); max-width: 100%; min-width: 0;
+  }
+  .controls select {
+    font: inherit; padding: .24rem .4rem; max-width: min(21rem, 100%); min-width: 0;
+    border: 1px solid var(--line); border-radius: var(--radius-sm);
+    background: var(--panel-alt); color: var(--ink);
+  }
+  .mode-group {
+    display: inline-flex; border: 1px solid var(--line); border-radius: var(--radius-sm);
+    overflow: hidden; background: var(--panel-alt);
+  }
+  .mode-group button {
+    border: 0; border-right: 1px solid var(--line); border-radius: 0;
+    padding: .24rem .62rem; font: 500 .83rem/1.3 var(--font-sans);
+    background: transparent; color: var(--ink-2); cursor: pointer;
+  }
+  .mode-group button:last-child { border-right: 0; }
+  .mode-group button:hover { background: var(--hover-bg); color: var(--accent); }
+  .mode-group button.active { background: var(--accent); color: #ffffff; }
+
+  .heads {
+    position: sticky; top: var(--nav-h); z-index: 30;
+    display: grid; grid-template-columns: 1fr 1fr; gap: .8rem;
+    background: var(--nav-bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    padding: .5rem .65rem; border: 1px solid var(--line); border-radius: var(--radius-md);
+    margin-bottom: .9rem;
+  }
+  .head-col {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    gap: .3rem .6rem; padding: .2rem .45rem; border-radius: var(--radius-sm);
+    border: 2px solid transparent; transition: border-color .15s, background-color .15s;
+  }
+  .head-col .vtitle { font-weight: 650; }
+  .head-col .lbl { font-weight: 400; color: var(--muted); font-size: .83rem; margin-left: .35rem; }
+  .head-col .vtag {
+    display: inline-block; font-family: var(--mono); font-size: .74rem; font-weight: 700;
+    padding: .05rem .35rem; border-radius: 3px; margin-right: .35rem;
+    background: var(--chip-bg); color: var(--ink-2); border: 1px solid var(--line);
+  }
+  .blink:not(.showB) .head-col.col-a,
+  .blink.showB .head-col.col-b {
+    border-color: var(--accent);
+    background: var(--accent-bg);
+  }
+  .blink:not(.showB) .head-col.col-a .vtag,
+  .blink.showB .head-col.col-b .vtag {
+    background: var(--accent); color: #ffffff; border-color: var(--accent);
+  }
+  .blink-status {
+    grid-column: 1 / -1;
+    display: flex; align-items: center; justify-content: space-between; gap: .5rem;
+    padding-top: .35rem; border-top: 1px solid var(--rule); font-size: .82rem; color: var(--muted);
+  }
+
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; }
+  .row { margin: 0 0 1.3rem; }
+  .row h3 {
+    margin: 0 0 .35rem; font: 500 .85rem var(--mono); color: var(--muted);
+    display: flex; align-items: center; justify-content: space-between; gap: .5rem;
+  }
+  .pair figure {
+    margin: 0; background: var(--panel); border: 1px solid var(--line);
+    border-radius: var(--radius-sm); overflow: hidden;
+    aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .pair img {
+    width: 100%; height: 100%; object-fit: contain; display: block;
+    background: var(--art-checker);
+  }
   .pair .none { color: var(--faint); font-size: .85rem; }
-  .blink .pair { grid-template-columns: 1fr; max-width: 820px; }
+
+  /* Blink mode */
+  .blink .pair { grid-template-columns: 1fr; max-width: 780px; }
+  .blink .pair figure { cursor: pointer; }
   .blink .pair figure + figure { display: none; }
   .blink.showB .pair figure:first-child { display: none; }
   .blink.showB .pair figure + figure { display: flex; }
+  .blink .pair figure::after {
+    content: attr(data-ver-badge);
+    position: absolute; top: .5rem; left: .5rem;
+    padding: .12rem .5rem; border-radius: 4px;
+    font: 600 .78rem var(--mono);
+    background: rgba(13, 17, 23, .78); color: #ffffff;
+  }
+
+  /* Slider (curtain wipe) mode */
+  .slider-wrap {
+    position: relative; width: 100%; max-width: 780px; aspect-ratio: 1;
+    border: 1px solid var(--line); border-radius: var(--radius-sm); overflow: hidden;
+    background: var(--art-checker); user-select: none; touch-action: none; cursor: ew-resize;
+  }
+  .slider-wrap img {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: contain; display: block; pointer-events: none;
+  }
+  .slider-wrap .img-a { clip-path: inset(0 calc(100% - var(--split, 50%)) 0 0); }
+  .slider-wrap .divider {
+    position: absolute; top: 0; bottom: 0; left: var(--split, 50%);
+    width: 2px; background: var(--accent); pointer-events: none;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, .8);
+  }
+  .slider-wrap .handle {
+    position: absolute; top: 50%; left: var(--split, 50%);
+    transform: translate(-50%, -50%);
+    width: 30px; height: 30px; border-radius: 999px;
+    background: var(--accent); color: #ffffff; border: 2px solid #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .35);
+    display: flex; align-items: center; justify-content: center;
+    font-size: .78rem; font-weight: 700; pointer-events: none;
+  }
+  .slider-wrap .sl-tag {
+    position: absolute; top: .5rem; padding: .1rem .45rem; border-radius: 4px;
+    font: 600 .75rem var(--mono); background: rgba(13, 17, 23, .76); color: #ffffff;
+    pointer-events: none;
+  }
+  .slider-wrap .sl-tag.left { left: .5rem; }
+  .slider-wrap .sl-tag.right { right: .5rem; }
+
+  /* Overview thumbnails grid */
+  .overview .ov-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr));
+    gap: 1rem;
+  }
+  .overview .row { margin: 0; }
   .overview .pair figure { cursor: pointer; }
-  .overview .row { display: inline-block; width: min(100%, 460px); vertical-align: top; margin-right: 1rem; }
+  .row[data-file] .pair figure { cursor: zoom-in; }
+  .blink .row[data-file] .pair figure { cursor: pointer; }
   .msg { color: var(--muted); }
-  h2.sec .note { font-size: .85rem; }
+
+  /* Synchronized comparison lightbox */
+  #cmp-lb {
+    position: fixed; inset: 0; z-index: 90;
+    background: rgba(12, 15, 22, 0.86);
+    backdrop-filter: blur(4px);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding: 1rem; gap: .7rem;
+  }
+  .clb-bar {
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    gap: .5rem 1rem; width: min(92vw, 1280px); color: #f0f6fc; font-size: .88rem;
+  }
+  .clb-title { display: flex; align-items: baseline; gap: .6rem; font-family: var(--mono); }
+  #clb-name { font-weight: 650; font-size: .98rem; }
+  #clb-idx { color: #9aa7b8; font-size: .8rem; font-family: var(--font-sans); }
+  .clb-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .45rem; }
+  .clb-stage {
+    display: flex; align-items: center; justify-content: center; gap: .7rem;
+    width: min(94vw, 1320px);
+  }
+  .clb-arrow {
+    width: 2.3rem; height: 2.3rem; flex: 0 0 2.3rem; border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, .28); background: rgba(255, 255, 255, .1);
+    color: #ffffff; font-size: 1.05rem; cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .clb-arrow:hover:not(:disabled) { background: rgba(255, 255, 255, .22); border-color: #ffffff; }
+  .clb-arrow:disabled { opacity: .22; cursor: default; }
+  #clb-body { flex: 1 1 auto; display: flex; justify-content: center; min-width: 0; }
+  #clb-body .pair { width: min(84vw, 1220px); gap: .9rem; }
+  #clb-body .pair figure { max-height: 75vh; }
+  #clb-body .pair figure::after {
+    content: attr(data-ver-badge);
+    position: absolute; top: .5rem; left: .5rem;
+    padding: .12rem .5rem; border-radius: 4px;
+    font: 600 .78rem var(--mono);
+    background: rgba(13, 17, 23, .8); color: #ffffff;
+  }
+  #clb-body.blink .pair { grid-template-columns: 1fr; width: min(78vw, 74vh); }
+  #clb-body.blink .pair figure { cursor: pointer; }
+  #clb-body.blink .pair figure + figure { display: none; }
+  #clb-body.blink.showB .pair figure:first-child { display: none; }
+  #clb-body.blink.showB .pair figure + figure { display: flex; }
+  #clb-body .slider-wrap { width: min(78vw, 74vh); max-width: none; }
+  .clb-hint { color: rgba(240, 246, 252, .74); font-size: .78rem; text-align: center; }
+
+  @media (max-width: 720px) {
+    .heads { grid-template-columns: 1fr; }
+    #clb-body .pair { grid-template-columns: 1fr; width: min(84vw, 72vh); }
+  }
 </style>
 </head>
-<body class="with-bar">
+<body>
+<nav class="topnav" aria-label="Catalog navigation">
+<div class="wrap topnav__inner">
+  <div class="crumbs">
+    <a class="brand" href="index.html">Catalog</a>
+    <span class="sep" aria-hidden="true">&rsaquo;</span>
+    <span class="cur">Compare versions</span>
+  </div>
+  <div class="topnav__actions">
+    <a class="btn sm" href="wp/index.html">Wallpaper groups</a>
+    <button type="button" class="btn sm" data-theme-toggle>&#9728; Light</button>
+  </div>
+</div>
+</nav>
+
 <header class="top"><div class="wrap">
 <h1>Compare versions</h1>
-<p class="lede">Two versions of the catalog, rendered from different presets, image by image:
-pick the versions and a color group. <b>Blink</b> shows the two in one place, switching
-every second; a click on a picture switches by hand.</p>
+<p class="lede">Two renderings of the catalog side by side, by <b>curtain slider</b>, or by <b>Blink</b>
+(alternating in place; click a picture or press Space to step manually, <code>[</code> / <code>]</code> for previous / next color group).</p>
 </div></header>
+
 <main class="wrap">
 <div class="controls">
  <label>A <select id="a"></select></label>
+ <button type="button" class="btn sm" id="swap" title="Swap A and B">&#8646;</button>
  <label>B <select id="b"></select></label>
+ <label id="fam-wrap" hidden>Family <select id="family"></select></label>
  <label>Group <select id="group"></select></label>
  <label>Color group <select id="entry"></select></label>
  <label>Images <select id="show">
   <option value="main">colorings and structure</option>
   <option value="all">all, with the pieces</option>
  </select></label>
- <label><input type="checkbox" id="blink"> Blink</label>
- <button id="prev" title="previous color group (key [)">&larr;</button>
- <button id="next" title="next color group (key ])">&rarr;</button>
+ <div class="mode-group" role="group" aria-label="Comparison mode">
+  <button type="button" data-mode="side" class="active">Side by side</button>
+  <button type="button" data-mode="slider">Slider</button>
+  <button type="button" data-mode="blink">Blink</button>
+ </div>
+ <button type="button" class="btn sm" id="prev" title="previous color group (key [)">&larr;</button>
+ <button type="button" class="btn sm" id="next" title="next color group (key ])">&rarr;</button>
 </div>
 <div id="out"><p class="msg">Loading&hellip;</p></div>
 </main>
-<footer class="bar">
-<div class="wrap">
-<nav class="up">
- <a href="index.html">Catalog</a>
- <span class="cur">Compare versions</span>
-</nav>
+
+<footer class="site-foot">
+<div class="wrap foot-row">
+  <div class="foot-links">
+    <a href="index.html">Catalog home</a>
+    <span>&middot;</span>
+    <a href="wp/index.html">Wallpaper groups</a>
+  </div>
+  <div class="foot-links">
+    <span>Keys: <code>[</code> prev &middot; <code>]</code> next &middot; <code>Space</code> toggle in Blink</span>
+  </div>
 </div>
 </footer>
+
+<div id="cmp-lb" hidden role="dialog" aria-modal="true" aria-label="Zoomed version comparison">
+  <div class="clb-bar">
+    <div class="clb-title">
+      <span id="clb-name"></span>
+      <span id="clb-idx"></span>
+    </div>
+    <div class="clb-actions">
+      <div class="mode-group" role="group" aria-label="Lightbox comparison mode">
+        <button type="button" data-mode="side">Side by side</button>
+        <button type="button" data-mode="slider">Slider</button>
+        <button type="button" data-mode="blink">Blink</button>
+      </div>
+      <button type="button" class="btn sm" id="clb-pause" hidden>Pause blink</button>
+      <button type="button" class="btn sm" id="clb-close" aria-label="Close lightbox">&times; Close</button>
+    </div>
+  </div>
+  <div class="clb-stage">
+    <button type="button" class="clb-arrow" id="clb-prev" aria-label="Previous image">&#8592;</button>
+    <div id="clb-body"></div>
+    <button type="button" class="clb-arrow" id="clb-next" aria-label="Next image">&#8594;</button>
+  </div>
+  <div class="clb-hint">click backdrop or press Esc to close &middot; &larr;/&rarr; switch image &middot; Space steps in Blink</div>
+</div>
+
 <script>
 (async function () {
   var $ = function (id) { return document.getElementById(id); };
   var q = new URLSearchParams(location.search);
   var out = $('out');
   var reg, data = {}, flat = [];
+  var mode = q.get('mode') || (q.get('blink') ? 'blink' : 'side');
+  if (['side', 'slider', 'blink'].indexOf(mode) < 0) mode = 'side';
+  var blinkPaused = false;
+  var splitPct = 50;
+  var timer = null;
+  var curFiles = [], curEa = null, curEb = null, lbIdx = -1;
 
   function fail(msg) { out.innerHTML = '<p class="msg">' + msg + '</p>'; }
   async function getJson(url) {
@@ -86,7 +306,6 @@ every second; a click on a picture switches by hand.</p>
   }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) {
     return {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]; }); }
-  function disp(name) { return name; }
 
   try { reg = await getJson('versions/index.json'); }
   catch (e) { return fail('No versions yet: <code>python tools/version.py new ...</code>'); }
@@ -101,22 +320,28 @@ every second; a click on a picture switches by hand.</p>
     sel.innerHTML = names.map(function (v) {
       var meta = reg.versions[v];
       return '<option value="' + esc(v) + '"' + (v === cur ? ' selected' : '') + '>' + esc(v) +
-             (v === reg.main ? ' (main)' : '') + (meta.label ? ' – ' + esc(meta.label) : '') + '</option>';
+             (v === reg.main ? ' (main)' : '') + (meta.label ? ' \u2013 ' + esc(meta.label) : '') + '</option>';
     }).join('');
   }
   fillVersions($('a'), A);
   fillVersions($('b'), B);
   $('show').value = q.get('show') === 'all' ? 'all' : 'main';
 
+  function syncModeButtons() {
+    document.querySelectorAll('.mode-group button[data-mode]').forEach(function (b) {
+      b.classList.toggle('active', b.getAttribute('data-mode') === mode);
+    });
+  }
+  syncModeButtons();
+
   async function load(v) {
     if (!data[v]) {
       try { data[v] = await getJson('versions/' + encodeURIComponent(v) + '/entries.json'); }
-      catch (e) { data[v] = {version: v, tree: '', groups: [], missing: true}; }
+      catch (e) { data[v] = {version: v, family: 'wp', tree: '', groups: [], missing: true}; }
     }
     return data[v];
   }
 
-  // the color groups either version has, by group then by number of colors
   function entryIndex(da, db) {
     var byName = {}, list = [];
     [da, db].forEach(function (d) {
@@ -140,15 +365,15 @@ every second; a click on a picture switches by hand.</p>
     return null;
   }
 
-  // an entry's images in the order the page shows them
   function kind(file, slug) {
     var base = file.replace(/\.webp$/, '');
-    if (base.indexOf(slug + '.') === 0) return 0;          // the colorings .1 .. .N, .o
+    if (base.indexOf(slug + '.') === 0) return 0;
     if (/^group_/.test(base)) return 1;
     if (/^sub_/.test(base)) return 2;
-    if (/^\d\d$/.test(base) || /^\d+_\d+$/.test(base) || /^[fg]\d+$/.test(base)) return 3;   // pieces
+    if (/^\d\d$/.test(base) || /^\d+_\d+$/.test(base) || /^[fg]\d+$/.test(base)) return 3;
     return 4;
   }
+
   function files(ea, eb, all) {
     var slug = (ea || eb).slug, seen = {}, list = [];
     [ea, eb].forEach(function (e) {
@@ -161,40 +386,151 @@ every second; a click on a picture switches by hand.</p>
     return list;
   }
 
-  function fig(d, e, f) {
-    if (!e || e.files.indexOf(f) < 0) return '<figure><span class="none">not rendered</span></figure>';
-    var src = d.tree + '/' + e.dir + '/gen/' + f;
-    return '<figure><img loading="lazy" src="' + esc(src) + '" alt="' + esc(f) + '"></figure>';
+  function imgSrc(d, e, f) {
+    if (!e || e.files.indexOf(f) < 0) return null;
+    return d.tree + '/' + e.dir + '/gen/' + f;
   }
 
-  function heads(da, db, link) {
-    function one(d) {
+  function fig(d, e, f, tag) {
+    var src = imgSrc(d, e, f);
+    if (!src) return '<figure data-ver-badge="' + esc(tag) + '"><span class="none">not rendered</span></figure>';
+    return '<figure data-ver-badge="' + esc(tag) + '"><img loading="lazy" decoding="async" src="' + esc(src) + '" alt="' + esc(f) + '"></figure>';
+  }
+
+  function sliderRow(da, ea, db, eb, f) {
+    var sa = imgSrc(da, ea, f), sb = imgSrc(db, eb, f);
+    if (!sa || !sb) return '<div class="pair">' + fig(da, ea, f, 'A: ' + da.version) + fig(db, eb, f, 'B: ' + db.version) + '</div>';
+    return '<div class="slider-wrap" style="--split:' + splitPct + '%">' +
+           '<img class="img-b" loading="lazy" decoding="async" src="' + esc(sb) + '" alt="' + esc(f) + ' (B)">' +
+           '<img class="img-a" loading="lazy" decoding="async" src="' + esc(sa) + '" alt="' + esc(f) + ' (A)">' +
+           '<div class="divider"></div><div class="handle" aria-hidden="true">&#8596;</div>' +
+           '<span class="sl-tag left">A: ' + esc(da.version) + '</span>' +
+           '<span class="sl-tag right">B: ' + esc(db.version) + '</span>' +
+           '</div>';
+  }
+
+  function heads(da, db, linkFn, linkLabel) {
+    function one(d, letter, cls) {
       var v = d.version, meta = reg.versions[v] || {};
-      var head = esc(v) + (v === reg.main ? ' (main)' : '');
-      if (link) head = '<a href="' + esc(link(d)) + '">' + head + '</a>';
-      return '<div>' + head + (meta.label ? ' <span class="lbl">' + esc(meta.label) + '</span>' : '') +
-             (d.missing ? ' <span class="lbl">&mdash; no entries.json: version.py pages ' + esc(v) + '</span>' : '') + '</div>';
+      var href = linkFn ? linkFn(d) : '';
+      var openBtn = href ? '<a class="btn sm subtle" href="' + esc(href) + '">' + esc(linkLabel || 'Open') + ' &#8599;</a>' : '';
+      return '<div class="head-col ' + cls + '">' +
+             '<div><span class="vtag">' + letter + '</span><span class="vtitle">' + esc(v) +
+             (v === reg.main ? ' (main)' : '') + '</span>' +
+             (meta.label ? '<span class="lbl">' + esc(meta.label) + '</span>' : '') +
+             (d.missing ? '<span class="lbl">&mdash; no entries.json: version.py pages ' + esc(v) + '</span>' : '') +
+             '</div>' + openBtn + '</div>';
     }
-    return '<div class="heads">' + one(da) + one(db) + '</div>';
+    var bRow = (mode === 'blink')
+      ? '<div class="blink-status"><span id="blink-now"></span>' +
+        '<button type="button" class="btn sm" id="blink-pause">' + (blinkPaused ? 'Resume blink' : 'Pause blink') + '</button></div>'
+      : '';
+    return '<div class="heads">' + one(da, 'A', 'col-a') + one(db, 'B', 'col-b') + bRow + '</div>';
   }
 
-  var timer = null;
-  function setBlink() {
-    var on = $('blink').checked;
-    out.classList.toggle('blink', on);
-    out.classList.remove('showB');
-    clearInterval(timer);
-    if (on) timer = setInterval(function () { out.classList.toggle('showB'); }, 1000);
+  function updateBlinkLabel() {
+    var el = $('blink-now');
+    if (!el) return;
+    var isB = out.classList.contains('showB');
+    el.innerHTML = 'Showing <b>' + (isB ? ('B: ' + esc(B)) : ('A: ' + esc(A))) + '</b>' +
+                   (blinkPaused ? ' (paused &mdash; click picture or press Space to switch)' : '');
   }
-  out.addEventListener('click', function (ev) {
-    if (!$('blink').checked || !ev.target.closest('figure')) return;
+
+  function applyBlinkTimer() {
     clearInterval(timer);
-    out.classList.toggle('showB');
-  });
+    var clb = $('clb-body');
+    var isBlink = mode === 'blink';
+    out.classList.toggle('blink', isBlink);
+    if (clb) clb.classList.toggle('blink', isBlink);
+    var cp = $('clb-pause');
+    if (cp) {
+      cp.hidden = !isBlink;
+      cp.textContent = blinkPaused ? 'Resume blink' : 'Pause blink';
+    }
+    if (!isBlink) {
+      out.classList.remove('showB');
+      if (clb) clb.classList.remove('showB');
+      return;
+    }
+    updateBlinkLabel();
+    if (!blinkPaused) {
+      timer = setInterval(function () {
+        var nextB = !out.classList.contains('showB');
+        out.classList.toggle('showB', nextB);
+        if (clb) clb.classList.toggle('showB', nextB);
+        updateBlinkLabel();
+      }, 1000);
+    }
+  }
+
+  function wireSliders(rootEl) {
+    if (mode !== 'slider') return;
+    var container = rootEl || document;
+    var wraps = container.querySelectorAll('.slider-wrap');
+    function setAll(pct) {
+      splitPct = Math.max(0, Math.min(100, pct));
+      document.querySelectorAll('.slider-wrap').forEach(function (w) {
+        w.style.setProperty('--split', splitPct.toFixed(2) + '%');
+      });
+    }
+    wraps.forEach(function (w) {
+      if (w.dataset.sliderBound) return;
+      w.dataset.sliderBound = '1';
+      var dragging = false;
+      function updateFromEvent(ev) {
+        var r = w.getBoundingClientRect();
+        if (r.width > 0) setAll(((ev.clientX - r.left) / r.width) * 100);
+      }
+      w.addEventListener('pointerdown', function (ev) {
+        dragging = true; w.setPointerCapture(ev.pointerId); updateFromEvent(ev);
+      });
+      w.addEventListener('pointermove', function (ev) { if (dragging) updateFromEvent(ev); });
+      w.addEventListener('pointerup', function () { dragging = false; });
+      w.addEventListener('pointercancel', function () { dragging = false; });
+    });
+  }
+
+  function renderLightbox() {
+    var lb = $('cmp-lb');
+    if (lbIdx < 0 || lbIdx >= curFiles.length) return;
+    var da = data[A], db = data[B], f = curFiles[lbIdx];
+    $('clb-name').textContent = f;
+    $('clb-idx').textContent = (lbIdx + 1) + ' / ' + curFiles.length + ' \u00b7 ' + ($('entry').value || '');
+    $('clb-prev').disabled = lbIdx <= 0;
+    $('clb-next').disabled = lbIdx >= curFiles.length - 1;
+    var body = $('clb-body');
+    body.innerHTML = (mode === 'slider')
+      ? sliderRow(da, curEa, db, curEb, f)
+      : '<div class="pair">' + fig(da, curEa, f, 'A: ' + da.version) + fig(db, curEb, f, 'B: ' + db.version) + '</div>';
+    body.classList.toggle('blink', mode === 'blink');
+    body.classList.toggle('showB', out.classList.contains('showB'));
+    lb.hidden = false;
+    document.body.style.overflow = 'hidden';
+    wireSliders(body);
+    applyBlinkTimer();
+  }
+
+  function openLightbox(i) {
+    if (i < 0 || i >= curFiles.length) return;
+    lbIdx = i;
+    renderLightbox();
+  }
+
+  function closeLightbox() {
+    lbIdx = -1;
+    $('cmp-lb').hidden = true;
+    $('clb-body').innerHTML = '';
+    document.body.style.overflow = '';
+  }
 
   async function render() {
     A = $('a').value; B = $('b').value;
     var da = await load(A), db = await load(B);
+    // Family dropdown when multiple families exist across entries.json
+    var fams = Array.from(new Set([da.family || 'wp', db.family || 'wp']));
+    $('fam-wrap').hidden = fams.length <= 1;
+    $('family').innerHTML = fams.map(function (f) { return '<option>' + esc(f) + '</option>'; }).join('');
+
     flat = entryIndex(da, db);
     var groupsList = [];
     flat.forEach(function (e) { if (groupsList.indexOf(e.group) < 0) groupsList.push(e.group); });
@@ -221,6 +557,7 @@ every second; a click on a picture switches by hand.</p>
     if ($('entry').value) p.set('entry', $('entry').value);
     else if ($('group').value) p.set('group', $('group').value);
     if ($('show').value === 'all') p.set('show', 'all');
+    if (mode !== 'side') p.set('mode', mode);
     history.replaceState(null, '', '?' + p.toString());
     q = p;
   }
@@ -229,49 +566,138 @@ every second; a click on a picture switches by hand.</p>
     state();
     var da = data[A], db = data[B], name = $('entry').value;
     var html = '';
-    if (!name) {                                   // the groups' thumbnails
+    if (!name) {
       out.classList.add('overview');
-      html += heads(da, db, function (d) { return d.tree + '/index.html'; });
+      html += heads(da, db, function (d) { return d.tree + '/index.html'; }, 'Open catalog');
+      html += '<div class="ov-grid">';
       (da.groups.length ? da : db).groups.forEach(function (g) {
         var ga = da.groups.find(function (x) { return x.name === g.name; });
         var gb = db.groups.find(function (x) { return x.name === g.name; });
-        function t(d, gg) {
-          return gg && gg.thumb ? '<figure data-group="' + esc(g.name) + '"><img loading="lazy" src="' +
-                 esc(d.tree + '/' + gg.thumb) + '" alt=""></figure>' : '<figure><span class="none">no thumbnail</span></figure>';
+        function t(d, gg, tag) {
+          return gg && gg.thumb
+            ? '<figure data-group="' + esc(g.name) + '" data-ver-badge="' + esc(tag) + '"><img loading="lazy" decoding="async" src="' +
+              esc(d.tree + '/' + gg.thumb) + '" alt=""></figure>'
+            : '<figure data-ver-badge="' + esc(tag) + '"><span class="none">no thumbnail</span></figure>';
         }
         var n = function (gg) { return gg ? gg.entries.length : 0; };
-        html += '<div class="row"><h3>' + esc(g.name) + ' <span class="lbl">' + n(ga) + ' / ' + n(gb) +
-                ' rendered</span></h3><div class="pair">' + t(da, ga) + t(db, gb) + '</div></div>';
+        html += '<div class="row"><h3><span>' + esc(g.name) + '</span><span>' + n(ga) + ' / ' + n(gb) +
+                ' rendered</span></h3><div class="pair">' + t(da, ga, 'A: ' + da.version) + t(db, gb, 'B: ' + db.version) + '</div></div>';
       });
+      html += '</div>';
       out.innerHTML = html;
+      applyBlinkTimer();
       return;
     }
     out.classList.remove('overview');
     var ea = find(da, name), eb = find(db, name);
+    curEa = ea; curEb = eb;
     html += heads(da, db, function (d) {
       var e = find(d, name); return e ? d.tree + '/' + e.dir + '/index.html' : d.tree + '/index.html';
-    });
+    }, 'Open entry');
     var fs = files(ea, eb, $('show').value === 'all');
+    curFiles = fs;
     if (!fs.length) html += '<p class="msg">Neither version has rendered ' + esc(name) + '.</p>';
-    fs.forEach(function (f) {
-      html += '<div class="row"><h3>' + esc(f) + '</h3><div class="pair">' + fig(da, ea, f) + fig(db, eb, f) + '</div></div>';
+    fs.forEach(function (f, i) {
+      var body = (mode === 'slider')
+        ? sliderRow(da, ea, db, eb, f)
+        : '<div class="pair">' + fig(da, ea, f, 'A: ' + da.version) + fig(db, eb, f, 'B: ' + db.version) + '</div>';
+      html += '<div class="row" data-file="' + esc(f) + '" data-idx="' + i + '"><h3><span>' + esc(f) +
+              '</span><button type="button" class="btn sm subtle" data-zoom="' + i +
+              '" title="Enlarge synchronized comparison">&#10530; Zoom</button></h3>' + body + '</div>';
     });
     out.innerHTML = html;
+    applyBlinkTimer();
+    wireSliders(out);
+    if (!$('cmp-lb').hidden) {
+      if (curFiles.length) {
+        lbIdx = Math.max(0, Math.min(lbIdx, curFiles.length - 1));
+        renderLightbox();
+      } else {
+        closeLightbox();
+      }
+    }
   }
 
   out.addEventListener('click', function (ev) {
-    var f = ev.target.closest('figure[data-group]');
-    if (!f) return;
-    $('group').value = f.dataset.group;
-    fillEntries(f.dataset.group, null);
-    show();
-    scrollTo(0, 0);
+    if (ev.target && ev.target.id === 'blink-pause') {
+      blinkPaused = !blinkPaused;
+      ev.target.textContent = blinkPaused ? 'Resume blink' : 'Pause blink';
+      applyBlinkTimer();
+      return;
+    }
+    var zBtn = ev.target.closest('button[data-zoom]');
+    if (zBtn) {
+      openLightbox(Number(zBtn.getAttribute('data-zoom')));
+      return;
+    }
+    var fg = ev.target.closest('figure[data-group]');
+    if (fg && mode !== 'blink') {
+      $('group').value = fg.dataset.group;
+      fillEntries(fg.dataset.group, null);
+      show();
+      scrollTo(0, 0);
+      return;
+    }
+    if (mode === 'blink' && ev.target.closest('figure')) {
+      blinkPaused = true;
+      var pb = $('blink-pause');
+      if (pb) pb.textContent = 'Resume blink';
+      var nextB = !out.classList.contains('showB');
+      out.classList.toggle('showB', nextB);
+      $('clb-body').classList.toggle('showB', nextB);
+      applyBlinkTimer();
+      return;
+    }
+    var rowEl = ev.target.closest('.row[data-idx]');
+    if (rowEl && mode === 'side' && ev.target.closest('figure')) {
+      openLightbox(Number(rowEl.getAttribute('data-idx')));
+    }
   });
-  $('a').onchange = $('b').onchange = function () { q.delete('entry'); q.set('entry', $('entry').value); render(); };
+
+  $('cmp-lb').addEventListener('click', function (ev) {
+    if (ev.target === $('cmp-lb') || ev.target.closest('#clb-close')) {
+      closeLightbox();
+      return;
+    }
+    if (ev.target.closest('#clb-prev')) { openLightbox(lbIdx - 1); return; }
+    if (ev.target.closest('#clb-next')) { openLightbox(lbIdx + 1); return; }
+    if (ev.target.closest('#clb-pause')) {
+      blinkPaused = !blinkPaused;
+      var pb = $('blink-pause');
+      if (pb) pb.textContent = blinkPaused ? 'Resume blink' : 'Pause blink';
+      applyBlinkTimer();
+      return;
+    }
+    if (mode === 'blink' && ev.target.closest('#clb-body figure')) {
+      blinkPaused = true;
+      var nextB = !out.classList.contains('showB');
+      out.classList.toggle('showB', nextB);
+      $('clb-body').classList.toggle('showB', nextB);
+      applyBlinkTimer();
+    }
+  });
+
+  document.querySelectorAll('.mode-group button[data-mode]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      mode = b.getAttribute('data-mode');
+      blinkPaused = false;
+      syncModeButtons();
+      show();
+    });
+  });
+
+  $('swap').onclick = function () {
+    var tmp = $('a').value;
+    $('a').value = $('b').value;
+    $('b').value = tmp;
+    q.set('entry', $('entry').value);
+    render();
+  };
+  $('a').onchange = $('b').onchange = function () { q.set('entry', $('entry').value); render(); };
   $('group').onchange = function () { fillEntries($('group').value, null); show(); };
   $('entry').onchange = show;
   $('show').onchange = show;
-  $('blink').onchange = setBlink;
+
   function step(d) {
     var i = flat.findIndex(function (e) { return e.name === $('entry').value; });
     var e = flat[Math.max(0, Math.min(flat.length - 1, i + d))];
@@ -283,9 +709,24 @@ every second; a click on a picture switches by hand.</p>
   $('prev').onclick = function () { step(-1); };
   $('next').onclick = function () { step(1); };
   document.addEventListener('keydown', function (ev) {
-    if (ev.target.tagName === 'SELECT') return;
+    if (ev.target.tagName === 'SELECT' || ev.target.tagName === 'INPUT') return;
+    if (!$('cmp-lb').hidden) {
+      if (ev.key === 'Escape') { closeLightbox(); return; }
+      if (ev.key === 'ArrowLeft' || ev.key === 'ArrowUp') { ev.preventDefault(); openLightbox(lbIdx - 1); return; }
+      if (ev.key === 'ArrowRight' || ev.key === 'ArrowDown') { ev.preventDefault(); openLightbox(lbIdx + 1); return; }
+    }
     if (ev.key === '[') step(-1);
-    if (ev.key === ']') step(1);
+    else if (ev.key === ']') step(1);
+    else if (ev.key === ' ' && mode === 'blink') {
+      ev.preventDefault();
+      blinkPaused = true;
+      var pb = $('blink-pause');
+      if (pb) pb.textContent = 'Resume blink';
+      var nextB = !out.classList.contains('showB');
+      out.classList.toggle('showB', nextB);
+      $('clb-body').classList.toggle('showB', nextB);
+      applyBlinkTimer();
+    }
   });
   render();
 })();

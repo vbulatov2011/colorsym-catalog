@@ -41,7 +41,7 @@
   coset numbering are not touched.  make_manifest.mjs calls the same code.
 */
 
-const SYMMHUB = 'file:///D:/home/projects/00.docs/250125_symhub/repo_v2/SymmHub';
+import { SYMMHUB_URL as SYMMHUB } from './catalog_paths.mjs';
 const { subgroupKey, subgroupClassKey, hermite } =
   await import(SYMMHUB + '/lib/grouplib/SubgroupKey.js');
 

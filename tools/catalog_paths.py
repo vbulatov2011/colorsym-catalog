@@ -8,7 +8,11 @@
 #                   entry's dir (entry_names) is family-relative: 632/3/632-632-3
 #   up(rel_dir)     the '../' run from a root-relative folder back to the root,
 #                   for a page's links to site-wide files (css/, compare.html)
-#   data_file(s)    the manifest data/wp/<s>.json   job_file(j)  <jobs>/<j>.json
+#   data_file(s)    the manifest data/<family>/<s>.json   job_file(j)  <jobs>/<j>.json
+#
+# Families.  catalog_paths.json lists each family under "families" (wp now;
+# frieze, spherical, hyperbolic later).  CATALOG_FAMILY selects one; use_family()
+# switches.  Each family keeps its UI/group metadata in data/<family>/family.json.
 #
 # Versions.  A version is one complete rendering of the family from presets of
 # its own: versions/<name>/version.json says which preset each group takes,
@@ -17,18 +21,29 @@
 # the main one.  The main version's pages and jobs are the catalog's own -
 # <familyDir>/ and <jobsDir>/ at the root; any other version keeps them under
 # versions/<name>/.  The tools work on one version: CATALOG_VERSION in the
-# environment, else the main one; use_version() switches.  Before any version
-# exists the paths are the root's, as they were.
+# environment, else the main one; use_version() switches.
 import html, json, os
 
 CAT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 _CFG = json.load(open(os.path.join(CAT, 'tools', 'catalog_paths.json'), encoding='utf-8'))
 
 URL_ROOT = _CFG['urlRoot']
-FAMILY = _CFG['family']
-DATA_DIR = _CFG['dataDir']
-PRESETS_DIR = _CFG['presetsDir']
 VERSIONS_DIR = _CFG['versionsDir']
+
+_EXT = _CFG.get('external', {})
+SYMMHUB_DIR = os.environ.get('SYMMHUB_DIR') or _EXT.get('symmhubDir') or 'D:/home/projects/00.docs/250125_symhub/repo_v2/SymmHub'
+SUBLIB_PATH = os.environ.get('SUBLIB_PATH') or _EXT.get('sublibPath') or (SYMMHUB_DIR.rstrip('/') + '/lib/sublib/src/sublib.js')
+SYMMHUB_URL = (os.environ.get('SYMMHUB_URL') or _EXT.get('symmhubUrl') or 'http://localhost:8125').rstrip('/')
+
+FAMILIES = _CFG.get('families') or {
+    _CFG['family']: {
+        'familyDir': _CFG['familyDir'],
+        'dataDir': _CFG['dataDir'],
+        'jobsDir': _CFG['jobsDir'],
+        'presetsDir': _CFG['presetsDir'],
+    }
+}
+DEFAULT_FAMILY = _CFG.get('defaultFamily') or _CFG['family']
 
 
 def join(*parts):
@@ -53,6 +68,44 @@ def up(rel_dir):
     return '../' * len(join(rel_dir).split('/')) if join(rel_dir) else ''
 
 
+# ---- families ----------------------------------------------------------------
+
+FAMILY = None
+TREE = None
+JOBS = None
+DATA_DIR = None
+PRESETS_DIR = None
+META_FILE = None
+
+
+def family_cfg(f=None):
+    f = f or FAMILY or DEFAULT_FAMILY
+    return FAMILIES[f]
+
+
+def family_meta(f=None):
+    """load data/<family>/family.json if present, else {}"""
+    fc = family_cfg(f)
+    mf = fc.get('metaFile') or join(fc['dataDir'], 'family.json')
+    p = path(mf)
+    return json.load(open(p, encoding='utf-8')) if os.path.exists(p) else {}
+
+
+def use_family(f):
+    global FAMILY, TREE, JOBS, DATA_DIR, PRESETS_DIR, META_FILE
+    if f not in FAMILIES:
+        raise KeyError('unknown catalog family %r (known: %s)' % (f, ', '.join(FAMILIES)))
+    fc = FAMILIES[f]
+    FAMILY = f
+    TREE = fc['familyDir']
+    JOBS = fc['jobsDir']
+    DATA_DIR = fc['dataDir']
+    PRESETS_DIR = fc['presetsDir']
+    META_FILE = fc.get('metaFile') or join(DATA_DIR, 'family.json')
+    if VERSION is not None or registry().get('main') is not None:
+        use_version(VERSION)
+
+
 # ---- versions ----------------------------------------------------------------
 
 def registry():
@@ -73,16 +126,15 @@ def version_root(v=None):
     return '' if is_main(v) else join(VERSIONS_DIR, v)
 
 
-TREE, JOBS = _CFG['familyDir'], _CFG['jobsDir']     # their names, in any version's root
-
-
-def family_dir(v=None):
+def family_dir(v=None, f=None):
     """a version's page tree: wp/ for the main one, versions/<name>/wp/ else"""
-    return join(version_root(v), TREE)
+    tree = family_cfg(f)['familyDir'] if f else TREE
+    return join(version_root(v), tree)
 
 
-def jobs_dir(v=None):
-    return join(version_root(v), JOBS)
+def jobs_dir(v=None, f=None):
+    jobs = family_cfg(f)['jobsDir'] if f else JOBS
+    return join(version_root(v), jobs)
 
 
 def version_dir(v=None):
@@ -116,6 +168,7 @@ def use_version(v):
 
 
 VERSION = None
+use_family(os.environ.get('CATALOG_FAMILY') or DEFAULT_FAMILY)
 use_version(os.environ.get('CATALOG_VERSION') or registry()['main'])
 
 

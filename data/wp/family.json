@@ -1,0 +1,49 @@
+{
+ "id": "wp",
+ "title": "Wallpaper groups",
+ "shortTitle": "Wallpaper",
+ "groupSingular": "wallpaper group",
+ "groupPlural": "wallpaper groups",
+ "geometry": "euclidean-plane",
+ "spaceNoun": "the plane",
+ "heroGroup": "*632",
+ "colorRange": [2, 7],
+ "hasAffineClasses": true,
+ "renderIterations": {
+  "default": 60,
+  "2s22": 70
+ },
+ "liveApp": {
+  "symdraw": "/apps/symdraw/symdraw_wp.html",
+  "sympix": "/apps/sympix/sympix_color.html",
+  "layer": "drawing"
+ },
+ "description": "The 17 Euclidean plane symmetry groups and their finite-index colorings.",
+ "altNamesLabel": "Hermann\u2013Mauguin",
+ "altNames": {
+  "o": "p1",
+  "2222": "p2",
+  "**": "pm",
+  "xx": "pg",
+  "*x": "cm",
+  "*2222": "pmm",
+  "22*": "pmg",
+  "22x": "pgg",
+  "2*22": "cmm",
+  "442": "p4",
+  "*442": "p4m",
+  "4*2": "p4g",
+  "333": "p3",
+  "*333": "p3m1",
+  "3*3": "p31m",
+  "632": "p6",
+  "*632": "p6m"
+ },
+ "sections": [
+  { "title": "No rotations",  "groups": ["o", "xx", "**", "*x"] },
+  { "title": "Half turns",    "groups": ["2222", "22x", "22*", "*2222", "2*22"] },
+  { "title": "Third turns",   "groups": ["333", "3*3", "*333"] },
+  { "title": "Quarter turns", "groups": ["442", "4*2", "*442"] },
+  { "title": "Sixth turns",   "groups": ["632", "*632"] }
+ ]
+}

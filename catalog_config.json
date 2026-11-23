@@ -1,0 +1,4 @@
+{
+ "_comment": "Optional runtime overrides for static deployments (edit symmhubUrl here without regenerating HTML pages).",
+ "symmhubUrl": "http://localhost:8125"
+}

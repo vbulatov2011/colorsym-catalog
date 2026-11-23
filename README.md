@@ -56,19 +56,21 @@ and presets stay outside the family trees; `tools/catalog_paths.json` says where
 lives, and every tool takes its paths from it.
 
 ```
-index.html                         landing page: the families, the versions
+index.html                         landing page: the families, the versions (generated, gitignored)
+search_index.json                  global quick-jump search index (generated, gitignored)
 compare.html                       two versions side by side
-wp/                                the wallpaper groups' pages (the main version's)
+catalog_config.json                default external settings (e.g. SymmHub URL)
+wp/                                the wallpaper groups' pages (the main version's; generated, gitignored)
   index.html  colors/<n>/          the family's index, all groups by number of colors
-  <G>/<colors>/<G>-<H>-<n>/        entry: index.html + gen/ (its rendered images)
-data/wp/                           per-group manifests (subgroups, geometry, names)
+  <G>/<colors>/<G>-<H>-<n>/        entry: index.html + gen/ (its rendered images & contact sheet)
+data/wp/                           per-group manifests (subgroups, geometry, names) + family.json
 presets/wp/<set>/                  SymmHub documents used as motifs, in sets (wp0, wpe, wpe1)
-jobs/                              the main version's render jobs (outDir under wp/)
+jobs/                              the main version's render jobs (generated, gitignored)
 versions/index.json                the versions, and which one is main
 versions/<name>/                   a version: version.json, presets/ (its snapshot);
-                                   wp/ and jobs/ too unless it is the main one
+                                   build outputs (wp/, jobs/, entries.json, search_index.json, ...) are gitignored
 tools/                             the generators (see below); tools/render/ the driver
-css/                               page styles, shared by all families
+css/  js/                          shared styles and interactive UI scripts for all families
 work/                              hand-drawn assets (axis_N.svg) and scratch art
 ```
 
@@ -78,9 +80,12 @@ A version is the catalog rendered from presets of its own, to compare renderings
 `versions/<name>/version.json` gives each group its preset, and a build copies them
 into `versions/<name>/presets/` - the snapshot the version's jobs render, so editing
 a preset afterwards changes nothing until the next build. The main version's pages
-and jobs are the catalog's own (`wp/`, `jobs/`); any other version keeps them under
-`versions/<name>/` (not in git - only its `version.json` and snapshot are). The tools
-work on the version in `CATALOG_VERSION`, else on the main one.
+and jobs live at the root (`wp/`, `jobs/`); any other version keeps them under
+`versions/<name>/`. All auto-generated outputs (rendered images, contact sheets,
+`index.html` pages, `search_index.json`, `jobs/`, `render_list.json`, `render_done.json`,
+`entries.json`) are gitignored — git tracks only the sources, manifests, presets, and
+each version's `version.json` + preset snapshot. The tools work on the version in
+`CATALOG_VERSION`, else on the main one.
 
 ```
 python tools/version.py new wpe1 --set wpe1 --label "pastel palette"   # presets/wp/wpe1/<x>-<G>.json

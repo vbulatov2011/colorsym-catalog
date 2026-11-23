@@ -83,7 +83,7 @@ if VIEW == 'preset':
 # default jobs stay byte for byte what they were.
 MOTIF_EXTRA = {} if TEMPLATE.endswith('/wp_632_632_3.1.json') else {"coloringType": "mult"}
 
-SYMMHUB = 'D:/home/projects/00.docs/250125_symhub/repo_v2/SymmHub'
+SYMMHUB = P.SYMMHUB_DIR
 
 def overlay_item_ids(url):
     """Ids of the items of the preset's overlay layer, in their order.  A

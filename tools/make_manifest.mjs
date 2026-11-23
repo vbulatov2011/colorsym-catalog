@@ -47,14 +47,17 @@
 import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { DATA_DIR } from './catalog_paths.mjs';
+import { CAT, DATA_DIR, FAMILY, FAMILIES, SUBLIB_URL, SYMMHUB_URL } from './catalog_paths.mjs';
 
-const SUBLIB = 'file:///D:/home/projects/00.docs/250117_colorsym/wieting/sublib/src/sublib.js';
-const SYMMHUB = 'file:///D:/home/projects/00.docs/250125_symhub/repo_v2/SymmHub';
+const SUBLIB = SUBLIB_URL;
+const SYMMHUB = SYMMHUB_URL;
 
 const { subgroupsData, subgroupStructure, permStringToArrays, WALLPAPER_NAMES,
         getPreset, fileStem } = await import(SUBLIB);
-const { iWallpaperGroup } = await import(SYMMHUB + '/lib/grouplib/WallpaperGroups.js');
+const { iWallpaperGroup, resolveWallpaperDomainShape } =
+  await import(SYMMHUB + '/lib/grouplib/WallpaperGroups.js');
+const { Group_Frieze, Group_Spherical, Group_KLM } =
+  await import(SYMMHUB + '/lib/grouplib/grouplib.js');
 const { Group, ITransform, iPoint } = await import(SYMMHUB + '/lib/invlib/invlib.js');
 const { buildSubgroupDomain, classifyEuclidean, isometryToString, sameTransform } =
   await import(SYMMHUB + '/lib/grouplib/SubgroupDomain.js');
@@ -63,7 +66,6 @@ const { computeFrame, subgroupClassKey } =
   await import(SYMMHUB + '/lib/grouplib/SubgroupKey.js');
 const { groupPresentation } = await import(SYMMHUB + '/lib/grouplib/GroupPresentation.js');
 const { affineClasses, affineCounts } = await import('./affine_classes.mjs');
-const { resolveWallpaperDomainShape } = await import(SYMMHUB + '/lib/grouplib/WallpaperGroups.js');
 const dirichletLib = { ...(await import(SYMMHUB + '/lib/grouplib/DirichletDomain.js')),
                        ...(await import(SYMMHUB + '/lib/grouplib/Permutations.js')) };
 const { dirichletGroup, sideCosets, sourceWord } = await import('./render/dirichlet_group.mjs');
@@ -308,30 +310,147 @@ function cyclesOf(perm){
 }
 
 // ---------------------------------------------------------------------------
+// multi-family helpers (frieze, spherical, klm/hyperbolic)
+// ---------------------------------------------------------------------------
+
+const FRIEZE_ALIASES = {
+  '*22oo': '*22∞', '22oo': '22∞', '2*oo': '2*∞', 'oo*': '∞*',
+  '*oooo': '*∞∞',  'oox': '∞x',   'oooo': '∞∞',
+};
+
+function familyStem(fam, name){
+  if(fam === 'wp') return fileStem(name);
+  return String(name).replace(/∞/g, 'oo').replace(/\*/g, 's').replace(/[^A-Za-z0-9_-]+/g, '');
+}
+
+function classifyFriezeSubgroup(domain){
+  // Walk short products of H's pairing generators and inspect their Euclidean
+  // isometry types: the 7 frieze groups have pairwise distinct geometric signatures.
+  const gens = domain.generators.map(gi => domain.pairings[gi].itrans);
+  const steps = gens.concat(gens.map(g => g.getInverse()));
+  const keyOf = t => {
+    const a = t.transform(TEST_POINTS[0]).v, b = t.transform(TEST_POINTS[1]).v;
+    return [a[0], a[1], b[0], b[1]].map(v => v.toFixed(4)).join(',');
+  };
+  let frontier = [IDENTITY];
+  const seen = new Map([[keyOf(IDENTITY), IDENTITY]]);
+  for(let d = 0; d < 4 && seen.size < 250; d++){
+    const next = [];
+    for(const cur of frontier) for(const g of steps){
+      const c = cur.getCopy().concat(g);
+      const k = keyOf(c);
+      if(!seen.has(k)){ seen.set(k, c); next.push(c); }
+    }
+    frontier = next;
+  }
+  let hasRot2 = false, hasHMirror = false, hasVMirror = false, hasGlide = false;
+  for(const t of seen.values()){
+    const cls = classifyEuclidean(t);
+    if(cls.type === 'rotation') hasRot2 = true;
+    else if(cls.type === 'reflection'){
+      if(Math.abs(cls.axis.dir[1]) < 1e-3) hasHMirror = true;
+      else if(Math.abs(cls.axis.dir[0]) < 1e-3) hasVMirror = true;
+    } else if(cls.type === 'glide') hasGlide = true;
+  }
+  if(hasHMirror && hasVMirror) return '*22∞';
+  if(hasHMirror) return '∞*';
+  if(hasVMirror && hasRot2) return '2*∞';
+  if(hasVMirror) return '*∞∞';
+  if(hasRot2) return '22∞';
+  if(hasGlide) return '∞x';
+  return '∞∞';
+}
+
+function parseSphericalSpec(name){
+  const fixed = new Set(['*332', '332', '3*2', '*432', '432', '*532', '532']);
+  if(fixed.has(name)) return { type: name, n: 2 };
+  let m;
+  if((m = name.match(/^\*22(\d+)$/))) return { type: '*22n', n: Number(m[1]) };
+  if((m = name.match(/^2\*(\d+)$/)))  return { type: '2*n',  n: Number(m[1]) };
+  if((m = name.match(/^22(\d+)$/)))   return { type: '22n',  n: Number(m[1]) };
+  if((m = name.match(/^\*(\d+)\1$/))) return { type: '*nn',  n: Number(m[1]) };
+  if((m = name.match(/^(\d+)\1$/)))   return { type: 'nn',   n: Number(m[1]) };
+  if((m = name.match(/^(\d+)\*$/)))   return { type: 'n*',   n: Number(m[1]) };
+  if((m = name.match(/^(\d+)x$/)))    return { type: 'nx',   n: Number(m[1]) };
+  throw new Error(`unrecognized spherical group '${name}' (e.g. *532, 432, *224, 3*)`);
+}
+
+function parseKlmSpec(name){
+  const s = name.startsWith('*');
+  const raw = s ? name.slice(1) : name;
+  const parts = raw.includes('-') ? raw.split('-').map(Number)
+              : (raw.length === 3 && /^\d{3}$/.test(raw) ? [...raw].map(Number) : null);
+  if(!parts || parts.length !== 3 || parts.some(x => !Number.isInteger(x) || x < 2))
+    throw new Error(`unrecognized KLM group '${name}' (e.g. 237, *237, 2-3-12)`);
+  return { s, K: parts[0], L: parts[1], M: parts[2] };
+}
+
+// ---------------------------------------------------------------------------
 // main
 // ---------------------------------------------------------------------------
 
 const _argv = process.argv.slice(2);
-const _di = _argv.indexOf('--domain');
-const domainShape = _di >= 0 ? _argv.splice(_di, 2)[1] : null;
-const _dd = _argv.indexOf('--dirichlet');
-const dirichletPreset = _dd >= 0 ? _argv.splice(_dd, 2)[1] : null;
-const groupName = _argv[0] || '632';
+const _optFlag = (flag, takesVal = true) => {
+  const i = _argv.indexOf(flag);
+  if(i < 0) return takesVal ? null : false;
+  return takesVal ? _argv.splice(i, 2)[1] : (_argv.splice(i, 1), true);
+};
+const familyArg = (_optFlag('--family') || FAMILY || 'wp').toLowerCase();
+const famKey = familyArg === 'wallpaper' ? 'wp'
+             : familyArg === 'hyperbolic' ? 'klm' : familyArg;
+const domainShape = _optFlag('--domain');
+const dirichletPreset = _optFlag('--dirichlet');
+const customOut = _optFlag('--out');
+const dryRun = _optFlag('--dry-run', false);
+const rawGroupName = _argv[0] || (famKey === 'frieze' ? '*22∞' : famKey === 'spherical' ? '*532' : famKey === 'klm' ? '*237' : '632');
+const groupName = famKey === 'frieze' ? (FRIEZE_ALIASES[rawGroupName] || rawGroupName) : rawGroupName;
 const maxIndex = Number(_argv[1] || 6);
 
+const isWallpaper = famKey === 'wp';
+const isEuclidean = famKey === 'wp' || famKey === 'frieze';
+const outDir = customOut ? customOut
+             : (FAMILIES[famKey] ? join(CAT, ...FAMILIES[famKey].dataDir.split('/'))
+                                 : join(CAT, 'data', famKey));
+
 let presentation, data, group;
-if(domainShape){
-  // the presentation of THIS domain: its pairing transforms are the generators
-  group = new Group(iWallpaperGroup({ name: groupName, a: GEOMETRY_A, domainShape }));
-  const p = groupPresentation(group);
-  presentation = { name: groupName, gens: p.gens, relators: p.relators };
-  data = subgroupsData({ name: groupName, gens: p.gens, relators: p.relators,
+if(isWallpaper){
+  if(domainShape){
+    // the presentation of THIS domain: its pairing transforms are the generators
+    group = new Group(iWallpaperGroup({ name: groupName, a: GEOMETRY_A, domainShape }));
+    const p = groupPresentation(group);
+    presentation = { name: groupName, gens: p.gens, relators: p.relators };
+    data = subgroupsData({ name: groupName, gens: p.gens, relators: p.relators,
+                           maxIndex, generators: 'none' });
+  } else {
+    presentation = getPreset('wallpaper:' + groupName);
+    data = subgroupsData({ preset: 'wallpaper:' + groupName, maxIndex, generators: 'none' });
+    group = new Group(iWallpaperGroup({ name: groupName, a: GEOMETRY_A }));
+  }
+} else if(famKey === 'frieze'){
+  const maker = new Group_Frieze({ type: groupName, a: GEOMETRY_A });
+  group = maker.getGroup();
+  presentation = maker.getPresentation();
+  data = subgroupsData({ name: groupName, gens: presentation.gens, relators: presentation.relators,
+                         maxIndex, generators: 'none' });
+} else if(famKey === 'spherical'){
+  const spec = parseSphericalSpec(groupName);
+  const maker = new Group_Spherical(spec);
+  group = maker.getGroup();
+  presentation = maker.getPresentation();
+  data = subgroupsData({ name: groupName, gens: presentation.gens, relators: presentation.relators,
+                         maxIndex, generators: 'none' });
+} else if(famKey === 'klm'){
+  const spec = parseKlmSpec(groupName);
+  const maker = new Group_KLM();
+  Object.assign(maker.params, spec);
+  group = maker.getGroup();
+  presentation = maker.getPresentation();
+  data = subgroupsData({ name: groupName, gens: presentation.gens, relators: presentation.relators,
                          maxIndex, generators: 'none' });
 } else {
-  presentation = getPreset('wallpaper:' + groupName);
-  data = subgroupsData({ preset: 'wallpaper:' + groupName, maxIndex, generators: 'none' });
-  group = new Group(iWallpaperGroup({ name: groupName, a: GEOMETRY_A }));
+  throw new Error(`unsupported family '${famKey}' (expected wp, frieze, spherical, klm)`);
 }
+
 const genCountMatch = group.getFundDomain().length === presentation.gens.split(/\s+/).length;
 const corr = genCountMatch ? checkCorrespondence(group, presentation)
                            : { ok: false, badRelators: ['generator count mismatch'] };
@@ -339,10 +458,10 @@ if(!corr.ok)
   console.warn(`WARNING ${groupName}: geometry does not satisfy the presentation ` +
                `(${corr.badRelators.join(', ')}) - geometric fields omitted`);
 
-// G on the preset's Dirichlet domain: the preset's geometry and domain shape,
-// whose generators must be the presentation's (the coset tables are theirs)
+// G on the preset's Dirichlet domain (wallpaper)
 let DG = null, dirichletInfo = null;
 if(dirichletPreset){
+  if(!isWallpaper) throw new Error('--dirichlet is currently supported for wallpaper groups only');
   const sym = JSON.parse(readFileSync(dirichletPreset, 'utf8')).params.symmetry;
   const gp = sym.group.params;
   const shapeOf = sh => resolveWallpaperDomainShape(groupName, sh || 'default');
@@ -366,16 +485,15 @@ if(dirichletPreset){
                     geometry: { a: gp.a, b: gp.b, c: gp.c, angle_a: gp.angle_a, angle_b: gp.angle_b } };
 }
 
-const refFingerprints = makeReferenceFingerprints();
-const frame = corr.ok ? computeFrame(group) : null;
-const expandedRelators = String(presentation.relators).split(',').map(r => expandRelator(r));
+const refFingerprints = isWallpaper ? makeReferenceFingerprints() : null;
+const frame = (isWallpaper && corr.ok) ? computeFrame(group) : null;
+const expandedRelators = String(presentation.relators).split(',').filter(Boolean).map(r => expandRelator(r));
 
 const subgroups = [];
 for(const sub of data.subgroups){
 
-  // a catalogue preset tells sublib its dimension, which is what turns on the
-  // abelianization; a presentation derived from a domain does not, so say it
-  const st = subgroupStructure(data, sub.subgroup, domainShape ? { dimension: 2 } : {});
+  const st = subgroupStructure(data, sub.subgroup,
+    (isWallpaper && domainShape) ? { dimension: 2 } : (!isWallpaper ? { abelianization: true } : {}));
   const order = placementOrder(sub.cosets);
   const renumbered = order.some((old, k) => old !== k);
   const cosets = renumbered ? renumberCosets(sub.cosets, order) : sub.cosets;
@@ -384,14 +502,21 @@ for(const sub of data.subgroups){
 
   let domain = null;
   if(corr.ok){
-    domain = DG ? buildSubgroupDomain({ group: DG, cosets: sideCosets(dirichletLib, DG, cosets),
-                                        testPoints: TEST_POINTS })
-                : buildSubgroupDomain({ group, cosets, testPoints: TEST_POINTS });
+    try {
+      domain = DG ? buildSubgroupDomain({ group: DG, cosets: sideCosets(dirichletLib, DG, cosets),
+                                          testPoints: TEST_POINTS })
+                  : buildSubgroupDomain({ group, cosets, testPoints: TEST_POINTS });
+    } catch(e){
+      console.warn(`WARNING ${sub.subgroup}: buildSubgroupDomain failed (${e.message})`);
+    }
   }
-  // a cell's word in G's generators (a Dirichlet cell's is in DG's letters)
   const gWord = w => (DG ? sourceWord(dirichletLib, DG, w) : w) || 'e';
 
-  const cls = classifySubgroupType(perms, expandedRelators, st, refFingerprints);
+  const cls = isWallpaper
+    ? classifySubgroupType(perms, expandedRelators, st, refFingerprints)
+    : (famKey === 'frieze' && domain
+       ? { type: classifyFriezeSubgroup(domain) }
+       : { type: sub.index === 1 ? groupName : 'sub' });
 
   const entry = {
     id: sub.subgroup,                    // sublib id: stable only within this file
@@ -403,7 +528,7 @@ for(const sub of data.subgroups){
     cosets,
     ...(renumbered ? { sublibCosets: sub.cosets, cosetOrder: order } : {}),
     orders: st.orders,
-    abelianization: st.abelianization.text,
+    ...(st.abelianization ? { abelianization: st.abelianization.text } : {}),
     colorAction: presentation.gens.split(/\s+/).map((g, k) => ({
       generator: g,
       perm: perms[k],
@@ -413,11 +538,10 @@ for(const sub of data.subgroups){
 
   if(frame){
     try {
-      // the key of the conjugacy class: the least key over the conjugates of H
       const gk = subgroupClassKey({ group, frame, cosets });
       entry.geoKey = gk.key;
-      entry.keyCoset = gk.coset;                       // the coset whose stabilizer has the least key, 0 for H itself
-      entry.representativeKey = gk.keys.get(0).key;    // the key of H itself, the geoKey of the manifests before 2026-09-05
+      entry.keyCoset = gk.coset;
+      entry.representativeKey = gk.keys.get(0).key;
       entry.latticeHNF = gk.hnf;
       entry.latticeIndex = gk.latticeIndex;
       entry.pointIndex = gk.pointIndex;
@@ -427,22 +551,17 @@ for(const sub of data.subgroups){
   }
 
   if(domain){
-    // f_i: the domain's cells, one per orbit class; g_j: the coset transversal
-    entry.orbitReps = domain.cells.map(c => ({
-      word: gWord(c.word),
-      isometry: classifyEuclidean(c.itrans),
-      text: isometryToString(classifyEuclidean(c.itrans)),
-    }));
-    entry.transversal = domain.cosetTransversal.map(t => ({
-      word: gWord(t.word),
-      isometry: classifyEuclidean(t.itrans),
-      text: isometryToString(classifyEuclidean(t.itrans)),
-    }));
+    const describeIso = itrans => isEuclidean
+      ? { isometry: classifyEuclidean(itrans), text: isometryToString(classifyEuclidean(itrans)) }
+      : { text: itrans.word || 'e' };
+    entry.orbitReps = domain.cells.map(c => ({ word: gWord(c.word), ...describeIso(c.itrans) }));
+    entry.transversal = domain.cosetTransversal.map(t => ({ word: gWord(t.word), ...describeIso(t.itrans) }));
     entry.simplyConnected = domain.simplyConnected;
     entry.hGenerators = domain.generators.map(gi => ({
       word: DG ? gWord(domain.pairings[gi].word) : domain.pairings[gi].word,
-      isometry: domain.pairings[gi].isometry,
-      text: isometryToString(domain.pairings[gi].isometry),
+      ...(isEuclidean
+          ? { isometry: domain.pairings[gi].isometry, text: isometryToString(domain.pairings[gi].isometry) }
+          : { text: domain.pairings[gi].word }),
     }));
     entry.sideCounts = {
       boundary: domain.sides.filter(s => s.kind === 'boundary').length,
@@ -453,9 +572,7 @@ for(const sub of data.subgroups){
   subgroups.push(entry);
 }
 
-// display names: G/H[n]#k — the ordinal k comes from sorting each
-// (type, index) bucket by the geometric key of the class, so it is
-// reproducible and survives a change of the group's fundamental domain
+// display names: G/H[n]#k
 {
   const buckets = new Map();
   for(const s of subgroups){
@@ -471,8 +588,6 @@ for(const sub of data.subgroups){
   }
 }
 
-// classes under the affine normalizer of G: the classical colour group types
-// (tools/affine_classes.mjs); affineClass names the least entry of the class
 let affineCountPerIndex = null;
 if(frame){
   const { classOf } = affineClasses({ group, frame, subgroups });
@@ -481,16 +596,17 @@ if(frame){
     .map((count, i) => ({ index: i + 1, count })).filter(c => c.count);
 }
 
+const stemOut = familyStem(famKey, groupName);
 const manifest = {
   format: 'colorsym-catalog-manifest',
   version: 3,            // 3: geoKey is the key of the conjugacy class; keyCoset and representativeKey added
   group: {
     name: groupName,
-    stem: fileStem(groupName),
-    family: 'wallpaper',
+    stem: stemOut,
+    family: isWallpaper ? 'wallpaper' : famKey,
     gens: presentation.gens,
     relators: presentation.relators,
-    geometry: { a: GEOMETRY_A },
+    geometry: isEuclidean ? { a: GEOMETRY_A } : {},
     ...(domainShape ? { domainShape } : {}),
     ...(dirichletInfo ? { dirichlet: dirichletInfo } : {}),
     geometryVerified: corr.ok,
@@ -504,28 +620,29 @@ const manifest = {
   subgroups,
 };
 
-mkdirSync(OUT_DIR, { recursive: true });
-const outStem = fileStem(groupName) +
+const outStem = stemOut +
                 (domainShape ? '@' + domainShape.replace(/\*/g, 's').replace(/\s+/g, '-') : '') +
                 (DG ? '@dirichlet' : '');
-const outFile = join(OUT_DIR, outStem + '.json');
-writeFileSync(outFile, JSON.stringify(manifest, null, 1));
+const outFile = join(outDir, outStem + '.json');
 
-// keep data/wp/index.json current - it lists the catalogue's own (default domain)
-// manifests only
-if(!domainShape && !DG){
-const indexFile = join(OUT_DIR, 'index.json');
-const index = existsSync(indexFile) ? JSON.parse(readFileSync(indexFile, 'utf8'))
-                                    : { format: 'colorsym-catalog-index', groups: [] };
-const rec = { name: groupName, stem: fileStem(groupName), file: fileStem(groupName) + '.json',
-              maxIndex, totalCount: data.totalCount };
-const at = index.groups.findIndex(g => g.name === groupName);
-if(at >= 0) index.groups[at] = rec; else index.groups.push(rec);
-writeFileSync(indexFile, JSON.stringify(index, null, 1));
+if(!dryRun){
+  mkdirSync(outDir, { recursive: true });
+  writeFileSync(outFile, JSON.stringify(manifest, null, 1));
+
+  if(!domainShape && !DG){
+    const indexFile = join(outDir, 'index.json');
+    const index = existsSync(indexFile) ? JSON.parse(readFileSync(indexFile, 'utf8'))
+                                        : { format: 'colorsym-catalog-index', groups: [] };
+    const rec = { name: groupName, stem: stemOut, file: stemOut + '.json',
+                  maxIndex, totalCount: data.totalCount };
+    const at = index.groups.findIndex(g => g.name === groupName);
+    if(at >= 0) index.groups[at] = rec; else index.groups.push(rec);
+    writeFileSync(indexFile, JSON.stringify(index, null, 1));
+  }
 }
 
-console.log(`${groupName}: ${subgroups.length} subgroups to index ${maxIndex} -> ${outFile}`);
+console.log(`${groupName} (${famKey}): ${subgroups.length} subgroups to index ${maxIndex}${dryRun ? ' [dry-run]' : ' -> ' + outFile}`);
 for(const s of subgroups){
-  console.log(`  ${(s.name || s.id).padEnd(16)} placements ${s.placements}` +
+  console.log(`  ${(s.name || s.id).padEnd(20)} placements ${s.placements}` +
               `${s.normal ? ' (normal)' : ''}  (${s.id})`);
 }

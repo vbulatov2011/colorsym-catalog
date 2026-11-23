@@ -52,7 +52,7 @@ from entry_names import entry_names, group_motif, MIN_N, MAX_N
 
 PY = sys.executable
 TOOLS = os.path.join(P.CAT, 'tools')
-RENDER_PAGE = 'http://localhost:8125/apps/symdraw/catalog_render.html'
+RENDER_PAGE = P.SYMMHUB_URL + '/apps/symdraw/catalog_render.html'
 CATALOG_SITE = 'http://localhost:8124/'          # serve.mjs: the catalog root
 THREADS = 8
 
@@ -194,14 +194,18 @@ def cmd_new(args):
 
 def iterations(job, v, main):
     """the iterations an entry's job sets (make_entry_job.py --iterations), from the
-    version's own job, else the main version's"""
+    version's own job, else the main version's, else data/<family>/family.json's
+    renderIterations (by group stem, then default)"""
     for d in [P.jobs_dir(v)] + ([P.jobs_dir(main)] if main and main != v else []):
         f = P.path(d, job + '.json')
         if os.path.exists(f):
             c = [x for x in json.load(open(f, encoding='utf-8'))['_comment']
                  if 'symmetry.options.iterations' in x]
             return re.search(r'= (\d+)', c[0]).group(1) if c else None
-    return None
+    ri = (P.family_meta() or {}).get('renderIterations') or {}
+    stem = job.split('_')[0]
+    val = ri.get(stem, ri.get('default'))
+    return str(val) if val is not None else None
 
 
 def write_jobs(v, stems=(), keep=False):
@@ -320,7 +324,7 @@ def index_pages(v):
 def write_entries(v):
     """versions/<v>/entries.json: what compare.html shows of the version"""
     use(v)
-    out = {'version': v, 'label': (P.version_config(v) or {}).get('label', ''),
+    out = {'version': v, 'family': P.FAMILY, 'label': (P.version_config(v) or {}).get('label', ''),
            'tree': P.family_dir(v), 'groups': []}
     n = 0
     for g in groups():

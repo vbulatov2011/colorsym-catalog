@@ -4,10 +4,10 @@
   "takes its paths from here.  Paths are relative to the catalog root (the folder above",
   "tools/, served by the render server at urlRoot) and '/'-separated: one string is a file",
   "path, a server URL and a render job's outDir (the driver saves under the root).",
-  "family: the kind of groups the tools build (wp = the 17 wallpaper groups; later frieze,",
-  "spherical, hyperbolic).  familyDir: the family's page tree ('' = the root itself).",
-  "dataDir: its manifests.  jobsDir: its render jobs.  presetsDir: its symdraw presets, in",
-  "sets (presetsDir/<set>/).  versionsDir: the catalog's versions, see catalog_paths.py."
+  "families: per-family layout (wp = the 17 wallpaper groups; later frieze, spherical,",
+  "hyperbolic).  CATALOG_FAMILY selects a family (default: defaultFamily).",
+  "external: SymmHub and sublib locations (override via SYMMHUB_DIR / SUBLIB_PATH /",
+  "SYMMHUB_URL environment variables)."
  ],
  "urlRoot": "/catalog",
  "family": "wp",
@@ -15,5 +15,20 @@
  "dataDir": "data/wp",
  "jobsDir": "jobs",
  "presetsDir": "presets/wp",
- "versionsDir": "versions"
+ "versionsDir": "versions",
+ "defaultFamily": "wp",
+ "families": {
+  "wp": {
+   "familyDir": "wp",
+   "dataDir": "data/wp",
+   "jobsDir": "jobs",
+   "presetsDir": "presets/wp",
+   "metaFile": "data/wp/family.json"
+  }
+ },
+ "external": {
+  "symmhubDir": "D:/home/projects/00.docs/250125_symhub/repo_v2/SymmHub",
+  "sublibPath": "D:/home/projects/00.docs/250125_symhub/repo_v2/SymmHub/lib/sublib/src/sublib.js",
+  "symmhubUrl": "http://localhost:8125"
+ }
 }

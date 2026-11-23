@@ -199,18 +199,58 @@ export default function catalogDriver(api) {
     let mGroupLib = null;
     async function groupLib() {
         if (!mGroupLib) {
-            const [sd, wp, inv, dd, pm, dg] = await Promise.all([
+            const [sd, wp, gl, inv, dd, pm, dg] = await Promise.all([
                 import('/lib/grouplib/SubgroupDomain.js'),
                 import('/lib/grouplib/WallpaperGroups.js'),
+                import('/lib/grouplib/grouplib.js'),
                 import('/lib/invlib/invlib.js'),
                 import('/lib/grouplib/DirichletDomain.js'),
                 import('/lib/grouplib/Permutations.js'),
                 import(new URL('dirichlet_group.mjs', import.meta.url).href),   // beside this file
             ]);
-            mGroupLib = { ...sd, ...wp, Group: inv.Group,
+            mGroupLib = { ...sd, ...wp, Group: inv.Group, iPlane: inv.iPlane,
+                          Group_Frieze: gl.Group_Frieze,
+                          Group_Spherical: gl.Group_Spherical,
+                          Group_KLM: gl.Group_KLM,
                           dirichlet: { lib: { ...dd, ...pm }, ...dg } };
         }
         return mGroupLib;
+    }
+
+    /**
+     * Build the base group G0 from the document's symmetry params, dispatching
+     * across all catalog group families (Wallpaper, Frieze, Spherical, KLM, or
+     * fallback to the renderer's live group). Rebuilding from params avoids
+     * applying the document's symmetry transform twice.
+     */
+    function buildBaseGroup(lib, sym) {
+        const gt = sym.groupType || '';
+        const cls = sym.group && sym.group.className;
+        const gp = (sym.group && sym.group.params) || {};
+        if (gt === 'Wallpaper' || cls === 'Group_WP') {
+            return new lib.Group(lib.iWallpaperGroup({
+                name: gp.type, a: gp.a, b: gp.b, c: gp.c,
+                angle_a: (gp.angle_a || 0) * Math.PI / 180,
+                angle_b: (gp.angle_b === undefined ? 90 : gp.angle_b) * Math.PI / 180,
+                domainShape: gp.domainShape,
+            }));
+        }
+        if (gt === 'Frieze' || cls === 'Group_Frieze') {
+            return new lib.Group_Frieze({ type: gp.type, a: gp.a }).getGroup();
+        }
+        if (gt === 'Spherical' || cls === 'Group_Spherical') {
+            return new lib.Group_Spherical({
+                type: gp.type, n: gp.n, subtype: gp.subtype,
+            }).getGroup();
+        }
+        if (gt === 'KLM' || cls === 'Group_KLM') {
+            const maker = new lib.Group_KLM();
+            Object.assign(maker.params, {
+                K: gp.K, L: gp.L, M: gp.M, s: gp.s, hasR: gp.hasR,
+            });
+            return maker.getGroup();
+        }
+        return api.getGroup();
     }
 
     /**
@@ -223,15 +263,7 @@ export default function catalogDriver(api) {
     async function documentGroup() {
         const lib = await groupLib();
         const sym = api.getParams().symmetry;
-        const gp = sym.group.params;
-        // rebuild G from its parameters rather than reading the live group, so
-        // the symmetry transform is applied once, by the renderer, not twice
-        const G0 = new lib.Group(lib.iWallpaperGroup({
-            name: gp.type, a: gp.a, b: gp.b, c: gp.c,
-            angle_a: (gp.angle_a || 0) * Math.PI / 180,
-            angle_b: (gp.angle_b === undefined ? 90 : gp.angle_b) * Math.PI / 180,
-            domainShape: gp.domainShape,
-        }));
+        const G0 = buildBaseGroup(lib, sym);
         const DG = lib.dirichlet.dirichletGroup(lib.dirichlet.lib, G0, sym.dirichlet);
         return { G0, G: DG || G0, DG };
     }
@@ -247,27 +279,34 @@ export default function catalogDriver(api) {
             return { group: 'G (override cleared)' };
         }
         const lib = await groupLib();
-        // rebuild G from its parameters rather than reading the live group, so
-        // the symmetry transform is applied once, by the renderer, not twice
-        const gp = api.getParams().symmetry.group.params;
-        const G = new lib.Group(lib.iWallpaperGroup({
-            name: gp.type, a: gp.a, b: gp.b, c: gp.c,
-            angle_a: (gp.angle_a || 0) * Math.PI / 180,
-            angle_b: (gp.angle_b === undefined ? 90 : gp.angle_b) * Math.PI / 180,
-            // the document's fundamental domain: its pairing transforms are the
-            // generators the job's coset tables and words are written in
-            domainShape: gp.domainShape,
-        }));
+        const sym = api.getParams().symmetry;
+        const gp = (sym.group && sym.group.params) || {};
+        const G = buildBaseGroup(lib, sym);
         const H = lib.makeSubgroupGroup({ group: G, cosets });
         api.setGroupOverride(H);
         const dom = H.subgroupDomain;
         return {
-            parent: gp.type,
+            parent: gp.type || sym.groupType,
             index: dom.n,
             sides: H.getFundDomain().length,
             generators: dom.generators.map(gi => dom.pairings[gi].word),
             isometries: dom.generators.map(gi => lib.isometryToString(dom.pairings[gi].isometry)),
         };
+    }
+
+    /**
+     * Patch SymmHub's native GPU overlay layer to draw a subgroup H directly on
+     * any geometry (including non-Euclidean Spherical / Hyperbolic KLM domains
+     * where straight-line 2D polygon drawing does not apply).
+     */
+    function overlaySubgroup(cosets, items = {}) {
+        const symPatch = cosets ? { type: 'subgroup', cosets } : { type: 'renderer', cosets: '' };
+        const overlays = {};
+        for (const [id, cfg] of Object.entries(items)) {
+            overlays[id] = cfg === false ? { enabled: false }
+                : Object.assign({ enabled: true, symmetry: symPatch }, cfg === true ? {} : cfg);
+        }
+        return setLayer('overlay', { enabled: true, overlays });
     }
 
     /**
@@ -326,6 +365,8 @@ export default function catalogDriver(api) {
         if (cfg.layers)
             for (const [id, values] of Object.entries(cfg.layers))
                 missing.push(...setLayer(id, values));
+        if (cfg.overlaySubgroup)
+            missing.push(...overlaySubgroup(cfg.overlaySubgroup.subgroup, cfg.overlaySubgroup.overlays || {}));
         return missing;
     }
 
@@ -365,19 +406,14 @@ export default function catalogDriver(api) {
 
     async function subgroupGeo(cosets) {
         const sym = api.getParams().symmetry;
-        const gp = sym.group.params;
+        const gp = (sym.group && sym.group.params) || {};
         const dc = sym.dirichlet || {};
-        const cacheKey = JSON.stringify([gp.type, gp.a, gp.b, gp.c, gp.domainShape,
+        const cacheKey = JSON.stringify([sym.groupType, gp,
                                          dc.enabled ? [dc.baseX, dc.baseY, dc.words] : null, cosets]);
         if (geoCache.has(cacheKey)) return geoCache.get(cacheKey);
 
         const lib = await groupLib();
         const inv = await import('/lib/invlib/invlib.js');
-        // the cells: G's domain as the document draws it - a Dirichlet domain
-        // when it has one.  H's domain is then a union of those cells: the
-        // coset tables go over to the sides (sideCosets) and the cells' words
-        // come back in G0's generators, the words of the job's glyphs (the
-        // manifest's f/g words, made the same way by make_manifest.mjs).
         const { G, DG } = await documentGroup();
         const D = lib.dirichlet;
         const gWord = w => DG ? D.sourceWord(D.lib, DG, w) : w;
@@ -386,32 +422,62 @@ export default function catalogDriver(api) {
             return [p.v[0], p.v[1]];
         };
 
-        // vertices of G's (convex) fundamental domain, ordered around it
         const fd = G.getFundDomain();
+        const curved = fd.some(sp => sp.type === 1);
+        const dom = lib.buildSubgroupDomain({ group: G, checkConvex: false,
+                                              cosets: DG ? D.sideCosets(D.lib, DG, cosets) : cosets });
+
+        // Curved (Spherical / Hyperbolic KLM) domains cannot be polygon-clipped by
+        // linear plane intersections: return the subgroup domain data so callers can
+        // use SymmHub's native GPU subgroup overlays (overlaySubgroup).
+        if (curved) {
+            const gens = dom.generators.map(gi => dom.pairings[gi].itrans);
+            const geo = { G, dom, curved: true, cells: [], boundary: [],
+                          bbox: { x0: -1, x1: 1, y0: -1, y1: 1 }, center: [0, 0], diam: 2,
+                          fdCentroid: [0, 0], hGens: gens.concat(gens.map(g => g.getInverse())),
+                          cosetTransversal: (dom.cosetTransversal || []).map(t => ({
+                              word: gWord(t.word), itrans: t.itrans })),
+                          classify: lib.classifyEuclidean, apply,
+                          Identity: () => new inv.ITransform([], '') };
+            geoCache.set(cacheKey, geo);
+            return geo;
+        }
+
+        // vertices of G's (convex) Euclidean fundamental domain, ordered around it.
+        // For unbounded strips (Frieze groups), clip y within [-CLIP_Y, +CLIP_Y].
         const EPS = 1e-7;
-        const verts = [];
-        for (let i = 0; i < fd.length; i++) {
-            for (let j = i + 1; j < fd.length; j++) {
-                const [a1, b1, d1] = [fd[i].v[0], fd[i].v[1], fd[i].v[3]];
-                const [a2, b2, d2] = [fd[j].v[0], fd[j].v[1], fd[j].v[3]];
-                // splane planes: signed distance = n.p - d  (see iDistanceU4)
-                const det = a1 * b2 - a2 * b1;
-                if (Math.abs(det) < EPS) continue;
-                const x = (d1 * b2 - d2 * b1) / det;
-                const y = (a1 * d2 - a2 * d1) / det;
-                if (fd.every(sp => sp.v[0] * x + sp.v[1] * y - sp.v[3] <= 1e-6))
-                    verts.push([x, y]);
+        const collectVerts = (planes) => {
+            const out = [];
+            for (let i = 0; i < planes.length; i++) {
+                for (let j = i + 1; j < planes.length; j++) {
+                    const [a1, b1, d1] = [planes[i].v[0], planes[i].v[1], planes[i].v[3]];
+                    const [a2, b2, d2] = [planes[j].v[0], planes[j].v[1], planes[j].v[3]];
+                    const det = a1 * b2 - a2 * b1;
+                    if (Math.abs(det) < EPS) continue;
+                    const x = (d1 * b2 - d2 * b1) / det;
+                    const y = (a1 * d2 - a2 * d1) / det;
+                    if (planes.every(sp => sp.v[0] * x + sp.v[1] * y - sp.v[3] <= 1e-6))
+                        out.push([x, y]);
+                }
             }
+            return out;
+        };
+        let planes = fd;
+        let verts = collectVerts(planes);
+        if (verts.length < 3) {
+            const CLIP_Y = 2.0;
+            planes = fd.concat([lib.iPlane([0, 1, 0, CLIP_Y]), lib.iPlane([0, -1, 0, CLIP_Y])]);
+            verts = collectVerts(planes);
         }
         const cx = verts.reduce((s2, v) => s2 + v[0], 0) / verts.length;
         const cy = verts.reduce((s2, v) => s2 + v[1], 0) / verts.length;
         verts.sort((a, b) => Math.atan2(a[1] - cy, a[0] - cx) - Math.atan2(b[1] - cy, b[0] - cx));
 
-        // label each polygon edge with the fundamental domain side it lies on
+        // label each polygon edge with the fundamental domain side it lies on (-1 for clip cap)
         const edges = verts.map((v, i) => {
             const w = verts[(i + 1) % verts.length];
             const mx = (v[0] + w[0]) / 2, my = (v[1] + w[1]) / 2;
-            let side = 0, best = 1e9;
+            let side = -1, best = 1e-5;
             fd.forEach((sp, k) => {
                 const d = Math.abs(sp.v[0] * mx + sp.v[1] * my - sp.v[3]);
                 if (d < best) { best = d; side = k; }
@@ -419,8 +485,6 @@ export default function catalogDriver(api) {
             return { a: v, b: w, side };
         });
 
-        const dom = lib.buildSubgroupDomain({ group: G, checkConvex: false,
-                                              cosets: DG ? D.sideCosets(D.lib, DG, cosets) : cosets });
         const cells = dom.cells.map(c => ({
             coset: c.coset,
             word: gWord(c.word),
@@ -430,8 +494,8 @@ export default function catalogDriver(api) {
         const boundary = dom.sides.filter(sd => sd.kind === 'boundary').map(sd => {
             const cell = dom.cells[sd.cell];
             const e = edges.find(ed => ed.side === sd.side);
-            return { a: apply(cell.itrans, e.a), b: apply(cell.itrans, e.b) };
-        });
+            return e ? { a: apply(cell.itrans, e.a), b: apply(cell.itrans, e.b) } : null;
+        }).filter(Boolean);
 
         const xs = cells.flatMap(c => c.poly.map(q => q[0]));
         const ys = cells.flatMap(c => c.poly.map(q => q[1]));
@@ -630,15 +694,7 @@ export default function catalogDriver(api) {
         const depth = opt.depth || 5;
         const radius = opt.radius === undefined ? 1.2 : opt.radius;
 
-        const gp = api.getParams().symmetry.group.params;
-        const G = new lib.Group(lib.iWallpaperGroup({
-            name: gp.type, a: gp.a, b: gp.b, c: gp.c,
-            angle_a: (gp.angle_a || 0) * Math.PI / 180,
-            angle_b: (gp.angle_b === undefined ? 90 : gp.angle_b) * Math.PI / 180,
-            // the document's fundamental domain: its pairing transforms are the
-            // generators the job's coset tables and words are written in
-            domainShape: gp.domainShape,
-        }));
+        const G = buildBaseGroup(lib, api.getParams().symmetry);
 
         // the transforms to walk: G's pairings, or H's pairing generators
         let gens;
@@ -1180,7 +1236,7 @@ export default function catalogDriver(api) {
     async function runList(url, {done} = {}) {
         const list = await (await fetch(url, {cache: 'no-store'})).json();
         const run = window.catalogRun = {list: url, total: list.length, done: 0, images: 0,
-                                         errors: [], t0: performance.now(), finished: false};
+                                         errors: [], missingParams: [], t0: performance.now(), finished: false};
         const fresh = new Set();
         for (const u of list) {
             try {
@@ -1189,7 +1245,16 @@ export default function catalogDriver(api) {
                     if (p && !fresh.has(p)) { await fetch(p, {cache: 'reload'}); fresh.add(p); }
                 }
                 const r = await runJob(job);
-                run.images += Array.isArray(r) ? r.length : 0;
+                if (Array.isArray(r)) {
+                    run.images += r.length;
+                    for (const row of r) {
+                        if (!row) continue;
+                        if (row.error) run.errors.push(u + ' [' + row.file + ']: ' + row.error);
+                        if (row.missingParams && row.missingParams.length) {
+                            run.missingParams.push({ job: u, file: row.file, params: row.missingParams });
+                        }
+                    }
+                }
             } catch (e) {
                 run.errors.push(u + ': ' + (e && e.message || e));
             }
@@ -1198,7 +1263,12 @@ export default function catalogDriver(api) {
         run.finished = true;
         run.secs = Math.round((performance.now() - run.t0) / 1000);
         const report = {list: url, done: run.done, total: run.total, images: run.images,
-                        errors: run.errors, secs: run.secs};
+                        errors: run.errors,
+                        ...(run.missingParams.length ? { missingParams: run.missingParams } : {}),
+                        secs: run.secs};
+        if (run.missingParams.length) {
+            console.warn('[catalog_driver] list had missingParams:', run.missingParams.length, run.missingParams.slice(0, 5));
+        }
         if (done) {
             await fetch('/save?path=' + encodeURIComponent(done),
                         {method: 'POST', body: JSON.stringify(report, null, 1)});
@@ -1214,7 +1284,9 @@ export default function catalogDriver(api) {
         setParam: (path, value) => api.setParam(path, value),
         getParam: (path) => api.getParam(path),
         setLayer,
+        documentGroup,
         setSubgroup,
+        overlaySubgroup,
         composeCanvas,
         axisCenters,
         symmetryElements,
