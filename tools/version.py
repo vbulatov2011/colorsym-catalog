@@ -64,8 +64,10 @@ def groups():
 
 
 def spelling(name):
-    """the presets' spelling of a group: o -> O, xx -> XX, *632 -> s632, 22x -> 22X"""
-    return ('O' if name == 'o' else name.replace('x', 'X')).replace('*', 's')
+    """the presets' spelling of a group: wp uses O, XX, 22X, s632; frieze uses s22oo, 22oo, ..."""
+    if P.FAMILY == 'wp':
+        return ('O' if name == 'o' else name.replace('x', 'X')).replace('*', 's')
+    return name.replace('\u221e', 'oo').replace('*', 's')
 
 
 def load(rel):
@@ -79,8 +81,8 @@ def save(rel, obj):
 
 
 def tool(v, script, *args, check=True):
-    """a catalog tool run on version v (CATALOG_VERSION)"""
-    env = dict(os.environ, CATALOG_VERSION=v)
+    """a catalog tool run on version v (CATALOG_VERSION + CATALOG_FAMILY)"""
+    env = dict(os.environ, CATALOG_VERSION=v, CATALOG_FAMILY=P.FAMILY)
     r = subprocess.run([PY, os.path.join(TOOLS, script)] + list(args), cwd=P.CAT, env=env,
                        capture_output=True, text=True, encoding='utf-8')
     if check and r.returncode:
@@ -89,10 +91,13 @@ def tool(v, script, *args, check=True):
 
 
 def use(v):
-    """the registry, with v made the version the paths are of"""
+    """the registry, with v's family and v made active"""
     reg = P.registry()
     if v not in reg['versions']:
         sys.exit('no version %r; the versions: %s' % (v, ', '.join(reg['versions']) or 'none'))
+    vcfg = P.version_config(v)
+    if vcfg and vcfg.get('family') and vcfg['family'] != P.FAMILY:
+        P.use_family(vcfg['family'])
     P.use_version(v)
     return reg
 
@@ -140,8 +145,9 @@ def cmd_new(args):
     reg = P.registry()
     if name in reg['versions']:
         sys.exit('version %r exists' % name)
-    if main and reg['main']:
-        sys.exit('%r is the main version; make %r main later with promote' % (reg['main'], name))
+    cur_main = P.main_version(P.FAMILY)
+    if main and cur_main:
+        sys.exit('%r is the main version for %s; make %r main later with promote' % (cur_main, P.FAMILY, name))
     set_dir = P.join(P.PRESETS_DIR, pset)
     if not os.path.isdir(P.path(set_dir)):
         sys.exit('no preset set %s/' % set_dir)
@@ -179,9 +185,14 @@ def cmd_new(args):
     save(P.join(P.version_dir(name), 'version.json'),
          {'name': name, 'label': label, 'created': today, 'family': P.FAMILY,
           'set': pset, 'presets': presets})
-    reg['versions'][name] = {'label': label, 'created': today}
+    reg['versions'][name] = {'label': label, 'created': today, 'family': P.FAMILY}
     if main:
-        reg['main'] = name
+        mbf = reg.setdefault('mainByFamily', {})
+        if P.DEFAULT_FAMILY not in mbf and reg.get('main'):
+            mbf[P.DEFAULT_FAMILY] = reg['main']
+        mbf[P.FAMILY] = name
+        if P.FAMILY == P.DEFAULT_FAMILY or not reg.get('main'):
+            reg['main'] = name
     save(P.join(P.VERSIONS_DIR, 'index.json'), reg)
     for g in gs:
         print('  %-6s %s' % (g['name'], presets[g['name']]))
@@ -248,7 +259,7 @@ def write_jobs(v, stems=(), keep=False):
         per_group[g['stem']] = (g['name'], os.path.basename(gm['preset']), gm['manifest'], [])
         for s in subs:
             job = entry_names(s['name'], s['index'])['job_file']
-            it = iterations(job, v, reg['main'])
+            it = iterations(job, v, P.main_version(P.FAMILY))
             tasks.append((g['stem'], s['name'], job,
                           [gm['manifest'], s['name'], '--preset', url, '--layer', 'drawing',
                            '--view', 'preset'] + (['--iterations', it] if it else [])))
@@ -315,7 +326,7 @@ def make_pages(v, palettes):
 
 def index_pages(v):
     print(tool(v, 'make_index_pages.py').stdout.strip())
-    main = P.registry()['main']
+    main = P.main_version(P.FAMILY)
     if main and main != v:               # the landing page lists the versions
         tool(main, 'make_index_pages.py')
         print('  and the main version (%s) index pages, for the landing page' % main)
@@ -335,7 +346,7 @@ def write_entries(v):
             gen = P.path(P.fam(nm['dir']), 'gen')
             files = sorted(f for f in os.listdir(gen) if f.endswith('.webp')) if os.path.isdir(gen) else []
             if files:
-                ents.append({'name': s['name'], 'n': s['index'], 'type': s['affineClass'],
+                ents.append({'name': s['name'], 'n': s['index'], 'type': s.get('affineClass') or s['name'],
                              'dir': nm['dir'], 'slug': nm['slug'], 'files': files})
         thumb = P.join(g['stem'], 'gen', 'group.webp')
         out['groups'].append({'name': g['name'], 'stem': g['stem'], 'preset': gm['preset'],
@@ -350,6 +361,7 @@ def checks(stems):
     """H's domain inside the frame; one uncolored pattern per group"""
     import numpy as np
     from PIL import Image
+    unbounded_y = bool((P.family_meta() or {}).get('unboundedY'))
     off, odd = [], []
     for s in stems:
         pats = {}
@@ -362,7 +374,9 @@ def checks(stems):
                 a = np.asarray(Image.open(f).convert('RGBA'))[..., 3] > 20
                 ys, xs = np.nonzero(a)
                 h, w = a.shape
-                if len(xs) and (xs.min() <= 1 or ys.min() <= 1 or xs.max() >= w - 2 or ys.max() >= h - 2):
+                bad_x = len(xs) and (xs.min() <= 1 or xs.max() >= w - 2)
+                bad_y = (not unbounded_y) and len(ys) and (ys.min() <= 1 or ys.max() >= h - 2)
+                if bad_x or bad_y:
                     off.append(entry)
             f = os.path.join(d, 'group_pattern.webp')
             if os.path.exists(f):
@@ -383,6 +397,8 @@ def cmd_post(args):
         sys.exit('usage: version.py post <name> [<stem>...] [--sparse]')
     v, only = args[0], set(args[1:])
     use(v)
+    if (P.family_meta() or {}).get('sparse'):
+        sparse = True
     cfg = P.version_config(v)
     gs = [g for g in groups() if (not only or g['stem'] in only) and g['name'] in cfg['presets']]
     done = P.path(P.version_dir(v), 'render_done.json')

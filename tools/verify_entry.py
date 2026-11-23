@@ -95,7 +95,7 @@ def same_partition(a, b, palette):
     return conflicts == 0, int(both.sum()), conflicts
 
 
-SPARSE = '--sparse' in sys.argv
+SPARSE = ('--sparse' in sys.argv) or bool((P.family_meta() or {}).get('sparse'))
 
 
 def verify(stem, entry):

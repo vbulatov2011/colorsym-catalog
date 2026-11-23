@@ -140,6 +140,7 @@ def page(title, root, h1, lede, body, nav_html='', foot_html='', kind='', css_ro
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="symmhub-base" content="%s">
 <meta name="catalog-root" content="%s">
+<meta name="catalog-family" content="%s">
 <meta name="catalog-version" content="%s">
 <meta name="catalog-is-main" content="%s">
 <meta name="catalog-rel" content="%s">
@@ -158,7 +159,7 @@ def page(title, root, h1, lede, body, nav_html='', foot_html='', kind='', css_ro
 %s<script src="%sjs/catalog.js" defer></script>
 </body>
 </html>
-''' % (html.escape(P.SYMMHUB_URL), html.escape(sroot),
+''' % (html.escape(P.SYMMHUB_URL), html.escape(sroot), html.escape(P.FAMILY or 'wp'),
        html.escape(P.VERSION or ''), '1' if P.is_main() else '0',
        html.escape(cat_rel), html.escape(title), sroot, sroot,
        nav_html, (' ' + kind) if kind else '', h1, lede,
@@ -394,13 +395,13 @@ write('index.html', page(
     'Color groups of the %s' % html.escape(FAM_PLURAL),
     'The %d %s and their color groups with %d to %d colors, counted three '
     'ways, each finer than the one before. <b>Types</b> (%d) merge the color groups '
-    'that an affine symmetry of G carries onto each other: the classical count, 46 with '
+    'that an affine symmetry of G carries onto each other: the classical count, %d with '
     '2 colors. <b>Color groups</b> G/H[n] (%d) are the subgroups H of index n up to '
     'conjugacy in G. <b>Patterns</b> (%d) are the colorings by cosets, one for each '
     'placement of H in G. %d color groups are rendered so far; a thumbnail shows the '
     'pattern of the group in one color.'
-    % (len(groups), html.escape(FAM_PLURAL), LO_N, HI_N, ntypes(EVERY), len(EVERY),
-       npatterns(EVERY), sum(s['built'] for s in EVERY)),
+    % (len(groups), html.escape(FAM_PLURAL), LO_N, HI_N, ntypes(EVERY), ntypes(all_n(2)),
+       len(EVERY), npatterns(EVERY), sum(s['built'] for s in EVERY)),
     '\n'.join(body),
     topnav([(fam_site + 'index.html', 'Catalog'), (None, html.escape(FAM_TITLE))],
            [count_run('All symmetries', all_n, 'colors/'),
@@ -416,31 +417,43 @@ write('index.html', page(
 def _versions_section():
     reg = P.registry()
     cards = []
-    hero_stem = groups.get(FMETA.get('heroGroup', '*632'), next(iter(groups.values())))['stem']
     for v, meta in reg['versions'].items():
-        fi = P.join(P.family_dir(v), 'index.html')
-        thumb_rel = P.join(P.family_dir(v), hero_stem, 'gen', 'group.webp')
+        vcfg = P.version_config(v) or {}
+        vfam = meta.get('family') or vcfg.get('family') or P.DEFAULT_FAMILY
+        if vfam not in P.FAMILIES:
+            continue
+        vmeta = P.family_meta(vfam) or {}
+        hero_name = vmeta.get('heroGroup') or '*632'
+        hero_stem = hero_name.replace('\u221e', 'oo').replace('*', 's')
+        fdir = P.family_dir(v, f=vfam)
+        fi = P.join(fdir, 'index.html')
+        thumb_rel = P.join(fdir, hero_stem, 'gen', 'group.webp')
         has_page = os.path.exists(P.path(fi))
         has_thumb = os.path.exists(P.path(thumb_rel))
-        n_built = len(glob.glob(os.path.join(P.path(P.family_dir(v)), '*', '*', '*', 'index.html')))
-        is_m = (v == reg['main'])
+        n_built = len(glob.glob(os.path.join(P.path(fdir), '*', '*', '*', 'index.html')))
+        fam_main = P.main_version(vfam)
+        is_m = (v == fam_main)
+        fbadge = '<span class="badge">%s</span>' % html.escape(vmeta.get('shortTitle', vfam))
         vbadge = '<span class="badge on">main</span>' if is_m else ''
         thumb_html = ('<img class="vthumb" src="%s" alt="%s" loading="lazy">' % (thumb_rel, html.escape(v))) if has_thumb else ''
         acts = []
         if has_page:
             acts.append('<a class="btn sm primary" href="%s">Browse</a>' % fi)
-        if not is_m and reg['main']:
+        fam_vers = [vn for vn, vm in reg['versions'].items()
+                    if (vm.get('family') or (P.version_config(vn) or {}).get('family') or P.DEFAULT_FAMILY) == vfam]
+        if not is_m and fam_main:
             acts.append('<a class="btn sm" href="compare.html?a=%s&amp;b=%s">Compare with %s</a>'
-                        % (html.escape(reg['main']), html.escape(v), html.escape(reg['main'])))
-        elif is_m and len(reg['versions']) > 1:
-            acts.append('<a class="btn sm" href="compare.html">Compare versions</a>')
+                        % (html.escape(fam_main), html.escape(v), html.escape(fam_main)))
+        elif is_m and len(fam_vers) > 1:
+            acts.append('<a class="btn sm" href="compare.html?a=%s&amp;b=%s">Compare versions</a>'
+                        % (html.escape(fam_main), html.escape(next(x for x in fam_vers if x != fam_main))))
         cards.append(
             '<div class="ver-card">%s<div class="vbody">'
-            '<div class="vname">%s %s</div>'
+            '<div class="vname">%s %s %s</div>'
             '<div class="vlabel">%s%s</div>'
             '<div class="vacts">%s</div>'
             '</div></div>'
-            % (thumb_html, html.escape(v), vbadge,
+            % (thumb_html, html.escape(v), fbadge, vbadge,
                html.escape(meta.get('label', '')),
                (' &middot; %d pages' % n_built) if n_built else '',
                ''.join(acts))
@@ -472,7 +485,7 @@ def _family_summary(fid):
     idx_path = P.path(fc['dataDir'], 'index.json')
     if not os.path.exists(idx_path):
         return None
-    fdir = P.family_dir(f=fid)
+    fdir = P.family_dir(v=P.main_version(fid), f=fid)
     cr = fm.get('colorRange') or [MIN_N, MAX_N]
     lo, hi = int(cr[0]), int(cr[1])
     f_groups = json.load(open(idx_path, encoding='utf-8')).get('groups', [])
@@ -734,7 +747,16 @@ for name in ORDER:
                 'u': P.fam(s['dir'], 'index.html'),
             })
 _s_rel = P.join(P.version_root(), 'search_index.json')
-write(_s_rel, json.dumps({'version': P.VERSION, 'items': _sitems}, separators=(',', ':'), ensure_ascii=False), site=True)
+_merged_items = _sitems
+if P.is_main() and os.path.exists(P.path(_s_rel)):
+    try:
+        _prev = json.load(open(P.path(_s_rel), encoding='utf-8')).get('items', [])
+        _other = [it for it in _prev if it.get('f') != P.FAMILY]
+        _fam_order = {fid: i for i, fid in enumerate(P.FAMILIES)}
+        _merged_items = sorted(_other + _sitems, key=lambda it: _fam_order.get(it.get('f'), 99))
+    except Exception:
+        pass
+write(_s_rel, json.dumps({'version': P.VERSION, 'items': _merged_items}, separators=(',', ':'), ensure_ascii=False), site=True)
 
 print('%d groups: %d types, %d color groups, %d patterns (%d color groups rendered); '
       'wrote index.html, %d group pages, %d count pages, %d all-symmetries pages'

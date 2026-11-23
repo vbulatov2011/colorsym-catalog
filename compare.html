@@ -310,17 +310,26 @@
   try { reg = await getJson('versions/index.json'); }
   catch (e) { return fail('No versions yet: <code>python tools/version.py new ...</code>'); }
   var names = Object.keys(reg.versions);
-  var others = names.filter(function (v) { return v !== reg.main; })
-                    .sort(function (x, y) { return (reg.versions[x].created || '').localeCompare(reg.versions[y].created || ''); });
+  var famOf = function (v) { return (reg.versions[v] && reg.versions[v].family) || 'wp'; };
+  var isMainV = function (v) {
+    var f = famOf(v);
+    return (reg.mainByFamily && reg.mainByFamily[f] === v) || (f === 'wp' && v === reg.main);
+  };
   var A = q.get('a') || reg.main || names[0];
-  var B = q.get('b') || others[others.length - 1] || names[0];
+  var aFam = famOf(A);
+  var sameFamOthers = names.filter(function (v) { return v !== A && famOf(v) === aFam; })
+    .sort(function (x, y) { return (reg.versions[x].created || '').localeCompare(reg.versions[y].created || ''); });
+  var anyOthers = names.filter(function (v) { return v !== A; });
+  var B = q.get('b') || sameFamOthers[sameFamOthers.length - 1] || anyOthers[0] || names[0];
   if (A === B && names.length > 1) A = names.find(function (v) { return v !== B; });
 
   function fillVersions(sel, cur) {
     sel.innerHTML = names.map(function (v) {
       var meta = reg.versions[v];
+      var f = famOf(v);
       return '<option value="' + esc(v) + '"' + (v === cur ? ' selected' : '') + '>' + esc(v) +
-             (v === reg.main ? ' (main)' : '') + (meta.label ? ' \u2013 ' + esc(meta.label) : '') + '</option>';
+             ' [' + esc(f) + ']' + (isMainV(v) ? ' (main)' : '') +
+             (meta.label ? ' \u2013 ' + esc(meta.label) : '') + '</option>';
     }).join('');
   }
   fillVersions($('a'), A);

@@ -29,7 +29,7 @@ color_range = fmeta.get('colorRange') or [MIN_N, MAX_N]
 lo_n, hi_n = int(color_range[0]), int(color_range[1])
 
 G = m['group']['name']
-G_stem = m['group'].get('stem') or G.replace('*', 's')
+G_stem = m['group'].get('stem') or G.replace('\u221e', 'oo').replace('*', 's')
 N = entry['index']
 K = entry['placements']
 _nm = entry_names(entry_name, N)
@@ -663,6 +663,7 @@ page = """<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="symmhub-base" content="%(symmhub_url)s">
 <meta name="catalog-root" content="%(site)s">
+<meta name="catalog-family" content="%(fam_id)s">
 <meta name="catalog-version" content="%(ver_name)s">
 <meta name="catalog-is-main" content="%(ver_is_main)s">
 <meta name="catalog-rel" content="%(cat_rel)s">
@@ -866,6 +867,7 @@ are remembered across entry pages.</p>
 </html>
 """ % {
     'symmhub_url': _html.escape(P.SYMMHUB_URL),
+    'fam_id': _html.escape(P.FAMILY or 'wp'),
     'ver_name': _html.escape(P.VERSION or ''),
     'ver_is_main': '1' if P.is_main() else '0',
     'cat_rel': _html.escape(P.join(P.TREE, _nm['dir'], 'index.html')),

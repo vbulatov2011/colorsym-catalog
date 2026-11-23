@@ -1,0 +1,54 @@
+{
+ "format": "colorsym-catalog-index",
+ "groups": [
+  {
+   "name": "∞∞",
+   "stem": "oooo",
+   "file": "oooo.json",
+   "maxIndex": 7,
+   "totalCount": 7
+  },
+  {
+   "name": "∞x",
+   "stem": "oox",
+   "file": "oox.json",
+   "maxIndex": 7,
+   "totalCount": 7
+  },
+  {
+   "name": "*∞∞",
+   "stem": "soooo",
+   "file": "soooo.json",
+   "maxIndex": 7,
+   "totalCount": 13
+  },
+  {
+   "name": "∞*",
+   "stem": "oos",
+   "file": "oos.json",
+   "maxIndex": 7,
+   "totalCount": 13
+  },
+  {
+   "name": "22∞",
+   "stem": "22oo",
+   "file": "22oo.json",
+   "maxIndex": 7,
+   "totalCount": 13
+  },
+  {
+   "name": "2*∞",
+   "stem": "2soo",
+   "file": "2soo.json",
+   "maxIndex": 7,
+   "totalCount": 13
+  },
+  {
+   "name": "*22∞",
+   "stem": "s22oo",
+   "file": "s22oo.json",
+   "maxIndex": 7,
+   "totalCount": 29
+  }
+ ]
+}

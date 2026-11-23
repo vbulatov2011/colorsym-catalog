@@ -8,6 +8,15 @@
   "wpe1": {
    "label": "wpe1 presets, pastel palette",
    "created": "2026-11-18"
+  },
+  "fe": {
+   "label": "tile-from-domain frieze presets, wpe palette",
+   "created": "2026-11-22",
+   "family": "frieze"
   }
+ },
+ "mainByFamily": {
+  "wp": "wpe",
+  "frieze": "fe"
  }
 }

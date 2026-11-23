@@ -265,12 +265,18 @@
       if (!itemsCache) return;
       var raw = input.value.trim().toLowerCase().replace(/\u00d7/g, 'x');
       var tokens = raw ? raw.split(/\s+/).filter(Boolean) : [];
+      var famsSeen = {};
+      for (var fi = 0; fi < itemsCache.length; fi++) famsSeen[itemsCache[fi].f || 'wp'] = true;
+      var multiFam = Object.keys(famsSeen).length > 1;
       var matched = [];
       for (var i = 0; i < itemsCache.length; i++) {
         var it = itemsCache[i];
         if (!it._hay) {
+          var asciiName = it.n.replace(/\u221e/g, 'oo');
           it._hay = [
-            it.n, it.hm || '', it.h || '', it.f || '',
+            it.n, asciiName, asciiName.replace(/\*/g, 's'),
+            it.hm || '', it.h || '', (it.h || '').replace(/\u221e/g, 'oo'),
+            it.f || '',
             it.c ? (it.c + ' colors ' + it.c + 'c') : '',
             it.norm ? 'normal' : '',
             it.p ? (it.p + ' placements') : '',
@@ -301,11 +307,12 @@
       var sRoot = siteRoot();
       listEl.innerHTML = shownItems.map(function (it, idx) {
         var href = sRoot + it.u;
+        var famTag = multiFam && it.f ? '<span class="badge">' + esc(it.f) + '</span>' : '';
         var badges = '';
         if (it.k === 'g') {
-          badges = '<span class="badge">group</span><span>' + esc(it.info || '') + '</span>';
+          badges = famTag + '<span class="badge">group</span><span>' + esc(it.info || '') + '</span>';
         } else {
-          badges = (it.norm ? '<span class="badge on">normal</span>' : '') +
+          badges = famTag + (it.norm ? '<span class="badge on">normal</span>' : '') +
                    '<span>' + it.c + 'c &middot; ' + it.p + 'p</span>';
         }
         return '<a class="csm-item' + (idx === 0 ? ' sel' : '') + '" href="' + esc(href) + '" data-idx="' + idx + '">' +
@@ -367,6 +374,7 @@
   function mountVersionSwitcher(actionsEl) {
     var rel = metaContent('catalog-rel', '');
     var curVer = metaContent('catalog-version', '');
+    var curFam = metaContent('catalog-family', 'wp');
     if (!rel || !curVer) return;
     var sRoot = siteRoot();
     fetch(sRoot + 'versions/index.json', { cache: 'no-store' }).then(function (r) {
@@ -374,8 +382,11 @@
       return r.json();
     }).then(function (reg) {
       if (!reg || !reg.versions) return;
-      var vnames = Object.keys(reg.versions);
+      var vnames = Object.keys(reg.versions).filter(function (v) {
+        return (reg.versions[v].family || 'wp') === curFam;
+      });
       if (vnames.length < 2) return;
+      var famMain = (reg.mainByFamily && reg.mainByFamily[curFam]) || reg.main;
       var sel = document.createElement('select');
       sel.className = 'ver-select';
       sel.setAttribute('aria-label', 'Switch catalog version');
@@ -383,13 +394,13 @@
       vnames.forEach(function (v) {
         var opt = document.createElement('option');
         opt.value = v;
-        opt.textContent = v + (v === reg.main ? ' (main)' : '');
+        opt.textContent = v + (v === famMain ? ' (main)' : '');
         if (v === curVer) opt.selected = true;
         sel.appendChild(opt);
       });
       sel.addEventListener('change', function () {
         var targetV = sel.value;
-        var dest = (targetV === reg.main)
+        var dest = (targetV === famMain)
           ? (sRoot + rel)
           : (sRoot + 'versions/' + encodeURIComponent(targetV) + '/' + rel);
         location.href = dest;

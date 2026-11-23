@@ -36,11 +36,15 @@ assert VIEW in ('preset', 'auto'), '--view must be preset or auto, got %r' % VIE
 ONLY = set(ARGS)        # stems; empty = all 17
 
 
-def preset_name(name):
-    # manifest names are lower case ('o', 'xx', '*x', '22x'); the presets use
-    # the library's own spelling ('O', 'XX', '*X', '22X')
-    lib = 'O' if name == 'o' else name.replace('x', 'X')
-    return 'wpe-%s.json' % lib.replace('*', 's')
+def preset_path(name):
+    fm = P.family_meta() or {}
+    pset = fm.get('defaultPresetSet') or 'wpe'
+    ppre = fm.get('defaultPresetPrefix') or 'wpe-'
+    if P.FAMILY == 'wp':
+        lib = ('O' if name == 'o' else name.replace('x', 'X')).replace('*', 's')
+    else:
+        lib = name.replace('\u221e', 'oo').replace('*', 's')
+    return P.join(P.PRESETS_DIR, pset, '%s%s.json' % (ppre, lib))
 
 
 index = json.load(open(P.data_file('index'), encoding='utf-8'))
@@ -48,7 +52,7 @@ for g in index['groups']:
     name, stem = g['name'], g['stem']
     if ONLY and stem not in ONLY:
         continue
-    preset = P.url(P.version_preset(name) or P.join(P.PRESETS_DIR, 'wpe', preset_name(name)))
+    preset = P.url(P.version_preset(name) or preset_path(name))
     pname = preset.rsplit('/', 1)[1]
     doc = json.load(open(P.path(P.from_url(preset)),
                          encoding='utf-8'))

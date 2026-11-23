@@ -1,0 +1,16 @@
+{
+ "name": "fe",
+ "label": "tile-from-domain frieze presets, wpe palette",
+ "created": "2026-11-22",
+ "family": "frieze",
+ "set": "fe",
+ "presets": {
+  "∞∞": "presets/frieze/fe/fe-oooo.json",
+  "∞x": "presets/frieze/fe/fe-oox.json",
+  "*∞∞": "presets/frieze/fe/fe-soooo.json",
+  "∞*": "presets/frieze/fe/fe-oos.json",
+  "22∞": "presets/frieze/fe/fe-22oo.json",
+  "2*∞": "presets/frieze/fe/fe-2soo.json",
+  "*22∞": "presets/frieze/fe/fe-s22oo.json"
+ }
+}

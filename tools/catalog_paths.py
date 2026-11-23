@@ -102,39 +102,56 @@ def use_family(f):
     DATA_DIR = fc['dataDir']
     PRESETS_DIR = fc['presetsDir']
     META_FILE = fc.get('metaFile') or join(DATA_DIR, 'family.json')
-    if VERSION is not None or registry().get('main') is not None:
-        use_version(VERSION)
+    cur = VERSION
+    if cur is not None:
+        vcfg = version_config(cur)
+        if vcfg and (vcfg.get('family') or DEFAULT_FAMILY) != f:
+            cur = main_version(f)
+    else:
+        cur = main_version(f)
+    use_version(cur)
 
 
 # ---- versions ----------------------------------------------------------------
 
 def registry():
-    """versions/index.json: {"main": name, "versions": {name: {"label": ..}}}"""
+    """versions/index.json: {"main": name, "mainByFamily": {...}, "versions": {name: {"label": ..}}}"""
     f = path(VERSIONS_DIR, 'index.json')
     return (json.load(open(f, encoding='utf-8')) if os.path.exists(f)
             else {'main': None, 'versions': {}})
 
 
-def is_main(v=None):
+def main_version(f=None):
+    """the main version name for family f (default: active FAMILY)"""
+    fam = f or FAMILY or DEFAULT_FAMILY
+    reg = registry()
+    mbf = reg.get('mainByFamily') or {}
+    if fam in mbf:
+        return mbf[fam]
+    return reg.get('main') if fam == DEFAULT_FAMILY else None
+
+
+def is_main(v=None, f=None):
     v = v or VERSION
-    return v is None or v == registry()['main']
+    mv = main_version(f)
+    return v is None or v == mv
 
 
-def version_root(v=None):
+def version_root(v=None, f=None):
     """the folder holding a version's page tree and jobs: the root for the main one"""
     v = v or VERSION
-    return '' if is_main(v) else join(VERSIONS_DIR, v)
+    return '' if is_main(v, f) else join(VERSIONS_DIR, v)
 
 
 def family_dir(v=None, f=None):
-    """a version's page tree: wp/ for the main one, versions/<name>/wp/ else"""
+    """a version's page tree: <familyDir>/ for the main one, versions/<name>/<familyDir>/ else"""
     tree = family_cfg(f)['familyDir'] if f else TREE
-    return join(version_root(v), tree)
+    return join(version_root(v, f), tree)
 
 
 def jobs_dir(v=None, f=None):
     jobs = family_cfg(f)['jobsDir'] if f else JOBS
-    return join(version_root(v), jobs)
+    return join(version_root(v, f), jobs)
 
 
 def version_dir(v=None):
@@ -156,7 +173,9 @@ def snapshot(src, v=None):
 def version_preset(name, v=None):
     """the snapshot of the preset group `name` renders in the version, or None"""
     cfg = version_config(v)
-    src = cfg and cfg['presets'].get(name)
+    if not cfg or (cfg.get('family') or DEFAULT_FAMILY) != (FAMILY or DEFAULT_FAMILY):
+        return None
+    src = cfg['presets'].get(name)
     return snapshot(src, v) if src else None
 
 
@@ -169,7 +188,8 @@ def use_version(v):
 
 VERSION = None
 use_family(os.environ.get('CATALOG_FAMILY') or DEFAULT_FAMILY)
-use_version(os.environ.get('CATALOG_VERSION') or registry()['main'])
+if os.environ.get('CATALOG_VERSION'):
+    use_version(os.environ['CATALOG_VERSION'])
 
 
 def version_note(site):

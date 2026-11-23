@@ -30,8 +30,14 @@ def group_motif(cat, name, stem):
     else None."""
     import json, os
     import catalog_paths as P
-    lib = 'O' if name == 'o' else name.replace('x', 'X')
-    preset = P.join(P.PRESETS_DIR, 'wpe', 'wpe-%s.json' % lib.replace('*', 's'))
+    fm = P.family_meta() or {}
+    pset = fm.get('defaultPresetSet') or 'wpe'
+    ppre = fm.get('defaultPresetPrefix') or 'wpe-'
+    if P.FAMILY == 'wp':
+        lib = ('O' if name == 'o' else name.replace('x', 'X')).replace('*', 's')
+    else:
+        lib = name.replace('\u221e', 'oo').replace('*', 's')
+    preset = P.join(P.PRESETS_DIR, pset, '%s%s.json' % (ppre, lib))
     gjob = os.path.join(cat, *P.JOBS_DIR.split('/'), 'group_%s.json' % stem)
     if P.version_preset(name):
         preset = P.version_preset(name)
@@ -55,13 +61,17 @@ def group_motif(cat, name, stem):
     return dict(preset=preset, shape=shape, dirichlet=dirichlet, manifest=mstem, stale=stale)
 
 
+def _safe_sym(s):
+    return s.replace('\u221e', 'oo').replace('*', 's')
+
+
 def entry_names(entry_name, n):
     gsym, rest = entry_name.split('/')
     hsym = rest.split('[')[0]
     k = rest.split('#')[1] if '#' in rest else None
     tail = ('-%s' % k) if k else ''
-    slug = ('%s-%s-%d%s' % (gsym, hsym, n, tail)).replace('*', 's')
+    slug = _safe_sym('%s-%s-%d%s' % (gsym, hsym, n, tail))
     job_file = slug.replace('-', '_')
-    out_dir = '%s/%d/%s' % (gsym.replace('*', 's'), n, slug)
+    out_dir = '%s/%d/%s' % (_safe_sym(gsym), n, slug)
     return {'gsym': gsym, 'hsym': hsym, 'k': k, 'slug': slug,
             'job_file': job_file, 'dir': out_dir}

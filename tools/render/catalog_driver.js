@@ -464,8 +464,12 @@ export default function catalogDriver(api) {
         };
         let planes = fd;
         let verts = collectVerts(planes);
+        let unbounded = false;
         if (verts.length < 3) {
-            const CLIP_Y = 2.0;
+            unbounded = true;
+            // Extend far past the visible frame so vertical walls run off-canvas cleanly
+            // without showing artificial horizontal caps inside the frame.
+            const CLIP_Y = 12.0;
             planes = fd.concat([lib.iPlane([0, 1, 0, CLIP_Y]), lib.iPlane([0, -1, 0, CLIP_Y])]);
             verts = collectVerts(planes);
         }
@@ -499,17 +503,30 @@ export default function catalogDriver(api) {
 
         const xs = cells.flatMap(c => c.poly.map(q => q[0]));
         const ys = cells.flatMap(c => c.poly.map(q => q[1]));
-        const bbox = { x0: Math.min(...xs), x1: Math.max(...xs),
-                       y0: Math.min(...ys), y1: Math.max(...ys) };
-        const center = [(bbox.x0 + bbox.x1) / 2, (bbox.y0 + bbox.y1) / 2];
-        const diam = Math.hypot(bbox.x1 - bbox.x0, bbox.y1 - bbox.y0);
+        let bbox, center, diam, fdCentroid;
+        if (unbounded) {
+            // Keep anchor / bbox / diam on the visible strip band (y in [0, 0.5] or [-0.5, 0.5])
+            // so motion glyphs (f_k, g_k) and hTranslates stay centered on the frieze.
+            const hasY0 = fd.some(sp => Math.abs(sp.v[0]) < 1e-6 && Math.abs(sp.v[1] + 1) < 1e-6 && Math.abs(sp.v[3]) < 1e-6);
+            bbox = { x0: Math.min(...xs), x1: Math.max(...xs),
+                     y0: hasY0 ? 0 : -0.65, y1: 0.65 };
+            center = [(bbox.x0 + bbox.x1) / 2, hasY0 ? 0.32 : 0];
+            diam = Math.max(bbox.x1 - bbox.x0, bbox.y1 - bbox.y0);
+            fdCentroid = [cx, hasY0 ? 0.32 : 0.12];
+        } else {
+            bbox = { x0: Math.min(...xs), x1: Math.max(...xs),
+                     y0: Math.min(...ys), y1: Math.max(...ys) };
+            center = [(bbox.x0 + bbox.x1) / 2, (bbox.y0 + bbox.y1) / 2];
+            diam = Math.hypot(bbox.x1 - bbox.x0, bbox.y1 - bbox.y0);
+            fdCentroid = [cx, cy];
+        }
 
         // H's pairing generators, for enumerating the translates of the domain
         const gens = dom.generators.map(gi => dom.pairings[gi].itrans);
         const hGens = gens.concat(gens.map(g => g.getInverse()));
 
         const geo = { G, dom, cells, boundary, bbox, center, diam,
-                      fdCentroid: [cx, cy], hGens,
+                      fdCentroid, hGens,
                       cosetTransversal: (dom.cosetTransversal || []).map(t => ({
                           word: gWord(t.word), itrans: t.itrans })),
                       classify: lib.classifyEuclidean, apply,
@@ -875,7 +892,7 @@ export default function catalogDriver(api) {
         const sym = api.getParams().symmetry;
         const gp = sym.group.params, dc = sym.dirichlet || {};
         const zoom = view.zoom, cx = view.centerX || 0, cy = view.centerY || 0;
-        const cacheKey = JSON.stringify([gp.type, gp.a, gp.b, gp.c, gp.angle_a, gp.angle_b,
+        const cacheKey = JSON.stringify([sym.groupType, gp.type, gp.a, gp.b, gp.c, gp.angle_a, gp.angle_b,
                                          gp.domainShape, dc.enabled ? [dc.baseX, dc.baseY, dc.words] : null,
                                          cosets, zoom, cx, cy]);
         if (symCache.has(cacheKey)) return symCache.get(cacheKey);

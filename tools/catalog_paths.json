@@ -24,6 +24,13 @@
    "jobsDir": "jobs",
    "presetsDir": "presets/wp",
    "metaFile": "data/wp/family.json"
+  },
+  "frieze": {
+   "familyDir": "frieze",
+   "dataDir": "data/frieze",
+   "jobsDir": "jobs_frieze",
+   "presetsDir": "presets/frieze",
+   "metaFile": "data/frieze/family.json"
   }
  },
  "external": {

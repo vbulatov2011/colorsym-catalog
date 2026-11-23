@@ -22,6 +22,7 @@ npm-debug.log*
 **/index.html
 **/gen/
 jobs/
+jobs_*/
 
 # non-main version build trees (git keeps version.json and preset snapshots only)
 versions/*/wp/
@@ -29,6 +30,7 @@ versions/*/frieze/
 versions/*/spherical/
 versions/*/klm/
 versions/*/jobs/
+versions/*/jobs_*/
 versions/*/render_list.json
 versions/*/render_done.json
 versions/*/entries.json

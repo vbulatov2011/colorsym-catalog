@@ -1,0 +1,39 @@
+{
+ "id": "frieze",
+ "title": "Frieze groups",
+ "shortTitle": "Frieze",
+ "groupSingular": "frieze group",
+ "groupPlural": "frieze groups",
+ "geometry": "euclidean-strip",
+ "spaceNoun": "the strip",
+ "heroGroup": "*22\u221e",
+ "colorRange": [2, 7],
+ "hasAffineClasses": true,
+ "sparse": true,
+ "unboundedY": true,
+ "defaultPresetSet": "fe",
+ "defaultPresetPrefix": "fe-",
+ "renderIterations": {
+  "default": 60
+ },
+ "liveApp": {
+  "symdraw": "/apps/symdraw/symdraw_frieze.html",
+  "layer": "drawing"
+ },
+ "description": "The 7 one-dimensional strip symmetry groups and their finite-index colorings.",
+ "altNamesLabel": "IUC / Conway",
+ "altNames": {
+  "\u221e\u221e": "p1 \u00b7 hop",
+  "\u221ex": "p11g \u00b7 step",
+  "*\u221e\u221e": "p1m1 \u00b7 sidle",
+  "\u221e*": "p11m \u00b7 jump",
+  "22\u221e": "p2 \u00b7 spinning hop",
+  "2*\u221e": "p2mg \u00b7 spinning sidle",
+  "*22\u221e": "p2mm \u00b7 spinning jump"
+ },
+ "sections": [
+  { "title": "Translations and glides", "groups": ["\u221e\u221e", "\u221ex"] },
+  { "title": "Mirrors only",            "groups": ["*\u221e\u221e", "\u221e*"] },
+  { "title": "Half turns",              "groups": ["22\u221e", "2*\u221e", "*22\u221e"] }
+ ]
+}

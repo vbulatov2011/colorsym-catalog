@@ -323,6 +323,121 @@ function familyStem(fam, name){
   return String(name).replace(/∞/g, 'oo').replace(/\*/g, 's').replace(/[^A-Za-z0-9_-]+/g, '');
 }
 
+function friezeAffineClasses(group, presentation, subgroups, maxIndex){
+  // Compute exact affine equivalence classes of subgroups of a frieze group G:
+  // check candidate strip-preserving Euclidean normalizers (x -> ex*x + tx, y -> ey*y)
+  // for ex, ey in {+1, -1} and tx in {0, a/2, a, 3a/2}. Any candidate that maps every
+  // generator of G back into G induces an automorphism of G; subgroups carried onto
+  // each other (up to coset relabeling in S_n) share one affineClass.
+  const genNames = presentation.gens.split(/\s+/);
+  const gens = group.transforms.map((t, k) => ({ name: genNames[k], it: new ITransform(t.slice(), genNames[k]) }));
+  const steps = gens.concat(gens.map(g => ({ name: g.name.toUpperCase(), it: g.it.getInverse() })));
+  const apply2 = (it, p) => { const q = it.transform(iPoint([p[0], p[1], 0, 0])).v; return [q[0], q[1]]; };
+  const P0 = [0.12345, 0.06789], P1 = [-0.07211, 0.16183];
+  const sig = (q0, q1) => [q0[0], q0[1], q1[0], q1[1]].map(v => (Math.abs(v) < 1e-9 ? 0 : v).toFixed(5)).join(',');
+
+  // Short BFS in G to map isometries back to generator words
+  const bySig = new Map([[sig(P0, P1), { word: '', it: IDENTITY }]]);
+  let frontier = [{ word: '', it: IDENTITY }];
+  for(let d = 0; d < 5 && bySig.size < 200; d++){
+    const next = [];
+    for(const cur of frontier) for(const s of steps){
+      const it = cur.it.getCopy().concat(s.it);
+      const k = sig(apply2(it, P0), apply2(it, P1));
+      if(!bySig.has(k)){
+        const rec = { word: cur.word + s.name, it };
+        bySig.set(k, rec); next.push(rec);
+      }
+    }
+    frontier = next;
+  }
+
+  // Find all generator automorphisms induced by candidate strip normalizers
+  const autos = [];
+  for(const ex of [1, -1]) for(const ey of [1, -1]) for(const k of [0, 1, 2, 3]){
+    const tx = k * GEOMETRY_A / 2;
+    const fwd = p => [ex * p[0] + tx, ey * p[1]];
+    const inv = p => [ex * (p[0] - tx), ey * p[1]];
+    const words = [];
+    let ok = true;
+    for(const g of gens){
+      // Conjugate A^-1 g A (left-to-right: first A^-1, then g, then A)
+      const q0 = fwd(apply2(g.it, inv(P0)));
+      const q1 = fwd(apply2(g.it, inv(P1)));
+      const hit = bySig.get(sig(q0, q1));
+      if(!hit){ ok = false; break; }
+      words.push(hit.word);
+    }
+    if(ok) autos.push(words);
+  }
+
+  // Evaluate word in coset permutations (left-to-right, uppercase = inverse)
+  const invPerm = p => { const r = new Array(p.length); for(let i = 0; i < p.length; i++) r[p[i]] = i; return r; };
+  const evalWord = (perms, word) => {
+    const n = perms[0].length;
+    let cur = Array.from({ length: n }, (_, i) => i);
+    for(const ch of word){
+      const lower = ch.toLowerCase();
+      const gi = genNames.indexOf(lower);
+      const p = ch === lower ? perms[gi] : invPerm(perms[gi]);
+      cur = cur.map(x => p[x]);
+    }
+    return cur;
+  };
+  const sameAction = (P, Q) => {
+    const n = P[0].length;
+    for(let t0 = 0; t0 < n; t0++){
+      const phi = new Array(n).fill(-1);
+      phi[0] = t0;
+      const q = [0];
+      let ok = true;
+      while(q.length && ok){
+        const x = q.pop(), px = phi[x];
+        for(let g = 0; g < P.length; g++){
+          const nx = P[g][x], ny = Q[g][px];
+          if(phi[nx] === -1){ phi[nx] = ny; q.push(nx); }
+          else if(phi[nx] !== ny){ ok = false; break; }
+        }
+      }
+      if(ok) return true;
+    }
+    return false;
+  };
+
+  // Union-find across subgroups of the same (index, type)
+  const parent = subgroups.map((_, i) => i);
+  const find = i => { while(parent[i] !== i){ parent[i] = parent[parent[i]]; i = parent[i]; } return i; };
+  const permsOf = subgroups.map(s => permStringToArrays(s.cosets));
+  for(let i = 0; i < subgroups.length; i++){
+    for(const words of autos){
+      const img = words.map(w => evalWord(permsOf[i], w));
+      for(let j = i + 1; j < subgroups.length; j++){
+        if(subgroups[j].index !== subgroups[i].index || subgroups[j].type !== subgroups[i].type) continue;
+        if(sameAction(img, permsOf[j])){
+          const a = find(i), b = find(j);
+          if(a !== b) parent[Math.max(a, b)] = Math.min(a, b);
+        }
+      }
+    }
+  }
+  const byRoot = new Map();
+  subgroups.forEach((s, i) => {
+    const r = find(i);
+    if(!byRoot.has(r)) byRoot.set(r, []);
+    byRoot.get(r).push(s);
+  });
+  const classOf = new Map();
+  const perIdx = new Array(maxIndex + 1).fill(0);
+  for(const members of byRoot.values()){
+    members.sort((a, b) => a.name < b.name ? -1 : 1);
+    const rep = members[0].name;
+    for(const s of members) classOf.set(s.name, rep);
+    if(members[0].index <= maxIndex) perIdx[members[0].index]++;
+  }
+  const affineCountPerIndex = perIdx.map((count, index) => ({ index, count })).filter(c => c.count);
+  return { classOf, affineCountPerIndex };
+}
+
 function classifyFriezeSubgroup(domain){
   // Walk short products of H's pairing generators and inspect their Euclidean
   // isometry types: the 7 frieze groups have pairwise distinct geometric signatures.
@@ -594,6 +709,10 @@ if(frame){
   for(const s of subgroups) s.affineClass = classOf.get(s.name);
   affineCountPerIndex = affineCounts(subgroups, classOf, maxIndex)
     .map((count, i) => ({ index: i + 1, count })).filter(c => c.count);
+} else if(famKey === 'frieze' && corr.ok){
+  const res = friezeAffineClasses(group, presentation, subgroups, maxIndex);
+  for(const s of subgroups) s.affineClass = res.classOf.get(s.name);
+  affineCountPerIndex = res.affineCountPerIndex;
 }
 
 const stemOut = familyStem(famKey, groupName);
