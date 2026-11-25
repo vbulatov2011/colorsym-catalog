@@ -1,0 +1,154 @@
+{
+ "aliases": {
+  "22oo/2/22oo-22oo-2-1": {
+   "22oo-22oo-2-1.o.webp": "22oo-22oo-2-1.1.webp",
+   "22oo-22oo-2-1.o1.webp": "22oo-22oo-2-1.2.webp"
+  },
+  "22oo/2/22oo-22oo-2-2": {
+   "22oo-22oo-2-2.o.webp": "22oo-22oo-2-2.1.webp",
+   "22oo-22oo-2-2.o1.webp": "22oo-22oo-2-2.2.webp"
+  },
+  "22oo/2/22oo-oooo-2": {
+   "22oo-oooo-2.o.webp": "22oo-oooo-2.1.webp",
+   "22oo-oooo-2.o1.webp": "22oo-oooo-2.2.webp"
+  },
+  "22oo/4/22oo-oooo-4": {
+   "22oo-oooo-4.o.webp": "22oo-oooo-4.1.webp",
+   "22oo-oooo-4.o1.webp": "22oo-oooo-4.2.webp",
+   "22oo-oooo-4.o2.webp": "22oo-oooo-4.3.webp",
+   "22oo-oooo-4.o3.webp": "22oo-oooo-4.4.webp"
+  },
+  "2soo/2/2soo-22oo-2": {
+   "2soo-22oo-2.o.webp": "2soo-22oo-2.1.webp",
+   "2soo-22oo-2.o1.webp": "2soo-22oo-2.2.webp"
+  },
+  "2soo/2/2soo-oox-2": {
+   "2soo-oox-2.o.webp": "2soo-oox-2.1.webp",
+   "2soo-oox-2.o1.webp": "2soo-oox-2.2.webp"
+  },
+  "2soo/2/2soo-soooo-2": {
+   "2soo-soooo-2.o.webp": "2soo-soooo-2.1.webp",
+   "2soo-soooo-2.o1.webp": "2soo-soooo-2.2.webp"
+  },
+  "2soo/4/2soo-oooo-4": {
+   "2soo-oooo-4.o.webp": "2soo-oooo-4.1.webp",
+   "2soo-oooo-4.o1.webp": "2soo-oooo-4.2.webp",
+   "2soo-oooo-4.o2.webp": "2soo-oooo-4.3.webp",
+   "2soo-oooo-4.o3.webp": "2soo-oooo-4.4.webp"
+  },
+  "oooo/2/oooo-oooo-2": {
+   "oooo-oooo-2.o.webp": "oooo-oooo-2.1.webp",
+   "oooo-oooo-2.o1.webp": "oooo-oooo-2.2.webp"
+  },
+  "oos/2/oos-oooo-2": {
+   "oos-oooo-2.o.webp": "oos-oooo-2.1.webp",
+   "oos-oooo-2.o1.webp": "oos-oooo-2.2.webp"
+  },
+  "oos/2/oos-oos-2": {
+   "oos-oos-2.o.webp": "oos-oos-2.1.webp",
+   "oos-oos-2.o1.webp": "oos-oos-2.2.webp"
+  },
+  "oos/2/oos-oox-2": {
+   "oos-oox-2.o.webp": "oos-oox-2.1.webp",
+   "oos-oox-2.o1.webp": "oos-oox-2.2.webp"
+  },
+  "oos/4/oos-oooo-4": {
+   "oos-oooo-4.o.webp": "oos-oooo-4.1.webp",
+   "oos-oooo-4.o1.webp": "oos-oooo-4.2.webp",
+   "oos-oooo-4.o2.webp": "oos-oooo-4.3.webp",
+   "oos-oooo-4.o3.webp": "oos-oooo-4.4.webp"
+  },
+  "oox/2/oox-oooo-2": {
+   "oox-oooo-2.o.webp": "oox-oooo-2.1.webp",
+   "oox-oooo-2.o1.webp": "oox-oooo-2.2.webp"
+  },
+  "s22oo/2/s22oo-22oo-2": {
+   "s22oo-22oo-2.o.webp": "s22oo-22oo-2.1.webp",
+   "s22oo-22oo-2.o1.webp": "s22oo-22oo-2.2.webp"
+  },
+  "s22oo/2/s22oo-2soo-2-1": {
+   "s22oo-2soo-2-1.o.webp": "s22oo-2soo-2-1.1.webp",
+   "s22oo-2soo-2-1.o1.webp": "s22oo-2soo-2-1.2.webp"
+  },
+  "s22oo/2/s22oo-2soo-2-2": {
+   "s22oo-2soo-2-2.o.webp": "s22oo-2soo-2-2.1.webp",
+   "s22oo-2soo-2-2.o1.webp": "s22oo-2soo-2-2.2.webp"
+  },
+  "s22oo/2/s22oo-oos-2": {
+   "s22oo-oos-2.o.webp": "s22oo-oos-2.1.webp",
+   "s22oo-oos-2.o1.webp": "s22oo-oos-2.2.webp"
+  },
+  "s22oo/2/s22oo-s22oo-2-1": {
+   "s22oo-s22oo-2-1.o.webp": "s22oo-s22oo-2-1.1.webp",
+   "s22oo-s22oo-2-1.o1.webp": "s22oo-s22oo-2-1.2.webp"
+  },
+  "s22oo/2/s22oo-s22oo-2-2": {
+   "s22oo-s22oo-2-2.o.webp": "s22oo-s22oo-2-2.1.webp",
+   "s22oo-s22oo-2-2.o1.webp": "s22oo-s22oo-2-2.2.webp"
+  },
+  "s22oo/2/s22oo-soooo-2": {
+   "s22oo-soooo-2.o.webp": "s22oo-soooo-2.1.webp",
+   "s22oo-soooo-2.o1.webp": "s22oo-soooo-2.2.webp"
+  },
+  "s22oo/4/s22oo-22oo-4-1": {
+   "s22oo-22oo-4-1.o.webp": "s22oo-22oo-4-1.1.webp",
+   "s22oo-22oo-4-1.o1.webp": "s22oo-22oo-4-1.2.webp",
+   "s22oo-22oo-4-1.o2.webp": "s22oo-22oo-4-1.3.webp",
+   "s22oo-22oo-4-1.o3.webp": "s22oo-22oo-4-1.4.webp"
+  },
+  "s22oo/4/s22oo-22oo-4-2": {
+   "s22oo-22oo-4-2.o.webp": "s22oo-22oo-4-2.1.webp",
+   "s22oo-22oo-4-2.o1.webp": "s22oo-22oo-4-2.2.webp",
+   "s22oo-22oo-4-2.o2.webp": "s22oo-22oo-4-2.3.webp",
+   "s22oo-22oo-4-2.o3.webp": "s22oo-22oo-4-2.4.webp"
+  },
+  "s22oo/4/s22oo-oooo-4": {
+   "s22oo-oooo-4.o.webp": "s22oo-oooo-4.1.webp",
+   "s22oo-oooo-4.o1.webp": "s22oo-oooo-4.2.webp",
+   "s22oo-oooo-4.o2.webp": "s22oo-oooo-4.3.webp",
+   "s22oo-oooo-4.o3.webp": "s22oo-oooo-4.4.webp"
+  },
+  "s22oo/4/s22oo-oos-4": {
+   "s22oo-oos-4.o.webp": "s22oo-oos-4.1.webp",
+   "s22oo-oos-4.o1.webp": "s22oo-oos-4.2.webp",
+   "s22oo-oos-4.o2.webp": "s22oo-oos-4.3.webp",
+   "s22oo-oos-4.o3.webp": "s22oo-oos-4.4.webp"
+  },
+  "s22oo/4/s22oo-oox-4": {
+   "s22oo-oox-4.o.webp": "s22oo-oox-4.1.webp",
+   "s22oo-oox-4.o1.webp": "s22oo-oox-4.2.webp",
+   "s22oo-oox-4.o2.webp": "s22oo-oox-4.3.webp",
+   "s22oo-oox-4.o3.webp": "s22oo-oox-4.4.webp"
+  },
+  "s22oo/4/s22oo-soooo-4-1": {
+   "s22oo-soooo-4-1.o.webp": "s22oo-soooo-4-1.1.webp",
+   "s22oo-soooo-4-1.o1.webp": "s22oo-soooo-4-1.2.webp",
+   "s22oo-soooo-4-1.o2.webp": "s22oo-soooo-4-1.3.webp",
+   "s22oo-soooo-4-1.o3.webp": "s22oo-soooo-4-1.4.webp"
+  },
+  "s22oo/4/s22oo-soooo-4-2": {
+   "s22oo-soooo-4-2.o.webp": "s22oo-soooo-4-2.1.webp",
+   "s22oo-soooo-4-2.o1.webp": "s22oo-soooo-4-2.2.webp",
+   "s22oo-soooo-4-2.o2.webp": "s22oo-soooo-4-2.3.webp",
+   "s22oo-soooo-4-2.o3.webp": "s22oo-soooo-4-2.4.webp"
+  },
+  "soooo/2/soooo-oooo-2": {
+   "soooo-oooo-2.o.webp": "soooo-oooo-2.1.webp",
+   "soooo-oooo-2.o1.webp": "soooo-oooo-2.2.webp"
+  },
+  "soooo/2/soooo-soooo-2-1": {
+   "soooo-soooo-2-1.o.webp": "soooo-soooo-2-1.1.webp",
+   "soooo-soooo-2-1.o1.webp": "soooo-soooo-2-1.2.webp"
+  },
+  "soooo/2/soooo-soooo-2-2": {
+   "soooo-soooo-2-2.o.webp": "soooo-soooo-2-2.1.webp",
+   "soooo-soooo-2-2.o1.webp": "soooo-soooo-2-2.2.webp"
+  },
+  "soooo/4/soooo-oooo-4": {
+   "soooo-oooo-4.o.webp": "soooo-oooo-4.1.webp",
+   "soooo-oooo-4.o1.webp": "soooo-oooo-4.2.webp",
+   "soooo-oooo-4.o2.webp": "soooo-oooo-4.3.webp",
+   "soooo-oooo-4.o3.webp": "soooo-oooo-4.4.webp"
+  }
+ }
+}

@@ -1,8 +1,8 @@
 /*
   make_spherical_presets.mjs — generates SymmHub symdraw_spherical presets
-  (curved tileFromDomain / lune tiles + subtle asymmetric inner ornament) for:
+  (curved tileFromDomain / centered wedge tiles + subtle asymmetric inner ornament) for:
     - all 7 polyhedral groups -> presets/polyhedral/ph/ph-<stem>.json
-    - all 49 axial spherical groups (n = 2..8) -> presets/spherical/sp/sp-<stem>.json
+    - all 49 axial groups (n = 2..8) -> presets/axial/ax/ax-<stem>.json
 
   Uses the swapped wpe2/fe palette for colors 0..6 (#ffe6a7, #cf8439, #632001,
   #a14b12, #cffaf6, #63b2ee, #0d4392) extended harmoniously to 12 colors for
@@ -153,56 +153,87 @@ function makeInnerOrnament(cx, cy, r, angle = 0.45, strokeWidth = 0.008) {
   return [leaf, dot];
 }
 
-// Exact bounded lune tile for nn, nx, *nn with centered=false (poles at (-1,0) and (+1,0))
-function makeLuneTile(type, n, strokeWidth) {
-  const phi = Math.PI / n;
-  const r1 = 1 / Math.sin(phi);
-  const y1 = Math.sqrt(r1*r1 - 1);
-  // Arc from (-1, 0) to (+1, 0) along circle centered at (0, cy), radius r1, upper=+1 or -1
-  const sampleArc = (cy, signY, steps, reverse = false) => {
-    const a0 = Math.atan2(0 - cy, -1);
-    const a1 = Math.atan2(0 - cy, +1);
-    // Ensure arc passes through (0, signY * (r1 - |cy|))
-    let d = a1 - a0;
-    while (d > Math.PI) d -= 2 * Math.PI;
-    while (d < -Math.PI) d += 2 * Math.PI;
-    const pts = [];
-    for (let k = 0; k < steps; k++) {
-      const f = reverse ? (1 - k / steps) : (k / steps);
-      const a = a0 + f * d;
-      pts.push(r1 * Math.cos(a), cy + r1 * Math.sin(a));
+// Build an unstroked pure-white closed circular/annular sector in [rMin, rMax], [a0, a1]
+function makeSectorFill(id, rMin, rMax, a0, a1, steps = 36) {
+  const pts = [];
+  if (rMin <= 0) {
+    pts.push(0, 0);
+    for (let k = 0; k <= steps; k++) {
+      const a = a0 + (a1 - a0) * (k / steps);
+      pts.push(rMax * Math.cos(a), rMax * Math.sin(a));
     }
-    return pts;
-  };
-  const S = 28;
-  let pts = [];
-  if (type === 'nn') {
-    // bounded by s3 (bottom arc, center (0, +y1)) and s2 (top arc, center (0, -y1))
-    pts = [
-      ...sampleArc(+y1, -1, S, false), // (-1,0) -> (+1,0) along bottom
-      ...sampleArc(-y1, +1, S, true),  // (+1,0) -> (-1,0) along top
-    ];
   } else {
-    // *nn and nx: bounded by s0 (segment y=0, (-1,0) -> (+1,0)) and s2 (top arc, (+1,0) -> (-1,0))
-    for (let k = 0; k < S; k++) {
-      pts.push(-1 + (2 * k) / S, 0);
+    for (let k = 0; k <= steps; k++) {
+      const a = a0 + (a1 - a0) * (k / steps);
+      pts.push(rMax * Math.cos(a), rMax * Math.sin(a));
     }
-    pts.push(...sampleArc(-y1, +1, S, true));
+    for (let k = steps; k >= 0; k--) {
+      const a = a0 + (a1 - a0) * (k / steps);
+      pts.push(rMin * Math.cos(a), rMin * Math.sin(a));
+    }
   }
   return {
     type: 'polyline',
-    id: 'tile_lune',
+    id,
     closed: true,
     points: pts,
+    style: {
+      stroke: null,
+      strokeWidth: 0,
+      fill: { rgba: FILL_WHITE },
+      opacity: 1,
+    },
+  };
+}
+
+// Build an open stroked radial ray from (0, 0) to radius rMax at angle a
+function makeRadialSeam(id, a, rMax, strokeWidth) {
+  return {
+    type: 'polyline',
+    id,
+    closed: false,
+    points: [0, 0, rMax * Math.cos(a), rMax * Math.sin(a)],
     style: {
       stroke: { rgba: STROKE_RGBA },
       strokeWidth,
       lineCap: 'round',
       lineJoin: 'round',
-      fill: { rgba: FILL_WHITE },
+      fill: null,
       opacity: 1,
     },
   };
+}
+
+// Unbounded wedge items for centered nn, nx, *nn (pole at (0, 0), no inversive.itrans).
+// Splits the white fill into three overlapping logarithmic rings so every sprite keeps
+// high texel density and nx (which inverts r -> 1/r in odd wedges) fills seamlessly all
+// the way to < 1 px of the origin with no stroked outer arc.
+function makeCenteredWedgeItems(type, n, strokeWidth) {
+  const a0 = (type === 'nn') ? -Math.PI / n : 0;
+  const a1 = Math.PI / n;
+  const items = [
+    makeSectorFill('tile_wedge',     0,    4.2, a0, a1, 36),
+    makeSectorFill('tile_wedge_mid', 3.5, 25.0, a0, a1, 36),
+    makeSectorFill('tile_wedge_far', 20.0, 200.0, a0, a1, 36),
+  ];
+  if (type === 'nx') {
+    // Under sc (r -> 1/r), each [0, 1.05] ray maps onto [0.95, inf] on the neighboring ray,
+    // covering every radial divider seamlessly with conformal stroke weight and 4x sprite DPI.
+    items.push(
+      makeRadialSeam('tile_seam_a', a0, 1.05, strokeWidth),
+      makeRadialSeam('tile_seam_b', a1, 1.05, strokeWidth),
+    );
+  } else if (type === 'nn') {
+    // Rotation by 2*pi/n maps ray a0 onto ray a1, so one ray generates all n dividers.
+    items.push(makeRadialSeam('tile_seam_a', a0, 4.2, strokeWidth));
+  } else {
+    // *nn: a0 and a1 are distinct mirror rays; draw both.
+    items.push(
+      makeRadialSeam('tile_seam_a', a0, 4.2, strokeWidth),
+      makeRadialSeam('tile_seam_b', a1, 4.2, strokeWidth),
+    );
+  }
+  return items;
 }
 
 function buildPreset({ presetName, type, n, centered, colorCount, cameraRots, zoom = 0.42, ornamentAngle }) {
@@ -213,12 +244,14 @@ function buildPreset({ presetName, type, n, centered, colorCount, cameraRots, zo
   const group = maker.getGroup();
 
   const idMap = { map: (x, y) => [x, y] };
-  const isLune = ['nn', 'nx', '*nn'].includes(type);
-  const strokeW = isLune ? Math.max(0.008, Math.min(0.022, 0.045 / Math.sqrt(n)))
-                         : (type.includes('532') ? 0.007
-                          : type.includes('432') ? 0.009
-                          : type.includes('332') || type === '3*2' ? 0.011
-                          : Math.max(0.008, Math.min(0.020, 0.040 / Math.sqrt(n))));
+  const isWedge = ['nn', 'nx', '*nn'].includes(type);
+  const isBoundedAxial = ['n*', '22n', '2*n', '*22n'].includes(type);
+  const isAxial = isWedge || isBoundedAxial;
+  const strokeW = isWedge ? Math.max(0.008, Math.min(0.020, 0.042 / Math.sqrt(n)))
+                          : (type.includes('532') ? 0.007
+                           : type.includes('432') ? 0.009
+                           : type.includes('332') || type === '3*2' ? 0.011
+                           : Math.max(0.008, Math.min(0.020, 0.040 / Math.sqrt(n))));
 
   const baseStyle = {
     stroke: { rgba: STROKE_RGBA },
@@ -229,36 +262,33 @@ function buildPreset({ presetName, type, n, centered, colorCount, cameraRots, zo
     opacity: 1,
   };
 
-  let baseTile;
-  if (isLune) {
-    baseTile = makeLuneTile(type, n, strokeW);
+  let tileItems;
+  if (isWedge) {
+    tileItems = makeCenteredWedgeItems(type, n, strokeW);
   } else {
-    baseTile = tileFromDomain(group, idMap, baseStyle, null, true);
+    const baseTile = tileFromDomain(group, idMap, baseStyle, null, true);
     if (!baseTile) throw new Error(`tileFromDomain returned null for ${presetName}`);
     baseTile.id = 'tile_fd';
+    tileItems = [baseTile];
   }
 
-  let { cx, cy, inr } = polygonCenterAndRadius(baseTile.points);
-  // For bounded axial groups (centered=false: equator at x=0, pole at x=1), bias the
-  // ornament slightly toward the equator x=0 so both the inner hemisphere (r ~ 0.6)
-  // and its equatorial image (r ~ 1.7) sit cleanly inside the stereographic frame.
-  const isBoundedAxial = !centered && !isLune;
-  if (isBoundedAxial) {
-    cx = cx * 0.65;
-    // Recompute distance from shifted center to polygon edges so ornament stays inside
-    const m = baseTile.points.length / 2;
-    let minD = Infinity;
-    for (let i = 0; i < m; i++) {
-      const x0 = baseTile.points[2*i], y0 = baseTile.points[2*i + 1];
-      const x1 = baseTile.points[2*((i + 1) % m)], y1 = baseTile.points[2*((i + 1) % m) + 1];
-      const dx = x1 - x0, dy = y1 - y0, len2 = dx*dx + dy*dy;
-      const t = len2 > 1e-12 ? Math.max(0, Math.min(1, ((cx - x0)*dx + (cy - y0)*dy) / len2)) : 0;
-      minD = Math.min(minD, Math.hypot(cx - (x0 + t*dx), cy - (y0 + t*dy)));
-    }
-    inr = minD;
+  let cx, cy, inr;
+  if (isAxial) {
+    // Exact sector incenter inside the unit disk so both the inner hemisphere (r < 1,
+    // also the visible front of the 3D sphere) and any equatorial image (1/r) stay
+    // comfortably unclipped inside the stereographic frame [-2.63, 2.63].
+    const fullWedge = (type === 'nn' || type === 'n*' || type === '22n');
+    const alpha = fullWedge ? (Math.PI / n) : (Math.PI / (2 * n));
+    const thetaMid = fullWedge ? 0 : alpha;
+    const d = Math.max(0.58, 1 / (1 + Math.sin(alpha)));
+    inr = Math.min(1 - d, d * Math.sin(alpha));
+    cx = d * Math.cos(thetaMid);
+    cy = d * Math.sin(thetaMid);
+  } else {
+    ({ cx, cy, inr } = polygonCenterAndRadius(tileItems[0].points));
   }
   // Keep ornament comfortably inside the domain incircle so it never crosses walls
-  const ornR = Math.max(0.025, Math.min(0.30, inr * 0.64));
+  const ornR = Math.max(0.025, Math.min(isAxial ? 0.24 : 0.30, inr * 0.64));
   const ornItems = makeInnerOrnament(cx, cy, ornR, ornamentAngle, strokeW * 0.75);
 
   const pp = doc.params.pattern.patternParams.params;
@@ -268,7 +298,7 @@ function buildPreset({ presetName, type, n, centered, colorCount, cameraRots, zo
   pp.style.filled = true;
   pp.style.fill = '#ffffff';
   pp.style.curvedTiles = true;
-  pp.layers.params.children[0].params.items = [baseTile, ...ornItems];
+  pp.layers.params.children[0].params.items = [...tileItems, ...ornItems];
 
   doc.params.pattern.patternTransform = {
     centerX: 0, centerY: 0, scale: 1, angle: 0,
@@ -279,9 +309,11 @@ function buildPreset({ presetName, type, n, centered, colorCount, cameraRots, zo
   doc.params.symmetry.group.params = { type, n, subtype: 0, centered };
   doc.params.symmetry.options.iterations = 40;
 
-  // ColorTiles palette
-  const visLayers = doc.params.visualization.params.layers.params.children;
-  const drawingLayer = visLayers.find(c => c.params.id === 'drawing').params;
+  // ColorTiles palette (drop unused 'image' layer from template and enable mipmaps)
+  const visLayersObj = doc.params.visualization.params.layers.params;
+  visLayersObj.children = visLayersObj.children.filter(c => c.params?.id !== 'image');
+  const drawingLayer = visLayersObj.children.find(c => c.params.id === 'drawing').params;
+  drawingLayer.useMipmap = true;
   drawingLayer.coloringType = 'mult';
   drawingLayer.colorTiles.params.count = colorCount;
   drawingLayer.colorTiles.params.edited = Object.fromEntries(
@@ -321,7 +353,7 @@ for (let i = 0; i < POLY_GROUPS.length; i++) {
 }
 console.log(`wrote ${POLY_GROUPS.length} polyhedral presets to ${polyDir}`);
 
-// 2. All 49 axial spherical presets (n = 2..8) -> presets/axial/ax/
+// 2. All 49 axial presets (n = 2..8) -> presets/axial/ax/
 const axDir = join(CAT, 'presets', 'axial', 'ax');
 mkdirSync(axDir, { recursive: true });
 const AXIAL_TYPES = ['nn', 'nx', '*nn', 'n*', '22n', '2*n', '*22n'];
@@ -332,14 +364,12 @@ for (let n = 2; n <= 8; n++) {
     const g = t.replace(/n/g, String(n));
     const stem = g.replace(/\*/g, 's');
     const presetName = `ax-${stem}`;
-    // centered=false keeps every fundamental domain (including lunes) inside r <= 1
-    // so PatternDrawing never clips; rotating 90 deg around Y moves the (-1,0) pole
-    // to (0,0) and turns the equator x=0 into the exact unit circle r=1, giving a
-    // symmetric stereographic mandala with northern hemisphere inside r=1 and
-    // southern hemisphere radiating outside r=1!
+    // centered=true puts the n-fold symmetry pole at world (0, 0) and the equator on
+    // the unit circle r = 1, so inversive.itrans stays empty (identity) and editing
+    // shapes near the origin in stereographic projection feels Euclidean and distortion-free.
     const doc = buildPreset({
-      presetName, type: t, n, centered: false, colorCount: 6,
-      cameraRots: [[[0, 1, 0], 90]],
+      presetName, type: t, n, centered: true, colorCount: 6,
+      cameraRots: [],
       zoom: 0.38,
       ornamentAngle: 0.4 + ti * 0.2,
     });

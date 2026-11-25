@@ -276,6 +276,20 @@ nav.topnav {
   padding: .15rem .48rem;
   font-size: .78rem;
 }
+.btn .ico {
+  display: block;
+  flex-shrink: 0;
+}
+.btn.icon-btn {
+  width: 26px;
+  height: 24px;
+  padding: 0;
+  justify-content: center;
+  color: var(--muted);
+}
+.btn.icon-btn:hover {
+  color: var(--accent);
+}
 .btn.disabled, .btn:disabled {
   opacity: .42;
   pointer-events: none;

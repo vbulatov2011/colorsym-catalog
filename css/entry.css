@@ -266,23 +266,59 @@ body.bg-dark #lb-stack { background: var(--art-dark); }
 
 .stack:hover, .stack:focus-visible { border-color: var(--accent); outline: none; }
 .stack:focus-visible { box-shadow: 0 0 0 2px var(--accent); }
-.stack img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.stack img, .stack .tile { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.stack .tile {
+  background-repeat: no-repeat;
+  background-size: calc(var(--n) * 100%) calc(var(--n) * 100%);
+  background-position: calc(var(--tx) * 100% / var(--nm1)) calc(var(--ty) * 100% / var(--nm1));
+}
+/* Caption text lives inside .cap for lightbox titles and table.grid hover
+ * tooltips; never rendered as a static corner badge over the artwork. */
 .stack .cap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 2;
-  background: rgba(255, 255, 255, .88);
-  color: #181c22;
-  padding: .1rem .4rem;
+  display: none;
+}
+
+/* Delayed floating tooltip for N x N partition table thumbnails */
+.cell-tip {
+  position: fixed;
+  z-index: 70;
+  pointer-events: none;
+  padding: .24rem .55rem;
+  border-radius: var(--radius-sm);
+  background: rgba(20, 24, 31, .94);
+  color: #f4f7fb;
   font-size: .78rem;
-  border-right: 1px solid rgba(0, 0, 0, .14);
-  border-bottom: 1px solid rgba(0, 0, 0, .14);
-  border-bottom-right-radius: 4px;
+  font-weight: 550;
+  line-height: 1.3;
+  white-space: nowrap;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(255, 255, 255, .14);
+  opacity: 0;
+  transform: translateY(3px);
+  transition: opacity .12s ease, transform .12s ease;
+}
+.cell-tip.open {
+  opacity: 1;
+  transform: translateY(0);
+}
+.cell-tip::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  margin-left: -4px;
+  border: 4px solid transparent;
+  border-top-color: rgba(20, 24, 31, .94);
+}
+.cell-tip.below::after {
+  top: auto;
+  bottom: 100%;
+  border-top-color: transparent;
+  border-bottom-color: rgba(20, 24, 31, .94);
 }
 
 /* Overlay layer opacities & visibility toggles */
-.stack img.ghost { opacity: .3; }
+.stack .ghost { opacity: .3; }
 .stack img.gtil { opacity: .15; }
 .stack img.htil { opacity: .3; }
 .stack img.gfd, .stack img.hfd { opacity: .35; }
@@ -290,7 +326,7 @@ body.bg-dark #lb-stack { background: var(--art-dark); }
 
 .stack img[data-src] { display: none; }
 
-body.off-pat img.pat, body.off-ghost img.ghost,
+body.off-pat .stack .pat, body.off-ghost .stack .ghost,
 body.off-gfd img.gfd, body.off-hfd img.hfd,
 body.off-gtil img.gtil, body.off-htil img.htil,
 body.off-gsym img.gsym, body.off-hsym img.hsym,
@@ -305,23 +341,30 @@ body.off-f img.fglyph, body.off-g img.gglyph { display: none; }
 }
 .hero-one { margin-bottom: 1.25rem; }
 .hero-one figure, .hero-row figure { margin: 0; }
-.hero-one figcaption, .hero-row figcaption {
-  font-size: .86rem;
-  color: var(--muted);
-  margin-top: .42rem;
-}
-.hero-one figcaption b, .hero-row figcaption b { color: var(--ink); font-weight: 600; }
 .fig-foot {
   display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
-  gap: .35rem .6rem;
+  gap: .35rem .55rem;
+  margin-top: .36rem;
+}
+.hero-one figcaption, .hero-row figcaption {
+  font-size: .85rem;
+  color: var(--muted);
+  margin: 0;
+  min-width: 0;
+}
+.hero-one figcaption b, .hero-row figcaption b { color: var(--ink); font-weight: 600; }
+.hero-one figcaption .sub, .hero-row figcaption .sub {
+  color: var(--muted);
+  margin-left: .28rem;
+  font-size: .82rem;
 }
 .fig-live {
   display: inline-flex;
-  gap: .3rem;
-  margin-top: .32rem;
+  align-items: center;
+  flex-shrink: 0;
+  gap: .22rem;
 }
 
 /* ---- Domains Table (G / H x domain, tiling, symmetries) ---------------- */
@@ -437,6 +480,15 @@ table.grid thead th.marg { background: var(--marg-bg); }
 table.grid thead th:first-child {
   left: 0;
   z-index: 6;
+}
+table.grid th.corner {
+  font-size: .74rem;
+  font-weight: 500;
+  color: var(--muted);
+  padding: .35rem .55rem .35rem .35rem;
+  text-align: right;
+  vertical-align: bottom;
+  white-space: nowrap;
 }
 table.grid th.col {
   font-size: .85rem;

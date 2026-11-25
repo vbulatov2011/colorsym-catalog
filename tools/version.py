@@ -316,14 +316,13 @@ PAGE_LINE = re.compile(r'(\S+/\S+)\s+n=\d+ .*?(ok|FAIL)\s+((?:#[0-9a-f]{6},?)+)?
 
 
 def make_pages(v, palettes):
-    """entry pages + contact sheets: palettes {(manifest, entry name): 'c0,c1,..'}"""
+    """entry pages: palettes {(manifest, entry name): 'c0,c1,..'}"""
     def run(item):
         (man, name), pal = item
         tool(v, 'make_entry_page.py', man, name, pal)
-        tool(v, 'make_sheet.py', man, name)
     with ThreadPoolExecutor(THREADS) as ex:
         list(ex.map(run, sorted(palettes.items())))
-    print('entry pages + sheets: %d' % len(palettes))
+    print('entry pages: %d' % len(palettes))
 
 
 def index_pages(v):
@@ -438,12 +437,14 @@ def cmd_post(args):
            if tool(v, 'to_webp.py', '--verify', '--dir', os.path.relpath(d, P.CAT).replace(os.sep, '/'),
                    check=False).returncode]
     print('WebP: %d folders, %d failed %s' % (len(dirs), len(bad), bad[:3]))
-    # 3. pages, index pages, entries
+    # 3. checks (run before pack_assets deduplicates group_pattern.webp)
+    checks([g['stem'] for g in gs])
+    # 4. pack assets (cosets.webp atlas, shared group_*.webp, remove sheet unions, dedup & lossy WebP)
+    print(tool(v, 'pack_assets.py', *[g['stem'] for g in gs]).stdout.strip())
+    # 5. pages, index pages, entries
     make_pages(v, palettes)
     index_pages(v)
     write_entries(v)
-    # 4. checks
-    checks([g['stem'] for g in gs])
     print('verify FAIL: %d' % len(fails))
     for k, lines in sorted(fails.items()):
         print('  %s | %s' % (k, ' / '.join(lines)[:300]))

@@ -579,25 +579,8 @@
                                     "useCrown": true,
                                     "useTilt": false,
                                     "patternTiltDirection": 0,
-                                    "useMipmap": false,
+                                    "useMipmap": true,
                                     "interpolation": "linear"
-                                }
-                            },
-                            {
-                                "className": "VisualizationImage",
-                                "params": {
-                                    "id": "image",
-                                    "enabled": false,
-                                    "useSymmetry": true,
-                                    "opacity": 1,
-                                    "frame": "fit",
-                                    "interpolation": "linear",
-                                    "dataSource": "u",
-                                    "useMipmap": false,
-                                    "imageId": "",
-                                    "useCrown": false,
-                                    "useTilt": false,
-                                    "patternTiltDirection": 0
                                 }
                             },
                             {

@@ -10,9 +10,11 @@ import html as _html, json, io, os, re, sys
 from entry_names import entry_names, group_motif, piece_file, MIN_N, MAX_N
 import catalog_paths as P
 
-stem = sys.argv[1]
-entry_name = sys.argv[2]
-palette = sys.argv[3].split(',') if len(sys.argv) > 3 and sys.argv[3] else []
+_pos = [a for a in sys.argv[1:] if not a.startswith('--')]
+INCLUDE_COMPARE = ('--with-compare' in sys.argv) or (not P.is_main())
+stem = _pos[0]
+entry_name = _pos[1]
+palette = _pos[2].split(',') if len(_pos) > 2 and _pos[2] else []
 
 m = json.load(open(P.data_file(stem), encoding='utf-8'))
 entry = next(s for s in m['subgroups'] if s['name'] == entry_name)
@@ -213,7 +215,9 @@ def stack(layers, cap, lazy=False, live_kind=None, live_perm=None):
     out = []
     la = " loading='lazy' decoding='async'" if lazy else " decoding='async'"
     for l in layers:
-        if isinstance(l, tuple):
+        if isinstance(l, tuple) and len(l) == 4 and l[0] == 'tile':
+            out.append("      <span class='tile %s' style='--tx:%d;--ty:%d'></span>" % (l[1], l[2], l[3]))
+        elif isinstance(l, tuple):
             src_attr = 'data-src' if l[1] in DEFERRED_LAYERS else 'src'
             out.append("      <img %s='%s' class='%s'%s>" % (src_attr, l[0], l[1], la))
         else:
@@ -229,52 +233,92 @@ def stack(layers, cap, lazy=False, live_kind=None, live_perm=None):
 
 GEN = 'gen/'
 IMG_EXT = '.webp'
-sub = lambda i: '%s%s' % (GEN, i[:-4] + IMG_EXT if i.endswith('.png') else i)
+_entry_gen = os.path.join(out_dir, 'gen')
+_group_gen = P.path(P.fam(G_stem, 'gen'))
+_ver_for_meta = P.VERSION or P.main_version(P.FAMILY)
+_pack_meta_path = P.path(P.version_dir(_ver_for_meta), 'pack_meta.json') if _ver_for_meta else P.path(P.DATA_DIR, 'pack_meta.json')
+_pack_aliases = (json.load(open(_pack_meta_path, encoding='utf-8')).get('aliases', {}).get(_nm['dir'], {})
+                 if os.path.exists(_pack_meta_path) else {})
+_GROUP_SHARED = {'group_domain.webp', 'group_tiling.webp', 'group_gens.webp', 'group_marks.webp', 'group_pattern.webp'}
+HAS_COSET_ATLAS = os.path.exists(os.path.join(_entry_gen, 'cosets.webp'))
 
-# ---- swatch css for n colours -------------------------------------------
-sw_css = "\n".join(".sw%d { background: %s; }" % (j, palette[j] if j < len(palette) else '#ccc')
-                   for j in range(N))
+
+def sub(i):
+    fn = i[:-4] + IMG_EXT if i.endswith('.png') else i
+    fn = _pack_aliases.get(fn, fn)
+    if fn in _GROUP_SHARED and os.path.exists(os.path.join(_group_gen, fn)):
+        return '../../gen/' + fn
+    return GEN + fn
+
+
+# ---- swatch css for n colours (+ cosets sprite atlas vars) --------------
+_atlas_css = (":root { --n: %d; --nm1: %d; }\n.stack .tile { background-image: url('gen/cosets.webp'); }\n" % (N, max(N - 1, 1))) if HAS_COSET_ATLAS else ''
+sw_css = _atlas_css + "\n".join(".sw%d { background: %s; }" % (j, palette[j] if j < len(palette) else '#ccc')
+                                for j in range(N))
 CURVED = bool(fmeta.get('curved'))
+IS_SPHERICAL = (fmeta.get('geometry') == 'spherical')
 cell_px = max(62, min(235, 760 // N)) if N >= 10 else max(76, min(235, 720 // N))
+
+
+ICO_LIVE = (
+    "<svg class='ico' viewBox='0 0 16 16' width='13' height='13' fill='currentColor' aria-hidden='true'>"
+    "<path d='M4.2 2.8a.7.7 0 0 1 1.05-.6l8.2 5.2a.7.7 0 0 1 0 1.2l-8.2 5.2a.7.7 0 0 1-1.05-.6V2.8z'/></svg>"
+)
+ICO_EXPLORE = (
+    "<svg class='ico' viewBox='0 0 16 16' width='13' height='13' fill='none' stroke='currentColor' "
+    "stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round' aria-hidden='true'>"
+    "<path d='M9.5 2.5h4v4M13.5 2.5L7.5 8.5M12.5 9.5v3a1 1 0 0 1-1 1h-8a1 1 0 0 1-1-1v-8a1 1 0 0 1 1-1h3'/></svg>"
+)
+ICO_STUDIO = (
+    "<svg class='ico' viewBox='0 0 16 16' width='13' height='13' fill='none' stroke='currentColor' "
+    "stroke-width='1.5' stroke-linecap='round' aria-hidden='true'>"
+    "<path d='M2.5 4h11M2.5 8h11M2.5 12h11'/>"
+    "<circle cx='5.5' cy='4' r='1.5' fill='var(--panel)'/>"
+    "<circle cx='10.5' cy='8' r='1.5' fill='var(--panel)'/>"
+    "<circle cx='6.5' cy='12' r='1.5' fill='var(--panel)'/></svg>"
+)
 
 
 def live_btns(kind, perm=0):
     if not _preset_rel:
         return ''
     return (
-        "  <div class='fig-live'>"
-        "<button type='button' class='btn sm subtle' data-live-preview='1' data-live-kind='%s' data-live-perm='%d' "
-        "title='Open inline interactive preview on this page'>&#9654; Live</button>"
-        "<a class='btn sm subtle' target='_blank' rel='noopener' data-live-kind='%s' data-live-perm='%d' "
-        "data-live-ui='simple' href='#' title='Open interactively in SymmHub (viewer mode)'>Explore &#8599;</a>"
-        "<a class='btn sm subtle' target='_blank' rel='noopener' data-live-kind='%s' data-live-perm='%d' "
-        "data-live-ui='' href='#' title='Open in SymmHub Studio editor'>Studio &#8599;</a>"
-        "</div>" % (kind, perm, kind, perm, kind, perm)
+        "   <div class='fig-live'>"
+        "<button type='button' class='btn icon-btn subtle' data-live-preview='1' data-live-kind='%s' data-live-perm='%d' "
+        "title='Live preview (interactive view on this page)' aria-label='Live preview'>%s</button>"
+        "<a class='btn icon-btn subtle' target='_blank' rel='noopener' data-live-kind='%s' data-live-perm='%d' "
+        "data-live-ui='simple' href='#' title='Explore in SymmHub (viewer mode, new tab)' aria-label='Explore in SymmHub'>%s</a>"
+        "<a class='btn icon-btn subtle' target='_blank' rel='noopener' data-live-kind='%s' data-live-perm='%d' "
+        "data-live-ui='' href='#' title='Edit in SymmHub Studio (new tab)' aria-label='Edit in SymmHub Studio'>%s</a>"
+        "</div>" % (kind, perm, ICO_LIVE, kind, perm, ICO_EXPLORE, kind, perm, ICO_STUDIO)
     )
 
 
 # ---- hero ----------------------------------------------------------------
 hero_one = "\n".join([
     " <figure>",
-    stack([sub('group_pattern.png')], 'G', live_kind='group', live_perm=0),
-    "  <figcaption><b>G = %s</b> &mdash; the pattern in one color: one orbit of the motif "
-    "<code>p</code>.</figcaption>" % E(G),
+    stack([sub('group_pattern.png')], 'G = %s' % E(G), live_kind='group', live_perm=0),
+    "  <div class='fig-foot'>",
+    "   <figcaption><b>G = %s</b> <span class='sub'>one color</span></figcaption>" % E(G),
     live_btns('group', 0),
+    "  </div>",
     " </figure>",
     " <figure>",
     stack([sub('%s.o.png' % slug)], '%s.o' % E(entry_name), live_kind='orbit', live_perm=0),
-    "  <figcaption><b class='name'>%s.o</b> &mdash; coloring by orbits: one color per "
-    "H-orbit. There is only ever one such coloring.</figcaption>" % E(entry_name),
+    "  <div class='fig-foot'>",
+    "   <figcaption><b class='name'>.o</b> <span class='sub'>by orbits</span></figcaption>",
     live_btns('orbit', 0),
+    "  </div>",
     " </figure>",
 ])
 
 hero_row = "\n".join(
-    " <figure>\n%s\n  <figcaption><b class='name'>%s.%d</b> &mdash; coloring by cosets, "
-    "placement %d.</figcaption>\n%s\n </figure>"
+    " <figure>\n%s\n  <div class='fig-foot'>\n   <figcaption><b class='name'>.%d</b> "
+    "<span class='sub'>%s</span></figcaption>\n%s\n  </div>\n </figure>"
     % (stack([sub('%s.%d.png' % (slug, i + 1))], '%s.%d' % (E(entry_name), i + 1),
              live_kind='coset', live_perm=i),
-       E(entry_name), i + 1, i + 1, live_btns('coset', i))
+       i + 1, 'by cosets' if K == 1 else ('placement %d' % (i + 1)),
+       live_btns('coset', i))
     for i in range(K))
 
 
@@ -393,22 +437,16 @@ geo = "\n".join([
     "  <tr>\n   <th></th>\n   <th class='col'>domain</th>\n   <th class='col'>tiling</th>"
     "\n   <th class='col'>symmetries</th>\n  </tr>",
     "  <tr>\n   <th class='row'>G</th>",
-    geo_td('group_domain.png', 'G domain', 'the fundamental domain of %s' % E(G) +
-           (' &mdash; the %s' % E_raw(m['group']['domainShape']) if m['group'].get('domainShape') else '')),
-    geo_td('group_tiling.png', 'G tiling', '%s tiled by images of G&rsquo;s domain' % space_noun),
-    geo_td('group_gens.png', 'G symmetries', 'every symmetry element of G: rotation '
-           'centers (the hurricane&rsquo;s arm count = the order), mirrors (solid red) and '
-           'glide axes (dashed red)'),
+    geo_td('group_domain.png', 'G domain', 'fundamental domain of %s' % E(G) +
+           (' &mdash; %s' % E_raw(m['group']['domainShape']) if m['group'].get('domainShape') else '')),
+    geo_td('group_tiling.png', 'G tiling', '%s tiled by G' % space_noun),
+    geo_td('group_gens.png', 'G symmetries', 'rotations (arm count = order), mirrors (solid), glides (dashed)'),
     "  </tr>",
     "  <tr>\n   <th class='row'>H</th>",
-    geo_td('sub_domain.png', 'H domain', 'the fundamental domain of H: a union of %d '
-           'cells of G, internal walls shown' % N if N > 1 else
-           'the fundamental domain of H: the single cell of G, as H = G'),
-    geo_td('sub_tiling.png', 'H tiling', '%s tiled by H&rsquo;s domain, over '
-           'G&rsquo;s finer tiling' % space_noun),
-    geo_td('sub_gens.png', 'H symmetries', 'every symmetry element of H = %s: rotation '
-           'centers, inequivalent ones in shades of the base color; mirrors solid, glide '
-           'axes dashed' % E(entry['type'])),
+    geo_td('sub_domain.png', 'H domain', 'union of %d cells of G' % N if N > 1 else
+           'single cell of G (H = G)'),
+    geo_td('sub_tiling.png', 'H tiling', 'H tiling over G&rsquo;s finer tiling'),
+    geo_td('sub_gens.png', 'H symmetries', 'symmetries of H = %s' % E(entry['type'])),
     "  </tr>",
     "</table></div>",
 ])
@@ -425,9 +463,14 @@ trows = []
 for j in range(N):
     tds = []
     for i in range(N):
-        layers = [(sub(piece_file(i, j, N)), 'pat')]
-        if i > 0:   layers.append((sub(piece_file(0, j, N)), 'ghost'))
-        elif j > 0: layers.append((sub(piece_file(0, 0, N)), 'ghost'))
+        if HAS_COSET_ATLAS:
+            layers = [('tile', 'pat', i, j)]
+            if i > 0:   layers.append(('tile', 'ghost', 0, j))
+            elif j > 0: layers.append(('tile', 'ghost', 0, 0))
+        else:
+            layers = [(sub(piece_file(i, j, N)), 'pat')]
+            if i > 0:   layers.append((sub(piece_file(0, j, N)), 'ghost'))
+            elif j > 0: layers.append((sub(piece_file(0, 0, N)), 'ghost'))
         layers += DECOR_GEO + DECOR_SYM
         if not CURVED and j == 0 and i > 0: layers.append((sub('f%d.png' % i), 'fglyph'))
         if not CURVED and j > 0: layers.append((sub('g%d.png' % j), 'gglyph'))
@@ -440,8 +483,8 @@ for j in range(N):
                % stack(ulayers,
                        'all orbits of %s' % ('H' if j == 0 else 'H g<sub>%d</sub>' % j),
                        lazy=True, live_kind='orbit', live_perm=orbit_off[j]))
-    trows.append("  <tr>\n   <th class='row'><span class='sw sw%d'></span> orbits of %s</th>\n%s\n  </tr>"
-                 % (j, 'H' if j == 0 else 'H g<sub>%d</sub>' % j, "\n".join(tds)))
+    trows.append("  <tr>\n   <th class='row' title='Orbits of %s'><span class='sw sw%d'></span> %s</th>\n%s\n  </tr>"
+                 % ('H' if j == 0 else 'H g_%d' % j, j, 'H' if j == 0 else 'H&thinsp;g<sub>%d</sub>' % j, "\n".join(tds)))
 
 
 def blayers(img, i):
@@ -463,7 +506,7 @@ for i in range(N):
                    % stack(blayers('%s.%d.png' % (slug, i + 1), i), '&equiv; .%d' % k,
                            lazy=True, live_kind='coset', live_perm=i))
 tds.append("   <td class='cell marg'></td>")
-trows.append("  <tr>\n   <th class='row'>all colors<span class='hint'>coloring by cosets</span></th>\n%s\n  </tr>"
+trows.append("  <tr>\n   <th class='row' title='Coloring by cosets of each column'>cosets</th>\n%s\n  </tr>"
              % "\n".join(tds))
 
 
@@ -475,9 +518,9 @@ def col_th(i):
             % (rep_of[i], i, reps.index(rep_of[i]) + 1))
 
 
-thead = ("  <tr>\n   <th></th>\n"
+thead = ("  <tr>\n   <th class='corner' title='Row: coset H g_j (orbits); Column: domain cell f_i'>H&thinsp;g<sub>j</sub> \\ f<sub>i</sub></th>\n"
          + "\n".join(col_th(i) for i in range(N))
-         + "\n   <th class='col marg'>&#8746;<span class='hint'>all orbits</span></th>\n  </tr>")
+         + "\n   <th class='col marg' title='Union of all orbits in each row'>&#8746;<span class='hint'>orbits</span></th>\n  </tr>")
 table = ("<table class='grid' style='--cell:%dpx'>\n<thead>\n%s\n</thead>\n<tbody>\n%s\n</tbody>\n</table>"
          % (cell_px, thead, "\n".join(trows)))
 
@@ -608,14 +651,14 @@ if _preset_rel:
     header_live = (
         '<div class="entry-live-bar">\n'
         '  <button type="button" id="hdr-live-btn" class="btn primary" data-live-preview="1" '
-        'data-live-kind="coset" data-live-perm="0" title="Toggle inline interactive SymmHub preview">&#9654; Live preview</button>\n'
+        'data-live-kind="coset" data-live-perm="0" title="Toggle inline interactive SymmHub preview">%s Live preview</button>\n'
         '  <a class="btn" target="_blank" rel="noopener" data-live-kind="coset" data-live-perm="0" '
-        'data-live-ui="simple" href="#" title="Open this color group in a new SymmHub tab">Explore &#8599;</a>\n'
+        'data-live-ui="simple" href="#" title="Explore in SymmHub (viewer mode, new tab)">%s Explore</a>\n'
         '  <a class="btn" target="_blank" rel="noopener" data-live-kind="coset" data-live-perm="0" '
-        'data-live-ui="" href="#" title="Open in SymmHub Studio editor">Studio &#8599;</a>\n'
+        'data-live-ui="" href="#" title="Edit in SymmHub Studio (new tab)">%s Studio</a>\n'
         '  <label class="sync-ov-lbl" title="Pass checked G/H domain, tiling and symmetry overlays into SymmHub">'
         '<input type="checkbox" data-sync-overlays> Sync overlays</label>\n'
-        '</div>'
+        '</div>' % (ICO_LIVE, ICO_EXPLORE, ICO_STUDIO)
     )
     _dtabs = [
         '<button type="button" class="seg-btn" data-drawer-tab="1" data-drawer-kind="coset" data-drawer-perm="%d">.%d</button>' % (i, i + 1)
@@ -630,7 +673,7 @@ if _preset_rel:
         '<button type="button" class="seg-btn" data-live-proj="stereo">Stereographic</button>'
         '<button type="button" class="seg-btn" data-live-proj="sphere">Sphere</button>'
         '</div>\n'
-    ) if CURVED else ''
+    ) if IS_SPHERICAL else ''
     live_drawer = (
         '<section id="live-drawer" hidden aria-label="Interactive SymmHub preview">\n'
         '  <div class="live-head">\n'
@@ -648,7 +691,9 @@ if _preset_rel:
         '  <div class="live-foot"><span id="live-foot-hint">%s &middot; powered by SymmHub</span>'
         '<span>Change SymmHub URL in top-right <b>&#9881;</b> settings</span></div>\n'
         '</section>\n' % (''.join(_dtabs), _proj_switch,
-                          'Drag to rotate &middot; scroll to zoom' if CURVED else 'Drag to pan &middot; scroll to zoom')
+                          'Drag to rotate &middot; scroll to zoom' if IS_SPHERICAL
+                          else ('Drag to move in the hyperbolic disk &middot; scroll to zoom' if CURVED
+                                else 'Drag to pan &middot; scroll to zoom'))
     )
 
 # Embedded live metadata JSON for js/entry.js
@@ -664,6 +709,7 @@ live_json = json.dumps({
     'invcos': INVCOS,
     'one': ONE,
     'curved': CURVED,
+    'spherical': IS_SPHERICAL,
     **({'iterations': _iterations} if _iterations else {}),
 }, ensure_ascii=False)
 
@@ -677,7 +723,7 @@ page = """<!doctype html>
 <meta name="catalog-root" content="%(site)s">
 <meta name="catalog-family" content="%(fam_id)s">
 <meta name="catalog-version" content="%(ver_name)s">
-<meta name="catalog-is-main" content="%(ver_is_main)s">
+<meta name="catalog-is-main" content="%(ver_is_main)s">%(versions_meta)s
 <meta name="catalog-rel" content="%(cat_rel)s">
 <title>%(title)s</title>
 <link rel="stylesheet" href="%(site)scss/entry.css">
@@ -691,7 +737,9 @@ page = """<!doctype html>
 <nav class="topnav" aria-label="Catalog navigation">
 <div class="wrap topnav__inner">
   <div class="crumbs">
-    <a class="brand" href="%(site)sindex.html">Catalog</a>
+    <a class="brand" href="%(site)sindex.html">Home</a>
+    <span class="sep" aria-hidden="true">&rsaquo;</span>
+    <a href="%(site)scatalog.html">Catalog</a>
     <span class="sep" aria-hidden="true">&rsaquo;</span>
     <a href="../../../index.html">%(fam_short)s</a>
     <span class="sep" aria-hidden="true">&rsaquo;</span>
@@ -801,20 +849,7 @@ click.</b></p>
 <div class="cosets">
 %(table)s
 </div>
-<p class="legend">Each panel is <code>f<sub>i</sub> H g<sub>j</sub></code>: <b>columns</b>
-are the %(n)d cells of H&rsquo;s domain, <b>rows</b> the %(n)d orbit classes &mdash; one
-color per row, and a full row together is the whole pattern: the <b>right margin</b>
-shows it as the composition of its %(n)d orbits, each in its own color &mdash; the
-coloring by orbits <b class='name'>.o</b> carried by that row&rsquo;s
-<code>g<sub>j</sub></code>.
-%(place_sent)s Every panel except <code>H</code> also shows, <b>faded</b>, the set it
-comes from: <code>H&thinsp;g<sub>j</sub></code> panels show <code>H</code>, and
-<code>f<sub>i</sub>&hellip;</code> panels show their row&rsquo;s <code>H&thinsp;g<sub>j</sub></code>.
-The <b>bottom margin</b> is the coloring by cosets of every column &mdash; under a marked
-column the pictures from the top of the page, under a repeated column the same partition
-with its colors relabeled (titled <code>&equiv;</code> its marked twin). Use the toolbar
-above the table (or inside the lightbox) to toggle context layers and panel backdrop; choices
-are remembered across entry pages.</p>
+<p class="legend">Each cell is <code>f<sub>i</sub>&thinsp;H&thinsp;g<sub>j</sub></code> (hover a thumbnail for its label, click to enlarge): <b>rows</b> are cosets <code>H&thinsp;g<sub>j</sub></code> summing across to the orbit coloring (right margin), and <b>columns</b> are domain cells <code>f<sub>i</sub></code> summing down to coset colorings (bottom margin). %(place_sent)s Faded ghosts show the parent set (<code>H</code> or <code>H&thinsp;g<sub>j</sub></code>); layer toggles are remembered across pages.</p>
 
 </main>
 
@@ -825,11 +860,7 @@ are remembered across entry pages.</p>
     <a class="btn sm" href="../../../colors/%(n)d/index.html">All symmetries with <b>%(ncolors)s</b></a>
   </div>
   <div class="foot-links" title="generated from the manifest and the render job">
-    <span>%(id)s</span>
-    <span>&middot;</span>
-    <a href="gen/sheet.html">contact sheet</a>
-    <span>&middot;</span>
-    <a href="%(compare)s">compare versions</a>
+    %(foot_right)s
   </div>
 </div>
 </footer>
@@ -841,9 +872,9 @@ are remembered across entry pages.</p>
       <span id="lb-meta"></span>
     </div>
     <div class="lb-bar-actions">
-      <button type="button" id="lb-live-inline" class="btn sm primary" hidden>&#9654; Live</button>
-      <a id="lb-live" class="btn sm" target="_blank" rel="noopener" href="#" hidden>Explore &#8599;</a>
-      <a id="lb-live-studio" class="btn sm" target="_blank" rel="noopener" href="#" hidden>Studio &#8599;</a>
+      <button type="button" id="lb-live-inline" class="btn sm primary" title="Open inline interactive preview" hidden>%(ico_live)s Live</button>
+      <a id="lb-live" class="btn sm" target="_blank" rel="noopener" href="#" title="Explore in SymmHub (new tab)" hidden>%(ico_explore)s Explore</a>
+      <a id="lb-live-studio" class="btn sm" target="_blank" rel="noopener" href="#" title="Edit in SymmHub Studio (new tab)" hidden>%(ico_studio)s Studio</a>
       <button type="button" id="lb-close" class="btn sm" aria-label="Close lightbox">&times; Close</button>
     </div>
   </div>
@@ -880,6 +911,7 @@ are remembered across entry pages.</p>
                    % (fmeta['imageAspect'], fmeta.get('imageAspectNum', 1))) if fmeta.get('imageAspect') else '',
     'ver_name': _html.escape(P.VERSION or ''),
     'ver_is_main': '1' if P.is_main() else '0',
+    'versions_meta': '\n<meta name="catalog-versions" content="1">' if INCLUDE_COMPARE else '',
     'cat_rel': _html.escape(P.join(P.TREE, _nm['dir'], 'index.html')),
     'title': _html.escape(entry_name.replace('x', '\u00d7')) + ' - Color Groups Catalog',
     'fam_short': _html.escape(fam_short),
@@ -893,7 +925,12 @@ are remembered across entry pages.</p>
     'pres_copy': _html.escape('< %s | %s >' % (m['group']['gens'].replace(' ', ', '), m['group']['relators'])),
     'site': site,
     'version_note': ('\n' + P.version_note(site)) if P.version_note('') else '',
-    'compare': P.compare_link(site, entry_name),
+    'foot_right': ' <span>&middot;</span> '.join(
+        ['<span>%s</span>' % _html.escape(entry['id']),
+         '<a href="%stutorial.html">tutorial</a>' % site]
+        + (['<a href="gen/sheet.html">contact sheet</a>'] if os.path.exists(os.path.join(_entry_gen, 'sheet.html')) else [])
+        + (['<a href="%s">compare versions</a>' % P.compare_link(site, entry_name)] if INCLUDE_COMPARE else [])
+    ),
     'hK': ('#' + _html.escape(entry_name.split('#')[1])) if '#' in entry_name else '',
     'sw_css': sw_css,
     'prev_btn': prev_btn,
@@ -916,6 +953,9 @@ are remembered across entry pages.</p>
         '\n    <label><input type="checkbox" data-k="f" checked> f</label>'
     ),
     'live_json': live_json.replace('</', '<\\/'),
+    'ico_live': ICO_LIVE,
+    'ico_explore': ICO_EXPLORE,
+    'ico_studio': ICO_STUDIO,
 }
 
 out = os.path.join(out_dir, 'index.html')

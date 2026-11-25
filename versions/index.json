@@ -28,12 +28,18 @@
    "label": "polyhedral tile-from-domain presets (<=12 colors)",
    "created": "2026-11-23",
    "family": "polyhedral"
+  },
+  "hyp": {
+   "label": "Hyperbolic Poincare disk",
+   "created": "2026-11-24",
+   "family": "hyperbolic"
   }
  },
  "mainByFamily": {
   "wp": "wpe2",
   "frieze": "fe",
   "axial": "ax",
-  "polyhedral": "ph"
+  "polyhedral": "ph",
+  "hyperbolic": "hyp"
  }
 }

@@ -56,7 +56,7 @@ const { subgroupsData, subgroupStructure, permStringToArrays, WALLPAPER_NAMES,
         getPreset, fileStem } = await import(SUBLIB);
 const { iWallpaperGroup, resolveWallpaperDomainShape } =
   await import(SYMMHUB + '/lib/grouplib/WallpaperGroups.js');
-const { Group_Frieze, Group_Spherical, Group_KLM } =
+const { Group_Frieze, Group_Spherical, Group_KLM, Group_KLMN } =
   await import(SYMMHUB + '/lib/grouplib/grouplib.js');
 const { Group, ITransform, iPoint } = await import(SYMMHUB + '/lib/invlib/invlib.js');
 const { buildSubgroupDomain, classifyEuclidean, isometryToString, sameTransform } =
@@ -116,8 +116,8 @@ function expandRelator(rel){
 // words as geometry
 // ---------------------------------------------------------------------------
 
-function makeGens(group){
-  const names = group.getGenNames();
+function makeGens(group, presentation){
+  const names = presentation ? presentation.gens.split(/\s+/) : group.getGenNames();
   const gens = {};
   names.forEach((name, i) => {
     gens[name] = new ITransform(group.transforms[i].slice(), name);
@@ -136,7 +136,7 @@ function wordToITransform(gens, word){
 
 /** verify that the geometric generators satisfy the presentation's relators */
 function checkCorrespondence(group, presentation){
-  const gens = makeGens(group);
+  const gens = makeGens(group, presentation);
   const relators = String(presentation.relators).split(',').map(r => expandRelator(r));
   const bad = relators.filter(r => !sameTransform(wordToITransform(gens, r), IDENTITY, TEST_POINTS));
   return { ok: bad.length === 0, badRelators: bad };
@@ -813,14 +813,155 @@ function parseSphericalSpec(name){
   throw new Error(`unrecognized spherical group '${name}' (e.g. *532, 432, *224, 3*)`);
 }
 
-function parseKlmSpec(name){
+function parseHyperbolicSpec(name){
   const s = name.startsWith('*');
   const raw = s ? name.slice(1) : name;
   const parts = raw.includes('-') ? raw.split('-').map(Number)
-              : (raw.length === 3 && /^\d{3}$/.test(raw) ? [...raw].map(Number) : null);
-  if(!parts || parts.length !== 3 || parts.some(x => !Number.isInteger(x) || x < 2))
-    throw new Error(`unrecognized KLM group '${name}' (e.g. 237, *237, 2-3-12)`);
-  return { s, K: parts[0], L: parts[1], M: parts[2] };
+              : (/^\d{3,4}$/.test(raw) ? [...raw].map(Number) : null);
+  if(!parts || (parts.length !== 3 && parts.length !== 4) || parts.some(x => !Number.isInteger(x) || x < 2))
+    throw new Error(`unrecognized hyperbolic group '${name}' (e.g. 237, *238, 2223, *2233)`);
+  if(parts.length === 3) return { kind: 'klm', s, K: parts[0], L: parts[1], M: parts[2] };
+  return { kind: 'klmn', s, K: parts[0], L: parts[1], M: parts[2], N: parts[3] };
+}
+
+function canonCycle(arr){
+  if(arr.length <= 1) return arr.slice();
+  const cands = [];
+  for(const seq of [arr, arr.slice().reverse()])
+    for(let s = 0; s < seq.length; s++) cands.push(seq.slice(s).concat(seq.slice(0, s)));
+  cands.sort((a, b) => { for(let i = 0; i < a.length; i++) if(a[i] !== b[i]) return a[i] - b[i]; return 0; });
+  return cands[0];
+}
+
+function fmtOrbOrders(arr){
+  return arr.every(x => x < 10) ? arr.join('') : arr.join('-');
+}
+
+// Exact Conway orbifold signature for any finite-index subgroup H of klm, *klm, klmn, or *klmn,
+// computed directly from the coset action and cross-checked by Riemann-Hurwitz.
+function classifyHyperbolicOrbifold(hSpec, cosetsStr){
+  const perms = permStringToArrays(cosetsStr);
+  const n = perms[0].length;
+  const compP = (p, q) => p.map(x => q[x]);
+
+  if(!hSpec.s){
+    const corners = hSpec.kind === 'klm' ? [hSpec.K, hSpec.L, hSpec.M] : [hSpec.K, hSpec.L, hSpec.M, hSpec.N];
+    const cPerms = hSpec.kind === 'klm'
+      ? [perms[0], perms[1], compP(perms[0], perms[3])]
+      : [perms[1], compP(perms[3], perms[1]), perms[5], compP(perms[3], perms[5])];
+    const chiG = 2 - corners.reduce((a, m) => a + (1 - 1 / m), 0);
+    const cones = [];
+    for(let ci = 0; ci < corners.length; ci++){
+      const m = corners[ci], p = cPerms[ci], vis = new Uint8Array(n);
+      for(let i = 0; i < n; i++){
+        if(vis[i]) continue;
+        let len = 0, x = i;
+        while(!vis[x]){ vis[x] = 1; x = p[x]; len++; }
+        if(m % len !== 0) throw new Error(`orbifold cycle ${len} does not divide ${m}`);
+        if(m / len >= 2) cones.push(m / len);
+      }
+    }
+    const twoG = Math.round(2 - n * chiG - cones.reduce((a, c) => a + (1 - 1 / c), 0));
+    if(Math.abs((2 - n * chiG - cones.reduce((a, c) => a + (1 - 1 / c), 0)) - twoG) > 1e-6 || twoG < 0 || twoG % 2 !== 0)
+      throw new Error(`Riemann-Hurwitz failed (2g=${twoG})`);
+    cones.sort((a, b) => a - b);
+    return (cones.length ? fmtOrbOrders(cones) : '') + 'o'.repeat(twoG / 2) || '1';
+  }
+
+  const sides = hSpec.kind === 'klm' ? [0, 1, 2] : [0, 2, 1, 3];
+  const cornerOrders = hSpec.kind === 'klm' ? [hSpec.K, hSpec.M, hSpec.L] : [hSpec.L, hSpec.K, hSpec.M, hSpec.N];
+  const L = sides.length;
+  const r = sides.map(si => perms[si]);
+  const chiG = 1 - 0.5 * cornerOrders.reduce((a, m) => a + (1 - 1 / m), 0);
+
+  const color = new Int8Array(n);
+  let orientable = true;
+  for(let i = 0; i < n; i++){
+    if(color[i]) continue;
+    color[i] = 1; const q = [i];
+    while(q.length){
+      const u = q.pop();
+      for(let s = 0; s < L; s++){
+        const v = r[s][u]; if(v === u) continue;
+        if(!color[v]){ color[v] = -color[u]; q.push(v); }
+        else if(color[v] === color[u]) orientable = false;
+      }
+    }
+  }
+
+  const cones = [], hop = new Map();
+  for(let j = 0; j < L; j++){
+    const sA = j, sB = (j + 1) % L, m = cornerOrders[j], vis = new Uint8Array(n);
+    for(let c0 = 0; c0 < n; c0++){
+      if(vis[c0]) continue;
+      const orb = [], q = [c0]; vis[c0] = 1;
+      while(q.length){
+        const u = q.pop(); orb.push(u);
+        for(const s of [sA, sB]){ const v = r[s][u]; if(!vis[v]){ vis[v] = 1; q.push(v); } }
+      }
+      const ends = [];
+      for(const u of orb){
+        if(r[sA][u] === u) ends.push([u, sA]);
+        if(r[sB][u] === u) ends.push([u, sB]);
+      }
+      const d = orb.length;
+      if(ends.length === 0){
+        if((2 * m) % d !== 0) throw new Error(`interior vertex d=${d} !| ${2 * m}`);
+        if((2 * m) / d >= 2) cones.push((2 * m) / d);
+      } else if(ends.length === 2){
+        if(m % d !== 0) throw new Error(`boundary vertex d=${d} !| ${m}`);
+        const [c1, s1] = ends[0], [c2, s2] = ends[1];
+        hop.set(`${c1},${s1},${j}`, { c: c2, s: s2, ord: m / d });
+        hop.set(`${c2},${s2},${j}`, { c: c1, s: s1, ord: m / d });
+      } else {
+        throw new Error(`unexpected boundary ends ${ends.length}`);
+      }
+    }
+  }
+
+  const visitedEdge = new Set(), mirrors = [];
+  for(let c0 = 0; c0 < n; c0++){
+    for(let s0 = 0; s0 < L; s0++){
+      if(r[s0][c0] !== c0 || visitedEdge.has(`${c0},${s0}`)) continue;
+      const cyc = []; let c = c0, s = s0, corner = s0;
+      while(true){
+        visitedEdge.add(`${c},${s}`);
+        const h = hop.get(`${c},${s},${corner}`);
+        if(h.ord >= 2) cyc.push(h.ord);
+        const other = (corner === h.s) ? (h.s - 1 + L) % L : h.s;
+        c = h.c; s = h.s; corner = other;
+        if(c === c0 && s === s0 && corner === s0) break;
+      }
+      mirrors.push(canonCycle(cyc));
+    }
+  }
+
+  const rem = 2 - n * chiG - cones.reduce((a, p) => a + (1 - 1 / p), 0)
+            - mirrors.reduce((a, cyc) => a + 1 + 0.5 * cyc.reduce((x, k) => x + (1 - 1 / k), 0), 0);
+  const remInt = Math.round(rem);
+  if(Math.abs(rem - remInt) > 1e-6 || remInt < 0) throw new Error(`bad RH remainder ${rem}`);
+  const tail = orientable ? 'o'.repeat(remInt / 2) : 'x'.repeat(remInt);
+  cones.sort((a, b) => a - b);
+  mirrors.sort((a, b) => b.length - a.length || a.reduce((d, x, i) => d || (x - b[i]), 0));
+  return ((cones.length ? fmtOrbOrders(cones) : '') + mirrors.map(c => '*' + (c.length ? fmtOrbOrders(c) : '')).join('') + tail) || '1';
+}
+
+function describeHyperbolicIsometry(itrans){
+  if(!itrans || !itrans.ref || itrans.ref.length === 0) return { text: 'identity' };
+  const odd = (itrans.ref.length % 2) === 1;
+  // Detect small finite order (reflection / rotation) by iterating on two interior test points
+  const pts = [iPoint([0.11, 0.07, 0, 0]), iPoint([-0.09, 0.13, 0, 0])];
+  const same = (a, b) => Math.hypot(a.v[0] - b.v[0], a.v[1] - b.v[1]) < 1e-5;
+  let cur = pts;
+  for(let k = 1; k <= 12; k++){
+    cur = cur.map(p => itrans.transform(p));
+    if(same(cur[0], pts[0]) && same(cur[1], pts[1])){
+      if(k === 1) return { text: 'identity' };
+      if(odd && k === 2) return { text: 'reflection' };
+      if(!odd) return { text: `rotation (order ${k})` };
+    }
+  }
+  return { text: odd ? 'glide reflection' : 'hyperbolic translation' };
 }
 
 // ---------------------------------------------------------------------------
@@ -835,23 +976,24 @@ const _optFlag = (flag, takesVal = true) => {
 };
 const familyArg = (_optFlag('--family') || FAMILY || 'wp').toLowerCase();
 const famKey = familyArg === 'wallpaper' ? 'wp'
-             : familyArg === 'hyperbolic' ? 'klm' : familyArg;
+             : familyArg === 'klm' ? 'hyperbolic' : familyArg;
 const domainShape = _optFlag('--domain');
 const dirichletPreset = _optFlag('--dirichlet');
 const customOut = _optFlag('--out');
 const dryRun = _optFlag('--dry-run', false);
-const rawGroupName = _argv[0] || (famKey === 'frieze' ? '*22∞' : (famKey === 'axial' || famKey === 'spherical') ? '*224' : famKey === 'polyhedral' ? '*432' : famKey === 'klm' ? '*237' : '632');
+const rawGroupName = _argv[0] || (famKey === 'frieze' ? '*22∞' : (famKey === 'axial' || famKey === 'spherical') ? '*224' : famKey === 'polyhedral' ? '*432' : famKey === 'hyperbolic' ? '*238' : '632');
 const groupName = famKey === 'frieze' ? (FRIEZE_ALIASES[rawGroupName] || rawGroupName) : rawGroupName;
 const maxIndex = Number(_argv[1] || 6);
 
 const isWallpaper = famKey === 'wp';
 const isEuclidean = famKey === 'wp' || famKey === 'frieze';
 const isSpherical = famKey === 'axial' || famKey === 'spherical' || famKey === 'polyhedral';
+const isHyperbolic = famKey === 'hyperbolic';
 const outDir = customOut ? customOut
              : (FAMILIES[famKey] ? join(CAT, ...FAMILIES[famKey].dataDir.split('/'))
                                  : join(CAT, 'data', famKey));
 
-let presentation, data, group, sphericalSpec = null;
+let presentation, data, group, sphericalSpec = null, hyperbolicSpec = null;
 if(isWallpaper){
   if(domainShape){
     // the presentation of THIS domain: its pairing transforms are the generators
@@ -878,16 +1020,22 @@ if(isWallpaper){
   presentation = maker.getPresentation();
   data = subgroupsData({ name: groupName, gens: presentation.gens, relators: presentation.relators,
                          maxIndex, generators: 'none' });
-} else if(famKey === 'klm'){
-  const spec = parseKlmSpec(groupName);
-  const maker = new Group_KLM();
-  Object.assign(maker.params, spec);
+} else if(isHyperbolic){
+  hyperbolicSpec = parseHyperbolicSpec(groupName);
+  let maker;
+  if(hyperbolicSpec.kind === 'klm'){
+    maker = new Group_KLM();
+    Object.assign(maker.params, { K: hyperbolicSpec.K, L: hyperbolicSpec.L, M: hyperbolicSpec.M, s: hyperbolicSpec.s, hasR: false });
+  } else {
+    maker = new Group_KLMN();
+    Object.assign(maker.params, { K: hyperbolicSpec.K, L: hyperbolicSpec.L, M: hyperbolicSpec.M, N: hyperbolicSpec.N, s: hyperbolicSpec.s, uhp: false, aspect: 0.5, twist: 0, bend: 0 });
+  }
   group = maker.getGroup();
   presentation = maker.getPresentation();
   data = subgroupsData({ name: groupName, gens: presentation.gens, relators: presentation.relators,
                          maxIndex, generators: 'none' });
 } else {
-  throw new Error(`unsupported family '${famKey}' (expected wp, frieze, spherical, polyhedral, klm)`);
+  throw new Error(`unsupported family '${famKey}' (expected wp, frieze, axial, polyhedral, hyperbolic)`);
 }
 
 const genCountMatch = group.getFundDomain().length === presentation.gens.split(/\s+/).length;
@@ -957,7 +1105,9 @@ for(const sub of data.subgroups){
        ? { type: classifyFriezeSubgroup(domain) }
        : (isSpherical && domain
           ? { type: classifySphericalSubgroup(domain) }
-          : { type: sub.index === 1 ? groupName : 'sub' }));
+          : (isHyperbolic && hyperbolicSpec
+             ? { type: classifyHyperbolicOrbifold(hyperbolicSpec, cosets) }
+             : { type: sub.index === 1 ? groupName : 'sub' })));
 
   const entry = {
     id: sub.subgroup,                    // sublib id: stable only within this file
@@ -994,7 +1144,8 @@ for(const sub of data.subgroups){
   if(domain){
     const describeIso = itrans => isEuclidean
       ? { isometry: classifyEuclidean(itrans), text: isometryToString(classifyEuclidean(itrans)) }
-      : (isSpherical ? describeSphericalIsometry(itrans) : { text: itrans.word || 'e' });
+      : (isSpherical ? describeSphericalIsometry(itrans)
+         : (isHyperbolic ? describeHyperbolicIsometry(itrans) : { text: itrans.word || 'e' }));
     entry.orbitReps = domain.cells.map(c => ({ word: gWord(c.word), ...describeIso(c.itrans) }));
     entry.transversal = domain.cosetTransversal.map(t => ({ word: gWord(t.word), ...describeIso(t.itrans) }));
     entry.simplyConnected = domain.simplyConnected;
@@ -1002,7 +1153,8 @@ for(const sub of data.subgroups){
       word: DG ? gWord(domain.pairings[gi].word) : domain.pairings[gi].word,
       ...(isEuclidean
           ? { isometry: domain.pairings[gi].isometry, text: isometryToString(domain.pairings[gi].isometry) }
-          : (isSpherical ? describeSphericalIsometry(domain.pairings[gi].itrans) : { text: domain.pairings[gi].word })),
+          : (isSpherical ? describeSphericalIsometry(domain.pairings[gi].itrans)
+             : (isHyperbolic ? describeHyperbolicIsometry(domain.pairings[gi].itrans) : { text: domain.pairings[gi].word }))),
     }));
     entry.sideCounts = {
       boundary: domain.sides.filter(s => s.kind === 'boundary').length,

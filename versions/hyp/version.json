@@ -1,0 +1,25 @@
+{
+ "name": "hyp",
+ "label": "Hyperbolic Poincare disk",
+ "created": "2026-11-24",
+ "family": "hyperbolic",
+ "set": "hyp",
+ "presets": {
+  "237": "presets/hyperbolic/hyp/hyp-237.json",
+  "238": "presets/hyperbolic/hyp/hyp-238.json",
+  "245": "presets/hyperbolic/hyp/hyp-245.json",
+  "334": "presets/hyperbolic/hyp/hyp-334.json",
+  "335": "presets/hyperbolic/hyp/hyp-335.json",
+  "*237": "presets/hyperbolic/hyp/hyp-s237.json",
+  "*238": "presets/hyperbolic/hyp/hyp-s238.json",
+  "*245": "presets/hyperbolic/hyp/hyp-s245.json",
+  "*334": "presets/hyperbolic/hyp/hyp-s334.json",
+  "*335": "presets/hyperbolic/hyp/hyp-s335.json",
+  "2223": "presets/hyperbolic/hyp/hyp-2223.json",
+  "2225": "presets/hyperbolic/hyp/hyp-2225.json",
+  "2233": "presets/hyperbolic/hyp/hyp-2233.json",
+  "*2223": "presets/hyperbolic/hyp/hyp-s2223.json",
+  "*2225": "presets/hyperbolic/hyp/hyp-s2225.json",
+  "*2233": "presets/hyperbolic/hyp/hyp-s2233.json"
+ }
+}

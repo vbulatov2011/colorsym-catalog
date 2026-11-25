@@ -235,6 +235,8 @@ items.append({"file": "group_pattern.png",
               **motif(permIndex=0, permutations=ONE, colorTiles={"count": 1})})
 
 CURVED = bool((P.family_meta() or {}).get('curved'))
+HYPERBOLIC = (P.family_meta() or {}).get('geometry') == 'hyperbolic'
+CLIP_DISK = {"clipDisk": 1.0} if HYPERBOLIC else {}
 if CURVED:
     # Native SymmHub GPU overlays on curved geometries (spherical / polyhedral / hyperbolic)
     G_SYM = {"type": "renderer", "cosets": ""}
@@ -259,23 +261,23 @@ if CURVED:
     H_TILE = {"enabled": True, "symmetry": H_SYM, "width": 2.2, "color": "#1E52A8EE"}
     H_GENS = {**G_GENS, "symmetry": H_SYM}
 
-    items.append({"file": "group_domain.png", **gstruct(ov(fundDomain=G_FD))})
-    items.append({"file": "group_tiling.png", **gstruct(ov(tiling=G_TILE))})
-    items.append({"file": "group_gens.png", **gstruct(ov(fundDomain=G_FD, generators=G_GENS))})
+    items.append({"file": "group_domain.png", **CLIP_DISK, **gstruct(ov(fundDomain=G_FD))})
+    items.append({"file": "group_tiling.png", **CLIP_DISK, **gstruct(ov(tiling=G_TILE))})
+    items.append({"file": "group_gens.png", **CLIP_DISK, **gstruct(ov(fundDomain=G_FD, generators=G_GENS))})
     items.append({"file": "sub_domain.png",
                   "_note": "H's domain as a union of %d G cells (GPU overlay)" % N,
-                  **gstruct(ov(fundDomain=H_FD))})
-    items.append({"file": "sub_tiling.png",
+                  **CLIP_DISK, **gstruct(ov(fundDomain=H_FD))})
+    items.append({"file": "sub_tiling.png", **CLIP_DISK,
                   "compose": [{**gstruct(ov(tiling=G_TILE)), "opacity": 0.3},
                               gstruct(ov(tiling=H_TILE))]})
-    items.append({"file": "sub_gens.png",
+    items.append({"file": "sub_gens.png", **CLIP_DISK,
                   **gstruct(ov(fundDomain=H_FD_NOWALLS, generators=H_GENS))})
     items.append({"file": "sub_til.png", "_note": "H tiling lines only (GPU overlay)",
-                  **gstruct(ov(tiling=H_TILE))})
+                  **CLIP_DISK, **gstruct(ov(tiling=H_TILE))})
     items.append({"file": "group_marks.png", "_note": "G symmetry elements only (GPU overlay)",
-                  **gstruct(ov(generators=G_GENS))})
+                  **CLIP_DISK, **gstruct(ov(generators=G_GENS))})
     items.append({"file": "sub_marks.png", "_note": "H symmetry elements only (GPU overlay)",
-                  **gstruct(ov(generators=H_GENS))})
+                  **CLIP_DISK, **gstruct(ov(generators=H_GENS))})
 else:
     items.append({"file": "group_domain.png", **gstruct(ov(fundDomain=FD_ON))})
     items.append({"file": "group_tiling.png", **gstruct(ov(tiling=TILE_ON))})

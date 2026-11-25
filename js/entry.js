@@ -193,10 +193,14 @@
     };
   }
 
+  function isSphericalLive() {
+    return !!(liveData && (liveData.spherical !== undefined ? liveData.spherical : liveData.curved));
+  }
+
   function liveUrlFor(kind, permIndex, uiMode) {
     if (!liveData || !window.CATALOG_LIVE) return null;
     var ov = currentOverlayOpt(kind);
-    var proj = liveData.curved ? liveProj : undefined;
+    var proj = isSphericalLive() ? liveProj : undefined;
     if (kind === 'group') {
       return window.CATALOG_LIVE.buildLiveUrl({
         app: liveData.app,
@@ -252,7 +256,7 @@
       b.classList.toggle('active', b.getAttribute('data-live-proj') === liveProj);
     });
     var footHint = document.getElementById('live-foot-hint');
-    if (footHint && liveData && liveData.curved) {
+    if (footHint && isSphericalLive()) {
       footHint.innerHTML = (liveProj === 'sphere'
         ? 'Drag to rotate sphere &middot; Ctrl+scroll to zoom'
         : 'Drag to turn stereographic view &middot; scroll to zoom') + ' &middot; powered by SymmHub';
@@ -395,6 +399,83 @@
       });
       sw.addEventListener('mouseleave', clearHighlights);
     });
+
+    // Delayed floating hover tooltip for N x N partition table thumbnails
+    var tipEl = document.createElement('div');
+    tipEl.id = 'cell-tip';
+    tipEl.className = 'cell-tip';
+    tipEl.setAttribute('role', 'tooltip');
+    tipEl.hidden = true;
+    document.body.appendChild(tipEl);
+
+    var tipTimer = null;
+    var tipTarget = null;
+    var TIP_DELAY_MS = 320;
+
+    var hideTip = function () {
+      clearTimeout(tipTimer);
+      tipTimer = null;
+      tipTarget = null;
+      tipEl.classList.remove('open');
+      tipEl.hidden = true;
+    };
+
+    var positionTip = function (el) {
+      var cap = el.querySelector('.cap');
+      if (!cap || !cap.innerHTML.trim()) return;
+      tipEl.innerHTML = cap.innerHTML;
+      tipEl.classList.remove('below');
+      tipEl.hidden = false;
+      var rect = el.getBoundingClientRect();
+      var tw = tipEl.offsetWidth;
+      var th = tipEl.offsetHeight;
+      var gap = 8;
+      var cx = rect.left + rect.width / 2;
+      var left = Math.max(8, Math.min(window.innerWidth - tw - 8, cx - tw / 2));
+      var top = rect.top - th - gap;
+      if (top < 54) {
+        top = rect.bottom + gap;
+        tipEl.classList.add('below');
+      }
+      tipEl.style.left = Math.round(left) + 'px';
+      tipEl.style.top = Math.round(top) + 'px';
+      tipEl.classList.add('open');
+    };
+
+    var scheduleTip = function (el, immediate) {
+      clearTimeout(tipTimer);
+      tipTarget = el;
+      if (immediate) {
+        positionTip(el);
+      } else {
+        tipEl.classList.remove('open');
+        tipEl.hidden = true;
+        tipTimer = setTimeout(function () {
+          if (tipTarget === el && document.body.contains(el)) {
+            positionTip(el);
+          }
+        }, TIP_DELAY_MS);
+      }
+    };
+
+    gridTable.addEventListener('pointerover', function (e) {
+      var st = e.target.closest && e.target.closest('td.cell .stack');
+      if (!st) { hideTip(); return; }
+      if (st !== tipTarget) scheduleTip(st, false);
+    });
+    gridTable.addEventListener('pointerout', function (e) {
+      var st = e.target.closest && e.target.closest('td.cell .stack');
+      if (!st) return;
+      var rel = e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest('td.cell .stack');
+      if (rel !== st) hideTip();
+    });
+    gridTable.addEventListener('focusin', function (e) {
+      var st = e.target.closest && e.target.closest('td.cell .stack');
+      if (st) scheduleTip(st, true);
+    });
+    gridTable.addEventListener('focusout', hideTip);
+    gridTable.addEventListener('click', hideTip);
+    window.addEventListener('scroll', hideTip, true);
   }
 
   // ---- Lightbox with 2D grid navigation, buttons, layer bar & live link ----
@@ -506,6 +587,10 @@
   stacks.forEach(function (s, i) {
     s.tabIndex = 0;
     s.setAttribute('role', 'button');
+    var cap = s.querySelector('.cap');
+    if (cap && cap.textContent && !s.getAttribute('aria-label')) {
+      s.setAttribute('aria-label', cap.textContent.trim() + ' (click to enlarge)');
+    }
     s.addEventListener('click', function () { show(i); });
     s.addEventListener('keydown', function (e) {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); show(i); }

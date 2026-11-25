@@ -182,7 +182,7 @@
                                     "useCrown": true,
                                     "useTilt": false,
                                     "patternTiltDirection": 0,
-                                    "useMipmap": false,
+                                    "useMipmap": true,
                                     "interpolation": "linear"
                                 }
                             },
@@ -459,7 +459,7 @@
                     },
                     "euclidean": {
                         "centerX": 0,
-                        "centerY": -0.0000030382274160027638,
+                        "centerY": -3.0382274160027638e-06,
                         "zoom": 0.66,
                         "angle": 0
                     },

@@ -18,6 +18,7 @@ npm-debug.log*
 
 # auto-generated catalog outputs (rebuilt from data/, presets/, tools/, versions/*/version.json)
 /index.html
+/catalog.html
 /search_index.json
 **/index.html
 **/gen/
@@ -30,6 +31,7 @@ versions/*/frieze/
 versions/*/axial/
 versions/*/spherical/
 versions/*/polyhedral/
+versions/*/hyperbolic/
 versions/*/klm/
 versions/*/jobs/
 versions/*/jobs_*/

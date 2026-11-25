@@ -45,6 +45,13 @@
    "jobsDir": "jobs_polyhedral",
    "presetsDir": "presets/polyhedral",
    "metaFile": "data/polyhedral/family.json"
+  },
+  "hyperbolic": {
+   "familyDir": "hyperbolic",
+   "dataDir": "data/hyperbolic",
+   "jobsDir": "jobs_hyperbolic",
+   "presetsDir": "presets/hyperbolic",
+   "metaFile": "data/hyperbolic/family.json"
   }
  },
  "external": {

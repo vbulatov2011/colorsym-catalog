@@ -200,7 +200,7 @@ def version_note(site):
     label = (version_config() or {}).get('label')
     return ('<p class="version">Version <b>%s</b>%s &mdash; a rendering to compare, not the '
             'main catalog. <a href="%scompare.html?b=%s">Compare with the main version</a> '
-            '&middot; <a href="%sindex.html">Main catalog</a></p>'
+            '&middot; <a href="%scatalog.html">Main catalog</a></p>'
             % (html.escape(VERSION), ' (%s)' % html.escape(label) if label else '',
                site, VERSION, site))
 

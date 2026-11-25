@@ -212,6 +212,7 @@ export default function catalogDriver(api) {
                           Group_Frieze: gl.Group_Frieze,
                           Group_Spherical: gl.Group_Spherical,
                           Group_KLM: gl.Group_KLM,
+                          Group_KLMN: gl.Group_KLMN,
                           dirichlet: { lib: { ...dd, ...pm }, ...dg } };
         }
         return mGroupLib;
@@ -248,6 +249,18 @@ export default function catalogDriver(api) {
             const maker = new lib.Group_KLM();
             Object.assign(maker.params, {
                 K: gp.K, L: gp.L, M: gp.M, s: gp.s, hasR: gp.hasR,
+            });
+            return maker.getGroup();
+        }
+        if (gt === 'KLMN' || cls === 'Group_KLMN') {
+            const maker = new lib.Group_KLMN();
+            Object.assign(maker.params, {
+                K: gp.K, L: gp.L, M: gp.M, N: gp.N, s: gp.s,
+                ...(gp.aspect !== undefined ? { aspect: gp.aspect } : {}),
+                ...(gp.twist !== undefined ? { twist: gp.twist } : {}),
+                ...(gp.shift !== undefined ? { shift: gp.shift } : {}),
+                ...(gp.bend !== undefined ? { bend: gp.bend } : {}),
+                ...(gp.uhp !== undefined ? { uhp: gp.uhp } : {}),
             });
             return maker.getGroup();
         }
@@ -671,18 +684,25 @@ export default function catalogDriver(api) {
     //  geometry underneath stays readable.
 
     const AXIS_STYLE = {
-        2: { fill: 'rgba(40,60,220,0.45)',  stroke: 'rgba(20,30,160,0.95)', r: 11 },
-        3: { fill: 'rgba(240,140,20,0.45)', stroke: 'rgba(170,90,0,0.95)',  r: 13 },
-        4: { fill: 'rgba(20,170,120,0.45)', stroke: 'rgba(10,110,80,0.95)', r: 14 },
-        6: { fill: 'rgba(230,30,200,0.45)', stroke: 'rgba(150,10,130,0.95)', r: 16 },
+        2:  { fill: 'rgba(255,102,0,0.65)',  stroke: 'rgba(150,55,0,0.95)',   r: 11 },
+        3:  { fill: 'rgba(40,60,220,0.55)',  stroke: 'rgba(20,30,160,0.95)',  r: 13 },
+        4:  { fill: 'rgba(0,170,212,0.55)',  stroke: 'rgba(0,110,145,0.95)',  r: 14 },
+        5:  { fill: 'rgba(234,184,0,0.65)',  stroke: 'rgba(150,115,0,0.95)',  r: 15 },
+        6:  { fill: 'rgba(204,0,255,0.55)',  stroke: 'rgba(130,0,165,0.95)',  r: 16 },
+        7:  { fill: 'rgba(24,176,104,0.60)', stroke: 'rgba(12,110,65,0.95)',  r: 17 },
+        8:  { fill: 'rgba(120,196,20,0.60)', stroke: 'rgba(72,125,10,0.95)',  r: 18 },
+        9:  { fill: 'rgba(0,140,122,0.60)',  stroke: 'rgba(0,85,74,0.95)',    r: 19 },
+        10: { fill: 'rgba(112,68,232,0.60)', stroke: 'rgba(65,36,150,0.95)',  r: 19 },
+        12: { fill: 'rgba(216,72,152,0.60)', stroke: 'rgba(140,36,92,0.95)',  r: 20 },
     };
-    // hand drawn hurricane symbols (2, 3, 4, 6 arms); loaded lazily, the
-    // colored circles below remain as the fallback for missing orders.
+    // Vector hurricane symbols (2..10, 12 arms); loaded lazily, with a
+    // procedural pinwheel fallback for any other order.
+    const AXIS_SVG_ORDERS = [2, 3, 4, 5, 6, 7, 8, 9, 10, 12];
     const AXIS_IMG = {};
     let axisImagesReady = null;
     function ensureAxisImages() {
         if (!axisImagesReady) {
-            axisImagesReady = Promise.all([2, 3, 4, 6].map(o => new Promise(res => {
+            axisImagesReady = Promise.all(AXIS_SVG_ORDERS.map(o => new Promise(res => {
                 const img = new Image();
                 img.onload = () => { AXIS_IMG[o] = img; res(); };
                 img.onerror = () => res();
@@ -692,8 +712,8 @@ export default function catalogDriver(api) {
         return axisImagesReady;
     }
 
-    const AXIS_DEFAULT = { fill: 'rgba(120,120,120,0.45)',
-                           stroke: 'rgba(60,60,60,0.95)', r: 12 };
+    const AXIS_DEFAULT = { fill: 'rgba(138,84,232,0.60)',
+                           stroke: 'rgba(60,30,130,0.95)', r: 17 };
 
     /**
      * All rotation centres of a group, near the origin.
@@ -755,7 +775,7 @@ export default function catalogDriver(api) {
             const [x, y] = cls.center;
             if (Math.abs(x) > radius || Math.abs(y) > radius) continue;
             const order = Math.round(2 * Math.PI / Math.abs(cls.angle));
-            if (!(order >= 2 && order <= 12)) continue;
+            if (!(order >= 2 && order <= 24)) continue;
             // normalise -0 so that it does not key a duplicate centre
             const z = v => (Math.abs(v) < 1e-9 ? 0 : v).toFixed(4);
             const k = z(x) + ',' + z(y);
@@ -835,16 +855,36 @@ export default function catalogDriver(api) {
                 ctx.drawImage(shaded, toX(c.x) - w / 2, toY(c.y) - h / 2, w, h);
                 continue;
             }
-            ctx.filter = ['none', 'brightness(1.6)', 'brightness(0.55)',
-                          'saturate(0.3)'][(c.cls || 0) % 4];
+            // Procedural pinwheel fallback for any rotation order without an SVG
+            const cxp = toX(c.x), cyp = toY(c.y);
+            const nArms = Math.max(2, c.order | 0);
+            const hubR = r * 0.45;
+            const tipR = r * 1.12;
+            const twist = Math.min(0.65, 3.8 / nArms);
+            ctx.save();
+            ctx.filter = ['none', 'brightness(1.45)', 'brightness(0.6)',
+                          'saturate(0.35)'][(c.cls || 0) % 4];
             ctx.beginPath();
-            ctx.arc(toX(c.x), toY(c.y), r, 0, 2 * Math.PI);
+            for (let k = 0; k < nArms; k++) {
+                const a0 = -2 * Math.PI * k / nArms;
+                const aMid = a0 - 0.55 * (2 * Math.PI / nArms);
+                const aTip = a0 - twist;
+                const x0 = cxp + hubR * Math.cos(a0), y0 = cyp + hubR * Math.sin(a0);
+                const xt = cxp + tipR * Math.cos(aTip), yt = cyp + tipR * Math.sin(aTip);
+                const x1 = cxp + hubR * Math.cos(aMid), y1 = cyp + hubR * Math.sin(aMid);
+                if (k === 0) ctx.moveTo(x0, y0); else ctx.lineTo(x0, y0);
+                ctx.quadraticCurveTo(cxp + tipR * 0.85 * Math.cos(a0 - 0.35 * twist),
+                                     cyp + tipR * 0.85 * Math.sin(a0 - 0.35 * twist), xt, yt);
+                ctx.quadraticCurveTo(cxp + hubR * 1.15 * Math.cos(aMid),
+                                     cyp + hubR * 1.15 * Math.sin(aMid), x1, y1);
+            }
+            ctx.closePath();
             ctx.fillStyle = st.fill;
             ctx.fill();
-            ctx.lineWidth = Math.max(1.5, r * 0.18);
-            ctx.strokeStyle = st.stroke;
+            ctx.lineWidth = Math.max(1.2, r * 0.1);
+            ctx.strokeStyle = '#000000';
             ctx.stroke();
-            ctx.filter = 'none';
+            ctx.restore();
         }
     }
 
@@ -959,7 +999,7 @@ export default function catalogDriver(api) {
                 const [x, y] = cls.center;
                 if (!near(x, y, far)) continue;
                 const order = Math.round(2 * Math.PI / Math.abs(cls.angle));
-                if (!(order >= 2 && order <= 12)) continue;
+                if (!(order >= 2 && order <= 24)) continue;
                 const k = ptKey(x, y);
                 const prev = centers.get(k);
                 if (!prev || order > prev.order) centers.set(k, { x, y, order });
@@ -1230,6 +1270,21 @@ export default function catalogDriver(api) {
                 const els = await symmetryElements(item.markers.subgroup, effView);
                 await drawSymmetryElements(cnv.getContext('2d'), width, height, els,
                                            effView, item.markers.scale || 1);
+            }
+            if (item.clipDisk) {
+                // Clip Poincare-disk overlays strictly to |z| <= clipDisk so the
+                // inverted exterior copy (|z| > 1) never bleeds outside the unit disk.
+                const W = worldMap(width, height, effView);
+                const [ox, oy] = W([0, 0]);
+                const rPx = (item.clipDisk === true ? 1.0 : Number(item.clipDisk)) * effView.zoom * width / 2;
+                const ctx = cnv.getContext('2d');
+                ctx.save();
+                ctx.globalCompositeOperation = 'destination-in';
+                ctx.beginPath();
+                ctx.arc(ox, oy, rPx, 0, 2 * Math.PI);
+                ctx.fillStyle = '#000';
+                ctx.fill();
+                ctx.restore();
             }
 
             while (pending.size >= maxInFlight) await Promise.race(pending);

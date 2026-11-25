@@ -378,6 +378,7 @@
   }
 
   function mountVersionSwitcher(actionsEl) {
+    if (metaContent('catalog-versions', '0') !== '1') return;
     var rel = metaContent('catalog-rel', '');
     var curVer = metaContent('catalog-version', '');
     var curFam = metaContent('catalog-family', 'wp');
