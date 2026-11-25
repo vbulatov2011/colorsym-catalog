@@ -39,3 +39,7 @@ versions/*/render_list.json
 versions/*/render_done.json
 versions/*/entries.json
 versions/*/search_index.json
+
+# self-contained deployment build outputs (tools/build_deploy.py)
+/dist/
+/deploy_zips/

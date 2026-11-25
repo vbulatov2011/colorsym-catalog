@@ -60,18 +60,33 @@
   // ---- Live SymmHub URL & optional catalog_config.json ---------------------
 
   var runtimeDefaultBase = null;
+  var hideLiveSettings = metaContent('symmhub-settings', '1') === '0';
+
+  function resolveSymmHubBase(raw, sRoot) {
+    var clean = (raw || '').trim();
+    if (!clean) return '';
+    if (/^https?:\/\//i.test(clean)) return clean.replace(/\/+$/, '');
+    try {
+      var rootHref = new URL((sRoot !== undefined ? sRoot : siteRoot()) || './', location.href).href;
+      return new URL(clean, rootHref).href.replace(/\/+$/, '');
+    } catch (e) {
+      return clean.replace(/\/+$/, '');
+    }
+  }
 
   function defaultSymmHubBase() {
-    if (runtimeDefaultBase) return runtimeDefaultBase;
+    if (runtimeDefaultBase) return resolveSymmHubBase(runtimeDefaultBase);
     var m = metaContent('symmhub-base', '');
-    return (m || 'http://localhost:8125').replace(/\/+$/, '');
+    return resolveSymmHubBase(m || 'http://localhost:8125');
   }
 
   function getSymmHubBase() {
-    try {
-      var custom = localStorage.getItem(SYM_URL_KEY);
-      if (custom) return custom.replace(/\/+$/, '');
-    } catch (e) {}
+    if (!hideLiveSettings) {
+      try {
+        var custom = localStorage.getItem(SYM_URL_KEY);
+        if (custom) return resolveSymmHubBase(custom);
+      } catch (e) {}
+    }
     return defaultSymmHubBase();
   }
 
@@ -87,9 +102,14 @@
   function resolvePresetUrl(presetRel, sRoot, base) {
     if (!presetRel) return '';
     if (/^https?:\/\//i.test(presetRel) || presetRel.charAt(0) === '/') return presetRel;
-    if (/^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/i.test(base)) {
-      return '/catalog/' + presetRel.replace(/^\/+/, '');
-    }
+    try {
+      var baseUrl = new URL(base, location.href);
+      var isLocal = /^(localhost|127\.0\.0\.1)$/i.test(baseUrl.hostname);
+      var isCrossOrigin = baseUrl.origin !== location.origin;
+      if (isLocal && isCrossOrigin && (baseUrl.pathname === '/' || baseUrl.pathname === '')) {
+        return '/catalog/' + presetRel.replace(/^\/+/, '');
+      }
+    } catch (e) {}
     try {
       return new URL((sRoot || '') + presetRel, location.href).href;
     } catch (e) {
@@ -484,7 +504,7 @@
       setSt('Reset to default (' + getSymmHubBase() + ')', 'ok');
     });
     wrap.querySelector('#sym-url-test').addEventListener('click', function () {
-      var u = (inp.value || getSymmHubBase()).replace(/\/+$/, '') + '/apps/symdraw/symdraw_wp.html';
+      var u = resolveSymmHubBase(inp.value || getSymmHubBase()) + '/apps/symdraw/symdraw_wp.html';
       setSt('Checking ' + u + '\u2026');
       fetch(u, { method: 'GET' }).then(function (r) {
         if (r.ok) setSt('Reachable (HTTP ' + r.status + ')', 'ok');
@@ -495,13 +515,34 @@
     });
   }
 
+  function applySettingsVisibility() {
+    if (!hideLiveSettings) return;
+    var wrap = document.querySelector('.settings-wrap');
+    if (wrap) wrap.hidden = true;
+    document.querySelectorAll('.live-foot span').forEach(function (sp) {
+      if (sp.id !== 'live-foot-hint' && /SymmHub URL/i.test(sp.textContent || '')) {
+        sp.hidden = true;
+      }
+    });
+  }
+
   function loadOptionalConfig() {
     var sRoot = siteRoot();
     fetch(sRoot + 'catalog_config.json', { cache: 'no-store' }).then(function (r) {
       return r.ok ? r.json() : null;
     }).then(function (cfg) {
-      if (cfg && cfg.symmhubUrl) {
-        runtimeDefaultBase = cfg.symmhubUrl.replace(/\/+$/, '');
+      if (!cfg) return;
+      var changed = false;
+      if (cfg.hideSymmhubSettings === true) {
+        hideLiveSettings = true;
+        applySettingsVisibility();
+        changed = true;
+      }
+      if (cfg.symmhubUrl) {
+        runtimeDefaultBase = cfg.symmhubUrl.trim().replace(/\/+$/, '');
+        changed = true;
+      }
+      if (changed) {
         window.dispatchEvent(new CustomEvent('symmhubBaseChanged', { detail: { base: getSymmHubBase() } }));
       }
     }).catch(function () {});
@@ -521,8 +562,9 @@
     if (actionsEl) {
       mountSearchModal(actionsEl);
       mountVersionSwitcher(actionsEl);
-      mountLiveSettings(actionsEl);
+      if (!hideLiveSettings) mountLiveSettings(actionsEl);
     }
+    applySettingsVisibility();
     loadOptionalConfig();
   }
 
