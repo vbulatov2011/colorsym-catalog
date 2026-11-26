@@ -35,6 +35,7 @@ import re
 import shutil
 import subprocess
 import sys
+import tempfile
 import time
 import zipfile
 
@@ -382,11 +383,8 @@ def stage_catalog(out_dir, mode='copy'):
     return stats, family_preset_lists
 
 
-def stage_symmhub(out_dir, family_preset_lists, mode='copy'):
-    if not os.path.isdir(SYMMHUB):
-        raise FileNotFoundError(f'SymmHub directory not found: {SYMMHUB}')
-
-    sh_out = os.path.join(out_dir, 'symmhub')
+def _stage_symmhub_source(sh_out, family_preset_lists, mode='copy'):
+    """Stage full unbundled SymDraw + pruned lib/ + generated glue files into sh_out."""
     stats = {'files': 0}
 
     # 1. SymmHub portal CSS & icon (for SymDraw gallery pages)
@@ -439,6 +437,13 @@ def stage_symmhub(out_dir, family_preset_lists, mode='copy'):
         stage_binary(os.path.join(sd_src, 'js', fn), os.path.join(sd_out, 'js', fn), mode='copy')
         stats['files'] += 1
 
+    # Lightweight gallery entry (avoids pulling WebGL/SymRenderer on thumbnail gallery pages)
+    write_text(
+        os.path.join(sd_out, 'js', 'gallery.js'),
+        "export { appendThumbnails2 } from '../../../lib/symhublib/appendThumbnails.js';\n",
+    )
+    stats['files'] += 1
+
     # 4. Staged symdraw_app.js: allow explicit opt.samples (for combined polyhedral+axial spherical samples)
     app_js_path = os.path.join(sd_src, 'js', 'symdraw_app.js')
     app_js = io.open(app_js_path, 'r', encoding='utf-8').read()
@@ -475,7 +480,7 @@ def stage_symmhub(out_dir, family_preset_lists, mode='copy'):
             )
             write_text(os.path.join(sd_out, 'js', f'symdraw_{vkey}.js'), entry_js)
             thumb_script = (
-                "    import { appendThumbnails2 } from './js/modules.js';\n"
+                "    import { appendThumbnails2 } from './js/gallery.js';\n"
                 f"    import {{ presets }} from './js/presets_{vkey}.js';\n\n"
                 "    appendThumbnails2({\n"
                 "        elem:          document.getElementById('thumbnails'),\n"
@@ -515,7 +520,7 @@ def stage_symmhub(out_dir, family_preset_lists, mode='copy'):
             )
             write_text(os.path.join(sd_out, 'js', f'symdraw_{vkey}.js'), entry_js)
             thumb_script = (
-                "    import { appendThumbnails2 } from './js/modules.js';\n"
+                "    import { appendThumbnails2 } from './js/gallery.js';\n"
                 f"    import {{ {', '.join(entry_imports)} }} from './js/presets_{vkey}.js';\n\n"
                 + '\n'.join(thumb_calls) + '\n'
                 f"    const meta = document.querySelector('.gallery-toolbar__meta');\n"
@@ -671,6 +676,73 @@ export const APP_CATALOG = {{
     return stats
 
 
+def stage_symmhub(out_dir, family_preset_lists, mode='copy', bundled=True):
+    """Stage SymmHub under <out_dir>/symmhub (esbuild-bundled by default, or unbundled)."""
+    if not os.path.isdir(SYMMHUB):
+        raise FileNotFoundError(f'SymmHub directory not found: {SYMMHUB}')
+
+    sh_out = os.path.join(out_dir, 'symmhub')
+    # Always recreate symmhub/ cleanly so stale unbundled modules or old chunk hashes never linger
+    if os.path.exists(sh_out):
+        shutil.rmtree(sh_out)
+
+    if not bundled:
+        stats = _stage_symmhub_source(sh_out, family_preset_lists, mode=mode)
+        stats['mode'] = 'unbundled'
+        return stats
+
+    bundler_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'bundler')
+    bundler_script = os.path.join(bundler_dir, 'bundle_symmhub.mjs')
+    esbuild_dir = os.path.join(bundler_dir, 'node_modules', 'esbuild')
+    if not os.path.isdir(esbuild_dir):
+        raise RuntimeError(
+            f'esbuild is not installed in {bundler_dir}.\n'
+            f'Run: npm --prefix "{bundler_dir}" install'
+        )
+
+    with tempfile.TemporaryDirectory(prefix='symmhub_stage_') as tmp_stage:
+        _stage_symmhub_source(tmp_stage, family_preset_lists, mode='copy')
+
+        ensure_dir(sh_out)
+        print('Bundling SymmHub with esbuild...')
+        subprocess.run(['node', bundler_script, tmp_stage, sh_out], check=True)
+
+        # Copy only minimal non-bundled runtime static assets
+        static_files = [
+            'index.html',
+            'css/icon_symmhub.svg',
+            'css/portal_theme.js',
+            'apps/symdraw/index.html',
+            'apps/symdraw/css/icon_symdraw.svg',
+        ]
+        for vkey, _, html_file, thumb_html, _, _, _ in SYMDRAW_VARIANTS:
+            static_files.extend([
+                f'apps/symdraw/{html_file}',
+                f'apps/symdraw/{thumb_html}',
+                f'apps/symdraw/img/tmb_{vkey}.png',
+                f'apps/symdraw/js/presets_{vkey}.js',
+            ])
+        for rel in static_files:
+            src = os.path.join(tmp_stage, *rel.split('/'))
+            if os.path.exists(src):
+                stage_binary(src, os.path.join(sh_out, *rel.split('/')), mode='copy')
+
+        for res_dir in ('lib/drawlib/res', 'lib/symhublib/ui/res'):
+            src_res = os.path.join(tmp_stage, *res_dir.split('/'))
+            if os.path.isdir(src_res):
+                for dp, _, fns in os.walk(src_res):
+                    rel_dp = os.path.relpath(dp, tmp_stage)
+                    for fn in fns:
+                        stage_binary(
+                            os.path.join(dp, fn),
+                            os.path.join(sh_out, rel_dp, fn),
+                            mode='copy',
+                        )
+
+    total_files = sum(len(fns) for _, _, fns in os.walk(sh_out))
+    return {'files': total_files, 'mode': 'bundled'}
+
+
 # ---- Optional GoDaddy zip chunking ------------------------------------------
 
 COMPRESS_EXTS = {'.html', '.css', '.js', '.mjs', '.json', '.svg', '.txt', ''}
@@ -779,6 +851,8 @@ def main():
     ap.add_argument('--out', default=os.path.join(CAT, 'dist'), help='Output deployment directory (default: catalog/dist)')
     ap.add_argument('--mode', choices=('copy', 'link'), default='copy',
                     help='copy (portable, incremental) or link (fast same-drive NTFS hardlinks for images)')
+    ap.add_argument('--symmhub', choices=('bundled', 'unbundled'), default='bundled',
+                    help='bundled (esbuild minified chunks + workers, default) or unbundled (raw ES modules)')
     ap.add_argument('--clean', action='store_true', help='Remove existing --out directory before staging')
     ap.add_argument('--pack', default='', help='Optional directory to write GoDaddy-chunked .zip archives')
     ap.add_argument('--max-zip-mb', type=int, default=500, help='Target max size per zip chunk in MB (default: 500)')
@@ -791,19 +865,19 @@ def main():
         shutil.rmtree(out_dir)
 
     t0 = time.time()
-    print(f'Staging self-contained catalog -> {out_dir} (mode={args.mode})')
+    print(f'Staging self-contained catalog -> {out_dir} (mode={args.mode}, symmhub={args.symmhub})')
     print(f'  Catalog source: {CAT}')
     print(f'  SymmHub source: {SYMMHUB}')
 
     cat_stats, family_preset_lists = stage_catalog(out_dir, mode=args.mode)
-    sh_stats = stage_symmhub(out_dir, family_preset_lists, mode=args.mode)
+    sh_stats = stage_symmhub(out_dir, family_preset_lists, mode=args.mode, bundled=(args.symmhub == 'bundled'))
     dt = time.time() - t0
 
     print(f'Staged in {dt:.1f}s:')
     print(f"  Catalog: {cat_stats['html']} HTML, {cat_stats['binary']} assets, "
           f"{cat_stats['thumbs_generated']} generated sample thumbs, "
           f"{cat_stats['skipped_stray']} stray dev files skipped")
-    print(f"  SymmHub: {sh_stats['files']} files (4 SymDraw apps + pruned lib/)")
+    print(f"  SymmHub: {sh_stats['files']} files ({sh_stats['mode']}; 4 SymDraw apps + workers + assets)")
 
     if args.pack:
         pack_dir = os.path.abspath(args.pack)

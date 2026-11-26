@@ -1,0 +1,9 @@
+{
+  "name": "colorsym-symmhub-bundler",
+  "private": true,
+  "type": "module",
+  "description": "Bundles SymmHub SymDraw apps, Web Workers, and CSS for self-contained catalog deployment.",
+  "dependencies": {
+    "esbuild": "^0.28.2"
+  }
+}

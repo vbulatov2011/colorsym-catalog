@@ -34,11 +34,14 @@ RE_LIVE_DATA = re.compile(
     re.S,
 )
 RE_JS_IMPORT = re.compile(
-    r'''(?:import|export)\s+(?:[^'"]*?\s+from\s+)?['"]([^'"]+)['"]|import\(\s*['"]([^'"]+)['"]\s*\)'''
+    r'''(?:import|export)(?:\s+[^'"]*?\s+from|\s*\{[^}]*\}\s*from|\s*\*\s+as\s+\w+\s+from|\s+)\s*['"]([^'"]+)['"]|import\(\s*['"]([^'"]+)['"]\s*\)'''
 )
 RE_PRESET_STR = re.compile(r'export\s+const\s+(presets(?:_\w+)?)\s*=\s*`([^`]*)`', re.S)
-RE_FOLDER_STR = re.compile(r'export\s+const\s+(folder_\w+)\s*=\s*"([^"]+)"')
-RE_SYMDRAW_FOLDER = re.compile(r'presetsFolder:\s*"([^"]+)"')
+RE_FOLDER_STR = re.compile(r'export\s+const\s+(folder_\w+)\s*=\s*["\']([^"\']+)["\']')
+RE_SYMDRAW_FOLDER = re.compile(r'presetsFolder:\s*["\']([^"\']+)["\']')
+RE_REWRITTEN_URL = re.compile(
+    r'''new\s+URL\(\s*(['"])([^'"]+)\1\s*,\s*new\s+URL\(\s*(['"])([^'"]+)\3\s*,\s*import\.meta\.url\s*\)\.href\s*\)'''
+)
 
 
 def check_deploy(root):
@@ -201,13 +204,14 @@ def check_deploy(root):
                 if not os.path.isfile(fp_png):
                     err(f'SymDraw {vkey} sample missing PNG thumb: {rel_json}.png')
 
-    # 6. Trace ES module imports from all 4 SymDraw apps + 3 Web Workers
+    # 6. Trace ES module imports from all 4 SymDraw apps, gallery, and 3 Web Workers
     sh_root = os.path.join(root, 'symmhub')
     js_entries = [
         'apps/symdraw/js/symdraw_wp.js',
         'apps/symdraw/js/symdraw_frieze.js',
         'apps/symdraw/js/symdraw_spherical.js',
         'apps/symdraw/js/symdraw_klm.js',
+        'apps/symdraw/js/gallery.js',
         'lib/grouplib/DirichletWorker.js',
         'lib/grouplib/SubgroupNamesWorker.js',
         'lib/grouplib/SubgroupWorker.js',
@@ -215,6 +219,8 @@ def check_deploy(root):
     seen_js = set()
     queue = list(js_entries)
     missing_js = []
+    meta_assets_checked = 0
+    missing_meta_assets = []
     while queue:
         rel_js = queue.pop(0)
         if rel_js in seen_js:
@@ -225,9 +231,9 @@ def check_deploy(root):
             continue
         seen_js.add(rel_js)
         txt = io.open(fp, encoding='utf-8', errors='replace').read()
-        # Strip /* ... */ block comments and // line comments before scanning imports
+        # Strip /* ... */ block comments and non-URL // line comments before scanning imports
         txt_nc = re.sub(r'/\*.*?\*/', '', txt, flags=re.S)
-        txt_nc = re.sub(r'//[^\n]*', '', txt_nc)
+        txt_nc = re.sub(r'(?<!:)//[^\n]*', '', txt_nc)
         cur_d = posixpath.dirname(rel_js)
         for m in RE_JS_IMPORT.finditer(txt_nc):
             spec = m.group(1) or m.group(2)
@@ -236,9 +242,33 @@ def check_deploy(root):
                 if target not in seen_js:
                     queue.append(target)
 
-    # Filter out known harmless dead imports in upstream SymmHub comments/unused helpers if any exist
+        # Verify rewritten import.meta.url static asset/worker targets inside bundled JS
+        for m in RE_REWRITTEN_URL.finditer(txt):
+            inner_rel, orig_rel = m.group(2), m.group(4)
+            if inner_rel.endswith('/') or '${' in inner_rel:
+                continue
+            orig_pos = posixpath.normpath(posixpath.join(cur_d, orig_rel))
+            asset_pos = posixpath.normpath(posixpath.join(posixpath.dirname(orig_pos), inner_rel))
+            if asset_pos.startswith('..'):
+                continue
+            meta_assets_checked += 1
+            if not os.path.exists(os.path.join(sh_root, *asset_pos.split('/'))):
+                missing_meta_assets.append(f'{rel_js}: {inner_rel} (from {orig_pos}) -> symmhub/{asset_pos}')
+
     if missing_js:
         err(f'{len(missing_js)} missing SymmHub JS module(s): ' + ', '.join(missing_js[:10]))
+    if missing_meta_assets:
+        err(f'{len(missing_meta_assets)} missing bundled asset/worker target(s): ' + '; '.join(missing_meta_assets[:8]))
+
+    # Check if bundled (presence of symdraw-core-*.js chunk) and count .mjs files
+    mjs_count = sum(
+        1 for dp, _, fns in os.walk(sh_root) for fn in fns if fn.endswith('.mjs')
+    ) if os.path.isdir(sh_root) else 0
+    is_bundled = any(
+        fn.startswith('symdraw-core-') and fn.endswith('.js')
+        for fn in (os.listdir(os.path.join(sh_root, 'apps', 'symdraw', 'js'))
+                   if os.path.isdir(os.path.join(sh_root, 'apps', 'symdraw', 'js')) else [])
+    )
 
     # Print summary report
     print(f'\n=== Deployment Verification Report: {root} ===')
@@ -247,9 +277,11 @@ def check_deploy(root):
         f, d, b = section_stats[sec]
         print(f'  {sec:16s} {f:8d} {d:7d} {f+d:8d} {b/1024/1024:10.2f}')
     print(f'  {"TOTAL":16s} {total_files:8d} {total_dirs:7d} {total_files+total_dirs:8d} {total_bytes/1024/1024:10.2f}')
-    print(f'\n  Verified: {len(html_files)} HTML pages, {links_checked} local links/assets, '
+    print(f'\n  SymmHub mode: {"BUNDLED" if is_bundled else "unbundled"} '
+          f'({len(seen_js)} ES modules, {mjs_count} .mjs files, {meta_assets_checked} static import.meta.url targets verified)')
+    print(f'  Verified: {len(html_files)} HTML pages, {links_checked} local links/assets, '
           f'{live_checked} live-data payloads, {si_checked} search entries, '
-          f'{sample_checked} SymDraw samples (.json+.png), {len(seen_js)} SymmHub ES modules.')
+          f'{sample_checked} SymDraw samples (.json+.png).')
 
     if warnings:
         print('\nWARNINGS:')
