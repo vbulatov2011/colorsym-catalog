@@ -67,6 +67,7 @@ createServer(async (req, res) => {
     const body = await readFile(file);
     res.writeHead(200, {
       'content-type': TYPES[extname(file).toLowerCase()] || 'application/octet-stream',
+      'cache-control': 'no-store',
       'x-frame-options': 'SAMEORIGIN',
       'x-content-type-options': 'nosniff',
     });

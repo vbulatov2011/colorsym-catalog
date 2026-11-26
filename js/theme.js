@@ -28,7 +28,7 @@
     var info = LABELS[mode] || LABELS.light;
     var btns = document.querySelectorAll('[data-theme-toggle]');
     for (var i = 0; i < btns.length; i++) {
-      btns[i].textContent = info.icon + ' ' + info.text;
+      btns[i].innerHTML = '<span class="theme-ico" aria-hidden="true">' + info.icon + '</span><span class="theme-lbl"> ' + info.text + '</span>';
       btns[i].title = info.title;
       btns[i].setAttribute('aria-label', info.title);
     }
@@ -548,6 +548,21 @@
     }).catch(function () {});
   }
 
+  function syncNavHeight() {
+    var nav = document.querySelector('nav.topnav');
+    if (!nav) return;
+    var update = function () {
+      var h = Math.ceil(nav.getBoundingClientRect().height);
+      if (h > 0) document.documentElement.style.setProperty('--nav-h', h + 'px');
+    };
+    update();
+    if (typeof ResizeObserver !== 'undefined') {
+      new ResizeObserver(update).observe(nav);
+    } else {
+      window.addEventListener('resize', update);
+    }
+  }
+
   function initUI() {
     var btns = document.querySelectorAll('[data-theme-toggle]');
     for (var i = 0; i < btns.length; i++) {
@@ -566,6 +581,7 @@
     }
     applySettingsVisibility();
     loadOptionalConfig();
+    syncNavHeight();
   }
 
   if (document.readyState === 'loading') {

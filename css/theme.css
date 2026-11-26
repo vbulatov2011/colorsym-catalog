@@ -432,8 +432,58 @@ footer.site-foot .foot-links {
 }
 
 @media (max-width: 640px) {
-  .wrap { padding: 0 .85rem; }
+  .wrap { padding: 0 .75rem; }
   .filterbar .fcount { margin-left: 0; }
+  .topnav__inner {
+    gap: .3rem .5rem;
+    padding-top: .32rem;
+    padding-bottom: .32rem;
+  }
+  .crumbs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    max-width: 100%;
+    font-size: .82rem;
+    gap: .22rem .3rem;
+  }
+  .crumbs::-webkit-scrollbar { display: none; }
+  .topnav__actions {
+    gap: .28rem;
+  }
+  .topnav__actions .btn.sm {
+    padding: .16rem .42rem;
+    font-size: .76rem;
+  }
+  [data-theme-toggle] .theme-lbl {
+    display: none;
+  }
+  .kbd { display: none; }
+  #cat-search-modal {
+    padding: .75rem .6rem;
+  }
+  .csm-dialog {
+    max-height: 80dvh;
+  }
+}
+
+@media (pointer: coarse) {
+  .kbd { display: none; }
+  .btn.icon-btn {
+    min-width: 34px;
+    min-height: 32px;
+  }
+  .btn.sm {
+    min-height: 30px;
+  }
+  .count-run a, .count-run .off, .count-run .now {
+    min-width: 1.75rem;
+    padding: .12rem .32rem;
+  }
+  .csm-item {
+    padding: .58rem .7rem;
+  }
 }
 
 /* ---- Topbar Version Switcher, Search Button & Settings Popover --------- */

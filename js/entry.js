@@ -240,6 +240,17 @@
     });
   }
 
+  var isTouchDevice = !!(
+    (window.matchMedia && (
+      window.matchMedia('(pointer: coarse)').matches ||
+      window.matchMedia('(hover: none)').matches ||
+      window.matchMedia('(max-width: 640px)').matches
+    )) ||
+    /\b(Android|iPad|iPhone|iPod)\b/i.test(navigator.userAgent || '')
+  );
+  if (isTouchDevice) document.documentElement.classList.add('is-touch');
+  var isCoarsePointer = isTouchDevice;
+
   refreshAllLiveLinks = function () {
     if (!liveData || !window.CATALOG_LIVE) return;
     document.querySelectorAll('a[data-live-kind]').forEach(function (a) {
@@ -256,10 +267,14 @@
       b.classList.toggle('active', b.getAttribute('data-live-proj') === liveProj);
     });
     var footHint = document.getElementById('live-foot-hint');
-    if (footHint && isSphericalLive()) {
-      footHint.innerHTML = (liveProj === 'sphere'
-        ? 'Drag to rotate sphere &middot; Ctrl+scroll to zoom'
-        : 'Drag to turn stereographic view &middot; scroll to zoom') + ' &middot; powered by SymmHub';
+    if (footHint) {
+      if (isSphericalLive()) {
+        footHint.innerHTML = (liveProj === 'sphere'
+          ? (isCoarsePointer ? 'Drag to rotate sphere &middot; pinch to zoom' : 'Drag to rotate sphere &middot; Ctrl+scroll to zoom')
+          : (isCoarsePointer ? 'Drag to turn stereographic view &middot; pinch to zoom' : 'Drag to turn stereographic view &middot; scroll to zoom')) + ' &middot; powered by SymmHub';
+      } else if (isCoarsePointer) {
+        footHint.innerHTML = 'Drag to pan &middot; pinch to zoom &middot; powered by SymmHub';
+      }
     }
   };
 
@@ -280,12 +295,17 @@
   var liveTallBtn = document.getElementById('live-tall');
   var drawerState = { open: false, kind: 'coset', perm: 0 };
 
+  function isPhoneLive() {
+    return isTouchDevice || !!(window.matchMedia && window.matchMedia('(max-width: 640px)').matches);
+  }
+
   refreshLiveDrawer = function () {
     if (!drawer || !drawerState.open || !liveData || !window.CATALOG_LIVE) return;
+    var uInline = liveUrlFor(drawerState.kind, drawerState.perm, isPhoneLive() ? 'bare' : 'simple');
     var uSimple = liveUrlFor(drawerState.kind, drawerState.perm, 'simple');
     var uStudio = liveUrlFor(drawerState.kind, drawerState.perm, '');
-    if (iframe && uSimple && iframe.src !== uSimple) {
-      iframe.src = uSimple;
+    if (iframe && uInline && iframe.src !== uInline) {
+      iframe.src = uInline;
     }
     if (liveNewTab && uSimple) liveNewTab.href = uSimple;
     if (liveStudioTab && uStudio) liveStudioTab.href = uStudio;
@@ -459,6 +479,7 @@
     };
 
     gridTable.addEventListener('pointerover', function (e) {
+      if (e.pointerType && e.pointerType !== 'mouse') return;
       var st = e.target.closest && e.target.closest('td.cell .stack');
       if (!st) { hideTip(); return; }
       if (st !== tipTarget) scheduleTip(st, false);
@@ -598,7 +619,47 @@
   });
 
   if (lb) {
+    var lbHintEl = document.getElementById('lb-hint');
+    if (lbHintEl && isCoarsePointer) {
+      lbHintEl.innerHTML = 'Swipe to browse panels &middot; tap image or &times; to close';
+    }
+
+    var swipeStart = null;
+    var suppressLbClickUntil = 0;
+
+    lb.addEventListener('touchstart', function (e) {
+      if (!e.touches || e.touches.length !== 1) { swipeStart = null; return; }
+      if (e.target.closest && e.target.closest('#lb-layers, .lb-bar, button, a, input, label')) {
+        swipeStart = null;
+        return;
+      }
+      swipeStart = {
+        x: e.touches[0].clientX,
+        y: e.touches[0].clientY,
+        t: Date.now(),
+      };
+    }, { passive: true });
+
+    lb.addEventListener('touchend', function (e) {
+      if (!swipeStart || !e.changedTouches || !e.changedTouches.length) return;
+      var dx = e.changedTouches[0].clientX - swipeStart.x;
+      var dy = e.changedTouches[0].clientY - swipeStart.y;
+      var dt = Date.now() - swipeStart.t;
+      swipeStart = null;
+      if (dt > 700) return;
+      var adx = Math.abs(dx);
+      var ady = Math.abs(dy);
+      if (adx > 42 && adx > ady * 1.25) {
+        move(0, dx < 0 ? 1 : -1);
+        suppressLbClickUntil = Date.now() + 350;
+      } else if (ady > 42 && ady > adx * 1.25 && pos[idx]) {
+        move(dy < 0 ? 1 : -1, 0);
+        suppressLbClickUntil = Date.now() + 350;
+      }
+    }, { passive: true });
+
     lb.addEventListener('click', function (e) {
+      if (Date.now() < suppressLbClickUntil) return;
       if (e.target.closest && e.target.closest('#lb-live-inline')) {
         var b = e.target.closest('#lb-live-inline');
         var k = b.getAttribute('data-live-kind');

@@ -727,18 +727,6 @@ def stage_symmhub(out_dir, family_preset_lists, mode='copy', bundled=True):
             if os.path.exists(src):
                 stage_binary(src, os.path.join(sh_out, *rel.split('/')), mode='copy')
 
-        for res_dir in ('lib/drawlib/res', 'lib/symhublib/ui/res'):
-            src_res = os.path.join(tmp_stage, *res_dir.split('/'))
-            if os.path.isdir(src_res):
-                for dp, _, fns in os.walk(src_res):
-                    rel_dp = os.path.relpath(dp, tmp_stage)
-                    for fn in fns:
-                        stage_binary(
-                            os.path.join(dp, fn),
-                            os.path.join(sh_out, rel_dp, fn),
-                            mode='copy',
-                        )
-
     total_files = sum(len(fns) for _, _, fns in os.walk(sh_out))
     return {'files': total_files, 'mode': 'bundled'}
 

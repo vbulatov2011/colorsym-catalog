@@ -466,3 +466,20 @@ nav.pager a, nav.pager span {
 nav.pager a:hover { border-color: var(--accent); background: var(--accent-bg); text-decoration: none; }
 nav.pager .cur { background: var(--accent); color: #ffffff; border-color: var(--accent); font-weight: 600; }
 nav.pager .off { color: var(--faint); background: transparent; border-style: dashed; }
+
+@media (max-width: 640px) {
+  header.top {
+    padding: .75rem 0 .8rem;
+    margin-bottom: 1rem;
+  }
+  header.top h1 { font-size: 1.45rem; }
+  header.top.group h1 {
+    font-size: 1.75rem;
+    padding: .28rem .85rem .32rem .75rem;
+  }
+  nav.jump-chips {
+    position: static;
+    gap: .26rem;
+    padding: .4rem .5rem;
+  }
+}

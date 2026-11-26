@@ -705,4 +705,6 @@ ul.ref-list li em { color: var(--ink); }
   .contrast-card .art-frame { max-width: 220px; }
   .mosaic { grid-template-columns: repeat(2, 1fr); }
   .mosaic-tile.wide { grid-column: span 2; }
+  table.alg { display: block; overflow-x: auto; max-width: 100%; }
+  table.part-grid { min-width: 440px; }
 }
