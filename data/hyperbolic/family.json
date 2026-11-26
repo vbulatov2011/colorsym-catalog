@@ -7,11 +7,11 @@
  "geometry": "hyperbolic",
  "spaceNoun": "the hyperbolic plane",
  "heroGroup": "*238",
- "colorRange": [2, 7],
+ "colorRange": [2, 24],
  "hasAffineClasses": false,
  "curved": true,
  "sparse": true,
- "defaultPresetSet": "hyp",
+ "defaultPresetSet": "hyp2",
  "defaultPresetPrefix": "hyp-",
  "renderIterations": {
   "default": 120
@@ -41,9 +41,9 @@
   "*2233": "*□(2,2,3,3) · χ=−1/6"
  },
  "sections": [
-  { "title": "Triangle groups (klm, 2–7 colors)", "groups": ["237", "238", "245", "334", "335"] },
-  { "title": "Reflection triangles (*klm, 2–6 colors)", "groups": ["*237", "*238", "*245", "*334", "*335"] },
-  { "title": "Quadrilateral groups (klmn, 2–4 colors)", "groups": ["2223", "2225", "2233"] },
+  { "title": "Triangle groups (klm, up to 7–24 colors)", "groups": ["237", "238", "245", "334", "335"] },
+  { "title": "Reflection triangles (*klm, 2–6 colors; *237 up to 24)", "groups": ["*237", "*238", "*245", "*334", "*335"] },
+  { "title": "Quadrilateral groups (klmn, 2–4 colors; 2223 up to 5)", "groups": ["2223", "2225", "2233"] },
   { "title": "Reflection quadrilaterals (*klmn, 2–4 colors)", "groups": ["*2223", "*2225", "*2233"] }
  ]
 }

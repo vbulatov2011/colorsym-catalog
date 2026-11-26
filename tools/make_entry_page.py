@@ -7,7 +7,7 @@
 # to gen/. Shared styles and interactions live in css/entry.css, js/theme.js, and
 # js/entry.js.
 import html as _html, json, io, os, re, sys
-from entry_names import entry_names, group_motif, piece_file, MIN_N, MAX_N
+from entry_names import entry_names, group_motif, piece_file, placement_classes, MIN_N, MAX_N, MAX_GRID_N
 import catalog_paths as P
 
 _pos = [a for a in sys.argv[1:] if not a.startswith('--')]
@@ -139,22 +139,12 @@ INVCOS = ' '.join(invert_word(w) for w in COS.split())
 ONE = ' '.join('a' for _ in COS.split())
 
 
-# placement classes: offsets i, i' are equivalent iff their point stabilizers
-# in the image of G -> S_N coincide (same conjugate g_i^-1 H g_i).
-def placement_classes(cosets, n):
-    gens = [[ord(c) - 97 for c in w] for w in cosets.split()]
-    idp = tuple(range(n))
-    seen = {idp}; queue = [idp]
-    while queue:
-        q0 = queue.pop()
-        for g in gens:
-            q = tuple(g[x] for x in q0)
-            if q not in seen: seen.add(q); queue.append(q)
-    stab = {}
-    for i in range(n):
-        key = frozenset(q for q in seen if q[i] == i)
-        stab.setdefault(key, []).append(i)
-    return sorted(stab.values())
+_entry_gen = os.path.join(out_dir, 'gen')
+HAS_COSET_ATLAS = os.path.exists(os.path.join(_entry_gen, 'cosets.webp'))
+HAS_GRID = (N <= MAX_GRID_N) and (
+    HAS_COSET_ATLAS
+    or any(os.path.exists(os.path.join(_entry_gen, piece_file(0, 0, N)[:-4] + ext)) for ext in ('.webp', '.png'))
+)
 
 
 def orbit_offsets_for_rows(cosets, n):
@@ -189,8 +179,9 @@ def orbit_offsets_for_rows(cosets, n):
     return out
 
 
-orbit_off = orbit_offsets_for_rows(COS, N)
-assert orbit_off[0] == 0
+orbit_off = orbit_offsets_for_rows(COS, N) if HAS_GRID else None
+if HAS_GRID:
+    assert orbit_off[0] == 0
 
 classes = placement_classes(COS, N)
 reps = [c[0] for c in classes]
@@ -233,14 +224,12 @@ def stack(layers, cap, lazy=False, live_kind=None, live_perm=None):
 
 GEN = 'gen/'
 IMG_EXT = '.webp'
-_entry_gen = os.path.join(out_dir, 'gen')
 _group_gen = P.path(P.fam(G_stem, 'gen'))
 _ver_for_meta = P.VERSION or P.main_version(P.FAMILY)
 _pack_meta_path = P.path(P.version_dir(_ver_for_meta), 'pack_meta.json') if _ver_for_meta else P.path(P.DATA_DIR, 'pack_meta.json')
 _pack_aliases = (json.load(open(_pack_meta_path, encoding='utf-8')).get('aliases', {}).get(_nm['dir'], {})
                  if os.path.exists(_pack_meta_path) else {})
 _GROUP_SHARED = {'group_domain.webp', 'group_tiling.webp', 'group_gens.webp', 'group_marks.webp', 'group_pattern.webp'}
-HAS_COSET_ATLAS = os.path.exists(os.path.join(_entry_gen, 'cosets.webp'))
 
 
 def sub(i):
@@ -252,7 +241,7 @@ def sub(i):
 
 
 # ---- swatch css for n colours (+ cosets sprite atlas vars) --------------
-_atlas_css = (":root { --n: %d; --nm1: %d; }\n.stack .tile { background-image: url('gen/cosets.webp'); }\n" % (N, max(N - 1, 1))) if HAS_COSET_ATLAS else ''
+_atlas_css = (":root { --n: %d; --nm1: %d; }\n.stack .tile { background-image: url('gen/cosets.webp'); }\n" % (N, max(N - 1, 1))) if (HAS_GRID and HAS_COSET_ATLAS) else ''
 sw_css = _atlas_css + "\n".join(".sw%d { background: %s; }" % (j, palette[j] if j < len(palette) else '#ccc')
                                 for j in range(N))
 CURVED = bool(fmeta.get('curved'))
@@ -306,18 +295,17 @@ hero_one = "\n".join([
     " <figure>",
     stack([sub('%s.o.png' % slug)], '%s.o' % E(entry_name), live_kind='orbit', live_perm=0),
     "  <div class='fig-foot'>",
-    "   <figcaption><b class='name'>.o</b> <span class='sub'>by orbits</span></figcaption>",
+    "   <figcaption><b class='name'>%s.o</b> <span class='sub'>by orbits</span></figcaption>" % E(entry_name),
     live_btns('orbit', 0),
     "  </div>",
     " </figure>",
 ])
 
 hero_row = "\n".join(
-    " <figure>\n%s\n  <div class='fig-foot'>\n   <figcaption><b class='name'>.%d</b> "
-    "<span class='sub'>%s</span></figcaption>\n%s\n  </div>\n </figure>"
+    " <figure>\n%s\n  <div class='fig-foot'>\n   <figcaption><b class='name'>%s.%d</b>%s</figcaption>\n%s\n  </div>\n </figure>"
     % (stack([sub('%s.%d.png' % (slug, i + 1))], '%s.%d' % (E(entry_name), i + 1),
-             live_kind='coset', live_perm=i),
-       i + 1, 'by cosets' if K == 1 else ('placement %d' % (i + 1)),
+             lazy=(i >= 4), live_kind='coset', live_perm=i),
+       E(entry_name), i + 1, " <span class='sub'>by cosets</span>" if K == 1 else '',
        live_btns('coset', i))
     for i in range(K))
 
@@ -342,7 +330,7 @@ for a in entry['colorAction']:
                 % (_html.escape(a['generator']), tds, _html.escape(a.get('cycles') or cycles_of(a['perm']))))
 head = "".join("<th><span class='sw sw%d' data-color-idx='%d' title='color %d'></span></th>"
                % (j, j, j) for j in range(N))
-action_table = ("<table class='action'>\n <tr><th>generator</th>%s<th>cycles</th></tr>\n%s\n</table>"
+action_table = ("<div class='action-wrap'><table class='action'>\n <tr><th>generator</th>%s<th>cycles</th></tr>\n%s\n</table></div>"
                 % (head, "\n".join(rows)))
 
 # ---- f/g fact boxes ------------------------------------------------------
@@ -451,78 +439,77 @@ geo = "\n".join([
     "</table></div>",
 ])
 
-# ---- partition table -----------------------------------------------------
-DECOR_GEO = [(sub('group_tiling.png'), 'gtil'),
-             (sub('sub_til.png'), 'htil'),
-             (sub('group_domain.png'), 'gfd'),
-             (sub('sub_domain.png'), 'hfd')]
-DECOR_SYM = [(sub('group_marks.png'), 'gsym'),
-             (sub('sub_marks.png'), 'hsym')]
-rep_td = lambda i: ' rep' if mark and i in reps else ''
-trows = []
-for j in range(N):
+# ---- partition table (only for N <= MAX_GRID_N with rendered grid) -------
+if HAS_GRID:
+    DECOR_GEO = [(sub('group_tiling.png'), 'gtil'),
+                 (sub('sub_til.png'), 'htil'),
+                 (sub('group_domain.png'), 'gfd'),
+                 (sub('sub_domain.png'), 'hfd')]
+    DECOR_SYM = [(sub('group_marks.png'), 'gsym'),
+                 (sub('sub_marks.png'), 'hsym')]
+    rep_td = lambda i: ' rep' if mark and i in reps else ''
+    trows = []
+    for j in range(N):
+        tds = []
+        for i in range(N):
+            if HAS_COSET_ATLAS:
+                layers = [('tile', 'pat', i, j)]
+                if i > 0:   layers.append(('tile', 'ghost', 0, j))
+                elif j > 0: layers.append(('tile', 'ghost', 0, 0))
+            else:
+                layers = [(sub(piece_file(i, j, N)), 'pat')]
+                if i > 0:   layers.append((sub(piece_file(0, j, N)), 'ghost'))
+                elif j > 0: layers.append((sub(piece_file(0, 0, N)), 'ghost'))
+            layers += DECOR_GEO + DECOR_SYM
+            if not CURVED and j == 0 and i > 0: layers.append((sub('f%d.png' % i), 'fglyph'))
+            if not CURVED and j > 0: layers.append((sub('g%d.png' % j), 'gglyph'))
+            lab = ('f<sub>%d</sub> ' % i if i > 0 else '') + ('H' if j == 0 else 'H g<sub>%d</sub>' % j)
+            tds.append("   <td class='cell%s'>\n%s\n   </td>" % (rep_td(i), stack(layers, lab, lazy=True)))
+        uimg = sub('%s.o.png' % slug) if orbit_off[j] == 0 else sub('%s.o%d.png' % (slug, orbit_off[j]))
+        ulayers = [(uimg, 'pat')] + DECOR_GEO + DECOR_SYM
+        if not CURVED and j > 0: ulayers.append((sub('g%d.png' % j), 'gglyph'))
+        tds.append("   <td class='cell marg'>\n%s\n   </td>"
+                   % stack(ulayers,
+                           'all orbits of %s' % ('H' if j == 0 else 'H g<sub>%d</sub>' % j),
+                           lazy=True, live_kind='orbit', live_perm=orbit_off[j]))
+        trows.append("  <tr>\n   <th class='row' title='Orbits of %s'><span class='sw sw%d'></span> %s</th>\n%s\n  </tr>"
+                     % ('H' if j == 0 else 'H g_%d' % j, j, 'H' if j == 0 else 'H&thinsp;g<sub>%d</sub>' % j, "\n".join(tds)))
+
+    def blayers(img, i):
+        layers = [(sub(img), 'pat')] + DECOR_GEO + DECOR_SYM
+        if not CURVED and i > 0: layers.append((sub('f%d.png' % i), 'fglyph'))
+        return layers
+
     tds = []
     for i in range(N):
-        if HAS_COSET_ATLAS:
-            layers = [('tile', 'pat', i, j)]
-            if i > 0:   layers.append(('tile', 'ghost', 0, j))
-            elif j > 0: layers.append(('tile', 'ghost', 0, 0))
+        if i in reps:
+            k = reps.index(i) + 1
+            tds.append("   <td class='cell marg%s'>\n%s\n   </td>"
+                       % (rep_td(i), stack(blayers('%s.%d.png' % (slug, k), i), '%s.%d' % (E(entry_name), k),
+                                           lazy=True, live_kind='coset', live_perm=i)))
         else:
-            layers = [(sub(piece_file(i, j, N)), 'pat')]
-            if i > 0:   layers.append((sub(piece_file(0, j, N)), 'ghost'))
-            elif j > 0: layers.append((sub(piece_file(0, 0, N)), 'ghost'))
-        layers += DECOR_GEO + DECOR_SYM
-        if not CURVED and j == 0 and i > 0: layers.append((sub('f%d.png' % i), 'fglyph'))
-        if not CURVED and j > 0: layers.append((sub('g%d.png' % j), 'gglyph'))
-        lab = ('f<sub>%d</sub> ' % i if i > 0 else '') + ('H' if j == 0 else 'H g<sub>%d</sub>' % j)
-        tds.append("   <td class='cell%s'>\n%s\n   </td>" % (rep_td(i), stack(layers, lab, lazy=True)))
-    uimg = sub('%s.o.png' % slug) if orbit_off[j] == 0 else sub('%s.o%d.png' % (slug, orbit_off[j]))
-    ulayers = [(uimg, 'pat')] + DECOR_GEO + DECOR_SYM
-    if not CURVED and j > 0: ulayers.append((sub('g%d.png' % j), 'gglyph'))
-    tds.append("   <td class='cell marg'>\n%s\n   </td>"
-               % stack(ulayers,
-                       'all orbits of %s' % ('H' if j == 0 else 'H g<sub>%d</sub>' % j),
-                       lazy=True, live_kind='orbit', live_perm=orbit_off[j]))
-    trows.append("  <tr>\n   <th class='row' title='Orbits of %s'><span class='sw sw%d'></span> %s</th>\n%s\n  </tr>"
-                 % ('H' if j == 0 else 'H g_%d' % j, j, 'H' if j == 0 else 'H&thinsp;g<sub>%d</sub>' % j, "\n".join(tds)))
+            k = reps.index(rep_of[i]) + 1
+            tds.append("   <td class='cell marg'>\n%s\n   </td>"
+                       % stack(blayers('%s.%d.png' % (slug, i + 1), i), '&equiv; .%d' % k,
+                               lazy=True, live_kind='coset', live_perm=i))
+    tds.append("   <td class='cell marg'></td>")
+    trows.append("  <tr>\n   <th class='row' title='Coloring by cosets of each column'>cosets</th>\n%s\n  </tr>"
+                 % "\n".join(tds))
 
+    def col_th(i):
+        if i in reps:
+            return ("   <th class='col%s'>f<sub>%d</sub><span class='hint'>.%d</span></th>"
+                    % (rep_td(i), i, reps.index(i) + 1))
+        return ("   <th class='col' data-rep-col='%d'>f<sub>%d</sub><span class='hint'>&equiv; .%d</span></th>"
+                % (rep_of[i], i, reps.index(rep_of[i]) + 1))
 
-def blayers(img, i):
-    layers = [(sub(img), 'pat')] + DECOR_GEO + DECOR_SYM
-    if not CURVED and i > 0: layers.append((sub('f%d.png' % i), 'fglyph'))
-    return layers
-
-
-tds = []
-for i in range(N):
-    if i in reps:
-        k = reps.index(i) + 1
-        tds.append("   <td class='cell marg%s'>\n%s\n   </td>"
-                   % (rep_td(i), stack(blayers('%s.%d.png' % (slug, k), i), '%s.%d' % (E(entry_name), k),
-                                       lazy=True, live_kind='coset', live_perm=i)))
-    else:
-        k = reps.index(rep_of[i]) + 1
-        tds.append("   <td class='cell marg'>\n%s\n   </td>"
-                   % stack(blayers('%s.%d.png' % (slug, i + 1), i), '&equiv; .%d' % k,
-                           lazy=True, live_kind='coset', live_perm=i))
-tds.append("   <td class='cell marg'></td>")
-trows.append("  <tr>\n   <th class='row' title='Coloring by cosets of each column'>cosets</th>\n%s\n  </tr>"
-             % "\n".join(tds))
-
-
-def col_th(i):
-    if i in reps:
-        return ("   <th class='col%s'>f<sub>%d</sub><span class='hint'>.%d</span></th>"
-                % (rep_td(i), i, reps.index(i) + 1))
-    return ("   <th class='col' data-rep-col='%d'>f<sub>%d</sub><span class='hint'>&equiv; .%d</span></th>"
-            % (rep_of[i], i, reps.index(rep_of[i]) + 1))
-
-
-thead = ("  <tr>\n   <th class='corner' title='Row: coset H g_j (orbits); Column: domain cell f_i'>H&thinsp;g<sub>j</sub> \\ f<sub>i</sub></th>\n"
-         + "\n".join(col_th(i) for i in range(N))
-         + "\n   <th class='col marg' title='Union of all orbits in each row'>&#8746;<span class='hint'>orbits</span></th>\n  </tr>")
-table = ("<table class='grid' style='--cell:%dpx'>\n<thead>\n%s\n</thead>\n<tbody>\n%s\n</tbody>\n</table>"
-         % (cell_px, thead, "\n".join(trows)))
+    thead = ("  <tr>\n   <th class='corner' title='Row: coset H g_j (orbits); Column: domain cell f_i'>H&thinsp;g<sub>j</sub> \\ f<sub>i</sub></th>\n"
+             + "\n".join(col_th(i) for i in range(N))
+             + "\n   <th class='col marg' title='Union of all orbits in each row'>&#8746;<span class='hint'>orbits</span></th>\n  </tr>")
+    table = ("<table class='grid' style='--cell:%dpx'>\n<thead>\n%s\n</thead>\n<tbody>\n%s\n</tbody>\n</table>"
+             % (cell_px, thead, "\n".join(trows)))
+else:
+    table = ''
 
 pairs_txt = ", ".join("f<sub>%d</sub>&thinsp;&equiv;&thinsp;.%d" % (i, reps.index(rep_of[i]) + 1)
                       for i in range(N) if i not in reps)
@@ -563,8 +550,10 @@ def _count_link(k):
             % (' class="now"' if k == N else '', k, k, '' if k == 1 else 's', k))
 
 
+_run_ns = (sorted(k for k in _have if lo_n <= k <= m['maxIndex'])
+           if m['maxIndex'] > 12 else list(range(lo_n, m['maxIndex'] + 1)))
 count_run = ('<span class="count-run"><b>%s</b> with %s colors</span>'
-             % (E(G), ''.join(_count_link(k) for k in range(lo_n, m['maxIndex'] + 1))))
+             % (E(G), ''.join(_count_link(k) for k in _run_ns)))
 
 # Cross-links: subgroup H link and affine type fact
 _h_type = entry['type']
@@ -812,45 +801,13 @@ click.</b></p>
 
 <h2 class="sec">how G permutes the colors</h2>
 %(action_table)s
-<p class="legend"><b>Words act left to right</b>: <code>(a*b)(p) = b(a(p))</code>. Hover a swatch to highlight its row in the partition table below.</p>
+<p class="legend"><b>Words act left to right</b>: <code>(a*b)(p) = b(a(p))</code>.%(action_hover_hint)s</p>
 
 <h2 class="sec">the two families of motions</h2>
 %(motions)s
 <h2 class="sec">fundamental domains and pairing transforms</h2>
 %(geo)s
-
-<h2 class="sec">color partitioning</h2>
-<div class="layer-bar" aria-label="Partition table display options">
-  <div class="layer-group">
-    <span class="lg-lbl">Presets</span>
-    <button type="button" class="seg-btn" data-layer-preset="clean">Clean</button>
-    <button type="button" class="seg-btn" data-layer-preset="domains">Domains</button>
-    <button type="button" class="seg-btn" data-layer-preset="syms">Symmetries</button>
-    <button type="button" class="seg-btn" data-layer-preset="all">All</button>
-  </div>
-  <div class="layer-group">
-    <label><input type="checkbox" data-k="pat" checked> pattern</label>
-    <label><input type="checkbox" data-k="ghost" checked> ghost H</label>
-    <label><input type="checkbox" data-k="gfd" checked> G fd</label>
-    <label><input type="checkbox" data-k="hfd" checked> H fd</label>
-    <label><input type="checkbox" data-k="gtil" checked> G tiling</label>
-    <label><input type="checkbox" data-k="htil" checked> H tiling</label>
-    <label><input type="checkbox" data-k="gsym"> G sym</label>
-    <label><input type="checkbox" data-k="hsym"> H sym</label>%(glyph_toggles)s
-  </div>
-  <div class="layer-group">
-    <span class="lg-lbl">Bg</span>
-    <button type="button" class="seg-btn" data-backdrop="light">Light</button>
-    <button type="button" class="seg-btn" data-backdrop="checker">Checker</button>
-    <button type="button" class="seg-btn" data-backdrop="dark">Dark</button>
-  </div>
-</div>
-
-<div class="cosets">
-%(table)s
-</div>
-<p class="legend">Each cell is <code>f<sub>i</sub>&thinsp;H&thinsp;g<sub>j</sub></code> (hover a thumbnail for its label, click to enlarge): <b>rows</b> are cosets <code>H&thinsp;g<sub>j</sub></code> summing across to the orbit coloring (right margin), and <b>columns</b> are domain cells <code>f<sub>i</sub></code> summing down to coset colorings (bottom margin). %(place_sent)s Faded ghosts show the parent set (<code>H</code> or <code>H&thinsp;g<sub>j</sub></code>); layer toggles are remembered across pages.</p>
-
+%(partition_section)s
 </main>
 
 <footer class="site-foot">
@@ -942,8 +899,42 @@ click.</b></p>
     'hgens': hgens_list or '\n      <li>&mdash;</li>',
     'normalnote': '' if K > 1 else ' &mdash; H is normal',
     'action_table': action_table,
+    'action_hover_hint': ' Hover a swatch to highlight its row in the partition table below.' if HAS_GRID else '',
     'motions': motions,
-    'geo': geo, 'table': table, 'place_sent': place_sent,
+    'geo': geo,
+    'partition_section': ("""
+<h2 class="sec">color partitioning</h2>
+<div class="layer-bar" aria-label="Partition table display options">
+  <div class="layer-group">
+    <span class="lg-lbl">Presets</span>
+    <button type="button" class="seg-btn" data-layer-preset="clean">Clean</button>
+    <button type="button" class="seg-btn" data-layer-preset="domains">Domains</button>
+    <button type="button" class="seg-btn" data-layer-preset="syms">Symmetries</button>
+    <button type="button" class="seg-btn" data-layer-preset="all">All</button>
+  </div>
+  <div class="layer-group">
+    <label><input type="checkbox" data-k="pat" checked> pattern</label>
+    <label><input type="checkbox" data-k="ghost" checked> ghost H</label>
+    <label><input type="checkbox" data-k="gfd" checked> G fd</label>
+    <label><input type="checkbox" data-k="hfd" checked> H fd</label>
+    <label><input type="checkbox" data-k="gtil" checked> G tiling</label>
+    <label><input type="checkbox" data-k="htil" checked> H tiling</label>
+    <label><input type="checkbox" data-k="gsym"> G sym</label>
+    <label><input type="checkbox" data-k="hsym"> H sym</label>%s
+  </div>
+  <div class="layer-group">
+    <span class="lg-lbl">Bg</span>
+    <button type="button" class="seg-btn" data-backdrop="light">Light</button>
+    <button type="button" class="seg-btn" data-backdrop="checker">Checker</button>
+    <button type="button" class="seg-btn" data-backdrop="dark">Dark</button>
+  </div>
+</div>
+
+<div class="cosets">
+%s
+</div>
+<p class="legend">Each cell is <code>f<sub>i</sub>&thinsp;H&thinsp;g<sub>j</sub></code> (hover a thumbnail for its label, click to enlarge): <b>rows</b> are cosets <code>H&thinsp;g<sub>j</sub></code> summing across to the orbit coloring (right margin), and <b>columns</b> are domain cells <code>f<sub>i</sub></code> summing down to coset colorings (bottom margin). %s Faded ghosts show the parent set (<code>H</code> or <code>H&thinsp;g<sub>j</sub></code>); layer toggles are remembered across pages.</p>
+""" % ('' if CURVED else '\n    <label><input type="checkbox" data-k="g" checked> g</label>\n    <label><input type="checkbox" data-k="f" checked> f</label>', table, place_sent)) if HAS_GRID else '',
     'lede_place': lede_place, 'coset_legend': coset_legend,
     'id': _html.escape(entry['id']),
     'ncolors': '%d color%s' % (N, '' if N == 1 else 's'),

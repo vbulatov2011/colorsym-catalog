@@ -15,6 +15,46 @@
 # make_entry_page.py both run their counts from here.
 MIN_N = 2
 MAX_N = 7               # ... and run up to MAX_N
+MAX_GRID_N = 4          # N x N coset/orbit partition table is only rendered for N <= MAX_GRID_N
+
+
+def placement_classes(cosets, n):
+    """Partition 0..n-1 into equivalence classes of cosets sharing a point
+    stabilizer in the monodromy group P = <cosets> <= S_n.
+
+    Uses the centralizer C_{S_n}(P) (O(n^2 * |gens|)) rather than enumerating P
+    (which blows up for high-index non-abelian subgroups like 237 at n >= 14).
+    """
+    perms = [[ord(c) - 97 for c in w] for w in cosets.split()]
+    central = []
+    for target in range(n):
+        s = [-1] * n
+        s[0] = target
+        q = [0]
+        ok = True
+        while q and ok:
+            i = q.pop()
+            si = s[i]
+            for p in perms:
+                gi, gs = p[i], p[si]
+                if s[gi] == -1:
+                    s[gi] = gs
+                    q.append(gi)
+                elif s[gi] != gs:
+                    ok = False
+                    break
+        if ok and all(v != -1 for v in s) and len(set(s)) == n:
+            central.append(s)
+    seen = [False] * n
+    classes = []
+    for i in range(n):
+        if seen[i]:
+            continue
+        orb = sorted({s[i] for s in central})
+        for j in orb:
+            seen[j] = True
+        classes.append(orb)
+    return sorted(classes)
 
 
 def group_motif(cat, name, stem):

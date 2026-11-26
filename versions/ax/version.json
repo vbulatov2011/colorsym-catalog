@@ -1,6 +1,6 @@
 {
  "name": "ax",
- "label": "axial tile-from-domain presets (n=2..8, <=6 colors)",
+ "label": "axial tile-from-domain presets (n=2..6, <=6 colors)",
  "created": "2026-11-23",
  "family": "axial",
  "set": "ax",
@@ -39,20 +39,6 @@
   "6*": "presets/axial/ax/ax-6s.json",
   "226": "presets/axial/ax/ax-226.json",
   "2*6": "presets/axial/ax/ax-2s6.json",
-  "*226": "presets/axial/ax/ax-s226.json",
-  "77": "presets/axial/ax/ax-77.json",
-  "7x": "presets/axial/ax/ax-7x.json",
-  "*77": "presets/axial/ax/ax-s77.json",
-  "7*": "presets/axial/ax/ax-7s.json",
-  "227": "presets/axial/ax/ax-227.json",
-  "2*7": "presets/axial/ax/ax-2s7.json",
-  "*227": "presets/axial/ax/ax-s227.json",
-  "88": "presets/axial/ax/ax-88.json",
-  "8x": "presets/axial/ax/ax-8x.json",
-  "*88": "presets/axial/ax/ax-s88.json",
-  "8*": "presets/axial/ax/ax-8s.json",
-  "228": "presets/axial/ax/ax-228.json",
-  "2*8": "presets/axial/ax/ax-2s8.json",
-  "*228": "presets/axial/ax/ax-s228.json"
+  "*226": "presets/axial/ax/ax-s226.json"
  }
 }

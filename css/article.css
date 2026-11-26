@@ -223,6 +223,20 @@
 .tut-banner h3 { margin: 0 0 .25rem; font-size: 1.08rem; font-weight: 650; color: var(--ink); }
 .tut-banner p { margin: 0; font-size: .92rem; color: var(--ink-2); line-height: 1.55; }
 
+.credits-card {
+  margin: 1.4rem 0 .4rem;
+  padding: .95rem 1.2rem;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  font-size: .9rem;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+.credits-card p { margin: 0; }
+.credits-card b { color: var(--ink); font-weight: 600; }
+
 /* ---- Editorial Article & Tutorial (tutorial.html) ---------------------- */
 
 .article-layout {

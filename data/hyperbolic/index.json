@@ -5,29 +5,29 @@
    "name": "237",
    "stem": "237",
    "file": "237.json",
-   "maxIndex": 7,
-   "totalCount": 3
+   "maxIndex": 24,
+   "totalCount": 40
   },
   {
    "name": "238",
    "stem": "238",
    "file": "238.json",
-   "maxIndex": 7,
-   "totalCount": 7
+   "maxIndex": 12,
+   "totalCount": 27
   },
   {
    "name": "245",
    "stem": "245",
    "file": "245.json",
-   "maxIndex": 7,
-   "totalCount": 7
+   "maxIndex": 10,
+   "totalCount": 23
   },
   {
    "name": "334",
    "stem": "334",
    "file": "334.json",
-   "maxIndex": 7,
-   "totalCount": 10
+   "maxIndex": 8,
+   "totalCount": 13
   },
   {
    "name": "335",
@@ -40,8 +40,8 @@
    "name": "*237",
    "stem": "s237",
    "file": "s237.json",
-   "maxIndex": 6,
-   "totalCount": 2
+   "maxIndex": 24,
+   "totalCount": 14
   },
   {
    "name": "*238",
@@ -75,8 +75,8 @@
    "name": "2223",
    "stem": "2223",
    "file": "2223.json",
-   "maxIndex": 4,
-   "totalCount": 17
+   "maxIndex": 5,
+   "totalCount": 26
   },
   {
    "name": "2225",

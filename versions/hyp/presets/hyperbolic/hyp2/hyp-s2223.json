@@ -1,0 +1,728 @@
+{
+    "name": "hyp-s2223",
+    "appInfo": {
+        "appName": "SymRenderer.Group_WP.PatternDrawing.InversiveNavigator_v1",
+        "fileFormatRelease": 1
+    },
+    "params": {
+        "files": {},
+        "display": {
+            "backgroundColor": "#FFFFFF00"
+        },
+        "recording": {
+            "animTime": 0,
+            "animSpeed": 1,
+            "startFrame": 0,
+            "endFrame": 100,
+            "currentFrame": 0
+        },
+        "pattern": {
+            "patternParams": {
+                "className": "PatternDrawing",
+                "params": {
+                    "id": "drawing1",
+                    "resolution": "1024",
+                    "useCrown": false,
+                    "sprites": true,
+                    "spriteResolution": "1024",
+                    "layer": "layer1",
+                    "style": {
+                        "stroked": true,
+                        "stroke": "#20304a",
+                        "strokeOpacity": 1,
+                        "width": 0.006744435680746305,
+                        "filled": true,
+                        "fill": "#000000",
+                        "fillOpacity": 1,
+                        "fillRule": "nonzero",
+                        "cap": "round",
+                        "join": "round",
+                        "snap": true,
+                        "fitCurves": false,
+                        "geometry": true,
+                        "incremental": false,
+                        "keepInCell": true,
+                        "geodesic": true,
+                        "curvedTiles": true
+                    },
+                    "layers": {
+                        "className": "ObjArray",
+                        "params": {
+                            "id": "layers",
+                            "children": [
+                                {
+                                    "className": "DrawingLayer",
+                                    "params": {
+                                        "id": "layer1",
+                                        "enabled": true,
+                                        "locked": false,
+                                        "opacity": 1,
+                                        "items": [
+                                            {
+                                                "type": "path",
+                                                "closed": true,
+                                                "style": {
+                                                    "stroke": {
+                                                        "rgba": [
+                                                            0.12549019607843137,
+                                                            0.18823529411764706,
+                                                            0.2901960784313726,
+                                                            1
+                                                        ]
+                                                    },
+                                                    "strokeWidth": 0.0095,
+                                                    "lineCap": "round",
+                                                    "lineJoin": "round",
+                                                    "fill": {
+                                                        "rgba": [
+                                                            1,
+                                                            1,
+                                                            1,
+                                                            1
+                                                        ]
+                                                    },
+                                                    "opacity": 1
+                                                },
+                                                "tile": {
+                                                    "edges": [
+                                                        {
+                                                            "count": 1,
+                                                            "pair": null,
+                                                            "word": "a",
+                                                            "reversed": false,
+                                                            "locked": true
+                                                        },
+                                                        {
+                                                            "count": 1,
+                                                            "pair": null,
+                                                            "word": "c",
+                                                            "reversed": false,
+                                                            "locked": true
+                                                        },
+                                                        {
+                                                            "count": 1,
+                                                            "pair": null,
+                                                            "word": "b",
+                                                            "reversed": false,
+                                                            "locked": true
+                                                        },
+                                                        {
+                                                            "count": 1,
+                                                            "pair": null,
+                                                            "word": "d",
+                                                            "reversed": false,
+                                                            "locked": true
+                                                        }
+                                                    ]
+                                                },
+                                                "nodes": [
+                                                    {
+                                                        "p": [
+                                                            -0.40299002564426956,
+                                                            4.440892098500626e-16
+                                                        ],
+                                                        "h1": [
+                                                            -0.33836408791607486,
+                                                            0.11193540763201604
+                                                        ],
+                                                        "h2": null
+                                                    },
+                                                    {
+                                                        "p": [
+                                                            0,
+                                                            4.440892098500625e-16
+                                                        ],
+                                                        "h1": null,
+                                                        "h2": null
+                                                    },
+                                                    {
+                                                        "p": [
+                                                            0,
+                                                            0.3333333333333339
+                                                        ],
+                                                        "h1": null,
+                                                        "h2": [
+                                                            -0.08948400863609646,
+                                                            0.3333333333333339
+                                                        ]
+                                                    },
+                                                    {
+                                                        "p": [
+                                                            -0.26642017137325746,
+                                                            0.3602218457640689
+                                                        ],
+                                                        "h1": [
+                                                            -0.17874073164608378,
+                                                            0.34234158707707274
+                                                        ],
+                                                        "h2": [
+                                                            -0.2922466514803121,
+                                                            0.23357651330260823
+                                                        ]
+                                                    }
+                                                ],
+                                                "points": [
+                                                    -0.40299002564426956,
+                                                    4.440892098500626e-16,
+                                                    0,
+                                                    4.440892098500625e-16,
+                                                    0,
+                                                    0.3333333333333339,
+                                                    -0.06704929670879088,
+                                                    0.3350202520227774,
+                                                    -0.13388679902747477,
+                                                    0.34007249254107785,
+                                                    -0.20038594467573567,
+                                                    0.3484772815631901,
+                                                    -0.26642017137325746,
+                                                    0.3602218457640689,
+                                                    -0.2770527586338184,
+                                                    0.31297360178287376,
+                                                    -0.28956673490523943,
+                                                    0.26624959942950666,
+                                                    -0.3039412120425641,
+                                                    0.22010493407015164,
+                                                    -0.32015530190083596,
+                                                    0.17459470107099276,
+                                                    -0.3381881163350988,
+                                                    0.12977399579821414,
+                                                    -0.3580187672003964,
+                                                    0.0856979136179998,
+                                                    -0.37962636635177205,
+                                                    0.04242154989653389
+                                                ],
+                                                "id": "tile_fd"
+                                            },
+                                            {
+                                                "type": "path",
+                                                "id": "p9",
+                                                "closed": true,
+                                                "points": [
+                                                    -0.11155452051512285,
+                                                    0.2364376764827549,
+                                                    -0.11710432694944772,
+                                                    0.2382020654041176,
+                                                    -0.12273977434766445,
+                                                    0.23943052997899517,
+                                                    -0.13424029970619086,
+                                                    0.24045429093489049,
+                                                    -0.1460015119315367,
+                                                    0.2398581690416325,
+                                                    -0.15796882636453657,
+                                                    0.23799137399041276,
+                                                    -0.17008765834602504,
+                                                    0.2352031154724228,
+                                                    -0.18230342321683674,
+                                                    0.23184260317885422,
+                                                    -0.2068074129897681,
+                                                    0.22480165602974725,
+                                                    -0.19901237505499736,
+                                                    0.23351404588813524,
+                                                    -0.18960899076654852,
+                                                    0.24176726103430887,
+                                                    -0.1788819137525356,
+                                                    0.24944071454004843,
+                                                    -0.16711579764107243,
+                                                    0.2564138194771341,
+                                                    -0.15459529606027295,
+                                                    0.26256598891734617,
+                                                    -0.14160506263825107,
+                                                    0.2677766359324649,
+                                                    -0.12842975100312068,
+                                                    0.2719251735942705,
+                                                    -0.11535401478299565,
+                                                    0.27489101497454316,
+                                                    -0.10266250760598994,
+                                                    0.27655357314506324,
+                                                    -0.09063988310021745,
+                                                    0.2767922611776109,
+                                                    -0.07957079489379208,
+                                                    0.2754864921439665,
+                                                    -0.07448278116162016,
+                                                    0.27421675281225355,
+                                                    -0.06973989661482775,
+                                                    0.2725156791159101,
+                                                    -0.06537772295692908,
+                                                    0.27036819768890885,
+                                                    -0.061431841891438355,
+                                                    0.26775923516522215,
+                                                    -0.05793783512186985,
+                                                    0.26467371817882257,
+                                                    -0.054931284351737796,
+                                                    0.2610965733636827,
+                                                    -0.052447771284556424,
+                                                    0.25701272735377506,
+                                                    -0.05052287762383999,
+                                                    0.2524071067830721,
+                                                    -0.04919218507310272,
+                                                    0.24726463828554648,
+                                                    -0.048491275335858834,
+                                                    0.24157024849517064,
+                                                    -0.04858019581457696,
+                                                    0.23371958657034814,
+                                                    -0.050142995704332186,
+                                                    0.22673624679833781,
+                                                    -0.053062623077522623,
+                                                    0.22066731420508967,
+                                                    -0.057222026006546384,
+                                                    0.2155598738165536,
+                                                    -0.0625041525638016,
+                                                    0.21146101065867945,
+                                                    -0.06879195082168638,
+                                                    0.20841780975741717,
+                                                    -0.07596836885259883,
+                                                    0.20647735613871665,
+                                                    -0.0839163547289371,
+                                                    0.20568673482852778,
+                                                    -0.093688465313678,
+                                                    0.20681575643873223,
+                                                    -0.10206879392596102,
+                                                    0.20923924004731503,
+                                                    -0.10885075442894827,
+                                                    0.2126977898117404,
+                                                    -0.11382776068580192,
+                                                    0.2169320098894726,
+                                                    -0.1155748478041668,
+                                                    0.21925893509503633,
+                                                    -0.11679322655968406,
+                                                    0.22168250443797588,
+                                                    -0.11745707368524899,
+                                                    0.22417029343797423,
+                                                    -0.11754056591375686,
+                                                    0.2266898776147145,
+                                                    -0.1170178799781029,
+                                                    0.2292088324878797,
+                                                    -0.11586319261118241,
+                                                    0.23169473357715278,
+                                                    -0.11405068054589064,
+                                                    0.23411515640221683
+                                                ],
+                                                "style": {
+                                                    "stroke": {
+                                                        "rgba": [
+                                                            0.12549019607843137,
+                                                            0.18823529411764706,
+                                                            0.2901960784313726,
+                                                            1
+                                                        ]
+                                                    },
+                                                    "strokeWidth": 0.006776290501891303,
+                                                    "lineCap": "round",
+                                                    "lineJoin": "round",
+                                                    "fill": {
+                                                        "rgba": [
+                                                            0,
+                                                            0,
+                                                            0,
+                                                            1
+                                                        ]
+                                                    },
+                                                    "opacity": 1
+                                                },
+                                                "pivot": [
+                                                    -0.1237590958587291,
+                                                    0.24766577060127531
+                                                ],
+                                                "axes": [
+                                                    -0.1591682880079545,
+                                                    -0.9872514654801059,
+                                                    0.9872528279372481,
+                                                    -0.15915983705039
+                                                ],
+                                                "nodes": [
+                                                    {
+                                                        "p": [
+                                                            -0.11155452051512285,
+                                                            0.2364376764827549
+                                                        ],
+                                                        "h1": [
+                                                            -0.1267363432842288,
+                                                            0.22436962022585138
+                                                        ],
+                                                        "h2": [
+                                                            -0.1409129823368848,
+                                                            0.24735448447424788
+                                                        ]
+                                                    },
+                                                    {
+                                                        "p": [
+                                                            -0.2068074129897681,
+                                                            0.22480165602974725
+                                                        ],
+                                                        "h1": [
+                                                            -0.1742165768002491,
+                                                            0.23354273532935216
+                                                        ],
+                                                        "h2": [
+                                                            -0.17002885184189023,
+                                                            0.2722778244124419
+                                                        ]
+                                                    },
+                                                    {
+                                                        "p": [
+                                                            -0.048491275335858834,
+                                                            0.24157024849517064
+                                                        ],
+                                                        "h1": [
+                                                            -0.052482291470889175,
+                                                            0.305307580678034
+                                                        ],
+                                                        "h2": [
+                                                            -0.046659177906522714,
+                                                            0.21952057384829413
+                                                        ],
+                                                        "smooth": true
+                                                    },
+                                                    {
+                                                        "p": [
+                                                            -0.0839163547289371,
+                                                            0.20568673482852778
+                                                        ],
+                                                        "h1": [
+                                                            -0.061797014756002334,
+                                                            0.20622009522128265
+                                                        ],
+                                                        "h2": [
+                                                            -0.111647393463223,
+                                                            0.20674093570898122
+                                                        ]
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            },
+            "patternTransform": {
+                "centerX": 0,
+                "centerY": 0,
+                "scale": 1,
+                "angle": 0,
+                "pivotX": 0,
+                "pivotY": 0,
+                "bendX": 0,
+                "bendY": 0,
+                "geometric": true
+            }
+        },
+        "visualization": {
+            "className": "VisualizationManager",
+            "params": {
+                "layers": {
+                    "className": "ObjArray",
+                    "params": {
+                        "id": "layers",
+                        "children": [
+                            {
+                                "className": "VisualizationColorSym",
+                                "params": {
+                                    "id": "drawing",
+                                    "enabled": true,
+                                    "useSymmetry": true,
+                                    "opacity": 1,
+                                    "frame": "fit",
+                                    "imageId": "",
+                                    "permutations": "acb abc abc bac",
+                                    "permIndex": 1,
+                                    "useOrbit": false,
+                                    "mask": "",
+                                    "subgroups": {
+                                        "className": "Subgroups",
+                                        "params": {
+                                            "maxIndex": 4,
+                                            "subgroup": "*2223.3.1"
+                                        }
+                                    },
+                                    "coloringType": "mult",
+                                    "colorTiles": {
+                                        "className": "ColorTiles",
+                                        "params": {
+                                            "count": 3,
+                                            "palette": "custom",
+                                            "a": {
+                                                "R": 0.5,
+                                                "G": 0.5,
+                                                "B": 0.5
+                                            },
+                                            "b": {
+                                                "R": 0.5,
+                                                "G": 0.5,
+                                                "B": 0.5
+                                            },
+                                            "c": {
+                                                "R": 1,
+                                                "G": 1,
+                                                "B": 1
+                                            },
+                                            "d": {
+                                                "R": 0,
+                                                "G": 0.33,
+                                                "B": 0.67
+                                            },
+                                            "adjust": {
+                                                "hueShift": 0,
+                                                "satMult": 1,
+                                                "lightOffset": 0,
+                                                "contrastMult": 1
+                                            },
+                                            "edited": {
+                                                "0": "#ffe6a7",
+                                                "1": "#cf8439",
+                                                "2": "#632001",
+                                                "3": "#a14b12",
+                                                "4": "#cffaf6",
+                                                "5": "#63b2ee",
+                                                "6": "#0d4392"
+                                            },
+                                            "alphas": {}
+                                        }
+                                    },
+                                    "useCrown": false,
+                                    "useTilt": false,
+                                    "patternTiltDirection": 0,
+                                    "useMipmap": true,
+                                    "interpolation": "linear"
+                                }
+                            },
+                            {
+                                "className": "VisualizationOverlay",
+                                "params": {
+                                    "id": "overlay",
+                                    "enabled": true,
+                                    "opacity": 1,
+                                    "overlays": {
+                                        "className": "ObjArray",
+                                        "params": {
+                                            "id": "overlays",
+                                            "children": [
+                                                {
+                                                    "className": "OverlayLimitset",
+                                                    "params": {
+                                                        "id": "limitset",
+                                                        "enabled": false,
+                                                        "opacity": 1,
+                                                        "color": "#000000ff",
+                                                        "width": 5,
+                                                        "symmetry": {
+                                                            "type": "renderer",
+                                                            "maxIndex": 8,
+                                                            "cosets": "",
+                                                            "iterations": 0
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "className": "OverlayTiling",
+                                                    "params": {
+                                                        "id": "tiling",
+                                                        "enabled": false,
+                                                        "opacity": 1,
+                                                        "width": 1,
+                                                        "color": "#000000FF",
+                                                        "symmetry": {
+                                                            "type": "renderer",
+                                                            "maxIndex": 8,
+                                                            "cosets": "",
+                                                            "iterations": 0
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "className": "OverlayFundDomain",
+                                                    "params": {
+                                                        "id": "fundDomain",
+                                                        "enabled": true,
+                                                        "opacity": 1,
+                                                        "fill": {
+                                                            "enabled": false,
+                                                            "color": "#FF0000AA"
+                                                        },
+                                                        "outline": {
+                                                            "enabled": true,
+                                                            "width": 1,
+                                                            "color": "#000000AA",
+                                                            "shadowsWidth": 10,
+                                                            "shadowsColor": "#0000FFAA"
+                                                        },
+                                                        "walls": {
+                                                            "enabled": false,
+                                                            "width": 1,
+                                                            "color": "#00000055"
+                                                        },
+                                                        "symmetry": {
+                                                            "type": "renderer",
+                                                            "maxIndex": 8,
+                                                            "cosets": "",
+                                                            "iterations": 0
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "className": "OverlayGenerators",
+                                                    "params": {
+                                                        "id": "generators",
+                                                        "enabled": false,
+                                                        "opacity": 1,
+                                                        "showSides": true,
+                                                        "width": 2,
+                                                        "color": "#0000AAAA",
+                                                        "shadow": {
+                                                            "enabled": true,
+                                                            "color": "#0000AA55",
+                                                            "width": 10
+                                                        },
+                                                        "elements": {
+                                                            "enabled": true,
+                                                            "width": 2,
+                                                            "cone": {
+                                                                "enabled": true,
+                                                                "size": 12,
+                                                                "color2": "#283CDCCC",
+                                                                "color3": "#F08C14CC",
+                                                                "color4": "#14AA78CC",
+                                                                "color5": "#F0C800CC",
+                                                                "color6": "#E61EC8CC",
+                                                                "color7": "#00B4E6CC",
+                                                                "color8": "#7CC818CC",
+                                                                "color": "#808080CC",
+                                                                "outline": "#000000C0"
+                                                            },
+                                                            "mirror": {
+                                                                "enabled": true,
+                                                                "color": "#AA0000FF"
+                                                            },
+                                                            "glide": {
+                                                                "enabled": true,
+                                                                "color": "#AA00AAFF",
+                                                                "dash": 8
+                                                            },
+                                                            "translation": {
+                                                                "enabled": true,
+                                                                "color": "#008888FF"
+                                                            }
+                                                        },
+                                                        "symmetry": {
+                                                            "type": "renderer",
+                                                            "maxIndex": 8,
+                                                            "cosets": "",
+                                                            "iterations": 0
+                                                        }
+                                                    }
+                                                }
+                                            ]
+                                        }
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        "symmetry": {
+            "groupType": "KLMN",
+            "group": {
+                "className": "Group_KLMN",
+                "params": {
+                    "s": true,
+                    "K": 2,
+                    "L": 2,
+                    "M": 2,
+                    "N": 3,
+                    "twist": 0,
+                    "aspect": 0.5,
+                    "bend": 0,
+                    "uhp": false
+                }
+            },
+            "transform": {
+                "translationX": 0,
+                "translationY": 0,
+                "rotation": 0,
+                "scale": 1
+            },
+            "dirichlet": {
+                "enabled": false,
+                "autoSides": true,
+                "baseX": 0.02329263085032727,
+                "baseY": 0.051570204269366135,
+                "showPoints": false,
+                "showPlanes": false,
+                "showSides": true,
+                "showLabels": true,
+                "words": "a ab da b d",
+                "searchTime": 10,
+                "depth": 2,
+                "minScale": 0.01,
+                "iterations": 200
+            },
+            "options": {
+                "iterations": 120
+            }
+        },
+        "tools": {
+            "transform": {
+                "className": "InversiveNavigator_v1",
+                "params": {
+                    "mode": "euclidean",
+                    "projection": {
+                        "className": "ProjectionTransform",
+                        "params": {
+                            "enabled": true,
+                            "maps": {
+                                "className": "ObjArray",
+                                "params": {
+                                    "id": "maps",
+                                    "children": []
+                                }
+                            }
+                        }
+                    },
+                    "inversive": {
+                        "enabled": true,
+                        "itrans": [],
+                        "poleSet": false,
+                        "poleX": 0,
+                        "poleY": 0,
+                        "anchored": null
+                    },
+                    "spherical": {
+                        "enabled": false
+                    },
+                    "euclidean": {
+                        "centerX": 0,
+                        "centerY": 0,
+                        "zoom": 0.94,
+                        "angle": 0,
+                        "aspect": 1
+                    },
+                    "options": {
+                        "animation": true,
+                        "infinite": false
+                    }
+                }
+            },
+            "drawing": {
+                "className": "DrawingToolRenderer",
+                "params": {
+                    "symmetry": false,
+                    "brushR": 1,
+                    "brushG": 0,
+                    "brushB": 0,
+                    "brushA": 1,
+                    "brushRadius": 0.01,
+                    "brushBlur": 0.5,
+                    "brushX": 0,
+                    "brushY": 0
+                }
+            }
+        },
+        "scripting": {
+            "scriptParams": {}
+        }
+    }
+}

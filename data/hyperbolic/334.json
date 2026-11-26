@@ -6,12 +6,12 @@
   "stem": "334",
   "family": "hyperbolic",
   "gens": "a b c d",
-  "relators": "a*c, b*d, a^3, b^3, (a*d)^4",
+  "relators": "a*c, b*d, a^4, b^3, (a*d)^3",
   "geometry": {},
   "geometryVerified": true
  },
- "maxIndex": 7,
- "totalCount": 10,
+ "maxIndex": 8,
+ "totalCount": 13,
  "countPerIndex": [
   {
    "index": 1,
@@ -32,6 +32,10 @@
   {
    "index": 7,
    "count": 4
+  },
+  {
+   "index": 8,
+   "count": 3
   }
  ],
  "subgroups": [
@@ -94,7 +98,7 @@
    "hGenerators": [
     {
      "word": "a",
-     "text": "rotation (order 3)"
+     "text": "rotation (order 4)"
     },
     {
      "word": "b",
@@ -113,7 +117,7 @@
    "type": "444",
    "normal": true,
    "placements": 1,
-   "cosets": "bca bca cab cab",
+   "cosets": "abc bca abc cab",
    "orders": [
     4,
     4,
@@ -124,11 +128,11 @@
     {
      "generator": "a",
      "perm": [
+      0,
       1,
-      2,
-      0
+      2
      ],
-     "cycles": "(0 1 2)"
+     "cycles": "e"
     },
     {
      "generator": "b",
@@ -142,11 +146,11 @@
     {
      "generator": "c",
      "perm": [
-      2,
       0,
-      1
+      1,
+      2
      ],
-     "cycles": "(0 2 1)"
+     "cycles": "e"
     },
     {
      "generator": "d",
@@ -178,26 +182,26 @@
      "text": "identity"
     },
     {
-     "word": "a",
+     "word": "Ab",
      "text": "rotation (order 3)"
     },
     {
-     "word": "A",
+     "word": "B",
      "text": "rotation (order 3)"
     }
    ],
    "simplyConnected": false,
    "hGenerators": [
     {
-     "word": "Ba",
+     "word": "a",
      "text": "rotation (order 4)"
     },
     {
-     "word": "Dc",
+     "word": "Dad",
      "text": "rotation (order 4)"
     },
     {
-     "word": "Bcd",
+     "word": "Bab",
      "text": "rotation (order 4)"
     }
    ],
@@ -213,7 +217,7 @@
    "type": "2233",
    "normal": false,
    "placements": 4,
-   "cosets": "adbc bcad acdb cabd",
+   "cosets": "badc acdb badc adbc",
    "orders": [
     2,
     2,
@@ -225,25 +229,15 @@
     {
      "generator": "a",
      "perm": [
+      1,
       0,
       3,
-      1,
       2
      ],
-     "cycles": "(1 3 2)"
+     "cycles": "(0 1)(2 3)"
     },
     {
      "generator": "b",
-     "perm": [
-      1,
-      2,
-      0,
-      3
-     ],
-     "cycles": "(0 1 2)"
-    },
-    {
-     "generator": "c",
      "perm": [
       0,
       2,
@@ -253,14 +247,24 @@
      "cycles": "(1 2 3)"
     },
     {
+     "generator": "c",
+     "perm": [
+      1,
+      0,
+      3,
+      2
+     ],
+     "cycles": "(0 1)(2 3)"
+    },
+    {
      "generator": "d",
      "perm": [
-      2,
       0,
+      3,
       1,
-      3
+      2
      ],
-     "cycles": "(0 2 1)"
+     "cycles": "(1 3 2)"
     }
    ],
    "orbitReps": [
@@ -269,15 +273,15 @@
      "text": "identity"
     },
     {
-     "word": "d",
+     "word": "a",
+     "text": "rotation (order 4)"
+    },
+    {
+     "word": "da",
      "text": "rotation (order 3)"
     },
     {
-     "word": "b",
-     "text": "rotation (order 3)"
-    },
-    {
-     "word": "ab",
+     "word": "ba",
      "text": "hyperbolic translation"
     }
    ],
@@ -287,34 +291,34 @@
      "text": "identity"
     },
     {
-     "word": "b",
-     "text": "rotation (order 3)"
-    },
-    {
-     "word": "B",
-     "text": "rotation (order 3)"
-    },
-    {
-     "word": "bab",
+     "word": "a",
      "text": "rotation (order 4)"
+    },
+    {
+     "word": "Ab",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "AB",
+     "text": "hyperbolic translation"
     }
    ],
    "simplyConnected": false,
    "hGenerators": [
     {
-     "word": "a",
+     "word": "b",
      "text": "rotation (order 3)"
     },
     {
-     "word": "Bad",
+     "word": "Ac",
+     "text": "rotation (order 2)"
+    },
+    {
+     "word": "ABada",
      "text": "hyperbolic translation"
     },
     {
-     "word": "Dcb",
-     "text": "hyperbolic translation"
-    },
-    {
-     "word": "BAbab",
+     "word": "ABcda",
      "text": "rotation (order 3)"
     }
    ],
@@ -327,300 +331,10 @@
   {
    "id": "334.6.1",
    "index": 6,
-   "type": "2333",
-   "normal": false,
-   "placements": 6,
-   "cosets": "abdecf bcafde abecdf cabefd",
-   "orders": [
-    2,
-    3,
-    3,
-    3
-   ],
-   "abelianization": "Z^0 + Z/3 + Z/3",
-   "colorAction": [
-    {
-     "generator": "a",
-     "perm": [
-      0,
-      1,
-      3,
-      4,
-      2,
-      5
-     ],
-     "cycles": "(2 3 4)"
-    },
-    {
-     "generator": "b",
-     "perm": [
-      1,
-      2,
-      0,
-      5,
-      3,
-      4
-     ],
-     "cycles": "(0 1 2)(3 5 4)"
-    },
-    {
-     "generator": "c",
-     "perm": [
-      0,
-      1,
-      4,
-      2,
-      3,
-      5
-     ],
-     "cycles": "(2 4 3)"
-    },
-    {
-     "generator": "d",
-     "perm": [
-      2,
-      0,
-      1,
-      4,
-      5,
-      3
-     ],
-     "cycles": "(0 2 1)(3 4 5)"
-    }
-   ],
-   "orbitReps": [
-    {
-     "word": "e",
-     "text": "identity"
-    },
-    {
-     "word": "d",
-     "text": "rotation (order 3)"
-    },
-    {
-     "word": "b",
-     "text": "rotation (order 3)"
-    },
-    {
-     "word": "cb",
-     "text": "rotation (order 4)"
-    },
-    {
-     "word": "ab",
-     "text": "hyperbolic translation"
-    },
-    {
-     "word": "bab",
-     "text": "rotation (order 4)"
-    }
-   ],
-   "transversal": [
-    {
-     "word": "e",
-     "text": "identity"
-    },
-    {
-     "word": "b",
-     "text": "rotation (order 3)"
-    },
-    {
-     "word": "B",
-     "text": "rotation (order 3)"
-    },
-    {
-     "word": "Ba",
-     "text": "rotation (order 4)"
-    },
-    {
-     "word": "BA",
-     "text": "hyperbolic translation"
-    },
-    {
-     "word": "Bab",
-     "text": "rotation (order 3)"
-    }
-   ],
-   "simplyConnected": false,
-   "hGenerators": [
-    {
-     "word": "a",
-     "text": "rotation (order 3)"
-    },
-    {
-     "word": "Dad",
-     "text": "rotation (order 3)"
-    },
-    {
-     "word": "BAbcb",
-     "text": "hyperbolic translation"
-    },
-    {
-     "word": "BCdab",
-     "text": "hyperbolic translation"
-    },
-    {
-     "word": "BABabab",
-     "text": "rotation (order 3)"
-    }
-   ],
-   "sideCounts": {
-    "boundary": 10,
-    "interior": 14
-   },
-   "name": "334/2333[6]#1"
-  },
-  {
-   "id": "334.6.2",
-   "index": 6,
-   "type": "2333",
-   "normal": false,
-   "placements": 6,
-   "cosets": "bcafde abdecf cabefd abecdf",
-   "orders": [
-    2,
-    3,
-    3,
-    3
-   ],
-   "abelianization": "Z^0 + Z/3 + Z/3",
-   "colorAction": [
-    {
-     "generator": "a",
-     "perm": [
-      1,
-      2,
-      0,
-      5,
-      3,
-      4
-     ],
-     "cycles": "(0 1 2)(3 5 4)"
-    },
-    {
-     "generator": "b",
-     "perm": [
-      0,
-      1,
-      3,
-      4,
-      2,
-      5
-     ],
-     "cycles": "(2 3 4)"
-    },
-    {
-     "generator": "c",
-     "perm": [
-      2,
-      0,
-      1,
-      4,
-      5,
-      3
-     ],
-     "cycles": "(0 2 1)(3 4 5)"
-    },
-    {
-     "generator": "d",
-     "perm": [
-      0,
-      1,
-      4,
-      2,
-      3,
-      5
-     ],
-     "cycles": "(2 4 3)"
-    }
-   ],
-   "orbitReps": [
-    {
-     "word": "e",
-     "text": "identity"
-    },
-    {
-     "word": "c",
-     "text": "rotation (order 3)"
-    },
-    {
-     "word": "a",
-     "text": "rotation (order 3)"
-    },
-    {
-     "word": "da",
-     "text": "rotation (order 4)"
-    },
-    {
-     "word": "ba",
-     "text": "hyperbolic translation"
-    },
-    {
-     "word": "cda",
-     "text": "rotation (order 3)"
-    }
-   ],
-   "transversal": [
-    {
-     "word": "e",
-     "text": "identity"
-    },
-    {
-     "word": "a",
-     "text": "rotation (order 3)"
-    },
-    {
-     "word": "A",
-     "text": "rotation (order 3)"
-    },
-    {
-     "word": "Ab",
-     "text": "rotation (order 4)"
-    },
-    {
-     "word": "AB",
-     "text": "hyperbolic translation"
-    },
-    {
-     "word": "Aba",
-     "text": "rotation (order 3)"
-    }
-   ],
-   "simplyConnected": false,
-   "hGenerators": [
-    {
-     "word": "b",
-     "text": "rotation (order 3)"
-    },
-    {
-     "word": "Cbc",
-     "text": "rotation (order 3)"
-    },
-    {
-     "word": "ABada",
-     "text": "hyperbolic translation"
-    },
-    {
-     "word": "ADCaba",
-     "text": "hyperbolic translation"
-    },
-    {
-     "word": "ADCbcda",
-     "text": "rotation (order 3)"
-    }
-   ],
-   "sideCounts": {
-    "boundary": 10,
-    "interior": 14
-   },
-   "name": "334/2333[6]#2"
-  },
-  {
-   "id": "334.6.3",
-   "index": 6,
    "type": "2244",
    "normal": false,
    "placements": 3,
-   "cosets": "bcaefd bdeafc cabfde dafbce",
+   "cosets": "adebcf bcaefd adebcf cabfde",
    "orders": [
     2,
     2,
@@ -632,6 +346,18 @@
     {
      "generator": "a",
      "perm": [
+      0,
+      3,
+      4,
+      1,
+      2,
+      5
+     ],
+     "cycles": "(1 3)(2 4)"
+    },
+    {
+     "generator": "b",
+     "perm": [
       1,
       2,
       0,
@@ -642,19 +368,19 @@
      "cycles": "(0 1 2)(3 4 5)"
     },
     {
-     "generator": "b",
+     "generator": "c",
      "perm": [
-      1,
+      0,
       3,
       4,
-      0,
-      5,
-      2
+      1,
+      2,
+      5
      ],
-     "cycles": "(0 1 3)(2 4 5)"
+     "cycles": "(1 3)(2 4)"
     },
     {
-     "generator": "c",
+     "generator": "d",
      "perm": [
       2,
       0,
@@ -664,18 +390,6 @@
       4
      ],
      "cycles": "(0 2 1)(3 5 4)"
-    },
-    {
-     "generator": "d",
-     "perm": [
-      3,
-      0,
-      5,
-      1,
-      2,
-      4
-     ],
-     "cycles": "(0 3 1)(2 5 4)"
     }
    ],
    "orbitReps": [
@@ -688,19 +402,168 @@
      "text": "rotation (order 3)"
     },
     {
-     "word": "dab",
-     "text": "rotation (order 3)"
-    },
-    {
      "word": "b",
      "text": "rotation (order 3)"
     },
     {
-     "word": "cb",
-     "text": "rotation (order 4)"
+     "word": "cd",
+     "text": "hyperbolic translation"
     },
     {
      "word": "ab",
+     "text": "hyperbolic translation"
+    },
+    {
+     "word": "bcd",
+     "text": "rotation (order 4)"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "Ab",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "B",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "ba",
+     "text": "hyperbolic translation"
+    },
+    {
+     "word": "Ba",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "BAb",
+     "text": "rotation (order 4)"
+    }
+   ],
+   "simplyConnected": false,
+   "hGenerators": [
+    {
+     "word": "a",
+     "text": "rotation (order 4)"
+    },
+    {
+     "word": "DCad",
+     "text": "rotation (order 2)"
+    },
+    {
+     "word": "BAcb",
+     "text": "rotation (order 2)"
+    },
+    {
+     "word": "BAdcd",
+     "text": "rotation (order 4)"
+    },
+    {
+     "word": "DCbab",
+     "text": "rotation (order 4)"
+    },
+    {
+     "word": "DCBdab",
+     "text": "rotation (order 4)"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 12,
+    "interior": 12
+   },
+   "name": "334/2244[6]"
+  },
+  {
+   "id": "334.6.2",
+   "index": 6,
+   "type": "2333",
+   "normal": false,
+   "placements": 6,
+   "cosets": "baecfd acdbef badfce adbcef",
+   "orders": [
+    2,
+    3,
+    3,
+    3
+   ],
+   "abelianization": "Z^0 + Z/3 + Z/3",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      1,
+      0,
+      4,
+      2,
+      5,
+      3
+     ],
+     "cycles": "(0 1)(2 4 5 3)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      0,
+      2,
+      3,
+      1,
+      4,
+      5
+     ],
+     "cycles": "(1 2 3)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      1,
+      0,
+      3,
+      5,
+      2,
+      4
+     ],
+     "cycles": "(0 1)(2 3 5 4)"
+    },
+    {
+     "generator": "d",
+     "perm": [
+      0,
+      3,
+      1,
+      2,
+      4,
+      5
+     ],
+     "cycles": "(1 3 2)"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "a",
+     "text": "rotation (order 4)"
+    },
+    {
+     "word": "da",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "ba",
+     "text": "hyperbolic translation"
+    },
+    {
+     "word": "cda",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "aba",
      "text": "hyperbolic translation"
     }
    ],
@@ -711,53 +574,202 @@
     },
     {
      "word": "a",
-     "text": "rotation (order 3)"
-    },
-    {
-     "word": "A",
-     "text": "rotation (order 3)"
-    },
-    {
-     "word": "B",
-     "text": "rotation (order 3)"
-    },
-    {
-     "word": "Ab",
      "text": "rotation (order 4)"
     },
     {
+     "word": "Ab",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "AB",
+     "text": "hyperbolic translation"
+    },
+    {
+     "word": "Aba",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "AbaBa",
+     "text": "rotation (order 4)"
+    }
+   ],
+   "simplyConnected": false,
+   "hGenerators": [
+    {
+     "word": "b",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "Ac",
+     "text": "rotation (order 2)"
+    },
+    {
+     "word": "ABada",
+     "text": "hyperbolic translation"
+    },
+    {
+     "word": "ADcba",
+     "text": "hyperbolic translation"
+    },
+    {
+     "word": "ADCbcda",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "ABAbaba",
+     "text": "rotation (order 3)"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 12,
+    "interior": 12
+   },
+   "name": "334/2333[6]#2"
+  },
+  {
+   "id": "334.6.3",
+   "index": 6,
+   "type": "2333",
+   "normal": false,
+   "placements": 6,
+   "cosets": "badfce bcafde baecfd cabefd",
+   "orders": [
+    2,
+    3,
+    3,
+    3
+   ],
+   "abelianization": "Z^0 + Z/3 + Z/3",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      1,
+      0,
+      3,
+      5,
+      2,
+      4
+     ],
+     "cycles": "(0 1)(2 3 5 4)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      1,
+      2,
+      0,
+      5,
+      3,
+      4
+     ],
+     "cycles": "(0 1 2)(3 5 4)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      1,
+      0,
+      4,
+      2,
+      5,
+      3
+     ],
+     "cycles": "(0 1)(2 4 5 3)"
+    },
+    {
+     "generator": "d",
+     "perm": [
+      2,
+      0,
+      1,
+      4,
+      5,
+      3
+     ],
+     "cycles": "(0 2 1)(3 4 5)"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "d",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "b",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "cb",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "ab",
+     "text": "hyperbolic translation"
+    },
+    {
+     "word": "aab",
+     "text": "hyperbolic translation"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "a",
+     "text": "rotation (order 4)"
+    },
+    {
+     "word": "Ab",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "Ba",
+     "text": "rotation (order 3)"
+    },
+    {
      "word": "BA",
+     "text": "hyperbolic translation"
+    },
+    {
+     "word": "Baa",
      "text": "hyperbolic translation"
     }
    ],
    "simplyConnected": false,
    "hGenerators": [
     {
-     "word": "BADa",
+     "word": "Da",
      "text": "hyperbolic translation"
     },
     {
      "word": "Dc",
-     "text": "rotation (order 4)"
+     "text": "rotation (order 3)"
     },
     {
-     "word": "BADcd",
-     "text": "rotation (order 2)"
+     "word": "cd",
+     "text": "hyperbolic translation"
     },
     {
-     "word": "BCddab",
-     "text": "rotation (order 4)"
+     "word": "BAAdcb",
+     "text": "rotation (order 3)"
     },
     {
-     "word": "BADbcb",
-     "text": "rotation (order 4)"
+     "word": "BAAbab",
+     "text": "rotation (order 3)"
     }
    ],
    "sideCounts": {
     "boundary": 10,
     "interior": 14
    },
-   "name": "334/2244[6]"
+   "name": "334/2333[6]#1"
   },
   {
    "id": "334.7.1",
@@ -765,27 +777,27 @@
    "type": "2334",
    "normal": false,
    "placements": 7,
-   "cosets": "acdbgef bcaefdg adbcfge cabfdeg",
+   "cosets": "acebdgf bcaefdg adbecgf cabfdeg",
    "orders": [
     2,
     3,
     3,
     4
    ],
-   "abelianization": "Z^0 + Z/2 + Z/3",
+   "abelianization": "Z^0 + Z/3 + Z/2",
    "colorAction": [
     {
      "generator": "a",
      "perm": [
       0,
       2,
-      3,
-      1,
-      6,
       4,
+      1,
+      3,
+      6,
       5
      ],
-     "cycles": "(1 2 3)(4 6 5)"
+     "cycles": "(1 2 4 3)(5 6)"
     },
     {
      "generator": "b",
@@ -806,12 +818,12 @@
       0,
       3,
       1,
+      4,
       2,
-      5,
       6,
-      4
+      5
      ],
-     "cycles": "(1 3 2)(4 5 6)"
+     "cycles": "(1 3 4 2)(5 6)"
     },
     {
      "generator": "d",
@@ -842,18 +854,18 @@
     },
     {
      "word": "ad",
-     "text": "rotation (order 4)"
-    },
-    {
-     "word": "dad",
-     "text": "hyperbolic translation"
-    },
-    {
-     "word": "bad",
      "text": "rotation (order 3)"
     },
     {
-     "word": "abad",
+     "word": "aad",
+     "text": "hyperbolic translation"
+    },
+    {
+     "word": "daad",
+     "text": "hyperbolic translation"
+    },
+    {
+     "word": "cdaad",
      "text": "hyperbolic translation"
     }
    ],
@@ -863,7 +875,7 @@
      "text": "identity"
     },
     {
-     "word": "b",
+     "word": "Ab",
      "text": "rotation (order 3)"
     },
     {
@@ -871,19 +883,19 @@
      "text": "rotation (order 3)"
     },
     {
-     "word": "Ba",
-     "text": "rotation (order 4)"
-    },
-    {
-     "word": "AbAb",
-     "text": "rotation (order 2)"
-    },
-    {
      "word": "BaB",
      "text": "hyperbolic translation"
     },
     {
-     "word": "BaBAb",
+     "word": "Ba",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "Bab",
+     "text": "rotation (order 4)"
+    },
+    {
+     "word": "BabAb",
      "text": "rotation (order 3)"
     }
    ],
@@ -891,32 +903,36 @@
    "hGenerators": [
     {
      "word": "a",
-     "text": "rotation (order 3)"
+     "text": "rotation (order 4)"
     },
     {
      "word": "Bcd",
-     "text": "rotation (order 4)"
+     "text": "rotation (order 3)"
     },
     {
      "word": "Dab",
-     "text": "rotation (order 4)"
+     "text": "rotation (order 3)"
     },
     {
-     "word": "DABadad",
+     "word": "DAADbad",
      "text": "hyperbolic translation"
     },
     {
-     "word": "DADcbad",
+     "word": "DAbaad",
      "text": "hyperbolic translation"
     },
     {
-     "word": "DABAbabad",
+     "word": "DAADCadaad",
+     "text": "rotation (order 2)"
+    },
+    {
+     "word": "DAADCbcdaad",
      "text": "rotation (order 3)"
     }
    ],
    "sideCounts": {
-    "boundary": 12,
-    "interior": 16
+    "boundary": 14,
+    "interior": 14
    },
    "name": "334/2334[7]#1"
   },
@@ -926,168 +942,7 @@
    "type": "2334",
    "normal": false,
    "placements": 7,
-   "cosets": "adbcfge bcaefdg acdbgef cabfdeg",
-   "orders": [
-    2,
-    3,
-    3,
-    4
-   ],
-   "abelianization": "Z^0 + Z/3 + Z/2",
-   "colorAction": [
-    {
-     "generator": "a",
-     "perm": [
-      0,
-      3,
-      1,
-      2,
-      5,
-      6,
-      4
-     ],
-     "cycles": "(1 3 2)(4 5 6)"
-    },
-    {
-     "generator": "b",
-     "perm": [
-      1,
-      2,
-      0,
-      4,
-      5,
-      3,
-      6
-     ],
-     "cycles": "(0 1 2)(3 4 5)"
-    },
-    {
-     "generator": "c",
-     "perm": [
-      0,
-      2,
-      3,
-      1,
-      6,
-      4,
-      5
-     ],
-     "cycles": "(1 2 3)(4 6 5)"
-    },
-    {
-     "generator": "d",
-     "perm": [
-      2,
-      0,
-      1,
-      5,
-      3,
-      4,
-      6
-     ],
-     "cycles": "(0 2 1)(3 5 4)"
-    }
-   ],
-   "orbitReps": [
-    {
-     "word": "e",
-     "text": "identity"
-    },
-    {
-     "word": "d",
-     "text": "rotation (order 3)"
-    },
-    {
-     "word": "b",
-     "text": "rotation (order 3)"
-    },
-    {
-     "word": "ab",
-     "text": "hyperbolic translation"
-    },
-    {
-     "word": "dab",
-     "text": "rotation (order 3)"
-    },
-    {
-     "word": "bab",
-     "text": "rotation (order 4)"
-    },
-    {
-     "word": "cbab",
-     "text": "hyperbolic translation"
-    }
-   ],
-   "transversal": [
-    {
-     "word": "e",
-     "text": "identity"
-    },
-    {
-     "word": "b",
-     "text": "rotation (order 3)"
-    },
-    {
-     "word": "B",
-     "text": "rotation (order 3)"
-    },
-    {
-     "word": "ba",
-     "text": "hyperbolic translation"
-    },
-    {
-     "word": "BAb",
-     "text": "rotation (order 3)"
-    },
-    {
-     "word": "baB",
-     "text": "rotation (order 3)"
-    },
-    {
-     "word": "baBab",
-     "text": "rotation (order 2)"
-    }
-   ],
-   "simplyConnected": false,
-   "hGenerators": [
-    {
-     "word": "a",
-     "text": "rotation (order 3)"
-    },
-    {
-     "word": "Bad",
-     "text": "hyperbolic translation"
-    },
-    {
-     "word": "Dcb",
-     "text": "hyperbolic translation"
-    },
-    {
-     "word": "BABCadab",
-     "text": "rotation (order 4)"
-    },
-    {
-     "word": "BADabab",
-     "text": "rotation (order 4)"
-    },
-    {
-     "word": "BABCbcbab",
-     "text": "rotation (order 3)"
-    }
-   ],
-   "sideCounts": {
-    "boundary": 12,
-    "interior": 16
-   },
-   "name": "334/2334[7]#2"
-  },
-  {
-   "id": "334.7.3",
-   "index": 7,
-   "type": "2334",
-   "normal": false,
-   "placements": 7,
-   "cosets": "adfebgc bcaegfd aegbdcf cabgdfe",
+   "cosets": "adebgcf bcaegfd adfbcge cabgdfe",
    "orders": [
     2,
     3,
@@ -1101,13 +956,13 @@
      "perm": [
       0,
       3,
-      5,
       4,
       1,
       6,
-      2
+      2,
+      5
      ],
-     "cycles": "(1 3 4)(2 5 6)"
+     "cycles": "(1 3)(2 4 6 5)"
     },
     {
      "generator": "b",
@@ -1126,14 +981,14 @@
      "generator": "c",
      "perm": [
       0,
-      4,
-      6,
-      1,
       3,
+      5,
+      1,
       2,
-      5
+      6,
+      4
      ],
-     "cycles": "(1 4 3)(2 6 5)"
+     "cycles": "(1 3)(2 5 6 4)"
     },
     {
      "generator": "d",
@@ -1163,19 +1018,19 @@
      "text": "rotation (order 3)"
     },
     {
-     "word": "dab",
+     "word": "ad",
      "text": "rotation (order 3)"
     },
     {
-     "word": "bab",
-     "text": "rotation (order 4)"
-    },
-    {
      "word": "cb",
-     "text": "rotation (order 4)"
+     "text": "rotation (order 3)"
     },
     {
      "word": "ab",
+     "text": "hyperbolic translation"
+    },
+    {
+     "word": "aab",
      "text": "hyperbolic translation"
     }
    ],
@@ -1185,7 +1040,7 @@
      "text": "identity"
     },
     {
-     "word": "b",
+     "word": "Ab",
      "text": "rotation (order 3)"
     },
     {
@@ -1193,78 +1048,82 @@
      "text": "rotation (order 3)"
     },
     {
-     "word": "BAb",
+     "word": "BAAb",
+     "text": "rotation (order 2)"
+    },
+    {
+     "word": "AbAb",
      "text": "rotation (order 3)"
     },
     {
-     "word": "bab",
+     "word": "BAb",
      "text": "rotation (order 4)"
     },
     {
-     "word": "BaB",
-     "text": "hyperbolic translation"
-    },
-    {
-     "word": "bAb",
-     "text": "hyperbolic translation"
+     "word": "Bab",
+     "text": "rotation (order 4)"
     }
    ],
    "simplyConnected": false,
    "hGenerators": [
     {
      "word": "a",
-     "text": "rotation (order 3)"
-    },
-    {
-     "word": "BABad",
-     "text": "hyperbolic translation"
-    },
-    {
-     "word": "BADcd",
-     "text": "rotation (order 2)"
-    },
-    {
-     "word": "BABcdab",
      "text": "rotation (order 4)"
     },
     {
-     "word": "BCbcb",
+     "word": "c",
+     "text": "rotation (order 4)"
+    },
+    {
+     "word": "DAcd",
+     "text": "rotation (order 2)"
+    },
+    {
+     "word": "BAAbad",
+     "text": "hyperbolic translation"
+    },
+    {
+     "word": "BAAdcb",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "BAbab",
      "text": "rotation (order 3)"
     }
    ],
    "sideCounts": {
-    "boundary": 10,
-    "interior": 18
+    "boundary": 12,
+    "interior": 16
    },
-   "name": "334/2334[7]#3"
+   "name": "334/2334[7]#2"
   },
   {
-   "id": "334.7.4",
+   "id": "334.7.3",
    "index": 7,
    "type": "2334",
    "normal": false,
    "placements": 7,
-   "cosets": "adfebgc bcafegd aegbdcf cabgedf",
+   "cosets": "adecbgf bcafegd aedbcgf cabgedf",
    "orders": [
     2,
     3,
     3,
     4
    ],
-   "abelianization": "Z^0 + Z/3 + Z/2",
+   "abelianization": "Z^0 + Z/6",
    "colorAction": [
     {
      "generator": "a",
      "perm": [
       0,
       3,
-      5,
       4,
+      2,
       1,
       6,
-      2
+      5
      ],
-     "cycles": "(1 3 4)(2 5 6)"
+     "cycles": "(1 3 2 4)(5 6)"
     },
     {
      "generator": "b",
@@ -1284,13 +1143,13 @@
      "perm": [
       0,
       4,
-      6,
-      1,
       3,
+      1,
       2,
+      6,
       5
      ],
-     "cycles": "(1 4 3)(2 6 5)"
+     "cycles": "(1 4 2 3)(5 6)"
     },
     {
      "generator": "d",
@@ -1320,19 +1179,19 @@
      "text": "rotation (order 3)"
     },
     {
-     "word": "cd",
+     "word": "ab",
      "text": "hyperbolic translation"
     },
     {
      "word": "ad",
-     "text": "rotation (order 4)"
+     "text": "rotation (order 3)"
     },
     {
-     "word": "dcd",
-     "text": "rotation (order 4)"
+     "word": "cbab",
+     "text": "hyperbolic translation"
     },
     {
-     "word": "bcd",
+     "word": "bab",
      "text": "rotation (order 3)"
     }
    ],
@@ -1342,7 +1201,7 @@
      "text": "identity"
     },
     {
-     "word": "b",
+     "word": "Ab",
      "text": "rotation (order 3)"
     },
     {
@@ -1350,34 +1209,38 @@
      "text": "rotation (order 3)"
     },
     {
-     "word": "BaB",
+     "word": "ba",
      "text": "hyperbolic translation"
     },
     {
-     "word": "bAb",
-     "text": "hyperbolic translation"
+     "word": "Ba",
+     "text": "rotation (order 3)"
     },
     {
-     "word": "bab",
+     "word": "BAb",
      "text": "rotation (order 4)"
     },
     {
-     "word": "Bab",
-     "text": "rotation (order 3)"
+     "word": "baB",
+     "text": "rotation (order 4)"
     }
    ],
    "simplyConnected": false,
    "hGenerators": [
     {
      "word": "a",
-     "text": "rotation (order 3)"
+     "text": "rotation (order 4)"
     },
     {
-     "word": "DCBab",
-     "text": "rotation (order 2)"
+     "word": "BAcd",
+     "text": "hyperbolic translation"
     },
     {
-     "word": "DCDcb",
+     "word": "DAcb",
+     "text": "hyperbolic translation"
+    },
+    {
+     "word": "Daab",
      "text": "hyperbolic translation"
     },
     {
@@ -1385,15 +1248,722 @@
      "text": "rotation (order 3)"
     },
     {
-     "word": "DCBcdcd",
-     "text": "rotation (order 4)"
+     "word": "BAbcbab",
+     "text": "hyperbolic translation"
+    },
+    {
+     "word": "BABccbab",
+     "text": "rotation (order 2)"
     }
    ],
    "sideCounts": {
-    "boundary": 10,
-    "interior": 18
+    "boundary": 14,
+    "interior": 14
+   },
+   "name": "334/2334[7]#3"
+  },
+  {
+   "id": "334.7.4",
+   "index": 7,
+   "type": "2334",
+   "normal": false,
+   "placements": 7,
+   "cosets": "adfgbce bcadfge aefbgcd cabdgef",
+   "orders": [
+    2,
+    3,
+    3,
+    4
+   ],
+   "abelianization": "Z^0 + Z/6",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      0,
+      3,
+      5,
+      6,
+      1,
+      2,
+      4
+     ],
+     "cycles": "(1 3 6 4)(2 5)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      1,
+      2,
+      0,
+      3,
+      5,
+      6,
+      4
+     ],
+     "cycles": "(0 1 2)(4 5 6)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      0,
+      4,
+      5,
+      1,
+      6,
+      2,
+      3
+     ],
+     "cycles": "(1 4 6 3)(2 5)"
+    },
+    {
+     "generator": "d",
+     "perm": [
+      2,
+      0,
+      1,
+      3,
+      6,
+      4,
+      5
+     ],
+     "cycles": "(0 2 1)(4 6 5)"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "d",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "b",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "cd",
+     "text": "hyperbolic translation"
+    },
+    {
+     "word": "ad",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "cb",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "aad",
+     "text": "hyperbolic translation"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "Ab",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "B",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "BabAb",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "BAB",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "AbAb",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "BAb",
+     "text": "rotation (order 4)"
+    }
+   ],
+   "simplyConnected": false,
+   "hGenerators": [
+    {
+     "word": "a",
+     "text": "rotation (order 4)"
+    },
+    {
+     "word": "c",
+     "text": "rotation (order 4)"
+    },
+    {
+     "word": "BCab",
+     "text": "rotation (order 2)"
+    },
+    {
+     "word": "DCbcd",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "DAAbad",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "DAAdcb",
+     "text": "hyperbolic translation"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 12,
+    "interior": 16
    },
    "name": "334/2334[7]#4"
+  },
+  {
+   "id": "334.8.1",
+   "index": 8,
+   "type": "3333",
+   "normal": false,
+   "placements": 8,
+   "cosets": "bdacfheg abdechfg cadbgehf abecdghf",
+   "orders": [
+    3,
+    3,
+    3,
+    3
+   ],
+   "abelianization": "Z^0 + Z/3 + Z/3 + Z/3",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      1,
+      3,
+      0,
+      2,
+      5,
+      7,
+      4,
+      6
+     ],
+     "cycles": "(0 1 3 2)(4 5 7 6)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      0,
+      1,
+      3,
+      4,
+      2,
+      7,
+      5,
+      6
+     ],
+     "cycles": "(2 3 4)(5 7 6)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      2,
+      0,
+      3,
+      1,
+      6,
+      4,
+      7,
+      5
+     ],
+     "cycles": "(0 2 3 1)(4 6 7 5)"
+    },
+    {
+     "generator": "d",
+     "perm": [
+      0,
+      1,
+      4,
+      2,
+      3,
+      6,
+      7,
+      5
+     ],
+     "cycles": "(2 4 3)(5 6 7)"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "c",
+     "text": "rotation (order 4)"
+    },
+    {
+     "word": "a",
+     "text": "rotation (order 4)"
+    },
+    {
+     "word": "aa",
+     "text": "rotation (order 2)"
+    },
+    {
+     "word": "ba",
+     "text": "hyperbolic translation"
+    },
+    {
+     "word": "ababa",
+     "text": "hyperbolic translation"
+    },
+    {
+     "word": "aba",
+     "text": "hyperbolic translation"
+    },
+    {
+     "word": "baba",
+     "text": "hyperbolic translation"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "a",
+     "text": "rotation (order 4)"
+    },
+    {
+     "word": "A",
+     "text": "rotation (order 4)"
+    },
+    {
+     "word": "aa",
+     "text": "rotation (order 2)"
+    },
+    {
+     "word": "AB",
+     "text": "hyperbolic translation"
+    },
+    {
+     "word": "ABa",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "ABA",
+     "text": "hyperbolic translation"
+    },
+    {
+     "word": "ABaa",
+     "text": "rotation (order 3)"
+    }
+   ],
+   "simplyConnected": false,
+   "hGenerators": [
+    {
+     "word": "b",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "Cbc",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "AAda",
+     "text": "hyperbolic translation"
+    },
+    {
+     "word": "Abaa",
+     "text": "hyperbolic translation"
+    },
+    {
+     "word": "ABABAcba",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "ABaababa",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "ABAbababa",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "ABABAdaba",
+     "text": "rotation (order 3)"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 16,
+    "interior": 16
+   },
+   "name": "334/3333[8]#2"
+  },
+  {
+   "id": "334.8.2",
+   "index": 8,
+   "type": "3333",
+   "normal": false,
+   "placements": 8,
+   "cosets": "bdacfghe adfebgch cadbhefg aegbdcfh",
+   "orders": [
+    3,
+    3,
+    3,
+    3
+   ],
+   "abelianization": "Z^0 + Z/3 + Z/3 + Z/3",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      1,
+      3,
+      0,
+      2,
+      5,
+      6,
+      7,
+      4
+     ],
+     "cycles": "(0 1 3 2)(4 5 6 7)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      0,
+      3,
+      5,
+      4,
+      1,
+      6,
+      2,
+      7
+     ],
+     "cycles": "(1 3 4)(2 5 6)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      2,
+      0,
+      3,
+      1,
+      7,
+      4,
+      5,
+      6
+     ],
+     "cycles": "(0 2 3 1)(4 7 6 5)"
+    },
+    {
+     "generator": "d",
+     "perm": [
+      0,
+      4,
+      6,
+      1,
+      3,
+      2,
+      5,
+      7
+     ],
+     "cycles": "(1 4 3)(2 6 5)"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "c",
+     "text": "rotation (order 4)"
+    },
+    {
+     "word": "cdc",
+     "text": "hyperbolic translation"
+    },
+    {
+     "word": "dc",
+     "text": "hyperbolic translation"
+    },
+    {
+     "word": "bc",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "dcdc",
+     "text": "hyperbolic translation"
+    },
+    {
+     "word": "bcdc",
+     "text": "rotation (order 4)"
+    },
+    {
+     "word": "abc",
+     "text": "rotation (order 3)"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "a",
+     "text": "rotation (order 4)"
+    },
+    {
+     "word": "A",
+     "text": "rotation (order 4)"
+    },
+    {
+     "word": "aa",
+     "text": "rotation (order 2)"
+    },
+    {
+     "word": "aB",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "Ab",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "AB",
+     "text": "hyperbolic translation"
+    },
+    {
+     "word": "ABa",
+     "text": "rotation (order 3)"
+    }
+   ],
+   "simplyConnected": false,
+   "hGenerators": [
+    {
+     "word": "CDCa",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "b",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "ccdc",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "CDCDcbc",
+     "text": "hyperbolic translation"
+    },
+    {
+     "word": "CDCBcdcdc",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "CBAcbcdc",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "CDCBaabc",
+     "text": "rotation (order 3)"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 14,
+    "interior": 18
+   },
+   "name": "334/3333[8]#1"
+  },
+  {
+   "id": "334.8.3",
+   "index": 8,
+   "type": "3333",
+   "normal": false,
+   "placements": 4,
+   "cosets": "bfdgaehc acdbgfhe eahcfbdg adbchfeg",
+   "sublibCosets": "bdacfghe aegdfbhc cadbhefg afhdbecg",
+   "cosetOrder": [
+    0,
+    1,
+    4,
+    5,
+    2,
+    3,
+    6,
+    7
+   ],
+   "orders": [
+    3,
+    3,
+    3,
+    3
+   ],
+   "abelianization": "Z^0 + Z/3 + Z/3 + Z/3",
+   "colorAction": [
+    {
+     "generator": "a",
+     "perm": [
+      1,
+      5,
+      3,
+      6,
+      0,
+      4,
+      7,
+      2
+     ],
+     "cycles": "(0 1 5 4)(2 3 6 7)"
+    },
+    {
+     "generator": "b",
+     "perm": [
+      0,
+      2,
+      3,
+      1,
+      6,
+      5,
+      7,
+      4
+     ],
+     "cycles": "(1 2 3)(4 6 7)"
+    },
+    {
+     "generator": "c",
+     "perm": [
+      4,
+      0,
+      7,
+      2,
+      5,
+      1,
+      3,
+      6
+     ],
+     "cycles": "(0 4 5 1)(2 7 6 3)"
+    },
+    {
+     "generator": "d",
+     "perm": [
+      0,
+      3,
+      1,
+      2,
+      7,
+      5,
+      4,
+      6
+     ],
+     "cycles": "(1 3 2)(4 7 6)"
+    }
+   ],
+   "orbitReps": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "c",
+     "text": "rotation (order 4)"
+    },
+    {
+     "word": "dc",
+     "text": "hyperbolic translation"
+    },
+    {
+     "word": "bc",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "a",
+     "text": "rotation (order 4)"
+    },
+    {
+     "word": "aa",
+     "text": "rotation (order 2)"
+    },
+    {
+     "word": "da",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "ba",
+     "text": "hyperbolic translation"
+    }
+   ],
+   "transversal": [
+    {
+     "word": "e",
+     "text": "identity"
+    },
+    {
+     "word": "a",
+     "text": "rotation (order 4)"
+    },
+    {
+     "word": "ABa",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "aB",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "A",
+     "text": "rotation (order 4)"
+    },
+    {
+     "word": "aa",
+     "text": "rotation (order 2)"
+    },
+    {
+     "word": "Ab",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "AB",
+     "text": "hyperbolic translation"
+    }
+   ],
+   "simplyConnected": false,
+   "hGenerators": [
+    {
+     "word": "b",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "d",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "ABadc",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "CBcdc",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "AAdaa",
+     "text": "rotation (order 3)"
+    },
+    {
+     "word": "ABcda",
+     "text": "rotation (order 3)"
+    }
+   ],
+   "sideCounts": {
+    "boundary": 12,
+    "interior": 20
+   },
+   "name": "334/3333[8]#3"
   }
  ]
 }

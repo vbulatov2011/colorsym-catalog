@@ -258,27 +258,39 @@ function countPlacements(cosets){
 // ---------------------------------------------------------------------------
 
 function placementOrder(cosets){
-  const gens = permStringToArrays(cosets);
-  const n = gens[0].length;
-  const key = q => q.join(',');
-  const id = [...Array(n).keys()];
-  const seen = new Map([[key(id), id]]);
-  const queue = [id];
-  while(queue.length){
-    const q0 = queue.pop();
-    for(const g of gens){
-      const q = q0.map(x => g[x]);
-      if(!seen.has(key(q))){ seen.set(key(q), q); queue.push(q); }
+  const perms = permStringToArrays(cosets);
+  const n = perms[0].length;
+  // Two cosets share a point stabilizer in the monodromy group P <= S_n iff an
+  // element of the centralizer C_{S_n}(P) maps one to the other. Computing the
+  // centralizer directly runs in O(n^2 * |gens|) instead of enumerating P.
+  const central = [];
+  for(let target = 0; target < n; target++){
+    const s = new Array(n).fill(-1);
+    s[0] = target;
+    const queue = [0];
+    let ok = true;
+    while(queue.length && ok){
+      const i = queue.shift();
+      for(const p of perms){
+        const gi = p[i], gs = p[s[i]];
+        if(s[gi] === -1){ s[gi] = gs; queue.push(gi); }
+        else if(s[gi] !== gs){ ok = false; break; }
+      }
     }
+    if(ok && s.every(v => v !== -1) && new Set(s).size === n) central.push(s);
   }
-  const classes = new Map();
+  const seen = new Uint8Array(n);
+  const reps = [];
   for(let i = 0; i < n; i++){
-    const stab = [...seen.values()].filter(q => q[i] === i).map(key).sort().join('|');
-    if(!classes.has(stab)) classes.set(stab, []);
-    classes.get(stab).push(i);
+    if(seen[i]) continue;
+    const orb = central.map(s => s[i]);
+    for(const j of orb) seen[j] = 1;
+    reps.push(Math.min(...orb));
   }
-  const reps = [...classes.values()].map(c => c[0]).sort((a, b) => a - b);
-  const rest = id.filter(i => !reps.includes(i));
+  reps.sort((a, b) => a - b);
+  const repSet = new Set(reps);
+  const rest = [];
+  for(let i = 0; i < n; i++) if(!repSet.has(i)) rest.push(i);
   return reps.concat(rest);          // order[newIndex] = oldIndex
 }
 
@@ -839,16 +851,47 @@ function fmtOrbOrders(arr){
 
 // Exact Conway orbifold signature for any finite-index subgroup H of klm, *klm, klmn, or *klmn,
 // computed directly from the coset action and cross-checked by Riemann-Hurwitz.
-function classifyHyperbolicOrbifold(hSpec, cosetsStr){
+function classifyHyperbolicOrbifold(hSpec, cosetsStr, presentation = null){
   const perms = permStringToArrays(cosetsStr);
   const n = perms[0].length;
   const compP = (p, q) => p.map(x => q[x]);
+  const invP = (p) => { const o = new Array(p.length); for(let i = 0; i < p.length; i++) o[p[i]] = i; return o; };
+  const genNames = presentation ? presentation.gens.split(/\s+/) : null;
+  const evalWord = (w) => {
+    let p = Array.from({ length: n }, (_, i) => i);
+    for(const ch of w){
+      if(ch === '*' || ch === ' ') continue;
+      const lo = ch.toLowerCase();
+      const idx = genNames.indexOf(lo);
+      if(idx < 0) throw new Error(`unknown generator '${ch}' in relator word '${w}'`);
+      p = compP(p, ch === lo ? perms[idx] : invP(perms[idx]));
+    }
+    return p;
+  };
 
   if(!hSpec.s){
-    const corners = hSpec.kind === 'klm' ? [hSpec.K, hSpec.L, hSpec.M] : [hSpec.K, hSpec.L, hSpec.M, hSpec.N];
-    const cPerms = hSpec.kind === 'klm'
-      ? [perms[0], perms[1], compP(perms[0], perms[3])]
-      : [perms[1], compP(perms[3], perms[1]), perms[5], compP(perms[3], perms[5])];
+    let corners, cPerms;
+    if(presentation){
+      corners = [];
+      cPerms = [];
+      for(const rawRel of String(presentation.relators).split(',')){
+        const r = rawRel.replace(/\s+/g, '');
+        const m = r.match(/^(?:\(([^)]+)\)|([a-zA-Z]))\^(\d+)$/);
+        if(!m) continue;
+        const ord = Number(m[3]);
+        if(ord < 2) continue;
+        corners.push(ord);
+        cPerms.push(evalWord(m[1] || m[2]));
+      }
+      const expectedCount = hSpec.kind === 'klm' ? 3 : 4;
+      if(corners.length !== expectedCount)
+        throw new Error(`expected ${expectedCount} corner relators in '${presentation.relators}', got ${corners.length}`);
+    } else {
+      corners = hSpec.kind === 'klm' ? [hSpec.K, hSpec.L, hSpec.M] : [hSpec.K, hSpec.L, hSpec.M, hSpec.N];
+      cPerms = hSpec.kind === 'klm'
+        ? [perms[0], perms[1], compP(perms[0], perms[3])]
+        : [perms[1], compP(perms[3], perms[1]), perms[5], compP(perms[3], perms[5])];
+    }
     const chiG = 2 - corners.reduce((a, m) => a + (1 - 1 / m), 0);
     const cones = [];
     for(let ci = 0; ci < corners.length; ci++){
@@ -979,11 +1022,19 @@ const famKey = familyArg === 'wallpaper' ? 'wp'
              : familyArg === 'klm' ? 'hyperbolic' : familyArg;
 const domainShape = _optFlag('--domain');
 const dirichletPreset = _optFlag('--dirichlet');
+const presetFile = _optFlag('--preset');
 const customOut = _optFlag('--out');
 const dryRun = _optFlag('--dry-run', false);
 const rawGroupName = _argv[0] || (famKey === 'frieze' ? '*22∞' : (famKey === 'axial' || famKey === 'spherical') ? '*224' : famKey === 'polyhedral' ? '*432' : famKey === 'hyperbolic' ? '*238' : '632');
 const groupName = famKey === 'frieze' ? (FRIEZE_ALIASES[rawGroupName] || rawGroupName) : rawGroupName;
-const maxIndex = Number(_argv[1] || 6);
+const presetDoc = presetFile ? JSON.parse(readFileSync(presetFile, 'utf8')) : null;
+const presetMaxIndex = (() => {
+  if(!presetDoc) return null;
+  const vis = presetDoc.params?.visualization?.params?.layers?.params?.children || [];
+  const draw = vis.find(l => l.params?.subgroups?.params?.maxIndex);
+  return draw ? Number(draw.params.subgroups.params.maxIndex) : null;
+})();
+const maxIndex = Number(_argv[1] || presetMaxIndex || 6);
 
 const isWallpaper = famKey === 'wp';
 const isEuclidean = famKey === 'wp' || famKey === 'frieze';
@@ -1023,7 +1074,17 @@ if(isWallpaper){
 } else if(isHyperbolic){
   hyperbolicSpec = parseHyperbolicSpec(groupName);
   let maker;
-  if(hyperbolicSpec.kind === 'klm'){
+  const pGrp = presetDoc?.params?.symmetry?.group;
+  if(pGrp && (pGrp.className === 'Group_KLM' || pGrp.className === 'Group_KLMN')){
+    maker = pGrp.className === 'Group_KLM' ? new Group_KLM() : new Group_KLMN();
+    Object.assign(maker.params, pGrp.params);
+    if(maker.params.type !== undefined) maker.params.type = Number(maker.params.type);
+    if(maker.state) maker.state.paramChanged = true;
+    // Update hyperbolicSpec orders from preset params for reflection orbifold classification
+    hyperbolicSpec = pGrp.className === 'Group_KLM'
+      ? { kind: 'klm', s: !!maker.params.s, K: Number(maker.params.K), L: Number(maker.params.L), M: Number(maker.params.M) }
+      : { kind: 'klmn', s: !!maker.params.s, K: Number(maker.params.K), L: Number(maker.params.L), M: Number(maker.params.M), N: Number(maker.params.N) };
+  } else if(hyperbolicSpec.kind === 'klm'){
     maker = new Group_KLM();
     Object.assign(maker.params, { K: hyperbolicSpec.K, L: hyperbolicSpec.L, M: hyperbolicSpec.M, s: hyperbolicSpec.s, hasR: false });
   } else {
@@ -1106,7 +1167,7 @@ for(const sub of data.subgroups){
        : (isSpherical && domain
           ? { type: classifySphericalSubgroup(domain) }
           : (isHyperbolic && hyperbolicSpec
-             ? { type: classifyHyperbolicOrbifold(hyperbolicSpec, cosets) }
+             ? { type: classifyHyperbolicOrbifold(hyperbolicSpec, cosets, presentation) }
              : { type: sub.index === 1 ? groupName : 'sub' })));
 
   const entry = {

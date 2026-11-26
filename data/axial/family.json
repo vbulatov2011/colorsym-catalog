@@ -23,7 +23,7 @@
   "symdraw": "/apps/symdraw/symdraw_spherical.html",
   "layer": "drawing"
  },
- "description": "The 7 axial spherical symmetry families for n = 2..8 (49 groups) and their finite-index colorings up to 6 colors.",
+ "description": "The 7 axial spherical symmetry families for n = 2..6 (35 groups) and their finite-index colorings up to 6 colors.",
  "altNamesLabel": "Schoenflies",
  "altNames": {
   "22": "C2",
@@ -60,21 +60,7 @@
   "6*": "C6h",
   "226": "D6",
   "2*6": "D6d",
-  "*226": "D6h",
-  "77": "C7",
-  "7x": "S14",
-  "*77": "C7v",
-  "7*": "C7h",
-  "227": "D7",
-  "2*7": "D7d",
-  "*227": "D7h",
-  "88": "C8",
-  "8x": "S16",
-  "*88": "C8v",
-  "8*": "C8h",
-  "228": "D8",
-  "2*8": "D8d",
-  "*228": "D8h"
+  "*226": "D6h"
  },
  "sections": [
   {
@@ -135,30 +121,6 @@
     "226",
     "2*6",
     "*226"
-   ]
-  },
-  {
-   "title": "7-fold axis (n = 7)",
-   "groups": [
-    "77",
-    "7x",
-    "*77",
-    "7*",
-    "227",
-    "2*7",
-    "*227"
-   ]
-  },
-  {
-   "title": "8-fold axis (n = 8)",
-   "groups": [
-    "88",
-    "8x",
-    "*88",
-    "8*",
-    "228",
-    "2*8",
-    "*228"
    ]
   }
  ]

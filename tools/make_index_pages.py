@@ -83,7 +83,7 @@ def section_id(n):
     return 'c%d' % n
 
 
-def count_run(label, has, up, cur=None, link_cur=False, here=False):
+def count_run(label, has, up, cur=None, link_cur=False, here=False, ns=None):
     def href(n):
         return '#' + section_id(n) if here else '%s%d/index.html' % (up, n)
 
@@ -95,8 +95,9 @@ def count_run(label, has, up, cur=None, link_cur=False, here=False):
         if has(n):
             return '<a href="%s" title="%s">%d</a>' % (href(n), colors(n), n)
         return '<span class="off" title="none">%d</span>' % n
+    show_ns = ns if ns is not None else ACTIVE_NS
     return ('<span class="count-run">%s with %s colors</span>'
-            % (label, ''.join(one(n) for n in range(LO_N, HI_N + 1))))
+            % (label, ''.join(one(n) for n in show_ns)))
 
 
 def topnav(crumbs, actions=()):
@@ -201,7 +202,8 @@ for g in index['groups']:
                          gname=name, ghm=HM.get(name, '')))
     thumb = '%s/gen/group.webp' % stem
     groups[name] = dict(name=name, stem=stem, preset=preset, shape=shape, dirichlet=mo['dirichlet'],
-                        manifest=os.path.basename(man), trivial=trivial, subs=subs,
+                        manifest=os.path.basename(man), maxIndex=int(m.get('maxIndex', HI_N)),
+                        trivial=trivial, subs=subs,
                         thumb=thumb if os.path.exists(P.path(P.fam(thumb))) else None,
                         per_n={n: sorted((s for s in subs if s['index'] == n),
                                          key=lambda s: (name_key(s.get('affineClass') or s['name']),
@@ -233,6 +235,17 @@ def all_n(n):
     return [s for nm in ORDER for s in groups[nm]['per_n'][n]]
 
 
+ACTIVE_NS = ([n for n in range(LO_N, HI_N + 1) if all_n(n)]
+             if HI_N > 12 else list(range(LO_N, HI_N + 1)))
+
+
+def group_ns(g):
+    hi = min(HI_N, g.get('maxIndex', HI_N))
+    if hi <= 12:
+        return list(range(LO_N, hi + 1))
+    return [n for n in range(LO_N, hi + 1) if g['per_n'][n]]
+
+
 def counts_line(subs, bold=False):
     b = (lambda k: '<b>%d</b>' % k) if bold else str
     return ' &middot; '.join('%s %s%s' % (b(k), word, '' if k == 1 else 's')
@@ -242,8 +255,9 @@ def counts_line(subs, bold=False):
 
 
 def count_table(g, root):
+    ns = group_ns(g)
     head = ['<th>colors</th>']
-    for n in range(LO_N, HI_N + 1):
+    for n in ns:
         if g['per_n'][n]:
             head.append('<th><a href="%s%s/%d/index.html" title="%s">%d</a></th>'
                         % (root, g['stem'], n, colors(n), n))
@@ -253,7 +267,7 @@ def count_table(g, root):
     rows = ['<tr>%s</tr>' % ''.join(head)]
     for label, count in (('types', ntypes), ('color groups', len), ('patterns', npatterns)):
         cells = [('<td>%d</td>' % count(g['per_n'][n])) if g['per_n'][n]
-                 else '<td class="zero">&ndash;</td>' for n in range(LO_N, HI_N + 1)]
+                 else '<td class="zero">&ndash;</td>' for n in ns]
         rows.append('<tr><th>%s</th>%s</tr>' % (label, ''.join(cells)))
     return '<table class="counts">%s</table>' % ''.join(rows)
 
@@ -291,7 +305,7 @@ def cg_box(s, root):
     pats = []
     for k, img in enumerate(s['pats'], 1):
         tip = '%s.%d: coloring by cosets, placement %d of %d' % (disp(s['name']), k, k, K)
-        chip = '<span class="pk">{%d}</span>' % k if K > 1 else ''
+        chip = '<span class="pk">.%d</span>' % k if K > 1 else ''
         if img:
             pats.append('<a class="pat" href="%s" title="%s"><img src="%s%s" alt="%s.%d" '
                         'loading="lazy" decoding="async">%s</a>' % (href, tip, root, img, disp(s['name']), k, chip))
@@ -340,7 +354,7 @@ def type_frames(ss, root):
 
 def by_count_nav(root, cur=None):
     tiles = []
-    for n in range(LO_N, HI_N + 1):
+    for n in ACTIVE_NS:
         ss = all_n(n)
         if not ss:
             tiles.append('<div class="ntile off" title="no color group with %s"><b>%s</b>'
@@ -359,7 +373,7 @@ def by_count_nav(root, cur=None):
 
 def group_count_nav(g):
     tiles = []
-    for n in range(LO_N, HI_N + 1):
+    for n in group_ns(g):
         ss = g['per_n'][n]
         if not ss:
             tiles.append('<div class="off" title="no color group with %s"><b>%s</b>'
@@ -662,6 +676,11 @@ def _intro_landing_page(fam_summaries):
   </div>
   <a class="btn primary" href="tutorial.html">Open tutorial &rarr;</a>
 </div>
+
+<h2 class="sec">Credits</h2>
+<div class="credits-card">
+  <p>Created by <b>Vladimir Bulatov</b> with help from <b>Yaroslav Bulatov</b>, <b>Chaim Goodman-Strauss</b>, and <b>Scott Vorthmann</b>. The catalog engine is based on <a href="https://github.com/vbulatov2011/SymmHub" target="_blank" rel="noopener">SymmHub</a>.</p>
+</div>
 </main>
 %(foot)s
 </body>
@@ -776,6 +795,8 @@ for name, g in groups.items():
     ) if g['preset'] else ''
     hero = '<div class="hero-media">%s%s</div>' % (hero_img, hero_live)
     hm_row = ('<dt>%s</dt><dd>%s</dd>\n' % (html.escape(ALT_LABEL), html.escape(hm))) if hm else ''
+    g_hi = min(HI_N, g.get('maxIndex', HI_N))
+    g_ns = group_ns(g)
     facts = '''<dl class="facts">
 <dt>Orbifold</dt><dd>%s</dd>
 %s<dt>%d&ndash;%d colors</dt><dd>%s %s</dd>
@@ -783,14 +804,14 @@ for name, g in groups.items():
 <dt>Motif</dt><dd><code>%s</code></dd>
 <dt>Domain</dt><dd>%s</dd>
 <dt>Manifest</dt><dd><code>%s/%s</code></dd>
-</dl>''' % (disp(name), hm_row, LO_N, HI_N, counts_line(g['subs']), status(g['subs']),
+</dl>''' % (disp(name), hm_row, LO_N, g_hi, counts_line(g['subs']), status(g['subs']),
             count_table(g, root), html.escape(g['preset'] or 'none yet'),
             ('default' if g['shape'] == 'default' else html.escape(g['shape'])) +
             (' &middot; Dirichlet domain about (%g, %g)' % (g['dirichlet']['baseX'], g['dirichlet']['baseY'])
              if g['dirichlet'] else ''), P.DATA_DIR, html.escape(g['manifest']))
 
     secs = []
-    for n in range(LO_N, HI_N + 1):
+    for n in g_ns:
         ss = g['per_n'][n]
         if not ss:
             secs.append('<section class="cg-sec"><h2 class="sec cnt none" id="%s">%s '
@@ -812,12 +833,12 @@ for name, g in groups.items():
         '%s%s' % (disp(name), (' <span class="sub">%s</span>' % html.escape(hm)) if hm else ''),
         'The color groups of %s with %d to %d colors and the patterns they give, by '
         'number of colors. A frame holds the color groups of one type.'
-        % (disp(name), LO_N, HI_N), body,
+        % (disp(name), LO_N, g_hi), body,
         topnav([(sroot + 'index.html', 'Home'),
                 (sroot + 'catalog.html', 'Catalog'),
                 ('../index.html', html.escape(FAM_SHORT)),
                 (None, disp(name))],
-               [count_run('<b>%s</b>' % disp(name), lambda n: g['per_n'][n], '', here=True)]),
+               [count_run('<b>%s</b>' % disp(name), lambda n: g['per_n'][n], '', here=True, ns=g_ns)]),
         site_footer(
             count_run('All symmetries', all_n, '../colors/'),
             ('<a href="%s">Compare versions</a>' % P.compare_link(sroot)) if INCLUDE_COMPARE
@@ -830,14 +851,15 @@ for name, g in groups.items():
 # ---- count pages of one group: <stem>/<N>/index.html -------------------------
 
 for name, g in groups.items():
-    for n in range(LO_N, HI_N + 1):
+    g_ns = group_ns(g)
+    for n in g_ns:
         ss = g['per_n'][n]
         if not ss:
             continue
         root = '../../'
         sroot = _site(root, None)
         pager = []
-        for k in range(LO_N, HI_N + 1):
+        for k in g_ns:
             if k == n:
                 pager.append('<span class="cur">%d</span>' % k)
             elif g['per_n'][k]:
@@ -863,7 +885,7 @@ for name, g in groups.items():
                     ('../../index.html', html.escape(FAM_SHORT)),
                     ('../index.html', disp(name)),
                     (None, colors(n))],
-                   [count_run('<b>%s</b>' % disp(name), lambda k: g['per_n'][k], '../', cur=n)]),
+                   [count_run('<b>%s</b>' % disp(name), lambda k: g['per_n'][k], '../', cur=n, ns=g_ns)]),
             site_footer(
                 count_run('All symmetries', all_n, '../../colors/', cur=n, link_cur=True),
                 ('<a href="%s">Compare versions</a>' % P.compare_link(sroot)) if INCLUDE_COMPARE
@@ -874,7 +896,7 @@ for name, g in groups.items():
 
 # ---- count pages across all groups: colors/<N>/index.html ------------------
 
-for n in range(LO_N, HI_N + 1):
+for n in ACTIVE_NS:
     root = '../../'
     sroot = _site(root, None)
     jumps = []
@@ -955,4 +977,4 @@ print('%d groups: %d types, %d color groups, %d patterns (%d color groups render
       'wrote index.html, %d group pages, %d count pages, %d all-symmetries pages'
       % (len(groups), ntypes(EVERY), len(EVERY), npatterns(EVERY),
          sum(s['built'] for s in EVERY), len(groups),
-         sum(1 for g in groups.values() for n in g['per_n'] if g['per_n'][n]), HI_N - LO_N + 1))
+         sum(1 for g in groups.values() for n in g['per_n'] if g['per_n'][n]), len(ACTIVE_NS)))

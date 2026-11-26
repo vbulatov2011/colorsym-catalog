@@ -369,7 +369,7 @@ body.off-f img.fglyph, body.off-g img.gglyph { display: none; }
 
 /* ---- Domains Table (G / H x domain, tiling, symmetries) ---------------- */
 
-.geo-wrap { overflow-x: auto; }
+.geo-wrap, .action-wrap { overflow-x: auto; }
 table.geo { border-collapse: collapse; }
 table.geo td { padding: .35rem; vertical-align: top; }
 table.geo th.row {

@@ -33,9 +33,43 @@
 import json, os, sys
 import numpy as np
 from PIL import Image
-from entry_names import entry_names, piece_file, union_file
+from entry_names import entry_names, piece_file, union_file, placement_classes
 
 import catalog_paths as P
+
+
+def preset_palette(preset_url, n):
+    """Read the expected n-color RGB palette from a preset's colorTiles.edited,
+    scaled by the white base tile's fill multiplier (1.0 for pure white tiles)."""
+    doc = json.load(open(P.path(P.from_url(preset_url)), encoding='utf-8'))
+    layers = doc['params']['visualization']['params']['layers']['params']['children']
+    draw = next(l for l in layers if l.get('className') == 'VisualizationColorSym')
+    edited = draw['params']['colorTiles']['params'].get('edited') or {}
+    mult = (1.0, 1.0, 1.0)
+    try:
+        dlayers = doc['params']['pattern']['patternParams']['params']['layers']['params']['children']
+        for dl in dlayers:
+            if dl.get('params', {}).get('enabled') is False:
+                continue
+            for it in dl.get('params', {}).get('items') or []:
+                f = (it.get('style') or {}).get('fill') or {}
+                rgba = f.get('rgba')
+                if rgba and rgba[0] > 0.9 and rgba[1] > 0.9 and rgba[2] > 0.9:
+                    mult = (float(rgba[0]), float(rgba[1]), float(rgba[2]))
+                    break
+    except Exception:
+        pass
+    out = []
+    for j in range(n):
+        hx = edited.get(str(j))
+        if not hx or not hx.startswith('#') or len(hx) < 7:
+            return None
+        out.append((
+            int(round(int(hx[1:3], 16) * mult[0])),
+            int(round(int(hx[3:5], 16) * mult[1])),
+            int(round(int(hx[5:7], 16) * mult[2])),
+        ))
+    return out
 
 
 def find(gen, name):
@@ -115,52 +149,54 @@ def verify(stem, entry):
     gap = 1.0 - float(pattern.mean())
     if not SPARSE and gap > 0.01:
         fails.append('coverage: %.1f%% of the uncolored pattern is transparent' % (100 * gap))
-    union_files = [union_file(j, n) for j in range(n)]
-    unions = [rgba(find(gen, f)) for f in union_files]
-    off = [int((u[..., 3] > 0).__xor__(pattern).sum()) for u in unions]
-    # On curved 3D sphere renders with N >= 2 composited layers, allow minor anti-aliasing rim rounding (<= 2*N px)
     rim_tol = (4 * n) if CURVED else 0
-    if any(x > rim_tol for x in off):
-        fails.append('unions: %s px off the pattern' % off)
-    palette = [dominant(u) for u in unions]
-    if len(set(palette)) != n:
-        fails.append('palette: %d distinct colors for %d unions' % (len(set(palette)), n))
-
-    piece = [[footprint(find(gen, piece_file(i, j, n))) for j in range(n)] for i in range(n)]
-    rows = [np.logical_or.reduce(piece[i]) for i in range(n)]
-    cols = [np.logical_or.reduce([piece[i][j] for i in range(n)]) for j in range(n)]
-    ref = rows[0]
-    off = [int((u ^ ref).sum()) for u in rows + cols]
-    if any(x > rim_tol for x in off):
-        fails.append('pieces: row/column unions differ by %s px' % off)
-
-    if not CURVED:
-        sig = [frozenset(p.tobytes() for p in piece[i]) for i in range(n)]
-        classes = {}
-        for i, s in enumerate(sig):
-            classes.setdefault(s, []).append(i)
-        rep = {i: min(c) for c in classes.values() for i in c}
-        if len(classes) != K or sorted(set(rep.values())) != list(range(K)):
-            fails.append('placements: rows fall into %d classes %s, manifest K=%d'
-                         % (len(classes), sorted(classes.values()), K))
-    else:
-        # On a 3D hemisphere only half the sphere is visible; compute algebraic rep from cosets
-        gens = [[ord(c) - 97 for c in w] for w in entry['cosets'].split()]
-        idp = tuple(range(n))
-        seen = {idp}; q = [idp]
-        while q:
-            q0 = q.pop()
-            for g in gens:
-                nxt = tuple(g[x] for x in q0)
-                if nxt not in seen: seen.add(nxt); q.append(nxt)
-        stab = {}
-        for i in range(n):
-            key = frozenset(p for p in seen if p[i] == i)
-            stab.setdefault(key, []).append(i)
-        rep = {i: min(c) for c in stab.values() for i in c}
-
+    has_grid = piece_file(0, 0, n) in files
     slug = names['slug']
-    col = {k: rgba(find(gen, '%s.%s.png' % (slug, k))) for k in [str(i) for i in range(1, n + 1)] + ['o']}
+
+    if has_grid:
+        union_files = [union_file(j, n) for j in range(n)]
+        unions = [rgba(find(gen, f)) for f in union_files]
+        off = [int((u[..., 3] > 0).__xor__(pattern).sum()) for u in unions]
+        if any(x > rim_tol for x in off):
+            fails.append('unions: %s px off the pattern' % off)
+        palette = [dominant(u) for u in unions]
+        if len(set(palette)) != n:
+            fails.append('palette: %d distinct colors for %d unions' % (len(set(palette)), n))
+
+        piece = [[footprint(find(gen, piece_file(i, j, n))) for j in range(n)] for i in range(n)]
+        rows = [np.logical_or.reduce(piece[i]) for i in range(n)]
+        cols = [np.logical_or.reduce([piece[i][j] for i in range(n)]) for j in range(n)]
+        ref = rows[0]
+        off = [int((u ^ ref).sum()) for u in rows + cols]
+        if any(x > rim_tol for x in off):
+            fails.append('pieces: row/column unions differ by %s px' % off)
+
+        if not CURVED:
+            sig = [frozenset(p.tobytes() for p in piece[i]) for i in range(n)]
+            classes = {}
+            for i, s in enumerate(sig):
+                classes.setdefault(s, []).append(i)
+            rep = {i: min(c) for c in classes.values() for i in c}
+            if len(classes) != K or sorted(set(rep.values())) != list(range(K)):
+                fails.append('placements: rows fall into %d classes %s, manifest K=%d'
+                             % (len(classes), sorted(classes.values()), K))
+        else:
+            classes = placement_classes(entry['cosets'], n)
+            rep = {i: c[0] for c in classes for i in c}
+    else:
+        palette = preset_palette(job['preset'], n)
+        if not palette or len(set(palette)) != n:
+            fails.append('palette: preset does not define %d distinct edited colors' % n)
+            return palette, fails
+        classes = placement_classes(entry['cosets'], n)
+        rep = {i: c[0] for c in classes for i in c}
+
+    rendered_k = [str(i) for i in range(1, n + 1) if ('%s.%d.png' % (slug, i)) in files]
+    col = {k: rgba(find(gen, '%s.%s.png' % (slug, k))) for k in rendered_k + ['o']}
+    if not has_grid:
+        off = [int((img[..., 3] > 0).__xor__(pattern).sum()) for img in col.values()]
+        if any(x > rim_tol for x in off):
+            fails.append('footprints: colorings differ from pattern by %s px' % off)
     min_share = 0.0 if CURVED else 0.02
     for k, img in col.items():
         opaque = img[..., 3] == 255
@@ -169,6 +205,8 @@ def verify(stem, entry):
         if min_share > 0 and min(share) <= min_share:
             fails.append('colors: .%s shows palette shares %s' % (k, ['%.3f' % s for s in share]))
     for i in range(K, n):
+        if str(i + 1) not in col:
+            continue
         same, cmp_px, bad = same_partition(col[str(i + 1)], col[str(rep[i] + 1)], palette)
         if not same:
             fails.append('relabel: .%d vs its representative .%d: %d of %d px conflict'
