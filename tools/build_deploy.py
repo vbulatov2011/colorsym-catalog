@@ -272,7 +272,7 @@ def ordered_family_presets(fid, vname):
 
 # ---- Staging steps ----------------------------------------------------------
 
-def stage_catalog(out_dir, mode='copy'):
+def stage_catalog(out_dir, mode='copy', release_id='dev'):
     reg = P.registry()
     main_by_fam = {}
     for fid in P.FAMILIES:
@@ -299,6 +299,7 @@ def stage_catalog(out_dir, mode='copy'):
         '_comment': 'Self-contained deployment config: embedded SymmHub under ./symmhub/.',
         'symmhubUrl': 'symmhub',
         'hideSymmhubSettings': True,
+        'releaseId': release_id,
     }
     write_text(os.path.join(out_dir, 'catalog_config.json'), json.dumps(cfg, indent=1) + '\n')
     write_text(os.path.join(out_dir, '.htaccess'), HTACCESS_CONTENT)
@@ -383,7 +384,7 @@ def stage_catalog(out_dir, mode='copy'):
     return stats, family_preset_lists
 
 
-def _stage_symmhub_source(sh_out, family_preset_lists, mode='copy'):
+def _stage_symmhub_source(sh_out, family_preset_lists, mode='copy', release_id='dev'):
     """Stage full unbundled SymDraw + pruned lib/ + generated glue files into sh_out."""
     stats = {'files': 0}
 
@@ -405,9 +406,9 @@ def _stage_symmhub_source(sh_out, family_preset_lists, mode='copy'):
             ext = os.path.splitext(fn)[1].lower()
             if ext in SYMMHUB_EXCLUDED_EXTS or fn.startswith('.'):
                 continue
-            # AppCatalog.js is generated custom below
+            # AppCatalog.js and BuildInfo.js are generated custom below
             rel_file = rel_dp + '/' + fn
-            if rel_file == 'lib/symhublib/ui/AppCatalog.js':
+            if rel_file in ('lib/symhublib/ui/AppCatalog.js', 'lib/symhublib/BuildInfo.js'):
                 continue
             src = os.path.join(dp, fn)
             dst = os.path.join(sh_out, *rel_file.split('/'))
@@ -618,6 +619,8 @@ def _stage_symmhub_source(sh_out, family_preset_lists, mode='copy'):
     <a href="../../../index.html">Color Groups Catalog</a>
     &middot;
     <a href="../../../catalog.html">Browse all families</a>
+    &middot;
+    <span>Release <code>{release_id}</code></span>
   </footer>
 </body>
 </html>
@@ -625,7 +628,14 @@ def _stage_symmhub_source(sh_out, family_preset_lists, mode='copy'):
     write_text(os.path.join(sd_out, 'index.html'), sd_index)
     stats['files'] += 1
 
-    # 7. Trimmed AppCatalog.js (zero dead links in Studio top-left menu)
+    # 7. Stamped BuildInfo.js (exact release ID yy-mm-dd-hh-mm-ss) & trimmed AppCatalog.js
+    build_info_js = (
+        "/* Stamped by build_deploy.py during release packaging. */\n"
+        f"export const RELEASE_ID = {json.dumps(release_id)};\n"
+    )
+    write_text(os.path.join(sh_out, 'lib', 'symhublib', 'BuildInfo.js'), build_info_js)
+    stats['files'] += 1
+
     variants_js = ',\n'.join(
         f"                {{ label: {json.dumps(label)}, "
         f"page: 'apps/symdraw/{html_file}', "
@@ -676,7 +686,7 @@ export const APP_CATALOG = {{
     return stats
 
 
-def stage_symmhub(out_dir, family_preset_lists, mode='copy', bundled=True):
+def stage_symmhub(out_dir, family_preset_lists, mode='copy', bundled=True, release_id='dev'):
     """Stage SymmHub under <out_dir>/symmhub (esbuild-bundled by default, or unbundled)."""
     if not os.path.isdir(SYMMHUB):
         raise FileNotFoundError(f'SymmHub directory not found: {SYMMHUB}')
@@ -687,7 +697,7 @@ def stage_symmhub(out_dir, family_preset_lists, mode='copy', bundled=True):
         shutil.rmtree(sh_out)
 
     if not bundled:
-        stats = _stage_symmhub_source(sh_out, family_preset_lists, mode=mode)
+        stats = _stage_symmhub_source(sh_out, family_preset_lists, mode=mode, release_id=release_id)
         stats['mode'] = 'unbundled'
         return stats
 
@@ -701,7 +711,7 @@ def stage_symmhub(out_dir, family_preset_lists, mode='copy', bundled=True):
         )
 
     with tempfile.TemporaryDirectory(prefix='symmhub_stage_') as tmp_stage:
-        _stage_symmhub_source(tmp_stage, family_preset_lists, mode='copy')
+        _stage_symmhub_source(tmp_stage, family_preset_lists, mode='copy', release_id=release_id)
 
         ensure_dir(sh_out)
         print('Bundling SymmHub with esbuild...')
@@ -842,6 +852,8 @@ def main():
     ap.add_argument('--symmhub', choices=('bundled', 'unbundled'), default='bundled',
                     help='bundled (esbuild minified chunks + workers, default) or unbundled (raw ES modules)')
     ap.add_argument('--clean', action='store_true', help='Remove existing --out directory before staging')
+    ap.add_argument('--release-id', default='',
+                    help='Explicit release ID (default: current local timestamp yy-mm-dd-hh-mm-ss)')
     ap.add_argument('--pack', default='', help='Optional directory to write GoDaddy-chunked .zip archives')
     ap.add_argument('--max-zip-mb', type=int, default=500, help='Target max size per zip chunk in MB (default: 500)')
     ap.add_argument('--verify', action='store_true', help='Run verify_deploy.py after staging')
@@ -852,16 +864,21 @@ def main():
         print(f'Cleaning {out_dir} ...')
         shutil.rmtree(out_dir)
 
+    release_id = args.release_id.strip() or time.strftime('%y-%m-%d-%H-%M-%S')
     t0 = time.time()
     print(f'Staging self-contained catalog -> {out_dir} (mode={args.mode}, symmhub={args.symmhub})')
+    print(f'  Release ID:     {release_id}')
     print(f'  Catalog source: {CAT}')
     print(f'  SymmHub source: {SYMMHUB}')
 
-    cat_stats, family_preset_lists = stage_catalog(out_dir, mode=args.mode)
-    sh_stats = stage_symmhub(out_dir, family_preset_lists, mode=args.mode, bundled=(args.symmhub == 'bundled'))
+    cat_stats, family_preset_lists = stage_catalog(out_dir, mode=args.mode, release_id=release_id)
+    sh_stats = stage_symmhub(
+        out_dir, family_preset_lists,
+        mode=args.mode, bundled=(args.symmhub == 'bundled'), release_id=release_id,
+    )
     dt = time.time() - t0
 
-    print(f'Staged in {dt:.1f}s:')
+    print(f'Staged in {dt:.1f}s (Release ID: {release_id}):')
     print(f"  Catalog: {cat_stats['html']} HTML, {cat_stats['binary']} assets, "
           f"{cat_stats['thumbs_generated']} generated sample thumbs, "
           f"{cat_stats['skipped_stray']} stray dev files skipped")

@@ -72,12 +72,18 @@ def check_deploy(root):
                 err(f'.htaccess missing directive: {needle}')
 
     cfg_path = os.path.join(root, 'catalog_config.json')
+    release_id = None
     if os.path.isfile(cfg_path):
         cfg = json.load(open(cfg_path, encoding='utf-8'))
         if cfg.get('symmhubUrl') != 'symmhub':
             err(f"catalog_config.json symmhubUrl={cfg.get('symmhubUrl')!r}, expected 'symmhub'")
         if cfg.get('hideSymmhubSettings') is not True:
             warnings.append('catalog_config.json hideSymmhubSettings is not true')
+        release_id = cfg.get('releaseId')
+        if not release_id or not isinstance(release_id, str):
+            err('catalog_config.json missing releaseId')
+        elif not re.match(r'^\d{2}-\d{2}-\d{2}-\d{2}-\d{2}-\d{2}$', release_id):
+            warnings.append(f'catalog_config.json releaseId={release_id!r} does not match yy-mm-dd-hh-mm-ss')
 
     # 2. Walk entire tree: stats + verify all HTML files
     section_stats = {}
@@ -270,8 +276,27 @@ def check_deploy(root):
                    if os.path.isdir(os.path.join(sh_root, 'apps', 'symdraw', 'js')) else [])
     )
 
+    # Check that the exact release_id was stamped into SymmHub JS as well
+    if release_id and os.path.isdir(sh_root):
+        found_in_symmhub = False
+        for dp, _, fns in os.walk(sh_root):
+            for fn in fns:
+                if fn.endswith('.js'):
+                    try:
+                        if release_id in io.open(os.path.join(dp, fn), encoding='utf-8', errors='ignore').read():
+                            found_in_symmhub = True
+                            break
+                    except OSError:
+                        pass
+            if found_in_symmhub:
+                break
+        if not found_in_symmhub:
+            err(f'Release ID {release_id!r} from catalog_config.json not found in staged symmhub/ JS')
+
     # Print summary report
     print(f'\n=== Deployment Verification Report: {root} ===')
+    if release_id:
+        print(f'  Release ID: {release_id}')
     print(f'  {"Section":16s} {"Files":>8s} {"Dirs":>7s} {"Inodes":>8s} {"Size MB":>10s}')
     for sec in sorted(section_stats):
         f, d, b = section_stats[sec]

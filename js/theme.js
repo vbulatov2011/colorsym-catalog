@@ -60,6 +60,7 @@
   // ---- Live SymmHub URL & optional catalog_config.json ---------------------
 
   var runtimeDefaultBase = null;
+  var releaseId = 'dev';
   var hideLiveSettings = metaContent('symmhub-settings', '1') === '0';
 
   function resolveSymmHubBase(raw, sRoot) {
@@ -191,6 +192,7 @@
     setSymmHubBase: setSymmHubBase,
     defaultSymmHubBase: defaultSymmHubBase,
     buildLiveUrl: buildLiveUrl,
+    getReleaseId: function () { return releaseId; },
   };
 
   // ---- Topbar Enhancements (Search, Version Switcher, Live Settings) -------
@@ -211,7 +213,7 @@
     btn.className = 'btn sm';
     btn.id = 'cat-search-btn';
     btn.title = 'Quick jump to any group or color group (/ or Ctrl+K)';
-    btn.innerHTML = '&#128269; Search <span class="kbd">/</span>';
+    btn.innerHTML = '&#128269;<span class="search-lbl"> Search</span> <span class="kbd">/</span>';
     actionsEl.insertBefore(btn, actionsEl.firstChild);
 
     var modal = document.createElement('div');
@@ -515,6 +517,123 @@
     });
   }
 
+  function copyText(text) {
+    if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+      return navigator.clipboard.writeText(text).catch(function () { fallbackCopy(text); });
+    }
+    fallbackCopy(text);
+    return Promise.resolve();
+  }
+
+  function fallbackCopy(text) {
+    try {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      ta.remove();
+    } catch (e) {}
+  }
+
+  function syncAboutInfo() {
+    var codeEl = document.getElementById('cab-release-id');
+    if (codeEl) {
+      codeEl.textContent = releaseId;
+      codeEl.dataset.releaseId = releaseId;
+    }
+    var btn = document.getElementById('cat-about-btn');
+    if (btn) btn.title = 'About Color Groups Catalog (' + releaseId + ')';
+    var sdLink = document.getElementById('cab-symdraw-link');
+    if (sdLink) sdLink.href = getSymmHubBase() + '/apps/symdraw/index.html';
+  }
+
+  function mountAboutModal(actionsEl) {
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'btn sm cat-about-btn';
+    btn.id = 'cat-about-btn';
+    btn.title = 'About Color Groups Catalog (' + releaseId + ')';
+    btn.setAttribute('aria-label', 'About');
+    btn.textContent = '?';
+    actionsEl.appendChild(btn);
+
+    var sRoot = siteRoot();
+    var modal = document.createElement('div');
+    modal.id = 'cat-about-modal';
+    modal.hidden = true;
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-labelledby', 'cab-title');
+    modal.innerHTML =
+      '<div class="cab-dialog">' +
+      '  <div class="cab-head">' +
+      '    <div>' +
+      '      <h2 class="cab-title" id="cab-title">Color Groups Catalog</h2>' +
+      '      <div class="cab-sub">Visual Atlas of Color Symmetry</div>' +
+      '    </div>' +
+      '    <button type="button" class="btn icon-btn cab-x" id="cab-close" title="Close (Esc)" aria-label="Close About dialog">&times;</button>' +
+      '  </div>' +
+      '  <div class="cab-body">' +
+      '    <p class="cab-desc">A systematic visual catalog of finite-index color symmetries across Euclidean, spherical, and hyperbolic geometries, with live interactive exploration powered by SymmHub.</p>' +
+      '    <div class="cab-release">' +
+      '      <span class="cab-release-lbl">Release ID</span>' +
+      '      <code class="cab-release-id" id="cab-release-id"></code>' +
+      '      <button type="button" class="btn sm" id="cab-copy" title="Copy Release ID to clipboard">Copy</button>' +
+      '    </div>' +
+      '    <p class="cab-credits">Created by <b>Vladimir Bulatov</b> with help from <b>Yaroslav Bulatov</b>, <b>Chaim Goodman-Strauss</b>, and <b>Scott Vorthmann</b>.</p>' +
+      '    <div class="cab-links">' +
+      '      <a href="' + esc(sRoot + 'index.html') + '">Introduction</a>' +
+      '      <a href="' + esc(sRoot + 'catalog.html') + '">Catalog</a>' +
+      '      <a href="' + esc(sRoot + 'tutorial.html') + '">Tutorial</a>' +
+      '      <a id="cab-symdraw-link" href="#">SymDraw</a>' +
+      '      <a href="https://github.com/vbulatov2011/SymmHub" target="_blank" rel="noopener noreferrer">GitHub (SymmHub)</a>' +
+      '    </div>' +
+      '  </div>' +
+      '  <div class="cab-foot">' +
+      '    <button type="button" class="btn sm primary" id="cab-close-foot">Close</button>' +
+      '  </div>' +
+      '</div>';
+    document.body.appendChild(modal);
+
+    var copyBtn = modal.querySelector('#cab-copy');
+    var closeBtnFoot = modal.querySelector('#cab-close-foot');
+    var copyTimer = null;
+
+    function openAbout() {
+      syncAboutInfo();
+      modal.hidden = false;
+      closeBtnFoot.focus();
+    }
+
+    function closeAbout() {
+      modal.hidden = true;
+    }
+
+    btn.addEventListener('click', openAbout);
+    modal.querySelector('#cab-close').addEventListener('click', closeAbout);
+    closeBtnFoot.addEventListener('click', closeAbout);
+    modal.addEventListener('click', function (e) { if (e.target === modal) closeAbout(); });
+    copyBtn.addEventListener('click', function () {
+      copyText(releaseId).then(function () {
+        copyBtn.textContent = 'Copied';
+        if (copyTimer) clearTimeout(copyTimer);
+        copyTimer = setTimeout(function () { copyBtn.textContent = 'Copy'; }, 1500);
+      });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && !modal.hidden) {
+        e.preventDefault();
+        closeAbout();
+      }
+    });
+    window.addEventListener('symmhubBaseChanged', syncAboutInfo);
+    syncAboutInfo();
+  }
+
   function applySettingsVisibility() {
     if (!hideLiveSettings) return;
     var wrap = document.querySelector('.settings-wrap');
@@ -541,6 +660,10 @@
       if (cfg.symmhubUrl) {
         runtimeDefaultBase = cfg.symmhubUrl.trim().replace(/\/+$/, '');
         changed = true;
+      }
+      if (cfg.releaseId) {
+        releaseId = String(cfg.releaseId).trim();
+        syncAboutInfo();
       }
       if (changed) {
         window.dispatchEvent(new CustomEvent('symmhubBaseChanged', { detail: { base: getSymmHubBase() } }));
@@ -578,6 +701,7 @@
       mountSearchModal(actionsEl);
       mountVersionSwitcher(actionsEl);
       if (!hideLiveSettings) mountLiveSettings(actionsEl);
+      mountAboutModal(actionsEl);
     }
     applySettingsVisibility();
     loadOptionalConfig();
