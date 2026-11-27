@@ -669,6 +669,7 @@ footer.site-foot .foot-links {
   justify-content: center;
   font-weight: 700;
   padding-inline: .45rem;
+  touch-action: manipulation;
 }
 
 #cat-about-modal {

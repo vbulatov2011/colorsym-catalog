@@ -551,7 +551,33 @@
     if (sdLink) sdLink.href = getSymmHubBase() + '/apps/symdraw/index.html';
   }
 
+  function ensureAboutStyles() {
+    if (document.getElementById('cat-about-inline-css') || !document.head) return;
+    var st = document.createElement('style');
+    st.id = 'cat-about-inline-css';
+    st.textContent =
+      '.cat-about-btn{min-width:1.85rem;justify-content:center;font-weight:700;padding-inline:.45rem;touch-action:manipulation}' +
+      '@media (pointer:coarse){.cat-about-btn{min-width:34px;min-height:32px}}' +
+      '#cat-about-modal[hidden]{display:none!important}' +
+      '#cat-about-modal{position:fixed;inset:0;z-index:96;background:rgba(12,15,22,.58);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;padding:1rem}' +
+      '.cab-dialog{width:min(440px,100%);max-height:calc(100dvh - 2rem);display:flex;flex-direction:column;background:var(--panel,#fff);border:1px solid var(--line,#d0d7de);border-radius:var(--radius-lg,12px);box-shadow:var(--shadow-md,0 10px 28px rgba(0,0,0,.22));overflow:hidden;color:var(--ink,#1f2328)}' +
+      '.cab-head{display:flex;align-items:center;justify-content:space-between;gap:.75rem;padding:.8rem 1rem;background:var(--header-bg,#f6f8fa);border-bottom:1px solid var(--rule,#e5e7eb)}' +
+      '.cab-title{margin:0;font-size:1rem;font-weight:700;line-height:1.25;color:var(--ink,#1f2328)}' +
+      '.cab-sub{font-size:.78rem;color:var(--muted,#57606a);margin-top:.1rem}' +
+      '.cab-x{font-size:1.15rem;line-height:1;touch-action:manipulation}' +
+      '.cab-body{padding:.95rem 1rem;overflow-y:auto;display:flex;flex-direction:column;gap:.8rem}' +
+      '.cab-desc,.cab-credits{margin:0;font-size:.86rem;line-height:1.5;color:var(--ink-2,#32383f)}' +
+      '.cab-credits{font-size:.82rem;color:var(--muted,#57606a)}' +
+      '.cab-release{display:flex;align-items:center;gap:.55rem;padding:.55rem .75rem;background:var(--panel-alt,#f6f8fa);border:1px solid var(--line,#d0d7de);border-radius:var(--radius-md,8px)}' +
+      '.cab-release-lbl{font-size:.72rem;font-weight:650;text-transform:uppercase;letter-spacing:.05em;color:var(--muted,#57606a);white-space:nowrap}' +
+      '.cab-release-id{flex:1 1 auto;min-width:0;font-family:var(--mono,monospace);font-size:.88rem;font-weight:600;color:var(--ink,#1f2328);user-select:all;overflow-wrap:anywhere}' +
+      '.cab-links{display:flex;flex-wrap:wrap;gap:.45rem .85rem;font-size:.83rem}' +
+      '.cab-foot{display:flex;justify-content:flex-end;gap:.5rem;padding:.65rem 1rem;border-top:1px solid var(--rule,#e5e7eb);background:var(--panel-alt,#f6f8fa)}';
+    document.head.appendChild(st);
+  }
+
   function mountAboutModal(actionsEl) {
+    ensureAboutStyles();
     var btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'btn sm cat-about-btn';
@@ -606,17 +632,22 @@
     function openAbout() {
       syncAboutInfo();
       modal.hidden = false;
-      closeBtnFoot.focus();
+      try { closeBtnFoot.focus({ preventScroll: true }); } catch (e) {}
     }
 
     function closeAbout() {
       modal.hidden = true;
     }
 
+    var downInsideDialog = false;
     btn.addEventListener('click', openAbout);
     modal.querySelector('#cab-close').addEventListener('click', closeAbout);
     closeBtnFoot.addEventListener('click', closeAbout);
-    modal.addEventListener('click', function (e) { if (e.target === modal) closeAbout(); });
+    modal.addEventListener('pointerdown', function (e) { downInsideDialog = (e.target !== modal); });
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal && !downInsideDialog) closeAbout();
+      downInsideDialog = false;
+    });
     copyBtn.addEventListener('click', function () {
       copyText(releaseId).then(function () {
         copyBtn.textContent = 'Copied';

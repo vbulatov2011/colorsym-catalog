@@ -114,28 +114,29 @@ Options -Indexes
     AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript application/javascript application/json image/svg+xml
 </IfModule>
 
-# Caching: long immutable cache on rendered WebP/PNG assets; revalidate HTML/JSON
+# Caching: long immutable cache on rendered WebP/PNG assets and content-hashed JS chunks;
+# revalidate HTML, JSON, CSS, and entry JS so new releases take effect immediately.
 <IfModule mod_expires.c>
     ExpiresActive On
     ExpiresByType image/webp "access plus 1 year"
     ExpiresByType image/png "access plus 1 year"
     ExpiresByType image/svg+xml "access plus 1 month"
-    ExpiresByType text/css "access plus 7 days"
-    ExpiresByType text/javascript "access plus 7 days"
-    ExpiresByType application/javascript "access plus 7 days"
-    ExpiresByType application/json "access plus 1 hour"
-    ExpiresByType text/html "access plus 10 minutes"
+    ExpiresByType text/css "access plus 0 seconds"
+    ExpiresByType text/javascript "access plus 0 seconds"
+    ExpiresByType application/javascript "access plus 0 seconds"
+    ExpiresByType application/json "access plus 0 seconds"
+    ExpiresByType text/html "access plus 0 seconds"
 </IfModule>
 
 <IfModule mod_headers.c>
     <FilesMatch "\\.(webp|png)$">
         Header set Cache-Control "public, max-age=31536000, immutable"
     </FilesMatch>
-    <FilesMatch "\\.(js|mjs|css|svg)$">
-        Header set Cache-Control "public, max-age=604800"
+    <FilesMatch "\\.(html|json|js|mjs|css)$">
+        Header set Cache-Control "public, no-cache, must-revalidate"
     </FilesMatch>
-    <FilesMatch "\\.(html|json)$">
-        Header set Cache-Control "public, max-age=600, must-revalidate"
+    <FilesMatch "^(symdraw|worker)-core-[A-Z0-9]{8}\\.js$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
     </FilesMatch>
 </IfModule>
 """
@@ -213,10 +214,17 @@ def transform_html(text):
     return text
 
 
-def stage_html(src, dst):
+_RE_ROOT_ASSET = re.compile(r'((?:href|src)=")((?:css|js)/[^"?#]+\.(?:css|js))(")')
+_RE_CSS_IMPORT = re.compile(r"(@import\s+url\(['\"])([^'\"?#]+\.css)(['\"]\))")
+_RE_SYMDRAW_HTML_ASSET = re.compile(r'((?:href|src)=")((?:\./)?(?:css|js)/[^"?#]+\.(?:css|js))(")')
+
+
+def stage_html(src, dst, bust_version=''):
     with io.open(src, 'r', encoding='utf-8') as f:
         raw = f.read()
     out = transform_html(raw)
+    if bust_version:
+        out = _RE_ROOT_ASSET.sub(rf'\g<1>\g<2>?v={bust_version}\g<3>', out)
     return write_text(dst, out)
 
 
@@ -286,7 +294,7 @@ def stage_catalog(out_dir, mode='copy', release_id='dev'):
     for fn in ROOT_HTML_FILES:
         src = P.path(fn)
         if os.path.exists(src):
-            stage_html(src, os.path.join(out_dir, fn))
+            stage_html(src, os.path.join(out_dir, fn), bust_version=release_id)
             stats['html'] += 1
 
     search_src = P.path('search_index.json')
@@ -304,7 +312,7 @@ def stage_catalog(out_dir, mode='copy', release_id='dev'):
     write_text(os.path.join(out_dir, 'catalog_config.json'), json.dumps(cfg, indent=1) + '\n')
     write_text(os.path.join(out_dir, '.htaccess'), HTACCESS_CONTENT)
 
-    # 3. Shared css/ and js/
+    # 3. Shared css/ and js/ (stamp ?v= on CSS @import so stale caches bust immediately)
     for sub in ('css', 'js'):
         src_dir = P.path(sub)
         for dp, _, fns in os.walk(src_dir):
@@ -312,7 +320,14 @@ def stage_catalog(out_dir, mode='copy', release_id='dev'):
             for fn in fns:
                 if fn.endswith('.bak') or fn.startswith('.'):
                     continue
-                stage_binary(os.path.join(dp, fn), os.path.join(out_dir, rel_dp, fn), mode='copy')
+                src_fp = os.path.join(dp, fn)
+                dst_fp = os.path.join(out_dir, rel_dp, fn)
+                if sub == 'css' and fn.endswith('.css') and release_id:
+                    css_txt = io.open(src_fp, 'r', encoding='utf-8').read()
+                    css_out = _RE_CSS_IMPORT.sub(rf'\g<1>\g<2>?v={release_id}\g<3>', css_txt)
+                    write_text(dst_fp, css_out)
+                else:
+                    stage_binary(src_fp, dst_fp, mode='copy')
                 stats['binary'] += 1
 
     # 4. All registered main family trees (only .html and .webp — drops stray dev PNGs/CSS)
@@ -420,7 +435,12 @@ def _stage_symmhub_source(sh_out, family_preset_lists, mode='copy', release_id='
     sd_out = os.path.join(sh_out, 'apps', 'symdraw')
 
     for _, _, html_file, _, _, _, _ in SYMDRAW_VARIANTS:
-        stage_binary(os.path.join(sd_src, html_file), os.path.join(sd_out, html_file), mode='copy')
+        src_html = os.path.join(sd_src, html_file)
+        dst_html = os.path.join(sd_out, html_file)
+        raw_html = io.open(src_html, 'r', encoding='utf-8').read()
+        if release_id:
+            raw_html = _RE_SYMDRAW_HTML_ASSET.sub(rf'\g<1>\g<2>?v={release_id}\g<3>', raw_html)
+        write_text(dst_html, raw_html)
         stats['files'] += 1
 
     for fn in ('main.css', 'icon_symdraw.svg'):
@@ -581,8 +601,8 @@ def _stage_symmhub_source(sh_out, family_preset_lists, mode='copy', release_id='
   <link rel="icon" type="image/svg+xml" href="./css/icon_symdraw.svg">
   <title>SymDraw — Color Groups Catalog</title>
   <meta name="description" content="SymDraw: vector drawing with symmetry">
-  <link rel="stylesheet" href="../../css/index.css"/>
-  <script src="../../css/portal_theme.js"></script>
+  <link rel="stylesheet" href="../../css/index.css?v={release_id}"/>
+  <script src="../../css/portal_theme.js?v={release_id}"></script>
 </head>
 <body>
   <nav class="portal-nav" aria-label="SymDraw navigation">
